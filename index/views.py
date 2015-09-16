@@ -10,7 +10,7 @@ from index.models import CartridgeItem
 # Create your views here.
 def index(request):
     all_items = CartridgeItem.objects.all()
-    return render(request, 'index/index.html', {'items': all_items})
+    return render(request, 'index/index.html', {'cartrjs': all_items})
 
 
 def add_cartridge_type(request):
