@@ -1,24 +1,48 @@
 {% extends "index/base.html" %}
 {% block title %}Наличие материальных запасов{% endblock %}
 {% block content %}
-<h1>Наличие материальных запасов</h1>
-<ul>
-    <li><a href="/add_type/">Добавить новый тип расходного материала</a></li>
-    <li><a href="/add_owner/">Добавить владельца</a></li>
-    <li><a href="/add_items/">Добавить расходники в базу</a></li>
-</ul>
-<table>
-<tr>
-    <th>Идентификатор</th>
-    <th>Наименование</th>
-    <th>Дата добавления</th>
-</tr>
-{% for i in cartrjs %}
-<tr>
-    <td>{{ i.id }}</td>
-    <td>{{ i.cart_name }}</td>
-    <td>{{ i.cart_date_added }}</td>
-</tr>
-{% endfor %}
-</table>
-{% endblock %}
+<div class="row">
+      <div class="large-12 columns">
+        <h1>Наличие материальных запасов</h1>
+      </div>
+</div>
+{% include "index/base_menu.html" %}
+<div class="row">
+    <div class="large-12 columns">
+        <nav class="top-bar" data-topbar>
+            <section class="top-bar-section">
+                <ul class="left">
+                    <li class="name"><h1><a href="/add_items/">Добавить расходники</a></h1></li>
+                    <li class="name"><h1><a href="/tr_for_use/">Передать в пользование</a></h1></li>
+                    <li class="name"><h1><a href="/tr_to_recycle_bin/">Отправить на утилизацию</a></h1></li>
+                </ul>
+            </section>
+        </nav>
+    </div>
+</div>
+<div class="row">
+    <div class="large-12 columns marginTop"></div>
+</div>
+<div class="row">
+    <div class="large-12 columns">
+        <table>
+        <form>
+        <tr>
+            <th>&nbsp;</th>
+            <th>Идентификатор</th>
+            <th>Наименование</th>
+            <th>Дата добавления</th>
+        </tr>
+        {% for i in cartrjs %}
+        <tr>
+            <td><input type="checkbox" value="{{i.id}}"></td>
+            <td>{{ i.id }}</td>
+            <td>{{ i.cart_name }}</td>
+            <td>{{ i.cart_date_added }}</td>
+        </tr>
+        {% endfor %}
+        </form>
+        </table>
+        {% endblock %}
+    </div>
+</div>

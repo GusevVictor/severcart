@@ -1,9 +1,14 @@
 {% extends "index/base.html" %}
 {% block content %}
-<form action="/add_items/" method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <input type="submit" value="Добавить" />
-</form>
-<hr />
-{% endblock %}
+{% include "index/base_menu.html" %}
+<div class="row">
+    <div class="large-12 columns">
+        <form action="/add_items/" method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <input type="submit" value="Добавить" class="button radius" />
+        </form>
+        <hr />
+        {% endblock %}
+    </div>
+</div>
