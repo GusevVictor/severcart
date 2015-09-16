@@ -1,10 +1,4 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8" />
-    <title>Добавить новый тип расходного материла</title>
-</head>
-<body>
+{% block content %}
 <form action="/add_type/" method="post">
     {% csrf_token %}
     {{ form.as_p }}
@@ -23,5 +17,4 @@
     </tr>
     {% endfor %}
 </table>
-</body>
-</html>
+{% endblock %}
