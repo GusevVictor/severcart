@@ -1,7 +1,7 @@
 from django.db import models
+from treebeard.ns_tree import NS_Node
 
 
-# Create your models here.
 class CartridgeType(models.Model):
     cart_type = models.CharField(max_length=256)
 
@@ -21,3 +21,11 @@ class CartridgeItem(models.Model):
     cart_code = models.IntegerField()
     cart_uses_count = models.IntegerField()
 
+
+class Category(NS_Node):
+    name = models.CharField(max_length=30)
+
+    node_order_by = ['name']
+
+    def __str__(self):
+        return 'Категория: %s' % self.name

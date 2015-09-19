@@ -21,4 +21,5 @@ urlpatterns = [
     url('^$', 'index.views.index'),
     url(r'^add_type/', 'index.views.add_cartridge_type'),
     url(r'^add_items/', 'index.views.add_cartridge_item'),
+    url(r'^tree_list/', 'index.views.tree_list'),
 ]

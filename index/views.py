@@ -5,7 +5,7 @@ from index.forms.add_cartridge_type import AddCartridgeType
 from index.forms.add_items import AddItems
 from index.models import CartridgeType
 from index.models import CartridgeItem
-
+from .models import Category
 
 # Create your views here.
 def index(request):
@@ -53,3 +53,8 @@ def add_cartridge_item(request):
         form_obj = AddItems()
         #all_types = CartridgeType.objects.all()
     return render(request, 'index/add_items.html', {'form': form_obj})
+
+def tree_list(request):
+    tree = Category()
+    annotated_list = tree.get_annotated_list()
+    return render(request, 'index/tree_list.html', {'annotated_list': annotated_list})

@@ -38,6 +38,7 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'index',
+    'treebeard',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -113,9 +114,6 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.8/howto/static-files/
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, "static"),
-#    '/var/www/static/',
 )
-
-print(BASE_DIR)
 
 STATIC_URL = '/static/'

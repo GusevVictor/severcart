@@ -1,0 +1,20 @@
+{% extends "index/base.html" %}
+{% block content %}
+<div class="row">
+    <div class="large-12 columns">
+        {% for item, info in annotated_list %}
+            {% if info.open %}
+                <ul><li>
+            {% else %}
+                </li><li>
+            {% endif %}
+
+            {{ item }}
+
+            {% for close in info.close %}
+                </li></ul>
+            {% endfor %}
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
