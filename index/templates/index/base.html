@@ -6,8 +6,13 @@
     <link rel="stylesheet" href="{% static "css/normalize.css" %}" />
     <link rel="stylesheet" href="{% static "css/foundation.css" %}" />
     <link rel="stylesheet" href="{% static "css/style.css" %}" />
-    <script src="{% static "js/jquery-1.11.3.min.js" %}"></script>
-<script src="{% static "js/logic.js" %}"></script>
+
+    <script src="{% static "js/vendor/modernizr.js" %}"></script>
+    <script src="{% static "js/vendor/jquery.js" %}"></script>
+    <script src="{% static "js/foundation.min.js" %}"></script>
+    <script src="{% static "js/foundation/foundation.dropdown.js" %}"></script>
+    <!-- Other JS plugins can be included here -->
+    <script src="{% static "js/logic.js" %}"></script>
     <title>{% block title %}{% endblock %}</title>
 </head>
 <body>
@@ -17,5 +22,8 @@
     Салехард &copy; 2015 год
     </div>
 </div>
+<script>
+  $(document).foundation();
+</script>
 </body>
 </html>

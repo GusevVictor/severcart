@@ -1,14 +1,26 @@
 <div class="row">
     <div class="large-12 columns">
-        <nav class="top-bar" data-topbar>
+        <nav class="top-bar" data-topbar role="navigation" data-options="is_hover: true">
+
             <section class="top-bar-section">
-                <ul class="left">
-                    <li class="name"><h1><a href="/">Домой</a></h1></li>
-                    <li class="name"><h1><a href="/blank/">Пустые</a></h1></li>
-                    <li class="name"><h1><a href="/blank/">На заправке</a></h1></li>
-                    <li class="name"><h1><a href="/add_type/">Добавить новый тип</a></h1></li>
-                    <li class="name"><h1><a href="/add_owner/">Добавить владельца</a></h1></li>
+                <ul class="right">
+                    <li class="has-dropdown">
+                        <a href="#">Администрирование</a>
+                        <ul class="dropdown">
+                            <li><a href="#">Пользователи</a></li>
+                            <li><a href="#">Структура организации</a></li>
+                            <li><a href="#">Что-то ещё 1</a></li>
+                        </ul>
+                    </li>
                 </ul>
+
+                <ul class="left">
+                    <li><a href="/">Склад</a></li>
+                    <li><a href="/blank/">Пустые</a></li>
+                    <li><a href="/blank/">Используются</a></li>
+                    <li><a href="/blank/">На заправке</a></li>
+                </ul>
+
             </section>
         </nav>
     </div>
