@@ -3,6 +3,7 @@
 <html>
 <head>
     <meta charset="utf-8" />
+    <link href="{% static "img/favicon.ico" %}" rel="shortcut icon" />
     <link rel="stylesheet" href="{% static "css/normalize.css" %}" />
     <link rel="stylesheet" href="{% static "css/foundation.css" %}" />
     <link rel="stylesheet" href="{% static "css/style.css" %}" />
@@ -17,6 +18,9 @@
 </head>
 <body>
 {% include "index/base_menu.html" %}
+<div class="row">
+    <div class="large-12 columns marginTop"></div>
+</div>
 {% block content %}{% endblock %}
 <div class="row">
     <div class="large-12 columns text-center"><hr />

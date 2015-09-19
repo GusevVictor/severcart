@@ -28,4 +28,4 @@ class Category(NS_Node):
     node_order_by = ['name']
 
     def __str__(self):
-        return 'Категория: %s' % self.name
+        return self.name

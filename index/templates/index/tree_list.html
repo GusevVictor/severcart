@@ -1,20 +1,42 @@
 {% extends "index/base.html" %}
+{% load filters %}
 {% block content %}
 <div class="row">
-    <div class="large-12 columns">
+    <div class="large-6 columns">
+        <form action="" method="POST">
+            {% csrf_token %}
+            <label>Название структурного подразделения</label>
+            <input name="name" type="text"/>
+            <label>Подчиняется</label>
+            <select size="1" name="par_id">
+                {% for i in bulk %}
+                    {% if forloop.counter == 1 %}
+                        <option selected disabled>&nbsp;&nbsp;&nbsp;</option>
+                        <option value="{{ i.id }}">{{ i.level | nbsp }}{{ i.name }}</option>
+                    {% else %}
+                        <option value="{{ i.id }}">{{ i.level | nbsp }}{{ i.name }}</option>
+                    {% endif %}
+                {% endfor %}
+            </select>
+            <input type="submit" value="Добавить" class="button radius"/>
+        </form>
+    </div>
+
+    <div class="large-6 columns">
         {% for item, info in annotated_list %}
             {% if info.open %}
-                <ul><li>
-            {% else %}
-                </li><li>
+                <ul>
+                <li>
+                    {% else %}
+                </li>
+                <li>
             {% endif %}
-
-            {{ item }}
-
-            {% for close in info.close %}
-                </li></ul>
-            {% endfor %}
+        {{ item }}
+        {% for close in info.close %}
+            </li></ul>
+        {% endfor %}
         {% endfor %}
     </div>
 </div>
+
 {% endblock %}
