@@ -8,16 +8,13 @@
 </div>
 {% include "index/base_menu.html" %}
 <div class="row">
+    <div class="large-12 columns marginTop"></div>
+</div>
+<div class="row">
     <div class="large-12 columns">
-        <nav class="top-bar" data-topbar>
-            <section class="top-bar-section">
-                <ul class="left">
-                    <li class="name"><h1><a href="/add_items/">Добавить расходники</a></h1></li>
-                    <li class="name"><h1><a href="/tr_for_use/">Передать в пользование</a></h1></li>
-                    <li class="name"><h1><a href="/tr_to_recycle_bin/">Отправить на утилизацию</a></h1></li>
-                </ul>
-            </section>
-        </nav>
+        <a class="add_items button radius small" href="#">Добавить расходники</a>
+        <a class="tr_for_use button radius small" href="#">Передать в пользование</a>
+        <a class="tr_to_recycle_bin button radius small" href="#">Отправить на утилизацию</a>
     </div>
 </div>
 <div class="row">
@@ -25,7 +22,7 @@
 </div>
 <div class="row">
     <div class="large-12 columns">
-        <table>
+        <table class="checkboxes">
         <form>
         <tr>
             <th>&nbsp;</th>
