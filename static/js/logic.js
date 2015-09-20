@@ -9,7 +9,11 @@ $( function(){
             selected.push( $(this).attr('value') );
         });
         //console.log(selected);
-        console.log(JSON.stringify(selected));
+        var get_path = selected.join('s')
+        var loc = "/transfe_for_use/?select=" + get_path;
+        window.location.href = loc;
+        //console.log(JSON.stringify(selected));
+
     });
 
     $(".tr_to_recycle_bin").click( function() {

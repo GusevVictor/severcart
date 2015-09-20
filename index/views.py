@@ -1,30 +1,33 @@
 from django.shortcuts import render
 from django.http import HttpResponseRedirect
 from django.utils import timezone
-from index.forms.add_cartridge_type import AddCartridgeType
+from index.forms.add_cartridge_name import AddCartridgeName
 from index.forms.add_items import AddItems
-from index.models import CartridgeType
-from index.models import CartridgeItem
+from .forms.add_type import AddCartridgeType
+from .models import CartridgeType
+from .models import CartridgeItem
 from .models import Category
+from .helpers import recursiveChildren
 
 # Create your views here.
 def index(request):
-    all_items = CartridgeItem.objects.all()
+
+    #all_items = CartridgeItem.objects.filter(cart_filled=True)
+    all_items = CartridgeItem.objects.filter(cart_owner__isnull=True)
     return render(request, 'index/index.html', {'cartrjs': all_items})
 
 
-def add_cartridge_type(request):
+def add_cartridge_name(request):
     if request.method == 'POST':
-        form_obj = AddCartridgeType(request.POST)
+        form_obj = AddCartridgeName(request.POST)
         if form_obj.is_valid():
             # добавляем новый тип расходного материала
             form_obj.save()
             return HttpResponseRedirect(request.path)
 
     else:
-        form_obj = AddCartridgeType()
-        all_types = CartridgeType.objects.all()
-    return render(request, 'index/add_type.html', {'form': form_obj, 'types': all_types})
+        form_obj = AddCartridgeName()
+    return render(request, 'index/add_name.html', {'form': form_obj})
 
 
 def add_cartridge_item(request):
@@ -34,23 +37,16 @@ def add_cartridge_item(request):
             # добавляем новый тип расходного материала
             all = form_obj.cleaned_data
             for i in range(int(all['cart_count'])):
-                if all['cart_new']:
-                    cart_uses_count = 0
-                else:
-                    cart_uses_count = 1
-                m1 = CartridgeItem(cart_name=all['cart_name'],
-                                   cart_type=all['cart_type'],
+                m1 = CartridgeItem(cart_itm_name=all['cart_name'],
                                    cart_date_added=timezone.now(),
                                    cart_code=0,
-                                   cart_uses_count=cart_uses_count,
-                                   #   cart_owner_id = 0,
+                                   cart_filled=True,
                 )
                 m1.save()
             return HttpResponseRedirect(request.path)
 
     else:
         form_obj = AddItems()
-        #all_types = CartridgeType.objects.all()
     return render(request, 'index/add_items.html', {'form': form_obj})
 
 
@@ -64,14 +60,11 @@ def tree_list(request):
         parent_id = all['par_id']
         parent_id = int(parent_id)
         unit_name = all['name']  # очень не безопасно!
-        node = get(parent_id).add_child(name=unit_name)
 
-    def recursiveChildren(node, level=0):
-        results = [{'id': node['id'], 'level': level, 'name': node['data']['name']}]
-        if node.get('children', 0) and len(node.get('children')) > 0:
-            for child in node['children']:
-                results.extend(recursiveChildren(child, level=level + 1))
-        return results
+        if parent_id:
+            node = get(parent_id).add_child(name=unit_name)
+        else:
+            tree.add_root(name=unit_name)
 
     annotated_list = tree.get_annotated_list()
 
@@ -80,3 +73,54 @@ def tree_list(request):
         bulk.extend(recursiveChildren(itm))
 
     return render(request, 'index/tree_list.html', {'annotated_list': annotated_list, 'bulk' : bulk})
+
+
+def add_type(request):
+    """
+
+    """
+    if request.method == 'POST':
+        form_obj = AddCartridgeType(request.POST)
+        if form_obj.is_valid():
+            all = form_obj.cleaned_data
+            m1 = CartridgeType(cart_type=all['cart_type'])
+            m1.save()
+            return HttpResponseRedirect(request.path)
+    else:
+        form_obj = AddCartridgeType()
+    return render(request, 'index/add_type.html', {'form': form_obj})
+
+def transfe_for_use(request):
+    """
+
+    """
+    checked_cartr = request.GET.get('select', '')
+    tmp = ''
+    if checked_cartr:
+        checked_cartr = checked_cartrt.split('s')
+        checked_cartr = [int(i) for i in var]
+        tmp = checked_cartr
+        checked_cartr = str(checked_cartr)
+        checked_cartr = checked_cartr[1:-1]
+
+    tree = Category()
+    get = lambda node_id: Category.objects.get(pk=node_id)
+    bulk = []
+    for itm in tree.dump_bulk():
+        bulk.extend(recursiveChildren(itm))
+
+    if request.method == 'POST':
+        all = request.POST
+        parent_id = all['par_id']
+        parent_id = int(parent_id)
+        #print('parent_id=', get(parent_id))
+
+        for inx in tmp:
+            m1 = CartridgeItem.objects.get(pk=inx)
+            m1.cart_owner = get(parent_id)
+            m1.save(update_fields=['cart_owner'])
+
+        return HttpResponseRedirect("/")
+
+
+    return render(request, 'index/transfe_for_use.html', {'checked_cartr': checked_cartrt, 'bulk': bulk})

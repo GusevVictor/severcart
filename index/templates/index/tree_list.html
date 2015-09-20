@@ -9,13 +9,9 @@
             <input name="name" type="text"/>
             <label>Подчиняется</label>
             <select size="1" name="par_id">
+                <option value="0" selected>&nbsp;&nbsp;&nbsp;</option>
                 {% for i in bulk %}
-                    {% if forloop.counter == 1 %}
-                        <option selected disabled>&nbsp;&nbsp;&nbsp;</option>
                         <option value="{{ i.id }}">{{ i.level | nbsp }}{{ i.name }}</option>
-                    {% else %}
-                        <option value="{{ i.id }}">{{ i.level | nbsp }}{{ i.name }}</option>
-                    {% endif %}
                 {% endfor %}
             </select>
             <input type="submit" value="Добавить" class="button radius"/>
@@ -23,6 +19,7 @@
     </div>
 
     <div class="large-6 columns">
+        <h4>Структура организации:</h4>
         {% for item, info in annotated_list %}
             {% if info.open %}
                 <ul>

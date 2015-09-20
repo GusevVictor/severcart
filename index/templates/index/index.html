@@ -8,9 +8,9 @@
 </div>
 <div class="row">
     <div class="large-12 columns">
-        <a class="add_items button radius small" href="/add_items/">Добавить расходники</a>
-        <a class="tr_for_use button radius small" href="#">Передать в пользование</a>
-        <a class="tr_to_recycle_bin button radius small" href="#">Отправить на утилизацию</a>
+        <a class="add_items button radius tiny secondary" href="/add_items/">Добавить расходники</a>
+        <a class="tr_for_use button radius tiny secondary" href="#">Передать в пользование</a>
+        <a class="tr_to_recycle_bin button radius tiny secondary" href="#">Отправить на утилизацию</a>
     </div>
 </div>
 <div class="row">
@@ -30,7 +30,7 @@
         <tr>
             <td><input type="checkbox" value="{{i.id}}"></td>
             <td>{{ i.id }}</td>
-            <td>{{ i.cart_name }}</td>
+            <td>{{ i.cart_itm_name }}</td>
             <td>{{ i.cart_date_added }}</td>
         </tr>
         {% endfor %}

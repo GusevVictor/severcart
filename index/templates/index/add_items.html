@@ -11,18 +11,9 @@
                     <label for="{{ form.cart_name.id_for_label }}">Название расходника:</label>
                     {{ form.cart_name }}
                 </div>
-            </div>
-
-            <div class="row">
-                <div class="large-6 columns">
-                    {{ form.cart_type.errors }}
-                    <label for="{{ form.cart_type.id_for_label }}">Выбрать тип расходника</label>
-                    {{ form.cart_type }}
-                </div>
 
                 <div class="large-6 columns">
-                        <a class="button radius small marginTop" href="/add_type/">Добавит новый тип</a>
-
+                        <a class="button radius small marginTop" href="/add_name/">Добавить наименование</a>
                 </div>
 
             </div>
@@ -32,14 +23,6 @@
                     {{ form.cart_count.errors }}
                     <label for="{{ form.cart_count.id_for_label }}">Количество:</label>
                     {{ form.cart_count }}
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="large-6 columns">
-                    {{ form.cart_new.errors }}
-                    <label for="{{ form.cart_new.id_for_label }}">Расходник новый?</label>
-                    {{ form.cart_new }}
                 </div>
             </div>
 

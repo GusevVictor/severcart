@@ -1,13 +1,12 @@
 {% load staticfiles %}
 <!DOCTYPE html>
-<html>
+<html lang="ru">
 <head>
     <meta charset="utf-8" />
     <link href="{% static "img/favicon.ico" %}" rel="shortcut icon" />
     <link rel="stylesheet" href="{% static "css/normalize.css" %}" />
     <link rel="stylesheet" href="{% static "css/foundation.css" %}" />
     <link rel="stylesheet" href="{% static "css/style.css" %}" />
-
     <script src="{% static "js/vendor/modernizr.js" %}"></script>
     <script src="{% static "js/vendor/jquery.js" %}"></script>
     <script src="{% static "js/foundation.min.js" %}"></script>
@@ -24,8 +23,9 @@
 {% block content %}{% endblock %}
 <div class="row">
     <div class="large-12 columns text-center"><hr />
-    Салехард &copy; 2015 год
+        Салехард &copy; 2015 год
     </div>
+    <div class="large-12 columns text-left">v. 0.0.1</div>
 </div>
 <script>
   $(document).foundation();

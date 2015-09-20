@@ -1,25 +1,13 @@
 {% extends "index/base.html" %}
 {% block content %}
 <div class="row">
-    <div class="large-12 columns">
+    <div class="large-6 columns">
         <form action="/add_type/" method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <input type="submit" value="Добавить" class="button radius"/>
-    </form>
-    <hr />
-    <table>
-        <tr>
-            <th>ID</th>
-            <th>Тип расходника</th>
-        </tr>
-        {% for i in types %}
-        <tr>
-            <td>{{ i.id }}</td>
-            <td>{{ i.cart_type }}</td>
-        </tr>
-        {% endfor %}
-    </table>
-    {% endblock %}
+            {% csrf_token %}
+            {{ form.as_p }}
+            <input type="submit" value="Добавить" class="button radius success" />
+        </form>
     </div>
 </div>
+
+{% endblock %}

@@ -1,0 +1,31 @@
+{% extends "index/base.html" %}
+{% block content %}
+<div class="row">
+    <div class="large-6 columns">
+        <form action="/add_name/" method="post">
+        {% csrf_token %}
+        {{ form.non_field_errors }}
+        <div class="row">
+            <div class="large-6 columns">
+                {{ form.subject.errors }}
+                <label for="{{ form.cart_itm_name.id_for_label }}">Название расходника:</label>
+                {{ form.cart_itm_name }}
+            </div>
+
+        </div>
+        <div class="row">
+            {{ form.subject.errors }}
+            <div class="large-6 columns">
+                <label for="{{ form.cart_itm_type.id_for_label }}">Тип:</label>
+                {{ form.cart_itm_type }}
+            </div>
+
+            <div class="large-6 columns">
+                    <a class="button radius tiny marginTop" href="/add_type/">Добавить новый тип расходника</a>
+            </div>
+        </div>
+        <input type="submit" value="Добавить" class="button radius"/>
+    </form>
+
+</div>
+{% endblock %}
