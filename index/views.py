@@ -97,8 +97,8 @@ def transfe_for_use(request):
     checked_cartr = request.GET.get('select', '')
     tmp = ''
     if checked_cartr:
-        checked_cartr = checked_cartrt.split('s')
-        checked_cartr = [int(i) for i in var]
+        checked_cartr = checked_cartr.split('s')
+        checked_cartr = [int(i) for i in checked_cartr]
         tmp = checked_cartr
         checked_cartr = str(checked_cartr)
         checked_cartr = checked_cartr[1:-1]
@@ -123,4 +123,4 @@ def transfe_for_use(request):
         return HttpResponseRedirect("/")
 
 
-    return render(request, 'index/transfe_for_use.html', {'checked_cartr': checked_cartrt, 'bulk': bulk})
+    return render(request, 'index/transfe_for_use.html', {'checked_cartr': checked_cartr, 'bulk': bulk})

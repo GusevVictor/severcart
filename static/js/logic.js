@@ -8,10 +8,12 @@ $( function(){
         $('.checkboxes input:checked').each(function() {
             selected.push( $(this).attr('value') );
         });
-        //console.log(selected);
-        var get_path = selected.join('s')
-        var loc = "/transfe_for_use/?select=" + get_path;
-        window.location.href = loc;
+
+        if ( selected.length !== 0 ) {
+            var get_path = selected.join('s')
+            var loc = "/transfe_for_use/?select=" + get_path;
+            window.location.href = loc;
+        }
         //console.log(JSON.stringify(selected));
 
     });
