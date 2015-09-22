@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponseRedirect
 from django.utils import timezone
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from index.forms.add_cartridge_name import AddCartridgeName
 from index.forms.add_items import AddItems
 from .forms.add_type import AddCartridgeType
@@ -13,8 +14,20 @@ from .helpers import recursiveChildren
 def index(request):
 
     #all_items = CartridgeItem.objects.filter(cart_filled=True)
-    all_items = CartridgeItem.objects.filter(cart_owner__isnull=True)
-    return render(request, 'index/index.html', {'cartrjs': all_items})
+    all_items = CartridgeItem.objects.filter(cart_owner__isnull=True).filter(cart_filled=True)
+    paginator = Paginator(all_items, 15)
+
+    page = request.GET.get('page')
+    try:
+        cartridjes = paginator.page(page)
+    except PageNotAnInteger:
+        # If page is not an integer, deliver first page.
+        cartridjes = paginator.page(1)
+    except EmptyPage:
+        # If page is out of range (e.g. 9999), deliver last page of results.
+        cartridjes = paginator.page(paginator.num_pages)
+
+    return render(request, 'index/index.html', {'cartrjs': cartridjes})
 
 
 def add_cartridge_name(request):

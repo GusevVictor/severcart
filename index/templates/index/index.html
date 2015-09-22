@@ -16,7 +16,8 @@
 <div class="row">
     <div class="large-12 columns marginTop"></div>
 </div>
-<div class="row">
+
+    <div class="row">
     <div class="large-12 columns">
         <table class="checkboxes">
         <form>
@@ -36,6 +37,25 @@
         {% endfor %}
         </form>
         </table>
-        {% endblock %}
+
     </div>
 </div>
+
+<div class="pagination">
+    <span class="step-links">
+        {% if cartrjs.has_previous %}
+            <a href="?page={{ cartrjs.previous_page_number }}"><</a>
+        {% endif %}
+
+        <span class="current">
+            Страница {{ cartrjs.number }} из {{ cartrjs.paginator.num_pages }}.
+        </span>
+
+        {% if cartrjs.has_next %}
+            <a href="?page={{ cartrjs.next_page_number }}">></a>
+        {% endif %}
+    </span>
+</div>
+
+{% endblock %}
+
