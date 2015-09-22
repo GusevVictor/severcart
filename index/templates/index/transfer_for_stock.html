@@ -1,0 +1,14 @@
+{% extends "index/base.html" %}
+{% load filters %}
+{% block content %}
+    <div class="row">
+        <div class="large-6 columns">
+            <form action="" method="POST">
+                {% csrf_token %}
+                <label>Что передаём</label>
+                <input name="name" type="text"  value="{{checked_cartr }}"  readonly/>
+                <input type="submit" value="Передать на склад" class="button radius"/>
+            </form>
+        </div>
+    </div>
+{% endblock %}

@@ -7,6 +7,8 @@ urlpatterns = [
     url(r'^tree_list/', 'index.views.tree_list'),
     url(r'^add_type/', 'index.views.add_type'),
     url(r'^transfe_for_use/', 'index.views.transfe_for_use'),
+    url(r'^transfer_to_stock/', 'index.views.transfer_to_stock'),
     url(r'^use/', 'index.views.use'),
+    url(r'^empty/', 'index.views.empty')
 ]
 

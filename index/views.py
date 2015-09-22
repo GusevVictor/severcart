@@ -121,9 +121,30 @@ def transfe_for_use(request):
             m1.save(update_fields=['cart_owner'])
 
         return HttpResponseRedirect("/")
-
-
     return render(request, 'index/transfe_for_use.html', {'checked_cartr': checked_cartr, 'bulk': bulk})
+
+def transfer_to_stock(request):
+    """
+
+    """
+    checked_cartr = request.GET.get('select', '')
+    tmp = ''
+    if checked_cartr:
+        checked_cartr = checked_cartr.split('s')
+        checked_cartr = [int(i) for i in checked_cartr]
+        tmp = checked_cartr
+        checked_cartr = str(checked_cartr)
+        checked_cartr = checked_cartr[1:-1]
+
+    if request.method == 'POST':
+        for inx in tmp:
+            m1 = CartridgeItem.objects.get(pk=inx)
+            m1.cart_owner = None
+            m1.cart_filled = False
+            m1.save(update_fields=['cart_owner', 'cart_filled'])
+
+        return HttpResponseRedirect("/use/")
+    return render(request, 'index/transfer_for_stock.html', {'checked_cartr': checked_cartr})
 
 def use(request):
     """
@@ -131,3 +152,10 @@ def use(request):
     """
     all_items = CartridgeItem.objects.filter(cart_owner__isnull=False)
     return render(request, 'index/use.html', {'cartrjs': all_items})
+
+def empty(request):
+    """
+
+    """
+    items = CartridgeItem.objects.filter(cart_owner__isnull=True, cart_filled=False)
+    return render(request, 'index/empty.html', {'cartrjs': items})
