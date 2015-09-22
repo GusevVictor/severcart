@@ -1,0 +1,39 @@
+{% extends "index/base.html" %}
+{% block title %}Расходники в пользовании{% endblock %}
+{% block content %}
+<div class="row">
+      <div class="large-12 columns">
+        <h1>Расходники в пользовании</h1>
+      </div>
+</div>
+<div class="row">
+    <div class="large-12 columns">
+        <a class="add_items button radius tiny secondary" href="#">Передать на склад</a>
+    </div>
+</div>
+<div class="row">
+    <div class="large-12 columns marginTop"></div>
+</div>
+<div class="row">
+    <div class="large-12 columns">
+        <table class="checkboxes">
+        <form>
+        <tr>
+            <th>&nbsp;</th>
+            <th>Уникальны номер</th>
+            <th>Наименование</th>
+            <th>У кого установлен</th>
+        </tr>
+        {% for i in cartrjs %}
+        <tr>
+            <td><input type="checkbox" value="{{i.id}}"></td>
+            <td>{{ i.id }}</td>
+            <td>{{ i.cart_itm_name }}</td>
+            <td>{{ i.cart_owner }}</td>
+        </tr>
+        {% endfor %}
+        </form>
+        </table>
+        {% endblock %}
+    </div>
+</div>

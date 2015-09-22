@@ -124,3 +124,10 @@ def transfe_for_use(request):
 
 
     return render(request, 'index/transfe_for_use.html', {'checked_cartr': checked_cartr, 'bulk': bulk})
+
+def use(request):
+    """
+
+    """
+    all_items = CartridgeItem.objects.filter(cart_owner__isnull=False)
+    return render(request, 'index/use.html', {'cartrjs': all_items})
