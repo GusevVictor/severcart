@@ -15,7 +15,7 @@ def index(request):
 
     #all_items = CartridgeItem.objects.filter(cart_filled=True)
     all_items = CartridgeItem.objects.filter(cart_owner__isnull=True).filter(cart_filled=True)
-    paginator = Paginator(all_items, 15)
+    paginator = Paginator(all_items, 8)
 
     page = request.GET.get('page')
     try:

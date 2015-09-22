@@ -1,61 +1,69 @@
 {% extends "index/base.html" %}
 {% block title %}Наличие материальных запасов{% endblock %}
 {% block content %}
-<div class="row">
-      <div class="large-12 columns">
-        <h1>Список новых или заправленных расходников</h1>
-      </div>
-</div>
-<div class="row">
-    <div class="large-12 columns">
-        <a class="add_items button radius tiny secondary" href="/add_items/">Добавить расходники</a>
-        <a class="tr_for_use button radius tiny secondary" href="#">Передать в пользование</a>
-        <a class="tr_to_recycle_bin button radius tiny secondary" href="#">Отправить на утилизацию</a>
+    <div class="row">
+        <div class="large-12 columns">
+            <h1>Список новых или заправленных расходников</h1>
+        </div>
     </div>
-</div>
-<div class="row">
-    <div class="large-12 columns marginTop"></div>
-</div>
+    <div class="row">
+        <div class="large-12 columns">
+            <a class="add_items button radius tiny secondary" href="/add_items/">Добавить расходники</a>
+            <a class="tr_for_use button radius tiny secondary" href="#">Передать в пользование</a>
+            <a class="tr_to_recycle_bin button radius tiny secondary" href="#">Отправить на утилизацию</a>
+        </div>
+    </div>
+    <div class="row">
+        <div class="large-12 columns marginTop"></div>
+    </div>
 
     <div class="row">
-    <div class="large-12 columns">
-        <table class="checkboxes">
-        <form>
-        <tr>
-            <th>&nbsp;</th>
-            <th>Номер</th>
-            <th>Наименование</th>
-            <th>Дата добавления</th>
-        </tr>
-        {% for i in cartrjs %}
-        <tr>
-            <td><input type="checkbox" value="{{i.id}}"></td>
-            <td>{{ i.id }}</td>
-            <td>{{ i.cart_itm_name }}</td>
-            <td>{{ i.cart_date_added }}</td>
-        </tr>
-        {% endfor %}
-        </form>
-        </table>
+        <div class="large-12 columns">
+            <table class="checkboxes">
+                <form>
+                    <tr>
+                        <th>&nbsp;</th>
+                        <th>Номер</th>
+                        <th>Наименование</th>
+                        <th>Дата добавления</th>
+                    </tr>
+                    {% for i in cartrjs %}
+                        <tr>
+                            <td><input type="checkbox" value="{{ i.id }}"></td>
+                            <td>{{ i.id }}</td>
+                            <td>{{ i.cart_itm_name }}</td>
+                            <td>{{ i.cart_date_added }}</td>
+                        </tr>
+                    {% endfor %}
+                </form>
+            </table>
 
+        </div>
     </div>
-</div>
 
-<div class="pagination">
-    <span class="step-links">
-        {% if cartrjs.has_previous %}
-            <a href="?page={{ cartrjs.previous_page_number }}"><</a>
-        {% endif %}
+    <div class="row">
+        <div class="large-3 columns">
+            <ul class="pagination">
+                {% if cartrjs.has_previous %}
+                    <li class="arrow"><a href="?page={{ cartrjs.previous_page_number }}">&laquo;</a></li>
+                {% else %}
+                    <li class="arrow unavailable"><a href="">&laquo;</a></li>
+                {% endif %}
+                {% for page in cartrjs.paginator.page_range %}
+                    {% if page == cartrjs.number %}
+                        <li class="current"><a href="?page={{ page }}">{{ page }}</a></li>
+                    {% else %}
+                        <li><a href="?page={{ page }}">{{ page }}</a></li>
+                    {% endif %}
+                {% endfor %}
+                {% if cartrjs.has_next %}
+                    <li class="arrow"><a href="?page={{ cartrjs.next_page_number }}">&raquo;</a></li>
+                {% else %}
+                    <li class="arrow unavailable"><a href="">&raquo;</a></li>
+                {% endif %}
+            </ul>
 
-        <span class="current">
-            Страница {{ cartrjs.number }} из {{ cartrjs.paginator.num_pages }}.
-        </span>
-
-        {% if cartrjs.has_next %}
-            <a href="?page={{ cartrjs.next_page_number }}">></a>
-        {% endif %}
-    </span>
-</div>
-
+        </div>
+    </div>
 {% endblock %}
 
