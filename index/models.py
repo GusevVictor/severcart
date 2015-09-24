@@ -18,10 +18,6 @@ class CartridgeType(models.Model):
     def __str__(self):
         return self.cart_type
 
-
-class CartridgeOwner(models.Model):
-    owner = models.TextField()
-
 class CartridgeItemName(models.Model):
     cart_itm_name = models.CharField(max_length=256)
     cart_itm_type = models.ForeignKey(CartridgeType)
