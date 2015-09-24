@@ -8,6 +8,8 @@ from .forms.add_type import AddCartridgeType
 from .models import CartridgeType
 from .models import CartridgeItem
 from .models import Category
+from .models import City
+from .models import FirmTonerRefill
 from .helpers import recursiveChildren
 
 # Create your views here.
@@ -172,3 +174,25 @@ def empty(request):
     """
     items = CartridgeItem.objects.filter(cart_owner__isnull=True, cart_filled=False)
     return render(request, 'index/empty.html', {'cartrjs': items})
+
+
+def toner_refill(request):
+    """
+
+    """
+
+    city = request.GET.get('city', '')
+    cities = City.objects.all()
+
+    try:
+        city = City.objects.get(city_name=city)
+    except City.DoesNotExist:
+        city = None
+
+
+    if city:
+        firms = FirmTonerRefill.objects.filter(firm_city=city)
+    else:
+        firms = FirmTonerRefill.objects.all()
+
+    return render(request, 'index/toner_refill.html', {'cities': cities, 'firms': firms})
