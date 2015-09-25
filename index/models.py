@@ -35,7 +35,7 @@ class CartridgeItem(models.Model):
 
 
 class City(models.Model):
-    city_name = models.CharField(max_length=256)
+    city_name = models.CharField('Введите название города', max_length=256)
 
     def __str__(self):
         return self.city_name

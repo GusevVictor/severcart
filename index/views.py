@@ -2,13 +2,15 @@ from django.shortcuts import render
 from django.http import HttpResponseRedirect
 from django.utils import timezone
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from django.core.urlresolvers import reverse
 from index.forms.add_cartridge_name import AddCartridgeName
-from index.forms.add_items import AddItems
+from .forms.add_items import AddItems
+from .forms.add_city import CityF
 from .forms.add_type import AddCartridgeType
 from .models import CartridgeType
 from .models import CartridgeItem
 from .models import Category
-from .models import City
+from .models import City as CityM
 from .models import FirmTonerRefill
 from .helpers import recursiveChildren
 
@@ -182,11 +184,11 @@ def toner_refill(request):
     """
 
     city = request.GET.get('city', '')
-    cities = City.objects.all()
+    cities = CityM.objects.all()
 
     try:
-        city = City.objects.get(city_name=city)
-    except City.DoesNotExist:
+        city = CityM.objects.get(city_name=city)
+    except CityM.DoesNotExist:
         city = None
 
 
@@ -196,3 +198,18 @@ def toner_refill(request):
         firms = FirmTonerRefill.objects.all()
 
     return render(request, 'index/toner_refill.html', {'cities': cities, 'firms': firms})
+
+def add_city(request):
+    """
+
+    """
+    if request.method == 'POST':
+        form_obj = CityF(request.POST)
+        if form_obj.is_valid():
+            all = form_obj.cleaned_data
+            m1 = CityM(city_name=all['city_name'])
+            m1.save()
+            return HttpResponseRedirect(reverse('index.views.toner_refill'))
+    else:
+        form_obj = CityF()
+    return render(request, 'index/add_city.html', {'form': form_obj})

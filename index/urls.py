@@ -11,6 +11,7 @@ urlpatterns = [
     url(r'^use/', 'index.views.use'),
     url(r'^empty/', 'index.views.empty'),
     url(r'^toner_refill/', 'index.views.toner_refill'),
+    url(r'^add_city/', 'index.views.add_city'),
 
 ]
 

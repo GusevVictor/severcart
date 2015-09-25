@@ -1,0 +1,13 @@
+{% extends "index/base.html" %}
+{% block content %}
+<div class="row">
+    <div class="large-6 columns">
+        <form action="" method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <input type="submit" value="Добавить" class="button radius success" />
+        </form>
+    </div>
+</div>
+
+{% endblock %}
