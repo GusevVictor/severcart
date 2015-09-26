@@ -1,0 +1,38 @@
+{% extends "index/base.html" %}
+{% block content %}
+<div class="row">
+    <div class="large-6 columns">
+        <form action="" method="post">
+            {% csrf_token %}
+            {{ form.non_field_errors }}
+            <p>
+                {{ form.firm_name.errors }}
+                <label for="{{ form.firm_name.id_for_label }}">Название</label>
+                {{ form.firm_name }}
+            </p>
+            <p>
+                {{ form.firm_city.errors }}
+                <label for="{{ form.firm_city.id_for_label }}">Выберите город</label>
+                {{ form.firm_city }}
+            </p>
+            <p>
+                {{ form.firm_contacts.errors }}
+                <label for="{{ form.firm_contacts.id_for_label }}">Контакты</label>
+                {{ form.firm_contacts }}
+            </p>
+            <p>
+                {{ form.firm_address.errors }}
+                <label for="{{ form.firm_address.id_for_label }}">Адрес</label>
+                {{ form.firm_address }}
+            </p>
+            <p>
+                {{ form.firm_comments.errors }}
+                <label for="{{ form.firm_comments.id_for_label }}">Комментарии</label>
+                {{ form.firm_comments }}
+            </p>
+            <input type="submit" value="Сохранить изменения" class="button radius success" />
+        </form>
+    </div>
+</div>
+
+{% endblock %}

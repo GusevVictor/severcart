@@ -1,3 +1,5 @@
+# -*- config:utf-8 -*-
+
 from django.db import models
 from treebeard.ns_tree import NS_Node
 
@@ -46,11 +48,11 @@ class FirmTonerRefill(models.Model):
     Хранит списки фирм занимающиеся заправкой и восстановление
     картриджей.
     """
-    firm_name = models.CharField(max_length=256)
-    firm_city = models.ForeignKey(City)
-    firm_contacts = models.TextField()
-    firm_address = models.TextField()
-    firm_comments = models.TextField()
+    firm_name = models.CharField('Название', max_length=256)
+    firm_city = models.ForeignKey(City, blank=True, verbose_name="Выберите город")
+    firm_contacts = models.TextField('Контакты', blank=True)
+    firm_address = models.TextField('Адресс', blank=True)
+    firm_comments = models.TextField('Комментарии', blank=True)
 
     def __str__(self):
         return self.firm_name

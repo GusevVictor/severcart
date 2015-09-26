@@ -3,10 +3,12 @@ from django.http import HttpResponseRedirect
 from django.utils import timezone
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.core.urlresolvers import reverse
-from index.forms.add_cartridge_name import AddCartridgeName
+from django.http import Http404
+from .forms.add_cartridge_name import AddCartridgeName
 from .forms.add_items import AddItems
 from .forms.add_city import CityF
 from .forms.add_type import AddCartridgeType
+from .forms.add_firm import FirmTonerRefillF
 from .models import CartridgeType
 from .models import CartridgeItem
 from .models import Category
@@ -14,10 +16,8 @@ from .models import City as CityM
 from .models import FirmTonerRefill
 from .helpers import recursiveChildren
 
-# Create your views here.
 def index(request):
 
-    #all_items = CartridgeItem.objects.filter(cart_filled=True)
     all_items = CartridgeItem.objects.filter(cart_owner__isnull=True).filter(cart_filled=True)
     paginator = Paginator(all_items, 8)
 
@@ -213,3 +213,68 @@ def add_city(request):
     else:
         form_obj = CityF()
     return render(request, 'index/add_city.html', {'form': form_obj})
+
+def add_firm(request):
+    """
+
+    """
+
+    if request.method == 'POST':
+        form_obj = FirmTonerRefillF(request.POST)
+        if form_obj.is_valid():
+            all = form_obj.cleaned_data
+            m1 = FirmTonerRefill(firm_name=all['firm_name'],
+                                 firm_city=all['firm_city'],
+                                 firm_contacts=all['firm_contacts'],
+                                 firm_address=all['firm_address'],
+                                 firm_comments=all['firm_comments'], )
+            m1.save()
+            return HttpResponseRedirect('index.views.toner_refill')
+    else:
+        form_obj = FirmTonerRefillF()
+    return render(request, 'index/add_firm.html', {'form': form_obj})
+
+def edit_firm(request):
+    """
+
+    """
+    firm_id = request.GET.get('select', '')
+    firm_id = firm_id.strip()
+    if firm_id:
+        firm_id = int(firm_id)
+    else:
+        firm_id = 0
+
+    if request.method == 'POST':
+        form_obj = FirmTonerRefillF(request.POST)
+        if form_obj.is_valid():
+            all = form_obj.cleaned_data
+            m1 = FirmTonerRefill.objects.get(pk=firm_id)
+            m1.firm_name = all['firm_name']
+            m1.firm_city = all['firm_city']
+            m1.firm_contacts = all['firm_contacts']
+            m1.firm_address = all['firm_address']
+            m1.firm_comments = all['firm_comments']
+            m1.save(update_fields=[
+                'firm_name',
+                'firm_city',
+                'firm_contacts',
+                'firm_address',
+                'firm_comments',
+                ])
+
+            return HttpResponseRedirect(reverse('index.views.toner_refill'))
+
+    try:
+        firm = FirmTonerRefill.objects.get(pk=firm_id)
+    except FirmTonerRefill.DoesNotExist:
+        raise Http404
+
+    form_obj = FirmTonerRefillF(initial={
+        'firm_name': firm.firm_name,
+        'firm_city': firm.firm_city,
+        'firm_contacts': firm.firm_contacts,
+        'firm_address': firm.firm_address,
+        'firm_comments': firm.firm_comments,
+        })
+    return render(request, 'index/edit_firm.html', {'firm': firm, 'form': form_obj})

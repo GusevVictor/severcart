@@ -8,27 +8,13 @@
         <a class="edit_firm button radius tiny secondary" href="#">Редактировать</a>
         <a class="del_firm button radius tiny secondary" href="#">Удалить фирму</a>
     </div>
-    <div class="large-3 columns">
-        <div class="row">
-            <div class="small-4 columns">
-                <label>Выберите город:</label>
-            </div>
-            <div class="small-8 columns">
-                <select name="city" class="right">
-                      <option value="">&nbsp;&nbsp;&nbsp;</option>
-                    {% for s in cities %}
-                        <option value="{{ s.city_name }}">{{ s.city_name }}</option>
-                    {% endfor %}
-                </select>
-            </div>
-            </div>
-        </div>
-    </div>
 </div>
 <div class="row">
-    <div class="large-12 columns">
-        <table>
+    <div class="large-8 columns">
+        <from>
+        <table class="checkboxes">
             <tr>
+                <th>&nbsp;&nbsp;&nbsp;</th>
                 <th>Название</th>
                 <th>Контакты</th>
                 <th>Адрес</th>
@@ -36,15 +22,29 @@
             </tr>
         {% for itm in firms %}
             <tr>
-                <td>itm.firm_name</td>
-                <td>itm.firm_contacts</td>
-                <td>itm.firm_city, itm.firm_address</td>
-                <td>itm.firm_comments</td>
+                <td><input type="radio" value="{{ itm.id }}"></td>
+                <td>{{ itm.firm_name }}</td>
+                <td>{{ itm.firm_contacts }}</td>
+                <td>{{ itm.firm_city }}, {{ itm.firm_address }}</td>
+                <td>{{ itm.firm_comments }}</td>
             </tr>
         {% endfor %}
         </table>
+        </from>
+    </div>
+    <div class="large-4 columns">
+        <div class="small-4 columns">
+            <label>Выберите город:</label>
+        </div>
+        <div class="small-8 columns">
+            <select name="city" class="right">
+                  <option value="">&nbsp;&nbsp;&nbsp;</option>
+                {% for s in cities %}
+                    <option value="{{ s.city_name }}">{{ s.city_name }}</option>
+                {% endfor %}
+            </select>
+        </div>
     </div>
 </div>
-
 
 {% endblock %}
