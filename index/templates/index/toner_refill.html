@@ -22,7 +22,7 @@
             </tr>
         {% for itm in firms %}
             <tr>
-                <td><input type="radio" value="{{ itm.id }}"></td>
+                <td><input type="radio" name="firm" value="{{ itm.id }}"></td>
                 <td>{{ itm.firm_name }}</td>
                 <td>{{ itm.firm_contacts }}</td>
                 <td>{{ itm.firm_city }}, {{ itm.firm_address }}</td>

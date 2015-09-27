@@ -52,4 +52,17 @@ $( function(){
 
     });
 
+    $(".del_firm").click( function() {
+        var selected = [];
+        $('.checkboxes input:checked').each(function() {
+            selected.push( $(this).attr('value') );
+        });
+
+        if ( selected.length !== 0 ) {
+            var get_path = selected.join('s')
+            var loc = "/del_firm/?select=" + get_path;
+            window.location.href = loc;
+        }
+
+    });
 });

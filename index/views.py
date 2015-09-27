@@ -16,6 +16,7 @@ from .models import City as CityM
 from .models import FirmTonerRefill
 from .helpers import recursiveChildren
 
+
 def index(request):
 
     all_items = CartridgeItem.objects.filter(cart_owner__isnull=True).filter(cart_filled=True)
@@ -52,9 +53,9 @@ def add_cartridge_item(request):
         form_obj = AddItems(request.POST)
         if form_obj.is_valid():
             # добавляем новый тип расходного материала
-            all = form_obj.cleaned_data
-            for i in range(int(all['cart_count'])):
-                m1 = CartridgeItem(cart_itm_name=all['cart_name'],
+            data_in_post = form_obj.cleaned_data
+            for i in range(int(data_in_post['cart_count'])):
+                m1 = CartridgeItem(cart_itm_name=data_in_post['cart_name'],
                                    cart_date_added=timezone.now(),
                                    cart_code=0,
                                    cart_filled=True,
@@ -73,10 +74,10 @@ def tree_list(request):
     get = lambda node_id: Category.objects.get(pk=node_id)
 
     if request.method == 'POST':
-        all = request.POST
-        parent_id = all['par_id']
+        data_in_post = request.POST
+        parent_id = data_in_post['par_id']
         parent_id = int(parent_id)
-        unit_name = all['name']  # очень не безопасно!
+        unit_name = data_in_post['name']  # очень не безопасно!
 
         if parent_id:
             node = get(parent_id).add_child(name=unit_name)
@@ -99,13 +100,14 @@ def add_type(request):
     if request.method == 'POST':
         form_obj = AddCartridgeType(request.POST)
         if form_obj.is_valid():
-            all = form_obj.cleaned_data
-            m1 = CartridgeType(cart_type=all['cart_type'])
+            data_in_post = form_obj.cleaned_data
+            m1 = CartridgeType(cart_type=data_in_post['cart_type'])
             m1.save()
             return HttpResponseRedirect(request.path)
     else:
         form_obj = AddCartridgeType()
     return render(request, 'index/add_type.html', {'form': form_obj})
+
 
 def transfe_for_use(request):
     """
@@ -127,8 +129,8 @@ def transfe_for_use(request):
         bulk.extend(recursiveChildren(itm))
 
     if request.method == 'POST':
-        all = request.POST
-        parent_id = all['par_id']
+        data_in_post = request.POST
+        parent_id = data_in_post['par_id']
         parent_id = int(parent_id)
         #print('parent_id=', get(parent_id))
 
@@ -139,6 +141,7 @@ def transfe_for_use(request):
 
         return HttpResponseRedirect("/")
     return render(request, 'index/transfe_for_use.html', {'checked_cartr': checked_cartr, 'bulk': bulk})
+
 
 def transfer_to_stock(request):
     """
@@ -163,12 +166,14 @@ def transfer_to_stock(request):
         return HttpResponseRedirect("/use/")
     return render(request, 'index/transfer_for_stock.html', {'checked_cartr': checked_cartr})
 
+
 def use(request):
     """
 
     """
     all_items = CartridgeItem.objects.filter(cart_owner__isnull=False)
     return render(request, 'index/use.html', {'cartrjs': all_items})
+
 
 def empty(request):
     """
@@ -191,13 +196,13 @@ def toner_refill(request):
     except CityM.DoesNotExist:
         city = None
 
-
     if city:
         firms = FirmTonerRefill.objects.filter(firm_city=city)
     else:
         firms = FirmTonerRefill.objects.all()
 
     return render(request, 'index/toner_refill.html', {'cities': cities, 'firms': firms})
+
 
 def add_city(request):
     """
@@ -206,13 +211,14 @@ def add_city(request):
     if request.method == 'POST':
         form_obj = CityF(request.POST)
         if form_obj.is_valid():
-            all = form_obj.cleaned_data
-            m1 = CityM(city_name=all['city_name'])
+            data_in_post = form_obj.cleaned_data
+            m1 = CityM(city_name=data_in_post['city_name'])
             m1.save()
             return HttpResponseRedirect(reverse('index.views.toner_refill'))
     else:
         form_obj = CityF()
     return render(request, 'index/add_city.html', {'form': form_obj})
+
 
 def add_firm(request):
     """
@@ -222,17 +228,18 @@ def add_firm(request):
     if request.method == 'POST':
         form_obj = FirmTonerRefillF(request.POST)
         if form_obj.is_valid():
-            all = form_obj.cleaned_data
-            m1 = FirmTonerRefill(firm_name=all['firm_name'],
-                                 firm_city=all['firm_city'],
-                                 firm_contacts=all['firm_contacts'],
-                                 firm_address=all['firm_address'],
-                                 firm_comments=all['firm_comments'], )
+            data_in_post = form_obj.cleaned_data
+            m1 = FirmTonerRefill(firm_name=data_in_post['firm_name'],
+                                 firm_city=data_in_post['firm_city'],
+                                 firm_contacts=data_in_post['firm_contacts'],
+                                 firm_address=data_in_post['firm_address'],
+                                 firm_comments=data_in_post['firm_comments'], )
             m1.save()
             return HttpResponseRedirect('index.views.toner_refill')
     else:
         form_obj = FirmTonerRefillF()
     return render(request, 'index/add_firm.html', {'form': form_obj})
+
 
 def edit_firm(request):
     """
@@ -241,7 +248,10 @@ def edit_firm(request):
     firm_id = request.GET.get('select', '')
     firm_id = firm_id.strip()
     if firm_id:
-        firm_id = int(firm_id)
+        try:
+            firm_id = int(firm_id)
+        except ValueError:
+            firm_id = 0
     else:
         firm_id = 0
 
@@ -260,8 +270,7 @@ def edit_firm(request):
                 'firm_city',
                 'firm_contacts',
                 'firm_address',
-                'firm_comments',
-                ])
+                'firm_comments'])
 
             return HttpResponseRedirect(reverse('index.views.toner_refill'))
 
@@ -275,6 +284,42 @@ def edit_firm(request):
         'firm_city': firm.firm_city,
         'firm_contacts': firm.firm_contacts,
         'firm_address': firm.firm_address,
-        'firm_comments': firm.firm_comments,
-        })
+        'firm_comments': firm.firm_comments})
     return render(request, 'index/edit_firm.html', {'firm': firm, 'form': form_obj})
+
+
+def del_firm(request):
+    """
+
+    """
+    firm_id = request.GET.get('select', '')
+    firm_id = firm_id.strip()
+    if firm_id:
+        try:
+            firm_id = int(firm_id)
+        except ValueError:
+            firm_id = 0
+    else:
+        firm_id = 0
+
+    try:
+        firm = FirmTonerRefill.objects.get(pk=firm_id)
+    except FirmTonerRefill.DoesNotExist:
+        raise Http404
+
+    if request.method == 'POST':
+        id_in_post = request.POST.get('id', '')
+        try:
+            id_in_post = int(firm_id)
+        except ValueError:
+            id_in_post = 0
+
+        try:
+            firm = FirmTonerRefill.objects.get(pk=firm_id)
+            firm.delete()
+        except FirmTonerRefill.DoesNotExist:
+            raise Http404
+
+        return HttpResponseRedirect(reverse('index.views.toner_refill'))
+
+    return render(request, 'index/del_firm.html', {'firm': firm})

@@ -1,0 +1,36 @@
+{% extends "index/base.html" %}
+{% block title %}Удаление фирмы{% endblock %}
+{% block content %}
+    <div class="row">
+        <div class="large-12 columns">
+            <h3>Вы точно хотите удалить обслуживающую фирму с параметрами:</h3>
+        </div>
+    </div>
+    <div class="row">
+        <div class="large-6 columns">
+            <table>
+                <tr>
+                    <th>Название</th>
+                    <th>Контакты</th>
+                    <th>Адрес</th>
+                    <th>Комментарии</th>
+                </tr>
+                <tr>
+                    <td>{{ firm.firm_name }}</td>
+                    <td>{{ firm.firm_contacts }}</td>
+                    <td>{{ firm.firm_address }}</td>
+                    <td>{{ firm.firm_comments }}</td>
+                </tr>
+            </table>
+        </div>
+        <div class="large-6 columns">
+            <form action="" method="post">
+                {% csrf_token %}
+                <input name="id" value="{{ firm.id }}" type="hidden" />
+                <input type="submit" value="Удалить" class="button radius"/>
+            </form>
+            <a href="/toner_refill/" class="button radius">Отмена</a>
+        </div>
+    </div>
+
+{% endblock %}
