@@ -37,10 +37,9 @@
             <label>Выберите город:</label>
         </div>
         <div class="small-8 columns">
-            <select name="city" class="right">
-                  <option value="">&nbsp;&nbsp;&nbsp;</option>
+            <select name="city" class="city_selector right">
                 {% for s in cities %}
-                    <option value="{{ s.city_name }}">{{ s.city_name }}</option>
+                    <option {% if s.id == select %}selected="selected"{% endif %} value="{{ s.id }}">{{ s.city_name }}</option>
                 {% endfor %}
             </select>
         </div>

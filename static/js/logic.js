@@ -65,4 +65,19 @@ $( function(){
         }
 
     });
+
+
+    $('.city_selector').change(function() {
+        var loc = "";
+        if ($(this).val()) {
+            loc = "/toner_refill/?city=" + $(this).val();
+        } else {
+            loc = "/toner_refill/";
+        }
+        console.log($(this).val());
+        console.log(loc);
+        window.location.href = loc;
+
+    });
+
 });

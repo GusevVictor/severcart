@@ -1,3 +1,5 @@
+# -*- coding:utf-8 -*-
+
 from django.shortcuts import render
 from django.http import HttpResponseRedirect
 from django.utils import timezone
@@ -188,20 +190,34 @@ def toner_refill(request):
 
     """
 
-    city = request.GET.get('city', '')
+    city_id = request.GET.get('city', '')
     cities = CityM.objects.all()
 
     try:
-        city = CityM.objects.get(city_name=city)
-    except CityM.DoesNotExist:
-        city = None
+        city_id = int(city_id)
+    except ValueError:
+        city_id = 0
+
+    city = ""
+    if city_id != 0:
+        try:
+            city = CityM.objects.get(pk=city_id)
+        except CityM.DoesNotExist:
+            raise Http404
 
     if city:
         firms = FirmTonerRefill.objects.filter(firm_city=city)
     else:
         firms = FirmTonerRefill.objects.all()
 
-    return render(request, 'index/toner_refill.html', {'cities': cities, 'firms': firms})
+    new_list = [{'id': 0, 'city_name': 'Выбрать все'}]
+    for i in cities:
+        tmp_dict = {'id': i.id, 'city_name': i.city_name}
+        new_list.append(tmp_dict)
+
+    cities = None
+
+    return render(request, 'index/toner_refill.html', {'cities': new_list, 'firms': firms, 'select': city_id})
 
 
 def add_city(request):
