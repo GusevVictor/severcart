@@ -28,10 +28,8 @@ def index(request):
     try:
         cartridjes = paginator.page(page)
     except PageNotAnInteger:
-        # If page is not an integer, deliver first page.
         cartridjes = paginator.page(1)
     except EmptyPage:
-        # If page is out of range (e.g. 9999), deliver last page of results.
         cartridjes = paginator.page(paginator.num_pages)
 
     return render(request, 'index/index.html', {'cartrjs': cartridjes})
@@ -210,14 +208,34 @@ def toner_refill(request):
     else:
         firms = FirmTonerRefill.objects.all()
 
+    # работаем с пагинацией
+    paginator = Paginator(firms, 10)
+
+    page = request.GET.get('page')
+    try:
+        show_firms = paginator.page(page)
+    except PageNotAnInteger:
+        show_firms = paginator.page(1)
+    except EmptyPage:
+        show_firms = paginator.page(paginator.num_pages)
+
+    # завершаем работу с пагинацией
+
     new_list = [{'id': 0, 'city_name': 'Выбрать все'}]
     for i in cities:
         tmp_dict = {'id': i.id, 'city_name': i.city_name}
         new_list.append(tmp_dict)
 
     cities = None
+    if city_id:
+        city_url_parametr = '?city=' + str(city_id) + '&'
+    else:
+        city_url_parametr = '?'
 
-    return render(request, 'index/toner_refill.html', {'cities': new_list, 'firms': firms, 'select': city_id})
+    return render(request, 'index/toner_refill.html', {'cities': new_list,
+                                                       'firms': show_firms,
+                                                       'select': city_id,
+                                                       'city_url': city_url_parametr})
 
 
 def add_city(request):

@@ -45,5 +45,29 @@
         </div>
     </div>
 </div>
+    <div class="row">
+        <div class="large-3 columns">
+            <ul class="pagination">
+                {% if firms.has_previous %}
+                    <li class="arrow"><a href="{{ city_url }}page={{ firms.previous_page_number }}">&laquo;</a></li>
+                {% else %}
+                    <li class="arrow unavailable"><a href="">&laquo;</a></li>
+                {% endif %}
+                {% for page in firms.paginator.page_range %}
+                    {% if page == firms.number %}
+                        <li class="current"><a href="{{ city_url }}page={{ page }}">{{ page }}</a></li>
+                    {% else %}
+                        <li><a href="{{ city_url }}page={{ page }}">{{ page }}</a></li>
+                    {% endif %}
+                {% endfor %}
+                {% if firms.has_next %}
+                    <li class="arrow"><a href="{{ city_url }}page={{ firms.next_page_number }}">&raquo;</a></li>
+                {% else %}
+                    <li class="arrow unavailable"><a href="">&raquo;</a></li>
+                {% endif %}
+            </ul>
+
+        </div>
+    </div>
 
 {% endblock %}
