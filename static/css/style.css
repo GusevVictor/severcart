@@ -1,3 +1,75 @@
 .marginTop {
     margin-top:20px;
 }
+
+/* Horizontal menu */
+
+ul#menu {
+    font-size: 0.875em;
+    padding:0;
+    float:left;
+    width:100%;
+    height:60px;
+    display:block;
+    background-color:#000;
+    margin:0;
+}
+
+ul#menu li {
+    display:inline-block;
+    list-style:none;
+    float:left;
+    position:relative;
+}
+
+ul#menu li a {
+    background:none;
+    color:#fff;
+    text-decoration:none;
+    display:inline-block;
+    padding: 0 15px;
+}
+
+ul#menu li a:hover {
+    background-color:#848484;
+}
+
+ul#menu ul {
+    display:none;
+    position:absolute;
+    left:-40px;
+    text-align:center;
+    list-style:none;
+    z-index: 100;
+}
+
+ul#menu li {
+    display:block;
+    line-height:60px;
+}
+
+
+#menu ul.hovered {
+    display:block;
+}
+
+ul#menu ul li{
+    background-color:#000;
+    height:60px;
+    width:100%;
+
+}
+
+ul#menu ul li a{
+    display:inline-block;
+    width:100%;
+    padding:0px;
+}
+
+ul#menu ul li a:hover{
+    background-color:#848484;
+}
+
+ul#menu .right {
+    float:right;
+}

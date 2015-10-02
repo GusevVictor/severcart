@@ -7,10 +7,8 @@
     <link rel="stylesheet" href="{% static "css/normalize.css" %}" />
     <link rel="stylesheet" href="{% static "css/foundation.css" %}" />
     <link rel="stylesheet" href="{% static "css/style.css" %}" />
-    <script src="{% static "js/vendor/modernizr.js" %}"></script>
     <script src="{% static "js/vendor/jquery.js" %}"></script>
-    <script src="{% static "js/foundation.min.js" %}"></script>
-    <script src="{% static "js/foundation/foundation.dropdown.js" %}"></script>
+    <script src="{% static "js/usability.js" %}"></script>
     <!-- Other JS plugins can be included here -->
     <script src="{{ STATIC_URL }}js/logic.js?14"></script>
     <title>{% block title %}{% endblock %}</title>
@@ -27,8 +25,5 @@
     </div>
     <div class="large-12 columns text-left">v. 0.0.1</div>
 </div>
-<script>
-  $(document).foundation();
-</script>
 </body>
 </html>
