@@ -357,3 +357,10 @@ def del_firm(request):
         return HttpResponseRedirect(reverse('index.views.toner_refill'))
 
     return render(request, 'index/del_firm.html', {'firm': firm})
+
+
+def manage_users(request):
+    """
+
+    """
+    return Http404

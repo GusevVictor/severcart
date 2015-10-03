@@ -2,6 +2,7 @@
 
 from django.db import models
 from treebeard.ns_tree import NS_Node
+from django.contrib.auth.models import User
 
 class Category(NS_Node):
     """
@@ -56,3 +57,11 @@ class FirmTonerRefill(models.Model):
 
     def __str__(self):
         return self.firm_name
+
+
+class AnconUser(models.Model):
+    """
+    Немножко меняем стандартную модель User.
+    """
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    department = models.ForeignKey(Category, blank=True, null=True)

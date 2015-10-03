@@ -28,6 +28,7 @@ ul#menu li a {
     text-decoration:none;
     display:inline-block;
     padding: 0 15px;
+    outline: 0;
 }
 
 ul#menu li a:hover {
