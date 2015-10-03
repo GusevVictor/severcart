@@ -58,10 +58,11 @@ class FirmTonerRefill(models.Model):
     def __str__(self):
         return self.firm_name
 
-
-class AnconUser(models.Model):
-    """
-    Немножко меняем стандартную модель User.
-    """
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
-    department = models.ForeignKey(Category, blank=True, null=True)
+# class AnconUser(User):
+#     """
+#     Немножко меняем стандартную модель User.
+#     """
+#   #  user = models.OneToOneField(User, on_delete=models.CASCADE)
+#     department = models.ForeignKey(Category, blank=True, null=True)
+#     patronymic = models.CharField('Отчество', max_length=256, blank=True, null=True)
+#     date_created = models.DateTimeField(blank=True, null=True)

@@ -13,37 +13,29 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='CartridgeItem',
             fields=[
-                ('id', models.AutoField(serialize=False, verbose_name='ID', primary_key=True, auto_created=True)),
-                ('cart_date_added', models.DateField()),
-                ('cart_code', models.IntegerField()),
-                ('cart_uses_count', models.IntegerField()),
+                ('id', models.AutoField(primary_key=True, verbose_name='ID', auto_created=True, serialize=False)),
+                ('cart_date_added', models.DateField(null=True, blank=True)),
+                ('cart_filled', models.BooleanField()),
             ],
         ),
         migrations.CreateModel(
             name='CartridgeItemName',
             fields=[
-                ('id', models.AutoField(serialize=False, verbose_name='ID', primary_key=True, auto_created=True)),
+                ('id', models.AutoField(primary_key=True, verbose_name='ID', auto_created=True, serialize=False)),
                 ('cart_itm_name', models.CharField(max_length=256)),
-            ],
-        ),
-        migrations.CreateModel(
-            name='CartridgeOwner',
-            fields=[
-                ('id', models.AutoField(serialize=False, verbose_name='ID', primary_key=True, auto_created=True)),
-                ('owner', models.TextField()),
             ],
         ),
         migrations.CreateModel(
             name='CartridgeType',
             fields=[
-                ('id', models.AutoField(serialize=False, verbose_name='ID', primary_key=True, auto_created=True)),
+                ('id', models.AutoField(primary_key=True, verbose_name='ID', auto_created=True, serialize=False)),
                 ('cart_type', models.CharField(max_length=256)),
             ],
         ),
         migrations.CreateModel(
             name='Category',
             fields=[
-                ('id', models.AutoField(serialize=False, verbose_name='ID', primary_key=True, auto_created=True)),
+                ('id', models.AutoField(primary_key=True, verbose_name='ID', auto_created=True, serialize=False)),
                 ('lft', models.PositiveIntegerField(db_index=True)),
                 ('rgt', models.PositiveIntegerField(db_index=True)),
                 ('tree_id', models.PositiveIntegerField(db_index=True)),
@@ -54,6 +46,24 @@ class Migration(migrations.Migration):
                 'abstract': False,
             },
         ),
+        migrations.CreateModel(
+            name='City',
+            fields=[
+                ('id', models.AutoField(primary_key=True, verbose_name='ID', auto_created=True, serialize=False)),
+                ('city_name', models.CharField(verbose_name='Введите название города', max_length=256)),
+            ],
+        ),
+        migrations.CreateModel(
+            name='FirmTonerRefill',
+            fields=[
+                ('id', models.AutoField(primary_key=True, verbose_name='ID', auto_created=True, serialize=False)),
+                ('firm_name', models.CharField(verbose_name='Название', max_length=256)),
+                ('firm_contacts', models.TextField(verbose_name='Контакты', blank=True)),
+                ('firm_address', models.TextField(verbose_name='Адресс', blank=True)),
+                ('firm_comments', models.TextField(verbose_name='Комментарии', blank=True)),
+                ('firm_city', models.ForeignKey(verbose_name='Выберите город', to='index.City', blank=True)),
+            ],
+        ),
         migrations.AddField(
             model_name='cartridgeitemname',
             name='cart_itm_type',
@@ -62,11 +72,11 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='cartridgeitem',
             name='cart_itm_name',
-            field=models.ForeignKey(blank=True, null=True, to='index.CartridgeItemName'),
+            field=models.ForeignKey(to='index.CartridgeItemName', null=True, blank=True),
         ),
         migrations.AddField(
             model_name='cartridgeitem',
             name='cart_owner',
-            field=models.ForeignKey(blank=True, null=True, to='index.CartridgeOwner'),
+            field=models.ForeignKey(to='index.Category', null=True, blank=True),
         ),
     ]

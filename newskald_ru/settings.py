@@ -39,6 +39,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'index',
     'treebeard',
+    'accounts',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -118,3 +119,7 @@ STATICFILES_DIRS = (
 )
 
 STATIC_URL = '/static/'
+
+
+AUTH_USER_MODEL = 'accounts.AnconUser'
+AUTHENTICATION_BACKENDS = ['accounts.backends.UserAuthBackend', ]

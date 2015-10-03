@@ -1,0 +1,65 @@
+{% extends "index/base.html" %}
+{% block title %}Управление пользователями{% endblock %}
+{% block content %}
+    <div class="row">
+        <div class="large-12 columns">
+            <h3>Управление пользователями</h3>
+        </div>
+    </div>
+    <div class="row">
+        <div class="large-12 columns">
+            <a class="add_user button radius tiny secondary" href="/add_user/">Добавить</a>
+            <a class="edit_user button radius tiny secondary" href="/edit_user/">Редактировать</a>
+            <a class="del_user button radius tiny secondary" href="/del_user/">Удалить</a>
+        </div>
+    </div>
+    <div class="row">
+        <div class="large-12 columns">
+            <table class="checkboxes">
+                <form>
+                    <tr>
+                        <th>&nbsp;</th>
+                        <th>Пользователь</th>
+                        <th>Логин</th>
+                        <th>Организация</th>
+                    </tr>
+                    {% for i in urs %}
+                        <tr>
+                            <td><input type="checkbox" value="{{ i.id }}"></td>
+                            <td>{{ usr.last_name }} {{usr.first_name }} {{ usr.patronymic }}</td>
+                            <td>{{ usr.username }}</td>
+                            <td>{{ usr.departament }}</td>
+                        </tr>
+                    {% endfor %}
+                </form>
+            </table>
+
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="large-3 columns">
+            <ul class="pagination">
+                {% if urs.has_previous %}
+                    <li class="arrow"><a href="?page={{ urs.previous_page_number }}">&laquo;</a></li>
+                {% else %}
+                    <li class="arrow unavailable"><a href="">&laquo;</a></li>
+                {% endif %}
+                {% for page in urs.paginator.page_range %}
+                    {% if page == urs.number %}
+                        <li class="current"><a href="?page={{ page }}">{{ page }}</a></li>
+                    {% else %}
+                        <li><a href="?page={{ page }}">{{ page }}</a></li>
+                    {% endif %}
+                {% endfor %}
+                {% if urs.has_next %}
+                    <li class="arrow"><a href="?page={{ urs.next_page_number }}">&raquo;</a></li>
+                {% else %}
+                    <li class="arrow unavailable"><a href="">&raquo;</a></li>
+                {% endif %}
+            </ul>
+
+        </div>
+    </div>
+{% endblock %}
+

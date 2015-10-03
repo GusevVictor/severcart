@@ -11,7 +11,10 @@ from .forms.add_items import AddItems
 from .forms.add_city import CityF
 from .forms.add_type import AddCartridgeType
 from .forms.add_firm import FirmTonerRefillF
+from .forms.add_user import AddUser
 from .models import CartridgeType
+from accounts.models import AnconUser
+from django.contrib.auth.models import User
 from .models import CartridgeItem
 from .models import Category
 from .models import City as CityM
@@ -58,8 +61,7 @@ def add_cartridge_item(request):
                 m1 = CartridgeItem(cart_itm_name=data_in_post['cart_name'],
                                    cart_date_added=timezone.now(),
                                    cart_code=0,
-                                   cart_filled=True,
-                )
+                                   cart_filled=True,)
                 m1.save()
             return HttpResponseRedirect(request.path)
 
@@ -90,7 +92,7 @@ def tree_list(request):
     for itm in tree.dump_bulk():
         bulk.extend(recursiveChildren(itm))
 
-    return render(request, 'index/tree_list.html', {'annotated_list': annotated_list, 'bulk' : bulk})
+    return render(request, 'index/tree_list.html', {'annotated_list': annotated_list, 'bulk': bulk})
 
 
 def add_type(request):
@@ -363,4 +365,38 @@ def manage_users(request):
     """
 
     """
-    return Http404
+    usr = AnconUser.objects.all()
+    paginator = Paginator(usr, 8)
+
+    page = request.GET.get('page')
+
+    try:
+        urs = paginator.page(page)
+    except PageNotAnInteger:
+        urs = paginator.page(1)
+    except EmptyPage:
+        urs = paginator.page(paginator.num_pages)
+
+    return render(request, 'index/manage_users.html', {'urs': urs})
+
+def add_user(request):
+    if request.method == 'POST':
+        form_obj = AddUser(request.POST)
+        if form_obj.is_valid():
+            data_in_post = form_obj.cleaned_data
+            user = AnconUser.objects.create_user(
+                last_name=data_in_post['last_name'],
+                first_name=data_in_post['first_name'],
+                patronymic=data_in_post['patronymic'],
+                username=data_in_post['username'],
+                password=data_in_post['password'],
+                department=data_in_post['department'],
+            )
+
+
+            user.save()
+            return HttpResponseRedirect(reverse('index.views.manage_users'))
+
+    else:
+        form_obj = AddUser()
+    return render(request, 'index/add_user.html', {'form': form_obj})
