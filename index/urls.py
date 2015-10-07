@@ -1,4 +1,4 @@
-from django.conf.urls import url, include
+from django.conf.urls import url
 
 urlpatterns = [
     url('^$', 'index.views.index'),
@@ -15,9 +15,4 @@ urlpatterns = [
     url(r'^add_firm/', 'index.views.add_firm'),
     url(r'^edit_firm/', 'index.views.edit_firm'),
     url(r'^del_firm/', 'index.views.del_firm'),
-    url(r'^manage_users/', 'index.views.manage_users'),
-    url(r'^add_user/', 'index.views.add_user'),
-    url(r'^accounts/', include('accounts.urls', namespace='accounts')),
-
 ]
-

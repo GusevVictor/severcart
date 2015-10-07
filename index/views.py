@@ -60,7 +60,6 @@ def add_cartridge_item(request):
             for i in range(int(data_in_post['cart_count'])):
                 m1 = CartridgeItem(cart_itm_name=data_in_post['cart_name'],
                                    cart_date_added=timezone.now(),
-                                   cart_code=0,
                                    cart_filled=True,)
                 m1.save()
             return HttpResponseRedirect(request.path)
@@ -377,26 +376,6 @@ def manage_users(request):
     except EmptyPage:
         urs = paginator.page(paginator.num_pages)
 
+    print('urs=', urs)
     return render(request, 'index/manage_users.html', {'urs': urs})
 
-def add_user(request):
-    if request.method == 'POST':
-        form_obj = AddUser(request.POST)
-        if form_obj.is_valid():
-            data_in_post = form_obj.cleaned_data
-            user = AnconUser.objects.create_user(
-                last_name=data_in_post['last_name'],
-                first_name=data_in_post['first_name'],
-                patronymic=data_in_post['patronymic'],
-                username=data_in_post['username'],
-                password=data_in_post['password'],
-                department=data_in_post['department'],
-            )
-
-
-            user.save()
-            return HttpResponseRedirect(reverse('index.views.manage_users'))
-
-    else:
-        form_obj = AddUser()
-    return render(request, 'index/add_user.html', {'form': form_obj})

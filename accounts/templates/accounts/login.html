@@ -1,0 +1,53 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8"/>
+    <link href="{% static "img/favicon.ico" %}" rel="shortcut icon"/>
+    <link rel="stylesheet" href="{% static "css/style.css" %}"/>
+    <script src="{% static "js/vendor/jquery.js" %}"></script>
+    <script src="{% static "js/usability.js" %}"></script>
+    <!-- Other JS plugins can be included here -->
+    <script src="{{ STATIC_URL }}js/logic.js?14"></script>
+    <title>Залогиньтесь</title>
+</head>
+<body>
+<div class="login_form">
+        {% if form.errors and not form.non_field_errors %}
+            <p class="errornote">
+                {% if form.errors.items|length == 1 %}Введите правильные логин и пароль{% else %}Скорректируйте
+                    ошибки{% endif %}
+            </p>
+        {% endif %}
+
+        {% if form.non_field_errors %}
+            {% for error in form.non_field_errors %}
+                <p class="errornote">
+                    {{ error }}
+                </p>
+            {% endfor %}
+        {% endif %}
+
+        <form action="{{ app_path }}" method="post" id="login-form">{% csrf_token %}
+            {{ form.as_p }}
+            <input type="hidden" name="next" value="{{ next }}"/>
+            <label>&nbsp;</label><input type="submit" value="Войти"/>
+        </form>
+
+        <script>
+            document.getElementById('id_username').focus()
+        </script>
+</div>
+
+<!--
+<div class="row">
+    <div class="large-12 columns text-center">
+        <hr/>
+        Салехард &copy; 2015 год
+    </div>
+    <div class="large-12 columns text-left">v. 0.0.1</div>
+</div>
+
+-->
+</body>
+</html>

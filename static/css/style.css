@@ -2,8 +2,26 @@
     margin-top:20px;
 }
 
-/* Horizontal menu */
+/* Global tables */
+table th{
+    text-align: left;
+}
 
+
+/*  end global tables */
+
+.login_form {
+	width: 350px;
+	height: 350px;
+	position: absolute;
+	top:0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	margin: auto;
+}
+
+/* Horizontal menu */
 ul#menu {
     font-size: 0.875em;
     padding:0;
@@ -73,4 +91,9 @@ ul#menu ul li a:hover{
 
 ul#menu .right {
     float:right;
+}
+
+/*   --------end style menu-----------   */
+label.required {
+   background: url('../img/aster.png') right center no-repeat;
 }

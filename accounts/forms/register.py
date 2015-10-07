@@ -5,15 +5,18 @@ class RegistrationForm(forms.ModelForm):
     """
     Form for registering a new account.
     """
-    username = forms.CharField(widget=forms.widget.TextInput, label="Логин")
-    password1 = forms.CharField(widget=forms.widget.PasswordInput,
+    username = forms.CharField(widget=forms.TextInput, label="Логин")
+    password1 = forms.CharField(widget=forms.PasswordInput,
                                 label="Пароль")
-    password2 = forms.CharField(widget=forms.widget.PasswordInput,
+    password2 = forms.CharField(widget=forms.PasswordInput,
                                 label="Повторите пароль")
+
+    required_css_class = 'required'
+
 
     class Meta:
         model = AnconUser
-        fields = ['username', 'password1', 'password2']
+        fields = ['username', 'password1', 'password2', 'last_name' , 'first_name', 'patronymic', 'department']
 
     def clean(self):
         """

@@ -1,0 +1,14 @@
+{% extends "index/base.html" %}
+{% block title %}Регистрация пользователя{% endblock %}
+{% block content %}
+<div class="row">
+    <div class="large-6 columns">
+    <form action="" method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" value="Зарегистрировать" />
+    </form>
+    </div>
+</div>
+{% endblock %}
+

@@ -120,6 +120,10 @@ STATICFILES_DIRS = (
 
 STATIC_URL = '/static/'
 
-
 AUTH_USER_MODEL = 'accounts.AnconUser'
 AUTHENTICATION_BACKENDS = ['accounts.backends.UserAuthBackend', ]
+
+TEMPLATE_LOADERS = (
+    'django.template.loaders.app_directories.Loader',
+    'django.template.loaders.filesystem.Loader',
+)

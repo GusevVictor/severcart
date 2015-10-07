@@ -1,4 +1,5 @@
 {% extends "index/base.html" %}
+{% load pagination  %}
 {% block title %}Управление пользователями{% endblock %}
 {% block content %}
     <div class="row">
@@ -8,9 +9,9 @@
     </div>
     <div class="row">
         <div class="large-12 columns">
-            <a class="add_user button radius tiny secondary" href="/add_user/">Добавить</a>
-            <a class="edit_user button radius tiny secondary" href="/edit_user/">Редактировать</a>
-            <a class="del_user button radius tiny secondary" href="/del_user/">Удалить</a>
+            <a class="add_user button radius tiny secondary" href="{% url 'accounts:register' %}">Добавить</a>
+            <a class="edit_user button radius tiny secondary" href="{% url 'accounts:edit' %}">Редактировать</a>
+            <a class="del_user button radius tiny secondary" href="{% url 'accounts:del' %}">Удалить</a>
         </div>
     </div>
     <div class="row">
@@ -26,9 +27,9 @@
                     {% for i in urs %}
                         <tr>
                             <td><input type="checkbox" value="{{ i.id }}"></td>
-                            <td>{{ usr.last_name }} {{usr.first_name }} {{ usr.patronymic }}</td>
-                            <td>{{ usr.username }}</td>
-                            <td>{{ usr.departament }}</td>
+                            <td>{{ i.last_name }} {{i.first_name }} {{ i.patronymic }}</td>
+                            <td>{{ i.username }}</td>
+                            <td>{{ i.departament }}</td>
                         </tr>
                     {% endfor %}
                 </form>
@@ -37,29 +38,7 @@
         </div>
     </div>
 
-    <div class="row">
-        <div class="large-3 columns">
-            <ul class="pagination">
-                {% if urs.has_previous %}
-                    <li class="arrow"><a href="?page={{ urs.previous_page_number }}">&laquo;</a></li>
-                {% else %}
-                    <li class="arrow unavailable"><a href="">&laquo;</a></li>
-                {% endif %}
-                {% for page in urs.paginator.page_range %}
-                    {% if page == urs.number %}
-                        <li class="current"><a href="?page={{ page }}">{{ page }}</a></li>
-                    {% else %}
-                        <li><a href="?page={{ page }}">{{ page }}</a></li>
-                    {% endif %}
-                {% endfor %}
-                {% if urs.has_next %}
-                    <li class="arrow"><a href="?page={{ urs.next_page_number }}">&raquo;</a></li>
-                {% else %}
-                    <li class="arrow unavailable"><a href="">&raquo;</a></li>
-                {% endif %}
-            </ul>
+    {% found_pagination urs %}
 
-        </div>
-    </div>
 {% endblock %}
 

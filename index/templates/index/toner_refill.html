@@ -1,73 +1,53 @@
 {% extends "index/base.html" %}
+{% load pagination %}
 {% block title %}Фирмы занимающиеся заправкой расходников{% endblock %}
 {% block content %}
-<div class="row">
-    <div class="large-8 columns">
-        <a class="add_firm button radius tiny secondary" href="/add_firm/">Добавить фирму</a>
-        <a class="add_city button radius tiny secondary" href="/add_city/">Добавить город</a>
-        <a class="edit_firm button radius tiny secondary" href="#">Редактировать</a>
-        <a class="del_firm button radius tiny secondary" href="#">Удалить фирму</a>
-    </div>
-</div>
-<div class="row">
-    <div class="large-8 columns">
-        <from>
-        <table class="checkboxes">
-            <tr>
-                <th>&nbsp;&nbsp;&nbsp;</th>
-                <th>Название</th>
-                <th>Контакты</th>
-                <th>Адрес</th>
-                <th>Комментарии</th>
-            </tr>
-        {% for itm in firms %}
-            <tr>
-                <td><input type="radio" name="firm" value="{{ itm.id }}"></td>
-                <td>{{ itm.firm_name }}</td>
-                <td>{{ itm.firm_contacts }}</td>
-                <td>{{ itm.firm_city }}, {{ itm.firm_address }}</td>
-                <td>{{ itm.firm_comments }}</td>
-            </tr>
-        {% endfor %}
-        </table>
-        </from>
-    </div>
-    <div class="large-4 columns">
-        <div class="small-4 columns">
-            <label>Выберите город:</label>
-        </div>
-        <div class="small-8 columns">
-            <select name="city" class="city_selector right">
-                {% for s in cities %}
-                    <option {% if s.id == select %}selected="selected"{% endif %} value="{{ s.id }}">{{ s.city_name }}</option>
-                {% endfor %}
-            </select>
-        </div>
-    </div>
-</div>
     <div class="row">
-        <div class="large-3 columns">
-            <ul class="pagination">
-                {% if firms.has_previous %}
-                    <li class="arrow"><a href="{{ city_url }}page={{ firms.previous_page_number }}">&laquo;</a></li>
-                {% else %}
-                    <li class="arrow unavailable"><a href="">&laquo;</a></li>
-                {% endif %}
-                {% for page in firms.paginator.page_range %}
-                    {% if page == firms.number %}
-                        <li class="current"><a href="{{ city_url }}page={{ page }}">{{ page }}</a></li>
-                    {% else %}
-                        <li><a href="{{ city_url }}page={{ page }}">{{ page }}</a></li>
-                    {% endif %}
-                {% endfor %}
-                {% if firms.has_next %}
-                    <li class="arrow"><a href="{{ city_url }}page={{ firms.next_page_number }}">&raquo;</a></li>
-                {% else %}
-                    <li class="arrow unavailable"><a href="">&raquo;</a></li>
-                {% endif %}
-            </ul>
-
+        <div class="large-8 columns">
+            <a class="add_firm button radius tiny secondary" href="/add_firm/">Добавить фирму</a>
+            <a class="add_city button radius tiny secondary" href="/add_city/">Добавить город</a>
+            <a class="edit_firm button radius tiny secondary" href="#">Редактировать</a>
+            <a class="del_firm button radius tiny secondary" href="#">Удалить фирму</a>
         </div>
     </div>
+    <div class="row">
+        <div class="large-8 columns">
+            <from>
+                <table class="checkboxes">
+                    <tr>
+                        <th>&nbsp;&nbsp;&nbsp;</th>
+                        <th>Название</th>
+                        <th>Контакты</th>
+                        <th>Адрес</th>
+                        <th>Комментарии</th>
+                    </tr>
+                    {% for itm in firms %}
+                        <tr>
+                            <td><input type="radio" name="firm" value="{{ itm.id }}"></td>
+                            <td>{{ itm.firm_name }}</td>
+                            <td>{{ itm.firm_contacts }}</td>
+                            <td>{{ itm.firm_city }}, {{ itm.firm_address }}</td>
+                            <td>{{ itm.firm_comments }}</td>
+                        </tr>
+                    {% endfor %}
+                </table>
+            </from>
+        </div>
+        <div class="large-4 columns">
+            <div class="small-4 columns">
+                <label>Выберите город:</label>
+            </div>
+            <div class="small-8 columns">
+                <select name="city" class="city_selector right">
+                    {% for s in cities %}
+                        <option {% if s.id == select %}selected="selected"{% endif %}
+                                value="{{ s.id }}">{{ s.city_name }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+        </div>
+    </div>
+
+    {% found_pagination firms %}
 
 {% endblock %}
