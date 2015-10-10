@@ -31,7 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = (
-    'django.contrib.admin',
+#    'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
@@ -89,7 +89,7 @@ WSGI_APPLICATION = 'newskald_ru.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'SKLAD',
+        'NAME': 'SKLAD2',
         'USER': 'zavhoz',
         'PASSWORD': 'zavhoz',
         'HOST': '127.0.0.1',

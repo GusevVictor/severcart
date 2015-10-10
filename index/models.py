@@ -30,10 +30,11 @@ class CartridgeItemName(models.Model):
 
 
 class CartridgeItem(models.Model):
-    cart_itm_name = models.ForeignKey(CartridgeItemName, blank=True, null=True)
-    cart_date_added = models.DateField(blank=True, null=True)
+    cart_itm_name = models.ForeignKey(CartridgeItemName)
+    cart_date_added = models.DateField()
     cart_owner = models.ForeignKey(Category, blank=True, null=True)
     cart_filled = models.BooleanField()   # логический флаг, сигнализирующий о заполненнности
+    cart_number_refills = models.IntegerField()
     node_order_by = ['id']
 
 

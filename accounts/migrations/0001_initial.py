@@ -14,14 +14,17 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='AnconUser',
             fields=[
-                ('id', models.AutoField(primary_key=True, verbose_name='ID', auto_created=True, serialize=False)),
-                ('password', models.CharField(verbose_name='password', max_length=128)),
-                ('last_login', models.DateTimeField(null=True, verbose_name='last login', blank=True)),
-                ('username', models.CharField(verbose_name='Логин', unique=True, db_index=True, max_length=64)),
+                ('id', models.AutoField(serialize=False, primary_key=True, auto_created=True, verbose_name='ID')),
+                ('password', models.CharField(max_length=128, verbose_name='password')),
+                ('last_login', models.DateTimeField(null=True, blank=True, verbose_name='last login')),
+                ('username', models.CharField(db_index=True, unique=True, max_length=64, verbose_name='Логин')),
                 ('joined', models.DateTimeField(auto_now_add=True)),
                 ('is_active', models.BooleanField(default=True)),
                 ('is_admin', models.BooleanField(default=False)),
-                ('department', models.ForeignKey(to='index.Category', null=True, blank=True)),
+                ('first_name', models.CharField(null=True, blank=True, max_length=256, verbose_name='Имя')),
+                ('last_name', models.CharField(null=True, blank=True, max_length=256, verbose_name='Фамилие')),
+                ('patronymic', models.CharField(null=True, blank=True, max_length=256, verbose_name='Отчество')),
+                ('department', models.ForeignKey(null=True, to='index.Category', verbose_name='Организация', blank=True)),
             ],
             options={
                 'abstract': False,
