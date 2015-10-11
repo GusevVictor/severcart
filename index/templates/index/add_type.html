@@ -1,11 +1,32 @@
 {% extends "index/base.html" %}
+{% block title %}Добавление нового типа{% endblock %}
 {% block content %}
 <div class="row">
     <div class="large-6 columns">
-        <form action="/add_type/" method="post">
+        {% if messages %}
+            <ul class="messages">
+                {% for message in messages %}
+                    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    </div>
+</div>
+<div class="row">
+    <div class="large-6 columns">
+        <form class="dancon" action="" method="post">
             {% csrf_token %}
             {{ form.as_p }}
-            <input type="submit" value="Добавить" class="button radius success" />
+
+            <div class="dancon_row">
+                    <div class="left_pos">
+                        <input type="submit" value="Добавить" class="button radius success" />
+                    </div>
+                    <div class="left_pos">
+                        <a class="button radius" href="{% url 'add_name' %}">Отмена</a>
+                    </div>
+                </div>
+
         </form>
     </div>
 </div>

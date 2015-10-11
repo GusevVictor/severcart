@@ -14,7 +14,7 @@
     </div>
     <div class="row">
         <div class="large-6 columns">
-            <form class='dancon' action="/add_items/" method="post">
+            <form class='dancon' action="" method="post">
                 {% csrf_token %}
                 <label class='required' for="{{ form.cartName.id_for_label }}">Название расходника</label>
                 <div class="dancon_row">
@@ -23,7 +23,7 @@
                         {{ form.cartName.errors }}
                     </div>
                     <div class="right_pos">
-                        <a class="dj_button add" href="/add_name/"></a>
+                        <a class="dj_button add" href="{% url 'add_name' %}"></a>
                     </div>
                 </div>
 
@@ -35,13 +35,13 @@
                         {{ form.cartCount.errors }}
                     </div>
                 </div>
-
+                <div class="clear_float"></div>
                 <div class="dancon_row">
                     <div class="left_pos">
-                        <input type="submit" value="Добавить" class="button radius"/>
+                        <input type="submit" value="Добавить" class="button radius tiny"/>
                     </div>
                     <div class="right_pos">
-                        <a href="{% url 'stock' %}" class="button radius"/>Отменить</a>
+                        <a href="{% url 'stock' %}" class="button radius tiny"/>Отменить</a>
                     </div>
                 </div>
 

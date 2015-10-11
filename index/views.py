@@ -45,6 +45,7 @@ def add_cartridge_name(request):
         if form_obj.is_valid():
             # добавляем новый тип расходного материала
             form_obj.save()
+            messages.success(request, 'Новое имя успешно добавлено.')
             return HttpResponseRedirect(request.path)
 
     else:
@@ -108,6 +109,7 @@ def add_type(request):
             data_in_post = form_obj.cleaned_data
             m1 = CartridgeType(cart_type=data_in_post['cart_type'])
             m1.save()
+            messages.success(request, 'Новый тип успешно добавлен.')
             return HttpResponseRedirect(request.path)
     else:
         form_obj = AddCartridgeType()

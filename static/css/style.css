@@ -117,6 +117,11 @@ form.dancon select {
     height: 33px;
 }
 
+form.dancon input{
+    width:220px;
+    height: 33px;
+}
+
 .dancon_row{
     width:270px;
     min-height: 33px;
@@ -129,6 +134,18 @@ form.dancon select {
 
 .dancon_row .right_pos{
     float: right;
+}
+
+.dancon_row .left_pos input.button.radius{
+    display: inline-block;
+    float: left;
+    width:100px;
+}
+
+.dancon_row .right_pos a.button.radius{
+    display: inline-block;
+    float: right;
+    width:100px;
 }
 
 .clear_float{

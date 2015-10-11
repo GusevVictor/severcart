@@ -1,31 +1,55 @@
 {% extends "index/base.html" %}
+{% block title %}Добавление нового имени{% endblock %}
 {% block content %}
-<div class="row">
-    <div class="large-6 columns">
-        <form action="/add_name/" method="post">
-        {% csrf_token %}
-        {{ form.non_field_errors }}
-        <div class="row">
-            <div class="large-6 columns">
-                {{ form.subject.errors }}
-                <label for="{{ form.cart_itm_name.id_for_label }}">Название расходника:</label>
-                {{ form.cart_itm_name }}
-            </div>
+    <div class="row">
+        <div class="large-6 columns">
+            {% if messages %}
+                <ul class="messages">
+                    {% for message in messages %}
+                        <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        </div>
+    </div>
+    <div class="row">
+        <div class="large-6 columns">
+            <form class="dancon" action="{% url 'add_name' %}" method="post">
+                {% csrf_token %}
+                <div class="row">
+                    <div class="large-6 columns">
+                        <label class="required" for="{{ form.cart_itm_name.id_for_label }}">Название расходника:</label>
+                        {{ form.cart_itm_name }}
+                        {{ form.cart_itm_name.errors }}
+                    </div>
+
+                </div>
+                <div class="row">
+                    {{ form.subject.errors }}
+                    <div class="large-6 columns">
+                        <label class="required" for="{{ form.cart_itm_type.id_for_label }}">Тип:</label>
+
+                        <div class="dancon_row">
+                            <div class="left_pos">
+                                {{ form.cart_itm_type }}
+                                {{ form.cart_itm_type.errors }}
+                            </div>
+                            <div class="right_pos">
+                                <a class="dj_button add" href="{% url 'add_type' %}"></a>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="dancon_row">
+                    <div class="left_pos">
+                        <input type="submit" value="Добавить" class="button radius"/>
+                    </div>
+                    <div class="left_pos">
+                        <a class="button radius" href="{% url 'add_items' %}">Отмена</a>
+                    </div>
+                </div>
+            </form>
 
         </div>
-        <div class="row">
-            {{ form.subject.errors }}
-            <div class="large-6 columns">
-                <label for="{{ form.cart_itm_type.id_for_label }}">Тип:</label>
-                {{ form.cart_itm_type }}
-            </div>
-
-            <div class="large-6 columns">
-                    <a class="button radius tiny marginTop" href="/add_type/">Добавить новый тип расходника</a>
-            </div>
-        </div>
-        <input type="submit" value="Добавить" class="button radius"/>
-    </form>
-
-</div>
 {% endblock %}

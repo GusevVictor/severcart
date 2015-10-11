@@ -16,7 +16,7 @@ class Category(NS_Node):
 
 
 class CartridgeType(models.Model):
-    cart_type = models.CharField(max_length=256)
+    cart_type = models.CharField(max_length=256, verbose_name='Название нового типа')
 
     def __str__(self):
         return self.cart_type
@@ -58,12 +58,3 @@ class FirmTonerRefill(models.Model):
 
     def __str__(self):
         return self.firm_name
-
-# class AnconUser(User):
-#     """
-#     Немножко меняем стандартную модель User.
-#     """
-#   #  user = models.OneToOneField(User, on_delete=models.CASCADE)
-#     department = models.ForeignKey(Category, blank=True, null=True)
-#     patronymic = models.CharField('Отчество', max_length=256, blank=True, null=True)
-#     date_created = models.DateTimeField(blank=True, null=True)
