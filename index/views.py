@@ -6,6 +6,7 @@ from django.utils import timezone
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.core.urlresolvers import reverse
 from django.http import Http404
+from django.contrib import messages
 from .forms.add_cartridge_name import AddCartridgeName
 from .forms.add_items import AddItems
 from .forms.add_city import CityF
@@ -57,11 +58,14 @@ def add_cartridge_item(request):
         if form_obj.is_valid():
             # добавляем новый тип расходного материала
             data_in_post = form_obj.cleaned_data
-            for i in range(int(data_in_post['cart_count'])):
-                m1 = CartridgeItem(cart_itm_name=data_in_post['cart_name'],
+            for i in range(int(data_in_post['cartCount'])):
+                m1 = CartridgeItem(cart_itm_name=data_in_post['cartName'],
                                    cart_date_added=timezone.now(),
-                                   cart_filled=True,)
+                                   cart_filled=True,
+                                   cart_number_refills=0,
+                                   )
                 m1.save()
+            messages.success(request, 'Расходники успешно добавлены.')
             return HttpResponseRedirect(request.path)
 
     else:

@@ -97,3 +97,61 @@ ul#menu .right {
 label.required {
    background: url('../img/aster.png') right center no-repeat;
 }
+
+/* ---Error messages style---  */
+
+ul.errorlist {
+    list-style: none;
+    font-size: 12px;
+    color: red;
+    margin-top: -10px;
+}
+
+/* ---- Forms decorating ----- */
+
+form.dancon select {
+    width:220px;
+    height: 33px;
+}
+
+.dancon_row{
+    width:270px;
+    min-height: 33px;
+
+}
+
+.dancon_row .left_pos{
+    float: left;
+}
+
+.dancon_row .right_pos{
+    float: right;
+}
+
+.clear_float{
+    clear: both;
+}
+
+/*  -----buttons style---- */
+
+.dj_button.add {
+    display: block;
+    width: 33px;
+    height: 33px;
+    background-image: url('../img/add_button.png');
+    background-repeat: no-repeat;
+    background-position: center center;
+    border:1px solid green;
+}
+
+/* ---messages--- */
+ul.messages {
+    list-style: none;
+    border: 2px solid #00B700;
+    padding:10px;
+}
+
+ul.messages .success {
+    color: #00B700;
+}
+/* ---endmessages--- */

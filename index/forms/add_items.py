@@ -1,7 +1,37 @@
 from django import forms
+from django.core.exceptions import ValidationError
 from index.models import CartridgeItemName
 
-
 class AddItems(forms.Form):
-    cart_name = forms.ModelChoiceField(queryset=CartridgeItemName.objects.all(), empty_label=' ')
-    cart_count = forms.IntegerField(min_value=0)
+    cartName = forms.ModelChoiceField(queryset=CartridgeItemName.objects.all(),
+                                      error_messages={'required': 'Поле обязательно для заполнения.'},
+                                      empty_label=' ')
+    cartCount = forms.IntegerField(min_value=0,
+                                   error_messages={'required': 'Поле обязательно для заполнения.'},
+                                   )
+
+    def clean_cartName(self):
+        """
+        Проверят на пустоту введенные данные.
+        """
+        if not self.cleaned_data.get('cartName', ''):
+            raise ValidationError("Поле обязательно для заполнения.")
+        return self.cleaned_data.get('cartName', '')
+
+    def clean_cartCount(self):
+        """
+
+        """
+        temp_count = self.cleaned_data.get('cartCount', '')
+        try:
+            temp_count = int(temp_count)
+        except ValueError:
+            raise ValidationError("Вы ввели ошибочные данные.")
+
+        if temp_count <= 0:
+            raise ValidationError("Значение должно быть больше нуля.")
+
+        if not temp_count:
+            raise ValidationError("Поле не может быть пустым.")
+
+        return self.cleaned_data.get('cartCount', '')
