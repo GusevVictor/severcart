@@ -1,7 +1,7 @@
 # -*- coding:utf-8 -*-
 
 from django.shortcuts import render
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, HttpResponse
 from django.utils import timezone
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.core.urlresolvers import reverse
@@ -23,8 +23,16 @@ from .models import FirmTonerRefill
 from .helpers import recursiveChildren
 
 
-def index(request):
+def dashboard(request):
+    """
+    """
+    return render(request, 'index/dashboard.html')
 
+
+def stock(request):
+    """
+
+    """
     all_items = CartridgeItem.objects.filter(cart_owner__isnull=True).filter(cart_filled=True)
     paginator = Paginator(all_items, 8)
 
@@ -36,7 +44,7 @@ def index(request):
     except EmptyPage:
         cartridjes = paginator.page(paginator.num_pages)
 
-    return render(request, 'index/index.html', {'cartrjs': cartridjes})
+    return render(request, 'index/stock.html', {'cartrjs': cartridjes})
 
 
 def add_cartridge_name(request):

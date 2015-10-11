@@ -1,0 +1,37 @@
+{% extends "index/base.html" %}
+{% load staticfiles %}
+{% block title %}Текущее состояние материальных запасов{% endblock %}
+{% block content %}
+    <div class="row">
+        <div class="large-8 columns">
+            <table class="dashboard">
+                <tbody>
+                <tr>
+                    <td class="pic"><img src="{% static 'img/dashboard/stock.png' %}" /></td>
+                    <td>Количество на складе(пригодных к использованию)</td>
+                    <td>......................</td>
+                    <td>26</td>
+                </tr>
+                <tr>
+                    <td class="pic"><img src="{% static 'img/dashboard/empty.png' %}" /></td>
+                    <td>Количество на складе (пустые, готовые к перезаправке)</td>
+                    <td>......................</td>
+                    <td>12</td>
+                </tr>
+                <tr>
+                    <td class="pic"><img src="{% static 'img/dashboard/uses.png' %}" /></td>
+                    <td>Количество задействованных</td>
+                    <td>......................</td>
+                    <td>14</td>
+                </tr>
+                <tr>
+                    <td class="pic"><img src="{% static 'img/dashboard/filled.png' %}" /></td>
+                    <td>Сейчас заправляется</td>
+                    <td>......................</td>
+                    <td>47</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+{% endblock %}

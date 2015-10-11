@@ -1,7 +1,8 @@
 from django.conf.urls import url
 
 urlpatterns = [
-    url('^$', 'index.views.index', name='stock'),
+    url('^$', 'index.views.dashboard', name='dashboard'),
+    url('^stock/', 'index.views.stock', name='stock'),
     url(r'^add_name/', 'index.views.add_cartridge_name', name='add_name'),
     url(r'^add_items/', 'index.views.add_cartridge_item', name='add_items'),
     url(r'^tree_list/', 'index.views.tree_list', name='tree_list'),

@@ -158,10 +158,8 @@ form.dancon input{
     display: block;
     width: 33px;
     height: 33px;
-    background-image: url('../img/add_button.png');
-    background-repeat: no-repeat;
-    background-position: center center;
-    border:1px solid green;
+    background: url('../img/add_button.png') no-repeat center center;
+    border: 1px solid green;
 }
 
 /* ---messages--- */
@@ -175,3 +173,8 @@ ul.messages .success {
     color: #00B700;
 }
 /* ---endmessages--- */
+
+.dashboard .pic{
+    width: 80px;
+    height: 80px;
+}
