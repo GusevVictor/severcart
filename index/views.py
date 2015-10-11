@@ -383,3 +383,6 @@ def manage_users(request):
     print('urs=', urs)
     return render(request, 'index/manage_users.html', {'urs': urs})
 
+def at_work(request):
+    pass
+    return Http404
