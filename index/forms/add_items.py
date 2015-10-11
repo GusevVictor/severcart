@@ -5,10 +5,15 @@ from index.models import CartridgeItemName
 class AddItems(forms.Form):
     cartName = forms.ModelChoiceField(queryset=CartridgeItemName.objects.all(),
                                       error_messages={'required': 'Поле обязательно для заполнения.'},
-                                      empty_label=' ')
+                                      empty_label=' ',
+                                      required=True,
+                                      )
     cartCount = forms.IntegerField(min_value=0,
                                    error_messages={'required': 'Поле обязательно для заполнения.'},
+                                   required=True,
                                    )
+
+    required_css_class = 'required'
 
     def clean_cartName(self):
         """

@@ -95,9 +95,12 @@ ul#menu .right {
 
 /*   --------end style menu-----------   */
 label.required {
-   background: url('../img/aster.png') right center no-repeat;
+   background: url('../img/aster.png') left center no-repeat;
 }
 
+label {
+    padding-left: 15px;
+}
 /* ---Error messages style---  */
 
 ul.errorlist {

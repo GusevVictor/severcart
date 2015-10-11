@@ -16,8 +16,7 @@
         <div class="large-6 columns">
             <form class='dancon' action="/add_items/" method="post">
                 {% csrf_token %}
-                {{ form.non_field_errors }}
-                <label for="{{ form.cartName.id_for_label }}">Название расходника</label>
+                <label class='required' for="{{ form.cartName.id_for_label }}">Название расходника</label>
                 <div class="dancon_row">
                     <div class="left_pos">
                         {{ form.cartName }}
@@ -31,7 +30,7 @@
                 <div class="clear_float"></div>
                 <div class="row">
                     <div class="large-6 columns">
-                        <label for="{{ form.cartCount.id_for_label }}">Количество</label>
+                        <label class='required' for="{{ form.cartCount.id_for_label }}">Количество</label>
                         {{ form.cartCount }}
                         {{ form.cartCount.errors }}
                     </div>
