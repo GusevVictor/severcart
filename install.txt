@@ -1,0 +1,20 @@
+Установка программного продкута:
+1. Скачиваем и устанавливаем Python 3.4
+2. Создаём виртуальное окружение
+
+	virtualenv proj
+
+3. Переходим в каталог 
+
+	cd proj\scripts\
+
+3.1 Активируем виртуальное окружение.
+
+4. Устанавливаем python egg psycopg2 для Python 3.4 для x86 
+
+	http://www.stickpeople.com/projects/python/win-psycopg/2.6.1/psycopg2-2.6.1.win32-py3.4-pg9.4.4-release.exe
+
+5. Возвращаемся в каталог proj
+
+    git clone https://github.com/sfcl/ancon.git
+
