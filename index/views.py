@@ -1,12 +1,13 @@
 # -*- coding:utf-8 -*-
 
+import json
 from django.shortcuts import render
-from django.http import HttpResponseRedirect, HttpResponse
+from django.http import HttpResponseRedirect, HttpResponse, JsonResponse, Http404
 from django.utils import timezone
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.core.urlresolvers import reverse
-from django.http import Http404
 from django.contrib import messages
+from django.contrib.sessions.models import Session
 from .forms.add_cartridge_name import AddCartridgeName
 from .forms.add_items import AddItems
 from .forms.add_city import CityF
@@ -20,7 +21,7 @@ from .models import CartridgeItem
 from .models import Category
 from .models import City as CityM
 from .models import FirmTonerRefill
-from .helpers import recursiveChildren
+from .helpers import recursiveChildren, check_ajax_auth
 
 
 def dashboard(request):
