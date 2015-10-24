@@ -37,6 +37,21 @@ $( function(){
 
     });
 
+    $(".from_firm_to_stock").click( function() {
+        var selected = [];
+        $('.checkboxes input:checked').each(function() {
+            selected.push( $(this).attr('value') );
+        });
+
+        if ( selected.length !== 0 ) {
+            var get_path = selected.join('s')
+            var loc = "/from_firm_to_stock/?select=" + get_path;
+            window.location.href = loc;
+        }
+        //console.log(JSON.stringify(selected));
+
+    });
+
     $(".tr_to_firm").click( function() {
         var selected = [];
         $('.checkboxes input:checked').each(function() {

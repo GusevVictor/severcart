@@ -460,3 +460,30 @@ def transfer_to_firm(request):
     return render(request, 'index/transfer_to_firm.html', {'checked_cartr': checked_cartr, 
                                                             'firms' : firms, 
                                                             })
+
+def from_firm_to_stock(request):
+    """Возврашаем заправленные расходники обратно на базу.
+    """
+    checked_cartr = request.GET.get('select', '')
+    tmp = ''
+    if checked_cartr:
+        checked_cartr = checked_cartr.split('s')
+        checked_cartr = [int(i) for i in checked_cartr]
+        checked_cartr = str(checked_cartr)
+        checked_cartr = checked_cartr[1:-1]
+        tmp = checked_cartr
+    else:
+        # если кто-то зашел на страницу не выбрав расходники
+        return HttpResponseRedirect(reverse('at_work'))        
+
+    if request.method == 'POST':
+        for inx in tmp:
+            m1 = CartridgeItem.objects.get(pk=inx)
+            m1.filled_firm = None
+            m1.cart_filled = True
+            m1.cart_number_refills = int(m1.cart_number_refills) + 1
+            m1.save()
+
+        return HttpResponseRedirect(reverse('at_work'))
+    return render(request, 'index/from_firm_to_stock.html', {'checked_cartr': checked_cartr })
+
