@@ -29,15 +29,6 @@ class CartridgeItemName(models.Model):
         return self.cart_itm_name
 
 
-class CartridgeItem(models.Model):
-    cart_itm_name = models.ForeignKey(CartridgeItemName)
-    cart_date_added = models.DateField()
-    cart_owner = models.ForeignKey(Category, blank=True, null=True)
-    cart_filled = models.BooleanField()   # логический флаг, сигнализирующий о заполненнности
-    cart_number_refills = models.IntegerField()
-    node_order_by = ['id']
-
-
 class City(models.Model):
     city_name = models.CharField('Введите название города', max_length=256)
 
@@ -58,6 +49,17 @@ class FirmTonerRefill(models.Model):
 
     def __str__(self):
         return self.firm_name
+
+
+class CartridgeItem(models.Model):
+    cart_itm_name = models.ForeignKey(CartridgeItemName)
+    cart_date_added = models.DateField()
+    cart_owner = models.ForeignKey(Category, blank=True, null=True)
+    cart_filled = models.BooleanField()   # логический флаг, сигнализирующий о заполненнности
+    cart_number_refills = models.IntegerField(default=0)
+    filled_firm = models.ForeignKey(FirmTonerRefill, null=True)
+    node_order_by = ['id']
+
 
 class Summary(models.Model):
     """Кэш таблица с текущим состоянем БД
