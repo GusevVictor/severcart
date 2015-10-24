@@ -62,10 +62,11 @@ class FirmTonerRefill(models.Model):
 class Summary(models.Model):
     """Кэш таблица с текущим состоянем БД
     """
-    full_on_stock = models.IntegerField()
-    empty_on_stock = models.IntegerField()
-    empty = models.IntegerField()
-    filles = models.IntegerField()
+    full_on_stock = models.IntegerField(default=0)
+    empty_on_stock = models.IntegerField(default=0)
+    uses = models.IntegerField(default=0)
+    filled = models.IntegerField(default=0)
+    recycler_bin = models.IntegerField(default=0)
 
 class Events(models.Model):
     """Список событий, использется для статистики и на морде сайта

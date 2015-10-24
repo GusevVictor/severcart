@@ -21,14 +21,20 @@ from .models import CartridgeItem
 from .models import Category
 from .models import City as CityM
 from .models import FirmTonerRefill
+from .models import Summary
 from .helpers import recursiveChildren, check_ajax_auth
-
+from .helpers import Dashboard
 
 def dashboard(request):
+    """Морда сайта. Отображает текущее состояние всего, что считаем.
     """
-    """
-    return render(request, 'index/dashboard.html')
+    context = {}
+    context['full_on_stock'] = Summary.objects.get(pk=1).full_on_stock
+    context['empty_on_stock'] = Summary.objects.get(pk=1).empty_on_stock
+    context['uses'] = Summary.objects.get(pk=1).uses
+    context['filled']  = Summary.objects.get(pk=1).filled
 
+    return render(request, 'index/dashboard.html', context)
 
 def stock(request):
     """
@@ -148,7 +154,6 @@ def transfe_for_use(request):
         data_in_post = request.POST
         parent_id = data_in_post['par_id']
         parent_id = int(parent_id)
-        #print('parent_id=', get(parent_id))
 
         for inx in tmp:
             m1 = CartridgeItem.objects.get(pk=inx)
