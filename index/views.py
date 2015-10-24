@@ -69,6 +69,7 @@ def add_cartridge_name(request):
 
 
 def add_cartridge_item(request):
+    dash = Dashboard()
     if request.method == 'POST':
         form_obj = AddItems(request.POST)
         if form_obj.is_valid():
@@ -80,7 +81,9 @@ def add_cartridge_item(request):
                                    cart_filled=True,
                                    cart_number_refills=0,
                                    )
+
                 m1.save()
+            dash.add_full_to_stock(num=int(data_in_post['cartCount']))
             messages.success(request, 'Расходники успешно добавлены.')
             return HttpResponseRedirect(request.path)
 
@@ -143,12 +146,14 @@ def transfe_for_use(request):
     """
     checked_cartr = request.GET.get('select', '')
     tmp = ''
+    dash = Dashboard()
     if checked_cartr:
         checked_cartr = checked_cartr.split('s')
         checked_cartr = [int(i) for i in checked_cartr]
         tmp = checked_cartr
         checked_cartr = str(checked_cartr)
         checked_cartr = checked_cartr[1:-1]
+        
 
     tree = Category()
     get = lambda node_id: Category.objects.get(pk=node_id)
@@ -165,8 +170,9 @@ def transfe_for_use(request):
             m1 = CartridgeItem.objects.get(pk=inx)
             m1.cart_owner = get(parent_id)
             m1.save(update_fields=['cart_owner'])
-
-        return HttpResponseRedirect("/")
+        
+        dash.tr_cart_to_uses(num=len(tmp)) # срабатывает триггер перемещения едениц
+        return HttpResponseRedirect(reverse('stock'))
     return render(request, 'index/transfe_for_use.html', {'checked_cartr': checked_cartr, 'bulk': bulk})
 
 
@@ -266,8 +272,7 @@ def toner_refill(request):
                                                        'firms': show_firms,
                                                        'select': city_id,
                                                        'city_url': city_url_parametr
-                                                       }
-                )
+                                                       })
 
 
 def add_city(request):
@@ -433,29 +438,37 @@ def transfer_to_firm(request):
     """
     checked_cartr = request.GET.get('select', '')
     tmp = ''
+    dash = Dashboard()
     firms = FirmTonerRefill.objects.all()
     if checked_cartr:
         checked_cartr = checked_cartr.split('s')
         checked_cartr = [int(i) for i in checked_cartr]
-        tmp = checked_cartr
         checked_cartr = str(checked_cartr)
         checked_cartr = checked_cartr[1:-1]
+        tmp = checked_cartr
     else:
         # если кто-то зашел на страницу не выбрав расходники
         return HttpResponseRedirect(reverse('empty'))        
 
     if request.method == 'POST':
+        
         try:
             firmid = int(request.POST['firm'])
+            if firmid == 0:
+                raise ValueError
         except ValueError:
-            messages.error('Вы выбрали некоректную фирму')            
+            messages.error(request, 'Вы выбрали некорректную фирму')
+            return render(request, 'index/transfer_to_firm.html', {'checked_cartr': checked_cartr, 
+                                                                    'firms' : firms, 
+                                                                })            
         else:
+            
             select_firm = FirmTonerRefill.objects.get(pk=firmid) 
             for inx in tmp:
                 m1 = CartridgeItem.objects.get(pk=inx)
                 m1.filled_firm = select_firm
                 m1.save()
-
+            dash.tr_cart_to_uses(num=len(tmp))
         return HttpResponseRedirect(reverse('empty'))
     return render(request, 'index/transfer_to_firm.html', {'checked_cartr': checked_cartr, 
                                                             'firms' : firms, 
@@ -466,6 +479,7 @@ def from_firm_to_stock(request):
     """
     checked_cartr = request.GET.get('select', '')
     tmp = ''
+    dash = Dashboard()
     if checked_cartr:
         checked_cartr = checked_cartr.split('s')
         checked_cartr = [int(i) for i in checked_cartr]
@@ -483,7 +497,6 @@ def from_firm_to_stock(request):
             m1.cart_filled = True
             m1.cart_number_refills = int(m1.cart_number_refills) + 1
             m1.save()
-
+        dash.tr_cart_to_uses(num=len(tmp))
         return HttpResponseRedirect(reverse('at_work'))
     return render(request, 'index/from_firm_to_stock.html', {'checked_cartr': checked_cartr })
-

@@ -1,9 +1,8 @@
 # -*- coding:utf-8 -*-
-
+import time
 from django.http import JsonResponse, HttpResponse
-from index.models import City
+from index.models import City, Summary, CartridgeItem
 from index.helpers import check_ajax_auth
-
 
 @check_ajax_auth
 def city_list(request):
@@ -19,4 +18,28 @@ def city_list(request):
 
 
 def inx(request):
+    """Пока заглушечка.
+    """
     return HttpResponse('<h1>Api it works!</h1>')
+
+@check_ajax_auth
+def upd_dashboard_tbl(request):
+	"""Освежаем модель Summary
+	"""
+	start_time = time.time()
+	full_on_stock  = CartridgeItem.objects.filter(cart_owner__isnull=True).filter(cart_filled=True).count()
+	empty_on_stock = CartridgeItem.objects.filter(filled_firm__isnull=True, 
+                                        		  cart_owner__isnull=True,
+                                        		  cart_filled=False,
+                                        		 ).count()
+	uses           = CartridgeItem.objects.filter(cart_owner__isnull=False).count()
+	filled         = CartridgeItem.objects.filter(filled_firm__isnull=False).count()
+	# TODO добавить фичу подсчёта кол-ва времени выполнения
+	m1 = Summary.objects.get(pk=1)
+	m1.full_on_stock  = full_on_stock
+	m1.empty_on_stock = empty_on_stock
+	m1.uses           = uses
+	m1.filled         = filled
+	m1.save()
+	work_time = time.time() - start_time
+	return HttpResponse(work_time)
