@@ -79,7 +79,7 @@ class Events(models.Model):
         (6, 'Создание нового пользователя'),
         (7, 'Удаление пользователя'),
     )
-    event_type = models.IntegerField(choice=ETYPE_CHOICES)
+    event_type = models.IntegerField(choices=ETYPE_CHOICES)
     date_time = models.DateTimeField()
-    cart_itm = ForeignKey(CartridgeItem, null=True)
+    cart_itm = models.ForeignKey(CartridgeItem, null=True)
     comment = models.CharField(max_length=256)
