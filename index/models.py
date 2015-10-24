@@ -58,3 +58,28 @@ class FirmTonerRefill(models.Model):
 
     def __str__(self):
         return self.firm_name
+
+class Summary(models.Model):
+    """Кэш таблица с текущим состоянем БД
+    """
+    full_on_stock = models.IntegerField()
+    empty_on_stock = models.IntegerField()
+    empty = models.IntegerField()
+    filles = models.IntegerField()
+
+class Events(models.Model):
+    """Список событий, использется для статистики и на морде сайта
+    """
+    ETYPE_CHOICES = (
+        (1, 'Добавление нового расходника'),
+        (2, 'Передача расходника в пользование'),
+        (3, 'Передача расходники на заправку'),
+        (4, 'Утилизация'),
+        (5, 'Передача пустого расходника на склад'),
+        (6, 'Создание нового пользователя'),
+        (7, 'Удаление пользователя'),
+    )
+    event_type = models.IntegerField(choice=ETYPE_CHOICES)
+    date_time = models.DateTimeField()
+    cart_itm = ForeignKey(CartridgeItem, null=True)
+    comment = models.CharField(max_length=256)
