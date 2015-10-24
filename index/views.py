@@ -400,5 +400,17 @@ def manage_users(request):
     return render(request, 'index/manage_users.html', {'urs': urs})
 
 def at_work(request):
-    pass
-    return Http404
+    """Список картриджей находящихся на заправке.
+    """
+    items = CartridgeItem.objects.filter(filled_firm__isnull=False)
+    
+    paginator = Paginator(items, 8)
+    page = request.GET.get('page')
+    try:
+        cartridjes = paginator.page(page)
+    except PageNotAnInteger:
+        cartridjes = paginator.page(1)
+    except EmptyPage:
+        cartridjes = paginator.page(paginator.num_pages)
+
+    return render(request, 'index/at_work.html', {'cartrjs': items})

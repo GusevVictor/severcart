@@ -1,18 +1,16 @@
 {% extends "index/base.html" %}
-{% block title %}Расходники в пользовании{% endblock %}
+{% block title %}Пустые расходники{% endblock %}
 {% block content %}
 <div class="row">
       <div class="large-12 columns">
-        <h1>Пустые расходники</h1>
+        <h3>Пустые расходники</h3>
       </div>
 </div>
 <div class="row">
     <div class="large-12 columns">
         <a class="tr_to_stock button radius tiny secondary" href="#">Передать на заправку</a>
+        <a class="tr_to_stock button radius tiny secondary" href="#">В корзину</a>
     </div>
-</div>
-<div class="row">
-    <div class="large-12 columns marginTop"></div>
 </div>
 <div class="row">
     <div class="large-12 columns">
@@ -22,12 +20,14 @@
             <th>&nbsp;</th>
             <th>Номер</th>
             <th>Наименование</th>
+            <th>Кол-во перезаправок</th>
         </tr>
         {% for i in cartrjs %}
         <tr>
             <td><input type="checkbox" value="{{i.id}}"></td>
             <td>{{ i.id }}</td>
             <td>{{ i.cart_itm_name }}</td>
+            <td>{{ i.cart_number_refills }}</td>
         </tr>
         {% endfor %}
         </form>

@@ -17,4 +17,5 @@ urlpatterns = [
     url(r'^add_firm/', 'index.views.add_firm', name='add_firm'),
     url(r'^edit_firm/', 'index.views.edit_firm', name='edit_firm'),
     url(r'^del_firm/', 'index.views.del_firm', name='del_firm'),
+    url(r'^at_work/', 'index.views.at_work', name='at_work'),
 ]

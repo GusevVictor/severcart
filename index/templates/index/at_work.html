@@ -1,0 +1,42 @@
+{% extends "index/base.html" %}
+{% load pagination  %}
+{% block title %}Кариджи на заправке{% endblock %}
+{% block content %}
+    <div class="row">
+        <div class="large-12 columns">
+            <h3>Кариджи на заправке</h3>
+        </div>
+    </div>
+    <div class="row">
+        <div class="large-12 columns">
+            <a class="tr_for_use button radius tiny secondary" href="#">Вернуть на склад</a>
+            <a class="tr_to_recycle_bin button radius tiny secondary" href="#">В корзину</a>
+        </div>
+    </div>
+    <div class="row">
+        <div class="large-12 columns">
+            <table class="checkboxes">
+                <form>
+                    <tr>
+                        <th>&nbsp;</th>
+                        <th>Номер</th>
+                        <th>Наименование</th>
+                        <th>Заправщик</th>
+                    </tr>
+                    {% for i in cartrjs %}
+                        <tr>
+                            <td><input type="checkbox" value="{{ i.id }}"></td>
+                            <td>{{ i.id }}</td>
+                            <td>{{ i.cart_itm_name }}</td>
+                            <td>{{ i.filled_firm }}</td>
+                        </tr>
+                    {% endfor %}
+                </form>
+            </table>
+
+        </div>
+    </div>
+
+    {% found_pagination cartrjs  %}
+
+{% endblock %}
