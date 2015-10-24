@@ -15,11 +15,6 @@
         </div>
     </div>
     <div class="row">
-        <div class="large-12 columns marginTop"></div>
-    </div>
-
-
-    <div class="row">
         <div class="large-12 columns">
             <table class="checkboxes">
                 <form>
@@ -27,6 +22,7 @@
                         <th>&nbsp;</th>
                         <th>Номер</th>
                         <th>Наименование</th>
+                        <th>Кол-во перезаправок</th>
                         <th>Дата добавления</th>
                     </tr>
                     {% for i in cartrjs %}
@@ -34,6 +30,7 @@
                             <td><input type="checkbox" value="{{ i.id }}"></td>
                             <td>{{ i.id }}</td>
                             <td>{{ i.cart_itm_name }}</td>
+                            <td>{{ i.cart_number_refills }}</td>
                             <td>{{ i.cart_date_added }}</td>
                         </tr>
                     {% endfor %}
