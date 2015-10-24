@@ -37,6 +37,21 @@ $( function(){
 
     });
 
+    $(".tr_to_firm").click( function() {
+        var selected = [];
+        $('.checkboxes input:checked').each(function() {
+            selected.push( $(this).attr('value') );
+        });
+
+        if ( selected.length !== 0 ) {
+            var get_path = selected.join('s')
+            var loc = "/transfer_to_firm/?select=" + get_path;
+            window.location.href = loc;
+        }
+        //console.log(JSON.stringify(selected));
+
+    });
+
     $(".edit_firm").click( function() {
         var selected = [];
         $('.checkboxes input:checked').each(function() {

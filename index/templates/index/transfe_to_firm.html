@@ -1,0 +1,31 @@
+{% extends "index/base.html" %}
+{% load filters %}
+{% block content %}
+    <div class="row">
+        <div class="large-6 columns">
+            {% if messages %}
+                <ul class="messages">
+                    {% for message in messages %}
+                        <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        </div>
+    </div>
+    <div class="row">
+        <div class="large-6 columns">
+            <form action="" method="POST">
+                {% csrf_token %}
+                <label>Что передаём</label>
+                <input name="name" type="text"  value="{{ checked_cartr }}"  readonly/>
+                <select name="firm">
+                    <option value="0">&nbsp;&nbsp;&nbsp;</option>
+                {% for etm in firms %}
+                    <option value={{ etm.id }}>{{ etm.firm_name }}</option>
+                {% endfor %}
+                </select>
+                <input type="submit" value="Передать на склад" class="button radius"/>
+            </form>
+        </div>
+    </div>
+{% endblock %}

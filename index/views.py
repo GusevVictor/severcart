@@ -99,10 +99,16 @@ def tree_list(request):
         parent_id = data_in_post['par_id']
         parent_id = int(parent_id)
         unit_name = data_in_post['name']  # очень не безопасно!
-
+        unit_name = unit_name.strip()
+        # import re
+        # space_re = re.compile(r'\s+')
+        # split_words = space_re.split(unit_name)
+        # unit_name = '&nbsp;'.join(split_words)
+        
         if parent_id:
             node = get(parent_id).add_child(name=unit_name)
         else:
+            print('unit_name=',unit_name, parent_id)
             tree.add_root(name=unit_name)
 
     annotated_list = tree.get_annotated_list()
@@ -200,7 +206,10 @@ def empty(request):
     """
 
     """
-    items = CartridgeItem.objects.filter(cart_owner__isnull=True, cart_filled=False)
+    items = CartridgeItem.objects.filter(filled_firm__isnull=True, 
+                                        cart_owner__isnull=True,
+                                        cart_filled=False,
+                                        )
     return render(request, 'index/empty.html', {'cartrjs': items})
 
 
@@ -256,7 +265,9 @@ def toner_refill(request):
     return render(request, 'index/toner_refill.html', {'cities': new_list,
                                                        'firms': show_firms,
                                                        'select': city_id,
-                                                       'city_url': city_url_parametr})
+                                                       'city_url': city_url_parametr
+                                                       }
+                )
 
 
 def add_city(request):
@@ -414,3 +425,38 @@ def at_work(request):
         cartridjes = paginator.page(paginator.num_pages)
 
     return render(request, 'index/at_work.html', {'cartrjs': items})
+
+
+
+def transfer_to_firm(request):
+    """Передача расходных материалов на заправку.
+    """
+    checked_cartr = request.GET.get('select', '')
+    tmp = ''
+    firms = FirmTonerRefill.objects.all()
+    if checked_cartr:
+        checked_cartr = checked_cartr.split('s')
+        checked_cartr = [int(i) for i in checked_cartr]
+        tmp = checked_cartr
+        checked_cartr = str(checked_cartr)
+        checked_cartr = checked_cartr[1:-1]
+    else:
+        # если кто-то зашел на страницу не выбрав расходники
+        return HttpResponseRedirect(reverse('empty'))        
+
+    if request.method == 'POST':
+        try:
+            firmid = int(request.POST['firm'])
+        except ValueError:
+            messages.error('Вы выбрали некоректную фирму')            
+        else:
+            select_firm = FirmTonerRefill.objects.get(pk=firmid) 
+            for inx in tmp:
+                m1 = CartridgeItem.objects.get(pk=inx)
+                m1.filled_firm = select_firm
+                m1.save()
+
+        return HttpResponseRedirect(reverse('empty'))
+    return render(request, 'index/transfer_to_firm.html', {'checked_cartr': checked_cartr, 
+                                                            'firms' : firms, 
+                                                            })

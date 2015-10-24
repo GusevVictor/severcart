@@ -9,6 +9,7 @@ urlpatterns = [
     url(r'^add_type/', 'index.views.add_type', name='add_type'),
     url(r'^transfe_for_use/', 'index.views.transfe_for_use', name='transfe_for_use'),
     url(r'^transfer_to_stock/', 'index.views.transfer_to_stock', name='transfer_to_stock'),
+    url(r'^transfer_to_firm/', 'index.views.transfer_to_firm', name='transfer_to_firm'),
     url(r'^at_work/', 'index.views.at_work', name='at_work'),
     url(r'^use/', 'index.views.use', name='use'),
     url(r'^empty/', 'index.views.empty', name='empty'),
