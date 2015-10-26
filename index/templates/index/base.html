@@ -6,13 +6,14 @@
     <link href="{% static "img/favicon.ico" %}" rel="shortcut icon" />
     <link rel="stylesheet" href="{% static "css/normalize.css" %}" />
     <link rel="stylesheet" href="{% static "css/foundation.css" %}" />
-    <link rel="stylesheet" href="{% static "css/style.css" %}" />
-    <link rel="stylesheet" href="{% static "css/superfish.css" %}" />
+    <link rel="stylesheet" href="{{ STATIC_URL }}css/style.css?4" />
+    <link rel="stylesheet" href="{{ STATIC_URL }}css/superfish.css?4" />
+    <script src="{{ STATIC_URL }}js/detect.js?5"></script>
     <script src="{% static "js/vendor/jquery.js" %}"></script>
     <script src="{% static "js/superfish.min.js" %}"></script>
     <script src="{% static "js/activatesuperfish.js" %}"></script>
     <!-- Other JS plugins can be included here -->
-    <script src="{{ STATIC_URL }}js/logic.js?16"></script>
+    <script src="{{ STATIC_URL }}js/logic.js?24"></script>
     <title>{% block title %}{% endblock %}</title>
 </head>
 <body>

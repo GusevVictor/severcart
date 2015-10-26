@@ -500,3 +500,8 @@ def from_firm_to_stock(request):
         dash.tr_cart_to_uses(num=len(tmp))
         return HttpResponseRedirect(reverse('at_work'))
     return render(request, 'index/from_firm_to_stock.html', {'checked_cartr': checked_cartr })
+
+def bad_browser(request):
+    """Сообщение о необходимости обновить браузер.
+    """
+    return render(request, 'index/bad_browser.html')
