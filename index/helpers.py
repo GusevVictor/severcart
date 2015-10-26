@@ -96,7 +96,6 @@ def check_ajax_auth(any_views):
 		session = Session.objects.get(session_key=sid)
 		session_data = session.get_decoded()
 		uid = session_data.get('_auth_user_id')		
-		print('uid=', uid)
 		try:
 			user = AnconUser.objects.get(pk=uid)
 		except: 
@@ -105,3 +104,4 @@ def check_ajax_auth(any_views):
 		return any_views(*args, **argv)
 		
 	return wrapper
+    
