@@ -17,16 +17,9 @@
         <form class="dancon" action="" method="post">
             {% csrf_token %}
             {{ form.as_p }}
-
-            <div class="dancon_row">
-                    <div class="left_pos">
-                        <input type="submit" value="Добавить" class="button radius success" />
-                    </div>
-                    <div class="left_pos">
-                        <a class="button radius" href="{% url 'add_name' %}">Отмена</a>
-                    </div>
-                </div>
-
+            <input type="submit" value="Добавить" class="button success" />
+            &nbsp;&nbsp;&nbsp;&nbsp;
+            <a class="button" href="{% url 'add_name' %}">Отмена</a>
         </form>
     </div>
 </div>

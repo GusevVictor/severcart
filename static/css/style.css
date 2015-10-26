@@ -1,5 +1,5 @@
 .marginTop {
-    margin-top:20px;
+    margin-top:15px;
 }
 
 /* Global tables */
@@ -117,7 +117,8 @@ form.dancon select {
     height: 33px;
 }
 
-form.dancon input{
+
+form.dancon input[type="text"]{
     width:220px;
     height: 33px;
 }
@@ -136,18 +137,20 @@ form.dancon input{
     float: right;
 }
 
-.dancon_row .left_pos input.button.radius{
+/*
+.dancon_row .left_pos input.button{
     display: inline-block;
     float: left;
     width:100px;
 }
 
-.dancon_row .right_pos a.button.radius{
+.dancon_row .right_pos a.button{
     display: inline-block;
     float: right;
     width:100px;
 }
 
+*/
 .clear_float{
     clear: both;
 }
@@ -161,6 +164,94 @@ form.dancon input{
     background: url('../img/add_button.png') no-repeat center center;
     border: 1px solid green;
 }
+
+a.button, input[type="submit"].button {   
+	outline:0;
+	padding: 0 10px;
+	color: #282828;
+	-webkit-border-radius: 6px;
+	-moz-border-radius: 6px;
+	border-radius: 6px;
+	background-color: #ececec;
+    border: 1px solid #a8a8a8;
+    cursor: pointer;
+    font-weight: normal;
+    text-decoration: none;
+    text-align: center;
+    height: 26px;
+    line-height: 25px;
+    display: inline-block !important;
+    vertical-align: middle;
+    margin: 0;
+    font-family: arial,sans-serif;
+    font-weight: normal;
+    font-size: 12px;
+}
+
+a.button:hover, input[type="submit"].button:hover {
+    background-color: #d1d1d1;
+    text-decoration: none;
+}
+
+a.button:active, input[type="submit"].button:active {
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.2);
+    background: #afafaf;
+    border: 1px solid #a8a8a8;
+}
+
+a.button.success, input[type="submit"].button.success {
+    color: #282828;
+    background-color: #7BCC9A;
+    border: 1px solid #2D7347;
+    display: inline-block;
+}
+
+a.button.success:hover, input[type="submit"].button.success:hover {
+    background-color: #60C185;
+    text-decoration: none;
+}
+
+a.button.success:active, input[type="submit"].button.success:active {
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.2);
+    background: #3A945C;
+    border: 1px solid #2D7347;
+}
+
+a.button.alert, input[type="submit"].button.alert {
+    color: #282828;
+    background-color: #f04124;
+    border: 1px solid #821B09;
+}
+
+a.button.alert:hover, input[type="submit"].button.alert:hover {
+    background-color: #F2644A;
+    text-decoration: none;
+}
+
+a.button.alert:active, input[type="submit"].button.alert:active {
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.2);
+    background: #A7230C;
+    border: 1px solid #821B09;
+}
+
+a.button.info, input[type="submit"].button.info {
+    color: #282828;
+    background-color: #61b6d9;
+    border: 1px solid #1C5771;
+}
+
+a.button.info:hover, input[type="submit"].button.info:hover {
+    background-color: #8FCBE4;
+    text-decoration: none;
+}
+
+a.button.info:active, input[type="submit"].button.info:active {
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.2);
+    background: #277DA3;
+    border: 1px solid #1C5771;    
+}
+
+/* --- end button style ---*/
 
 /* ---messages--- */
 ul.messages {
@@ -199,7 +290,6 @@ ul.messages .error {
 /* --- bad browser --- */
 .header {
     background-color:#ff0000;
-    border-radius:7px;
     color:#fff;
     font-weight:bold;
     padding:10px;
@@ -208,14 +298,13 @@ ul.messages .error {
 .center_panel {
     width:410px;
     height:400px;
-    position:absolute;
+    /*position:absolute;
     top:0;
     bottom:0;
     left:0;
-    right:0;
-    margin:auto;    
+    right:0;*/
+    margin:45px auto 0;    
     border:2px solid #d5d5d5;
-    border-radius:7px;
     padding:10px;
 }
 
@@ -237,6 +326,8 @@ a img{
 
 .bl {
     display:inline-block;
+    *display:block;
+    *float:left;
     width:75px;
     height:140px;
     margin:0;
@@ -250,3 +341,4 @@ a img{
 }
 
 /* ---end bad browser ---*/
+
