@@ -1,5 +1,5 @@
 from django import forms
-from index.models import Category
+from index.models import OrganizationUnits
 
 
 class AddUser(forms.Form):
@@ -8,4 +8,4 @@ class AddUser(forms.Form):
     patronymic = forms.CharField(label='Отчество')
     username = forms.CharField(label='Логин')
     password = forms.CharField(label='Пароль')
-    department = forms.ModelChoiceField(label='Организация', queryset=Category.objects.all(), empty_label=' ')
+    department = forms.ModelChoiceField(label='Организация', queryset=OrganizationUnits.objects.all(), empty_label=' ')

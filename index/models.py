@@ -1,19 +1,19 @@
 # -*- config:utf-8 -*-
 
 from django.db import models
-from treebeard.ns_tree import NS_Node
+from mptt.models import MPTTModel, TreeForeignKey
 from django.contrib.auth.models import User
 
-class Category(NS_Node):
-    """
-    Структура организации
-    """
-    name = models.CharField(max_length=30)
-    node_order_by = ['id']
+
+class OrganizationUnits(MPTTModel):
+    name = models.CharField(max_length=254)
+    parent = TreeForeignKey('self', null=True, blank=True, related_name='children', db_index=True)
+
+    class MPTTMeta:
+        order_insertion_by = ['name']
 
     def __str__(self):
         return self.name
-
 
 class CartridgeType(models.Model):
     cart_type = models.CharField(max_length=256, verbose_name='Название нового типа')
@@ -54,7 +54,7 @@ class FirmTonerRefill(models.Model):
 class CartridgeItem(models.Model):
     cart_itm_name = models.ForeignKey(CartridgeItemName)
     cart_date_added = models.DateField()
-    cart_owner = models.ForeignKey(Category, blank=True, null=True)
+    cart_owner = models.ForeignKey(OrganizationUnits, blank=True, null=True)
     cart_filled = models.BooleanField()   # логический флаг, сигнализирующий о заполненнности
     cart_number_refills = models.IntegerField(default=0)
     filled_firm = models.ForeignKey(FirmTonerRefill, null=True)

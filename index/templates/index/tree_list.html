@@ -8,7 +8,7 @@
             <label>Название структурного подразделения</label>
             <input name="name" type="text"/>
             <label>Подчиняется</label>
-            <select size="1" name="par_id">
+            <select size="1" name="departament">
                 <option value="0" selected>&nbsp;&nbsp;&nbsp;</option>
                 {% for i in bulk %}
                         <option value="{{ i.id }}">{{ i.level | nbsp }}{{ i.name }}</option>
@@ -20,19 +20,19 @@
 
     <div class="large-6 columns">
         <h4>Структура организации:</h4>
-        {% for item, info in annotated_list %}
-            {% if info.open %}
-                <ul>
+        {% load mptt_tags %}
+        <ul>
+            {% recursetree bulk %}
                 <li>
-                    {% else %}
+                    {{ node.name }}
+                    {% if not node.is_leaf_node %}
+                        <ul class="children">
+                            {{ children }}
+                        </ul>
+                    {% endif %}
                 </li>
-                <li>
-            {% endif %}
-        {{ item }}
-        {% for close in info.close %}
-            </li></ul>
-        {% endfor %}
-        {% endfor %}
+            {% endrecursetree %}
+        </ul>
     </div>
 </div>
 

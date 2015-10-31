@@ -38,7 +38,7 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'index',
-    'treebeard',
+    'mptt',
     'accounts',
 )
 
@@ -89,7 +89,7 @@ WSGI_APPLICATION = 'newskald_ru.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'SKLAD2',
+        'NAME': 'SKLAD3',
         'USER': 'zavhoz',
         'PASSWORD': 'zavhoz',
         'HOST': '127.0.0.1',

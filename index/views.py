@@ -13,12 +13,11 @@ from .forms.add_items import AddItems
 from .forms.add_city import CityF
 from .forms.add_type import AddCartridgeType
 from .forms.add_firm import FirmTonerRefillF
-from .forms.add_user import AddUser
 from .models import CartridgeType
 from accounts.models import AnconUser
 from django.contrib.auth.models import User
 from .models import CartridgeItem
-from .models import Category
+from .models import OrganizationUnits
 from .models import City as CityM
 from .models import FirmTonerRefill
 from .models import Summary
@@ -93,34 +92,26 @@ def add_cartridge_item(request):
 
 
 def tree_list(request):
-
-    tree = Category()
-    get = lambda node_id: Category.objects.get(pk=node_id)
-
+    """Работаем с структурой организации
+    """
     if request.method == 'POST':
-        data_in_post = request.POST
-        parent_id = data_in_post['par_id']
-        parent_id = int(parent_id)
-        unit_name = data_in_post['name']  # очень не безопасно!
-        unit_name = unit_name.strip()
-        # import re
-        # space_re = re.compile(r'\s+')
-        # split_words = space_re.split(unit_name)
-        # unit_name = '&nbsp;'.join(split_words)
-        
-        if parent_id:
-            node = get(parent_id).add_child(name=unit_name)
+        uid = request.POST.get('departament', '')        
+        org_name = request.POST.get('name', '') 
+        try:
+            uid = int(uid)
+        except ValueError:
+            uid = 0
+
+        if uid == 0:
+            # создаём корневой элемент
+            rock = OrganizationUnits.objects.create(name=org_name)
         else:
-            print('unit_name=',unit_name, parent_id)
-            tree.add_root(name=unit_name)
+            rn = OrganizationUnits.objects.root_node(uid)
+            OrganizationUnits.objects.create(name=org_name, parent=rn)    
+    
+    bulk = OrganizationUnits.objects.all()
+    return render(request, 'index/tree_list.html', {'bulk': bulk})
 
-    annotated_list = tree.get_annotated_list()
-
-    bulk = []
-    for itm in tree.dump_bulk():
-        bulk.extend(recursiveChildren(itm))
-
-    return render(request, 'index/tree_list.html', {'annotated_list': annotated_list, 'bulk': bulk})
 
 
 def add_type(request):

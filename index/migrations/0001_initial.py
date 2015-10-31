@@ -2,6 +2,7 @@
 from __future__ import unicode_literals
 
 from django.db import models, migrations
+import mptt.fields
 
 
 class Migration(migrations.Migration):
@@ -13,56 +14,78 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='CartridgeItem',
             fields=[
-                ('id', models.AutoField(serialize=False, primary_key=True, auto_created=True, verbose_name='ID')),
+                ('id', models.AutoField(primary_key=True, serialize=False, auto_created=True, verbose_name='ID')),
                 ('cart_date_added', models.DateField()),
                 ('cart_filled', models.BooleanField()),
-                ('cart_number_refills', models.IntegerField()),
+                ('cart_number_refills', models.IntegerField(default=0)),
             ],
         ),
         migrations.CreateModel(
             name='CartridgeItemName',
             fields=[
-                ('id', models.AutoField(serialize=False, primary_key=True, auto_created=True, verbose_name='ID')),
+                ('id', models.AutoField(primary_key=True, serialize=False, auto_created=True, verbose_name='ID')),
                 ('cart_itm_name', models.CharField(max_length=256)),
             ],
         ),
         migrations.CreateModel(
             name='CartridgeType',
             fields=[
-                ('id', models.AutoField(serialize=False, primary_key=True, auto_created=True, verbose_name='ID')),
-                ('cart_type', models.CharField(max_length=256)),
+                ('id', models.AutoField(primary_key=True, serialize=False, auto_created=True, verbose_name='ID')),
+                ('cart_type', models.CharField(verbose_name='Название нового типа', max_length=256)),
             ],
         ),
         migrations.CreateModel(
-            name='Category',
+            name='City',
             fields=[
-                ('id', models.AutoField(serialize=False, primary_key=True, auto_created=True, verbose_name='ID')),
-                ('lft', models.PositiveIntegerField(db_index=True)),
-                ('rgt', models.PositiveIntegerField(db_index=True)),
-                ('tree_id', models.PositiveIntegerField(db_index=True)),
-                ('depth', models.PositiveIntegerField(db_index=True)),
-                ('name', models.CharField(max_length=30)),
+                ('id', models.AutoField(primary_key=True, serialize=False, auto_created=True, verbose_name='ID')),
+                ('city_name', models.CharField(verbose_name='Введите название города', max_length=256)),
+            ],
+        ),
+        migrations.CreateModel(
+            name='Events',
+            fields=[
+                ('id', models.AutoField(primary_key=True, serialize=False, auto_created=True, verbose_name='ID')),
+                ('event_type', models.IntegerField(choices=[(1, 'Добавление нового расходника'), (2, 'Передача расходника в пользование'), (3, 'Передача расходники на заправку'), (4, 'Утилизация'), (5, 'Передача пустого расходника на склад'), (6, 'Создание нового пользователя'), (7, 'Удаление пользователя')])),
+                ('date_time', models.DateTimeField()),
+                ('comment', models.CharField(max_length=256)),
+                ('cart_itm', models.ForeignKey(to='index.CartridgeItem', null=True)),
+            ],
+        ),
+        migrations.CreateModel(
+            name='FirmTonerRefill',
+            fields=[
+                ('id', models.AutoField(primary_key=True, serialize=False, auto_created=True, verbose_name='ID')),
+                ('firm_name', models.CharField(verbose_name='Название', max_length=256)),
+                ('firm_contacts', models.TextField(blank=True, verbose_name='Контакты')),
+                ('firm_address', models.TextField(blank=True, verbose_name='Адресс')),
+                ('firm_comments', models.TextField(blank=True, verbose_name='Комментарии')),
+                ('firm_city', models.ForeignKey(blank=True, to='index.City', verbose_name='Выберите город')),
+            ],
+        ),
+        migrations.CreateModel(
+            name='OrganizationUnits',
+            fields=[
+                ('id', models.AutoField(primary_key=True, serialize=False, auto_created=True, verbose_name='ID')),
+                ('name', models.CharField(max_length=254)),
+                ('lft', models.PositiveIntegerField(db_index=True, editable=False)),
+                ('rght', models.PositiveIntegerField(db_index=True, editable=False)),
+                ('tree_id', models.PositiveIntegerField(db_index=True, editable=False)),
+                ('level', models.PositiveIntegerField(db_index=True, editable=False)),
+                ('parent', mptt.fields.TreeForeignKey(blank=True, related_name='children', to='index.OrganizationUnits', null=True)),
             ],
             options={
                 'abstract': False,
             },
         ),
         migrations.CreateModel(
-            name='City',
+            name='Summary',
             fields=[
-                ('id', models.AutoField(serialize=False, primary_key=True, auto_created=True, verbose_name='ID')),
-                ('city_name', models.CharField(max_length=256, verbose_name='Введите название города')),
-            ],
-        ),
-        migrations.CreateModel(
-            name='FirmTonerRefill',
-            fields=[
-                ('id', models.AutoField(serialize=False, primary_key=True, auto_created=True, verbose_name='ID')),
-                ('firm_name', models.CharField(max_length=256, verbose_name='Название')),
-                ('firm_contacts', models.TextField(blank=True, verbose_name='Контакты')),
-                ('firm_address', models.TextField(blank=True, verbose_name='Адресс')),
-                ('firm_comments', models.TextField(blank=True, verbose_name='Комментарии')),
-                ('firm_city', models.ForeignKey(to='index.City', verbose_name='Выберите город', blank=True)),
+                ('id', models.AutoField(primary_key=True, serialize=False, auto_created=True, verbose_name='ID')),
+                ('full_on_stock', models.IntegerField(default=0)),
+                ('empty_on_stock', models.IntegerField(default=0)),
+                ('uses', models.IntegerField(default=0)),
+                ('filled', models.IntegerField(default=0)),
+                ('recycler_bin', models.IntegerField(default=0)),
             ],
         ),
         migrations.AddField(
@@ -78,6 +101,11 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='cartridgeitem',
             name='cart_owner',
-            field=models.ForeignKey(null=True, to='index.Category', blank=True),
+            field=models.ForeignKey(blank=True, to='index.OrganizationUnits', null=True),
+        ),
+        migrations.AddField(
+            model_name='cartridgeitem',
+            name='filled_firm',
+            field=models.ForeignKey(to='index.FirmTonerRefill', null=True),
         ),
     ]
