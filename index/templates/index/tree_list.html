@@ -7,11 +7,16 @@
             {% csrf_token %}
             <label>Название структурного подразделения</label>
             <input name="name" type="text"/>
+            {% if error1 %}
+                <ul class="errorlist">
+                    <li>{{error1}}</li>
+                </ul>
+            {% endif %}
             <label>Подчиняется</label>
             <select size="1" name="departament">
                 <option value="0" selected>&nbsp;&nbsp;&nbsp;</option>
                 {% for i in bulk %}
-                        <option value="{{ i.id }}">{{ i.level | nbsp }}{{ i.name }}</option>
+                        <option value="{{ i.tree_id }}">{{ i.level | nbsp }}{{ i.name }}</option>
                 {% endfor %}
             </select>
             <input type="submit" value="Добавить" class="button"/>

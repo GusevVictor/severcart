@@ -6,6 +6,7 @@ from django.http import HttpResponseRedirect, HttpResponse, JsonResponse, Http40
 from django.utils import timezone
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.core.urlresolvers import reverse
+from django.core.exceptions import MultipleObjectsReturned, ObjectDoesNotExist
 from django.contrib import messages
 from django.contrib.sessions.models import Session
 from .forms.add_cartridge_name import AddCartridgeName
@@ -94,6 +95,7 @@ def add_cartridge_item(request):
 def tree_list(request):
     """Работаем с структурой организации
     """
+    error1 = ''
     if request.method == 'POST':
         uid = request.POST.get('departament', '')        
         org_name = request.POST.get('name', '') 
@@ -102,15 +104,29 @@ def tree_list(request):
         except ValueError:
             uid = 0
 
+        # проверям, есть ли такая корневая нода уже в базе
         if uid == 0:
-            # создаём корневой элемент
-            rock = OrganizationUnits.objects.create(name=org_name)
-        else:
+            for node in OrganizationUnits.objects.root_nodes():
+                if node == org_name:
+                    error1 = 'Организационная единица %s уже существует' % (org_name,)
+                    break        
+            else:
+                # если ноды нет, добавляем
+                rock = OrganizationUnits.objects.create(name=org_name)
+        
+        if uid != 0:
             rn = OrganizationUnits.objects.root_node(uid)
-            OrganizationUnits.objects.create(name=org_name, parent=rn)    
+            for node in rn.get_children():
+                if node == org_name:
+                    error1 = 'Организационная единица %s уже существует' % (org_name,)
+                    break
+            else:
+                rn = OrganizationUnits.objects.root_node(uid)
+                OrganizationUnits.objects.create(name=org_name, parent=rn)        
+            
     
     bulk = OrganizationUnits.objects.all()
-    return render(request, 'index/tree_list.html', {'bulk': bulk})
+    return render(request, 'index/tree_list.html', {'bulk': bulk, 'error1': error1})
 
 
 
