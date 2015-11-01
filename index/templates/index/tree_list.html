@@ -1,5 +1,7 @@
 {% extends "index/base.html" %}
+{% load staticfiles %}
 {% load filters %}
+{% load mptt_tags %}
 {% block content %}
 <div class="row">
     <div class="large-6 columns">
@@ -15,8 +17,8 @@
             <label>Подчиняется</label>
             <select size="1" name="departament">
                 <option value="0" selected>&nbsp;&nbsp;&nbsp;</option>
-                {% for i in bulk %}
-                        <option value="{{ i.tree_id }}">{{ i.level | nbsp }}{{ i.name }}</option>
+                {% for node,structure in bulk|tree_info:"ancestors" %}
+                    <option value="{{ node.pk }}">{{ node.level | nbsp }}{{ node.name }}</option>
                 {% endfor %}
             </select>
             <input type="submit" value="Добавить" class="button"/>
@@ -25,19 +27,35 @@
 
     <div class="large-6 columns">
         <h4>Структура организации:</h4>
-        {% load mptt_tags %}
-        <ul>
+        <div>
+            <a class="del_node button alert">Удалить</a><img class="spinner" src="{% static 'img/loader.gif' %}" />
+        </div>
+        <div class="marginTop"></div>
+        <table class="checkboxes">
+            <tr>
+                <th></th>
+                <th>Название</th>
+                <th>Номер</th>
+            </tr>
+            {% for node,structure in bulk|tree_info:"ancestors" %}
+                <tr>
+                    <td><input type="checkbox" name="node_id" value={{ node.pk }} /></td>
+                    <td><span class="gi">{{ node.level | dash }}</span>{{ node.name }}</td> 
+                    <td>{{ node.pk }}</td>       
+                </tr>
+            {% endfor %}
+        </table>
+<!--
             {% recursetree bulk %}
-                <li>
-                    {{ node.name }}
+                <tr>
+                    <td><input type="checkbox" name="node_id" value={{ node.pk }} /></td>
+                    <td><span class="gi">{{ node.level | dash }}</span>{{ node.name }}</td>
                     {% if not node.is_leaf_node %}
-                        <ul class="children">
-                            {{ children }}
-                        </ul>
+                        {{ children }}
                     {% endif %}
-                </li>
-            {% endrecursetree %}
-        </ul>
+                </tr>
+            {% endrecursetree %}  -->
+        
     </div>
 </div>
 

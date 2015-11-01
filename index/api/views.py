@@ -1,7 +1,8 @@
 # -*- coding:utf-8 -*-
 import time
+import json
 from django.http import JsonResponse, HttpResponse
-from index.models import City, Summary, CartridgeItem
+from index.models import City, Summary, CartridgeItem, OrganizationUnits
 from index.helpers import check_ajax_auth
 
 @check_ajax_auth
@@ -43,3 +44,16 @@ def upd_dashboard_tbl(request):
 	m1.save()
 	work_time = time.time() - start_time
 	return HttpResponse(work_time)
+
+@check_ajax_auth
+def del_node(request):
+    """Удаляем нод(у)(ы) из структуры организации
+    """
+    ar = request.POST.getlist('selected[]')
+    ar = [int(i) for i in ar ]
+    le = int(request.POST.get('len', ''))
+    for ind in ar:
+    	node = OrganizationUnits.objects.get(pk=ind)
+    	node.delete()
+    	#OrganizationUnits.objects.move_node(node, target=None)
+    return HttpResponse('Data deleted!')

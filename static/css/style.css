@@ -8,6 +8,18 @@ table th{
 }
 
 
+span.gi {
+    color: #d7d7d7;
+    font-weight: bold;
+    margin-right: 5px;
+}
+
+
+.spinner {
+    margin-left: 10px;
+    display: none;
+
+}
 /*  end global tables */
 
 .login_form {
@@ -219,12 +231,12 @@ a.button.success:active, input[type="submit"].button.success:active {
 
 a.button.alert, input[type="submit"].button.alert {
     color: #282828;
-    background-color: #f04124;
+    background-color: #ff6464;
     border: 1px solid #821B09;
 }
 
 a.button.alert:hover, input[type="submit"].button.alert:hover {
-    background-color: #F2644A;
+    background-color: #ff8787;
     text-decoration: none;
 }
 

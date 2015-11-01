@@ -1,3 +1,27 @@
+
+function getCookie(name) {
+    /* https://docs.djangoproject.com/en/1.8/ref/csrf/ */
+    var cookieValue = null;
+    if (document.cookie && document.cookie != '') {
+        var cookies = document.cookie.split(';');
+        for (var i = 0; i < cookies.length; i++) {
+            var cookie = jQuery.trim(cookies[i]);
+            // Does this cookie string begin with the name we want?
+            if (cookie.substring(0, name.length + 1) == (name + '=')) {
+                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                break;
+            }
+        }
+    }
+    return cookieValue;
+}
+
+function csrfSafeMethod(method) {
+    // these HTTP methods do not require CSRF protection
+    return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
+}
+
+
 $( function(){
     $(".add_items").click( function() {
         ;
@@ -96,6 +120,38 @@ $( function(){
 
     });
 
+    $(".del_node").click( function() {
+        var selected = [];
+        $('.checkboxes input:checked').each(function() {
+            selected.push( $(this).attr('value') );
+        });
+
+        if ( selected.length !== 0 ) {
+            $.ajax({
+                method: "POST",
+                url: "/api/del_node/",
+                data:  {len: selected.length , 'selected[]': selected},
+                beforeSend: function( xhr, settings ){
+                    $('.spinner').css('display', 'inline');
+                    csrftoken = getCookie('csrftoken');
+                    if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
+                        xhr.setRequestHeader("X-CSRFToken", csrftoken);
+                    }
+                }  
+            }).done(function( msg ) {
+                $('.spinner').css('display', 'none');
+
+                window.location.href = "/tree_list/";
+                //alert( "Data Saved: " + msg );
+            });
+            //var sids = selected.join(',');
+            //alert(JSON.stringify(selected));
+            //var loc = "/del_firm/?select=" + get_path;
+            //window.location.href = loc;
+        }
+
+    });
+
 
     var getUrlParameter = function getUrlParameter(sParam) {
         /*
@@ -132,5 +188,7 @@ $( function(){
         window.location.href = loc;
 
     });
+
+
 
 });

@@ -115,16 +115,18 @@ def tree_list(request):
                 rock = OrganizationUnits.objects.create(name=org_name)
         
         if uid != 0:
-            rn = OrganizationUnits.objects.root_node(uid)
-            for node in rn.get_children():
-                if node == org_name:
-                    error1 = 'Организационная единица %s уже существует' % (org_name,)
-                    break
-            else:
-                rn = OrganizationUnits.objects.root_node(uid)
-                OrganizationUnits.objects.create(name=org_name, parent=rn)        
+            temp_name = OrganizationUnits.objects.get(pk=uid)
+            if temp_name.is_root_node():
+                OrganizationUnits.objects.create(name=org_name, parent=temp_name)
+            else:    
+                for node in temp_name.get_children():
+                    if node == org_name:
+                        error1 = 'Организационная единица %s уже существует' % (org_name,)
+                        break
+                else:
+                    rn = OrganizationUnits.objects.get(pk=uid)
+                    OrganizationUnits.objects.create(name=org_name, parent=rn)        
             
-    
     bulk = OrganizationUnits.objects.all()
     return render(request, 'index/tree_list.html', {'bulk': bulk, 'error1': error1})
 

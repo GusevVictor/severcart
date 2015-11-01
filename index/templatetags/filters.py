@@ -11,6 +11,13 @@ def nbsp(value):
     return mark_safe(tmp)
 
 
+@register.filter()
+def dash(value):
+    tmp = ''
+    for i in range(value):
+        tmp += '|—'
+    return mark_safe(tmp)
+
 @register.filter
 def get_range(value):
   """

@@ -88,7 +88,6 @@ def check_ajax_auth(any_views):
 	def wrapper(*args, **argv):
 		req = args[0]
 		sid = req.session.session_key
-
 		# если сессионная переменная пуста или 
 		if not sid:
 			return HttpResponse('<h1>You not auth!</h1>', status=401)
@@ -98,6 +97,7 @@ def check_ajax_auth(any_views):
 		uid = session_data.get('_auth_user_id')		
 		try:
 			user = AnconUser.objects.get(pk=uid)
+
 		except: 
 			return HttpResponse('<h1>You not auth!</h1>', status=401)
 
