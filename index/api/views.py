@@ -5,6 +5,9 @@ from django.http import JsonResponse, HttpResponse
 from index.models import City, Summary, CartridgeItem, OrganizationUnits
 from index.helpers import check_ajax_auth
 
+import logging
+logger = logging.getLogger(__name__)
+
 @check_ajax_auth
 def city_list(request):
     """Возвращает список городов полученных из базы в ввиде json.

@@ -25,6 +25,10 @@ from .models import Summary
 from .helpers import recursiveChildren, check_ajax_auth
 from .helpers import Dashboard
 
+# import logging
+# logger = logging.getLogger('simp')
+# logger.debug('Простой лог')
+
 def dashboard(request):
     """Морда сайта. Отображает текущее состояние всего, что считаем.
     """
@@ -33,7 +37,6 @@ def dashboard(request):
     context['empty_on_stock'] = Summary.objects.get(pk=1).empty_on_stock
     context['uses'] = Summary.objects.get(pk=1).uses
     context['filled']  = Summary.objects.get(pk=1).filled
-
     return render(request, 'index/dashboard.html', context)
 
 def stock(request):
@@ -421,7 +424,6 @@ def manage_users(request):
     except EmptyPage:
         urs = paginator.page(paginator.num_pages)
 
-    print('urs=', urs)
     return render(request, 'index/manage_users.html', {'urs': urs})
 
 def at_work(request):

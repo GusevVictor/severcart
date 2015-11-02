@@ -4,3 +4,5 @@ pgsql94/
 __pycache__/
 
 issue_tracker.txt
+
+logs/
