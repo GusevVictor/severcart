@@ -13,6 +13,7 @@
     <script src="{% static "js/superfish.min.js" %}"></script>
     <script src="{% static "js/activatesuperfish.js" %}"></script>
     <!-- Other JS plugins can be included here -->
+    {% block jqueryui %}{% endblock %}
     <script src="{{ STATIC_URL }}js/logic.js?28"></script>
     <title>{% block title %}{% endblock %}</title>
 </head>

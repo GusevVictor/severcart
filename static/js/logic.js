@@ -144,10 +144,7 @@ $( function(){
                 window.location.href = "/tree_list/";
                 //alert( "Data Saved: " + msg );
             });
-            //var sids = selected.join(',');
-            //alert(JSON.stringify(selected));
-            //var loc = "/del_firm/?select=" + get_path;
-            //window.location.href = loc;
+            
         }
 
     });

@@ -5,6 +5,7 @@ from django.core.urlresolvers import reverse
 from django.contrib.auth import login as django_login, authenticate, logout as django_logout
 from .forms.authenticate import AuthenticationForm
 from .forms.register import RegistrationForm
+from accounts.models import AnconUser
 
 
 def login(request):
@@ -56,7 +57,10 @@ def edit(request):
 
 def delete(request):
     """
-
     """
-
-    return redirect('/')
+    ar = request.POST.getlist('selected[]')
+    ar = [int(i) for i in ar ]
+    for ind in ar:
+        usr = AnconUser.objects.get(pk=ind)
+        usr.delete()
+    return HttpResponse('User(s) deleted!')

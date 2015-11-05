@@ -45,16 +45,6 @@
                 </tr>
             {% endfor %}
         </table>
-<!--
-            {% recursetree bulk %}
-                <tr>
-                    <td><input type="checkbox" name="node_id" value={{ node.pk }} /></td>
-                    <td><span class="gi">{{ node.level | dash }}</span>{{ node.name }}</td>
-                    {% if not node.is_leaf_node %}
-                        {{ children }}
-                    {% endif %}
-                </tr>
-            {% endrecursetree %}  -->
         
     </div>
 </div>

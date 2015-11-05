@@ -6,7 +6,12 @@
     <form action="" method="POST">
         {% csrf_token %}
         {{ form.as_p }}
-        <input type="submit" value="Зарегистрировать" />
+        <div class="row">
+        	<div class="large-6 columns">
+        		<input type="submit" value="Зарегистрировать" class="button success" />&nbsp;&nbsp;&nbsp;
+        		<a href="{% url 'auth:manage_users' %}" class="button">Отменить</a>
+        	</div>
+        </div>
     </form>
     </div>
 </div>

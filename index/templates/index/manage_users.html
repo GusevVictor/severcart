@@ -1,5 +1,13 @@
 {% extends "index/base.html" %}
 {% load pagination  %}
+{% load staticfiles %}
+{% block jqueryui%}
+    <link rel="stylesheet" href="{% static 'css/jquery-ui.css' %}" />
+    <script src="{% static 'js/jquery-ui.js' %}"></script>
+    <script src="{% static 'js/dialog.js' %}"></script>
+{% endblock %}
+
+
 {% block title %}Управление пользователями{% endblock %}
 {% block content %}
     <div class="row">
@@ -11,7 +19,7 @@
         <div class="large-12 columns">
             <a class="add_user button" href="{% url 'accounts:register' %}">Добавить</a>
             <a class="edit_user button" href="{% url 'accounts:edit' %}">Редактировать</a>
-            <a class="del_user button" href="{% url 'accounts:del' %}">Удалить</a>
+            <a class="del_user button" href="#">Удалить</a>
         </div>
     </div>
     <div class="row">
@@ -26,13 +34,23 @@
                         <th>Пользователь</th>
                         <th>Логин</th>
                         <th>Организация</th>
+                        <th>Админ?</th>
                     </tr>
                     {% for i in urs %}
                         <tr>
                             <td><input type="checkbox" value="{{ i.id }}"></td>
                             <td>{{ i.last_name }} {{i.first_name }} {{ i.patronymic }}</td>
                             <td>{{ i.username }}</td>
-                            <td>{{ i.departament }}</td>
+                            {% if i.department %}
+                                <td>{{ i.department }}</td>
+                            {% else %}
+                                <td>&nbsp;&nbsp;&nbsp;</td>
+                            {% endif %}
+                            {% if i.is_admin %}
+                                <td>Да</td>
+                            {% else %}
+                                <td>Нет</td>
+                            {% endif %}
                         </tr>
                     {% endfor %}
                 </form>
@@ -42,6 +60,12 @@
     </div>
 
     {% found_pagination urs %}
+
+    <div class="dialog-confirm" title="Точно удалить?">
+        <p><span class="ui-icon ui-icon-alert" style="float:left; margin:0 7px 20px 0;"></span>
+        Вы уверены, что хотите удалить пользователя?
+        </p>
+    </div>
 
 {% endblock %}
 
