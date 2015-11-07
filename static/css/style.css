@@ -2,6 +2,10 @@
     margin-top:15px;
 }
 
+.marginBot {
+    margin-bottom: 15px;
+}
+
 /* Global tables */
 table th{
     text-align: left;
@@ -122,6 +126,23 @@ ul.errorlist {
     margin-top: -10px;
 }
 
+.errorlog {
+    padding:15px;
+    display: none;
+}
+
+.errorlog.success {
+    border:2px solid #60C185;
+    color:#60C185;
+    display: block;
+}
+
+.errorlog.error {
+    border: 2px solid #ff6464;
+    color: #ff6464;
+    display: block;
+}
+
 /* ---- Forms decorating ----- */
 
 form.dancon select {
@@ -177,7 +198,7 @@ form.dancon input[type="text"]{
     border: 1px solid green;
 }
 
-a.button, input[type="submit"].button {   
+a.button, input[type="submit"].button, button.button {   
 	outline:0;
 	padding: 0 10px;
 	color: #282828;
@@ -205,7 +226,7 @@ a.button:hover, input[type="submit"].button:hover {
     text-decoration: none;
 }
 
-a.button:active, input[type="submit"].button:active {
+a.button:active, input[type="submit"].button:active, {
     box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.2);
     background: #afafaf;
     border: 1px solid #a8a8a8;
