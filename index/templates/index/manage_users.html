@@ -6,15 +6,9 @@
     <script src="{% static 'js/jquery-ui.js' %}"></script>
     <script src="{% static 'js/dialog.js' %}"></script>
 {% endblock %}
-
-
 {% block title %}Управление пользователями{% endblock %}
+{% block h3 %}Управление пользователями{% endblock %}
 {% block content %}
-    <div class="row">
-        <div class="large-6 columns">
-            <h3>Управление пользователями</h3>
-        </div>
-    </div>
     <div class="row">
         <div class="large-6 columns">
             <a class="add_user button" href="{% url 'accounts:register' %}">Добавить</a>

@@ -6,6 +6,11 @@
     margin-bottom: 15px;
 }
 
+.login-string {
+    text-align: right;
+    line-height: 25px;
+}
+
 /* Global tables */
 table th{
     text-align: left;

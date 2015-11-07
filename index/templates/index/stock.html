@@ -1,49 +1,45 @@
 {% extends "index/base.html" %}
 {% load pagination  %}
 {% block title %}Наличие материальных запасов{% endblock %}
+{% block h3 %}Список новых или заправленных{% endblock %}
 {% block content %}
-    <div class="row">
-        <div class="large-12 columns">
-            <h3>Список новых или заправленных</h3>
-        </div>
+<div class="row">
+    <div class="large-12 columns">
+        <a class="add_items button success" href="{% url 'add_items' %}">Добавить расходники</a>
+        <a class="tr_for_use button" href="#">Передать в пользование</a>
+        <a class="tr_to_recycle_bin button alert" href="#">В корзину</a>
     </div>
-    <div class="row">
-        <div class="large-12 columns">
-            <a class="add_items button success" href="{% url 'add_items' %}">Добавить расходники</a>
-            <a class="tr_for_use button" href="#">Передать в пользование</a>
-            <a class="tr_to_recycle_bin button alert" href="#">В корзину</a>
-        </div>
-    </div>
-    <div class="row">
-        <div class="large-12 columns marginTop"></div>
-    </div>
-    <div class="row">
-        <div class="large-12 columns">
-            <table class="checkboxes">
-                <form>
+</div>
+<div class="row">
+    <div class="large-12 columns marginTop"></div>
+</div>
+<div class="row">
+    <div class="large-12 columns">
+        <table class="checkboxes">
+            <form>
+                <tr>
+                    <th>&nbsp;</th>
+                    <th>Номер</th>
+                    <th>Наименование</th>
+                    <th>Кол-во перезаправок</th>
+                    <th>Дата добавления</th>
+                </tr>
+                {% for i in cartrjs %}
                     <tr>
-                        <th>&nbsp;</th>
-                        <th>Номер</th>
-                        <th>Наименование</th>
-                        <th>Кол-во перезаправок</th>
-                        <th>Дата добавления</th>
+                        <td><input type="checkbox" value="{{ i.id }}"></td>
+                        <td>{{ i.id }}</td>
+                        <td>{{ i.cart_itm_name }}</td>
+                        <td>{{ i.cart_number_refills }}</td>
+                        <td>{{ i.cart_date_added }}</td>
                     </tr>
-                    {% for i in cartrjs %}
-                        <tr>
-                            <td><input type="checkbox" value="{{ i.id }}"></td>
-                            <td>{{ i.id }}</td>
-                            <td>{{ i.cart_itm_name }}</td>
-                            <td>{{ i.cart_number_refills }}</td>
-                            <td>{{ i.cart_date_added }}</td>
-                        </tr>
-                    {% endfor %}
-                </form>
-            </table>
+                {% endfor %}
+            </form>
+        </table>
 
-        </div>
     </div>
+</div>
 
-    {% found_pagination cartrjs  %}
+{% found_pagination cartrjs  %}
 
 {% endblock %}
 

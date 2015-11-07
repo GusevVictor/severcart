@@ -1,56 +1,57 @@
 {% extends "index/base.html" %}
 {% load pagination %}
 {% block title %}Фирмы занимающиеся заправкой расходников{% endblock %}
+{% block h3 %}Обслуживающие фирмы{% endblock %}
 {% block content %}
-    <div class="row">
-        <div class="large-8 columns">
-            <a class="add_firm button success" href="/add_firm/">Добавить фирму</a>
-            <a class="add_city button" href="/add_city/">Добавить город</a>
-            <a class="edit_firm button" href="#">Редактировать</a>
-            <a class="del_firm button alert" href="#">Удалить фирму</a>
-        </div>
+<div class="row">
+    <div class="large-8 columns">
+        <a class="add_firm button success" href="/add_firm/">Добавить фирму</a>
+        <a class="add_city button" href="/add_city/">Добавить город</a>
+        <a class="edit_firm button" href="#">Редактировать</a>
+        <a class="del_firm button alert" href="#">Удалить фирму</a>
     </div>
-    <div class="row">
-        <div class="large-12 columns marginTop"></div>
-    </div>
-    <div class="row">
-        <div class="large-8 columns">
-            <from>
-                <table class="checkboxes">
+</div>
+<div class="row">
+    <div class="large-12 columns marginTop"></div>
+</div>
+<div class="row">
+    <div class="large-8 columns">
+        <from>
+            <table class="checkboxes">
+                <tr>
+                    <th>&nbsp;&nbsp;&nbsp;</th>
+                    <th>Название</th>
+                    <th>Контакты</th>
+                    <th>Адрес</th>
+                    <th>Комментарии</th>
+                </tr>
+                {% for itm in firms %}
                     <tr>
-                        <th>&nbsp;&nbsp;&nbsp;</th>
-                        <th>Название</th>
-                        <th>Контакты</th>
-                        <th>Адрес</th>
-                        <th>Комментарии</th>
+                        <td><input type="radio" name="firm" value="{{ itm.id }}"></td>
+                        <td>{{ itm.firm_name }}</td>
+                        <td>{{ itm.firm_contacts }}</td>
+                        <td>{{ itm.firm_city }}, {{ itm.firm_address }}</td>
+                        <td>{{ itm.firm_comments }}</td>
                     </tr>
-                    {% for itm in firms %}
-                        <tr>
-                            <td><input type="radio" name="firm" value="{{ itm.id }}"></td>
-                            <td>{{ itm.firm_name }}</td>
-                            <td>{{ itm.firm_contacts }}</td>
-                            <td>{{ itm.firm_city }}, {{ itm.firm_address }}</td>
-                            <td>{{ itm.firm_comments }}</td>
-                        </tr>
-                    {% endfor %}
-                </table>
-            </from>
+                {% endfor %}
+            </table>
+        </from>
+    </div>
+    <div class="large-4 columns">
+        <div class="small-4 columns">
+            <label>Выберите город:</label>
         </div>
-        <div class="large-4 columns">
-            <div class="small-4 columns">
-                <label>Выберите город:</label>
-            </div>
-            <div class="small-8 columns">
-                <select name="city" class="city_selector right">
-                    {% for s in cities %}
-                        <option {% if s.id == select %}selected="selected"{% endif %}
-                                value="{{ s.id }}">{{ s.city_name }}</option>
-                    {% endfor %}
-                </select>
-            </div>
+        <div class="small-8 columns">
+            <select name="city" class="city_selector right">
+                {% for s in cities %}
+                    <option {% if s.id == select %}selected="selected"{% endif %}
+                            value="{{ s.id }}">{{ s.city_name }}</option>
+                {% endfor %}
+            </select>
         </div>
     </div>
+</div>
 
-    {% found_pagination firms %}
+{% found_pagination firms %}
 
 {% endblock %}
