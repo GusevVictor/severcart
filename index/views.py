@@ -22,6 +22,7 @@ from .models import OrganizationUnits
 from .models import City as CityM
 from .models import FirmTonerRefill
 from .models import Summary
+from .models import CartridgeItemName
 from .helpers import recursiveChildren, check_ajax_auth
 from .helpers import Dashboard
 
@@ -61,9 +62,16 @@ def add_cartridge_name(request):
     if request.method == 'POST':
         form_obj = AddCartridgeName(request.POST)
         if form_obj.is_valid():
-            # добавляем новый тип расходного материала
-            form_obj.save()
-            messages.success(request, 'Новое имя успешно добавлено.')
+            data_in_post = form_obj.cleaned_data
+            cart_name = data_in_post.get('cart_itm_name','')
+            cart_name = cart_name.strip()
+            if CartridgeItemName.objects.filter(cart_itm_name__iexact=cart_name):
+                # если имя расходника уже занято
+                messages.error(request, '%s уже существует.' % (cart_name,))
+            else:    
+                # добавляем новый тип расходного материала
+                form_obj.save()
+                messages.success(request, '%s успешно добавлен.' % (cart_name,))
             return HttpResponseRedirect(request.path)
 
     else:
@@ -143,9 +151,15 @@ def add_type(request):
         form_obj = AddCartridgeType(request.POST)
         if form_obj.is_valid():
             data_in_post = form_obj.cleaned_data
-            m1 = CartridgeType(cart_type=data_in_post['cart_type'])
-            m1.save()
-            messages.success(request, 'Новый тип успешно добавлен.')
+            cart_type = data_in_post['cart_type']
+            cart_type = cart_type.strip()
+            if CartridgeType.objects.filter(cart_type__iexact=cart_type):
+                # регистронезвисимый поиск.
+                messages.error(request, 'Новый тип "%s" уже существует!' % (cart_type))
+            else:    
+                m1 = CartridgeType(cart_type=cart_type)
+                m1.save()
+                messages.success(request, 'Новый тип "%s" успешно добавлен.' % (cart_type))
             return HttpResponseRedirect(request.path)
     else:
         form_obj = AddCartridgeType()
