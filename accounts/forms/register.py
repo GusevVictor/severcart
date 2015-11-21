@@ -23,8 +23,7 @@ class RegistrationForm(forms.ModelForm):
 
     class Meta:
         model = AnconUser
-        fields = ['username', 'password1', 'password2', 'last_name', 'first_name', 
-        'patronymic', 'department', 'is_admin']
+        fields = ['username', 'password1', 'password2', 'fio', 'department', 'is_admin']
 
     def clean(self):
         """

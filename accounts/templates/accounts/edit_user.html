@@ -1,0 +1,18 @@
+{% extends "index/base.html" %}
+{% block title %}Регистрация пользователя{% endblock %}
+{% block content %}
+<div class="row">
+    <div class="large-6 columns">
+    <form action="" method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <div class="row">
+        	<div class="large-6 columns">
+        		<input type="submit" value="Сохранить" class="button success" />&nbsp;&nbsp;&nbsp;
+        		<a href="{% url 'auth:manage_users' %}" class="button">Отменить</a>
+        	</div>
+        </div>
+    </form>
+    </div>
+</div>
+{% endblock %}

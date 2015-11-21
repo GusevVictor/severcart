@@ -149,6 +149,17 @@ $( function(){
 
     });
 
+    $('.edit_user').click( function() {
+        var selected = [];
+        $('.checkboxes input:checked').each(function() {
+            selected.push( $(this).attr('value') );
+        });
+
+        if (selected.length == 1) {
+            window.location.href = "/manage_users/edit_user/?id=" + selected[0];
+        }
+    });
+
 
     var getUrlParameter = function getUrlParameter(sParam) {
         /*

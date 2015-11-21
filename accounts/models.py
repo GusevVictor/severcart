@@ -12,10 +12,7 @@ class AnconUser(AbstractBaseUser):
     joined = models.DateTimeField(auto_now_add=True)
     is_active = models.BooleanField(default=True)
     is_admin = models.BooleanField(default=False)
-    first_name = models.CharField('Имя', max_length=256, blank=True, null=True)
-    last_name = models.CharField('Фамилие', max_length=256, blank=True, null=True)
-    patronymic = models.CharField('Отчество', max_length=256, blank=True, null=True)
-
+    fio = models.CharField('Фамилие Имя Отчество', max_length=256, blank=True, null=True)
     USERNAME_FIELD = 'username'
 
     def __str__(self):

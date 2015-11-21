@@ -8,6 +8,7 @@ from django.conf.urls import url
 urlpatterns = [
     url(r'^$', 'index.views.manage_users', name='manage_users'),
     url(r'^add_user/', 'accounts.views.register', name='register'),
+    url(r'^edit_user/', 'accounts.views.edit_user', name='edit_user'),
     url(r'^login/', 'accounts.views.login', name='login'),
     url(r'^logout/', 'accounts.views.logout', name='logout'),
     url(r'^edit/', 'accounts.views.edit', name='edit'),
