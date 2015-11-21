@@ -7,6 +7,8 @@ from .forms.authenticate import AuthenticationForm
 from .forms.register import RegistrationForm
 from accounts.models import AnconUser
 
+import logging
+logger = logging.getLogger('simp')
 
 def login(request):
     """
@@ -60,6 +62,10 @@ def delete(request):
     """
     ar = request.POST.getlist('selected[]')
     ar = [int(i) for i in ar ]
+    logger.debug(request.user.id)
+    if request.user.id in ar:
+        return HttpResponse('Ошибка! Пользователь %s не может удалить сам себя' % (request.user,))
+    
     for ind in ar:
         usr = AnconUser.objects.get(pk=ind)
         usr.delete()

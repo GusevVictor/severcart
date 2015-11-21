@@ -16,11 +16,14 @@ def del_users(request):
     
     usr_name = ''
     usrs_name = []
+    if request.user.id in ar:
+        return HttpResponse('Пользователь %s не может быть удалён.' % (request.user, ), status=501)        
+    
     for ind in ar:
         try:
             usr = AnconUser.objects.get(pk=ind)
         except ObjectDoesNotExist: 
-            HttpResponse('Объект не найден.', status=501)        
+            return HttpResponse('Объект не найден.', status=501)        
         else:
             usr_name = usr.username
             usrs_name.append(usr_name)

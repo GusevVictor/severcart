@@ -65,8 +65,7 @@ $(function() {
                         },
                         error : function(request, status, error) {
                             $('.errorlog').addClass('error').addClass('marginBot');
-                            $('.errorlog').text('Пользователь не может быть удалён. ' +
-                                                request.responseText + ' Код ошибки: ' + request.status);
+                            $('.errorlog').text(request.responseText + ' Код ошибки: ' + request.status);
                         }
                     });
                     $(this).dialog("close");

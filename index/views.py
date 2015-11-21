@@ -26,9 +26,9 @@ from .models import CartridgeItemName
 from .helpers import recursiveChildren, check_ajax_auth
 from .helpers import Dashboard
 
-# import logging
-# logger = logging.getLogger('simp')
-# logger.debug('Простой лог')
+import logging
+logger = logging.getLogger('simp')
+logger.debug('Простой лог')
 
 def dashboard(request):
     """Морда сайта. Отображает текущее состояние всего, что считаем.
@@ -44,7 +44,7 @@ def stock(request):
     """
 
     """
-    all_items = CartridgeItem.objects.filter(cart_owner__isnull=True).filter(cart_filled=True)
+    all_items = CartridgeItem.objects.filter(departament__isnull=True).filter(cart_filled=True)
     paginator = Paginator(all_items, 8)
 
     page = request.GET.get('page')
@@ -86,11 +86,18 @@ def add_cartridge_item(request):
         if form_obj.is_valid():
             # добавляем новый тип расходного материала
             data_in_post = form_obj.cleaned_data
+            # получаем объект текущего пользователя
+            usr = request.user
+            # из объекта usr извлекаем ссылку не его департамент
+            #dept = usr.objects.get('department')
+            dept = usr.department
+            logger.debug(dept)
             for i in range(int(data_in_post['cartCount'])):
                 m1 = CartridgeItem(cart_itm_name=data_in_post['cartName'],
                                    cart_date_added=timezone.now(),
                                    cart_filled=True,
                                    cart_number_refills=0,
+                                   department=dept,
                                    )
 
                 m1.save()
@@ -181,11 +188,12 @@ def transfe_for_use(request):
         checked_cartr = checked_cartr[1:-1]
         
 
-    tree = Category()
-    get = lambda node_id: Category.objects.get(pk=node_id)
-    bulk = []
-    for itm in tree.dump_bulk():
-        bulk.extend(recursiveChildren(itm))
+    tree = OrganizationUnits()
+    get = lambda node_id: OrganizationUnits.objects.get(pk=node_id)
+    #bulk = []
+    #for itm in tree.dump_bulk():
+    #    bulk.extend(recursiveChildren(itm))
+    bulk = OrganizationUnits.objects.all()
 
     if request.method == 'POST':
         data_in_post = request.POST
@@ -194,8 +202,8 @@ def transfe_for_use(request):
 
         for inx in tmp:
             m1 = CartridgeItem.objects.get(pk=inx)
-            m1.cart_owner = get(parent_id)
-            m1.save(update_fields=['cart_owner'])
+            m1.departament = get(parent_id)
+            m1.save(update_fields=['departament'])
         
         dash.tr_cart_to_uses(num=len(tmp)) # срабатывает триггер перемещения едениц
         return HttpResponseRedirect(reverse('stock'))
@@ -218,9 +226,9 @@ def transfer_to_stock(request):
     if request.method == 'POST':
         for inx in tmp:
             m1 = CartridgeItem.objects.get(pk=inx)
-            m1.cart_owner = None
+            m1.departament = None
             m1.cart_filled = False
-            m1.save(update_fields=['cart_owner', 'cart_filled'])
+            m1.save(update_fields=['departament', 'cart_filled'])
 
         return HttpResponseRedirect("/use/")
     return render(request, 'index/transfer_for_stock.html', {'checked_cartr': checked_cartr})
@@ -230,7 +238,7 @@ def use(request):
     """
 
     """
-    all_items = CartridgeItem.objects.filter(cart_owner__isnull=False)
+    all_items = CartridgeItem.objects.filter(departament__isnull=False)
     return render(request, 'index/use.html', {'cartrjs': all_items})
 
 
@@ -239,7 +247,7 @@ def empty(request):
 
     """
     items = CartridgeItem.objects.filter(filled_firm__isnull=True, 
-                                        cart_owner__isnull=True,
+                                        departament__isnull=True,
                                         cart_filled=False,
                                         )
     return render(request, 'index/empty.html', {'cartrjs': items})
