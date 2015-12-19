@@ -8,6 +8,7 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.core.urlresolvers import reverse
 from django.core.exceptions import MultipleObjectsReturned, ObjectDoesNotExist
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
 from django.contrib.sessions.models import Session
 from .forms.add_cartridge_name import AddCartridgeName
 from .forms.add_items import AddItems
@@ -30,6 +31,8 @@ import logging
 logger = logging.getLogger('simp')
 logger.debug('Простой лог')
 
+
+@login_required
 def dashboard(request):
     """Морда сайта. Отображает текущее состояние всего, что считаем.
     """
@@ -40,6 +43,8 @@ def dashboard(request):
     context['filled']  = Summary.objects.get(pk=1).filled
     return render(request, 'index/dashboard.html', context)
 
+
+@login_required
 def stock(request):
     """
 
@@ -58,6 +63,7 @@ def stock(request):
     return render(request, 'index/stock.html', {'cartrjs': cartridjes})
 
 
+@login_required
 def add_cartridge_name(request):
     if request.method == 'POST':
         form_obj = AddCartridgeName(request.POST)
@@ -79,6 +85,7 @@ def add_cartridge_name(request):
     return render(request, 'index/add_name.html', {'form': form_obj})
 
 
+@login_required
 def add_cartridge_item(request):
     dash = Dashboard()
     if request.method == 'POST':
@@ -110,6 +117,7 @@ def add_cartridge_item(request):
     return render(request, 'index/add_items.html', {'form': form_obj})
 
 
+@login_required
 def tree_list(request):
     """Работаем с структурой организации
     """
@@ -149,7 +157,7 @@ def tree_list(request):
     return render(request, 'index/tree_list.html', {'bulk': bulk, 'error1': error1})
 
 
-
+@login_required
 def add_type(request):
     """
 
@@ -173,6 +181,7 @@ def add_type(request):
     return render(request, 'index/add_type.html', {'form': form_obj})
 
 
+@login_required
 def transfe_for_use(request):
     """
 
@@ -210,6 +219,7 @@ def transfe_for_use(request):
     return render(request, 'index/transfe_for_use.html', {'checked_cartr': checked_cartr, 'bulk': bulk})
 
 
+@login_required
 def transfer_to_stock(request):
     """
 
@@ -234,6 +244,7 @@ def transfer_to_stock(request):
     return render(request, 'index/transfer_for_stock.html', {'checked_cartr': checked_cartr})
 
 
+@login_required
 def use(request):
     """
 
@@ -242,6 +253,7 @@ def use(request):
     return render(request, 'index/use.html', {'cartrjs': all_items})
 
 
+@login_required
 def empty(request):
     """
 
@@ -253,6 +265,7 @@ def empty(request):
     return render(request, 'index/empty.html', {'cartrjs': items})
 
 
+@login_required
 def toner_refill(request):
     """
 
@@ -309,6 +322,7 @@ def toner_refill(request):
                                                        })
 
 
+@login_required
 def add_city(request):
     """
 
@@ -325,6 +339,7 @@ def add_city(request):
     return render(request, 'index/add_city.html', {'form': form_obj})
 
 
+@login_required
 def add_firm(request):
     """
 
@@ -346,6 +361,7 @@ def add_firm(request):
     return render(request, 'index/add_firm.html', {'form': form_obj})
 
 
+@login_required
 def edit_firm(request):
     """
 
@@ -393,6 +409,7 @@ def edit_firm(request):
     return render(request, 'index/edit_firm.html', {'firm': firm, 'form': form_obj})
 
 
+@login_required
 def del_firm(request):
     """
 
@@ -430,6 +447,7 @@ def del_firm(request):
     return render(request, 'index/del_firm.html', {'firm': firm})
 
 
+@login_required
 def manage_users(request):
     """
 
@@ -448,6 +466,8 @@ def manage_users(request):
 
     return render(request, 'index/manage_users.html', {'urs': urs})
 
+
+@login_required
 def at_work(request):
     """Список картриджей находящихся на заправке.
     """
@@ -466,6 +486,7 @@ def at_work(request):
 
 
 
+@login_required
 def transfer_to_firm(request):
     """Передача расходных материалов на заправку.
     """
@@ -507,6 +528,8 @@ def transfer_to_firm(request):
                                                             'firms' : firms, 
                                                             })
 
+
+@login_required
 def from_firm_to_stock(request):
     """Возврашаем заправленные расходники обратно на базу.
     """

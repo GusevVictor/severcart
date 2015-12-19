@@ -191,3 +191,5 @@ LOGGING = {
 
     },
 }
+
+LOGIN_URL = '/manage_users/login/'
