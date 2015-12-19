@@ -36,11 +36,19 @@ logger.debug('Простой лог')
 def dashboard(request):
     """Морда сайта. Отображает текущее состояние всего, что считаем.
     """
+    row = Summary.objects.filter(departament=request.user.department)
     context = {}
-    context['full_on_stock'] = Summary.objects.get(pk=1).full_on_stock
-    context['empty_on_stock'] = Summary.objects.get(pk=1).empty_on_stock
-    context['uses'] = Summary.objects.get(pk=1).uses
-    context['filled']  = Summary.objects.get(pk=1).filled
+    if row:    
+        row = row[0]
+        context['full_on_stock']  = row.full_on_stock
+        context['empty_on_stock'] = row.empty_on_stock
+        context['uses']           = row.uses
+        context['filled']         = row.filled
+    else:
+        context['full_on_stock']  = 0
+        context['empty_on_stock'] = 0
+        context['uses']           = 0
+        context['filled']         = 0
     return render(request, 'index/dashboard.html', context)
 
 
