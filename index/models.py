@@ -69,6 +69,7 @@ class Summary(models.Model):
     uses = models.IntegerField(default=0)
     filled = models.IntegerField(default=0)
     recycler_bin = models.IntegerField(default=0)
+    departament = models.ForeignKey(OrganizationUnits)
 
 class Events(models.Model):
     """Список событий, использется для статистики и на морде сайта
