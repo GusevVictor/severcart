@@ -57,7 +57,7 @@ def stock(request):
     """
 
     """
-    all_items = CartridgeItem.objects.filter(departament__isnull=True).filter(cart_filled=True)
+    all_items = CartridgeItem.objects.filter(departament=request.user.department).filter(cart_filled=True)
     paginator = Paginator(all_items, 8)
 
     page = request.GET.get('page')
@@ -102,17 +102,12 @@ def add_cartridge_item(request):
             # добавляем новый тип расходного материала
             data_in_post = form_obj.cleaned_data
             # получаем объект текущего пользователя
-            usr = request.user
-            # из объекта usr извлекаем ссылку не его департамент
-            #dept = usr.objects.get('department')
-            dept = usr.department
-            logger.debug(dept)
             for i in range(int(data_in_post['cartCount'])):
                 m1 = CartridgeItem(cart_itm_name=data_in_post['cartName'],
                                    cart_date_added=timezone.now(),
                                    cart_filled=True,
                                    cart_number_refills=0,
-                                   department=dept,
+                                   departament=request.user.department,
                                    )
 
                 m1.save()
@@ -257,7 +252,7 @@ def use(request):
     """
 
     """
-    all_items = CartridgeItem.objects.filter(departament__isnull=False)
+    all_items = CartridgeItem.objects.filter(departament=request.user.department)
     return render(request, 'index/use.html', {'cartrjs': all_items})
 
 
@@ -267,7 +262,7 @@ def empty(request):
 
     """
     items = CartridgeItem.objects.filter(filled_firm__isnull=True, 
-                                        departament__isnull=True,
+                                        departament=request.user.department,
                                         cart_filled=False,
                                         )
     return render(request, 'index/empty.html', {'cartrjs': items})
