@@ -51,7 +51,9 @@ $( function(){
     $(".tr_to_stock").click( function() {
         var selected = [];
         $('.checkboxes input:checked').each(function() {
-            selected.push( $(this).attr('value') );
+            if ($(this).attr('value')) {
+                selected.push( $(this).attr('value') );    
+            }
         });
 
         if ( selected.length !== 0 ) {
@@ -66,7 +68,9 @@ $( function(){
     $(".from_firm_to_stock").click( function() {
         var selected = [];
         $('.checkboxes input:checked').each(function() {
-            selected.push( $(this).attr('value') );
+            if ($(this).attr('value')) {
+                selected.push( $(this).attr('value') );    
+            }
         });
 
         if ( selected.length !== 0 ) {
@@ -81,7 +85,9 @@ $( function(){
     $(".tr_to_firm").click( function() {
         var selected = [];
         $('.checkboxes input:checked').each(function() {
-            selected.push( $(this).attr('value') );
+            if ($(this).attr('value')) {
+                selected.push( $(this).attr('value') );    
+            }
         });
 
         if ( selected.length !== 0 ) {
