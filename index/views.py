@@ -230,7 +230,8 @@ def transfer_to_stock(request):
             m1 = CartridgeItem.objects.get(pk=inx)
             m1.cart_status = 3     # пустой объект на складе
             m1.save(update_fields=['departament', 'cart_status'])
-            dboard.tr_empty_cart_to_stock(num=len(tmp))
+        
+        dboard.tr_empty_cart_to_stock(num=len(tmp))
         return HttpResponseRedirect("/use/")
     return render(request, 'index/transfer_for_stock.html', {'checked_cartr': checked_cartr})
 

@@ -83,8 +83,6 @@ class Dashboard(object):
     def tr_filled_cart_to_stock(self, num=0):
         """Перемещение заправленных картриджей обратно на склад.
         """
-        #print('num=', num)
-        #print('self.filled=',self.filled)
         if num > self.filled:
             raise ValueError('Невозможно забрать больше, чем передано')
         self.full_on_stock = self.full_on_stock + num
