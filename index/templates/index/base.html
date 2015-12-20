@@ -27,7 +27,7 @@
             <h3>{% block h3 %}{% endblock %}</h3>
         </div>
         <div class="large-6 columns right">
-            <p class="login-string">{{ request.user.department }}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ request.user.get_username }}&nbsp;&nbsp;&nbsp;&nbsp;<a href="{% url 'auth:logout' %}">выход</a></p> 
+            <p class="login-string">{{ request.user.departament }}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ request.user.get_username }}&nbsp;&nbsp;&nbsp;&nbsp;<a href="{% url 'auth:logout' %}">выход</a></p> 
         </div>
 </div>
 

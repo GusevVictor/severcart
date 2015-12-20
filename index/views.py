@@ -36,18 +36,20 @@ logger.debug('Простой лог')
 def dashboard(request):
     """Морда сайта. Отображает текущее состояние всего, что считаем.
     """
-    row = Summary.objects.filter(departament=request.user.department)
+    root_ou   = request.user.departament
+    children  = root_ou.get_children()
+    row = Summary.objects.filter(departament=root_ou)
     context = {}
     if row:    
         row = row[0]
         context['full_on_stock']  = row.full_on_stock
-        context['empty_on_stock'] = row.empty_on_stock
         context['uses']           = row.uses
+        context['empty_on_stock'] = row.empty_on_stock
         context['filled']         = row.filled
     else:
         context['full_on_stock']  = 0
-        context['empty_on_stock'] = 0
         context['uses']           = 0
+        context['empty_on_stock'] = 0
         context['filled']         = 0
     return render(request, 'index/dashboard.html', context)
 
@@ -55,9 +57,8 @@ def dashboard(request):
 @login_required
 def stock(request):
     """
-
     """
-    all_items = CartridgeItem.objects.filter(departament=request.user.department).filter(cart_filled=True)
+    all_items = CartridgeItem.objects.filter(departament=request.user.departament).filter(cart_status=1)
     paginator = Paginator(all_items, 8)
 
     page = request.GET.get('page')
@@ -95,7 +96,7 @@ def add_cartridge_name(request):
 
 @login_required
 def add_cartridge_item(request):
-    dash = Dashboard()
+    dboard = Dashboard(request)
     if request.method == 'POST':
         form_obj = AddItems(request.POST)
         if form_obj.is_valid():
@@ -105,13 +106,12 @@ def add_cartridge_item(request):
             for i in range(int(data_in_post['cartCount'])):
                 m1 = CartridgeItem(cart_itm_name=data_in_post['cartName'],
                                    cart_date_added=timezone.now(),
-                                   cart_filled=True,
                                    cart_number_refills=0,
-                                   departament=request.user.department,
+                                   departament=request.user.departament,
                                    )
 
                 m1.save()
-            dash.add_full_to_stock(num=int(data_in_post['cartCount']))
+            dboard.add_full_to_stock(num=int(data_in_post['cartCount']))
             messages.success(request, 'Расходники успешно добавлены.')
             return HttpResponseRedirect(request.path)
 
@@ -191,21 +191,17 @@ def transfe_for_use(request):
     """
     checked_cartr = request.GET.get('select', '')
     tmp = ''
-    dash = Dashboard()
+    dboard = Dashboard(request)
     if checked_cartr:
         checked_cartr = checked_cartr.split('s')
         checked_cartr = [int(i) for i in checked_cartr]
         tmp = checked_cartr
         checked_cartr = str(checked_cartr)
         checked_cartr = checked_cartr[1:-1]
-        
-
-    tree = OrganizationUnits()
+    
     get = lambda node_id: OrganizationUnits.objects.get(pk=node_id)
-    #bulk = []
-    #for itm in tree.dump_bulk():
-    #    bulk.extend(recursiveChildren(itm))
-    bulk = OrganizationUnits.objects.all()
+    root_ou   = request.user.departament
+    children  = root_ou.get_children()
 
     if request.method == 'POST':
         data_in_post = request.POST
@@ -214,12 +210,13 @@ def transfe_for_use(request):
 
         for inx in tmp:
             m1 = CartridgeItem.objects.get(pk=inx)
+            m1.cart_status = 2 # объект находится в пользовании
             m1.departament = get(parent_id)
-            m1.save(update_fields=['departament'])
+            m1.save(update_fields=['departament', 'cart_status'])
         
-        dash.tr_cart_to_uses(num=len(tmp)) # срабатывает триггер перемещения едениц
+        dboard.tr_cart_to_uses(num=len(tmp)) # срабатывает триггер перемещения едениц
         return HttpResponseRedirect(reverse('stock'))
-    return render(request, 'index/transfe_for_use.html', {'checked_cartr': checked_cartr, 'bulk': bulk})
+    return render(request, 'index/transfe_for_use.html', {'checked_cartr': checked_cartr, 'bulk': children})
 
 
 @login_required
@@ -227,6 +224,7 @@ def transfer_to_stock(request):
     """
 
     """
+    dboard = Dashboard(request)
     checked_cartr = request.GET.get('select', '')
     tmp = ''
     if checked_cartr:
@@ -239,31 +237,31 @@ def transfer_to_stock(request):
     if request.method == 'POST':
         for inx in tmp:
             m1 = CartridgeItem.objects.get(pk=inx)
-            m1.departament = None
-            m1.cart_filled = False
-            m1.save(update_fields=['departament', 'cart_filled'])
-
+            m1.cart_status = 3     # пустой объект на складе
+            m1.save(update_fields=['departament', 'cart_status'])
+            dboard.tr_empty_cart_to_stock(num=len(tmp))
         return HttpResponseRedirect("/use/")
     return render(request, 'index/transfer_for_stock.html', {'checked_cartr': checked_cartr})
 
 
 @login_required
 def use(request):
+    """Задействованные расходники.
     """
-
-    """
-    all_items = CartridgeItem.objects.filter(departament=request.user.department)
+    root_ou   = request.user.departament
+    children  = root_ou.get_children()
+    all_items = CartridgeItem.objects.filter(departament__in=children).filter(cart_status=2)
     return render(request, 'index/use.html', {'cartrjs': all_items})
 
 
 @login_required
 def empty(request):
+    """Список пустых картриджей.
     """
-
-    """
-    items = CartridgeItem.objects.filter(filled_firm__isnull=True, 
-                                        departament=request.user.department,
-                                        cart_filled=False,
+    root_ou   = request.user.departament
+    children  = root_ou.get_children()
+    items = CartridgeItem.objects.filter(departament__in=children,
+                                        cart_status=3,
                                         )
     return render(request, 'index/empty.html', {'cartrjs': items})
 
@@ -474,7 +472,7 @@ def manage_users(request):
 def at_work(request):
     """Список картриджей находящихся на заправке.
     """
-    items = CartridgeItem.objects.filter(filled_firm__isnull=False)
+    items = CartridgeItem.objects.filter(cart_status=4)
     
     paginator = Paginator(items, 8)
     page = request.GET.get('page')
@@ -495,14 +493,15 @@ def transfer_to_firm(request):
     """
     checked_cartr = request.GET.get('select', '')
     tmp = ''
-    dash = Dashboard()
+    dboard = Dashboard(request)
     firms = FirmTonerRefill.objects.all()
     if checked_cartr:
         checked_cartr = checked_cartr.split('s')
         checked_cartr = [int(i) for i in checked_cartr]
-        checked_cartr = str(checked_cartr)
-        checked_cartr = checked_cartr[1:-1]
         tmp = checked_cartr
+        checked_cartr = str(checked_cartr)
+        checked_cartr = checked_cartr[1:-1] # убираем угловые скобочки []
+        
     else:
         # если кто-то зашел на страницу не выбрав расходники
         return HttpResponseRedirect(reverse('empty'))        
@@ -523,9 +522,11 @@ def transfer_to_firm(request):
             select_firm = FirmTonerRefill.objects.get(pk=firmid) 
             for inx in tmp:
                 m1 = CartridgeItem.objects.get(pk=inx)
+                m1.cart_status = 4 # находится на заправке
                 m1.filled_firm = select_firm
-                m1.save()
-            dash.tr_cart_to_uses(num=len(tmp))
+                m1.departament = None
+                m1.save(update_fields=['filled_firm', 'cart_status', 'departament'])
+            dboard.tr_empty_cart_to_firm(num=len(tmp))
         return HttpResponseRedirect(reverse('empty'))
     return render(request, 'index/transfer_to_firm.html', {'checked_cartr': checked_cartr, 
                                                             'firms' : firms, 
@@ -538,13 +539,14 @@ def from_firm_to_stock(request):
     """
     checked_cartr = request.GET.get('select', '')
     tmp = ''
-    dash = Dashboard()
+    dboard = Dashboard(request)
     if checked_cartr:
         checked_cartr = checked_cartr.split('s')
         checked_cartr = [int(i) for i in checked_cartr]
+        tmp = checked_cartr
         checked_cartr = str(checked_cartr)
         checked_cartr = checked_cartr[1:-1]
-        tmp = checked_cartr
+        
     else:
         # если кто-то зашел на страницу не выбрав расходники
         return HttpResponseRedirect(reverse('at_work'))        
@@ -553,10 +555,11 @@ def from_firm_to_stock(request):
         for inx in tmp:
             m1 = CartridgeItem.objects.get(pk=inx)
             m1.filled_firm = None
-            m1.cart_filled = True
+            m1.cart_status = 1
+            m1.departament = request.user.departament
             m1.cart_number_refills = int(m1.cart_number_refills) + 1
-            m1.save()
-        dash.tr_cart_to_uses(num=len(tmp))
+            m1.save(update_fields=['filled_firm', 'cart_status', 'cart_number_refills', 'departament'])
+        dboard.tr_filled_cart_to_stock(num=len(tmp))
         return HttpResponseRedirect(reverse('at_work'))
     return render(request, 'index/from_firm_to_stock.html', {'checked_cartr': checked_cartr })
 

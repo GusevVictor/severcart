@@ -52,10 +52,17 @@ class FirmTonerRefill(models.Model):
 
 
 class CartridgeItem(models.Model):
+    STATUS = (
+        (1, 'Full in stock'),
+        (2, 'In use'),
+        (3, 'Empty in stock'),
+        (4, 'Filled in firm'),
+        (5, 'Deleted'),
+    )
     cart_itm_name = models.ForeignKey(CartridgeItemName)
     cart_date_added = models.DateField()
     departament = models.ForeignKey(OrganizationUnits, blank=True, null=True)
-    cart_filled = models.BooleanField()   # логический флаг, сигнализирующий о заполненнности
+    cart_status = models.IntegerField(choices=STATUS, default=1)
     cart_number_refills = models.IntegerField(default=0)
     filled_firm = models.ForeignKey(FirmTonerRefill, null=True)
     node_order_by = ['id']

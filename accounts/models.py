@@ -8,7 +8,7 @@ class AnconUser(AbstractBaseUser):
     Details: http://blackglasses.me/2013/09/17/custom-django-user-model/
     """
     username = models.CharField('Логин', unique=True, db_index=True, max_length=64)
-    department = models.ForeignKey(OrganizationUnits, blank=True, null=True, verbose_name='Организация')
+    departament = models.ForeignKey(OrganizationUnits, blank=True, null=True, verbose_name='Организация')
     joined = models.DateTimeField(auto_now_add=True)
     is_active = models.BooleanField(default=True)
     is_admin = models.BooleanField(default=False)
