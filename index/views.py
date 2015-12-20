@@ -287,16 +287,7 @@ def toner_refill(request):
         firms = FirmTonerRefill.objects.all()
 
     # работаем с пагинацией
-    paginator = Paginator(firms, 10)
-
-    page = request.GET.get('page')
-    try:
-        show_firms = paginator.page(page)
-    except PageNotAnInteger:
-        show_firms = paginator.page(1)
-    except EmptyPage:
-        show_firms = paginator.page(paginator.num_pages)
-
+    firms = sc_paginator(firms, request)
     # завершаем работу с пагинацией
 
     new_list = [{'id': 0, 'city_name': 'Выбрать все'}]
@@ -311,7 +302,7 @@ def toner_refill(request):
         city_url_parametr = '?'
 
     return render(request, 'index/toner_refill.html', {'cities': new_list,
-                                                       'firms': show_firms,
+                                                       'firms': firms,
                                                        'select': city_id,
                                                        'city_url': city_url_parametr
                                                        })
@@ -445,21 +436,10 @@ def del_firm(request):
 @login_required
 def manage_users(request):
     """
-
     """
     usr = AnconUser.objects.all()
-    paginator = Paginator(usr, 8)
-
-    page = request.GET.get('page')
-
-    try:
-        urs = paginator.page(page)
-    except PageNotAnInteger:
-        urs = paginator.page(1)
-    except EmptyPage:
-        urs = paginator.page(paginator.num_pages)
-
-    return render(request, 'index/manage_users.html', {'urs': urs})
+    usr = sc_paginator(usr, request)
+    return render(request, 'index/manage_users.html', {'urs': usr})
 
 
 @login_required

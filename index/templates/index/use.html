@@ -16,14 +16,14 @@
         <table class="checkboxes">
         <form>
         <tr>
-            <th>&nbsp;</th>
+            <th><input type="checkbox" class="check_all"></th>
             <th>Номер</th>
             <th>Наименование</th>
             <th>У кого установлен</th>
         </tr>
         {% for i in cartrjs %}
         <tr>
-            <td><input type="checkbox" value="{{i.id}}"></td>
+            <td><input type="checkbox" class="checkbox" value="{{i.id}}"></td>
             <td>{{ i.id }}</td>
             <td>{{ i.cart_itm_name }}</td>
             <td>{{ i.departament }}</td>

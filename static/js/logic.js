@@ -30,7 +30,9 @@ $( function(){
     $(".tr_for_use").click( function() {
         var selected = [];
         $('.checkboxes input:checked').each(function() {
-            selected.push( $(this).attr('value') );
+            if ($(this).attr('value')) {
+                selected.push( $(this).attr('value') );
+            }
         });
 
         if ( selected.length !== 0 ) {
@@ -197,6 +199,19 @@ $( function(){
 
     });
 
-
+    /* выбор всех чекбоксов при нажатии на чекбокс классом  */
+    $('.check_all').click( function() {
+        var select_checkboxes = $('.checkboxes .checkbox');
+        if ( $('.check_all').prop('checked') ) {
+            select_checkboxes.each(function() {
+                $(this).prop('checked', true);
+            })
+        } else {
+            select_checkboxes.each(function() {
+                $(this).prop('checked', false);
+            })
+        }
+    
+    });    
 
 });
