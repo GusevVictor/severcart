@@ -414,3 +414,8 @@ a img{
 
 /* ---end bad browser ---*/
 
+.izuminka {
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
+}
