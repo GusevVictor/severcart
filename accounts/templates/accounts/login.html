@@ -33,7 +33,8 @@
         <form action="{{ app_path }}" method="post" id="login-form">{% csrf_token %}
             {{ form.as_p }}
             <input type="hidden" name="next" value="{{ next }}"/>
-            <label>&nbsp;</label><input class="button" type="submit" value="Войти"/>
+            <br/>
+            <input class="button" type="submit" value="Войти"/>
         </form>
 
         <script>

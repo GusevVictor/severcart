@@ -18,14 +18,14 @@
                 {% csrf_token %}
                 <label>Что передаём</label>
                 <input name="name" type="text"  value="{{ checked_cartr }}"  readonly/>
-                <label>Кому передаём</label>
+                <label>Какой фирме</label>
                 <select name="firm">
                     <option selected value="0"> </option>
                 {% for etm in firms %}
                     <option value={{ etm.id }}>{{ etm.firm_name }}</option>
                 {% endfor %}
                 </select>
-                <input type="submit" value="Передать на склад" class="button"/>
+                <input type="submit" value="Передать на заправку" class="button"/>
             </form>
         </div>
     </div>
