@@ -1,4 +1,5 @@
 {% extends "index/base.html" %}
+{% load pagination  %}
 {% block title %}Расходники в пользовании{% endblock %}
 {% block h3 %}Расходники в пользовании{% endblock %}
 {% block content %}
@@ -32,4 +33,6 @@
         </table>
     </div>
 </div>
+
+{% found_pagination cartrjs  %}
 {% endblock %}

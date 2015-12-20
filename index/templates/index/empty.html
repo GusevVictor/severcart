@@ -1,6 +1,7 @@
 {% extends "index/base.html" %}
 {% block title %}Пустые расходники{% endblock %}
 {% block h3 %}Пустые расходники{% endblock %}
+{% load pagination  %}
 {% block content %}
 <div class="row">
     <div class="large-12 columns">
@@ -31,6 +32,8 @@
         {% endfor %}
         </form>
         </table>
+        {% found_pagination cartrjs  %}
         {% endblock %}
     </div>
 </div>
+

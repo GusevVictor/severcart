@@ -4,7 +4,6 @@ import json
 from django.shortcuts import render
 from django.http import HttpResponseRedirect, HttpResponse, JsonResponse, Http404
 from django.utils import timezone
-from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.core.urlresolvers import reverse
 from django.core.exceptions import MultipleObjectsReturned, ObjectDoesNotExist
 from django.contrib import messages
@@ -26,6 +25,7 @@ from .models import Summary
 from .models import CartridgeItemName
 from .helpers import recursiveChildren, check_ajax_auth
 from .helpers import Dashboard
+from .sc_paginator import sc_paginator
 
 import logging
 logger = logging.getLogger('simp')
@@ -59,16 +59,7 @@ def stock(request):
     """
     """
     all_items = CartridgeItem.objects.filter(departament=request.user.departament).filter(cart_status=1)
-    paginator = Paginator(all_items, 8)
-
-    page = request.GET.get('page')
-    try:
-        cartridjes = paginator.page(page)
-    except PageNotAnInteger:
-        cartridjes = paginator.page(1)
-    except EmptyPage:
-        cartridjes = paginator.page(paginator.num_pages)
-
+    cartridjes = sc_paginator(all_items, request)
     return render(request, 'index/stock.html', {'cartrjs': cartridjes})
 
 
@@ -251,7 +242,8 @@ def use(request):
     root_ou   = request.user.departament
     children  = root_ou.get_children()
     all_items = CartridgeItem.objects.filter(departament__in=children).filter(cart_status=2)
-    return render(request, 'index/use.html', {'cartrjs': all_items})
+    cartridjes = sc_paginator(all_items, request)
+    return render(request, 'index/use.html', {'cartrjs': cartridjes})
 
 
 @login_required
@@ -263,6 +255,7 @@ def empty(request):
     items = CartridgeItem.objects.filter(departament__in=children,
                                         cart_status=3,
                                         )
+    items = sc_paginator(items, request)
     return render(request, 'index/empty.html', {'cartrjs': items})
 
 
@@ -473,18 +466,8 @@ def at_work(request):
     """Список картриджей находящихся на заправке.
     """
     items = CartridgeItem.objects.filter(cart_status=4)
-    
-    paginator = Paginator(items, 8)
-    page = request.GET.get('page')
-    try:
-        cartridjes = paginator.page(page)
-    except PageNotAnInteger:
-        cartridjes = paginator.page(1)
-    except EmptyPage:
-        cartridjes = paginator.page(paginator.num_pages)
-
+    items = sc_paginator(items, request)
     return render(request, 'index/at_work.html', {'cartrjs': items})
-
 
 
 @login_required
