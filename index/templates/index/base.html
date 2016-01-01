@@ -14,7 +14,7 @@
     <script src="{{ STATIC_URL }}js/activatesuperfish.js?3"></script>
     <!-- Other JS plugins can be included here -->
     {% block jqueryui %}{% endblock %}
-    <script src="{{ STATIC_URL }}js/logic.js?34"></script>
+    <script src="{{ STATIC_URL }}js/logic.js?45"></script>
     <title>{% block title %}{% endblock %}</title>
 </head>
 <body>
@@ -27,16 +27,17 @@
             <h3>{% block h3 %}{% endblock %}</h3>
         </div>
         <div class="large-6 columns right">
-            <p class="login-string">{{ request.user.departament }}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ request.user.get_username }}&nbsp;&nbsp;&nbsp;&nbsp;<a href="{% url 'auth:logout' %}">выход</a></p> 
+            <p class="login-string">
+                <span class="user_ou">{% if request.user.departament %}request.user.departament{% endif %}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ request.user.get_username }}&nbsp;&nbsp;&nbsp;&nbsp;<a href="{% url 'auth:logout' %}">выход</a></p> 
         </div>
 </div>
 
 {% block content %}{% endblock %}
 <div class="row">
     <div class="large-12 columns text-center"><hr />
-        Салехард &copy; 2015 год
+        Салехард &copy; 2016 год
     </div>
-    <div class="large-12 columns text-left">v. 0.0.1</div>
+    <div class="large-12 columns text-left">v. 0.0.5</div>
 </div>
 </body>
 </html>

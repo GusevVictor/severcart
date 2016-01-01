@@ -23,8 +23,18 @@ function csrfSafeMethod(method) {
 
 
 $( function(){
-    $(".add_items").click( function() {
-        ;
+    $('.add_items').click( function(e) {
+        /* Выполняем проверку на принадлежность орг. юниту*/
+        var user_ou = $('.user_ou').text();
+        if (user_ou.length == 0) {
+            $('.error_msg').css('display', 'block');
+            $('.error_msg').text('Не определена принадлежность пользователя организации!');
+            e.preventDefault(); // отменяем переход по ссылке
+            setTimeout(function() { $('.error_msg').css('display', 'none'); }, 15000);
+        } else {
+            window.location.href = "/add_items/";
+        }
+
     });
 
     $(".tr_for_use").click( function() {

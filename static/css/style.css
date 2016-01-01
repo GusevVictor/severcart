@@ -15,6 +15,24 @@ html, body {
     line-height: 25px;
 }
 
+.error_msg {
+    display: none;
+    color: #ff6464;
+    border: 2px solid #ff6464;
+}
+
+.success_msg {
+    display: none;
+    color: #7BCC9A;
+    border: 2px solid #7BCC9A;
+}
+
+.error_msg, .success_msg {
+    padding: 10px;
+    margin: 10px 0 10px;
+}
+
+
 /* Global tables */
 table th{
     text-align: left;

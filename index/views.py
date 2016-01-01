@@ -36,8 +36,11 @@ logger.debug('Простой лог')
 def dashboard(request):
     """Морда сайта. Отображает текущее состояние всего, что считаем.
     """
-    root_ou   = request.user.departament
-    children  = root_ou.get_children()
+    try:
+        root_ou   = request.user.departament
+        children  = root_ou.get_children()
+    except AttributeError:
+        children = ''
     row = Summary.objects.filter(departament=root_ou)
     context = {}
     if row:    
@@ -240,8 +243,11 @@ def transfer_to_stock(request):
 def use(request):
     """Задействованные расходники.
     """
-    root_ou   = request.user.departament
-    children  = root_ou.get_children()
+    try:
+        root_ou   = request.user.departament
+        children  = root_ou.get_children()
+    except AttributeError:
+        children = ''
     all_items = CartridgeItem.objects.filter(departament__in=children).filter(cart_status=2)
     cartridjes = sc_paginator(all_items, request)
     return render(request, 'index/use.html', {'cartrjs': cartridjes})
@@ -251,8 +257,11 @@ def use(request):
 def empty(request):
     """Список пустых картриджей.
     """
-    root_ou   = request.user.departament
-    children  = root_ou.get_children()
+    try:
+        root_ou   = request.user.departament
+        children  = root_ou.get_children()
+    except AttributeError:
+        children = '' 
     items = CartridgeItem.objects.filter(departament__in=children,
                                         cart_status=3,
                                         )

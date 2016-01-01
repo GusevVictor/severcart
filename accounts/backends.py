@@ -1,5 +1,6 @@
 from django.conf import settings
-from django.contrib.auth.models import check_password
+from django.contrib.auth.password_validation import validate_password
+from django.core.exceptions import ValidationError
 from accounts.models import AnconUser
 
 
@@ -14,9 +15,9 @@ class UserAuthBackend(object):
         """
         try:
             user = AnconUser.objects.get(username=username)
-            if user.check_password(password):
+            if not validate_password(password, user=user):
                 return user
-        except AnconUser.DoesNotExist:
+        except ValidationError:
             return None
 
     def get_user(self, user_id):
