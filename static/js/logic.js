@@ -55,7 +55,18 @@ $( function(){
     });
 
     $(".tr_to_recycle_bin").click( function() {
-        console.log('Утилизируем');
+        var selected = [];
+        $('.checkboxes input:checked').each(function() {
+            if ($(this).attr('value')) {
+                selected.push( $(this).attr('value') );
+            }
+        });
+
+        if ( selected.length !== 0 ) {
+            var get_path = selected.join('s')
+            var loc = "/transfe_full_to_basket/?select=" + get_path;
+            window.location.href = loc;
+        }
     });
 
     $(".tr_to_stock").click( function() {

@@ -1,0 +1,39 @@
+{% extends "index/base.html" %}
+{% load pagination  %}
+{% block title %}Кариджи на заправке{% endblock %}
+{% block h3 %}Кариджи на заправке{% endblock %}
+{% block content %}
+    <div class="row">
+        <div class="large-12 columns">
+            <a class="from_firm_to_stock button" href="#">Вернуть на склад</a>
+            <a class="delete_from_stock button alert" href="#">Выбросить</a>
+        </div>
+    </div>
+    <div class="row">
+        <div class="large-12 columns marginTop"></div>
+    </div>
+    <div class="row">
+        <div class="large-12 columns">
+            <table class="checkboxes">
+                <form>
+                    <tr>
+                        <th><input type="checkbox" class="check_all"></th>
+                        <th>Номер</th>
+                        <th>Наименование</th>
+                    </tr>
+                    {% for i in cartrjs %}
+                        <tr>
+                            <td><input type="checkbox" class="checkbox" value="{{ i.id }}"></td>
+                            <td>{{ i.id }}</td>
+                            <td>{{ i.cart_itm_name }}</td>
+                        </tr>
+                    {% endfor %}
+                </form>
+            </table>
+
+        </div>
+    </div>
+
+    {% found_pagination cartrjs  %}
+
+{% endblock %}

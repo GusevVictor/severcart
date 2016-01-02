@@ -35,6 +35,7 @@ class Dashboard(object):
         self.empty_on_stock = self.m1.empty_on_stock
         self.uses           = self.m1.uses
         self.filled         = self.m1.filled
+        self.recycler_bin   = self.m1.recycler_bin
         
 
     def add_full_to_stock(self,num=0):
@@ -91,6 +92,19 @@ class Dashboard(object):
         self.m1.filled = self.filled
         self.m1.save(update_fields=['filled', 'full_on_stock'])      
 
+    def tr_full_stock_to_basket(self, num=0):
+        """Перемещаем заполненные картриджи в корзину. 
+        """
+        self.full_on_stock    = self.full_on_stock - num
+        self.recycler_bin     = self.recycler_bin  + num
+        self.m1.full_on_stock = self.full_on_stock
+        self.m1.recycler_bin  = self.recycler_bin
+        self.m1.save(update_fields=['recycler_bin', 'full_on_stock'])
+
+    def tr_empty_stock_to_basket(self, num=0):
+        """Перемещаем пустые картриджи в корзину.
+        """
+        pass
 
 def check_ajax_auth(any_views):
     """

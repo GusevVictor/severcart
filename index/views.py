@@ -49,11 +49,13 @@ def dashboard(request):
         context['uses']           = row.uses
         context['empty_on_stock'] = row.empty_on_stock
         context['filled']         = row.filled
+        context['recycler_bin']   = row.recycler_bin
     else:
         context['full_on_stock']  = 0
         context['uses']           = 0
         context['empty_on_stock'] = 0
         context['filled']         = 0
+        context['recycler_bin']   = 0
     return render(request, 'index/dashboard.html', context)
 
 
@@ -458,6 +460,40 @@ def at_work(request):
     items = CartridgeItem.objects.filter(cart_status=4)
     items = sc_paginator(items, request)
     return render(request, 'index/at_work.html', {'cartrjs': items})
+
+
+@login_required
+def basket(request):
+    """Список картриджей на выброс.
+    """
+    items = CartridgeItem.objects.filter(cart_status=5)
+    items = sc_paginator(items, request)
+    return render(request, 'index/basket.html', {'cartrjs': items})
+
+
+@login_required
+def transfe_full_to_basket(request):
+    """Перемещаем расходники в корзинку.
+    """
+    checked_cartr = request.GET.get('select', '')
+    tmp = ''
+    dboard = Dashboard(request)
+    if checked_cartr:
+        checked_cartr = checked_cartr.split('s')
+        checked_cartr = [int(i) for i in checked_cartr]
+        tmp = checked_cartr
+        checked_cartr = str(checked_cartr)
+        checked_cartr = checked_cartr[1:-1]
+    
+    if request.method == 'POST':
+        for inx in tmp:
+            m1 = CartridgeItem.objects.get(pk=inx)
+            m1.cart_status = 5  # в корзинку картриджи  
+            m1.save(update_fields=['cart_status'])
+        
+        dboard.tr_full_stock_to_basket(num=len(tmp))
+        return HttpResponseRedirect(reverse('stock'))
+    return render(request, 'index/transfe_full_to_basket.html', {'checked_cartr': checked_cartr})
 
 
 @login_required
