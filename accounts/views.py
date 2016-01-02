@@ -45,6 +45,7 @@ def edit_user(request):
     """
     if request.method == 'POST':
         form = RegistrationForm(data=request.POST)
+
         if form.is_valid():
             user = form.save()
             return redirect(reverse('accounts:manage_users'))
@@ -61,8 +62,16 @@ def edit_user(request):
             raise Http404
         
         username = user_object.username
-        department = user_object.department
-        fio = user_object.fio
+        try:
+            department = user_object.department
+        except AttributeError:
+            department = ''    
+        
+        try:
+            fio = user_object.fio
+        except AttributeError:
+            fio = ''
+
         is_admin = user_object.is_admin
         form = RegistrationForm(initial = {'username': username,
                                            'department': department,

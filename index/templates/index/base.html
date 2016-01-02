@@ -28,7 +28,7 @@
         </div>
         <div class="large-6 columns right">
             <p class="login-string">
-                <span class="user_ou">{% if request.user.departament %}request.user.departament{% endif %}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ request.user.get_username }}&nbsp;&nbsp;&nbsp;&nbsp;<a href="{% url 'auth:logout' %}">выход</a></p> 
+                <span class="user_ou">{% if request.user.departament %}{{request.user.departament}}{% endif %}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ request.user.get_username }}&nbsp;&nbsp;&nbsp;&nbsp;<a href="{% url 'auth:logout' %}">выход</a></p> 
         </div>
 </div>
 
