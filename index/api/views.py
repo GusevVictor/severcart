@@ -3,7 +3,7 @@ import time
 import json
 from django.http import JsonResponse, HttpResponse
 from index.models import City, Summary, CartridgeItem, OrganizationUnits
-from index.helpers import check_ajax_auth
+from index.helpers import check_ajax_auth, Dashboard
 
 import logging
 logger = logging.getLogger(__name__)
@@ -58,5 +58,19 @@ def del_node(request):
     for ind in ar:
     	node = OrganizationUnits.objects.get(pk=ind)
     	node.delete()
-    	#OrganizationUnits.objects.move_node(node, target=None)
     return HttpResponse('Data deleted!')
+
+
+@check_ajax_auth
+def turf_cartridge(request):
+    """Безвозвратное удаление картриджа из БД.
+    """
+    ar = request.POST.getlist('selected[]')
+    ar = [int(i) for i in ar ]
+    for ind in ar:
+        node = CartridgeItem.objects.get(pk=ind)
+        node.delete()
+
+    dboard = Dashboard(request)
+    dboard.clear_basket(len(ar))
+    return HttpResponse('Cartridjes deleted!')

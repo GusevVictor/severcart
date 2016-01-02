@@ -12,6 +12,7 @@ urlpatterns = [
     url(r'^transfer_to_firm/', 'index.views.transfer_to_firm', name='transfer_to_firm'),
     url(r'^from_firm_to_stock/', 'index.views.from_firm_to_stock', name='from_firm_to_stock'),
     url(r'^transfe_full_to_basket/', 'index.views.transfe_full_to_basket', name='transfe_full_to_basket'),
+    url(r'^from_basket_to_stock/', 'index.views.from_basket_to_stock', name='from_basket_to_stock'),
     url(r'^at_work/', 'index.views.at_work', name='at_work'),
     url(r'^use/', 'index.views.use', name='use'),
     url(r'^empty/', 'index.views.empty', name='empty'),

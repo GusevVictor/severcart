@@ -32,12 +32,12 @@ $( function(){
             e.preventDefault(); // отменяем переход по ссылке
             setTimeout(function() { $('.error_msg').css('display', 'none'); }, 15000);
         } else {
-            window.location.href = "/add_items/";
+            window.location.href = '/add_items/';
         }
 
     });
 
-    $(".tr_for_use").click( function() {
+    $('.tr_for_use').click( function() {
         var selected = [];
         $('.checkboxes input:checked').each(function() {
             if ($(this).attr('value')) {
@@ -47,14 +47,14 @@ $( function(){
 
         if ( selected.length !== 0 ) {
             var get_path = selected.join('s')
-            var loc = "/transfe_for_use/?select=" + get_path;
+            var loc = '/transfe_for_use/?select=' + get_path;
             window.location.href = loc;
         }
         //console.log(JSON.stringify(selected));
 
-    });
+    }); 
 
-    $(".tr_to_recycle_bin").click( function() {
+    $('.tr_to_recycle_bin').click( function() {
         var selected = [];
         $('.checkboxes input:checked').each(function() {
             if ($(this).attr('value')) {
@@ -64,12 +64,40 @@ $( function(){
 
         if ( selected.length !== 0 ) {
             var get_path = selected.join('s')
-            var loc = "/transfe_full_to_basket/?select=" + get_path;
+            var loc = '/transfe_full_to_basket/?select=' + get_path;
             window.location.href = loc;
         }
     });
 
-    $(".tr_to_stock").click( function() {
+    $('.turf').click( function() {
+        var selected = [];
+        $('.checkboxes input:checked').each(function() {
+            if ($(this).attr('value')) {
+                selected.push( $(this).attr('value') );
+            }
+        });
+
+        if ( selected.length !== 0 ) {
+            $.ajax({
+                method: 'POST',
+                url: '/api/turf_cartridge/',
+                data:  {len: selected.length , 'selected[]': selected},
+                beforeSend: function( xhr, settings ){
+                    $('.spinner').css('display', 'inline');
+                    csrftoken = getCookie('csrftoken');
+                    if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
+                        xhr.setRequestHeader('X-CSRFToken', csrftoken);
+                    }
+                }  
+            }).done(function( msg ) {
+                $('.spinner').css('display', 'none');
+                window.location.href = '/basket/';
+            });
+        }
+    });
+
+
+    $('.tr_to_stock').click( function() {
         var selected = [];
         $('.checkboxes input:checked').each(function() {
             if ($(this).attr('value')) {
@@ -79,14 +107,12 @@ $( function(){
 
         if ( selected.length !== 0 ) {
             var get_path = selected.join('s')
-            var loc = "/transfer_to_stock/?select=" + get_path;
+            var loc = '/transfer_to_stock/?select=' + get_path;
             window.location.href = loc;
         }
-        //console.log(JSON.stringify(selected));
-
     });
 
-    $(".from_firm_to_stock").click( function() {
+    $('.from_firm_to_stock').click( function() {
         var selected = [];
         $('.checkboxes input:checked').each(function() {
             if ($(this).attr('value')) {
@@ -96,14 +122,13 @@ $( function(){
 
         if ( selected.length !== 0 ) {
             var get_path = selected.join('s')
-            var loc = "/from_firm_to_stock/?select=" + get_path;
+            var loc = '/from_firm_to_stock/?select=' + get_path;
             window.location.href = loc;
         }
-        //console.log(JSON.stringify(selected));
 
     });
 
-    $(".tr_to_firm").click( function() {
+    $('.from_basket_to_stock').click( function() {
         var selected = [];
         $('.checkboxes input:checked').each(function() {
             if ($(this).attr('value')) {
@@ -113,14 +138,29 @@ $( function(){
 
         if ( selected.length !== 0 ) {
             var get_path = selected.join('s')
-            var loc = "/transfer_to_firm/?select=" + get_path;
+            var loc = '/from_basket_to_stock/?select=' + get_path;
             window.location.href = loc;
         }
-        //console.log(JSON.stringify(selected));
 
     });
 
-    $(".edit_firm").click( function() {
+    $('.tr_to_firm').click( function() {
+        var selected = [];
+        $('.checkboxes input:checked').each(function() {
+            if ($(this).attr('value')) {
+                selected.push( $(this).attr('value') );    
+            }
+        });
+
+        if ( selected.length !== 0 ) {
+            var get_path = selected.join('s')
+            var loc = '/transfer_to_firm/?select=' + get_path;
+            window.location.href = loc;
+        }
+
+    });
+
+    $('.edit_firm').click( function() {
         var selected = [];
         $('.checkboxes input:checked').each(function() {
             selected.push( $(this).attr('value') );
@@ -129,13 +169,13 @@ $( function(){
 
         if ( selected.length !== 0 ) {
             var get_path = selected.join('s')
-            var loc = "/edit_firm/?select=" + get_path;
+            var loc = '/edit_firm/?select=' + get_path;
             window.location.href = loc;
         }
 
     });
 
-    $(".del_firm").click( function() {
+    $('.del_firm').click( function() {
         var selected = [];
         $('.checkboxes input:checked').each(function() {
             selected.push( $(this).attr('value') );
@@ -143,13 +183,13 @@ $( function(){
 
         if ( selected.length !== 0 ) {
             var get_path = selected.join('s')
-            var loc = "/del_firm/?select=" + get_path;
+            var loc = '/del_firm/?select=' + get_path;
             window.location.href = loc;
         }
 
     });
 
-    $(".del_node").click( function() {
+    $('.del_node').click( function() {
         var selected = [];
         $('.checkboxes input:checked').each(function() {
             selected.push( $(this).attr('value') );
@@ -157,21 +197,21 @@ $( function(){
 
         if ( selected.length !== 0 ) {
             $.ajax({
-                method: "POST",
-                url: "/api/del_node/",
+                method: 'POST',
+                url: '/api/del_node/',
                 data:  {len: selected.length , 'selected[]': selected},
                 beforeSend: function( xhr, settings ){
                     $('.spinner').css('display', 'inline');
                     csrftoken = getCookie('csrftoken');
                     if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
-                        xhr.setRequestHeader("X-CSRFToken", csrftoken);
+                        xhr.setRequestHeader('X-CSRFToken', csrftoken);
                     }
                 }  
             }).done(function( msg ) {
                 $('.spinner').css('display', 'none');
 
-                window.location.href = "/tree_list/";
-                //alert( "Data Saved: " + msg );
+                window.location.href = '/tree_list/';
+                //alert( 'Data Saved: ' + msg );
             });
             
         }
@@ -185,7 +225,7 @@ $( function(){
         });
 
         if (selected.length == 1) {
-            window.location.href = "/manage_users/edit_user/?id=" + selected[0];
+            window.location.href = '/manage_users/edit_user/?id=' + selected[0];
         }
     });
 
@@ -209,18 +249,18 @@ $( function(){
     };
 
     $('.city_selector').change(function() {
-        var loc = "";
-        var page = ""
+        var loc = '';
+        var page = ''
         var page_num = getUrlParameter('page');
 
         if (page_num) {
-            page = "&page=" + page_num;
+            page = '&page=' + page_num;
         };
 
         if ($(this).val()) {
-            loc = "/toner_refill/?city=" + $(this).val() + page;
+            loc = '/toner_refill/?city=' + $(this).val() + page;
         } else {
-            loc = "/toner_refill/";
+            loc = '/toner_refill/';
         }
         window.location.href = loc;
 

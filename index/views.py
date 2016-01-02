@@ -497,6 +497,31 @@ def transfe_full_to_basket(request):
 
 
 @login_required
+def from_basket_to_stock(request):
+    """Возвращаем обратно картридж из корзины на склад. Ну вдруг пользователь передумал.
+    """
+    checked_cartr = request.GET.get('select', '')
+    tmp = ''
+    dboard = Dashboard(request)
+    if checked_cartr:
+        checked_cartr = checked_cartr.split('s')
+        checked_cartr = [int(i) for i in checked_cartr]
+        tmp = checked_cartr
+        checked_cartr = str(checked_cartr)
+        checked_cartr = checked_cartr[1:-1]
+    
+    if request.method == 'POST':
+        for inx in tmp:
+            m1 = CartridgeItem.objects.get(pk=inx)
+            m1.cart_status = 3  # возвращаем обратно на склад  
+            m1.save(update_fields=['cart_status'])
+        
+        dboard.tr_from_basket_to_sock(num=len(tmp))
+        return HttpResponseRedirect(reverse('basket'))
+    return render(request, 'index/transfe_full_to_basket.html', {'checked_cartr': checked_cartr})
+
+
+@login_required
 def transfer_to_firm(request):
     """Передача расходных материалов на заправку.
     """

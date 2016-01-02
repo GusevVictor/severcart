@@ -101,6 +101,23 @@ class Dashboard(object):
         self.m1.recycler_bin  = self.recycler_bin
         self.m1.save(update_fields=['recycler_bin', 'full_on_stock'])
 
+    def tr_from_basket_to_sock(self, num=0):
+        """Перемащаем картридж из корзины обратно на склад. Ну вдруг пользователь
+           передумал. 
+        """
+        self.full_on_stock    = self.full_on_stock + num
+        self.recycler_bin     = self.recycler_bin  - num
+        self.m1.full_on_stock = self.full_on_stock
+        self.m1.recycler_bin  = self.recycler_bin
+        self.m1.save(update_fields=['recycler_bin', 'full_on_stock'])
+
+    def clear_basket(self, num=0):
+        """Очищаем корзину.
+        """
+        self.m1.recycler_bin = self.recycler_bin  - num
+        self.m1.save(update_fields=['recycler_bin'])
+
+
     def tr_empty_stock_to_basket(self, num=0):
         """Перемещаем пустые картриджи в корзину.
         """
