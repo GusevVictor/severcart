@@ -166,6 +166,21 @@ ul#menu .right {
     float:right;
 }
 
+#menu li.select a:after {
+    content:' ';
+    display:block;
+    position:absolute;
+    left:0;
+    top:0;
+    right:0;
+    bottom:0; 
+    border-bottom:4px solid #f3f3f3;
+}
+
+#menu li.select:hover:after {
+    background-color:#848484;   
+}
+
 /*   --------end style menu-----------   */
 label.required {
    background: url('../img/aster.png') left center no-repeat;

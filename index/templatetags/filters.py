@@ -1,4 +1,5 @@
 from django import template
+from django.core.urlresolvers import reverse
 from django.utils.safestring import mark_safe
 
 register = template.Library()
@@ -38,3 +39,12 @@ def get_range(value):
     Instead of 3 one may use the variable set in the views
   """
   return range(1, value )
+
+@register.simple_tag
+def navactive(request, urls):
+    """Тэг для подсветки текущего пункта меню.
+        Подсмотрел здесь: https://www.turnkeylinux.org/blog/django-navbar
+    """
+    if request.path in ( reverse(url) for url in urls.split() ):
+        return "select"
+    return ""
