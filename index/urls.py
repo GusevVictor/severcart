@@ -22,6 +22,7 @@ from index.views import del_firm
 from index.views import at_work
 from index.views import bad_browser
 from index.views import basket
+from index.views import edit_cartridge_comment
 
 urlpatterns = [
     url('^$', dashboard, name='dashboard'),
@@ -47,4 +48,5 @@ urlpatterns = [
     url(r'^at_work/', at_work, name='at_work'),
     url(r'^bad_browser/', bad_browser, name='bad_browser'),
     url(r'^basket/', basket, name='basket'),
+    url(r'^edit_cartridge_comment/', edit_cartridge_comment, name='edit_cartridge_comment'),
 ]

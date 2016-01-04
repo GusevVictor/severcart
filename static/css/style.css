@@ -452,3 +452,18 @@ a img{
     bottom: 5px;
     right: 5px;
 }
+
+/* --- Start style main table  --- */
+table.checkboxes tr, 
+table.checkboxes tr td,
+table.checkboxes tr th {
+    border: 1px solid #c5c5c5;
+}
+
+.comment_in_cell {
+    display: block;
+    width:150px;
+
+}
+/* --- end main table style --- */
+

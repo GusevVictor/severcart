@@ -15,6 +15,7 @@ from .forms.add_items import AddItems
 from .forms.add_city import CityF
 from .forms.add_type import AddCartridgeType
 from .forms.add_firm import FirmTonerRefillF
+from .forms.comment import EditCommentForm
 from .models import CartridgeType
 from accounts.models import AnconUser
 from django.contrib.auth.models import User
@@ -22,7 +23,6 @@ from .models import CartridgeItem
 from .models import OrganizationUnits
 from .models import City as CityM
 from .models import FirmTonerRefill
-#from .models import Summary
 from .models import CartridgeItemName
 from .helpers import recursiveChildren, check_ajax_auth
 from .helpers import Dashboard
@@ -54,7 +54,7 @@ def dashboard(request):
 def stock(request):
     """
     """
-    all_items = CartridgeItem.objects.filter(departament=request.user.departament).filter(cart_status=1)
+    all_items = CartridgeItem.objects.filter(departament=request.user.departament).filter(cart_status=1).order_by('pk')
     cartridjes = sc_paginator(all_items, request)
     return render(request, 'index/stock.html', {'cartrjs': cartridjes})
 
@@ -587,3 +587,27 @@ def bad_browser(request):
     """Сообщение о необходимости обновить браузер.
     """
     return render(request, 'index/bad_browser.html')
+
+def edit_cartridge_comment(request):
+    """Добавляем комментарий к картриджу.
+    """
+    item_id = request.GET.get('id', '')
+    try:
+        item_id = int(item_id)
+    except ValueError:
+        item_id = 0
+    try:
+        cartridge_object = CartridgeItem.objects.get(pk=item_id)
+    except CartridgeItem.DoesNotExist:
+        raise Http404
+
+    if request.method == 'POST':
+        form = EditCommentForm(data=request.POST)
+        if form.is_valid():
+            cartridge_object.comment = form.cleaned_data.get('comment')
+            cartridge_object.save(update_fields=['comment'])
+            return HttpResponseRedirect(reverse('stock'))
+    else:
+        comment = cartridge_object.comment
+        form = EditCommentForm(initial = {'comment': comment})
+    return render(request, 'index/edit_cartridge_comment.html', {'form': form})
