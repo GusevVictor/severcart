@@ -487,7 +487,7 @@ def transfe_to_basket(request):
             m1.save(update_fields=['cart_status'])
         
         return HttpResponseRedirect(reverse('stock'))
-    return render(request, 'index/transfe_full_to_basket.html', {'checked_cartr': checked_cartr})
+    return render(request, 'index/transfe_to_basket.html', {'checked_cartr': checked_cartr})
 
 
 @login_required
@@ -506,11 +506,15 @@ def from_basket_to_stock(request):
     if request.method == 'POST':
         for inx in tmp:
             m1 = CartridgeItem.objects.get(pk=inx)
-            m1.cart_status = 3  # возвращаем обратно на склад  
+            if m1.cart_status == 5:
+                m1.cart_status = 1  # возвращаем обратно на склад заполненным    
+            elif m1.cart_status == 6:
+                m1.cart_status = 3  # возвращаем обратно на склад пустым    
+            else:
+                raise Http404
             m1.save(update_fields=['cart_status'])
-        
         return HttpResponseRedirect(reverse('basket'))
-    return render(request, 'index/transfe_full_to_basket.html', {'checked_cartr': checked_cartr})
+    return render(request, 'index/from_basket_to_stock.html', {'checked_cartr': checked_cartr})
 
 
 @login_required
