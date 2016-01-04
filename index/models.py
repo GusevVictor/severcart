@@ -57,7 +57,8 @@ class CartridgeItem(models.Model):
         (2, 'In use'),
         (3, 'Empty in stock'),
         (4, 'Filled in firm'),
-        (5, 'Deleted'),
+        (5, 'Full in basket'),
+        (6, 'Empty in basket'),
     )
     cart_itm_name = models.ForeignKey(CartridgeItemName)
     cart_date_added = models.DateField()
@@ -68,15 +69,15 @@ class CartridgeItem(models.Model):
     node_order_by = ['id']
 
 
-class Summary(models.Model):
-    """Кэш таблица с текущим состоянем БД
-    """
-    full_on_stock = models.IntegerField(default=0)
-    empty_on_stock = models.IntegerField(default=0)
-    uses = models.IntegerField(default=0)
-    filled = models.IntegerField(default=0)
-    recycler_bin = models.IntegerField(default=0)
-    departament = models.ForeignKey(OrganizationUnits)
+# class Summary(models.Model):
+#     """Кэш таблица с текущим состоянем БД
+#     """
+#     full_on_stock = models.IntegerField(default=0)
+#     empty_on_stock = models.IntegerField(default=0)
+#     uses = models.IntegerField(default=0)
+#     filled = models.IntegerField(default=0)
+#     recycler_bin = models.IntegerField(default=0)
+#     departament = models.ForeignKey(OrganizationUnits)
 
 class Events(models.Model):
     """Список событий, использется для статистики и на морде сайта

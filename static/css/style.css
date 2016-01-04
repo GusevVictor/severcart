@@ -95,7 +95,7 @@ span.gi {
 
 }
 /* Horizontal menu */
-ul#menu {
+#menu {
     font-size: 0.875em;
     padding:0;
     float:left;
@@ -106,14 +106,14 @@ ul#menu {
     margin:0;
 }
 
-ul#menu li {
+#menu li {
     display:inline-block;
     list-style:none;
     float:left;
     position:relative;
 }
 
-ul#menu li a {
+#menu li a {
     background:none;
     color:#fff;
     text-decoration:none;
@@ -122,11 +122,11 @@ ul#menu li a {
     outline: 0;
 }
 
-ul#menu li a:hover {
+#menu li a:hover {
     background-color:#848484;
 }
 
-ul#menu ul {
+#menu ul {
     display:none;
     position:absolute;
     left:-40px;
@@ -135,7 +135,7 @@ ul#menu ul {
     z-index: 100;
 }
 
-ul#menu li {
+#menu li {
     display:block;
     line-height:60px;
 }
@@ -145,24 +145,24 @@ ul#menu li {
     display:block;
 }
 
-ul#menu ul li{
+#menu ul li{
     background-color:#000;
     height:60px;
     width:100%;
 
 }
 
-ul#menu ul li a{
+#menu ul li a{
     display:inline-block;
     width:100%;
     padding:0px;
 }
 
-ul#menu ul li a:hover{
+#menu ul li a:hover{
     background-color:#848484;
 }
 
-ul#menu .right {
+#menu .right {
     float:right;
 }
 
@@ -298,9 +298,9 @@ a.button:hover, input[type="submit"].button:hover {
     text-decoration: none;
 }
 
-a.button:active, input[type="submit"].button:active, {
+a.button:active, input[type="submit"].button:active {
     box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.2);
-    background: #afafaf;
+    background: #aaa;
     border: 1px solid #a8a8a8;
 }
 

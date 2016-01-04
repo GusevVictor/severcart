@@ -64,10 +64,27 @@ $( function(){
 
         if ( selected.length !== 0 ) {
             var get_path = selected.join('s')
-            var loc = '/transfe_full_to_basket/?select=' + get_path;
+            var loc = '/transfe_to_basket/?select=' + get_path + '&atype=5';
             window.location.href = loc;
         }
     });
+
+    $('.tr_empty_to_recycle_bin').click( function() {
+        var selected = [];
+        $('.checkboxes input:checked').each(function() {
+            if ($(this).attr('value')) {
+                selected.push( $(this).attr('value') );
+            }
+        });
+
+        if ( selected.length !== 0 ) {
+            var get_path = selected.join('s')
+            var loc = '/transfe_to_basket/?select=' + get_path + '&atype=6';
+            window.location.href = loc;
+        }
+    });
+
+
 
     $('.turf').click( function() {
         var selected = [];

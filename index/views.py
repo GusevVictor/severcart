@@ -9,6 +9,7 @@ from django.core.exceptions import MultipleObjectsReturned, ObjectDoesNotExist
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.contrib.sessions.models import Session
+from django.db.models import Q
 from .forms.add_cartridge_name import AddCartridgeName
 from .forms.add_items import AddItems
 from .forms.add_city import CityF
@@ -21,7 +22,7 @@ from .models import CartridgeItem
 from .models import OrganizationUnits
 from .models import City as CityM
 from .models import FirmTonerRefill
-from .models import Summary
+#from .models import Summary
 from .models import CartridgeItemName
 from .helpers import recursiveChildren, check_ajax_auth
 from .helpers import Dashboard
@@ -29,8 +30,6 @@ from .sc_paginator import sc_paginator
 
 import logging
 logger = logging.getLogger('simp')
-logger.debug('Простой лог')
-
 
 @login_required
 def dashboard(request):
@@ -41,21 +40,13 @@ def dashboard(request):
         children  = root_ou.get_children()
     except AttributeError:
         children = ''
-    row = Summary.objects.filter(departament=root_ou)
+    filter_itms = lambda qy: CartridgeItem.objects.filter(qy)
     context = {}
-    if row:    
-        row = row[0]
-        context['full_on_stock']  = row.full_on_stock
-        context['uses']           = row.uses
-        context['empty_on_stock'] = row.empty_on_stock
-        context['filled']         = row.filled
-        context['recycler_bin']   = row.recycler_bin
-    else:
-        context['full_on_stock']  = 0
-        context['uses']           = 0
-        context['empty_on_stock'] = 0
-        context['filled']         = 0
-        context['recycler_bin']   = 0
+    context['full_on_stock']  = filter_itms(Q(departament=root_ou) & Q(cart_status=1)).count() #row.full_on_stock
+    context['uses']           = filter_itms(Q(departament=root_ou) & Q(cart_status=2)).count() #row.uses
+    context['empty_on_stock'] = filter_itms(Q(departament=root_ou) & Q(cart_status=3)).count() #row.empty_on_stock
+    context['filled']         = filter_itms(Q(departament=root_ou) & Q(cart_status=4)).count() #row.filled
+    context['recycler_bin']   = filter_itms(Q(departament=root_ou) & (Q(cart_status=5) | Q(cart_status=6))).count()# row.recycler_bin
     return render(request, 'index/dashboard.html', context)
 
 
@@ -92,7 +83,6 @@ def add_cartridge_name(request):
 
 @login_required
 def add_cartridge_item(request):
-    dboard = Dashboard(request)
     if request.method == 'POST':
         form_obj = AddItems(request.POST)
         if form_obj.is_valid():
@@ -107,7 +97,6 @@ def add_cartridge_item(request):
                                    )
 
                 m1.save()
-            dboard.add_full_to_stock(num=int(data_in_post['cartCount']))
             messages.success(request, 'Расходники успешно добавлены.')
             return HttpResponseRedirect(request.path)
 
@@ -187,7 +176,6 @@ def transfe_for_use(request):
     """
     checked_cartr = request.GET.get('select', '')
     tmp = ''
-    dboard = Dashboard(request)
     if checked_cartr:
         checked_cartr = checked_cartr.split('s')
         checked_cartr = [int(i) for i in checked_cartr]
@@ -210,7 +198,6 @@ def transfe_for_use(request):
             m1.departament = get(parent_id)
             m1.save(update_fields=['departament', 'cart_status'])
         
-        dboard.tr_cart_to_uses(num=len(tmp)) # срабатывает триггер перемещения едениц
         return HttpResponseRedirect(reverse('stock'))
     return render(request, 'index/transfe_for_use.html', {'checked_cartr': checked_cartr, 'bulk': children})
 
@@ -220,7 +207,6 @@ def transfer_to_stock(request):
     """
 
     """
-    dboard = Dashboard(request)
     checked_cartr = request.GET.get('select', '')
     tmp = ''
     if checked_cartr:
@@ -236,7 +222,6 @@ def transfer_to_stock(request):
             m1.cart_status = 3     # пустой объект на складе
             m1.save(update_fields=['departament', 'cart_status'])
         
-        dboard.tr_empty_cart_to_stock(num=len(tmp))
         return HttpResponseRedirect("/use/")
     return render(request, 'index/transfer_for_stock.html', {'checked_cartr': checked_cartr})
 
@@ -466,18 +451,28 @@ def at_work(request):
 def basket(request):
     """Список картриджей на выброс.
     """
-    items = CartridgeItem.objects.filter(cart_status=5)
+    items = CartridgeItem.objects.filter( Q(cart_status=5) | Q(cart_status=6) )
     items = sc_paginator(items, request)
     return render(request, 'index/basket.html', {'cartrjs': items})
 
 
 @login_required
-def transfe_full_to_basket(request):
+def transfe_to_basket(request):
     """Перемещаем расходники в корзинку.
     """
     checked_cartr = request.GET.get('select', '')
+    action_type = request.GET.get('atype', '')
+    
+    if action_type == '5':
+        # перемещаем заправленный картридж в корзину
+        cart_status = 5
+    elif action_type == '6':
+        # перемещаем пустой картридж в корзину
+        cart_status = 6
+    else:
+        raise Http404
+
     tmp = ''
-    dboard = Dashboard(request)
     if checked_cartr:
         checked_cartr = checked_cartr.split('s')
         checked_cartr = [int(i) for i in checked_cartr]
@@ -488,10 +483,9 @@ def transfe_full_to_basket(request):
     if request.method == 'POST':
         for inx in tmp:
             m1 = CartridgeItem.objects.get(pk=inx)
-            m1.cart_status = 5  # в корзинку картриджи  
+            m1.cart_status = cart_status  # в корзинку картриджи  
             m1.save(update_fields=['cart_status'])
         
-        dboard.tr_full_stock_to_basket(num=len(tmp))
         return HttpResponseRedirect(reverse('stock'))
     return render(request, 'index/transfe_full_to_basket.html', {'checked_cartr': checked_cartr})
 
@@ -502,7 +496,6 @@ def from_basket_to_stock(request):
     """
     checked_cartr = request.GET.get('select', '')
     tmp = ''
-    dboard = Dashboard(request)
     if checked_cartr:
         checked_cartr = checked_cartr.split('s')
         checked_cartr = [int(i) for i in checked_cartr]
@@ -516,7 +509,6 @@ def from_basket_to_stock(request):
             m1.cart_status = 3  # возвращаем обратно на склад  
             m1.save(update_fields=['cart_status'])
         
-        dboard.tr_from_basket_to_sock(num=len(tmp))
         return HttpResponseRedirect(reverse('basket'))
     return render(request, 'index/transfe_full_to_basket.html', {'checked_cartr': checked_cartr})
 
@@ -527,7 +519,6 @@ def transfer_to_firm(request):
     """
     checked_cartr = request.GET.get('select', '')
     tmp = ''
-    dboard = Dashboard(request)
     firms = FirmTonerRefill.objects.all()
     if checked_cartr:
         checked_cartr = checked_cartr.split('s')
@@ -560,7 +551,6 @@ def transfer_to_firm(request):
                 m1.filled_firm = select_firm
                 m1.departament = None
                 m1.save(update_fields=['filled_firm', 'cart_status', 'departament'])
-            dboard.tr_empty_cart_to_firm(num=len(tmp))
         return HttpResponseRedirect(reverse('empty'))
     return render(request, 'index/transfer_to_firm.html', {'checked_cartr': checked_cartr, 
                                                             'firms' : firms, 
@@ -573,7 +563,6 @@ def from_firm_to_stock(request):
     """
     checked_cartr = request.GET.get('select', '')
     tmp = ''
-    dboard = Dashboard(request)
     if checked_cartr:
         checked_cartr = checked_cartr.split('s')
         checked_cartr = [int(i) for i in checked_cartr]
@@ -593,7 +582,6 @@ def from_firm_to_stock(request):
             m1.departament = request.user.departament
             m1.cart_number_refills = int(m1.cart_number_refills) + 1
             m1.save(update_fields=['filled_firm', 'cart_status', 'cart_number_refills', 'departament'])
-        dboard.tr_filled_cart_to_stock(num=len(tmp))
         return HttpResponseRedirect(reverse('at_work'))
     return render(request, 'index/from_firm_to_stock.html', {'checked_cartr': checked_cartr })
 

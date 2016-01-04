@@ -2,7 +2,7 @@
 import time
 import json
 from django.http import JsonResponse, HttpResponse
-from index.models import City, Summary, CartridgeItem, OrganizationUnits
+from index.models import City, CartridgeItem, OrganizationUnits
 from index.helpers import check_ajax_auth, Dashboard
 
 import logging
@@ -71,6 +71,4 @@ def turf_cartridge(request):
         node = CartridgeItem.objects.get(pk=ind)
         node.delete()
 
-    dboard = Dashboard(request)
-    dboard.clear_basket(len(ar))
     return HttpResponse('Cartridjes deleted!')

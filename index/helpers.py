@@ -2,7 +2,7 @@
 from django.http import HttpResponse
 from django.contrib.sessions.models import Session
 from accounts.models import AnconUser
-from .models import Summary
+#from .models import Summary
 
 import logging
 logger = logging.getLogger('simp')
@@ -110,6 +110,13 @@ class Dashboard(object):
         self.m1.full_on_stock = self.full_on_stock
         self.m1.recycler_bin  = self.recycler_bin
         self.m1.save(update_fields=['recycler_bin', 'full_on_stock'])
+
+    def tr_empty_uses_to_basket(self, num=0):
+        """Перемещаем картридж из пользования в корзину.
+        """
+        self.m1.recycler_bin = self.recycler_bin + num
+        self.m1.uses         = self.uses - num
+        self.m1.save(update_fields=['recycler_bin', 'uses'])
 
     def clear_basket(self, num=0):
         """Очищаем корзину.
