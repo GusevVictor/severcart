@@ -66,6 +66,7 @@ class CartridgeItem(models.Model):
     cart_status = models.IntegerField(choices=STATUS, default=1)
     cart_number_refills = models.IntegerField(default=0)
     filled_firm = models.ForeignKey(FirmTonerRefill, null=True)
+    comment = models.TextField('Комментарий', blank=True)
     node_order_by = ['id']
 
 
