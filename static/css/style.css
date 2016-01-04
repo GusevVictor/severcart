@@ -166,7 +166,7 @@ span.gi {
     float:right;
 }
 
-#menu li.select a:after {
+#menu > li.select > a:after {
     content:' ';
     display:block;
     position:absolute;
@@ -177,7 +177,7 @@ span.gi {
     border-bottom:4px solid #f3f3f3;
 }
 
-#menu li.select:hover:after {
+#menu > li.select:hover:after {
     background-color:#848484;   
 }
 
