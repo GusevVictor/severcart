@@ -40,7 +40,7 @@
                         <td>{{ i.cart_itm_name }}</td>
                         <td>{{ i.cart_number_refills }}</td>
                         <td>{{ i.cart_date_added }}</td>
-                        <td><div class="comment_in_cell">{{ i.comment }}</div></td>
+                        <td><div class="comment_in_cell" title="{{ i.comment }}">{{ i.comment|truncatechars:20 }}</div></td>
                         <td><a href="{% url 'edit_cartridge_comment' %}?id={{ i.id }}">Редактировать</a></td>
                     </tr>
                 {% endfor %}
