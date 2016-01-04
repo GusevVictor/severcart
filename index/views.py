@@ -244,14 +244,8 @@ def use(request):
 def empty(request):
     """Список пустых картриджей.
     """
-    try:
-        root_ou   = request.user.departament
-        children  = root_ou.get_children()
-    except AttributeError:
-        children = '' 
-    items = CartridgeItem.objects.filter(departament__in=children,
-                                        cart_status=3,
-                                        )
+    root_ou = request.user.departament
+    items = CartridgeItem.objects.filter( Q(departament=root_ou) & Q(cart_status=3) )
     items = sc_paginator(items, request)
     return render(request, 'index/empty.html', {'cartrjs': items})
 
