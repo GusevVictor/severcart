@@ -1,5 +1,5 @@
 jQuery(document).ready(function() {
-		jQuery('#menu').superfish(
+		jQuery('.menu').superfish(
 			{
 				delay:       500,                            // one second delay on mouseout
 				animation:   {opacity:'show',height:'show'},  // fade-in and slide-down animation

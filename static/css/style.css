@@ -95,7 +95,7 @@ span.gi {
 
 }
 /* Horizontal menu */
-#menu {
+ul.menu {
     font-size: 0.875em;
     padding:0;
     float:left;
@@ -106,14 +106,14 @@ span.gi {
     margin:0;
 }
 
-#menu li {
+ul.menu li {
     display:inline-block;
     list-style:none;
     float:left;
     position:relative;
 }
 
-#menu li a {
+ul.menu li a {
     background:none;
     color:#fff;
     text-decoration:none;
@@ -122,11 +122,11 @@ span.gi {
     outline: 0;
 }
 
-#menu li a:hover {
+ul.menu li a:hover {
     background-color:#848484;
 }
 
-#menu ul {
+ul.menu ul {
     display:none;
     position:absolute;
     left:-40px;
@@ -135,38 +135,38 @@ span.gi {
     z-index: 100;
 }
 
-#menu li {
+ul.menu li {
     display:block;
     line-height:60px;
 }
 
 
-#menu ul.hovered {
+ul.menu ul.hovered {
     display:block;
 }
 
-#menu ul li{
+ul.menu ul li{
     background-color:#000;
     height:60px;
     width:100%;
 
 }
 
-#menu ul li a{
+ul.menu ul li a{
     display:inline-block;
     width:100%;
     padding:0px;
 }
 
-#menu ul li a:hover{
+ul.menu ul li a:hover{
     background-color:#848484;
 }
 
-#menu .right {
+ul.menu .right {
     float:right;
 }
 
-#menu > li.select > a:after {
+ul.menu > li.select > a:after {
     content:' ';
     display:block;
     position:absolute;
@@ -177,7 +177,7 @@ span.gi {
     border-bottom:4px solid #f3f3f3;
 }
 
-#menu > li.select:hover:after {
+ul.menu > li.select:hover:after {
     background-color:#848484;   
 }
 

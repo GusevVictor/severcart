@@ -2,7 +2,7 @@
 
 <div class="row">
     <div class="large-12 columns">
-        <ul id="menu">
+        <ul class="menu">
             <li class="{% navactive request 'dashboard' %}"><a href="{% url 'dashboard' %}">Домашняя</a></li>
             <li class="{% navactive request 'stock' %}"><a href="{% url 'stock' %}">Склад</a></li>
             <li class="{% navactive request 'use' %}"><a href="{% url 'use' %}">Используются</a></li>
@@ -21,7 +21,7 @@
 
     </div>
     <div class="large-12 columns">
-        <ul id="menu2">
+        <ul class="menu">
             <li class="{% navactive request 'show_events' %}"><a href="{% url 'show_events' %}">События</a></li>
         </ul>
 
