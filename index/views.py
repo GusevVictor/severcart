@@ -220,6 +220,7 @@ def transfer_to_stock(request):
         for inx in tmp:
             m1 = CartridgeItem.objects.get(pk=inx)
             m1.cart_status = 3     # пустой объект на складе
+            m1.departament = request.user.departament
             m1.save(update_fields=['departament', 'cart_status'])
         
         return HttpResponseRedirect("/use/")
