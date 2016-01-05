@@ -68,31 +68,3 @@ class CartridgeItem(models.Model):
     filled_firm = models.ForeignKey(FirmTonerRefill, null=True)
     comment = models.TextField('Комментарий', blank=True)
     node_order_by = ['id']
-
-
-# class Summary(models.Model):
-#     """Кэш таблица с текущим состоянем БД
-#     """
-#     full_on_stock = models.IntegerField(default=0)
-#     empty_on_stock = models.IntegerField(default=0)
-#     uses = models.IntegerField(default=0)
-#     filled = models.IntegerField(default=0)
-#     recycler_bin = models.IntegerField(default=0)
-#     departament = models.ForeignKey(OrganizationUnits)
-
-class Events(models.Model):
-    """Список событий, использется для статистики и на морде сайта
-    """
-    ETYPE_CHOICES = (
-        (1, 'Добавление нового расходника'),
-        (2, 'Передача расходника в пользование'),
-        (3, 'Передача расходники на заправку'),
-        (4, 'Утилизация'),
-        (5, 'Передача пустого расходника на склад'),
-        (6, 'Создание нового пользователя'),
-        (7, 'Удаление пользователя'),
-    )
-    event_type = models.IntegerField(choices=ETYPE_CHOICES)
-    date_time = models.DateTimeField()
-    cart_itm = models.ForeignKey(CartridgeItem, null=True)
-    comment = models.CharField(max_length=256)
