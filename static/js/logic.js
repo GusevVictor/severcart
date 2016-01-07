@@ -296,6 +296,25 @@ $( function(){
             })
         }
     
-    });    
+    });
+
+    /* Действие над строкой в таблице (редактирование, просмотр) */
+    $('.cartridge_action').each( function() {
+        var mainSelect = $(this);
+        mainSelect.bind('change', function() {
+            var cart_id = mainSelect.attr('data');
+            var cart_action = mainSelect.children(':selected').attr('value');
+            switch (cart_action) {
+                case 'view_events':
+                    window.location.href = '/events/view_cartridge_events/?id=' + cart_id;
+                    break;
+                case 'edit':
+                    window.location.href = '/edit_cartridge_comment/?id=' + cart_id;
+                    break;
+                default:
+
+            }
+        });
+    });
 
 });
