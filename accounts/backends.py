@@ -1,12 +1,10 @@
 from django.conf import settings
-from django.contrib.auth.password_validation import validate_password
 from django.core.exceptions import ValidationError
 from accounts.models import AnconUser
 
 
 class UserAuthBackend(object):
-    """
-    A custom authentication backend. Allows users to log in using their email address.
+    """A custom authentication backend. Allows users to log in using their email address.
     """
 
     def authenticate(self, username=None, password=None):
@@ -15,7 +13,7 @@ class UserAuthBackend(object):
         """
         try:
             user = AnconUser.objects.get(username=username)
-            if not validate_password(password, user=user):
+            if user.check_password(password):
                 return user
         except ValidationError:
             return None
