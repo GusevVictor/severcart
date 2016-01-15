@@ -296,6 +296,44 @@ $( function(){
             })
         }
     
-    });    
+    });
+
+    /* Действие над строкой в таблице (редактирование, просмотр) */
+    $('.cartridge_action').each( function() {
+        var mainElement = $(this);
+        mainElement.change(function() {
+           var cart_id = mainElement.attr('data');
+           var cart_action = $('select.cartridge_action option:selected').attr('value');
+           switch (cart_action) {
+                case 'view_events':
+                    window.location.href = '/events/view_cartridge_events/?id=' + cart_id;
+                    break;
+                case 'edit':
+                    window.location.href = '/edit_cartridge_comment/?id=' + cart_id;
+                    break;
+                default:
+
+           }
+        });
+       //console.log(cart_id, cart_action);   
+    }); 
+/*
+    $.when( $('.cartridge_action').change(function() {
+        var cart_id = $(this).attr('data');
+        var cart_action = $('select.cartridge_action option:selected').attr('value');
+        switch (cart_action) {
+            case 'view_events':
+                window.location.href = '/events/view_cartridge_events/?id=' + cart_id;
+                break;
+            case 'edit':
+                window.location.href = '/edit_cartridge_comment/?id=' + cart_id;
+                break;
+            default:
+
+        }
+    }) );
+
+*/
+
 
 });
