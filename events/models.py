@@ -1,4 +1,5 @@
 from django.db import models
+from index.models import OrganizationUnits
 
 class Events(models.Model):
     """Список событий, использется для генерации различных отчётов.
@@ -23,13 +24,15 @@ class Events(models.Model):
     event_user  = models.CharField(max_length=64)
     event_org   = models.CharField(max_length=256, null=True)
     event_firm  = models.CharField(max_length=256, null=True)
-
+    departament = models.IntegerField()
 """
 номер события \ номер картриджа \ дата \ текст человекочитаемого события \
 -----------------------------------------------------------
 +12.04.2016 Добавлен картридж № 34 (12A) пользователем Вася  
 +04.04.2016 № 45 передан в пользование "Каб. 290" пользователем Вася 
+
 +18.02.2016 # 45 возвращен на склад пользователем Вася
+
 +14.05.2016 № 35 передан на заправку в фирму "Континент" пользователем вася
 +14.05.2016 № 35 Возвращен с заправки в фирме "континент" васей
 +14.05.2016 № 35 перемещён в корзину васей 

@@ -27,6 +27,7 @@ from .models import CartridgeItemName
 from .helpers import recursiveChildren, check_ajax_auth
 from .helpers import Dashboard
 from .sc_paginator import sc_paginator
+from .signals import sign_add_full_to_stock
 
 import logging
 logger = logging.getLogger('simp')
@@ -88,16 +89,25 @@ def add_cartridge_item(request):
         if form_obj.is_valid():
             # добавляем новый тип расходного материала
             data_in_post = form_obj.cleaned_data
+            count_items  = int(data_in_post['cartCount'])
+            cart_type    = str(data_in_post['cartName'])
             # получаем объект текущего пользователя
-            for i in range(int(data_in_post['cartCount'])):
+            for i in range(count_items):
                 m1 = CartridgeItem(cart_itm_name=data_in_post['cartName'],
                                    cart_date_added=timezone.now(),
                                    cart_number_refills=0,
                                    departament=request.user.departament,
                                    )
-
                 m1.save()
-            messages.success(request, 'Расходники успешно добавлены.')
+                sign_add_full_to_stock.send(sender=None, num=m1.id,
+                                            cart_type=cart_type,
+                                            user=str(request.user),
+                                            request=request)
+            if count_items == 1:
+                tmpl_message = 'Расходник %s успешно добавлен.'
+            elif count_items > 1:
+                tmpl_message = 'Расходники %s успешно добавлены.'
+            messages.success(request, tmpl_message % (cart_type,))
             return HttpResponseRedirect(request.path)
 
     else:

@@ -13,7 +13,7 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='Events',
             fields=[
-                ('id', models.AutoField(serialize=False, auto_created=True, verbose_name='ID', primary_key=True)),
+                ('id', models.AutoField(serialize=False, auto_created=True, primary_key=True, verbose_name='ID')),
                 ('date_time', models.DateTimeField()),
                 ('cart_number', models.IntegerField()),
                 ('cart_type', models.CharField(max_length=256, null=True)),
@@ -21,6 +21,7 @@ class Migration(migrations.Migration):
                 ('event_user', models.CharField(max_length=64)),
                 ('event_org', models.CharField(max_length=256, null=True)),
                 ('event_firm', models.CharField(max_length=256, null=True)),
+                ('departament', models.IntegerField()),
             ],
         ),
     ]
