@@ -1,4 +1,6 @@
 # -*- config:utf-8 -*-
+
+from django.apps import AppConfig
 from django.dispatch import Signal
 from django.utils import timezone
 from .models import CartridgeItem
@@ -12,7 +14,6 @@ sign_turf_cart               = Signal(providing_args=['num_type_counts_dict', 'u
 sign_tr_empty_cart_to_firm   = Signal(providing_args=['num_type_counts_dict','firm', 'user'])
 sign_tr_filled_cart_to_stock = Signal(providing_args=['num_type_counts_dict','firm', 'user'])
 
-#@receiver(add_full_to_stock, sender=CartridgeItem, dispatch_uid='generate_event')
 def event_add_cart(**kwargs):
     """departament,  date_time, cart_number,  cart_type, 
         event_type, event_user, event_org, event_firm
@@ -25,7 +26,6 @@ def event_add_cart(**kwargs):
                 event_user  = kwargs.get('user', 'anonymous'),
                 )
     m1.save()    
-    #print('signal kwargs', kwargs)
 
 
 """
@@ -36,21 +36,3 @@ signal kwargs {'num': 276, 'sender': None,
 """
 
 sign_add_full_to_stock.connect(event_add_cart)
-
-# class CartridgeStore(object):
-#     """Служебный класс для отправки сигналов.
-#     """
-
-#     def __init__(self):
-#         pass
-
-
-#     def add_full_to_stock(self, num, cart_type, counts, user):
-#         """Добавление N количества новых картриджей на склад.
-#         """
-#         add_full_to_stock.send(sender=self.__class__, 
-#                                 num=num, 
-#                                 cart_type=cart_type, 
-#                                 counts=counts, 
-#                                 user=user)
-
