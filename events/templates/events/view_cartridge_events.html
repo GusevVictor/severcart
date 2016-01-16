@@ -1,0 +1,22 @@
+{% extends "index/base.html" %}
+{% load staticfiles %}
+{% block title %}События объекта учёта {{ cart_id }}{% endblock %}
+{% block h3 %}События объекта учёта {{ cart_id }}{% endblock %}
+{% block content %}
+<div class="row">
+<div class="large-12 columns">
+<table>
+    <tr>
+    <th>Дата и время</th>
+    <th>Описание</th>
+    </tr>
+    {% for entry in frdly_es %}
+    <tr>
+    <td>{{ entry.data_env }}</td>
+    <td>{{ entry.text_com }}</td>
+    </tr>
+    {% endfor %}
+</table>
+</div>
+</div>
+{% endblock %}

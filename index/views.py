@@ -52,7 +52,6 @@ def dashboard(request):
     context['uses']           = filter_itms(Q(departament__in=children) & Q(cart_status=2)).count() #row.uses
     context['empty_on_stock'] = filter_itms(Q(departament=root_ou) & Q(cart_status=3)).count() #row.empty_on_stock
     context['filled']         = filter_itms(Q(departament=root_ou) & Q(cart_status=4)).count() #row.filled
-    print("context['filled']", context['filled'])
     context['recycler_bin']   = filter_itms(Q(departament=root_ou) & (Q(cart_status=5) | Q(cart_status=6))).count()# row.recycler_bin
     return render(request, 'index/dashboard.html', context)
 
