@@ -25,9 +25,14 @@ from .models import City as CityM
 from .models import FirmTonerRefill
 from .models import CartridgeItemName
 from .helpers import recursiveChildren, check_ajax_auth
-from .helpers import Dashboard
+#from .helpers import Dashboard
 from .sc_paginator import sc_paginator
-from .signals import sign_add_full_to_stock
+from .signals import ( sign_add_full_to_stock, 
+                    sign_tr_cart_to_uses, 
+                    sign_tr_cart_to_basket,
+                    sign_tr_empty_cart_to_stock,
+                    sign_tr_empty_cart_to_firm,
+                    sign_tr_filled_cart_to_stock )
 
 import logging
 logger = logging.getLogger('simp')
@@ -47,6 +52,7 @@ def dashboard(request):
     context['uses']           = filter_itms(Q(departament__in=children) & Q(cart_status=2)).count() #row.uses
     context['empty_on_stock'] = filter_itms(Q(departament=root_ou) & Q(cart_status=3)).count() #row.empty_on_stock
     context['filled']         = filter_itms(Q(departament=root_ou) & Q(cart_status=4)).count() #row.filled
+    print("context['filled']", context['filled'])
     context['recycler_bin']   = filter_itms(Q(departament=root_ou) & (Q(cart_status=5) | Q(cart_status=6))).count()# row.recycler_bin
     return render(request, 'index/dashboard.html', context)
 
@@ -202,20 +208,25 @@ def transfe_for_use(request):
         parent_id = data_in_post['par_id']
         parent_id = int(parent_id)
 
+        list_cplx = []
         for inx in tmp:
             m1 = CartridgeItem.objects.get(pk=inx)
             m1.cart_status = 2 # объект находится в пользовании
             m1.departament = get(parent_id)
             m1.save(update_fields=['departament', 'cart_status'])
-        
+            
+            list_cplx.append((m1.id, str(m1.cart_itm_name)))
+        sign_tr_cart_to_uses.send(sender=None, 
+                                            list_cplx=list_cplx,
+                                            request=request,
+                                            org=str(get(parent_id)))
         return HttpResponseRedirect(reverse('stock'))
     return render(request, 'index/transfe_for_use.html', {'checked_cartr': checked_cartr, 'bulk': children})
 
 
 @login_required
 def transfer_to_stock(request):
-    """
-
+    """Возврат исчерпаного картриджа от пользователя обратно на склад.
     """
     checked_cartr = request.GET.get('select', '')
     tmp = ''
@@ -227,13 +238,16 @@ def transfer_to_stock(request):
         checked_cartr = checked_cartr[1:-1]
 
     if request.method == 'POST':
+        list_cplx = []        
         for inx in tmp:
             m1 = CartridgeItem.objects.get(pk=inx)
             m1.cart_status = 3     # пустой объект на складе
             m1.departament = request.user.departament
             m1.save(update_fields=['departament', 'cart_status'])
-        
-        return HttpResponseRedirect("/use/")
+            list_cplx.append((m1.id, str(m1.cart_itm_name)))
+
+        sign_tr_empty_cart_to_stock.send(sender=None, list_cplx=list_cplx, request=request)
+        return HttpResponseRedirect('/use/')
     return render(request, 'index/transfer_for_stock.html', {'checked_cartr': checked_cartr})
 
 
@@ -486,11 +500,15 @@ def transfe_to_basket(request):
         checked_cartr = checked_cartr[1:-1]
     
     if request.method == 'POST':
+        list_cplx = []
         for inx in tmp:
             m1 = CartridgeItem.objects.get(pk=inx)
             m1.cart_status = cart_status  # в корзинку картриджи  
             m1.save(update_fields=['cart_status'])
+            list_cplx.append((m1.id, str(m1.cart_itm_name)))
         
+        sign_tr_cart_to_basket.send(sender=None, list_cplx=list_cplx, request=request)
+
         return HttpResponseRedirect(reverse('stock'))
     return render(request, 'index/transfe_to_basket.html', {'checked_cartr': checked_cartr})
 
@@ -552,14 +570,18 @@ def transfer_to_firm(request):
                                                                     'firms' : firms, 
                                                                 })            
         else:
-            
+            list_cplx = []
             select_firm = FirmTonerRefill.objects.get(pk=firmid) 
             for inx in tmp:
                 m1 = CartridgeItem.objects.get(pk=inx)
                 m1.cart_status = 4 # находится на заправке
                 m1.filled_firm = select_firm
-                m1.departament = None
-                m1.save(update_fields=['filled_firm', 'cart_status', 'departament'])
+                m1.save(update_fields=['filled_firm', 'cart_status'])
+                list_cplx.append((m1.pk, str(m1.cart_itm_name)))
+            sign_tr_empty_cart_to_firm.send(sender=None, 
+                                            list_cplx=list_cplx, 
+                                            request=request, 
+                                            firm=str(select_firm))
         return HttpResponseRedirect(reverse('empty'))
     return render(request, 'index/transfer_to_firm.html', {'checked_cartr': checked_cartr, 
                                                             'firms' : firms, 
@@ -584,13 +606,17 @@ def from_firm_to_stock(request):
         return HttpResponseRedirect(reverse('at_work'))        
 
     if request.method == 'POST':
+        list_cplx = []
         for inx in tmp:
             m1 = CartridgeItem.objects.get(pk=inx)
+            filled_firm = str(m1.filled_firm)
             m1.filled_firm = None
             m1.cart_status = 1
-            m1.departament = request.user.departament
             m1.cart_number_refills = int(m1.cart_number_refills) + 1
-            m1.save(update_fields=['filled_firm', 'cart_status', 'cart_number_refills', 'departament'])
+            m1.save(update_fields=['filled_firm', 'cart_status', 'cart_number_refills'])
+            list_cplx.append((m1.id, str(m1.cart_itm_name), filled_firm))
+
+        sign_tr_filled_cart_to_stock.send(sender=None, list_cplx=list_cplx, request=request)
         return HttpResponseRedirect(reverse('at_work'))
     return render(request, 'index/from_firm_to_stock.html', {'checked_cartr': checked_cartr })
 
