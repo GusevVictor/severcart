@@ -60,9 +60,62 @@ def dashboard(request):
 def stock(request):
     """
     """
-    all_items = CartridgeItem.objects.filter(departament=request.user.departament).filter(cart_status=1).order_by('pk')
+    select_number = select_type = select_count = select_date = False
+    select_action = request.GET.get('action', '')
+    if select_action == 'number':
+        select_number = True
+        if request.session.get('sort') == 'pk':
+            sorted_colum = '-pk'
+            request.session['sort'] = sorted_colum
+        else:
+            sorted_colum = 'pk'
+            request.session['sort'] = sorted_colum
+
+    elif select_action == 'name':
+        select_type = True
+        if request.session.get('sort') == 'cart_itm_name':
+            sorted_colum = '-cart_itm_name'
+            request.session['sort'] = sorted_colum
+        else:
+            sorted_colum = 'cart_itm_name'
+            request.session['sort'] = sorted_colum
+
+    elif select_action == 'recovery':
+        select_count = True
+        if request.session.get('sort') == 'cart_number_refills':
+            sorted_colum = '-cart_number_refills'
+            request.session['sort'] = sorted_colum
+        else:
+            sorted_colum = 'cart_number_refills'
+            request.session['sort'] = sorted_colum
+    
+    elif select_action == 'dataadd':
+        select_date = True
+        if request.session.get('sort') == 'cart_date_added':
+            sorted_colum = '-cart_date_added'
+            request.session['sort'] = sorted_colum
+        else:
+            sorted_colum = 'cart_date_added'
+            request.session['sort'] = sorted_colum    
+    else:
+        # по умолчанию будем сортивать по id в порядке возрастания номеров
+        select_number = True
+        sorted_colum = 'pk'
+        request.session['sort'] = sorted_colum
+
+
+
+
+    all_items = CartridgeItem.objects.filter(Q(departament=request.user.departament) & Q(cart_status=1)).order_by(sorted_colum)
     cartridjes = sc_paginator(all_items, request)
-    return render(request, 'index/stock.html', {'cartrjs': cartridjes})
+    
+    context = {}
+    context['cartrjs']       = cartridjes
+    context['select_number'] = select_number
+    context['select_type']   = select_type
+    context['select_count']  = select_count
+    context['select_date']   = select_date
+    return render(request, 'index/stock.html', context)
 
 
 @login_required

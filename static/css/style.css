@@ -465,5 +465,18 @@ table.checkboxes tr th {
     width:150px;
 
 }
+
+input.search_number {
+    display: inline important!;   
+    padding: 0;
+    width: 70px;
+    font-style: normal;
+    margin:6px 0 0 0;
+}
+
+th.active_cell {
+    background: #c8c8c8;
+}
+
 /* --- end main table style --- */
 
