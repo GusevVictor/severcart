@@ -39,9 +39,8 @@ def view_cartridge_events(request):
         if entry.event_type == 'AD':
             entry_obj = {}
             data_env = entry.date_time
-            text_com = 'Добавлен картридж № %s (%s) пользователем %s.' % (
+            text_com = 'Добавлен картридж № %s пользователем %s.' % (
                                                                                 entry.cart_number,
-                                                                                entry.cart_type,
                                                                                 entry.event_user )
             entry_obj['data_env'] = data_env
             entry_obj['text_com'] = text_com
@@ -50,9 +49,8 @@ def view_cartridge_events(request):
         elif entry.event_type == 'TR':
             entry_obj = {}
             data_env = entry.date_time
-            text_com = '№ %s (%s) передан %s пользователем %s.' % (
+            text_com = '№ %s передан %s пользователем %s.' % (
                                                                         entry.cart_number,
-                                                                        entry.cart_type,
                                                                         entry.event_org,
                                                                         entry.event_user )
             entry_obj['data_env'] = data_env
@@ -62,9 +60,8 @@ def view_cartridge_events(request):
         elif entry.event_type == 'TF':
             entry_obj = {}
             data_env = entry.date_time
-            text_com = '№ %s (%s) передан на заправку "%s" пользователем %s.' % (
+            text_com = '№ %s передан на заправку "%s" пользователем %s.' % (
                                                                         entry.cart_number,
-                                                                        entry.cart_type,
                                                                         entry.event_firm,
                                                                         entry.event_user )
             entry_obj['data_env'] = data_env
@@ -74,9 +71,8 @@ def view_cartridge_events(request):
         elif entry.event_type == 'RS':
             entry_obj = {}
             data_env = entry.date_time
-            text_com = '№ %s (%s) возвращён с заправки в фирме "%s" пользователем %s.' % (
+            text_com = '№ %s возвращён с заправки в фирме "%s" пользователем %s.' % (
                                                                         entry.cart_number,
-                                                                        entry.cart_type,
                                                                         entry.event_firm,
                                                                         entry.event_user )
             entry_obj['data_env'] = data_env
@@ -86,9 +82,8 @@ def view_cartridge_events(request):
         elif entry.event_type == 'TB':
             entry_obj = {}
             data_env = entry.date_time
-            text_com = '№ %s (%s) перемещён в корзину пользователем %s.' % (
+            text_com = '№ %s перемещён в корзину пользователем %s.' % (
                                                                         entry.cart_number,
-                                                                        entry.cart_type,
                                                                         entry.event_user )
             entry_obj['data_env'] = data_env
             entry_obj['text_com'] = text_com
@@ -97,9 +92,8 @@ def view_cartridge_events(request):
         elif entry.event_type == 'DC':
             entry_obj = {}
             data_env = entry.date_time
-            text_com = '№ %s (%s) списан пользователем %s.' % (
+            text_com = '№ %s списан пользователем %s.' % (
                                                                         entry.cart_number,
-                                                                        entry.cart_type,
                                                                         entry.event_user )
             entry_obj['data_env'] = data_env
             entry_obj['text_com'] = text_com
@@ -108,9 +102,8 @@ def view_cartridge_events(request):
         elif entry.event_type == 'TS':
             entry_obj = {}
             data_env = entry.date_time
-            text_com = '№ %s (%s) возвращен от %s пользователем %s.' % (
+            text_com = '№ %s возвращен от %s пользователем %s.' % (
                                                                         entry.cart_number,
-                                                                        entry.cart_type,
                                                                         entry.event_org,
                                                                         entry.event_user )
             entry_obj['data_env'] = data_env
@@ -119,4 +112,5 @@ def view_cartridge_events(request):
     
     context['frdly_es'] = frdly_es
     context['cart_id']  = cart_id
+    context['cart_type'] = entry.cart_type
     return render(request, 'events/view_cartridge_events.html', context)

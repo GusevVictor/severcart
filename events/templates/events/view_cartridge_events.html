@@ -1,7 +1,7 @@
 {% extends "index/base.html" %}
 {% load staticfiles %}
-{% block title %}События объекта учёта {{ cart_id }}{% endblock %}
-{% block h3 %}События объекта учёта {{ cart_id }}{% endblock %}
+{% block title %}События объекта учёта {{ cart_id }} ({{ cart_type }}){% endblock %}
+{% block h3 %}События объекта учёта {{ cart_id }} ({{ cart_type }}){% endblock %}
 {% block content %}
 <div class="row">
 <div class="large-12 columns">
@@ -12,7 +12,7 @@
     </tr>
     {% for entry in frdly_es %}
     <tr>
-    <td>{{ entry.data_env }}</td>
+    <td>{{ entry.data_env|date:"d M Y G:i" }}</td>
     <td>{{ entry.text_com }}</td>
     </tr>
     {% endfor %}
