@@ -26,10 +26,10 @@
             <form>
                 <tr>
                     <th><input type="checkbox" class="check_all"></th>
-                    <th {% if select_number  %}class="active_cell"{% endif %}><a href="?action=number">Номер</a><br/><input class="search_number" name="search_number"  /></th>
-                    <th {% if select_type %}class="active_cell"{% endif %}><a href="?action=name">Наименование</a></th>
-                    <th {% if select_count %}class="active_cell"{% endif %}><a href="?action=recovery">Кол-во<br/>перезаправок</a></th>
-                    <th {% if select_date %}class="active_cell"{% endif %}><a  href="?action=dataadd">Дата добавления</a></th>
+                    <th {% if select_number  %}class="active_cell"{% endif %}><a href="?action=number">Номер {{number_triangle}}</a><br/><input class="search_number" name="search_number"  /></th>
+                    <th {% if select_type %}class="active_cell"{% endif %}><a href="?action=name">Наименование {{type_triangle}}</a></th>
+                    <th {% if select_count %}class="active_cell"{% endif %}><a href="?action=recovery">Кол-во<br/>перезаправок {{count_triangle}}</a></th>
+                    <th {% if select_date %}class="active_cell"{% endif %}><a  href="?action=dataadd">Дата добавления {{date_triangle}}</a></th>
                     <th>Комментарий</th>
                     <th>Действие</th>
                 </tr>

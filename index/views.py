@@ -60,61 +60,69 @@ def dashboard(request):
 def stock(request):
     """
     """
+    context = {}
     select_number = select_type = select_count = select_date = False
     select_action = request.GET.get('action', '')
     if select_action == 'number':
-        select_number = True
+        context['select_number'] = True
         if request.session.get('sort') == 'pk':
-            sorted_colum = '-pk'
-            request.session['sort'] = sorted_colum
+            request.session['sort'] = '-pk'
+            context['number_triangle'] = '▼'
         else:
-            sorted_colum = 'pk'
-            request.session['sort'] = sorted_colum
+            context['number_triangle'] = '▲'
+            request.session['sort'] = 'pk'
 
     elif select_action == 'name':
-        select_type = True
+        context['select_type'] = True
         if request.session.get('sort') == 'cart_itm_name':
-            sorted_colum = '-cart_itm_name'
-            request.session['sort'] = sorted_colum
+            request.session['sort'] = '-cart_itm_name'
+            context['type_triangle'] = '▼'
         else:
-            sorted_colum = 'cart_itm_name'
-            request.session['sort'] = sorted_colum
+            request.session['sort'] = 'cart_itm_name'
+            context['type_triangle'] = '▲'
 
     elif select_action == 'recovery':
-        select_count = True
+        context['select_count']  = True
         if request.session.get('sort') == 'cart_number_refills':
-            sorted_colum = '-cart_number_refills'
-            request.session['sort'] = sorted_colum
+            request.session['sort'] = '-cart_number_refills'
+            context['count_triangle'] = '▼'
         else:
-            sorted_colum = 'cart_number_refills'
-            request.session['sort'] = sorted_colum
+            request.session['sort'] = 'cart_number_refills'
+            context['count_triangle'] = '▲'
     
     elif select_action == 'dataadd':
-        select_date = True
+        context['select_date']   = True
         if request.session.get('sort') == 'cart_date_added':
-            sorted_colum = '-cart_date_added'
-            request.session['sort'] = sorted_colum
+            request.session['sort'] = '-cart_date_added'
+            context['date_triangle'] = '▼'
         else:
-            sorted_colum = 'cart_date_added'
-            request.session['sort'] = sorted_colum    
+            request.session['sort'] = 'cart_date_added'
+            context['date_triangle'] = '▲'
     else:
-        # по умолчанию будем сортивать по id в порядке возрастания номеров
-        select_number = True
-        sorted_colum = 'pk'
-        request.session['sort'] = sorted_colum
+        # переходим в веточку если пользователь не выбирал сортировок
+        # дальнейшие преобразования производим на основе предыдущих действий, если они были
+        sort_order = request.session.get('sort')
+        if sort_order == 'pk' or sort_order == '-pk':
+            context['select_number'] = True
+            context['number_triangle'] = '▲' if sort_order == 'pk' else '▼'
+        elif sort_order == 'cart_itm_name' or sort_order == '-cart_itm_name':
+            context['select_type'] = True
+            context['type_triangle'] = '▲' if sort_order == 'cart_itm_name' else '▼'
+        elif sort_order == 'cart_number_refills' or sort_order == '-cart_number_refills':
+            context['select_count']  = True
+            context['count_triangle'] = '▲' if sort_order == 'cart_number_refills' else '▼'
+        elif sort_order == 'cart_date_added' or sort_order == '-cart_date_added':
+            context['select_date']   = True
+            context['date_triangle'] = '▲' if sort_order == 'cart_date_added' else '▼'
+        else:
+            # по умолчанию будем сортивать по id в порядке возрастания номеров
+            context['select_number'] = True
+            request.session['sort'] = 'pk'
+            context['number_triangle'] = '▲' if sort_order == 'pk' else '▼'
 
-
-
-
-    all_items = CartridgeItem.objects.filter(Q(departament=request.user.departament) & Q(cart_status=1)).order_by(sorted_colum)
+    all_items = CartridgeItem.objects.filter(Q(departament=request.user.departament) & Q(cart_status=1)).order_by(request.session['sort'])
     cartridjes = sc_paginator(all_items, request)
-    
-    context = {}
-    context['cartrjs']       = cartridjes
-    context['select_number'] = select_number
-    context['select_type']   = select_type
-    context['select_count']  = select_count
-    context['select_date']   = select_date
+    context['cartrjs'] = cartridjes
     return render(request, 'index/stock.html', context)
 
 
