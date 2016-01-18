@@ -120,7 +120,20 @@ def stock(request):
             request.session['sort'] = 'pk'
             context['number_triangle'] = '▲' if sort_order == 'pk' else '▼'
 
-    all_items = CartridgeItem.objects.filter(Q(departament=request.user.departament) & Q(cart_status=1)).order_by(request.session['sort'])
+    # работаем с поисковой формой по номеру картриджа
+    search_number = request.GET.get('search_number')
+    if search_number == None or search_number == '':
+        all_items = CartridgeItem.objects.filter(Q(departament=request.user.departament) & Q(cart_status=1)).order_by(request.session['sort'])
+        search_number = ''
+    else:
+        try:
+            search_number = int(search_number)
+        except ValueError:
+            all_items = []
+        else:    
+            all_items = CartridgeItem.objects.filter(Q(pk=search_number) & Q(departament=request.user.departament) & Q(cart_status=1))
+
+    context['search_number'] = search_number
     cartridjes = sc_paginator(all_items, request)
     context['cartrjs'] = cartridjes
     return render(request, 'index/stock.html', context)
