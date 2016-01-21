@@ -27,7 +27,6 @@ from .models import City as CityM
 from .models import FirmTonerRefill
 from .models import CartridgeItemName
 from .helpers import recursiveChildren, check_ajax_auth
-#from .helpers import Dashboard
 from .sc_paginator import sc_paginator
 from .signals import ( sign_add_full_to_stock, 
                     sign_tr_cart_to_uses, 
@@ -66,9 +65,6 @@ class Stock(SeverCartView):
     @method_decorator(login_required)
     def dispatch(self, *args, **kwargs):
         return super(Stock, self).dispatch(*args, **kwargs)
-
-    def get_queryset(self):
-        return
 
     def get_context_data(self, **kwargs):
         context = super(Stock, self).get_context_data(**kwargs)

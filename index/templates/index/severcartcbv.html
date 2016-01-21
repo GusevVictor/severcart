@@ -1,25 +1,6 @@
 {% extends "index/base.html" %}
 {% load pagination  %}
-{% block title %}Наличие материальных запасов{% endblock %}
-{% block h3 %}Список новых или заправленных{% endblock %}
 {% block content %}
-<div class="row">
-    <div class="large-6 columns">
-        <div class="error_msg"></div>
-        <div class="success_msg"></div>
-    </div>
-</div>
-
-<div class="row">
-    <div class="large-12 columns">
-        <a class="add_items button success" href="{% url 'add_items' %}">Добавить расходники</a>
-        <a class="tr_for_use button" href="#">Передать в пользование</a>
-        <a class="tr_to_recycle_bin button alert" href="#">В корзину</a>
-    </div>
-</div>
-<div class="row">
-    <div class="large-12 columns marginTop"></div>
-</div>
 <div class="row">
     <div class="large-12 columns">
         <table class="checkboxes">

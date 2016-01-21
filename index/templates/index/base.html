@@ -31,7 +31,7 @@
                 <span class="user_ou">{% if request.user.departament %}{{request.user.departament}}{% endif %}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ request.user.get_username }}&nbsp;&nbsp;&nbsp;&nbsp;<a href="{% url 'auth:logout' %}">выход</a></p> 
         </div>
 </div>
-
+{% block submenu %}{% endblock %}
 {% block content %}{% endblock %}
 <div class="row">
     <div class="large-12 columns text-center"><hr />

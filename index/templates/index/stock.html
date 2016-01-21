@@ -1,15 +1,13 @@
-{% extends "index/base.html" %}
-{% load pagination  %}
+{% extends "index/severcartcbv.html" %}
 {% block title %}Наличие материальных запасов{% endblock %}
 {% block h3 %}Список новых или заправленных{% endblock %}
-{% block content %}
+{% block submenu %}
 <div class="row">
     <div class="large-6 columns">
         <div class="error_msg"></div>
         <div class="success_msg"></div>
     </div>
 </div>
-
 <div class="row">
     <div class="large-12 columns">
         <a class="add_items button success" href="{% url 'add_items' %}">Добавить расходники</a>
@@ -20,42 +18,4 @@
 <div class="row">
     <div class="large-12 columns marginTop"></div>
 </div>
-<div class="row">
-    <div class="large-12 columns">
-        <table class="checkboxes">
-            <form>
-                <tr>
-                    <th><input type="checkbox" class="check_all"></th>
-                    <th {% if select_number  %}class="active_cell"{% endif %}><a href="?action=number">Номер {{number_triangle}}</a><br/><input class="search_number" name="search_number" value="{{search_number}}"  /></th>
-                    <th {% if select_type %}class="active_cell"{% endif %}><a href="?action=name">Наименование {{type_triangle}}</a></th>
-                    <th {% if select_count %}class="active_cell"{% endif %}><a href="?action=recovery">Кол-во<br/>перезаправок {{count_triangle}}</a></th>
-                    <th {% if select_date %}class="active_cell"{% endif %}><a  href="?action=dataadd">Дата добавления {{date_triangle}}</a></th>
-                    <th>Комментарий</th>
-                    <th>Действие</th>
-                </tr>
-                {% for i in cartrjs %}
-                    <tr>
-                        <td><input type="checkbox" class="checkbox" value="{{ i.id }}"></td>
-                        <td>{{ i.id }}</td>
-                        <td>{{ i.cart_itm_name }}</td>
-                        <td>{{ i.cart_number_refills }}</td>
-                        <td>{{ i.cart_date_added }}</td>
-                        <td><div class="comment_in_cell" title="{{ i.comment }}">{{ i.comment|truncatechars:20 }}</div></td>
-                        <td><select class="cartridge_action" data="{{ i.id }}">
-                            <option selected></option>
-                            <option value="edit">Редактировать</option>
-                            <option value="view_events">Просмотр событий</option>
-                        </select>
-                        </td>
-                    </tr>
-                {% endfor %}
-            </form>
-        </table>
-
-    </div>
-</div>
-
-{% found_pagination cartrjs  %}
-
 {% endblock %}
-
