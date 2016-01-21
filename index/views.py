@@ -8,8 +8,10 @@ from django.core.urlresolvers import reverse
 from django.core.exceptions import MultipleObjectsReturned, ObjectDoesNotExist
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
+from django.utils.decorators import method_decorator
 from django.contrib.sessions.models import Session
 from django.db.models import Q
+from django.views.generic.list import ListView
 from .forms.add_cartridge_name import AddCartridgeName
 from .forms.add_items import AddItems
 from .forms.add_city import CityF
@@ -56,87 +58,112 @@ def dashboard(request):
     return render(request, 'index/dashboard.html', context)
 
 
-@login_required
-def stock(request):
+
+class SeverCartView(ListView):
     """
     """
-    context = {}
-    select_number = select_type = select_count = select_date = False
-    select_action = request.GET.get('action', '')
-    if select_action == 'number':
-        context['select_number'] = True
-        if request.session.get('sort') == 'pk':
-            request.session['sort'] = '-pk'
-            context['number_triangle'] = '▼'
-        else:
-            context['number_triangle'] = '▲'
-            request.session['sort'] = 'pk'
-
-    elif select_action == 'name':
-        context['select_type'] = True
-        if request.session.get('sort') == 'cart_itm_name':
-            request.session['sort'] = '-cart_itm_name'
-            context['type_triangle'] = '▼'
-        else:
-            request.session['sort'] = 'cart_itm_name'
-            context['type_triangle'] = '▲'
-
-    elif select_action == 'recovery':
-        context['select_count']  = True
-        if request.session.get('sort') == 'cart_number_refills':
-            request.session['sort'] = '-cart_number_refills'
-            context['count_triangle'] = '▼'
-        else:
-            request.session['sort'] = 'cart_number_refills'
-            context['count_triangle'] = '▲'
-    
-    elif select_action == 'dataadd':
-        context['select_date']   = True
-        if request.session.get('sort') == 'cart_date_added':
-            request.session['sort'] = '-cart_date_added'
-            context['date_triangle'] = '▼'
-        else:
-            request.session['sort'] = 'cart_date_added'
-            context['date_triangle'] = '▲'
-    else:
-        # переходим в веточку если пользователь не выбирал сортировок
-        # дальнейшие преобразования производим на основе предыдущих действий, если они были
-        sort_order = request.session.get('sort')
-        if sort_order == 'pk' or sort_order == '-pk':
+    def get_context_data(self, **kwargs):
+        context = super(SeverCartView, self).get_context_data(**kwargs)
+        #
+        select_number = select_type = select_count = select_date = False
+        select_action = self.request.GET.get('action', '')
+        if select_action == 'number':
             context['select_number'] = True
-            context['number_triangle'] = '▲' if sort_order == 'pk' else '▼'
-        elif sort_order == 'cart_itm_name' or sort_order == '-cart_itm_name':
+            if self.request.session.get('sort') == 'pk':
+                self.request.session['sort'] = '-pk'
+                context['number_triangle'] = '▼'
+            else:
+                context['number_triangle'] = '▲'
+                self.request.session['sort'] = 'pk'
+
+        elif select_action == 'name':
             context['select_type'] = True
-            context['type_triangle'] = '▲' if sort_order == 'cart_itm_name' else '▼'
-        elif sort_order == 'cart_number_refills' or sort_order == '-cart_number_refills':
+            if self.request.session.get('sort') == 'cart_itm_name':
+                self.request.session['sort'] = '-cart_itm_name'
+                context['type_triangle'] = '▼'
+            else:
+                self.request.session['sort'] = 'cart_itm_name'
+                context['type_triangle'] = '▲'
+
+        elif select_action == 'recovery':
             context['select_count']  = True
-            context['count_triangle'] = '▲' if sort_order == 'cart_number_refills' else '▼'
-        elif sort_order == 'cart_date_added' or sort_order == '-cart_date_added':
+            if self.request.session.get('sort') == 'cart_number_refills':
+                self.request.session['sort'] = '-cart_number_refills'
+                context['count_triangle'] = '▼'
+            else:
+                self.request.session['sort'] = 'cart_number_refills'
+                context['count_triangle'] = '▲'
+        
+        elif select_action == 'dataadd':
             context['select_date']   = True
-            context['date_triangle'] = '▲' if sort_order == 'cart_date_added' else '▼'
+            if self.request.session.get('sort') == 'cart_date_added':
+                self.request.session['sort'] = '-cart_date_added'
+                context['date_triangle'] = '▼'
+            else:
+                self.request.session['sort'] = 'cart_date_added'
+                context['date_triangle'] = '▲'
         else:
-            # по умолчанию будем сортивать по id в порядке возрастания номеров
-            context['select_number'] = True
-            request.session['sort'] = 'pk'
-            context['number_triangle'] = '▲' if sort_order == 'pk' else '▼'
+            # переходим в веточку если пользователь не выбирал сортировок
+            # дальнейшие преобразования производим на основе предыдущих действий, если они были
+            sort_order = self.request.session.get('sort')
+            if sort_order == 'pk' or sort_order == '-pk':
+                context['select_number'] = True
+                context['number_triangle'] = '▲' if sort_order == 'pk' else '▼'
+            elif sort_order == 'cart_itm_name' or sort_order == '-cart_itm_name':
+                context['select_type'] = True
+                context['type_triangle'] = '▲' if sort_order == 'cart_itm_name' else '▼'
+            elif sort_order == 'cart_number_refills' or sort_order == '-cart_number_refills':
+                context['select_count']  = True
+                context['count_triangle'] = '▲' if sort_order == 'cart_number_refills' else '▼'
+            elif sort_order == 'cart_date_added' or sort_order == '-cart_date_added':
+                context['select_date']   = True
+                context['date_triangle'] = '▲' if sort_order == 'cart_date_added' else '▼'
+            else:
+                # по умолчанию будем сортивать по id в порядке возрастания номеров
+                context['select_number'] = True
+                self.request.session['sort'] = 'pk'
+                context['number_triangle'] = '▲' if sort_order == 'pk' else '▼'
+        #
+        # работаем с поисковой формой по номеру картриджа
+        search_number = self.request.GET.get('search_number')
+        if search_number == None or search_number == '':
+            all_items = CartridgeItem.objects.filter(Q(departament=self.request.user.departament) &
+                                                     Q(cart_status=self.cart_status_number)).order_by(self.request.session['sort'])
+            search_number = ''
+        else:
+            try:
+                search_number = int(search_number)
+            except ValueError:
+                all_items = []
+            else:    
+                all_items = CartridgeItem.objects.filter(Q(pk=search_number) & 
+                                                        Q(departament=self.request.user.departament) & 
+                                                        Q(cart_status=self.cart_status_number))
 
-    # работаем с поисковой формой по номеру картриджа
-    search_number = request.GET.get('search_number')
-    if search_number == None or search_number == '':
-        all_items = CartridgeItem.objects.filter(Q(departament=request.user.departament) & Q(cart_status=1)).order_by(request.session['sort'])
-        search_number = ''
-    else:
-        try:
-            search_number = int(search_number)
-        except ValueError:
-            all_items = []
-        else:    
-            all_items = CartridgeItem.objects.filter(Q(pk=search_number) & Q(departament=request.user.departament) & Q(cart_status=1))
+        context['search_number'] = search_number
+        cartridjes = sc_paginator(all_items, self.request)
+        context['cartrjs'] = cartridjes
+        return context
 
-    context['search_number'] = search_number
-    cartridjes = sc_paginator(all_items, request)
-    context['cartrjs'] = cartridjes
-    return render(request, 'index/stock.html', context)
+
+
+class Stock(SeverCartView):
+    """
+    """
+    template_name = 'index/stock.html'
+    context_object_name = 'list_cartidjes'
+    
+    @method_decorator(login_required)
+    def dispatch(self, *args, **kwargs):
+        return super(Stock, self).dispatch(*args, **kwargs)
+
+    def get_queryset(self):
+        return
+
+    def get_context_data(self, **kwargs):
+        self.cart_status_number = 1
+        context = super(Stock, self).get_context_data(**kwargs)
+        return context
 
 
 @login_required

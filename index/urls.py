@@ -1,6 +1,6 @@
 from django.conf.urls import url
 from index.views import dashboard
-from index.views import stock
+from index.views import Stock
 from index.views import add_cartridge_name
 from index.views import add_cartridge_item
 from index.views import tree_list
@@ -26,7 +26,7 @@ from index.views import edit_cartridge_comment
 
 urlpatterns = [
     url('^$', dashboard, name='dashboard'),
-    url('^stock/', stock, name='stock'),
+    url('^stock/', Stock.as_view(), name='stock'),
     url(r'^add_name/', add_cartridge_name, name='add_name'),
     url(r'^add_items/', add_cartridge_item, name='add_items'),
     url(r'^tree_list/', tree_list, name='tree_list'),
