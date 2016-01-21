@@ -284,14 +284,24 @@ class Use(SeverCartView):
         return context
 
 
-@login_required
-def empty(request):
+class Empty(SeverCartView):
     """Список пустых картриджей.
     """
-    root_ou = request.user.departament
-    items = CartridgeItem.objects.filter( Q(departament=root_ou) & Q(cart_status=3) )
-    items = sc_paginator(items, request)
-    return render(request, 'index/empty.html', {'cartrjs': items})
+    template_name = 'index/empty.html'
+
+    @method_decorator(login_required)
+    def dispatch(self, *args, **kwargs):
+        return super(Empty, self).dispatch(*args, **kwargs)
+
+    def get_context_data(self, **kwargs):
+        context = super(Empty, self).get_context_data(**kwargs)
+        root_ou = self.request.user.departament
+        self.all_items = self.all_items.filter( Q(departament=root_ou) & Q(cart_status=3) )
+        cartridjes = sc_paginator(self.all_items, self.request)
+        context['cartrjs'] = cartridjes
+        return context
+
+
 
 
 @login_required

@@ -1,8 +1,7 @@
-{% extends "index/base.html" %}
+{% extends "index/severcartcbv.html" %}
 {% block title %}Пустые расходники{% endblock %}
 {% block h3 %}Пустые расходники{% endblock %}
-{% load pagination  %}
-{% block content %}
+{% block submenu %}
 <div class="row">
     <div class="large-12 columns">
         <a class="tr_to_firm button" href="#">Передать на заправку</a>
@@ -12,28 +11,4 @@
 <div class="row">
     <div class="large-12 columns marginTop"></div>
 </div>
-<div class="row">
-    <div class="large-12 columns">
-        <table class="checkboxes">
-        <form>
-        <tr>
-            <th><input type="checkbox" class="check_all"></th>
-            <th>Номер</th>
-            <th>Наименование</th>
-            <th>Кол-во перезаправок</th>
-        </tr>
-        {% for i in cartrjs %}
-        <tr>
-            <td><input type="checkbox" class="checkbox" value="{{i.id}}"></td>
-            <td>{{ i.id }}</td>
-            <td>{{ i.cart_itm_name }}</td>
-            <td>{{ i.cart_number_refills }}</td>
-        </tr>
-        {% endfor %}
-        </form>
-        </table>
-        {% found_pagination cartrjs  %}
-        {% endblock %}
-    </div>
-</div>
-
+{% endblock %}

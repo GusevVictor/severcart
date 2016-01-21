@@ -13,7 +13,7 @@ from index.views import transfe_to_basket
 from index.views import from_basket_to_stock
 from index.views import at_work
 from index.views import Use
-from index.views import empty
+from index.views import Empty
 from index.views import toner_refill
 from index.views import add_city
 from index.views import add_firm
@@ -39,7 +39,7 @@ urlpatterns = [
     url(r'^from_basket_to_stock/', from_basket_to_stock, name='from_basket_to_stock'),
     url(r'^at_work/', at_work, name='at_work'),
     url(r'^use/', Use.as_view(), name='use'),
-    url(r'^empty/', empty, name='empty'),
+    url(r'^empty/', Empty.as_view(), name='empty'),
     url(r'^toner_refill/', toner_refill, name='toner_refill'),
     url(r'^add_city/', add_city, name='add_city'),
     url(r'^add_firm/', add_firm, name='add_firm'),
