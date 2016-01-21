@@ -1,0 +1,117 @@
+# -*- coding:utf-8 -*-
+
+import json
+from django.shortcuts import render
+from django.http import HttpResponseRedirect, HttpResponse, JsonResponse, Http404
+from django.utils import timezone
+from django.core.urlresolvers import reverse
+from django.core.exceptions import MultipleObjectsReturned, ObjectDoesNotExist
+from django.contrib import messages
+from django.contrib.auth.decorators import login_required
+from django.utils.decorators import method_decorator
+from django.contrib.sessions.models import Session
+from django.db.models import Q
+from django.views.generic.list import ListView
+from .forms.add_cartridge_name import AddCartridgeName
+from .forms.add_items import AddItems
+from .forms.add_city import CityF
+from .forms.add_type import AddCartridgeType
+from .forms.add_firm import FirmTonerRefillF
+from .forms.comment import EditCommentForm
+from .models import CartridgeType
+from accounts.models import AnconUser
+from django.contrib.auth.models import User
+from .models import CartridgeItem
+from .models import OrganizationUnits
+from .models import City as CityM
+from .models import FirmTonerRefill
+from .models import CartridgeItemName
+from .helpers import recursiveChildren, check_ajax_auth
+from .sc_paginator import sc_paginator
+from .signals import ( sign_add_full_to_stock, 
+                    sign_tr_cart_to_uses, 
+                    sign_tr_cart_to_basket,
+                    sign_tr_empty_cart_to_stock,
+                    sign_tr_empty_cart_to_firm,
+                    sign_tr_filled_cart_to_stock )
+
+import logging
+logger = logging.getLogger('simp')
+
+class SeverCartView(ListView):
+    """
+    """
+    def get_context_data(self, **kwargs):
+        context = super(SeverCartView, self).get_context_data(**kwargs)
+        #
+        select_number = select_type = select_count = select_date = False
+        select_action = self.request.GET.get('action', '')
+        if select_action == 'number':
+            context['select_number'] = True
+            if self.request.session.get('sort') == 'pk':
+                self.request.session['sort'] = '-pk'
+                context['number_triangle'] = '▼'
+            else:
+                context['number_triangle'] = '▲'
+                self.request.session['sort'] = 'pk'
+
+        elif select_action == 'name':
+            context['select_type'] = True
+            if self.request.session.get('sort') == 'cart_itm_name':
+                self.request.session['sort'] = '-cart_itm_name'
+                context['type_triangle'] = '▼'
+            else:
+                self.request.session['sort'] = 'cart_itm_name'
+                context['type_triangle'] = '▲'
+
+        elif select_action == 'recovery':
+            context['select_count']  = True
+            if self.request.session.get('sort') == 'cart_number_refills':
+                self.request.session['sort'] = '-cart_number_refills'
+                context['count_triangle'] = '▼'
+            else:
+                self.request.session['sort'] = 'cart_number_refills'
+                context['count_triangle'] = '▲'
+        
+        elif select_action == 'dataadd':
+            context['select_date']   = True
+            if self.request.session.get('sort') == 'cart_date_added':
+                self.request.session['sort'] = '-cart_date_added'
+                context['date_triangle'] = '▼'
+            else:
+                self.request.session['sort'] = 'cart_date_added'
+                context['date_triangle'] = '▲'
+        else:
+            # переходим в веточку если пользователь не выбирал сортировок
+            # дальнейшие преобразования производим на основе предыдущих действий, если они были
+            sort_order = self.request.session.get('sort')
+            if sort_order == 'pk' or sort_order == '-pk':
+                context['select_number'] = True
+                context['number_triangle'] = '▲' if sort_order == 'pk' else '▼'
+            elif sort_order == 'cart_itm_name' or sort_order == '-cart_itm_name':
+                context['select_type'] = True
+                context['type_triangle'] = '▲' if sort_order == 'cart_itm_name' else '▼'
+            elif sort_order == 'cart_number_refills' or sort_order == '-cart_number_refills':
+                context['select_count']  = True
+                context['count_triangle'] = '▲' if sort_order == 'cart_number_refills' else '▼'
+            elif sort_order == 'cart_date_added' or sort_order == '-cart_date_added':
+                context['select_date']   = True
+                context['date_triangle'] = '▲' if sort_order == 'cart_date_added' else '▼'
+            else:
+                # по умолчанию будем сортивать по id в порядке возрастания номеров
+                context['select_number'] = True
+                self.request.session['sort'] = 'pk'
+                context['number_triangle'] = '▲' if sort_order == 'pk' else '▼'
+        # работаем с поисковой формой по номеру картриджа
+        search_number  = self.request.GET.get('search_number')
+        self.all_items = CartridgeItem.objects.all()
+        self.all_items = self.all_items.order_by(self.request.session['sort'])
+        if not(search_number == None or search_number == ''):
+            try:
+                search_number = int(search_number)
+            except ValueError:
+                pass
+            else:
+                self.all_items = self.all_items.filter(Q(pk=search_number))
+            context['search_number'] = search_number
+        return context
