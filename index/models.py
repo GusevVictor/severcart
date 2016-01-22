@@ -62,6 +62,7 @@ class CartridgeItem(models.Model):
     )
     cart_itm_name = models.ForeignKey(CartridgeItemName)
     cart_date_added = models.DateField()
+    cart_date_change = models.DateField()
     departament = models.ForeignKey(OrganizationUnits, blank=True, null=True)
     cart_status = models.IntegerField(choices=STATUS, default=1)
     cart_number_refills = models.IntegerField(default=0)
