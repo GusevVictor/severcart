@@ -280,6 +280,7 @@ class Use(SeverCartView):
         
         context = super(Use, self).get_context_data(**kwargs)
         self.all_items = self.all_items.filter(departament__in=children).filter(cart_status=2)
+        context['children'] = str(children[0])
         context['cartrjs'] = sc_paginator(self.all_items, self.request)
         return context
 
