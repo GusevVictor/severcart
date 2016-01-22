@@ -100,7 +100,7 @@ ul.menu {
     padding:0;
     float:left;
     width:100%;
-    height:60px;
+    height:50px;
     display:block;
     background-color:#000;
     margin:0;
@@ -137,7 +137,7 @@ ul.menu ul {
 
 ul.menu li {
     display:block;
-    line-height:60px;
+    line-height:50px;
 }
 
 
@@ -147,7 +147,7 @@ ul.menu ul.hovered {
 
 ul.menu ul li{
     background-color:#000;
-    height:60px;
+    height:50px;
     width:100%;
 
 }

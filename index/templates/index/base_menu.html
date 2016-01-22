@@ -9,20 +9,15 @@
             <li class="{% navactive request 'empty' %}"><a href="{% url 'empty' %}">Пустые</a></li>
             <li class="{% navactive request 'at_work' %}"><a href="{% url 'at_work' %}">На заправке</a></li>
             <li class="{% navactive request 'basket' %}"><a href="{% url 'basket' %}">В корзине</a></li>
-            <li><a href="/statistics/">Статистика</a></li>
-            <li class="right {% navactive request 'accounts:manage_users' %} {% navactive request 'tree_list' %} {% navactive request 'toner_refill' %} "><a href="#">Администрирование ▼</a>
+            <li><a href="/statistics/">Отчёты</a></li>
+            <li class="{% navactive request 'show_events' %}"><a href="{% url 'show_events' %}">События</a></li>
+            <li class="right {% navactive request 'accounts:manage_users' %} {% navactive request 'tree_list' %} {% navactive request 'toner_refill' %} "><a href="#">Настройки ▼</a>
                 <ul>
                     <li><a href="{% url 'accounts:manage_users'  %}">Пользователи</a></li>
                     <li><a href="{% url 'tree_list' %}">Структура организации</a></li>
                     <li><a href="{% url 'toner_refill' %}">Заправщики</a></li>
                 </ul>
             </li>
-        </ul>
-
-    </div>
-    <div class="large-12 columns">
-        <ul class="menu">
-            <li class="{% navactive request 'show_events' %}"><a href="{% url 'show_events' %}">События</a></li>
         </ul>
 
     </div>
