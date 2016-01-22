@@ -21,7 +21,8 @@
                     <th><input type="checkbox" class="check_all"></th>
                     <th {% if select_number  %}class="active_cell"{% endif %}><a href="?action=number">Номер {{number_triangle}}</a><br/><input class="search_number" name="search_number" value="{{search_number}}"  /></th>
                     <th {% if select_type %}class="active_cell"{% endif %}><a href="?action=name">Наименование {{type_triangle}}</a></th>
-                    <th {% if select_count %}class="active_cell"{% endif %}><a href="?action=recovery">Кол-во<br/>перезаправок {{count_triangle}}</a></th>
+                    <th {% if select_count %}class="active_cell"{% endif %}><a href="?action=recovery">Кол-во {{count_triangle}}<br/>перезаправок</a></th>
+                    <th {% if select_change_date %}class="active_cell"{% endif %}><a  href="?action=change_date">Дата {{datec_triangle}} передачи<br/>на заправку</a></th>
                     <th>Заправщик</th>
                     <th>Комментарий</th>
                     <th>Действие</th>
@@ -32,6 +33,7 @@
                         <td>{{ i.id }}</td>
                         <td>{{ i.cart_itm_name }}</td>
                         <td>{{ i.cart_number_refills }}</td>
+                        <td>{{ i.cart_date_change }}</td>
                         <td>{{ i.filled_firm }}</td>
                         <td><div class="comment_in_cell" title="{{ i.comment }}">{{ i.comment|truncatechars:20 }}</div></td>
                         <td><select class="firm_action" data="{{ i.id }}" size="2" multiple>

@@ -47,7 +47,7 @@ class SeverCartView(ListView):
     def get_context_data(self, **kwargs):
         context = super(SeverCartView, self).get_context_data(**kwargs)
         #
-        select_number = select_type = select_count = select_date = False
+        #select_number = select_type = select_count = select_date = False
         select_action = self.request.GET.get('action', '')
         if select_action == 'number':
             context['select_number'] = True
@@ -84,6 +84,15 @@ class SeverCartView(ListView):
             else:
                 self.request.session['sort'] = 'cart_date_added'
                 context['date_triangle'] = '▲'
+
+        elif select_action == 'change_date':
+            context['select_change_date']   = True
+            if self.request.session.get('sort') == 'cart_date_change':
+                self.request.session['sort'] = '-cart_date_change'
+                context['datec_triangle'] = '▼'
+            else:
+                self.request.session['sort'] = 'cart_date_change'
+                context['datec_triangle'] = '▲'
         else:
             # переходим в веточку если пользователь не выбирал сортировок
             # дальнейшие преобразования производим на основе предыдущих действий, если они были
@@ -100,6 +109,9 @@ class SeverCartView(ListView):
             elif sort_order == 'cart_date_added' or sort_order == '-cart_date_added':
                 context['select_date']   = True
                 context['date_triangle'] = '▲' if sort_order == 'cart_date_added' else '▼'
+            elif sort_order == 'cart_date_change' or sort_order == '-cart_date_change':
+                context['select_change_date']   = True
+                context['datec_triangle'] = '▲' if sort_order == 'cart_datec_added' else '▼'
             else:
                 # по умолчанию будем сортивать по id в порядке возрастания номеров
                 context['select_number'] = True

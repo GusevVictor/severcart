@@ -109,6 +109,7 @@ def add_cartridge_item(request):
             for i in range(count_items):
                 m1 = CartridgeItem(cart_itm_name=data_in_post['cartName'],
                                    cart_date_added=timezone.now(),
+                                   cart_date_change=timezone.now(),
                                    cart_number_refills=0,
                                    departament=request.user.departament,
                                    )
@@ -195,8 +196,7 @@ def add_type(request):
 
 @login_required
 def transfe_for_use(request):
-    """
-
+    """Передача расходника в пользование.
     """
     checked_cartr = request.GET.get('select', '')
     tmp = ''
@@ -221,7 +221,8 @@ def transfe_for_use(request):
             m1 = CartridgeItem.objects.get(pk=inx)
             m1.cart_status = 2 # объект находится в пользовании
             m1.departament = get(parent_id)
-            m1.save(update_fields=['departament', 'cart_status'])
+            m1.cart_date_change = timezone.now()
+            m1.save(update_fields=['departament', 'cart_status', 'cart_date_change'])
             
             list_cplx.append((m1.id, str(m1.cart_itm_name)))
         sign_tr_cart_to_uses.send(sender=None, 
@@ -251,7 +252,8 @@ def transfer_to_stock(request):
             m1 = CartridgeItem.objects.get(pk=inx)
             m1.cart_status = 3     # пустой объект на складе
             m1.departament = request.user.departament
-            m1.save(update_fields=['departament', 'cart_status'])
+            m1.cart_date_change = timezone.now()
+            m1.save(update_fields=['departament', 'cart_status', 'cart_date_change'])
             list_cplx.append((m1.id, str(m1.cart_itm_name)))
 
         sign_tr_empty_cart_to_stock.send(sender=None, list_cplx=list_cplx, request=request)
@@ -301,8 +303,6 @@ class Empty(SeverCartView):
         cartridjes = sc_paginator(self.all_items, self.request)
         context['cartrjs'] = cartridjes
         return context
-
-
 
 
 @login_required
@@ -552,7 +552,8 @@ def transfe_to_basket(request):
             m1 = CartridgeItem.objects.get(pk=inx)
             m1.cart_status = cart_status  # в корзинку картриджи  
             m1.departament = request.user.departament
-            m1.save(update_fields=['cart_status', 'departament'])
+            m1.cart_date_change = timezone.now()
+            m1.save(update_fields=['cart_status', 'departament', 'cart_date_change'])
             list_cplx.append((m1.id, str(m1.cart_itm_name)))
         
         sign_tr_cart_to_basket.send(sender=None, list_cplx=list_cplx, request=request)
@@ -624,7 +625,8 @@ def transfer_to_firm(request):
                 m1 = CartridgeItem.objects.get(pk=inx)
                 m1.cart_status = 4 # находится на заправке
                 m1.filled_firm = select_firm
-                m1.save(update_fields=['filled_firm', 'cart_status'])
+                m1.cart_date_change = timezone.now()
+                m1.save(update_fields=['filled_firm', 'cart_status', 'cart_date_change'])
                 list_cplx.append((m1.pk, str(m1.cart_itm_name)))
             sign_tr_empty_cart_to_firm.send(sender=None, 
                                             list_cplx=list_cplx, 
