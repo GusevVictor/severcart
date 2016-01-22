@@ -49,11 +49,11 @@ def dashboard(request):
         children = ''
     filter_itms = lambda qy: CartridgeItem.objects.filter(qy)
     context = {}
-    context['full_on_stock']  = filter_itms(Q(departament=root_ou) & Q(cart_status=1)).count() #row.full_on_stock
-    context['uses']           = filter_itms(Q(departament__in=children) & Q(cart_status=2)).count() #row.uses
-    context['empty_on_stock'] = filter_itms(Q(departament=root_ou) & Q(cart_status=3)).count() #row.empty_on_stock
-    context['filled']         = filter_itms(Q(departament=root_ou) & Q(cart_status=4)).count() #row.filled
-    context['recycler_bin']   = filter_itms(Q(departament=root_ou) & (Q(cart_status=5) | Q(cart_status=6))).count()# row.recycler_bin
+    context['full_on_stock']  = filter_itms(Q(departament=root_ou) & Q(cart_status=1)).count()
+    context['uses']           = filter_itms(Q(departament__in=children) & Q(cart_status=2)).count()
+    context['empty_on_stock'] = filter_itms(Q(departament=root_ou) & Q(cart_status=3)).count()
+    context['filled']         = filter_itms(Q(departament=root_ou) & Q(cart_status=4)).count()
+    context['recycler_bin']   = filter_itms(Q(departament=root_ou) & (Q(cart_status=5) | Q(cart_status=6))).count()
     return render(request, 'index/dashboard.html', context)
 
 
@@ -487,22 +487,39 @@ def manage_users(request):
     return render(request, 'index/manage_users.html', {'urs': usr})
 
 
-@login_required
-def at_work(request):
+class At_work(SeverCartView):
     """Список картриджей находящихся на заправке.
     """
-    items = CartridgeItem.objects.filter(cart_status=4)
-    items = sc_paginator(items, request)
-    return render(request, 'index/at_work.html', {'cartrjs': items})
+    template_name = 'index/at_work.html'
+
+    @method_decorator(login_required)
+    def dispatch(self, *args, **kwargs):
+        return super(At_work, self).dispatch(*args, **kwargs)
+
+    def get_context_data(self, **kwargs):
+        context = super(At_work, self).get_context_data(**kwargs)
+        self.all_items = self.all_items.filter(Q(cart_status=4) & Q(departament=self.request.user.departament))
+        cartridjes = sc_paginator(self.all_items, self.request)
+        context['cartrjs'] = cartridjes
+        return context
 
 
-@login_required
-def basket(request):
+
+class Basket(SeverCartView):
     """Список картриджей на выброс.
     """
-    items = CartridgeItem.objects.filter( Q(cart_status=5) | Q(cart_status=6) )
-    items = sc_paginator(items, request)
-    return render(request, 'index/basket.html', {'cartrjs': items})
+    template_name = 'index/basket.html'
+    
+    @method_decorator(login_required)
+    def dispatch(self, *args, **kwargs):
+        return super(Basket, self).dispatch(*args, **kwargs)
+
+    def get_context_data(self, **kwargs):
+        context = super(Basket, self).get_context_data(**kwargs)
+        self.all_items = self.all_items.filter( (Q(cart_status=5) | Q(cart_status=6)) & Q(departament=self.request.user.departament) )
+        cartridjes = sc_paginator(self.all_items, self.request)
+        context['cartrjs'] = cartridjes
+        return context
 
 
 @login_required
@@ -534,7 +551,8 @@ def transfe_to_basket(request):
         for inx in tmp:
             m1 = CartridgeItem.objects.get(pk=inx)
             m1.cart_status = cart_status  # в корзинку картриджи  
-            m1.save(update_fields=['cart_status'])
+            m1.departament = request.user.departament
+            m1.save(update_fields=['cart_status', 'departament'])
             list_cplx.append((m1.id, str(m1.cart_itm_name)))
         
         sign_tr_cart_to_basket.send(sender=None, list_cplx=list_cplx, request=request)

@@ -11,7 +11,7 @@ from index.views import transfer_to_firm
 from index.views import from_firm_to_stock
 from index.views import transfe_to_basket
 from index.views import from_basket_to_stock
-from index.views import at_work
+from index.views import At_work
 from index.views import Use
 from index.views import Empty
 from index.views import toner_refill
@@ -19,9 +19,9 @@ from index.views import add_city
 from index.views import add_firm
 from index.views import edit_firm
 from index.views import del_firm
-from index.views import at_work
+from index.views import At_work
 from index.views import bad_browser
-from index.views import basket
+from index.views import Basket
 from index.views import edit_cartridge_comment
 
 urlpatterns = [
@@ -37,7 +37,7 @@ urlpatterns = [
     url(r'^from_firm_to_stock/', from_firm_to_stock, name='from_firm_to_stock'),
     url(r'^transfe_to_basket/', transfe_to_basket, name='transfe_to_basket'),
     url(r'^from_basket_to_stock/', from_basket_to_stock, name='from_basket_to_stock'),
-    url(r'^at_work/', at_work, name='at_work'),
+    url(r'^at_work/', At_work.as_view(), name='at_work'),
     url(r'^use/', Use.as_view(), name='use'),
     url(r'^empty/', Empty.as_view(), name='empty'),
     url(r'^toner_refill/', toner_refill, name='toner_refill'),
@@ -45,8 +45,7 @@ urlpatterns = [
     url(r'^add_firm/', add_firm, name='add_firm'),
     url(r'^edit_firm/', edit_firm, name='edit_firm'),
     url(r'^del_firm/', del_firm, name='del_firm'),
-    url(r'^at_work/', at_work, name='at_work'),
     url(r'^bad_browser/', bad_browser, name='bad_browser'),
-    url(r'^basket/', basket, name='basket'),
+    url(r'^basket/', Basket.as_view(), name='basket'),
     url(r'^edit_cartridge_comment/', edit_cartridge_comment, name='edit_cartridge_comment'),
 ]

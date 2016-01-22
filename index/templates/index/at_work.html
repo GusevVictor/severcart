@@ -2,39 +2,53 @@
 {% load pagination  %}
 {% block title %}Кариджи на заправке{% endblock %}
 {% block h3 %}Кариджи на заправке{% endblock %}
+{% block submenu %}
+<div class="row">
+    <div class="large-12 columns">
+        <a class="from_firm_to_stock button" href="#">Вернуть на склад</a>
+    </div>
+</div>
+<div class="row">
+    <div class="large-12 columns marginTop"></div>
+</div>
+{% endblock %}
 {% block content %}
-    <div class="row">
-        <div class="large-12 columns">
-            <a class="from_firm_to_stock button" href="#">Вернуть на склад</a>
-        </div>
-    </div>
-    <div class="row">
-        <div class="large-12 columns marginTop"></div>
-    </div>
-    <div class="row">
-        <div class="large-12 columns">
-            <table class="checkboxes">
-                <form>
+<div class="row">
+    <div class="large-12 columns">
+        <table class="checkboxes">
+            <form>
+                <tr>
+                    <th><input type="checkbox" class="check_all"></th>
+                    <th {% if select_number  %}class="active_cell"{% endif %}><a href="?action=number">Номер {{number_triangle}}</a><br/><input class="search_number" name="search_number" value="{{search_number}}"  /></th>
+                    <th {% if select_type %}class="active_cell"{% endif %}><a href="?action=name">Наименование {{type_triangle}}</a></th>
+                    <th {% if select_count %}class="active_cell"{% endif %}><a href="?action=recovery">Кол-во<br/>перезаправок {{count_triangle}}</a></th>
+                    <th>Заправщик</th>
+                    <th>Комментарий</th>
+                    <th>Действие</th>
+                </tr>
+                {% for i in cartrjs %}
                     <tr>
-                        <th><input type="checkbox" class="check_all"></th>
-                        <th>Номер</th>
-                        <th>Наименование</th>
-                        <th>Заправщик</th>
+                        <td><input type="checkbox" class="checkbox" value="{{ i.id }}"></td>
+                        <td>{{ i.id }}</td>
+                        <td>{{ i.cart_itm_name }}</td>
+                        <td>{{ i.cart_number_refills }}</td>
+                        <td>{{ i.filled_firm }}</td>
+                        <td><div class="comment_in_cell" title="{{ i.comment }}">{{ i.comment|truncatechars:20 }}</div></td>
+                        <td><select class="firm_action" data="{{ i.id }}" size="2" multiple>
+                            <option selected value="filled">Заправка и очистка</option>
+                            <option value="receptor">Замена фотовала</option>
+                            <option value="recel">Замена ракеля</option>
+                            <option value="chip">Замена чипа</option>
+                            <option value="magnit">Замена магнитного вала</option>
+                        </select>
+                        </td>
                     </tr>
-                    {% for i in cartrjs %}
-                        <tr>
-                            <td><input type="checkbox" class="checkbox" value="{{ i.id }}"></td>
-                            <td>{{ i.id }}</td>
-                            <td>{{ i.cart_itm_name }}</td>
-                            <td>{{ i.filled_firm }}</td>
-                        </tr>
-                    {% endfor %}
-                </form>
-            </table>
-
-        </div>
+                {% endfor %}
+            </form>
+        </table>
     </div>
+</div>
 
-    {% found_pagination cartrjs  %}
+{% found_pagination cartrjs  %}
 
 {% endblock %}
