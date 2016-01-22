@@ -356,7 +356,6 @@ def toner_refill(request):
 @login_required
 def add_city(request):
     """
-
     """
     if request.method == 'POST':
         form_obj = CityF(request.POST)
@@ -584,7 +583,8 @@ def from_basket_to_stock(request):
                 m1.cart_status = 3  # возвращаем обратно на склад пустым    
             else:
                 raise Http404
-            m1.save(update_fields=['cart_status'])
+            m1.cart_date_change = timezone.now()
+            m1.save(update_fields=['cart_status', 'cart_date_change'])
         return HttpResponseRedirect(reverse('basket'))
     return render(request, 'index/from_basket_to_stock.html', {'checked_cartr': checked_cartr})
 
@@ -662,8 +662,9 @@ def from_firm_to_stock(request):
             filled_firm = str(m1.filled_firm)
             m1.filled_firm = None
             m1.cart_status = 1
+            m1.cart_date_change = timezone.now()
             m1.cart_number_refills = int(m1.cart_number_refills) + 1
-            m1.save(update_fields=['filled_firm', 'cart_status', 'cart_number_refills'])
+            m1.save(update_fields=['filled_firm', 'cart_status', 'cart_number_refills', 'cart_date_change'])
             list_cplx.append((m1.id, str(m1.cart_itm_name), filled_firm))
 
         sign_tr_filled_cart_to_stock.send(sender=None, list_cplx=list_cplx, request=request)
