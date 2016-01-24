@@ -5,10 +5,10 @@ import logging
 logger = logging.getLogger('simp')
 
 
-def sc_paginator(all_items, request):
+def sc_paginator(all_items, request, size_perpage):
     """Система пагинации.
     """
-    paginator = Paginator(all_items, 8)
+    paginator = Paginator(all_items, size_perpage)
     page = request.GET.get('page')
     try:
         cartridjes = paginator.page(page)

@@ -46,8 +46,6 @@ class SeverCartView(ListView):
 
     def get_context_data(self, **kwargs):
         context = super(SeverCartView, self).get_context_data(**kwargs)
-        #
-        #select_number = select_type = select_count = select_date = False
         select_action = self.request.GET.get('action', '')
         if select_action == 'number':
             context['select_number'] = True
@@ -129,4 +127,18 @@ class SeverCartView(ListView):
             else:
                 self.all_items = self.all_items.filter(Q(pk=search_number))
             context['search_number'] = search_number
+
+        # работаем с выводом количеством элементов на страницу
+        page_size = self.request.GET.get('page_size', '')
+        if not(page_size == None or page_size==''):
+            try:
+                page_size = int(page_size)
+            except ValueError:
+                pass
+            else:
+                page_size = 10000000 if page_size == 0 else page_size
+                self.size_perpage = page_size
+                self.request.session['page_size'] = page_size
+        else:
+            self.size_perpage = self.request.session.get('page_size', 12)
         return context

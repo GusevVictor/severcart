@@ -69,7 +69,8 @@ class Stock(SeverCartView):
     def get_context_data(self, **kwargs):
         context = super(Stock, self).get_context_data(**kwargs)
         self.all_items = self.all_items.filter(Q(cart_status=1) & Q(departament=self.request.user.departament))
-        cartridjes = sc_paginator(self.all_items, self.request)
+        cartridjes = sc_paginator(self.all_items, self.request, self.size_perpage)
+        context['size_perpage'] = str(self.size_perpage)
         context['cartrjs'] = cartridjes
         return context
 
@@ -283,7 +284,8 @@ class Use(SeverCartView):
         context = super(Use, self).get_context_data(**kwargs)
         self.all_items = self.all_items.filter(departament__in=children).filter(cart_status=2)
         context['children'] = str(children[0])
-        context['cartrjs'] = sc_paginator(self.all_items, self.request)
+        cartridjes = sc_paginator(self.all_items, self.request, self.size_perpage)
+        context['size_perpage'] = str(self.size_perpage)
         return context
 
 
@@ -300,7 +302,8 @@ class Empty(SeverCartView):
         context = super(Empty, self).get_context_data(**kwargs)
         root_ou = self.request.user.departament
         self.all_items = self.all_items.filter( Q(departament=root_ou) & Q(cart_status=3) )
-        cartridjes = sc_paginator(self.all_items, self.request)
+        cartridjes = sc_paginator(self.all_items, self.request, self.size_perpage)
+        context['size_perpage'] = str(self.size_perpage)
         context['cartrjs'] = cartridjes
         return context
 
@@ -498,7 +501,8 @@ class At_work(SeverCartView):
     def get_context_data(self, **kwargs):
         context = super(At_work, self).get_context_data(**kwargs)
         self.all_items = self.all_items.filter(Q(cart_status=4) & Q(departament=self.request.user.departament))
-        cartridjes = sc_paginator(self.all_items, self.request)
+        cartridjes = sc_paginator(self.all_items, self.request, self.size_perpage)
+        context['size_perpage'] = str(self.size_perpage)
         context['cartrjs'] = cartridjes
         return context
 
@@ -516,7 +520,8 @@ class Basket(SeverCartView):
     def get_context_data(self, **kwargs):
         context = super(Basket, self).get_context_data(**kwargs)
         self.all_items = self.all_items.filter( (Q(cart_status=5) | Q(cart_status=6)) & Q(departament=self.request.user.departament) )
-        cartridjes = sc_paginator(self.all_items, self.request)
+        cartridjes = sc_paginator(self.all_items, self.request, self.size_perpage)
+        context['size_perpage'] = str(self.size_perpage)
         context['cartrjs'] = cartridjes
         return context
 

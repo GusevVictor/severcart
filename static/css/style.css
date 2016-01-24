@@ -516,3 +516,13 @@ th.action_type input {
     margin-right: 6px;
 }
 /* end action table */
+
+/* start pagination */
+ul.page_size li{
+    display: inline;
+    list-style:none;
+    padding-left: 10px;
+}
+
+
+/* end pagination */
