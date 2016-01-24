@@ -644,13 +644,17 @@ def from_firm_to_stock(request):
     """
     checked_cartr = request.GET.get('select', '')
     tmp = ''
+    list_cart = []
     if checked_cartr:
         checked_cartr = checked_cartr.split('s')
         checked_cartr = [int(i) for i in checked_cartr]
         tmp = checked_cartr
+        for cart_id in tmp:
+            list_cart.append(CartridgeItem.objects.get(pk=cart_id))
+        list_length = len(list_cart) 
+        # преобразуем список в строку, для корректного отображения на html странице
         checked_cartr = str(checked_cartr)
         checked_cartr = checked_cartr[1:-1]
-        
     else:
         # если кто-то зашел на страницу не выбрав расходники
         return HttpResponseRedirect(reverse('at_work'))        
@@ -665,11 +669,12 @@ def from_firm_to_stock(request):
             m1.cart_date_change = timezone.now()
             m1.cart_number_refills = int(m1.cart_number_refills) + 1
             m1.save(update_fields=['filled_firm', 'cart_status', 'cart_number_refills', 'cart_date_change'])
-            list_cplx.append((m1.id, str(m1.cart_itm_name), filled_firm))
+            actions = request.POST.get('cart_'+str(inx))
+            list_cplx.append((m1.id, str(m1.cart_itm_name), filled_firm, actions))
 
         sign_tr_filled_cart_to_stock.send(sender=None, list_cplx=list_cplx, request=request)
         return HttpResponseRedirect(reverse('at_work'))
-    return render(request, 'index/from_firm_to_stock.html', {'checked_cartr': checked_cartr })
+    return render(request, 'index/from_firm_to_stock.html', {'checked_cartr': checked_cartr, 'list_cart': list_cart, 'list_length': list_length})
 
 def bad_browser(request):
     """Сообщение о необходимости обновить браузер.

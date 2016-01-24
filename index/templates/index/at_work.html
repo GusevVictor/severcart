@@ -25,7 +25,6 @@
                     <th {% if select_change_date %}class="active_cell"{% endif %}><a  href="?action=change_date">Дата {{datec_triangle}} передачи<br/>на заправку</a></th>
                     <th>Заправщик</th>
                     <th>Комментарий</th>
-                    <th>Действие</th>
                 </tr>
                 {% for i in cartrjs %}
                     <tr>
@@ -36,21 +35,11 @@
                         <td>{{ i.cart_date_change }}</td>
                         <td>{{ i.filled_firm }}</td>
                         <td><div class="comment_in_cell" title="{{ i.comment }}">{{ i.comment|truncatechars:20 }}</div></td>
-                        <td><select class="firm_action" data="{{ i.id }}" size="2" multiple>
-                            <option selected value="filled">Заправка и очистка</option>
-                            <option value="receptor">Замена фотовала</option>
-                            <option value="recel">Замена ракеля</option>
-                            <option value="chip">Замена чипа</option>
-                            <option value="magnit">Замена магнитного вала</option>
-                        </select>
-                        </td>
                     </tr>
                 {% endfor %}
             </form>
         </table>
     </div>
 </div>
-
 {% found_pagination cartrjs  %}
-
 {% endblock %}

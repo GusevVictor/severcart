@@ -1,25 +1,49 @@
 {% extends "index/base.html" %}
 {% load filters %}
+{% block title %}Возврат картриджей на склад{% endblock %}
+{% block h3 %}Возврат картриджей на склад{% endblock %}
 {% block content %}
-    <div class="row">
-        <div class="large-6 columns">
-            {% if messages %}
-                <ul class="messages">
-                    {% for message in messages %}
-                        <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
-                    {% endfor %}
-                </ul>
-            {% endif %}
-        </div>
+<div class="row">
+    <div class="large-6 columns">
+        {% if messages %}
+            <ul class="messages">
+                {% for message in messages %}
+                    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
     </div>
-    <div class="row">
-        <div class="large-6 columns">
-            <form action="" method="POST">
-                {% csrf_token %}
-                <label>Что передаём</label>
-                <input name="name" type="text"  value="{{ checked_cartr }}"  readonly/>
-                <input type="submit" value="Передать на склад" class="button"/>
-            </form>
-        </div>
+</div>
+
+<div class="row">
+    <div class="large-12 columns">
+        <form action="" method="POST">
+        {% csrf_token %}
+        <input name="checked_cartr" type="hidden"  value="{{ checked_cartr }}"  readonly/>
+        <input name="list_length" type="hidden"  value="{{ list_length }}"  readonly/>
+        <table class="actions_firm">
+        <tr>
+        <th class="action_type">Номер</th>
+        <th class="action_type">Название</th>
+        <th class="action_type"><input type="checkbox" name="filled" id="filled" /><label for="filled">Заправка<br/> и очистка</label></th>
+        <th class="action_type"><input type="checkbox" name="fotoreceptor" id="fotoreceptor" /><label for="fotoreceptor">Замена<br/>фотовала</label></th>
+        <th class="action_type"><input type="checkbox" name="rakel" id="rakel" /><label for="rakel">Замена<br/>ракеля</label></th>
+        <th class="action_type"><input type="checkbox" name="chip" id="chip" /><label for="chip">Замена<br/>чипа</label></th>
+        <th class="action_type"><input type="checkbox" name="magnit" id="magnit" /><label for="magnit">Замена<br/>магнитного вала</label></th>
+        </tr>
+        {% for elem in list_cart %}
+        <tr>
+        <td>{{ elem.pk }}</td>
+        <td>{{ elem.cart_itm_name }}</td>
+        <td><input type="checkbox" name="cart_{{elem.pk}}" value="filled" checked/></td>
+        <td><input type="checkbox" name="cart_{{elem.pk}}" value="fotoreceptor"/></td>
+        <td><input type="checkbox" name="cart_{{elem.pk}}" value="rakel"/></td>
+        <td><input type="checkbox" name="cart_{{elem.pk}}" value="chip"/></td>
+        <td><input type="checkbox" name="cart_{{elem.pk}}" value="magnit"/></td>
+        </tr>{% endfor %}
+        </table>
+        <input type="submit" value="Передать на склад" class="button"/>
+        </form>
     </div>
+</div>
 {% endblock %}

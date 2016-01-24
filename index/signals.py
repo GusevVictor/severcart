@@ -105,6 +105,21 @@ def event_tr_filled_cart_to_stock(**kwargs):
         raise ValueError('Ошибка в обработчике event_tr_filled_cart_to_stock!')
 
     for elem in kwargs.get('list_cplx'):
+        actions = elem[3]
+        compact_num = 0
+        for act in actions:
+            if act == 'filled':
+                compact_num += 10000
+            elif act == 'fotoreceptor':
+                compact_num += 1000
+            elif act == 'rakel':
+                compact_num += 100
+            elif act == 'chip':
+                compact_num += 10
+            elif act == 'magnit':
+                compact_num += 1
+            else:
+                compact_num += 0
         m1 = Events(departament = kwargs.get('request').user.departament.pk,
             date_time   = timezone.now(),
             cart_number = elem[0],
@@ -112,6 +127,7 @@ def event_tr_filled_cart_to_stock(**kwargs):
             event_type  = 'RS',
             event_firm  = elem[2],
             event_user  = str(kwargs.get('request').user),
+            cart_action = compact_num,
         )
         m1.save()
 

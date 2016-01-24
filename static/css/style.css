@@ -454,10 +454,15 @@ a img{
 }
 
 /* --- Start style main table  --- */
-table.checkboxes tr, 
+/*table.checkboxes tr, 
 table.checkboxes tr td,
 table.checkboxes tr th {
     border: 1px solid #c5c5c5;
+} */
+
+table.checkboxes tr {
+    border-top: 1px solid #c5c5c5;
+    border-bottom: 1px solid #c5c5c5;
 }
 
 .comment_in_cell {
@@ -480,3 +485,34 @@ th.active_cell {
 
 /* --- end main table style --- */
 
+/* start action table */
+table.actions_firm th {
+    /* text-align: center; */
+    border-top: 1px solid #c5c5c5;
+    border-bottom: 1px solid #c5c5c5;
+}
+
+table.actions_firm label {
+    font-size: 14px;
+    display: inline-block;
+    color: rgb(34, 34, 34);
+    font-style: normal;
+    font-weight: bold;
+    line-height: 14px;
+    padding: 0;
+}
+
+table.actions_firm th.action_type {
+    width: 120px;
+/*    padding: 15px;
+    display: inline-block; */
+    white-space: nowrap;
+    overflow: hidden;
+    background-color: white;
+}
+
+th.action_type input {
+    vertical-align: top;
+    margin-right: 6px;
+}
+/* end action table */
