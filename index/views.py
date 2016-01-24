@@ -669,8 +669,8 @@ def from_firm_to_stock(request):
             m1.cart_date_change = timezone.now()
             m1.cart_number_refills = int(m1.cart_number_refills) + 1
             m1.save(update_fields=['filled_firm', 'cart_status', 'cart_number_refills', 'cart_date_change'])
-            actions = request.POST.get('cart_'+str(inx))
-            list_cplx.append((m1.id, str(m1.cart_itm_name), filled_firm, actions))
+            repair_actions = request.POST.getlist('cart_'+str(inx))
+            list_cplx.append((m1.id, str(m1.cart_itm_name), filled_firm, repair_actions))
 
         sign_tr_filled_cart_to_stock.send(sender=None, list_cplx=list_cplx, request=request)
         return HttpResponseRedirect(reverse('at_work'))
