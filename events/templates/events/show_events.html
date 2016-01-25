@@ -4,6 +4,17 @@
 {% block content %} 
 <div class="row">
     <div class="large-12 columns">
+        <form action="" method="POST">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <input type="submit" value="Показать" />
+        </form>
+    </div>
+</div>
+<div class="row">
+    <div class="large-12 columns">
+        <hr/>
+        <div class="text-right"><strong>Всего событий: </strong> {{ count_events }}</div>
         <table class="all_events_view">
         <tr>
             <th class="date_and_time">Дата и время</th>

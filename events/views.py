@@ -3,8 +3,9 @@
 from django.shortcuts import render
 from django.http import HttpResponse, Http404
 from django.conf import settings
-from .models import Events
+from .models  import Events
 from .helpers import events_decoder
+from .forms   import DateForm
 
 
 def show_events(request):
@@ -12,10 +13,12 @@ def show_events(request):
     """
     context = {}
     MAX_EVENT_LIST = settings.MAX_EVENT_LIST
+    context['count_events'] = int(Events.objects.all().count())
     dept_id = request.user.departament.pk
     list_events = Events.objects.filter(departament=dept_id).order_by('-pk')[:MAX_EVENT_LIST]
-    print('list_events=', len(list_events))
     context['list_events'] = events_decoder(list_events, simple=False)
+    date_form = DateForm()
+    context['form'] = date_form
     return render(request, 'events/show_events.html', context)
 
 
