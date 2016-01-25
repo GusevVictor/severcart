@@ -1,0 +1,25 @@
+{% extends "index/base.html" %}
+{% block h3 %}Просмотр событий{% endblock %}
+{% block title %}Просмотр событий{% endblock %}
+{% block content %} 
+<div class="row">
+    <div class="large-12 columns">
+        <table class="all_events_view">
+        <tr>
+            <th class="date_and_time">Дата и время</th>
+            <th class="text_event">Текст события</th>
+        </tr>
+        {% for elem in list_events %}
+            <tr>
+                <td>{{ elem.data_env|date:"d.m.Y G:i" }}</td><td>{{ elem.text_com|safe }}</td>
+            </tr>
+        {% endfor %}
+        </table>
+    </div>
+</div>
+<div class="row">
+    <div class="large-12 columns">
+        <div class="text-center"><a class="button" href="">Показать ещё</a></div>
+    </div>
+</div>
+{% endblock %}

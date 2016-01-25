@@ -180,3 +180,5 @@ LOGGING = {
 }
 
 LOGIN_URL = '/manage_users/login/'
+
+MAX_EVENT_LIST = 16

@@ -66,6 +66,7 @@ def event_tr_empty_cart_to_stock(**kwargs):
             cart_type   = elem[1],
             event_type  = 'TS',
             event_user  = str(kwargs.get('request').user),
+            event_org   = elem[2]
         )
         m1.save()
 

@@ -488,8 +488,8 @@ th.active_cell {
 /* start action table */
 table.actions_firm th {
     /* text-align: center; */
-    border-top: 1px solid #c5c5c5;
-    border-bottom: 1px solid #c5c5c5;
+    border-top: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
 }
 
 table.actions_firm label {
@@ -524,5 +524,15 @@ ul.page_size li{
     padding-left: 10px;
 }
 
-
 /* end pagination */
+
+/* start all events table */
+table.all_events_view th.date_and_time {
+    width:140px;
+}
+
+table.all_events_view tr {
+    border-top: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+}
+/* end all events table */

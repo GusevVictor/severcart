@@ -248,14 +248,16 @@ def transfer_to_stock(request):
         checked_cartr = checked_cartr[1:-1]
 
     if request.method == 'POST':
-        list_cplx = []        
+        list_cplx = [] 
+        tmp_dept = ''       
         for inx in tmp:
             m1 = CartridgeItem.objects.get(pk=inx)
             m1.cart_status = 3     # пустой объект на складе
+            tmp_dept = m1.departament
             m1.departament = request.user.departament
             m1.cart_date_change = timezone.now()
             m1.save(update_fields=['departament', 'cart_status', 'cart_date_change'])
-            list_cplx.append((m1.id, str(m1.cart_itm_name)))
+            list_cplx.append((m1.id, str(m1.cart_itm_name), str(tmp_dept),))
 
         sign_tr_empty_cart_to_stock.send(sender=None, list_cplx=list_cplx, request=request)
         return HttpResponseRedirect('/use/')
@@ -285,6 +287,7 @@ class Use(SeverCartView):
         self.all_items = self.all_items.filter(departament__in=children).filter(cart_status=2)
         context['children'] = str(children[0])
         cartridjes = sc_paginator(self.all_items, self.request, self.size_perpage)
+        context['cartrjs'] = cartridjes
         context['size_perpage'] = str(self.size_perpage)
         return context
 
