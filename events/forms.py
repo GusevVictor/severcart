@@ -2,12 +2,54 @@
 
 from django import forms
 
-class DateForm(forms.Form):
-#    start_date = forms.CharField()
-#    end_date   = forms.CharField()
-#    start_date = forms.DateField(widget=forms.DateInput(format = '%Y/%m/%d'))
-#    end_date   = forms.DateField(widget=forms.DateInput(format = '%Y/%m/%d'))
-    start_date = forms.DateField()
-    end_date   = forms.DateField()
-    #http://stackoverflow.com/questions/5449604/django-calendar-widget-in-a-custom-form
+def del_leding_zero(data):
+    """Убираем лидирующий ноль, если он есть.
+    """
+    if data[0] == '0':
+        return data[1:]
+    else:
+        return data
 
+class DateForm(forms.Form):
+    #http://stackoverflow.com/questions/16356289/how-to-show-datepicker-calender-on-datefield#16356818
+    start_date = forms.CharField(required=False, widget=forms.TextInput(attrs={'class':'datepicker', 'readonly':'readonly'}))
+    end_date   = forms.CharField(required=False, widget=forms.TextInput(attrs={'class':'datepicker', 'readonly':'readonly'}))
+
+    def clean_start_date(self):
+        """Проверяем на корректность 1 поле с данными.
+        """
+        if not(self.cleaned_data.get('start_date', '')):
+            return None
+        else:
+            prepare_list = self.cleaned_data.get('start_date').split(r'/')
+            if len(prepare_list) == 3:
+                # если пользователь не смухлевал, то кол-во элементов = 3
+                date_value  = prepare_list[0]
+                date_value  = del_leding_zero(date_value)
+                month_value = prepare_list[1]
+                month_value = del_leding_zero(month_value)
+                year_value  = prepare_list[2]
+                return {'date_value': int(date_value), 'month_value': int(month_value), 'year_value': int(year_value)}
+            else:
+                return None
+
+    def clean_end_date(self):
+        """Проверяем на корректность 2 поле с данными.
+        """
+        if not(self.cleaned_data.get('end_date', '')):
+            return None
+        else:
+            prepare_list = self.cleaned_data.get('end_date').split(r'/')
+            if len(prepare_list) == 3:
+                # если пользователь не смухлевал, то кол-во элементов = 3
+                date_value  = prepare_list[0]
+                date_value  = del_leding_zero(date_value)
+                month_value = prepare_list[1]
+                month_value = del_leding_zero(month_value)
+                year_value  = prepare_list[2]
+                return {'date_value': int(date_value), 'month_value': int(month_value), 'year_value': int(year_value)}
+            else:
+                return None
+
+
+# raise ValidationError("Поле обязательно для заполнения.")

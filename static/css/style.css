@@ -536,3 +536,39 @@ table.all_events_view tr {
     border-bottom: 1px solid #ddd;
 }
 /* end all events table */
+
+/* start date input form */
+form.input_date {
+    margin: 0;
+    line-height: 32px;
+}
+
+form.input_date input.button {
+    vertical-align: middle;
+    display: inline-block;
+}
+
+form.input_date input {
+    display: inline-block;
+    width: 150px;
+    height: 32px;
+    margin: 0;
+    vertical-align: top;
+}
+
+div.calendar {
+    margin:0 30px 0 0;
+    padding: 0;
+    display: inline-block;
+    vertical-align: top;
+    height:32px;
+    width: 182px;
+}
+
+div.calendar .ui-datepicker-trigger {
+    display: inline-block;
+    width: 32px;
+    height:32px;
+    cursor: pointer;
+}
+/* end date input form */

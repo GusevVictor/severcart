@@ -317,4 +317,6 @@ $( function(){
         });
     });
 
+    $('.datepicker').datepicker();
+
 });
