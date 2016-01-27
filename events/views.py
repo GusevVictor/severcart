@@ -51,10 +51,14 @@ def show_events(request):
             if start_date and not(end_date):
                 m1 = Events.objects.filter(date_time__gte=start_date)
 
+            elif not(start_date) and not(end_date):
+                # выбираем все объекты если пользователь оставил поля ввода пустыми
+                m1 = Events.objects.all()
+
             elif end_date and not(start_date):
                 m1 = Events.objects.filter(date_time__lte=end_date)
 
-            elif start_date == end_date:
+            elif start_date == end_date :
                 m1 = Events.objects.filter(date_time__year=end_date.year, 
                                            date_time__month=end_date.month, 
                                            date_time__day=end_date.day 
