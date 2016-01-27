@@ -17,7 +17,7 @@ def date_to_str(date_dict):
 
 def events_decoder(qso, simple=True):
     """Функция докодер симолических мнемоник в человекочитаемый формат. 
-        Единственный обязательный аргумент на входе - объект QuerySet
+        Единственный обязательный аргумент на входе - список объектов QuerySet
     """
     frdly_es = []
     for entry in qso:

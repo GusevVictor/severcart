@@ -2,6 +2,7 @@
 
 import time
 import json
+import datetime
 from django.http import JsonResponse, HttpResponse
 from django.template import Template, Context
 from events.models import Events
@@ -37,8 +38,37 @@ def show_event_page(request):
         dept_id = 0
 
     list_events = Events.objects.filter(departament=dept_id).order_by('-pk')
+    # возвращаем данные из сессионного словаря
+    start_date  = request.session['start_date']
+    end_date    = request.session['end_date']
+
+    if start_date:
+        start_date = datetime.datetime(start_date.get('year_value'), start_date.get('month_value'), start_date.get('date_value'))
+    if end_date:
+        end_date   = datetime.datetime(end_date.get('year_value'), end_date.get('month_value'), end_date.get('date_value'))
+
+    if start_date and not(end_date):
+        list_events = list_events.filter(date_time__gte=start_date)
+
+    elif not(start_date) and not(end_date):
+        # выбираем все объекты если пользователь оставил поля ввода пустыми
+        pass
+
+    elif end_date and not(start_date):
+        list_events = list_events.filter(date_time__lte=end_date)
+
+    elif start_date == end_date :
+        list_events = list_events.filter(date_time__year=end_date.year, 
+                                   date_time__month=end_date.month, 
+                                   date_time__day=end_date.day 
+                                   )
+
+    elif start_date and end_date:
+        # вторая дата не попадает в диапазон, поэтому приболяем к ней 1 день
+        end_date = end_date + datetime.timedelta(days=1)
+        list_events = list_events.filter(Q(date_time__lte=end_date) & Q(date_time__gte=start_date))
+
     p = Paginator(list_events, MAX_EVENT_LIST)
-    
     try:
         content = p.page(next_page)
     except PageNotAnInteger:

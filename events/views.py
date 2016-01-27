@@ -25,6 +25,9 @@ def show_events(request):
         dept_id = 0
     list_events = Events.objects.filter(departament=dept_id).order_by('-pk')
 
+    request.session['start_date'] = ''
+    request.session['end_date'] = ''
+
     if request.method == 'POST':
         # попадаем в эту ветку если пользователь нажал на кнопку Показать
         date_form = DateForm(request.POST)
@@ -37,12 +40,15 @@ def show_events(request):
             # 
             start_date = data_in_post.get('start_date', '')
             end_date   = data_in_post.get('end_date', '')
+            # сохраняем переданные даты в сессионном словаре, потом будем читать его значения из /events/api/ 
+            request.session['start_date'] = start_date
+            request.session['end_date']   = end_date
             # приводим словари, содержащие компоненты дат к объекту datetime
             if start_date:
                 start_date = datetime.datetime(start_date.get('year_value'), start_date.get('month_value'), start_date.get('date_value'))
             if end_date:
                 end_date   = datetime.datetime(end_date.get('year_value'), end_date.get('month_value'), end_date.get('date_value'))
-            
+
             if start_date and not(end_date):
                 list_events = list_events.filter(date_time__gte=start_date)
 
