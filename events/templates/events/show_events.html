@@ -24,8 +24,7 @@
 {% if list_events %}
     <div class="row">
         <div class="large-12 columns">
-            <hr/>
-            <p class="text-center">Просматриваемая история с {{ start_date }} по {{ end_date }}</p>
+            <p></p>
             <div class="text-right"><strong>Всего событий: </strong> {{ count_events }}</div>
             <table class="all_events_view">
             <tr>
@@ -40,10 +39,12 @@
             </table>
         </div>
     </div>
-    <div class="row">
-        <div class="large-12 columns">
-            <div class="text-center"><a class="button" href="">Показать ещё...</a></div>
+    {% if count_events > max_count_events %}
+        <div class="row">
+            <div class="large-12 columns">
+                <div class="text-center"><a class="button" href="">Показать ещё...</a></div>
+            </div>
         </div>
-    </div>
+    {% endif %}
 {% endif %}
 {% endblock %}

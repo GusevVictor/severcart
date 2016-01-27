@@ -29,6 +29,7 @@ def show_events(request):
     """Список всех событий для всего организационного подразделения.
     """
     context = {}
+    MAX_EVENT_LIST = settings.MAX_EVENT_LIST
     if request.method == 'POST':
         # попадаем в эту ветку если пользователь нажал на кнопку Показать
         date_form = DateForm(request.POST)
@@ -49,27 +50,35 @@ def show_events(request):
             
             if start_date and not(end_date):
                 m1 = Events.objects.filter(date_time__gte=start_date)
-                
+
             elif end_date and not(start_date):
                 m1 = Events.objects.filter(date_time__lte=end_date)
 
             elif start_date == end_date:
-                m1 = Events.objects.filter(Q(date_time__lte=end_date) & Q(date_time__gte=start_date))
+                m1 = Events.objects.filter(date_time__year=end_date.year, 
+                                           date_time__month=end_date.month, 
+                                           date_time__day=end_date.day 
+                                           )
 
             elif start_date and end_date:
+                # вторая дата не попадает в диапазон, поэтому приболяем к ней 1 день
+                end_date = end_date + datetime.timedelta(days=1)
                 m1 = Events.objects.filter(Q(date_time__lte=end_date) & Q(date_time__gte=start_date))
 
             m1 = m1.order_by('-pk')
+            context['count_events'] = int(m1.count())
+            m1 = m1[:MAX_EVENT_LIST]
+            context['max_count_events'] = MAX_EVENT_LIST
             context['list_events'] = events_decoder(m1, simple=False)
             context['form'] = date_form
             return render(request, 'events/show_events.html', context)
 
     # обычный get запрос
     date_form = DateForm()
-    MAX_EVENT_LIST = settings.MAX_EVENT_LIST
     context['count_events'] = int(Events.objects.all().count())
     dept_id = request.user.departament.pk
     list_events = Events.objects.filter(departament=dept_id).order_by('-pk')[:MAX_EVENT_LIST]
+    context['max_count_events'] = MAX_EVENT_LIST
     context['list_events'] = events_decoder(list_events, simple=False)
     context['form'] = date_form
     return render(request, 'events/show_events.html', context)    
