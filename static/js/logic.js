@@ -319,4 +319,33 @@ $( function(){
 
     $('.datepicker').datepicker();
 
+    $('.events_see_more').click( function( event ) {
+        event.preventDefault();
+        event.stopPropagation();
+        var button_next = $(this);
+        $.ajax({
+            method: 'POST',
+            url: '/events/api/show_event_page/',
+            data:  {next_page: button_next.attr('next_page')},
+            beforeSend: function( xhr, settings ){
+                $('.spinner').css('display', 'inline');
+                csrftoken = getCookie('csrftoken');
+                if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
+                    xhr.setRequestHeader('X-CSRFToken', csrftoken);
+                }
+            }  
+        }).done(function( msg ) {
+            $('.spinner').css('display', 'none');
+            if (msg.stop_pagination === '0') {
+                $('.all_events_view tr:last').after(msg.html_content);
+                var next_page = button_next.attr('next_page');
+                next_page = parseInt(next_page,10);
+                next_page += 1;
+                button_next.attr({'next_page': next_page});
+            } else {
+                $('.events_see_more').remove();                
+            }
+        });
+    });
+
 });

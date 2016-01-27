@@ -1,5 +1,20 @@
 # -*- coding:utf-8 -*-
 
+def date_to_str(date_dict):
+    """Преобразует словарь содержащий компоненты дат в строку.
+    """
+    if isinstance(date_dict, dict):
+        day   = date_dict.get('date_value', '')
+        month = date_dict.get('month_value', '')
+        year  = date_dict.get('year_value', '')
+    else:
+        return ''
+    # добавляем лидирующий ноль
+    day   = '0' + str(day) if day < 10 else str(day)
+    month = '0' + str(month) if month < 10 else str(month)
+    year  = str(year)
+    return '/'.join([ day, month, year ])
+
 def events_decoder(qso, simple=True):
     """Функция докодер симолических мнемоник в человекочитаемый формат. 
         Единственный обязательный аргумент на входе - объект QuerySet

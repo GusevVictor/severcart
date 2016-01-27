@@ -1,35 +1,30 @@
 # -*- coding:utf-8 -*-
 
 import datetime
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render
 from django.http import HttpResponse, Http404
 from django.conf import settings
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.utils import timezone
 from django.db.models import Q
 from .models  import Events
-from .helpers import events_decoder
+from .helpers import events_decoder, date_to_str
 from .forms   import DateForm
 
-def date_to_str(date_dict):
-    """Преобразует словарь содержащий компоненты дат в строку.
-    """
-    if isinstance(date_dict, dict):
-        day   = date_dict.get('date_value', '')
-        month = date_dict.get('month_value', '')
-        year  = date_dict.get('year_value', '')
-    else:
-        return ''
-    # добавляем лидирующий ноль
-    day   = '0' + str(day) if day < 10 else str(day)
-    month = '0' + str(month) if month < 10 else str(month)
-    year  = str(year)
-    return '/'.join([ day, month, year ])
 
+@login_required
 def show_events(request):
     """Список всех событий для всего организационного подразделения.
     """
     context = {}
     MAX_EVENT_LIST = settings.MAX_EVENT_LIST
+    try:
+        dept_id = request.user.departament.pk
+    except AttributeError:
+        dept_id = 0
+    list_events = Events.objects.filter(departament=dept_id).order_by('-pk')
+
     if request.method == 'POST':
         # попадаем в эту ветку если пользователь нажал на кнопку Показать
         date_form = DateForm(request.POST)
@@ -49,17 +44,17 @@ def show_events(request):
                 end_date   = datetime.datetime(end_date.get('year_value'), end_date.get('month_value'), end_date.get('date_value'))
             
             if start_date and not(end_date):
-                m1 = Events.objects.filter(date_time__gte=start_date)
+                list_events = list_events.filter(date_time__gte=start_date)
 
             elif not(start_date) and not(end_date):
                 # выбираем все объекты если пользователь оставил поля ввода пустыми
-                m1 = Events.objects.all()
+                pass
 
             elif end_date and not(start_date):
-                m1 = Events.objects.filter(date_time__lte=end_date)
+                list_events = list_events.filter(date_time__lte=end_date)
 
             elif start_date == end_date :
-                m1 = Events.objects.filter(date_time__year=end_date.year, 
+                list_events = list_events.filter(date_time__year=end_date.year, 
                                            date_time__month=end_date.month, 
                                            date_time__day=end_date.day 
                                            )
@@ -67,27 +62,29 @@ def show_events(request):
             elif start_date and end_date:
                 # вторая дата не попадает в диапазон, поэтому приболяем к ней 1 день
                 end_date = end_date + datetime.timedelta(days=1)
-                m1 = Events.objects.filter(Q(date_time__lte=end_date) & Q(date_time__gte=start_date))
+                list_events = list_events.filter(Q(date_time__lte=end_date) & Q(date_time__gte=start_date))
 
-            m1 = m1.order_by('-pk')
-            context['count_events'] = int(m1.count())
-            m1 = m1[:MAX_EVENT_LIST]
+            
+            p = Paginator(list_events, MAX_EVENT_LIST)
+            context['count_events'] = int(list_events.count())
+            context['next_page'] = 2
             context['max_count_events'] = MAX_EVENT_LIST
-            context['list_events'] = events_decoder(m1, simple=False)
+            context['list_events'] = events_decoder(p.page(1), simple=False)
             context['form'] = date_form
             return render(request, 'events/show_events.html', context)
 
     # обычный get запрос
     date_form = DateForm()
     context['count_events'] = int(Events.objects.all().count())
-    dept_id = request.user.departament.pk
-    list_events = Events.objects.filter(departament=dept_id).order_by('-pk')[:MAX_EVENT_LIST]
+    
+    p = Paginator(list_events, MAX_EVENT_LIST)
+    context['next_page'] = 2
     context['max_count_events'] = MAX_EVENT_LIST
-    context['list_events'] = events_decoder(list_events, simple=False)
+    context['list_events'] = events_decoder(p.page(1), simple=False)
     context['form'] = date_form
     return render(request, 'events/show_events.html', context)    
 
-
+@login_required
 def view_cartridge_events(request):
     """Просмотр событий происходящих с данным картриджем.
     """

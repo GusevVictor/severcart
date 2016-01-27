@@ -689,6 +689,7 @@ def bad_browser(request):
     """
     return render(request, 'index/bad_browser.html')
 
+@login_required
 def edit_cartridge_comment(request):
     """Добавляем комментарий к картриджу.
     """
