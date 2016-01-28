@@ -60,12 +60,15 @@ class CartridgeItem(models.Model):
         (5, 'Full in basket'),
         (6, 'Empty in basket'),
     )
+    cart_number = models.IntegerField(db_index=True, null=True)
+    cart_number_prefix  = models.CharField(max_length=256, null=True)
+    cart_number_postfix = models.CharField(max_length=256, null=True)
     cart_itm_name = models.ForeignKey(CartridgeItemName)
-    cart_date_added = models.DateField()
-    cart_date_change = models.DateField()
+    cart_date_added = models.DateField(db_index=True)
+    cart_date_change = models.DateField(db_index=True)
     departament = models.ForeignKey(OrganizationUnits, blank=True, null=True)
     cart_status = models.IntegerField(choices=STATUS, default=1)
-    cart_number_refills = models.IntegerField(default=0)
+    cart_number_refills = models.IntegerField(default=0, db_index=True)
     filled_firm = models.ForeignKey(FirmTonerRefill, null=True)
     comment = models.TextField('Комментарий', blank=True)
-    node_order_by = ['id']
+    node_order_by = ['pk']
