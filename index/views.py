@@ -26,6 +26,8 @@ from .models import OrganizationUnits
 from .models import City as CityM
 from .models import FirmTonerRefill
 from .models import CartridgeItemName
+from events.models import Events
+from events.helpers import events_decoder
 from .helpers import recursiveChildren, check_ajax_auth
 from .sc_paginator import sc_paginator
 from .signals import ( sign_add_full_to_stock, 
@@ -54,6 +56,13 @@ def dashboard(request):
     context['empty_on_stock'] = filter_itms(Q(departament=root_ou) & Q(cart_status=3)).count()
     context['filled']         = filter_itms(Q(departament=root_ou) & Q(cart_status=4)).count()
     context['recycler_bin']   = filter_itms(Q(departament=root_ou) & (Q(cart_status=5) | Q(cart_status=6))).count()
+    # формирование контекста топовых событий
+    try:
+        dept_id = request.user.departament.pk
+    except AttributeError:
+        dept_id = 0
+    events_list = Events.objects.filter(departament=dept_id).order_by('-pk')[:7]
+    context['events_list'] = events_decoder(events_list, simple=False)
     return render(request, 'index/dashboard.html', context)
 
 

@@ -242,20 +242,6 @@ form.dancon input[type="text"]{
     float: right;
 }
 
-/*
-.dancon_row .left_pos input.button{
-    display: inline-block;
-    float: left;
-    width:100px;
-}
-
-.dancon_row .right_pos a.button{
-    display: inline-block;
-    float: right;
-    width:100px;
-}
-
-*/
 .clear_float{
     clear: both;
 }
@@ -377,6 +363,16 @@ ul.messages .error {
 }
 /* ---endmessages--- */
 
+.dashboard, .top_events {
+    margin:0;
+    height:400px;
+    overflow: hidden;
+}
+
+table.top_events th.date_and_time {
+    width:130px;
+}
+
 .dashboard .pic{
     width: 80px;
     height: 80px;
@@ -403,11 +399,6 @@ ul.messages .error {
 .center_panel {
     width:410px;
     height:400px;
-    /*position:absolute;
-    top:0;
-    bottom:0;
-    left:0;
-    right:0;*/
     margin:45px auto 0;    
     border:2px solid #d5d5d5;
     padding:10px;
@@ -454,11 +445,6 @@ a img{
 }
 
 /* --- Start style main table  --- */
-/*table.checkboxes tr, 
-table.checkboxes tr td,
-table.checkboxes tr th {
-    border: 1px solid #c5c5c5;
-} */
 
 table.checkboxes tr {
     border-top: 1px solid #c5c5c5;
@@ -487,7 +473,6 @@ th.active_cell {
 
 /* start action table */
 table.actions_firm th {
-    /* text-align: center; */
     border-top: 1px solid #ddd;
     border-bottom: 1px solid #ddd;
 }

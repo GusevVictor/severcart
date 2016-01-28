@@ -1,10 +1,10 @@
 {% extends "index/base.html" %}
 {% load staticfiles %}
 {% block title %}Текущее состояние материальных запасов{% endblock %}
-{% block h3 %}Рабочий стол{% endblock %}
 {% block content %}
 <div class="row">
-    <div class="large-8 columns">
+    <div class="large-6 columns">
+        <h4>Рабочий стол</h4>
         <table class="dashboard">
             <tbody>
             <tr>
@@ -34,6 +34,25 @@
             </tr>
             </tbody>
         </table>
+    </div>
+    <div class="large-6 columns">
+        <h4>События</h4>
+        <div>
+            <table class="top_events">
+                <tr>
+                    <th class="date_and_time">Дата и время</th><th>Текст события</th>
+                </tr>
+                {% for line in events_list %}
+                <tr>
+                    <td>{{ line.data_env|date:"d.m.Y G:i" }}</td><td>{{ line.text_com|safe }}</td>
+                </tr>
+                {% endfor %}
+                <tr>
+                    <td>...</td><td class="text-right"><a href="{% url 'show_events' %}">Просмотр всех событий</a></td>
+                </tr>
+            </table>
+            <div class="see_all_events"></div>
+        </div>
     </div>
 </div>
 {% endblock %}
