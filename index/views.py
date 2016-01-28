@@ -264,7 +264,11 @@ def transfer_to_stock(request):
         checked_cartr = checked_cartr.split('s')
         checked_cartr = [int(i) for i in checked_cartr]
         tmp = checked_cartr
-        checked_cartr = str(checked_cartr)
+        tmp2 = []
+        # преобразовываем айдишники в условные номера
+        for cart_id in checked_cartr:
+            tmp2.append(CartridgeItem.objects.get(pk=cart_id).cart_number)
+        checked_cartr = str(tmp2)
         checked_cartr = checked_cartr[1:-1]
 
     if request.method == 'POST':
@@ -632,8 +636,12 @@ def transfer_to_firm(request):
         checked_cartr = checked_cartr.split('s')
         checked_cartr = [int(i) for i in checked_cartr]
         tmp = checked_cartr
-        checked_cartr = str(checked_cartr)
-        checked_cartr = checked_cartr[1:-1] # убираем угловые скобочки []
+        tmp2 = []
+        # преобразовываем айдишники в условные номера
+        for cart_id in checked_cartr:
+            tmp2.append(CartridgeItem.objects.get(pk=cart_id).cart_number)
+        checked_cartr = str(tmp2)
+        checked_cartr = checked_cartr[1:-1]
         
     else:
         # если кто-то зашел на страницу не выбрав расходники
