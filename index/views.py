@@ -62,6 +62,7 @@ def dashboard(request):
     except AttributeError:
         dept_id = 0
     events_list = Events.objects.filter(departament=dept_id).order_by('-pk')[:7]
+    context['events_count'] = len(events_list)
     context['events_list'] = events_decoder(events_list, simple=False)
     return render(request, 'index/dashboard.html', context)
 

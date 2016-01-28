@@ -365,9 +365,13 @@ ul.messages .error {
 
 .dashboard, .top_events {
     margin:0;
-    height:400px;
+    max-height:400px;
     overflow: hidden;
 }
+
+/*table.top_events {
+    width:390px;
+} */
 
 table.top_events th.date_and_time {
     width:130px;
