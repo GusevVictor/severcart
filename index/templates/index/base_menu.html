@@ -5,10 +5,10 @@
         <ul class="menu">
             <li class="{% navactive request 'dashboard' %}"><a href="{% url 'dashboard' %}">Домашняя</a></li>
             <li class="{% navactive request 'stock' %}"><a href="{% url 'stock' %}">Склад</a></li>
-            <li class="{% navactive request 'use' %}"><a href="{% url 'use' %}">Используются</a></li>
+            <li class="{% navactive request 'use' %}"><a href="{% url 'use' %}">Задействованные</a></li>
             <li class="{% navactive request 'empty' %}"><a href="{% url 'empty' %}">Пустые</a></li>
             <li class="{% navactive request 'at_work' %}"><a href="{% url 'at_work' %}">На заправке</a></li>
-            <li class="{% navactive request 'basket' %}"><a href="{% url 'basket' %}">В корзине</a></li>
+            <li class="{% navactive request 'basket' %}"><a href="{% url 'basket' %}">Корзина</a></li>
             <li><a href="/statistics/">Отчёты</a></li>
             <li class="{% navactive request 'show_events' %}"><a href="{% url 'show_events' %}">События</a></li>
             <li class="right {% navactive request 'accounts:manage_users' %} {% navactive request 'tree_list' %} {% navactive request 'toner_refill' %} "><a href="#">Настройки ▼</a>

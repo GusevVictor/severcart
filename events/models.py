@@ -18,7 +18,8 @@ class Events(models.Model):
     )
     # устанавливаем слабую связанность для объектов
     date_time   = models.DateTimeField()
-    cart_number = models.IntegerField(db_index=True)
+    cart_index = models.IntegerField(db_index=True)  # номер назначает база данных
+    cart_number = models.IntegerField(db_index=True) # условный номер генерируемый при создании объекта, возможна смена
     cart_type   = models.CharField(max_length=256, null=True)
     cart_action = models.IntegerField(null=True)
     # cart_action хранит данные о восстановительных действиях с объектом 5 значном числе.

@@ -9,6 +9,7 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.utils import timezone
 from django.db.models import Q
 from .models  import Events
+from index.models import CartridgeItem
 from .helpers import events_decoder, date_to_str
 from .forms   import DateForm
 
@@ -99,10 +100,21 @@ def view_cartridge_events(request):
         cart_id = int(cart_id)
     except ValueError:
         raise Http404
-    es = Events.objects.filter(cart_number=cart_id).order_by('pk')
+    
+    try:
+        dept_id = request.user.departament.pk
+    except AttributeError:
+        dept_id = 0
+
     context = {}
-    frdly_es = events_decoder(es)
-    context['frdly_es'] = frdly_es
-    context['cart_id']  = cart_id
-    context['cart_type'] = es[0].cart_type
+    list_events = Events.objects.filter(cart_index=cart_id).filter(departament=dept_id).order_by('pk')
+    try:
+        frdly_es = events_decoder(list_events)
+        context['frdly_es']     = frdly_es
+        context['cart_number']  = list_events[0].cart_number
+        context['cart_type']    = list_events[0].cart_type
+    except IndexError:
+        context['frdly_es']     = []
+        context['cart_number']  = ''
+        context['cart_type']    = 'Не найдено'
     return render(request, 'events/view_cartridge_events.html', context)

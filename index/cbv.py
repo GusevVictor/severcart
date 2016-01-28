@@ -125,7 +125,7 @@ class SeverCartView(ListView):
             except ValueError:
                 pass
             else:
-                self.all_items = self.all_items.filter(Q(pk=search_number))
+                self.all_items = self.all_items.filter(Q(cart_number=search_number))
             context['search_number'] = search_number
 
         # работаем с выводом количеством элементов на страницу

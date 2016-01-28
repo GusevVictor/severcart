@@ -1,22 +1,22 @@
 {% extends "index/base.html" %}
 {% load staticfiles %}
-{% block title %}События объекта учёта {{ cart_id }} ({{ cart_type }}){% endblock %}
-{% block h3 %}События объекта учёта {{ cart_id }} ({{ cart_type }}){% endblock %}
+{% block title %}События объекта учёта {{ cart_number }} ({{ cart_type }}){% endblock %}
+{% block h3 %}События объекта учёта {{ cart_number }} ({{ cart_type }}){% endblock %}
 {% block content %}
 <div class="row">
-<div class="large-12 columns">
-<table>
-    <tr>
-    <th>Дата и время</th>
-    <th>Описание</th>
-    </tr>
-    {% for entry in frdly_es %}
-    <tr>
-    <td>{{ entry.data_env|date:"d M Y G:i" }}</td>
-    <td>{{ entry.text_com|safe }}</td>
-    </tr>
-    {% endfor %}
-</table>
-</div>
+    <div class="large-12 columns">
+        <table class="view_cart_events">
+            <tr>
+                <th class="date_and_time">Дата и время</th>
+                <th>Описание</th>
+            </tr>
+            {% for entry in frdly_es %}
+            <tr>
+                <td>{{ entry.data_env|date:"d M Y G:i" }}</td>
+                <td>{{ entry.text_com|safe }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
 </div>
 {% endblock %}

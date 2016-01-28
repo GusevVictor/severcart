@@ -17,7 +17,8 @@ sign_tr_filled_cart_to_stock = Signal(providing_args=['list_cplx', 'request'])
 def event_add_cart(**kwargs):
     m1 = Events(departament = kwargs.get('request').user.departament.pk,
                 date_time   = timezone.now(),
-                cart_number = kwargs.get('num', 0),
+                cart_index  = kwargs.get('cart_inx', 0),
+                cart_number = kwargs.get('cart_num', 0),
                 cart_type   = kwargs.get('cart_type', 0),
                 event_type  = 'AD',
                 event_user  = kwargs.get('user', 'anonymous'),
@@ -32,8 +33,9 @@ def event_transfe_cart_to_uses(**kwargs):
     for elem in kwargs.get('list_cplx'):
         m1 = Events(departament = kwargs.get('request').user.departament.pk,
             date_time   = timezone.now(),
-            cart_number = elem[0],
+            cart_index = elem[0],
             cart_type   = elem[1],
+            cart_number = elem[2],
             event_type  = 'TR',
             event_user  = str(kwargs.get('request').user),
             event_org   = kwargs.get('org')
@@ -47,8 +49,9 @@ def event_transfe_cart_to_basket(**kwargs):
     for elem in kwargs.get('list_cplx'):
         m1 = Events(departament = kwargs.get('request').user.departament.pk,
             date_time   = timezone.now(),
-            cart_number = elem[0],
+            cart_index  = elem[0],
             cart_type   = elem[1],
+            cart_number = elem[2],
             event_type  = 'TB',
             event_user  = str(kwargs.get('request').user),
         )
@@ -62,11 +65,12 @@ def event_tr_empty_cart_to_stock(**kwargs):
     for elem in kwargs.get('list_cplx'):
         m1 = Events(departament = kwargs.get('request').user.departament.pk,
             date_time   = timezone.now(),
-            cart_number = elem[0],
+            cart_index = elem[0],
             cart_type   = elem[1],
             event_type  = 'TS',
             event_user  = str(kwargs.get('request').user),
-            event_org   = elem[2]
+            event_org   = elem[2],
+            cart_number = elem[3],
         )
         m1.save()
 
@@ -78,8 +82,9 @@ def event_turf_cart(**kwargs):
     for elem in kwargs.get('list_cplx'):
         m1 = Events(departament = kwargs.get('request').user.departament.pk,
             date_time   = timezone.now(),
-            cart_number = elem[0],
+            cart_index  = elem[0],
             cart_type   = elem[1],
+            cart_number = elem[2],
             event_type  = 'DC',
             event_user  = str(kwargs.get('request').user),
         )
@@ -92,8 +97,9 @@ def event_tr_empty_cart_to_firm(**kwargs):
     for elem in kwargs.get('list_cplx'):
         m1 = Events(departament = kwargs.get('request').user.departament.pk,
             date_time   = timezone.now(),
-            cart_number = elem[0],
+            cart_index  = elem[0],
             cart_type   = elem[1],
+            cart_number = elem[2],
             event_type  = 'TF',
             event_firm  = kwargs.get('firm'),
             event_user  = str(kwargs.get('request').user),
@@ -123,12 +129,13 @@ def event_tr_filled_cart_to_stock(**kwargs):
                 compact_num += 0
         m1 = Events(departament = kwargs.get('request').user.departament.pk,
             date_time   = timezone.now(),
-            cart_number = elem[0],
+            cart_index = elem[0],
             cart_type   = elem[1],
             event_type  = 'RS',
             event_firm  = elem[2],
             event_user  = str(kwargs.get('request').user),
             cart_action = compact_num,
+            cart_number = elem[4],
         )
         m1.save()
 

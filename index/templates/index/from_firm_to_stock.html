@@ -33,7 +33,7 @@
         </tr>
         {% for elem in list_cart %}
         <tr>
-        <td>{{ elem.pk }}</td>
+        <td>{{ elem.cart_number }}</td>
         <td>{{ elem.cart_itm_name }}</td>
         <td><input type="checkbox" name="cart_{{elem.pk}}" value="filled" checked/></td>
         <td><input type="checkbox" name="cart_{{elem.pk}}" value="fotoreceptor"/></td>

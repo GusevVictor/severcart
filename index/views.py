@@ -116,19 +116,25 @@ def add_cartridge_item(request):
             data_in_post = form_obj.cleaned_data
             count_items  = int(data_in_post['cartCount'])
             cart_type    = str(data_in_post['cartName'])
+            cart_count   = CartridgeItem.objects.filter(departament=request.user.departament).count()
+            cart_number  = cart_count + 1
             # получаем объект текущего пользователя
             for i in range(count_items):
-                m1 = CartridgeItem(cart_itm_name=data_in_post['cartName'],
+                m1 = CartridgeItem(cart_number=cart_number,
+                                   cart_itm_name=data_in_post['cartName'],
                                    cart_date_added=timezone.now(),
                                    cart_date_change=timezone.now(),
                                    cart_number_refills=0,
                                    departament=request.user.departament,
                                    )
                 m1.save()
-                sign_add_full_to_stock.send(sender=None, num=m1.id,
+                sign_add_full_to_stock.send(sender=None, 
+                                            cart_inx=m1.pk,
+                                            cart_num=cart_number,
                                             cart_type=cart_type,
                                             user=str(request.user),
                                             request=request)
+                cart_number += 1
             if count_items == 1:
                 tmpl_message = 'Расходник %s успешно добавлен.'
             elif count_items > 1:
@@ -215,7 +221,11 @@ def transfe_for_use(request):
         checked_cartr = checked_cartr.split('s')
         checked_cartr = [int(i) for i in checked_cartr]
         tmp = checked_cartr
-        checked_cartr = str(checked_cartr)
+        tmp2 = []
+        # преобразовываем айдишники в условные номера
+        for cart_id in checked_cartr:
+            tmp2.append(CartridgeItem.objects.get(pk=cart_id).cart_number)
+        checked_cartr = str(tmp2)
         checked_cartr = checked_cartr[1:-1]
     
     get = lambda node_id: OrganizationUnits.objects.get(pk=node_id)
@@ -235,7 +245,7 @@ def transfe_for_use(request):
             m1.cart_date_change = timezone.now()
             m1.save(update_fields=['departament', 'cart_status', 'cart_date_change'])
             
-            list_cplx.append((m1.id, str(m1.cart_itm_name)))
+            list_cplx.append((m1.id, str(m1.cart_itm_name), m1.cart_number))
         sign_tr_cart_to_uses.send(sender=None, 
                                             list_cplx=list_cplx,
                                             request=request,
@@ -267,7 +277,7 @@ def transfer_to_stock(request):
             m1.departament = request.user.departament
             m1.cart_date_change = timezone.now()
             m1.save(update_fields=['departament', 'cart_status', 'cart_date_change'])
-            list_cplx.append((m1.id, str(m1.cart_itm_name), str(tmp_dept),))
+            list_cplx.append((m1.id, str(m1.cart_itm_name), str(tmp_dept), m1.cart_number))
 
         sign_tr_empty_cart_to_stock.send(sender=None, list_cplx=list_cplx, request=request)
         return HttpResponseRedirect('/use/')
@@ -560,7 +570,11 @@ def transfe_to_basket(request):
         checked_cartr = checked_cartr.split('s')
         checked_cartr = [int(i) for i in checked_cartr]
         tmp = checked_cartr
-        checked_cartr = str(checked_cartr)
+        tmp2 = []
+        # преобразовываем айдишники в условные номера
+        for cart_id in checked_cartr:
+            tmp2.append(CartridgeItem.objects.get(pk=cart_id).cart_number)
+        checked_cartr = str(tmp2)
         checked_cartr = checked_cartr[1:-1]
     
     if request.method == 'POST':
@@ -571,7 +585,7 @@ def transfe_to_basket(request):
             m1.departament = request.user.departament
             m1.cart_date_change = timezone.now()
             m1.save(update_fields=['cart_status', 'departament', 'cart_date_change'])
-            list_cplx.append((m1.id, str(m1.cart_itm_name)))
+            list_cplx.append((m1.id, str(m1.cart_itm_name), m1.cart_number))
         
         sign_tr_cart_to_basket.send(sender=None, list_cplx=list_cplx, request=request)
 
@@ -645,7 +659,7 @@ def transfer_to_firm(request):
                 m1.filled_firm = select_firm
                 m1.cart_date_change = timezone.now()
                 m1.save(update_fields=['filled_firm', 'cart_status', 'cart_date_change'])
-                list_cplx.append((m1.pk, str(m1.cart_itm_name)))
+                list_cplx.append((m1.pk, str(m1.cart_itm_name), m1.cart_number))
             sign_tr_empty_cart_to_firm.send(sender=None, 
                                             list_cplx=list_cplx, 
                                             request=request, 
@@ -688,7 +702,7 @@ def from_firm_to_stock(request):
             m1.cart_number_refills = int(m1.cart_number_refills) + 1
             m1.save(update_fields=['filled_firm', 'cart_status', 'cart_number_refills', 'cart_date_change'])
             repair_actions = request.POST.getlist('cart_'+str(inx))
-            list_cplx.append((m1.id, str(m1.cart_itm_name), filled_firm, repair_actions))
+            list_cplx.append((m1.id, str(m1.cart_itm_name), filled_firm, repair_actions, m1.cart_number))
 
         sign_tr_filled_cart_to_stock.send(sender=None, list_cplx=list_cplx, request=request)
         return HttpResponseRedirect(reverse('at_work'))

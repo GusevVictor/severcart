@@ -49,7 +49,7 @@ def turf_cartridge(request):
     list_cplx = []
     for ind in ar:
         node = CartridgeItem.objects.get(pk=ind)
-        list_cplx.append((node.id, str(node.cart_itm_name)))
+        list_cplx.append((node.id, str(node.cart_itm_name), node.cart_number))
         node.delete()
 
     sign_turf_cart.send(sender=None, list_cplx=list_cplx, request=request)
