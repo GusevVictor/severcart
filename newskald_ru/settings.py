@@ -24,7 +24,7 @@ SECRET_KEY = '^g$4c6-__#353*u_t9iovxd5g#)i$0o=bv5-ku+v=7#3ku*m%#'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -182,3 +182,5 @@ LOGGING = {
 LOGIN_URL = '/manage_users/login/'
 
 MAX_EVENT_LIST = 16
+
+#handler404 = 'index.views.page_not_found'

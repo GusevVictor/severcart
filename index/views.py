@@ -745,3 +745,15 @@ def edit_cartridge_comment(request):
         comment = cartridge_object.comment
         form = EditCommentForm(initial = {'comment': comment})
     return render(request, 'index/edit_cartridge_comment.html', {'form': form})
+
+def handler404(request):
+    response = render(request, 'index/404.html', {})
+    response.status_code = 404
+    return response
+
+
+def handler500(request):
+    response = render(request, 'index/500.html', {})
+    response.status_code = 500
+    return response
+    
