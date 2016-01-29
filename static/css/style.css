@@ -461,14 +461,50 @@ a img{
 /* --- Start style main table  --- */
 
 table.checkboxes tr {
-    border-top: 1px solid #c5c5c5;
-    border-bottom: 1px solid #c5c5c5;
+    border-top: 1px solid #bbb;
+    border-bottom: 1px solid #bbb;
+}
+
+table.checkboxes {
+    width: 100%;
+    border: 1px solid #bbb;
+}
+
+table.checkboxes th.actions {
+    width:140px;
+}
+
+table.checkboxes th.cart_number {
+    width:86px;
+}
+
+table.checkboxes th.cart_name {
+    width:106px;
+}
+
+table.checkboxes th.cart_count {
+    width:102px;
+}
+
+table.checkboxes th.first_checkbox {
+    width:30px;
+}
+
+table.checkboxes th.cart_date {
+    width:158px;
+}
+
+table.checkboxes th.org_user {
+    width:100px;
+}
+
+table.checkboxes th.firm_filled {
+    width:100px;
 }
 
 .comment_in_cell {
     display: block;
     width:150px;
-
 }
 
 input.search_number {
@@ -514,6 +550,11 @@ th.action_type input {
     vertical-align: top;
     margin-right: 6px;
 }
+
+.cartridge_action option {
+    padding: 5px;
+}
+
 /* end action table */
 
 /* start pagination */

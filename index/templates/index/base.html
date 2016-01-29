@@ -5,13 +5,12 @@
     <link href="{% static "img/favicon.ico" %}" rel="shortcut icon" />
     <link rel="stylesheet" href="{% static "css/normalize.css" %}" />
     <link rel="stylesheet" href="{% static "css/foundation.css" %}" />
-    <link rel="stylesheet" href="{{ STATIC_URL }}css/style.css?23" />
+    <link rel="stylesheet" href="{{ STATIC_URL }}css/style.css?24" />
     <link rel="stylesheet" href="{{ STATIC_URL }}css/superfish.css?4" />
     <script src="{{ STATIC_URL }}js/detect.js?6"></script>
     <script src="{% static "js/vendor/jquery.js" %}"></script>
     <script src="{% static "js/superfish.min.js" %}"></script>
     <script src="{{ STATIC_URL }}js/activatesuperfish.js?3"></script>
-    <!-- Other JS plugins can be included here -->
     {% block jqueryui %}{% endblock %}
     <script src="{{ STATIC_URL }}js/logic.js?62"></script>
     <title>{% block title %}{% endblock %}</title>
@@ -32,9 +31,9 @@
 </div>
 {% block submenu %}{% endblock %}
 {% block content %}{% endblock %}
-<hr />
 <div class="row">
     <div class="large-12 columns">
+        <hr/>
         <div class="text-left">Версия: 0.0.5</div>
         <div class="text-center">servercart.org&nbsp;&nbsp;&copy;&nbsp;&nbsp;2016</div>
     </div>

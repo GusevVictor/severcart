@@ -19,13 +19,13 @@
         <table class="checkboxes">
             <form>
                 <tr>
-                    <th><input type="checkbox" class="check_all"></th>
-                    <th {% if select_number  %}class="active_cell"{% endif %}><a href="?action=number">Номер {{number_triangle}}</a><br/><input class="search_number" name="search_number" value="{{search_number}}"  /></th>
-                    <th {% if select_type %}class="active_cell"{% endif %}><a href="?action=name">Наименование {{type_triangle}}</a></th>
-                    <th {% if select_count %}class="active_cell"{% endif %}><a href="?action=recovery">Кол-во<br/>перезаправок {{count_triangle}}</a></th>
-                    <th {% if select_change_date %}class="active_cell"{% endif %}><a  href="?action=change_date">Дата возврата {{datec_triangle}}<br/>на склад</a></th>
+                    <th class="first_checkbox"><input type="checkbox" class="check_all"></th>
+                    <th class="cart_number {% if select_number %}active_cell{% endif %}"><a href="?action=number">Номер {{number_triangle}}</a><br/><input class="search_number" name="search_number" value="{{search_number}}"  /></th>
+                    <th class="cart_name{% if select_type %} active_cell{% endif %}"><a href="?action=name">Название {{type_triangle}}</a></th>
+                    <th class="cart_count{% if select_count %} active_cell{% endif %}"><a href="?action=recovery">Кол-во<br/>перезаправок {{count_triangle}}</a></th>
+                    <th class="cart_date{% if select_date %} active_cell{% endif %}"><a  href="?action=change_date">Дата возврата {{datec_triangle}}<br/>на склад</a></th>
                     <th>Комментарий</th>
-                    <th>Действие</th>
+                    <th class="actions">Действие</th>
                 </tr>
                 {% for i in cartrjs %}
                     <tr>
@@ -34,7 +34,7 @@
                         <td>{{ i.cart_itm_name }}</td>
                         <td>{{ i.cart_number_refills }}</td>
                         <td>{{ i.cart_date_change }}</td>
-                        <td><div class="comment_in_cell" title="{{ i.comment }}">{{ i.comment|truncatechars:20 }}</div></td>
+                        <td><div class="comment_in_cell" title="{{ i.comment }}">{{ i.comment|truncatechars:40 }}</div></td>
                         <td><select class="cartridge_action" data="{{ i.id }}">
                             <option selected></option>
                             <option value="edit">Редактировать</option>
