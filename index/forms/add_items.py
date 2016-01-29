@@ -8,10 +8,11 @@ class AddItems(forms.Form):
                                       empty_label=' ',
                                       required=True,
                                       )
-    cartCount = forms.IntegerField(min_value=0,
-                                   error_messages={'required': 'Поле обязательно для заполнения.'},
-                                   required=True,
-                                   )
+    cartCount = forms.CharField(  max_length = 4,
+                                  widget=forms.TextInput(attrs={'class': 'pm_counter', 'readonly': 'readonly'}),
+                                  error_messages={'required': 'Поле обязательно для заполнения.'},
+                                  required=True,
+                                )
 
     required_css_class = 'required'
 

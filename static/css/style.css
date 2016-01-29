@@ -2,6 +2,10 @@ html, body {
     height: 100%;
 }
 
+form label {
+    margin-bottom: 10px;
+}
+
 .marginTop {
     margin-top:15px;
 }

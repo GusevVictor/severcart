@@ -1,5 +1,10 @@
-{% extends "index/base.html" %}
-{% block title %}Добавление наименований{% endblock %}
+{% extends "index/base.html" %}{% load staticfiles %}
+{% block title %}Добавление объектов на склад{% endblock %}
+{% block h3 %}Добавление объектов на склад{% endblock %}
+{% block jqueryui %}
+    <link rel="stylesheet" href="{{ STATIC_URL }}css/pm_widget.css" />
+    <script src="{{ STATIC_URL }}js/pm_widget.js"></script>
+{% endblock %}
 {% block content %}
     <div class="row">
         <div class="large-6 columns">
