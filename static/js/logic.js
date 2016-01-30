@@ -317,8 +317,6 @@ $( function(){
         });
     });
 
-    $('.datepicker').datepicker();
-
     $('.events_see_more').click( function( event ) {
         event.preventDefault();
         event.stopPropagation();

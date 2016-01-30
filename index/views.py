@@ -61,8 +61,12 @@ def dashboard(request):
         dept_id = request.user.departament.pk
     except AttributeError:
         dept_id = 0
-    events_list = Events.objects.filter(departament=dept_id).order_by('-pk')[:7]
-    context['events_count'] = len(events_list)
+    MAX_EVENTS = 11
+    events_list = Events.objects.filter(departament=dept_id).order_by('-pk')[:MAX_EVENTS]
+    if events_list.count() >= MAX_EVENTS:
+        context['show_more'] = True
+    else:
+        context['show_more'] = False
     context['events_list'] = events_decoder(events_list, simple=False)
     return render(request, 'index/dashboard.html', context)
 
@@ -309,7 +313,10 @@ class Use(SeverCartView):
         
         context = super(Use, self).get_context_data(**kwargs)
         self.all_items = self.all_items.filter(departament__in=children).filter(cart_status=2)
-        context['children'] = str(children[0])
+        if children:
+            context['children'] = str(children[0])
+        else:
+            context['children'] = ''
         cartridjes = sc_paginator(self.all_items, self.request, self.size_perpage)
         context['cartrjs'] = cartridjes
         context['size_perpage'] = str(self.size_perpage)
@@ -360,11 +367,7 @@ def toner_refill(request):
         firms = FirmTonerRefill.objects.filter(firm_city=city)
     else:
         firms = FirmTonerRefill.objects.all()
-
-    # работаем с пагинацией
-    firms = sc_paginator(firms, request)
     # завершаем работу с пагинацией
-
     new_list = [{'id': 0, 'city_name': 'Выбрать все'}]
     for i in cities:
         tmp_dict = {'id': i.id, 'city_name': i.city_name}
@@ -375,7 +378,6 @@ def toner_refill(request):
         city_url_parametr = '?city=' + str(city_id) + '&'
     else:
         city_url_parametr = '?'
-
     return render(request, 'index/toner_refill.html', {'cities': new_list,
                                                        'firms': firms,
                                                        'select': city_id,
@@ -512,7 +514,6 @@ def manage_users(request):
     """
     """
     usr = AnconUser.objects.all()
-    usr = sc_paginator(usr, request)
     return render(request, 'index/manage_users.html', {'urs': usr})
 
 

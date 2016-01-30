@@ -5,6 +5,7 @@
 {% block content %}
 <div class="row">
     <div class="large-6 columns">
+        <h4>Добавление новой структурной единицы</h4>
         <form action="" method="POST">
             {% csrf_token %}
             <label>Название структурного подразделения</label>
@@ -26,7 +27,7 @@
     </div>
 
     <div class="large-6 columns">
-        <h4>Структура организации:</h4>
+        <h4>Структура организации</h4>
         <div>
             <a class="del_node button alert">Удалить</a><img class="spinner" src="{% static 'img/loader.gif' %}" />
         </div>

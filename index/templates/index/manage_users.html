@@ -1,5 +1,4 @@
 {% extends "index/base.html" %}
-{% load pagination  %}
 {% load staticfiles %}
 {% block jqueryui%}
     <link rel="stylesheet" href="{% static 'css/jquery-ui.css' %}" />
@@ -24,7 +23,6 @@
             <div class="errorlog"></div>   
         </div>        
     </div> 
-    
     <div class="row">
         <div class="large-6 columns">
             <table class="checkboxes">
@@ -59,18 +57,12 @@
                     {% endfor %}
                 </form>
             </table>
-
         </div>
     </div>
-
-    {% found_pagination urs %}
-
     <div class="dialog-confirm" title="Точно удалить?">
         <p><span class="ui-icon ui-icon-alert" style="float:left; margin:0 7px 20px 0;"></span>
         Вы уверены, что хотите удалить пользовател<span class="chislo"></span> <b></b>?
         </p>
         <div><img class="spinner" src="{% static 'img/loader.gif' %}" /></div>
     </div>
-
 {% endblock %}
-
