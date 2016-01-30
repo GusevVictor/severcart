@@ -49,12 +49,12 @@ class SeverCartView(ListView):
         select_action = self.request.GET.get('action', '')
         if select_action == 'number':
             context['select_number'] = True
-            if self.request.session.get('sort') == 'pk':
-                self.request.session['sort'] = '-pk'
+            if self.request.session.get('sort') == 'cart_number':
+                self.request.session['sort'] = '-cart_number'
                 context['number_triangle'] = '▼'
             else:
                 context['number_triangle'] = '▲'
-                self.request.session['sort'] = 'pk'
+                self.request.session['sort'] = 'cart_number'
 
         elif select_action == 'name':
             context['select_type'] = True
@@ -95,9 +95,9 @@ class SeverCartView(ListView):
             # переходим в веточку если пользователь не выбирал сортировок
             # дальнейшие преобразования производим на основе предыдущих действий, если они были
             sort_order = self.request.session.get('sort')
-            if sort_order == 'pk' or sort_order == '-pk':
+            if sort_order == 'cart_number' or sort_order == '-cart_number':
                 context['select_number'] = True
-                context['number_triangle'] = '▲' if sort_order == 'pk' else '▼'
+                context['number_triangle'] = '▲' if sort_order == 'cart_number' else '▼'
             elif sort_order == 'cart_itm_name' or sort_order == '-cart_itm_name':
                 context['select_type'] = True
                 context['type_triangle'] = '▲' if sort_order == 'cart_itm_name' else '▼'
@@ -113,8 +113,8 @@ class SeverCartView(ListView):
             else:
                 # по умолчанию будем сортивать по id в порядке возрастания номеров
                 context['select_number'] = True
-                self.request.session['sort'] = 'pk'
-                context['number_triangle'] = '▲' if sort_order == 'pk' else '▼'
+                self.request.session['sort'] = 'cart_number'
+                context['number_triangle'] = '▲' if sort_order == 'cart_number' else '▼'
         # работаем с поисковой формой по номеру картриджа
         search_number  = self.request.GET.get('search_number')
         self.all_items = CartridgeItem.objects.all()
