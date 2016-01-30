@@ -11,6 +11,7 @@ from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
 from django.contrib.sessions.models import Session
 from django.db.models import Q
+from django.views.generic.base import TemplateView
 from .cbv import SeverCartView
 from .forms.add_cartridge_name import AddCartridgeName
 from .forms.add_items import AddItems
@@ -746,6 +747,11 @@ def edit_cartridge_comment(request):
         comment = cartridge_object.comment
         form = EditCommentForm(initial = {'comment': comment})
     return render(request, 'index/edit_cartridge_comment.html', {'form': form})
+
+
+class handbook(TemplateView):
+    template_name = 'index/handbook.html'
+
 
 def handler404(request):
     response = render(request, 'index/404.html', {})
