@@ -53,7 +53,6 @@ def delivery(request):
             context['form'] = form    
             return HttpResponseRedirect(request.path)
         else:
-            print('Form is INVALID valid!')
             context['form'] = form    
     elif request.method == 'GET':
         #

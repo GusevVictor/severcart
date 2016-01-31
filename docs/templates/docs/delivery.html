@@ -2,6 +2,7 @@
 {% block title %}Договора поставки{% endblock %}
 {% block h3 %}Договора поставки{% endblock %}
 {% load staticfiles %}
+{% load docsf %}
 {% block jqueryui%}
 <link rel="stylesheet" href="{% static 'css/jquery-ui.css' %}" />
 <script src="{% static 'js/jquery-ui.js' %}"></script>
@@ -70,7 +71,7 @@
                 <td>{{ doc.title }}</td>
                 <td>{{ doc.date }}</td>
                 <td>{{ doc.firm }}</td>
-                <td>{{ doc.money }}</td>
+                <td>{{ doc.money | divide}}</td>
                 <td>{{ doc.short_cont }}</td>
             </tr>
             {% endfor %}
