@@ -6,9 +6,9 @@ def del_leding_zero(data):
     """Убираем лидирующий ноль, если он есть.
     """
     if data[0] == '0':
-        return data[1:]
+        return int(data[1:])
     else:
-        return data
+        return int(data)
 
 class DateForm(forms.Form):
     #http://stackoverflow.com/questions/16356289/how-to-show-datepicker-calender-on-datefield#16356818
@@ -29,7 +29,7 @@ class DateForm(forms.Form):
                 month_value = prepare_list[1]
                 month_value = del_leding_zero(month_value)
                 year_value  = prepare_list[2]
-                return {'date_value': int(date_value), 'month_value': int(month_value), 'year_value': int(year_value)}
+                return {'date_value': date_value, 'month_value': month_value, 'year_value': year_value}
             else:
                 return None
 

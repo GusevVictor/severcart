@@ -10,11 +10,20 @@ body.linen-texture {
     background: url('../img/linen-texture2.jpg');   
 }
 
+hr {
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid #000;
+    margin: 1em 0;
+    padding: 0; 
+}
+
 div.main_content {
     min-height: 100%;
     max-width: 1000px;
     margin: 0 auto 0;
-    background: #c8c8c8;
+    background: #f3f3f3;
 }
 
 form label {
@@ -118,9 +127,12 @@ span.gi {
 }
 
 
-
-
 /* Horizontal menu */
+div.vertical_menu {
+    background: #000;
+
+}
+
 ul.menu {
     font-size: 0.875em;
     padding:0;
@@ -275,6 +287,7 @@ form.dancon input[type="text"]{
 
 form select {
     margin-bottom:20px;
+    height: 33px;
 }
 
 /*  -----buttons style---- */
@@ -642,7 +655,7 @@ form.input_date input.button {
     display: inline-block;
 }
 
-form.input_date input {
+form.input_date input, div.calendar input {
     display: inline-block;
     width: 150px;
     height: 32px;

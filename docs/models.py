@@ -16,7 +16,7 @@ class SCDoc(models.Model):
     date        = models.DateField(db_index=True)
     firm        = models.ForeignKey(FirmTonerRefill, null=True)
     title       = models.CharField(max_length=256)
-    short_cont  = models.TextField(blank=True)
+    short_cont  = models.TextField(null=True)
     money       = models.IntegerField(db_index=True, null=True)
     departament = models.ForeignKey(OrganizationUnits)
     doc_type    = models.IntegerField(choices=DOC_TYPE, default=1)
