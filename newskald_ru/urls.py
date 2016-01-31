@@ -7,6 +7,7 @@ urlpatterns = [
     url(r'^manage_users/', include('accounts.urls', namespace='auth', app_name='accounts')),
     url(r'^api/', include('index.api.urls')),
     url(r'^events/', include('events.urls')),
+    url(r'^docs/', include('docs.urls', namespace='docs')),
 ]
 
 handler404 = 'index.views.handler404'

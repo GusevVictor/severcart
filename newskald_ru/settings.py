@@ -40,6 +40,7 @@ INSTALLED_APPS = (
     'mptt',
     'accounts',
     'events',
+    'docs',
 )
 
 MIDDLEWARE_CLASSES = (

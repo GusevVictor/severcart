@@ -1,0 +1,55 @@
+{% extends "index/base.html" %}
+{% block title %}Договора поставки{% endblock %}
+{% block h3 %}Договора поставки{% endblock %}
+{% block submenu %}
+<div class="row">
+    <div class="large-12 columns">
+        <form action="" method="POST">
+            {% csrf_token %}
+            <label class='required' for="{{ form.number.id_for_label }}">Номер</label>
+            {{ form.number }}
+            {{ form.number.errors }}
+            <label class='required' for="{{ form.title.id_for_label }}">Название</label>
+            {{ form.title }}
+            {{ form.title.errors }}
+            <label for="{{ form.short_cont.id_for_label }}">Краткое содержание</label>
+            {{ form.short_cont }}
+            {{ form.short_cont.errors }}
+            <label class='required' for="{{ form.firm.id_for_label }}">Контрагент</label>
+            {{ form.firm }}
+            {{ form.firm.errors }}
+            <label for="{{ form.money.id_for_label }}">Сумма контракта, руб.</label>
+            {{ form.money }}
+            {{ form.money.errors }}
+            <input type="submit" value="&nbsp;&nbsp;Добавить&nbsp;&nbsp;" class="button success"/>
+        </form>
+    </div>
+</div>
+{% endblock %}
+{% block content %}
+<div class="row">
+    <div class="large-12 columns">
+        <table class="checkboxes">
+            <tr>
+                <th>Номер</th>
+                <th>Название</th>
+                <th>Дата документа</th>
+                <th>Контрагент</th>
+                <th>Сумма, руб.</th>
+                <th>Краткое содержимое</th>
+                <th></th>
+            </tr>
+            {% for doc in docs %}
+            <tr>
+                <td>{{ doc.number }}</td>
+                <td>{{ doc.title }}</td>
+                <td>{{ doc.date }}</td>
+                <td>{{ doc.firm }}</td>
+                <td>{{ doc.money }}</td>
+                <td>{{ doc.short_cont }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+</div>
+{% endblock %}
