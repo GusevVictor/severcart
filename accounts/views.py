@@ -12,20 +12,24 @@ import logging
 logger = logging.getLogger('simp')
 
 def login(request):
+    """Log in view
     """
-    Log in view
-    """
+    error = True
     if request.method == 'POST':
         form = AuthenticationForm(data=request.POST)
         if form.is_valid():
-            user = authenticate(username=request.POST['username'], password=request.POST['password'])
+            try:
+                user = authenticate(username=request.POST['username'], password=request.POST['password'])
+            except AnconUser.DoesNotExist:
+                user = None
             if user is not None:
                 if user.is_active:
                     django_login(request, user)
                     return redirect('/')
     else:
+        error = False
         form = AuthenticationForm()
-    return render(request, 'accounts/login.html', {'form': form})
+    return render(request, 'accounts/login.html', {'form': form, 'error': error})
 
 
 def register(request):

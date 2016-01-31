@@ -7,39 +7,29 @@
     <link rel="stylesheet" href="{% static "css/normalize.css" %}"/>
     <link rel="stylesheet" href="{% static "css/style.css" %}"/>
     <script src="{% static "js/vendor/jquery.js" %}"></script>
-    <script src="{% static "js/usability.js" %}"></script>
-    <!-- Other JS plugins can be included here -->
-    <script src="{{ STATIC_URL }}js/logic.js?14"></script>
+    <script src="{{ STATIC_URL }}js/logic.js"></script>
     <title>Залогиньтесь</title>
 </head>
-<body>
+<body class="linen-texture">
 <div class="cont">
 <div class="wrapper">
+{% if error %}
+    <p class="errornote">Введите корректный логин или пароль!</p>
+{% endif %}
 <div class="login_form">
-        {% if form.errors and not form.non_field_errors %}
-            <p class="errornote">
-                {% if form.errors.items|length == 1 %}Введите правильные логин и пароль{% else %}Скорректируйте
-                    ошибки{% endif %}
-            </p>
-        {% endif %}
+    <form action="{{ app_path }}" method="post" id="login-form">{% csrf_token %}
+        <p><label for="{{ form.username.id_for_label }}">Логин</label>
+        {{ form.username }}</p>
+        <p><label for="{{ form.password.id_for_label }}">Пароль</label>
+        {{ form.password }}</p>
+        <input type="hidden" name="next" value="{{ next }}"/>
+        <br/>
+        <input class="button login" type="submit" value="Войти"/>
+    </form>
 
-        {% if form.non_field_errors %}
-            {% for error in form.non_field_errors %}
-                <p class="errornote">
-                    {{ error }}
-                </p>
-            {% endfor %}
-        {% endif %}
-        <form action="{{ app_path }}" method="post" id="login-form">{% csrf_token %}
-            {{ form.as_p }}
-            <input type="hidden" name="next" value="{{ next }}"/>
-            <br/>
-            <input class="button" type="submit" value="Войти"/>
-        </form>
-
-        <script>
-            document.getElementById('id_username').focus()
-        </script>
+    <script>
+        document.getElementById('id_username').focus()
+    </script>
 </div>
 </div>
 </div>

@@ -15,27 +15,29 @@
     <script src="{{ STATIC_URL }}js/logic.js?62"></script>
     <title>{% block title %}{% endblock %}</title>
 </head>
-<body>
-{% include "index/base_menu.html" %}
-<div class="row">
-    <div class="large-12 columns marginTop"></div>
-</div>
-<div class="row">
-        <div class="large-6 columns">
-            <h3>{% block h3 %}{% endblock %}</h3>
+<body class="all">
+<div class="main_content">
+    {% include "index/base_menu.html" %}
+    <div class="row">
+        <div class="large-12 columns marginTop"></div>
+    </div>
+    <div class="row">
+            <div class="large-6 columns">
+                <h3>{% block h3 %}{% endblock %}</h3>
+            </div>
+            <div class="large-6 columns right">
+                <p class="login-string">
+                    <span class="user_ou">{% if request.user.departament %}{{request.user.departament}}{% endif %}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ request.user.get_username }}&nbsp;&nbsp;&nbsp;&nbsp;<a href="{% url 'auth:logout' %}">выход</a></p> 
+            </div>
+    </div>
+    {% block submenu %}{% endblock %}
+    {% block content %}{% endblock %}
+    <div class="row">
+        <div class="large-12 columns">
+            <hr/>
+            <div class="text-left">Версия: 0.0.5</div>
+            <div class="text-center">servercart.org&nbsp;&nbsp;&copy;&nbsp;&nbsp;2016</div>
         </div>
-        <div class="large-6 columns right">
-            <p class="login-string">
-                <span class="user_ou">{% if request.user.departament %}{{request.user.departament}}{% endif %}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ request.user.get_username }}&nbsp;&nbsp;&nbsp;&nbsp;<a href="{% url 'auth:logout' %}">выход</a></p> 
-        </div>
-</div>
-{% block submenu %}{% endblock %}
-{% block content %}{% endblock %}
-<div class="row">
-    <div class="large-12 columns">
-        <hr/>
-        <div class="text-left">Версия: 0.0.5</div>
-        <div class="text-center">servercart.org&nbsp;&nbsp;&copy;&nbsp;&nbsp;2016</div>
     </div>
 </div>
 </body>

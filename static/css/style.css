@@ -2,6 +2,21 @@ html, body {
     height: 100%;
 }
 
+body.all {
+    background: url('../img/bg_noise.png');
+}
+
+body.linen-texture {
+    background: url('../img/linen-texture2.jpg');   
+}
+
+div.main_content {
+    min-height: 100%;
+    max-width: 1000px;
+    margin: 0 auto 0;
+    background: #c8c8c8;
+}
+
 form label {
     margin-bottom: 10px;
 }
@@ -80,6 +95,7 @@ span.gi {
     height: 250px;
 /*    border:1px solid black; */
     background: #FF9900;
+    border-radius: 5px;
 }
 
 .login_form label{
@@ -89,6 +105,8 @@ span.gi {
 
 .login_form input{
     margin-top:5px;
+    border-radius: 3px;
+    padding-left: 5px;
 }
 
 #login-form [type="submit"].button {
@@ -98,6 +116,10 @@ span.gi {
     background-color: #d6d6d6;
 
 }
+
+
+
+
 /* Horizontal menu */
 ul.menu {
     font-size: 0.875em;
@@ -350,6 +372,28 @@ a.button.info:active, input[type="submit"].button.info:active {
     background: #277DA3;
     border: 1px solid #1C5771;    
 }
+
+/* ---- login form ------ */
+
+input[type="submit"].button.login {
+    width: 200px !important;
+    color: #282828;
+    font-size: 16px;
+    background-color: #14de0f !important;
+    border: 1px solid #10b80c;
+}
+
+input[type="submit"].button.login:hover {
+    background-color: #0e9d0a !important;
+    text-decoration: none;
+}
+
+input[type="submit"].button.login:active {
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.2);
+    background: #0d950a !important;
+    border: 1px solid #10b80c;    
+}
+
 
 /* --- end button style ---*/
 
