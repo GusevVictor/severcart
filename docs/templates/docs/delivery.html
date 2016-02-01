@@ -10,6 +10,7 @@
 <script src="{% static 'js/datepicker-ru.js' %}"></script>
 {% endblock %}
 {% block submenu %}
+{% if not not_show_form %}
 <div class="row">
     <div class="large-12 columns">
         <form action="" method="POST">
@@ -59,8 +60,20 @@
         </form>
     </div>
 </div>
+{% endif %}
 {% endblock %}
 {% block content %}
+{% if messages %}
+<div class="row">
+    <div class="large-6 columns">
+            <ul class="messages">
+                {% for message in messages %}
+                    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                {% endfor %}
+            </ul>
+    </div>
+</div>
+{% endif %}
 <div class="row">
     <div class="large-12 columns">
         <form>

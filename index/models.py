@@ -3,6 +3,7 @@
 from django.db import models
 from mptt.models import MPTTModel, TreeForeignKey
 from django.contrib.auth.models import User
+#from docs.models import SCDoc
 
 
 class OrganizationUnits(MPTTModel):
@@ -71,4 +72,5 @@ class CartridgeItem(models.Model):
     cart_number_refills = models.IntegerField(default=0, db_index=True)
     filled_firm = models.ForeignKey(FirmTonerRefill, null=True)
     comment = models.TextField('Комментарий', blank=True)
+    delivery_doc = models.IntegerField(db_index=True, null=True, default=0)
     node_order_by = ['pk']

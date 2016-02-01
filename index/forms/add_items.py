@@ -18,8 +18,6 @@ class AddItems(forms.Form):
                                   required=True,
                                 )
 
-    #def __init__(self, *args, **kwargs):
-    #    print('*args **kwargs', args, kwargs)
 
     required_css_class = 'required'
 
@@ -48,3 +46,9 @@ class AddItems(forms.Form):
             raise ValidationError("Поле не может быть пустым.")
 
         return self.cleaned_data.get('cartCount', '')
+
+    def clean_doc(self):
+        """
+        """
+        doc_id = self.cleaned_data.get('doc', '')
+        return doc_id.pk

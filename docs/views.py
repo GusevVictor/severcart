@@ -4,6 +4,7 @@ from django.http import HttpResponse, HttpResponseRedirect, Http404
 from django.views.generic.base import TemplateView
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
+from django.contrib import messages
 from django.utils import timezone
 from .models import SCDoc
 from .forms.add_doc import AddDoc
@@ -58,6 +59,7 @@ def delivery(request):
 
             elif request.GET.get('delete', ''):
                 # ветка для удаления документа
+                # messages.success(request, tmpl_message % (cart_type,))
                 doc_id = request.GET.get('delete', '')
                 try:
                     doc_id = int(doc_id)
@@ -68,10 +70,12 @@ def delivery(request):
                     doc = SCDoc.objects.get(pk=doc_id)
                 except SCDoc.DoesNotExist:
                     raise Http404
+                
+                #from index.models import CartridgeItem
+                #cartjs = CartridgeItem.objects.filter(doc)
                 # не производм удаление если на объект уже кто-то ссылается
                 dec.delete()
                 return HttpResponseRedirect(request.path)
-                
             else:
                 # если пользователь просто создаёт новый документ
                 doc = SCDoc(number = data_in_post.get('number',''),
@@ -111,10 +115,22 @@ def delivery(request):
                 'short_cont': doc.short_cont,
                 'firm': doc.firm,
                 'date': date })
+        elif request.GET.get('show', ''):
+            # ветка для просотра одного конкретного договора
+            doc_id = request.GET.get('show', '')
+            try:
+                doc_id = int(doc_id)
+            except ValueError:
+                doc_id = 0
+            try:
+                doc = SCDoc.objects.filter(departament=request.user.departament).filter(pk=doc_id)
+            except SCDoc.DoesNotExist:
+                raise Http404
+            context['not_show_form'] = True
+            context['docs'] = doc
         else:
             form = AddDoc()
-
-        context['form'] = form
+            context['form'] = form
     else:
         # метод не поддерживается
         pass

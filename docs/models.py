@@ -1,6 +1,5 @@
 from django.db import models
-from index.models import ( FirmTonerRefill,
-                           OrganizationUnits )
+from index.models import FirmTonerRefill, OrganizationUnits
     
 class SCDoc(models.Model):
     """Документы - договора на поставку, заправку/обслуживание, акты списания, акты передачи

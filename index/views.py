@@ -118,9 +118,9 @@ def add_cartridge_item(request):
         if form_obj.is_valid():
             # добавляем новый тип расходного материала
             data_in_post = form_obj.cleaned_data
-            cart_doc     = data_in_post['doc'] 
             count_items  = int(data_in_post['cartCount'])
             cart_type    = str(data_in_post['cartName'])
+            doc_id       = int(data_in_post['doc'])
             cart_count   = CartridgeItem.objects.filter(departament=request.user.departament).count()
             cart_number  = cart_count + 1
             # получаем объект текущего пользователя
@@ -131,6 +131,7 @@ def add_cartridge_item(request):
                                    cart_date_change=timezone.now(),
                                    cart_number_refills=0,
                                    departament=request.user.departament,
+                                   delivery_doc=doc_id,
                                    )
                 m1.save()
                 sign_add_full_to_stock.send(sender=None, 

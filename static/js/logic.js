@@ -311,6 +311,10 @@ $( function(){
                 case 'edit':
                     window.location.href = '/edit_cartridge_comment/?id=' + cart_id;
                     break;
+                case 'view_delivery':
+                    var doc_id =  mainSelect.find(":selected").attr('data');
+                    window.location.href = '/docs/delivery/?show=' + doc_id;
+                    break;
                 default:
 
             }
