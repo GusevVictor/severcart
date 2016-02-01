@@ -32,11 +32,6 @@
                 </div>
             </div>
             <div class="row">
-                <div class="small-3 columns left">
-                    <label for="{{ form.date.id_for_label }}">Дата</label>
-                    <div class="calendar">{{ form.date }}</div>
-                    {{ form.date.errors }}
-                </div>
                 <div class="small-4 columns left">
                     <label for="{{ form.short_cont.id_for_label }}">Краткое содержание</label>
                     {{ form.short_cont }}
@@ -47,8 +42,20 @@
                     {{ form.firm }}
                     {{ form.firm.errors }}
                 </div>
+                <div class="small-3 columns left">
+                    <label for="{{ form.date.id_for_label }}">Дата</label>
+                    <div class="calendar">{{ form.date }}</div>
+                    {{ form.date.errors }}
+                </div>
             </div>
-            <input type="submit" value="&nbsp;&nbsp;Добавить&nbsp;&nbsp;" class="button success"/>
+            {% if edit %}
+                <input type="submit" value="&nbsp;&nbsp;Сохранить&nbsp;&nbsp;" class="save_doc button"/>
+                <a class="cansel_doc button" href="#">Отменить</a>
+            {% else %}
+                <input type="submit" value="&nbsp;&nbsp;Добавить&nbsp;&nbsp;" class="button success"/>
+                <a class="edit_doc button" href="#">Редактировать</a>
+                <a class="delete_doc button alert" href="#">Удалить</a>
+            {% endif %}
         </form>
     </div>
 </div>
@@ -56,26 +63,30 @@
 {% block content %}
 <div class="row">
     <div class="large-12 columns">
-        <table class="checkboxes">
-            <tr>
-                <th>Номер</th>
-                <th>Название</th>
-                <th>Дата документа</th>
-                <th>Контрагент</th>
-                <th>Сумма, руб.</th>
-                <th>Краткое содержимое</th>
-            </tr>
-            {% for doc in docs %}
-            <tr>
-                <td>{{ doc.number }}</td>
-                <td>{{ doc.title }}</td>
-                <td>{{ doc.date }}</td>
-                <td>{{ doc.firm }}</td>
-                <td>{{ doc.money | divide}}</td>
-                <td>{{ doc.short_cont }}</td>
-            </tr>
-            {% endfor %}
-        </table>
+        <form>
+            <table class="checkboxes">
+                <tr>
+                    <th>&nbsp;&nbsp;&nbsp;</th>
+                    <th>Номер</th>
+                    <th>Название</th>
+                    <th>Дата документа</th>
+                    <th>Контрагент</th>
+                    <th>Сумма, руб.</th>
+                    <th>Краткое содержимое</th>
+                </tr>
+                {% for doc in docs %}
+                <tr>
+                    <td><input type="radio" name="doc" value="{{ doc.pk }}"></td>
+                    <td>{{ doc.number }}</td>
+                    <td>{{ doc.title }}</td>
+                    <td>{{ doc.date }}</td>
+                    <td>{{ doc.firm }}</td>
+                    <td>{{ doc.money | divide}}</td>
+                    <td>{{ doc.short_cont }}</td>
+                </tr>
+                {% endfor %}
+            </table>
+        </form>
     </div>
 </div>
 {% endblock %}

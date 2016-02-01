@@ -346,4 +346,20 @@ $( function(){
         });
     });
 
+    $('.edit_doc').click( function() {
+        // редактируем документ
+        var selected = $('.checkboxes input:checked').attr('value');
+        if ( selected ) {
+            var get_doc_id = selected;
+            var loc = window.location.pathname + '?select=' + get_doc_id;
+            window.location.href = loc;
+        }
+    });
+
+    $('.cansel_doc').click( function() {
+        // отмена произведенных изменений
+        var loc = window.location.pathname;
+        window.location.href = loc;
+    });
+
 });

@@ -1,6 +1,6 @@
 import datetime
 from django.shortcuts import render
-from django.http import HttpResponse, HttpResponseRedirect
+from django.http import HttpResponse, HttpResponseRedirect, Http404
 from django.views.generic.base import TemplateView
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
@@ -28,35 +28,75 @@ def delivery(request):
     """Списки договоров на поставку расходников
     """
     context = {}
-    docs = SCDoc.objects.filter(departament=request.user.departament).filter(doc_type=1)
+    docs = SCDoc.objects.filter(departament=request.user.departament).filter(doc_type=1).order_by('-pk')
     context['docs'] = docs
     if request.method == 'POST':
         form = AddDoc(request.POST)
         if form.is_valid():
             data_in_post = form.cleaned_data
-            number = data_in_post.get('number','')
-            title = data_in_post.get('title','')
-            money = data_in_post.get('money','')
-            firm = data_in_post.get('firm','')
-            short_cont = data_in_post.get('short_cont','')
-            date = data_in_post.get('date','')
-            m1 = SCDoc(number = number,
-                       date = date,
-                       firm = firm,
-                       title = title,
-                       short_cont = short_cont,
-                       money = money,
-                       departament = request.user.departament,
-                       doc_type = 1,
-                       )
-            m1.save()
+            if request.GET.get('select', ''):
+                # если пользователь производит редактирование и сохранение документа
+                doc_id = request.GET.get('select', '')
+                try:
+                    doc_id = int(doc_id)
+                except ValueError:
+                    doc_id = 0
+
+                try:
+                    doc = SCDoc.objects.get(pk=doc_id)
+                except SCDoc.DoesNotExist:
+                    raise Http404
+
+                # производим сохранения изменений
+                doc.number = data_in_post.get('number','')
+                doc.date = data_in_post.get('date','')
+                doc.firm = data_in_post.get('firm','')
+                doc.title = data_in_post.get('title','')
+                doc.short_cont = data_in_post.get('short_cont','')
+                doc.money = data_in_post.get('money','')
+                doc.save()
+            else:
+                # если пользователь просто создаёт новый документ
+                doc = SCDoc(number = data_in_post.get('number',''),
+                           date = data_in_post.get('date',''),
+                           firm = data_in_post.get('firm',''),
+                           title = data_in_post.get('title',''),
+                           short_cont = data_in_post.get('short_cont',''),
+                           money = data_in_post.get('money',''),
+                           departament = request.user.departament,
+                           doc_type = 1,
+                           )
+                doc.save()
             context['form'] = form    
             return HttpResponseRedirect(request.path)
         else:
             context['form'] = form    
     elif request.method == 'GET':
-        #
-        form = AddDoc()
+        if request.GET.get('select', ''):
+            context['edit'] = True
+            doc_id = request.GET.get('select', '')
+            try:
+                doc_id = int(doc_id)
+            except ValueError:
+                doc_id = 0
+            
+            try:
+                doc = SCDoc.objects.get(pk=doc_id)
+            except SCDoc.DoesNotExist:
+                raise Http404
+
+            date = str(doc.date.day) + '/' +  str(doc.date.month) + '/' + str(doc.date.year)
+            money = doc.money / 100
+            form = AddDoc(initial={
+                'number': doc.number,
+                'title': doc.title,
+                'money': money,
+                'short_cont': doc.short_cont,
+                'firm': doc.firm,
+                'date': date })
+        else:
+            form = AddDoc()
+
         context['form'] = form
     else:
         # метод не поддерживается

@@ -32,6 +32,9 @@ class AddDoc(forms.Form):
         """Проверяет на корректность введённую сумму.
         """
         money = self.cleaned_data.get('money', '')
+        if money == '':
+            return None
+        
         if ',' in money:
             money = money.split(',')
         elif '.' in money:
