@@ -77,12 +77,12 @@
                 {% for doc in docs %}
                 <tr>
                     <td><input type="radio" name="doc" value="{{ doc.pk }}"></td>
-                    <td>{{ doc.number }}</td>
-                    <td>{{ doc.title }}</td>
-                    <td>{{ doc.date }}</td>
+                    <td title="{{ doc.number }}">{{ doc.number|truncatechars:20 }}</td>
+                    <td title="{{ doc.title }}">{{ doc.title|truncatechars:20 }}</td>
+                    <td>{{ doc.date|date:"d.m.Y" }}</td>
                     <td>{{ doc.firm }}</td>
                     <td>{{ doc.money | divide}}</td>
-                    <td>{{ doc.short_cont }}</td>
+                    <td title="{{ doc.short_cont }}">{{ doc.short_cont|truncatechars:30 }}</td>
                 </tr>
                 {% endfor %}
             </table>

@@ -362,4 +362,16 @@ $( function(){
         window.location.href = loc;
     });
 
+    $('.delete_doc').click( function() {
+        var selected = $('.checkboxes input:checked').attr('value');
+        if ( selected ) {
+            var ansver = window.confirm('Вы уверены в том, что хотите удалить документ?');
+            if ( ansver ) {
+                var loc = window.location.pathname;
+                window.location.href = '?delete=' + selected ;
+            }
+        }
+
+    });
+
 });

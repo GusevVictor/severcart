@@ -55,6 +55,23 @@ def delivery(request):
                 doc.short_cont = data_in_post.get('short_cont','')
                 doc.money = data_in_post.get('money','')
                 doc.save()
+
+            elif request.GET.get('delete', ''):
+                # ветка для удаления документа
+                doc_id = request.GET.get('delete', '')
+                try:
+                    doc_id = int(doc_id)
+                except ValueError:
+                    doc_id = 0
+
+                try:
+                    doc = SCDoc.objects.get(pk=doc_id)
+                except SCDoc.DoesNotExist:
+                    raise Http404
+                # не производм удаление если на объект уже кто-то ссылается
+                dec.delete()
+                return HttpResponseRedirect(request.path)
+                
             else:
                 # если пользователь просто создаёт новый документ
                 doc = SCDoc(number = data_in_post.get('number',''),

@@ -5,9 +5,9 @@ from index.models import FirmTonerRefill
 from events.forms import del_leding_zero
 
 class AddDoc(forms.Form):
-    number   = forms.CharField(max_length = 16, label='Номер', required=True)
+    number   = forms.CharField(max_length = 64, label = 'Номер', required = True)
 
-    title   = forms.CharField(max_length = 256, label='Название', required=True)
+    title   = forms.CharField(max_length = 256, label = 'Название', required = True)
 
     firm = forms.ModelChoiceField(queryset=FirmTonerRefill.objects.all(),
                                   error_messages={'required': 'Поле обязательно для заполнения.'},
