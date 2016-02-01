@@ -1,6 +1,7 @@
 import datetime
 from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect, Http404
+from django.core.urlresolvers import reverse
 from django.views.generic.base import TemplateView
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
@@ -56,26 +57,7 @@ def delivery(request):
                 doc.short_cont = data_in_post.get('short_cont','')
                 doc.money = data_in_post.get('money','')
                 doc.save()
-
-            elif request.GET.get('delete', ''):
-                # ветка для удаления документа
-                # messages.success(request, tmpl_message % (cart_type,))
-                doc_id = request.GET.get('delete', '')
-                try:
-                    doc_id = int(doc_id)
-                except ValueError:
-                    doc_id = 0
-
-                try:
-                    doc = SCDoc.objects.get(pk=doc_id)
-                except SCDoc.DoesNotExist:
-                    raise Http404
-                
-                #from index.models import CartridgeItem
-                #cartjs = CartridgeItem.objects.filter(doc)
-                # не производм удаление если на объект уже кто-то ссылается
-                dec.delete()
-                return HttpResponseRedirect(request.path)
+                messages.success(request, 'Документ %s успешно сохранён.' % (doc.number, ))
             else:
                 # если пользователь просто создаёт новый документ
                 doc = SCDoc(number = data_in_post.get('number',''),
@@ -88,6 +70,7 @@ def delivery(request):
                            doc_type = 1,
                            )
                 doc.save()
+                messages.success(request, 'Новый %s документ успешно создан.' % (doc.number,))
             context['form'] = form    
             return HttpResponseRedirect(request.path)
         else:
@@ -100,7 +83,6 @@ def delivery(request):
                 doc_id = int(doc_id)
             except ValueError:
                 doc_id = 0
-            
             try:
                 doc = SCDoc.objects.get(pk=doc_id)
             except SCDoc.DoesNotExist:
@@ -115,6 +97,27 @@ def delivery(request):
                 'short_cont': doc.short_cont,
                 'firm': doc.firm,
                 'date': date })
+
+            context['form'] = form
+
+        elif request.GET.get('delete', ''):
+            # ветка для удаления документа
+            doc_id = request.GET.get('delete', '')
+            try:
+                doc_id = int(doc_id)
+            except ValueError:
+                doc_id = 0
+
+            try:
+                doc = SCDoc.objects.get(pk=doc_id)
+            except SCDoc.DoesNotExist:
+                raise Http404
+            
+            doc_number = doc.number
+            doc.delete()
+            messages.error(request, 'Документ %s удалён!' % (doc_number,))
+            return HttpResponseRedirect(reverse('docs:delivery'))
+
         elif request.GET.get('show', ''):
             # ветка для просотра одного конкретного договора
             doc_id = request.GET.get('show', '')
