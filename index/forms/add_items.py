@@ -1,6 +1,7 @@
 from django import forms
 from django.core.exceptions import ValidationError
 from index.models import CartridgeItemName
+from docs.models  import SCDoc
 
 class AddItems(forms.Form):
     cartName = forms.ModelChoiceField(queryset=CartridgeItemName.objects.all(),
@@ -8,11 +9,17 @@ class AddItems(forms.Form):
                                       empty_label=' ',
                                       required=True,
                                       )
+    
+    doc = forms.ModelChoiceField(queryset=SCDoc.objects.filter(), required=False)
+
     cartCount = forms.CharField(  max_length = 4,
                                   widget=forms.TextInput(attrs={'class': 'pm_counter', 'readonly': 'readonly'}),
                                   error_messages={'required': 'Поле обязательно для заполнения.'},
                                   required=True,
                                 )
+
+    #def __init__(self, *args, **kwargs):
+    #    print('*args **kwargs', args, kwargs)
 
     required_css_class = 'required'
 

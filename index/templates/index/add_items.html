@@ -31,6 +31,16 @@
                         <a class="dj_button add" href="{% url 'add_name' %}"></a>
                     </div>
                 </div>
+                <div class="dancon_row">
+                    <label for="{{ form.doc.id_for_label }}">Договор поставки</label>
+                    <div class="left_pos">
+                        {{ form.doc }}
+                        {{ form.doc.errors }}
+                    </div>
+                    <div class="right_pos">
+                        <a class="dj_button add" href="{% url 'docs:delivery' %}"></a>
+                    </div>
+                </div>
 
                 <div class="clear_float"></div>
                 <div class="row">

@@ -118,6 +118,7 @@ def add_cartridge_item(request):
         if form_obj.is_valid():
             # добавляем новый тип расходного материала
             data_in_post = form_obj.cleaned_data
+            cart_doc     = data_in_post['doc'] 
             count_items  = int(data_in_post['cartCount'])
             cart_type    = str(data_in_post['cartName'])
             cart_count   = CartridgeItem.objects.filter(departament=request.user.departament).count()
@@ -148,6 +149,8 @@ def add_cartridge_item(request):
 
     else:
         form_obj = AddItems()
+        from docs.models  import SCDoc
+        form_obj.fields['doc'].queryset = SCDoc.objects.filter(departament=request.user.departament)
     return render(request, 'index/add_items.html', {'form': form_obj})
 
 
