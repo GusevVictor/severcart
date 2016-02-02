@@ -23,6 +23,14 @@ function csrfSafeMethod(method) {
 
 
 $( function(){
+
+    $('table.checkboxes tr:not(:first)').click(function(event) {
+    // улучшитель юзабилити таблиц, при клике по строке выбрается чекбокс    
+        if (event.target.type !== 'checkbox') {
+            $(':checkbox', this).trigger('click');
+        }
+    });
+
     $('.add_items').click( function(e) {
         /* Выполняем проверку на принадлежность орг. юниту*/
         var user_ou = $('.user_ou').text();
@@ -50,7 +58,6 @@ $( function(){
             var loc = '/transfe_for_use/?select=' + get_path;
             window.location.href = loc;
         }
-        //console.log(JSON.stringify(selected));
 
     }); 
 
