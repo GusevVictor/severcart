@@ -435,6 +435,10 @@ ul.messages .error {
     overflow: hidden;
 }
 
+table.statistics {
+    width: 100%;
+}
+
 table.top_events {
     width:100%;
 }

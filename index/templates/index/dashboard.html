@@ -34,14 +34,28 @@
             </tr>
             </tbody>
         </table>
+        <h4>Расходавание картриджей</h4>
+        <table class="statistics">
+            <tbody>
+            <tr>
+                <td>За текущие сутки</td>
+                <td class="quad">{{ use_day }}</td>
+            </tr>
+            <tr>
+                <td>С начала месяца</td>
+                <td class="quad">{{ use_month }}</td>
+            </tr>
+            <tr>
+                <td>С начала года</td>
+                <td class="quad">{{ use_year }}</td>
+            </tr>
+            </tbody>
+        </table>
     </div>
     <div class="large-6 columns">
         <h4>События</h4>
         <div>
             <table class="top_events">
-                <tr>
-                    <th class="date_and_time">Дата и время</th><th>Текст события</th>
-                </tr>
                 {% for line in events_list %}
                 <tr>
                     <td>{{ line.data_env|date:"d.m.Y G:i" }}</td><td>{{ line.text_com|safe }}</td>
@@ -58,6 +72,11 @@
                 </table>
             {% endif %}
         </div>
+    </div>
+</div>
+<div class="row">
+    <div class="large-6 columns">
+        
     </div>
 </div>
 {% endblock %}

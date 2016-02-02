@@ -7,7 +7,7 @@ class Events(models.Model):
 
     ETYPE_CHOICES = (
         ('AD', 'Добавление нового расходника'),
-        ('TR', 'Передача расходника в пользование'),
+        ('TR', 'Передача расходника в пользование'), # 
         ('TF', 'Передача расходника на заправку'),
         ('RS', 'Возврат восстановленного картриджа на склад'),
         ('TB', 'Перемещение в корзину'),
@@ -34,5 +34,3 @@ class Events(models.Model):
     event_org   = models.CharField(max_length=256, null=True)
     event_firm  = models.CharField(max_length=256, null=True)
     departament = models.IntegerField()
-
-

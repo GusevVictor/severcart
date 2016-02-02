@@ -68,6 +68,27 @@ def dashboard(request):
     else:
         context['show_more'] = False
     context['events_list'] = events_decoder(events_list, simple=False)
+
+    # формирование статистики
+    import datetime
+    cur_date  = timezone.now()
+    use_day   = Events.objects.filter(departament=dept_id)
+    use_day   = use_day.filter(event_type='TR')
+    use_day   = use_day.filter(date_time__year=cur_date.year, date_time__month=cur_date.month, date_time__day=cur_date.day).count()
+    
+    bld_date  = datetime.datetime(cur_date.year, cur_date.month, 1)
+    use_month = Events.objects.filter(departament=dept_id)
+    use_month = use_month.filter(event_type='TR')
+    use_month = use_month.filter(date_time__gte=bld_date).count()
+
+    bld_date  = datetime.datetime(cur_date.year, 1, 1)
+    use_year  = Events.objects.filter(departament=dept_id)
+    use_year  = use_year.filter(event_type='TR')
+    use_year  = use_year.filter(date_time__gte=bld_date).count()    
+
+    context['use_day']   = use_day
+    context['use_month'] = use_month
+    context['use_year']  = use_year
     return render(request, 'index/dashboard.html', context)
 
 
