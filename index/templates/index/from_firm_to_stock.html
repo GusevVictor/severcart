@@ -14,7 +14,6 @@
         {% endif %}
     </div>
 </div>
-
 <div class="row">
     <div class="large-12 columns">
         <form action="" method="POST">
@@ -25,24 +24,24 @@
         <tr>
         <th class="action_type">Номер</th>
         <th class="action_type">Название</th>
-        <th class="action_type"><input type="checkbox" name="filled" id="filled" /><label for="filled">Заправка<br/> и очистка</label></th>
-        <th class="action_type"><input type="checkbox" name="fotoreceptor" id="fotoreceptor" /><label for="fotoreceptor">Замена<br/>фотовала</label></th>
-        <th class="action_type"><input type="checkbox" name="rakel" id="rakel" /><label for="rakel">Замена<br/>ракеля</label></th>
-        <th class="action_type"><input type="checkbox" name="chip" id="chip" /><label for="chip">Замена<br/>чипа</label></th>
-        <th class="action_type"><input type="checkbox" name="magnit" id="magnit" /><label for="magnit">Замена<br/>магнитного вала</label></th>
+        <th class="all_filled"><input type="checkbox" name="filled" id="filled" class="header_checkbox" checked/><label for="filled">Заправка<br/> и очистка</label></th>
+        <th class="all_fotoreceptor"><input type="checkbox" name="fotoreceptor" id="fotoreceptor" /><label for="fotoreceptor">Замена<br/>фотовала</label></th>
+        <th class="all_rakel"><input type="checkbox" name="rakel" id="rakel" /><label for="rakel">Замена<br/>ракеля</label></th>
+        <th class="all_chip"><input type="checkbox" name="chip" id="chip" /><label for="chip">Замена<br/>чипа</label></th>
+        <th class="all_magnit"><input type="checkbox" name="magnit" id="magnit" /><label for="magnit">Замена<br/>магнитного вала</label></th>
         </tr>
         {% for elem in list_cart %}
         <tr>
         <td>{{ elem.cart_number }}</td>
         <td>{{ elem.cart_itm_name }}</td>
-        <td><input type="checkbox" name="cart_{{elem.pk}}" value="filled" checked/></td>
-        <td><input type="checkbox" name="cart_{{elem.pk}}" value="fotoreceptor"/></td>
-        <td><input type="checkbox" name="cart_{{elem.pk}}" value="rakel"/></td>
-        <td><input type="checkbox" name="cart_{{elem.pk}}" value="chip"/></td>
-        <td><input type="checkbox" name="cart_{{elem.pk}}" value="magnit"/></td>
+        <td><input type="checkbox" class="filled" name="cart_{{elem.pk}}" value="filled" checked/></td>
+        <td><input type="checkbox" class="fotoreceptor" name="cart_{{elem.pk}}" value="fotoreceptor"/></td>
+        <td><input type="checkbox" class="rakel" name="cart_{{elem.pk}}" value="rakel"/></td>
+        <td><input type="checkbox" class="chip" name="cart_{{elem.pk}}" value="chip"/></td>
+        <td><input type="checkbox" class="magnit" name="cart_{{elem.pk}}" value="magnit"/></td>
         </tr>{% endfor %}
         </table>
-        <input type="submit" value="Передать на склад" class="button"/>
+        <input type="submit" value="Вернуть на склад" class="button"/>
         </form>
     </div>
 </div>

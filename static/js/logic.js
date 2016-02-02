@@ -385,4 +385,74 @@ $( function(){
 
     });
 
+    $('.all_filled input').click( function() {
+        // выбор колонки с заправками и очистками
+        var select_checkboxes = $('.filled');
+        if ( $('.all_filled input').prop('checked') ) {
+            select_checkboxes.each(function() {
+                $(this).prop('checked', true);
+            })
+        } else {
+            select_checkboxes.each(function() {
+                $(this).prop('checked', false);
+            })
+        }    
+    });
+
+    $('.all_fotoreceptor input').click( function() {
+        // выбор колонки с фоторецепторами
+        var select_checkboxes = $('.fotoreceptor');
+        if ( $('.all_fotoreceptor input').prop('checked') ) {
+            select_checkboxes.each(function() {
+                $(this).prop('checked', true);
+            })
+        } else {
+            select_checkboxes.each(function() {
+                $(this).prop('checked', false);
+            })
+        }    
+    });
+
+    $('.all_rakel input').click( function() {
+        // выбор колонки с ракелями
+        var select_checkboxes = $('.rakel');
+        if ( $('.all_rakel input').prop('checked') ) {
+            select_checkboxes.each(function() {
+                $(this).prop('checked', true);
+            })
+        } else {
+            select_checkboxes.each(function() {
+                $(this).prop('checked', false);
+            })
+        }    
+    });
+
+    $('.all_chip input').click( function() {
+        // выбор колонки с чипами
+        var select_checkboxes = $('.chip');
+        if ( $('.all_chip input').prop('checked') ) {
+            select_checkboxes.each(function() {
+                $(this).prop('checked', true);
+            })
+        } else {
+            select_checkboxes.each(function() {
+                $(this).prop('checked', false);
+            })
+        }    
+    });
+
+    $('.all_magnit input').click( function() {
+        // выбор колонки с чипами
+        var select_checkboxes = $('.magnit');
+        if ( $('.all_magnit input').prop('checked') ) {
+            select_checkboxes.each(function() {
+                $(this).prop('checked', true);
+            })
+        } else {
+            select_checkboxes.each(function() {
+                $(this).prop('checked', false);
+            })
+        }    
+    });
+
 });
