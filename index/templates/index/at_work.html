@@ -34,7 +34,7 @@
                         <td>{{ i.cart_number_refills }}</td>
                         <td>{{ i.cart_date_change }}</td>
                         <td>{{ i.filled_firm }}</td>
-                        <td><div class="comment_in_cell" title="{{ i.comment }}">{{ i.comment|truncatechars:40 }}</div></td>
+                        <td><div class="comment_in_cell" title="{{ i.comment }}">{{ i.comment|truncatechars:25 }}</div></td>
                     </tr>
                 {% endfor %}
             </form>
