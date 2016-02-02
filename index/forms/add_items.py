@@ -12,10 +12,10 @@ class AddItems(forms.Form):
     
     doc = forms.ModelChoiceField(queryset=SCDoc.objects.filter(), required=False)
 
-    cartCount = forms.CharField(  max_length = 4,
-                                  widget=forms.TextInput(attrs={'class': 'pm_counter', 'readonly': 'readonly'}),
-                                  error_messages={'required': 'Поле обязательно для заполнения.'},
-                                  required=True,
+    cartCount = forms.CharField(max_length = 4,
+                                widget=forms.TextInput(attrs={'class': 'pm_counter', 'readonly': 'readonly'}),
+                                 error_messages={'required': 'Поле обязательно для заполнения.'},
+                                required=True,
                                 )
 
 
