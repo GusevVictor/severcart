@@ -41,6 +41,7 @@ INSTALLED_APPS = (
     'accounts',
     'events',
     'docs',
+    'reports',
 )
 
 MIDDLEWARE_CLASSES = (

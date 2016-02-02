@@ -8,6 +8,7 @@ urlpatterns = [
     url(r'^api/', include('index.api.urls')),
     url(r'^events/', include('events.urls')),
     url(r'^docs/', include('docs.urls', namespace='docs')),
+    url(r'^reports/', include('reports.urls', namespace='reports')),
 ]
 
 handler404 = 'index.views.handler404'
