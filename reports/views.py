@@ -2,7 +2,7 @@ from django.shortcuts import render
 import datetime
 from django.contrib.auth.decorators import login_required
 from django.utils import timezone
-from .forms import NoUse
+from .forms import NoUse, Amortizing
 from index.models import CartridgeItem, OrganizationUnits
 
 @login_required
@@ -36,7 +36,7 @@ def main_summary(request):
             # показываем форму, если произошли ошибки
             context['form'] = form
 
-    # if a GET (or any other method) we'll create a blank form
+    # если GET метод ( или какой-либо другой) то создаём пустую форму
     else:
         form = NoUse(initial={'org': dept_id })
         context['form'] = form
@@ -45,10 +45,30 @@ def main_summary(request):
 
 @login_required
 def amortizing(request):
-    """
+    """Отчёт по амортизации. Выбрать списки картриджей с заданным количеством перезаправок.
     """
     context = {}
-    return render(request, 'reports/main_summary.html', context)
+    dept_id = request.user.departament.pk
+    if request.method == 'POST':
+        form = Amortizing(request.POST)
+        if form.is_valid():
+            data_in_post = form.cleaned_data
+            org  = data_in_post.get('org', '')
+            cont = data_in_post.get('cont', '')
+            list_cart = CartridgeItem.objects.filter(departament=org).filter(cart_number_refills__gte=cont)
+            
+
+            form = Amortizing(initial={ 'org': org, 'cont': cont })
+            context['form'] = form
+        else:
+            # показываем форму, если произошли ошибки
+            context['form'] = form
+
+    # если GET метод ( или какой-либо другой) то создаём пустую форму
+    else:
+        context['form'] = Amortizing(initial={'org': dept_id, 'cont': 1 })
+
+    return render(request, 'reports/amortizing.html', context)
 
 @login_required
 def users(request):

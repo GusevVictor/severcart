@@ -11,7 +11,8 @@ form label {
     display: block;    
 }
 
-#id_cartCount {
+#id_cartCount, 
+input.pm_counter {
     width: 50px;
     height: 33px;
     box-sizing: border-box;

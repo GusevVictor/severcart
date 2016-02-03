@@ -30,3 +30,31 @@ class NoUse(forms.Form):
             raise ValidationError('Переданы недопустимые значения.')
         
         return diap_post
+
+class Amortizing(forms.Form):
+    org = forms.ModelChoiceField(queryset=OrganizationUnits.objects.root_nodes())
+
+    cont = forms.CharField(max_length = 4, widget=forms.TextInput(attrs={'class': 'pm_counter', 
+                                                                        'readonly': 'readonly',
+                                                                        'data': '1'}))
+
+    def clean_cont(self):
+        """
+        """
+        temp_count = self.cleaned_data.get('cont', '')
+        try:
+            temp_count = int(temp_count)
+        except ValueError:
+            raise ValidationError("Вы ввели ошибочные данные.")
+        if temp_count <= 0:
+            raise ValidationError("Значение должно быть больше нуля.")
+        if not temp_count:
+            raise ValidationError("Поле не может быть пустым.")
+        return self.cleaned_data.get('cont', '')
+
+    def clean_org(self):
+        """
+        """
+        if not self.cleaned_data.get('org', ''):
+            raise ValidationError('Поле обязательно для заполнения.')
+        return self.cleaned_data.get('org', '')

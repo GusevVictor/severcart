@@ -1,0 +1,61 @@
+{% extends "index/base.html" %}{% load staticfiles %}
+{% block title %}Поиск изношенных расходников{% endblock %}
+{% block h3 %}Поиск изношенных расходников{% endblock %}
+{% block jqueryui %}
+<link rel="stylesheet" href="{{ STATIC_URL }}css/pm_widget.css" />
+<script src="{{ STATIC_URL }}js/pm_widget.js"></script>
+<script src="{{ STATIC_URL }}js/reports_amortizing.js"></script>
+{% endblock %}
+{% block content %}
+<div class="row">
+    <div class="large-8 columns">
+        <div class="row">
+            <div class="large-6 columns">
+                <form method="POST">{% csrf_token %}
+                <label class='required' for="{{ form.org.id_for_label }}">Организация</label>
+                {{ form.org }}
+                {{ form.org.errors }}
+                <div class="marginTop"></div>
+                <label class="required" for="{{ form.cont.id_for_label }}">Количество перезаправок (более или равно)</label>
+                    {{ form.cont }}
+                    {{ form.cont.errors }}
+                <div class="marginTop"></div>              
+                <div class="row">
+                    <div class="large-6 columns">
+                        <input class="button no_follow" value="Сформировать" type="submit" />
+                        <img class="spinner" src="{% static 'img/loader.gif' %}" />
+                    </div>
+                </div>
+                </form>
+            </div>        
+        </div>
+    </div>
+    <div class="large-4 columns">
+        {% include "reports/vertical_menu.html" %}
+    </div>
+</div>
+{% if old_cart %}
+    <div class="row">
+        <div class="large-8 columns">
+            <table class="checkboxes">
+                <tr>
+                    <th>Номер</th>
+                    <th>Название</th>
+                    <th>Дата изменения</th>
+                    <th>Количесво<br/> перезаправок</th>
+                    <th>Статус</th>
+                </tr>
+                {% for elem in old_cart %}
+                <tr>
+                    <td>{{ elem.cart_number }}</td>
+                    <td>{{ elem.cart_itm_name }}</td>
+                    <td>{{ elem.cart_date_change }}</td>
+                    <td>{{ elem.cart_number_refills }}</td>
+                    <td>{{ elem.cart_status }}</td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+{% endif %}
+{% endblock %}
