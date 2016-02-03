@@ -1,6 +1,11 @@
-{% extends "index/base.html" %}
+{% extends "index/base.html" %}{% load staticfiles %}
 {% block title %}Поиск залежавшихся расходников{% endblock %}
 {% block h3 %}Поиск залежавшихся расходников{% endblock %}
+{% block jqueryui%}
+<link rel="stylesheet" href="{% static 'css/jquery.powertip-dark.min.css' %}" />
+<script src="{% static 'js/jquery.powertip.min.js' %}"></script>
+<script src="{% static 'js/activate.powertip.js' %}"></script>
+{% endblock %}
 {% block content %}
 <div class="row">
     <div class="large-8 columns">
@@ -8,11 +13,17 @@
             <div class="large-6 columns">
                 <form method="POST">{% csrf_token %}
                 <label class='required' for="{{ form.org.id_for_label }}">Организация</label>
-                {{ form.org }}
+                <div class="input_row">
+                    {{ form.org }}
+                </div>
                 {{ form.org.errors }}
-                <label class='required' for="{{ form.diap.id_for_label }}">Диапазон</label>
-                {{ form.diap }}
-                {{ form.diap.errors }}
+                <div class="marginTop"></div>
+                <label class='required' for="{{ form.diap.id_for_label }}">Выбрать</label>
+                <div class="input_row">
+                    {{ form.diap }}
+                    <a data-powertip="Список из 10 или 20 картриджей, обращения к которым было самым позним.<br/> Либо последнее обращение было в прошлом году." class="no_follow tooltips" href="#"><img src="{{ STATIC_URL }}img/info.png" /></a>
+                </div>
+                {{ form.diap.errors }}                
                 <input class="button" value="Сформировать" type="submit" />
                 </form>
             </div>        
@@ -22,4 +33,28 @@
         {% include "reports/vertical_menu.html" %}
     </div>
 </div>
+{% if old_cart %}
+    <div class="row">
+        <div class="large-8 columns">
+            <table class="checkboxes">
+                <tr>
+                    <th>Номер</th>
+                    <th>Название</th>
+                    <th>Дата изменения</th>
+                    <th>Количесво<br/> перезаправок</th>
+                    <th>Статус</th>
+                </tr>
+                {% for elem in old_cart %}
+                <tr>
+                    <td>{{ elem.cart_number }}</td>
+                    <td>{{ elem.cart_itm_name }}</td>
+                    <td>{{ elem.cart_date_change }}</td>
+                    <td>{{ elem.cart_number_refills }}</td>
+                    <td>{{ elem.cart_status }}</td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+{% endif %}
 {% endblock %}

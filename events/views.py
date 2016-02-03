@@ -69,7 +69,6 @@ def show_events(request):
                 list_events = list_events.filter(date_time__lte=end_date)
 
             elif start_date == end_date :
-                print('s = e')
                 list_events = list_events.filter(date_time__year=end_date.year, 
                                            date_time__month=end_date.month, 
                                            date_time__day=end_date.day 

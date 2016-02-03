@@ -275,11 +275,35 @@ ul.menu > li.select:hover:after {
 /*   --------end style menu-----------   */
 label.required {
    background: url('../img/aster.png') left center no-repeat;
+   text-align: left;
+}
+
+.input_row input, .input_row select {
+    width:220px;
+    height: 33px;
+    display: inline-block;
+    vertical-align: top;
+}
+
+.input_row a {
+    display: inline-block;
+}
+
+.input_row select {
+    margin-right: 10px;
 }
 
 label {
     padding-left: 15px;
 }
+
+
+.tooltips {
+    position: absolute;
+    display: none;
+    white-space: nowrap;
+}
+
 /* ---Error messages style---  */
 
 ul.errorlist {

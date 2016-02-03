@@ -24,6 +24,11 @@ function csrfSafeMethod(method) {
 
 $( function(){
 
+    $('.no_follow').click( function(event) {
+        event.preventDefault();
+        event.stopPropagation();
+    });
+
     $('table.checkboxes tr:not(:first)').click(function(event) {
     // улучшитель юзабилити таблиц, при клике по строке выбрается чекбокс    
         if (event.target.type !== 'checkbox') {
