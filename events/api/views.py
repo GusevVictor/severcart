@@ -7,6 +7,7 @@ from django.http import JsonResponse, HttpResponse
 from django.template import Template, Context
 from events.models import Events
 from django.conf import settings
+from django.db.models import Q
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from events.helpers import events_decoder, date_to_str
 from index.helpers import check_ajax_auth
@@ -43,9 +44,18 @@ def show_event_page(request):
     end_date    = request.session['end_date']
 
     if start_date:
-        start_date = datetime.datetime(start_date.get('year_value'), start_date.get('month_value'), start_date.get('date_value'))
+        st_year  = int(start_date.get('year_value'))
+        st_month = int(start_date.get('month_value'))
+        st_date  = int(start_date.get('date_value'))
+        
+        start_date = datetime.datetime(st_year, st_month, st_date)
+        
     if end_date:
-        end_date   = datetime.datetime(end_date.get('year_value'), end_date.get('month_value'), end_date.get('date_value'))
+        en_year  = int(end_date.get('year_value'))
+        en_month = int(end_date.get('month_value'))
+        en_date  = int(end_date.get('date_value'))
+
+        end_date   = datetime.datetime(en_year, en_month, en_date)
 
     if start_date and not(end_date):
         list_events = list_events.filter(date_time__gte=start_date)

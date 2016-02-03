@@ -46,9 +46,17 @@ def show_events(request):
             request.session['end_date']   = end_date
             # приводим словари, содержащие компоненты дат к объекту datetime
             if start_date:
-                start_date = datetime.datetime(start_date.get('year_value'), start_date.get('month_value'), start_date.get('date_value'))
+                st_year  = int(start_date.get('year_value'))
+                st_month = int(start_date.get('month_value'))
+                st_date  = int(start_date.get('date_value'))
+                
+                start_date = datetime.datetime(st_year, st_month, st_date)
             if end_date:
-                end_date   = datetime.datetime(end_date.get('year_value'), end_date.get('month_value'), end_date.get('date_value'))
+                en_year  = int(end_date.get('year_value'))
+                en_month = int(end_date.get('month_value'))
+                en_date  = int(end_date.get('date_value'))
+
+                end_date   = datetime.datetime(en_year, en_month, en_date)
 
             if start_date and not(end_date):
                 list_events = list_events.filter(date_time__gte=start_date)
@@ -61,12 +69,14 @@ def show_events(request):
                 list_events = list_events.filter(date_time__lte=end_date)
 
             elif start_date == end_date :
+                print('s = e')
                 list_events = list_events.filter(date_time__year=end_date.year, 
                                            date_time__month=end_date.month, 
                                            date_time__day=end_date.day 
                                            )
 
             elif start_date and end_date:
+                print('4', start_date, end_date)
                 # вторая дата не попадает в диапазон, поэтому приболяем к ней 1 день
                 end_date = end_date + datetime.timedelta(days=1)
                 list_events = list_events.filter(Q(date_time__lte=end_date) & Q(date_time__gte=start_date))
