@@ -22,7 +22,7 @@
                 <div class="marginTop"></div>              
                 <div class="row">
                     <div class="large-6 columns">
-                        <input class="button no_follow" value="Сформировать" type="submit" />
+                        <input class="button no_follow generate_report" value="Сформировать" type="submit" />
                         <img class="spinner" src="{% static 'img/loader.gif' %}" />
                     </div>
                 </div>
@@ -34,28 +34,9 @@
         {% include "reports/vertical_menu.html" %}
     </div>
 </div>
-{% if old_cart %}
-    <div class="row">
-        <div class="large-8 columns">
-            <table class="checkboxes">
-                <tr>
-                    <th>Номер</th>
-                    <th>Название</th>
-                    <th>Дата изменения</th>
-                    <th>Количесво<br/> перезаправок</th>
-                    <th>Статус</th>
-                </tr>
-                {% for elem in old_cart %}
-                <tr>
-                    <td>{{ elem.cart_number }}</td>
-                    <td>{{ elem.cart_itm_name }}</td>
-                    <td>{{ elem.cart_date_change }}</td>
-                    <td>{{ elem.cart_number_refills }}</td>
-                    <td>{{ elem.cart_status }}</td>
-                </tr>
-                {% endfor %}
-            </table>
-        </div>
+<div class="row">
+<div class="large-6 columns">
+        <div class="ajax-content"></div>
     </div>
-{% endif %}
+</div>
 {% endblock %}

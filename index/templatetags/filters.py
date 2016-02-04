@@ -48,3 +48,9 @@ def navactive(request, urls):
     if request.path in ( reverse(url) for url in urls.split() ):
         return "select"
     return ""
+
+
+@register.filter()
+def pretty_status(value):
+  from index.models import STATUS 
+  return mark_safe(STATUS[value-1][1])

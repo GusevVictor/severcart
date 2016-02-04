@@ -2,7 +2,8 @@
 
 import json
 from django.http import JsonResponse
-from django.template import loader
+from django.template.loader import render_to_string
+#from django.utils.safestring import mark_safe
 from index.helpers import check_ajax_auth
 from index.models import CartridgeItem, OrganizationUnits
 
@@ -30,18 +31,11 @@ def ajax_report(request):
         try:
             departament = OrganizationUnits.objects.get(pk=org)
         except OrganizationUnits.DoesNotExist:
-            result['error'] = 'Organization unit not found'
+            result['error'] = 'Organization unit not found.'
         else:
             list_cart = CartridgeItem.objects.filter(departament=departament)
-            list_cart = list_cart.filter(filled_firm__gte=cont)
-
-            html = loader.render_to_string('reports/amortizing_ajax.html', {'list_cart', list_cart})
-            #template = loader.get_template('reports/amortizing_ajax.html')
-            #context = { 'list_cart': list_cart }
-            #template.render(context)
-    #return HttpResponse(template.render(context, request))
-
+            list_cart = list_cart.filter(cart_number_refills__gte=cont)
+            html = render_to_string('reports/amortizing_ajax.html', context={'list_cart': list_cart})
             result['html'] = html
 
-    
     return JsonResponse(result, safe=False)

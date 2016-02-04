@@ -1,8 +1,20 @@
+{% load filters %}
 <table>
 <tr>
-<td>1</td>
-<td>2</td>
-<td>3</td>
+<th>Номер</th>
+<th>Название</th>
+<th>Дата последнего<br/> обращения</th>
+<th>Количество<br/>перезаправок</th>
+<th>Статус</th>
 </tr>
 
+{% for elem in list_cart %}
+<tr>
+<td>{{ elem.cart_number }}</td>
+<td>{{ elem.cart_itm_name }}</td>
+<td>{{ elem.cart_date_change|date:"d.m.Y" }}</td>
+<td>{{ elem.cart_number_refills }}</td>
+<td>{{ elem.cart_status|pretty_status }}</td>
+</tr>
+{% endfor %}
 </table>

@@ -51,16 +51,18 @@ class FirmTonerRefill(models.Model):
     def __str__(self):
         return self.firm_name
 
+STATUS = (
+        (1, 'Полон и на складе'),
+        (2, 'Задействован'),
+        (3, 'Пуст и на складе'),
+        (4, 'Заправляется'),
+        (5, 'Полон и в корзине'),
+        (6, 'Пуст и в корзине'),
+    )
+
+
 
 class CartridgeItem(models.Model):
-    STATUS = (
-        (1, 'Full in stock'),
-        (2, 'In use'),
-        (3, 'Empty in stock'),
-        (4, 'Filled in firm'),
-        (5, 'Full in basket'),
-        (6, 'Empty in basket'),
-    )
     cart_number = models.IntegerField(db_index=True, null=True)
     cart_number_prefix  = models.CharField(max_length=256, null=True)
     cart_number_postfix = models.CharField(max_length=256, null=True)

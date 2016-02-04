@@ -1,5 +1,5 @@
 $( function() {
-    $('.button').click( function() {
+    $('.generate_report').click( function() {
         // получаем значения введенные пользователем
         var org = $('select#id_org option:selected').val();
         var cont = $('.pm_counter').val();
@@ -18,8 +18,10 @@ $( function() {
                 }  
             }).done(function( msg ) {
                 $('.spinner').css('display', 'none');
-                setTimeout(function() {}, 3000);
-                console.log(msg);
+                // таймаут на 3 секунды
+                setTimeout(function() {}, 3000); 
+                console.log(msg.html);
+                $('div.ajax-content').html(msg.html);
                 //window.location.href = '/basket/';
             });
         }
