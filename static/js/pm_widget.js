@@ -6,7 +6,7 @@ $(function() {
 
     
 
-    $(".button").on("click", function() {
+    $(".inc, .dec").on("click", function() {
         var $button = $(this);
         var oldValue = $button.parent().find("input.pm_counter").val();
         // в атрибуте data спрятано минимальное допустимое значение счётчика

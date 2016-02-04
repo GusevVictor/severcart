@@ -15,18 +15,20 @@ $( function() {
                     if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
                         xhr.setRequestHeader('X-CSRFToken', csrftoken);
                     }
-                }  
-            }).done(function( msg ) {
-                $('.spinner').css('display', 'none');
-                // таймаут на 3 секунды
-                setTimeout(function() {}, 3000); 
-                console.log(msg.html);
-                $('div.ajax-content').html(msg.html);
-                //window.location.href = '/basket/';
-            });
+                },
+                success: function( msg ) {
+                    $('.spinner').css('display', 'none');
+                    // таймаут на 3 секунды
+                    setTimeout(function() {}, 3000); 
+                    $('div.ajax-content').html(msg.html);
+                    //window.location.href = '/basket/';
+                },
+                error: function() {
+                    $('div.ajax-content').html('<p>Server error :(</p>');
+                    $('.spinner').css('display', 'none');
+                },
+            });    
         }
-    
-    });
-
+    });    
 
 });
