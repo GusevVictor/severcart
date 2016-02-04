@@ -31,11 +31,11 @@ from events.helpers import events_decoder
 from .helpers import recursiveChildren, check_ajax_auth
 from .sc_paginator import sc_paginator
 from .signals import ( sign_add_full_to_stock, 
-                    sign_tr_cart_to_uses, 
-                    sign_tr_cart_to_basket,
-                    sign_tr_empty_cart_to_stock,
-                    sign_tr_empty_cart_to_firm,
-                    sign_tr_filled_cart_to_stock )
+                       sign_tr_cart_to_uses, 
+                       sign_tr_cart_to_basket,
+                       sign_tr_empty_cart_to_stock,
+                       sign_tr_empty_cart_to_firm,
+                       sign_tr_filled_cart_to_stock )
 
 import logging
 logger = logging.getLogger('simp')
@@ -142,9 +142,11 @@ def add_cartridge_item(request):
             count_items  = int(data_in_post['cartCount'])
             cart_type    = str(data_in_post['cartName'])
             doc_id       = int(data_in_post['doc'])
-            cart_count   = CartridgeItem.objects.filter(departament=request.user.departament).count()
-            cart_number  = cart_count + 1
+            last_num     = CartridgeItem.objects.filter(departament=request.user.departament).order_by('-cart_number')
+            last_num     = last_num[0].cart_number
+            cart_number  = last_num + 1
             # получаем объект текущего пользователя
+            list_cplx = []
             for i in range(count_items):
                 m1 = CartridgeItem(cart_number=cart_number,
                                    cart_itm_name=data_in_post['cartName'],
@@ -155,17 +157,19 @@ def add_cartridge_item(request):
                                    delivery_doc=doc_id,
                                    )
                 m1.save()
-                sign_add_full_to_stock.send(sender=None, 
-                                            cart_inx=m1.pk,
-                                            cart_num=cart_number,
-                                            cart_type=cart_type,
-                                            user=str(request.user),
-                                            request=request)
+                list_cplx.append((m1.id, m1.cart_number, cart_type))
+
                 cart_number += 1
             if count_items == 1:
                 tmpl_message = 'Расходник %s успешно добавлен.'
             elif count_items > 1:
                 tmpl_message = 'Расходники %s успешно добавлены.'
+            
+            sign_add_full_to_stock.send(sender=None, 
+                                        list_cplx=list_cplx,
+                                        request=request,
+                                        )
+
             messages.success(request, tmpl_message % (cart_type,))
             return HttpResponseRedirect(request.path)
 

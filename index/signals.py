@@ -15,15 +15,19 @@ sign_tr_empty_cart_to_firm   = Signal(providing_args=['list_cplx', 'request','fi
 sign_tr_filled_cart_to_stock = Signal(providing_args=['list_cplx', 'request'])
 
 def event_add_cart(**kwargs):
-    m1 = Events(departament = kwargs.get('request').user.departament.pk,
-                date_time   = timezone.now(),
-                cart_index  = kwargs.get('cart_inx', 0),
-                cart_number = kwargs.get('cart_num', 0),
-                cart_type   = kwargs.get('cart_type', 0),
-                event_type  = 'AD',
-                event_user  = kwargs.get('user', 'anonymous'),
-                )
-    m1.save()
+    if len(kwargs.get('list_cplx', 0)) == 0:
+        raise ValueError('Ошибка в обработчике event_add_cart!')
+    
+    for elem in kwargs.get('list_cplx'):
+        m1 = Events(departament = kwargs.get('request').user.departament.pk,
+            date_time   = timezone.now(),
+            cart_index  = elem[0],
+            cart_number = elem[1],
+            cart_type   = elem[2],
+            event_type  = 'AD',
+            event_user  = str(kwargs.get('request').user),
+        )
+        m1.save()
 
 
 def event_transfe_cart_to_uses(**kwargs):

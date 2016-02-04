@@ -34,7 +34,7 @@ def ajax_report(request):
             result['error'] = 'Organization unit not found.'
         else:
             list_cart = CartridgeItem.objects.filter(departament=departament)
-            list_cart = list_cart.filter(cart_number_refills__gte=cont)
+            list_cart = list_cart.filter(cart_number_refills__gte=cont).order_by('cart_number')
             html = render_to_string('reports/amortizing_ajax.html', context={'list_cart': list_cart})
             result['html'] = html
 
