@@ -141,9 +141,15 @@ def add_cartridge_item(request):
             data_in_post = form_obj.cleaned_data
             count_items  = int(data_in_post['cartCount'])
             cart_type    = str(data_in_post['cartName'])
-            doc_id       = int(data_in_post['doc'])
+            if data_in_post['doc']:
+                doc_id = int(data_in_post['doc'])
+            else:
+                doc_id = None
             last_num     = CartridgeItem.objects.filter(departament=request.user.departament).order_by('-cart_number')
-            last_num     = last_num[0].cart_number
+            if last_num:
+                last_num = last_num[0].cart_number
+            else:
+                last_num = 0
             cart_number  = last_num + 1
             # получаем объект текущего пользователя
             list_cplx = []
@@ -756,6 +762,7 @@ def edit_cartridge_comment(request):
     """Добавляем комментарий к картриджу.
     """
     item_id = request.GET.get('id', '')
+    back    = request.GET.get('back', '/')
     try:
         item_id = int(item_id)
     except ValueError:
@@ -770,7 +777,7 @@ def edit_cartridge_comment(request):
         if form.is_valid():
             cartridge_object.comment = form.cleaned_data.get('comment')
             cartridge_object.save(update_fields=['comment'])
-            return HttpResponseRedirect(reverse('stock'))
+            return HttpResponseRedirect(back)
     else:
         comment = cartridge_object.comment
         form = EditCommentForm(initial = {'comment': comment})

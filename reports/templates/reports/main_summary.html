@@ -1,4 +1,4 @@
-{% extends "index/base.html" %}{% load staticfiles %}
+{% extends "index/base.html" %}{% load staticfiles %}{% load filters %}
 {% block title %}Поиск залежавшихся расходников{% endblock %}
 {% block h3 %}Поиск залежавшихся расходников{% endblock %}
 {% block jqueryui%}
@@ -50,7 +50,7 @@
                     <td>{{ elem.cart_itm_name }}</td>
                     <td>{{ elem.cart_date_change }}</td>
                     <td>{{ elem.cart_number_refills }}</td>
-                    <td>{{ elem.cart_status }}</td>
+                    <td>{{ elem.cart_status|pretty_status }}</td>
                 </tr>
                 {% endfor %}
             </table>

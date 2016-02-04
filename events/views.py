@@ -91,7 +91,7 @@ def show_events(request):
 
     # обычный get запрос
     date_form = DateForm()
-    context['count_events'] = int(Events.objects.all().count())
+    context['count_events'] = int(Events.objects.filter(departament=dept_id).count())
     
     p = Paginator(list_events, MAX_EVENT_LIST)
     context['next_page'] = 2

@@ -22,8 +22,7 @@ class AddItems(forms.Form):
     required_css_class = 'required'
 
     def clean_cartName(self):
-        """
-        Проверят на пустоту введенные данные.
+        """Проверят на пустоту введенные данные.
         """
         if not self.cleaned_data.get('cartName', ''):
             raise ValidationError("Поле обязательно для заполнения.")
@@ -31,7 +30,6 @@ class AddItems(forms.Form):
 
     def clean_cartCount(self):
         """
-
         """
         temp_count = self.cleaned_data.get('cartCount', '')
         try:
@@ -50,5 +48,8 @@ class AddItems(forms.Form):
     def clean_doc(self):
         """
         """
+        if not self.cleaned_data.get('doc', ''):
+            return None
+        
         doc_id = self.cleaned_data.get('doc', '')
         return doc_id.pk
