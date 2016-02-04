@@ -22,6 +22,23 @@ function csrfSafeMethod(method) {
 }
 
 
+var getUrlParameter = function getUrlParameter(sParam) {
+    // http://stackoverflow.com/questions/19491336/get-url-parameter-jquery
+    var sPageURL = decodeURIComponent(window.location.search.substring(1)),
+        sURLVariables = sPageURL.split('&'),
+        sParameterName,
+        i;
+
+    for (i = 0; i < sURLVariables.length; i++) {
+        sParameterName = sURLVariables[i].split('=');
+
+        if (sParameterName[0] === sParam) {
+            return sParameterName[1] === undefined ? true : sParameterName[1];
+        }
+    }
+};
+
+
 $( function(){
 
     $('.no_follow').click( function(event) {
@@ -183,11 +200,17 @@ $( function(){
 
         if ( selected.length !== 0 ) {
             var get_path = selected.join('s')
-            var loc = '/transfer_to_firm/?select=' + get_path;
+            var loc = '/transfer_to_firm/?select=' + get_path + '&back=' + window.location.pathname;
             window.location.href = loc;
         }
 
     });
+
+    $('.back').click( function() {
+        var loc = getUrlParameter('back')
+        window.location.href = loc;
+    });
+
 
     $('.edit_firm').click( function() {
         var selected = [];

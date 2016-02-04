@@ -681,7 +681,7 @@ def transfer_to_firm(request):
         
     else:
         # если кто-то зашел на страницу не выбрав расходники
-        return HttpResponseRedirect(reverse('empty'))        
+        return HttpResponseRedirect(reverse('empty'))       
 
     if request.method == 'POST':
         

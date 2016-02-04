@@ -1,4 +1,6 @@
 {% extends "index/base.html" %}
+{% block title %}Передача картриджей на заправку{% endblock %}
+{% block h3 %}Передача картриджей на заправку{% endblock %}
 {% load filters %}
 {% block content %}
     <div class="row">
@@ -16,16 +18,19 @@
         <div class="large-6 columns">
             <form action="" method="POST">
                 {% csrf_token %}
-                <label>Что передаём</label>
+                <label class="required">Что передаём</label>
                 <input name="name" type="text"  value="{{ checked_cartr }}"  readonly/>
-                <label>Какой фирме</label>
+                <label class="required">Какой фирме</label>
                 <select name="firm">
                     <option selected value="0"> </option>
                 {% for etm in firms %}
                     <option value={{ etm.id }}>{{ etm.firm_name }}</option>
                 {% endfor %}
                 </select>
-                <input type="submit" value="Передать на заправку" class="button"/>
+                <div>
+                    <input type="submit" value="Передать на заправку" class="button"/>
+                    <a class="button no_follow back">Отменить</a>
+                </div>
             </form>
         </div>
     </div>

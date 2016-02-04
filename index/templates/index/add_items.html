@@ -21,7 +21,7 @@
         <div class="large-6 columns">
             <form class='dancon' action="" method="post">
                 {% csrf_token %}
-                <label class='required' for="{{ form.cartName.id_for_label }}">Название расходника</label>
+                <label class="required" for="{{ form.cartName.id_for_label }}">Название расходника</label>
                 <div class="dancon_row">
                     <div class="left_pos">
                         {{ form.cartName }}
