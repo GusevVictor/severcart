@@ -1,5 +1,4 @@
-{% load staticfiles %}
-<!DOCTYPE html>
+<!DOCTYPE html>{% load staticfiles %}
 <html lang="ru">
 <head>
     <meta charset="utf-8"/>
@@ -9,6 +8,9 @@
     <script src="{% static "js/vendor/jquery.js" %}"></script>
     <script src="{{ STATIC_URL }}js/logic.js"></script>
     <title>Залогиньтесь</title>
+    <noscript>
+        <meta http-equiv="refresh" content="3;url={% url 'bad_browser' %}"/>
+    </noscript>
 </head>
 <body class="linen-texture">
 <div class="cont">
