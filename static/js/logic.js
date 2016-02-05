@@ -55,7 +55,7 @@ $( function(){
 
     $('.add_items').click( function(e) {
         /* Выполняем проверку на принадлежность орг. юниту*/
-        var user_ou = $('.user_ou').text();
+        /*var user_ou = $('.user_ou').text();
         if (user_ou.length == 0) {
             $('.error_msg').css('display', 'block');
             $('.error_msg').text('Не определена принадлежность пользователя организации!');
@@ -63,7 +63,46 @@ $( function(){
             setTimeout(function() { $('.error_msg').css('display', 'none'); }, 15000);
         } else {
             window.location.href = '/add_items/';
+        } */
+        var cart_name = $('#id_cartName option:selected').val();
+        var docum     = $('#id_doc option:selected').val();        
+        var cont      = parseInt($('#id_cartCount').val());        
+        if (!cart_name) {
+            $('.cart_name_error').show();
+        } else {
+            $('.cart_name_error').hide();
+        }  // cart_count_error
+
+        if (!cont) {
+            $('.cart_count_error').show();
+        } else {
+            $('.cart_count_error').hide();
+        }  
+
+        if (cart_name && cont) {
+            $.ajax({
+                method: 'POST',
+                url: '/api/ajax_add_cart_items/',
+                data:  {'cartName': cart_name, 'doc': docum, 'cartCount': cont },
+                beforeSend: function( xhr, settings ){
+                    $('.spinner').css('display', 'inline');
+                    csrftoken = getCookie('csrftoken');
+                    if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
+                        xhr.setRequestHeader('X-CSRFToken', csrftoken);
+                    }
+                },
+                success: function( msg ) {
+                    $('.spinner').css('display', 'none');
+                    $('.session_data').html(msg);
+                    //window.location.href = '/basket/';
+                },
+                error: function() {
+                    $('.session_data').html('<p>Server error :(</p>');
+                    $('.spinner').css('display', 'none');
+                },
+            });            
         }
+
 
     });
 

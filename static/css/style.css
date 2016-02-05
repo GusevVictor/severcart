@@ -11,6 +11,11 @@ body.linen-texture {
     background: url('../img/linen-texture2.jpg');   
 }
 
+img {
+    padding:0;
+    margin:0;
+}
+
 hr {
     display: block;
     height: 1px;
@@ -46,6 +51,10 @@ form label {
     margin-bottom: 10px;
 }
 
+form input[type="text"] {
+    margin: 0;
+}
+
 .marginTop {
     margin-top:15px;
 }
@@ -54,9 +63,20 @@ form label {
     margin-bottom: 15px;
 }
 
+.vertical-top {
+    vertical-align: baseline;
+}
+
 .login-string {
     text-align: right;
     line-height: 25px;
+}
+
+
+.form_error_text {
+    display: none;
+    color: #ff6464;
+    font-size: 12px;
 }
 
 .error_msg {
@@ -363,14 +383,13 @@ form.dancon input[type="text"]{
 
 
 form select {
-    margin-bottom:20px;
     height: 33px;
 }
 
 /*  -----buttons style---- */
 
 .dj_button.add {
-    display: block;
+    display: inline-block;
     width: 33px;
     height: 33px;
     background: url('../img/add_button.png') no-repeat center center;

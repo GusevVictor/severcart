@@ -31,8 +31,7 @@ from events.models import Events
 from events.helpers import events_decoder
 from .helpers import recursiveChildren, check_ajax_auth
 from .sc_paginator import sc_paginator
-from .signals import ( sign_add_full_to_stock, 
-                       sign_tr_cart_to_uses, 
+from .signals import ( sign_tr_cart_to_uses, 
                        sign_tr_cart_to_basket,
                        sign_tr_empty_cart_to_stock,
                        sign_tr_empty_cart_to_firm,
@@ -146,37 +145,8 @@ def add_cartridge_item(request):
                 doc_id = int(data_in_post['doc'])
             else:
                 doc_id = None
-            last_num     = CartridgeItem.objects.filter(departament=request.user.departament).order_by('-cart_number')
-            if last_num:
-                last_num = last_num[0].cart_number
-            else:
-                last_num = 0
-            cart_number  = last_num + 1
-            # получаем объект текущего пользователя
-            list_cplx = []
-            with transaction.atomic():
-                for i in range(count_items):
-                    m1 = CartridgeItem(cart_number=cart_number,
-                                       cart_itm_name=data_in_post['cartName'],
-                                       cart_date_added=timezone.now(),
-                                       cart_date_change=timezone.now(),
-                                       cart_number_refills=0,
-                                       departament=request.user.departament,
-                                       delivery_doc=doc_id,
-                                       )
-                    m1.save()
-                    list_cplx.append((m1.id, m1.cart_number, cart_type))
-                    cart_number += 1
             
-            if count_items == 1:
-                tmpl_message = 'Расходник %s успешно добавлен.'
-            elif count_items > 1:
-                tmpl_message = 'Расходники %s успешно добавлены.'
-            
-            sign_add_full_to_stock.send(sender=None, 
-                                        list_cplx=list_cplx,
-                                        request=request,
-                                        )
+
 
             messages.success(request, tmpl_message % (cart_type,))
             return HttpResponseRedirect(request.path)

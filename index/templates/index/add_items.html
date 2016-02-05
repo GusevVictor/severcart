@@ -19,46 +19,37 @@
     </div>
     <div class="row">
         <div class="large-6 columns">
-            <form class='dancon' action="" method="post">
+            <form action="" method="post">
                 {% csrf_token %}
                 <label class="required" for="{{ form.cartName.id_for_label }}">Название расходника</label>
-                <div class="dancon_row">
-                    <div class="left_pos">
-                        {{ form.cartName }}
-                        {{ form.cartName.errors }}
-                    </div>
-                    <div class="right_pos">
-                        <a class="dj_button add" href="{% url 'add_name' %}"></a>
-                    </div>
+                <div class="input_row">
+                    {{ form.cartName }} <a class="dj_button add" href="{% url 'add_name' %}"></a>
                 </div>
-                <div class="dancon_row">
-                    <label for="{{ form.doc.id_for_label }}">Договор поставки</label>
-                    <div class="left_pos">
-                        {{ form.doc }}
-                        {{ form.doc.errors }}
-                    </div>
-                    <div class="right_pos">
-                        <a class="dj_button add" href="{% url 'docs:delivery' %}"></a>
-                    </div>
+                <div class="form_error_text cart_name_error">Поле обязательно для заполнения</div>
+                
+                <label class="marginTop" for="{{ form.doc.id_for_label }}">Договор поставки</label>
+                <div class="input_row">
+                    {{ form.doc }} <a class="dj_button add" href="{% url 'docs:delivery' %}"></a>
                 </div>
 
-                <div class="clear_float"></div>
-                <div class="row">
-                    <div class="large-6 columns">
-                        <label class='required' for="{{ form.cartCount.id_for_label }}">Количество</label>
-                        {{ form.cartCount }}
-                        {{ form.cartCount.errors }}
-                    </div>
+                <label class='required marginTop' for="{{ form.cartCount.id_for_label }}">Количество</label>
+                <div class="input_row">
+                    {{ form.cartCount }}
                 </div>
-                <div class="clear_float"></div>
-                <div class="row">
+                <div class="form_error_text cart_count_error">Поле должно быть более нуля</div>
+                <div class="marginTop"></div>
+                <div class="row marginTop">
                     <div class="large-6 columns">
-                        <input type="submit" value="Добавить" class="button success"/>
+                        <input type="submit" value="Добавить" class="button success add_items no_follow"/>
                         &nbsp;&nbsp;&nbsp;
-                        <a href="{% url 'stock' %}" class="button"/>Отменить</a>
+                        <a href="{% url 'stock' %}" class="button"/>Отменить</a>&nbsp;&nbsp;&nbsp;
+                        <img class="spinner" src="{% static 'img/loader.gif' %}" />
                     </div>
                 </div>
             </form>
+        </div>
+        <div class="large-6 column">
+            <div class="session_data"></div>
         </div>
     </div>
 {% endblock %}
