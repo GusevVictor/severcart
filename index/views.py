@@ -152,10 +152,11 @@ def add_cartridge_item(request):
             return HttpResponseRedirect(request.path)
 
     else:
+
         form_obj = AddItems()
         from docs.models  import SCDoc
         form_obj.fields['doc'].queryset = SCDoc.objects.filter(departament=request.user.departament)
-    return render(request, 'index/add_items.html', {'form': form_obj})
+    return render(request, 'index/add_items.html', {'form': form_obj, 'session': request.session['cumulative_list']})
 
 
 @login_required

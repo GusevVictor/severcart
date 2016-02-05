@@ -1,9 +1,10 @@
 
 from django.conf.urls import include, url
-from index.api.views import (	ajax_add_cart_items, 
+from index.api.views import (	ajax_add_session_items, 
 								city_list, inx, 
 								del_node, 
-								turf_cartridge
+								turf_cartridge,
+								clear_session,
 							)
 from accounts.api.views import del_users
 
@@ -13,6 +14,7 @@ urlpatterns = [
 	url('^del_node/', del_node),
 	url('^turf_cartridge/', turf_cartridge),
 	url('^del_users/', del_users),
-	url('^ajax_add_cart_items/', ajax_add_cart_items),
+	url('^ajax_add_session_items/', ajax_add_session_items),
+	url('^clear_session/', clear_session),
 
 ]

@@ -82,7 +82,7 @@ $( function(){
         if (cart_name && cont) {
             $.ajax({
                 method: 'POST',
-                url: '/api/ajax_add_cart_items/',
+                url: '/api/ajax_add_session_items/',
                 data:  {'cartName': cart_name, 'doc': docum, 'cartCount': cont },
                 beforeSend: function( xhr, settings ){
                     $('.spinner').css('display', 'inline');
@@ -104,6 +104,29 @@ $( function(){
         }
 
 
+    });
+
+    $('.clear_session').click( function() {
+        $.ajax({
+            method: 'POST',
+            url: '/api/clear_session/',
+            data:  {'tst': 'tst'},
+            beforeSend: function( xhr, settings ){
+                $('.spinner').css('display', 'inline');
+                csrftoken = getCookie('csrftoken');
+                if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
+                    xhr.setRequestHeader('X-CSRFToken', csrftoken);
+                }
+            },
+            success: function( msg ) {
+                $('.spinner').css('display', 'none');
+                $('.session_data').html(msg);
+            },
+            error: function() {
+                $('.session_data').html('<p>Server error :(</p>');
+                $('.spinner').css('display', 'none');
+            },
+        });
     });
 
     $('.tr_for_use').click( function() {

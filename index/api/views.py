@@ -12,22 +12,39 @@ logger = logging.getLogger(__name__)
 
 
 @check_ajax_auth
-def ajax_add_cart_items(request):
+def ajax_add_session_items(request):
     """Довляем новые картриджи на склад через Аякс
     """
     if request.method != 'POST':
         return HttpResponse('<h1>Only use POST requests!</h1>')    
+    # если пришёл запрос то пополняем сессионную переменную
+    # результаты отображаем на странице
     form = AddItems(request.POST)
     if form.is_valid():
         data_in_post = form.cleaned_data
-        cart_name_id = data_in_post.get('cartName')
-        cart_doc     = data_in_post.get('doc')
-        request.session['']
-
+        cart_name_id = data_in_post.get('cartName').pk
+        if data_in_post.get('doc'):
+            cart_doc_id = data_in_post.get('doc')
+        else:
+            cart_doc_id = 0
+        cart_count   = int(data_in_post.get('cartCount'))
+        tmp_list = [cart_name_id, cart_doc_id, cart_count]
+        if request.session.get('cumulative_list', False):
+            # если в сессионной переменной уже что-то есть
+            session_data = request.session.get('cumulative_list')
+            session_data = json.loads(session_data)
+            session_data.append(tmp_list)
+            session_data = json.dumps(session_data)
+            # перезаписываем переменную в сессии новыми значениями
+            request.session['cumulative_list'] = session_data
+        else:
+            # если сессионная added_list пуста
+            tmp_list = json.dumps([ tmp_list ])
+            request.session['cumulative_list'] = tmp_list
     else:
         #form.errors
         pass
-    return HttpResponse('<h1>AJAX it works!</h1>')
+    return HttpResponse('<p>' + request.session['cumulative_list'] + '</p>')
 
     last_num     = CartridgeItem.objects.filter(departament=request.user.departament).order_by('-cart_number')
     if last_num:
@@ -57,6 +74,14 @@ def ajax_add_cart_items(request):
         tmpl_message = 'Расходники %s успешно добавлены.'
     
     sign_add_full_to_stock.send(sender=None, list_cplx=list_cplx, request=request)
+
+
+@check_ajax_auth
+def clear_session(request):
+    """Очищаем сессионную переменную от cumulative_list
+    """
+    request.session['cumulative_list'] = None
+    return HttpResponse('')
 
 
 @check_ajax_auth
