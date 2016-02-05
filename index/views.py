@@ -697,6 +697,33 @@ def transfer_to_firm(request):
         else:
             list_cplx = []
             select_firm = FirmTonerRefill.objects.get(pk=firmid) 
+            gen_act = request.POST.get('gen_act', '') # если чекбокс установлен, то метод вернет on
+            if gen_act == 'on':
+                from docs.models import SCDoc
+                # генерируем акт передачи
+                jsoning_list = []
+                for inx in tmp:
+                    cart_number = CartridgeItem.objects.get(pk=inx).cart_number
+                    cart_name = CartridgeItem.objects.get(pk=inx).cart_itm_name
+                    jsoning_list.append([cart_number, str(cart_name)])
+                jsoning_list = json.dumps(jsoning_list)
+                
+                # генерируем номер акта передачи на основе даты и его порядкового номера
+                act_docs = SCDoc.objects.filter(departament=request.user.departament).filter(doc_type=3).count()
+                if act_docs:
+                    act_docs   = act_docs + 1
+                    act_number = str(timezone.now().year) + '/' + str(act_docs)
+                else:
+                    act_number = str(timezone.now().year) + '/1'
+                act_doc = SCDoc(number=act_number,
+                                date=timezone.now(),
+                                firm=select_firm,
+                                title='Act',
+                                short_cont=jsoning_list,
+                                departament=request.user.departament,
+                                doc_type=3)
+                act_doc.save()
+
             for inx in tmp:
                 m1 = CartridgeItem.objects.get(pk=inx)
                 m1.cart_status = 4 # находится на заправке
