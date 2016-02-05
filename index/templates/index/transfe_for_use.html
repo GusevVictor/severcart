@@ -7,7 +7,7 @@
                 {% csrf_token %}
                 <label>Что передаём</label>
                 <input name="name" type="text"  value="{{checked_cartr }}"  readonly/>
-                <label>Кому передаём</label>
+                <label class="required">Кому передаём</label>
                 <select size="1" name="par_id">
                     {% for i in bulk %}
                         {% if forloop.counter == 1 %}

@@ -1,6 +1,7 @@
 # -*- coding:utf-8 -*-
 
 import json
+from django.db import transaction
 from django.shortcuts import render
 from django.http import HttpResponseRedirect, HttpResponse, JsonResponse, Http404
 from django.utils import timezone
@@ -153,19 +154,20 @@ def add_cartridge_item(request):
             cart_number  = last_num + 1
             # получаем объект текущего пользователя
             list_cplx = []
-            for i in range(count_items):
-                m1 = CartridgeItem(cart_number=cart_number,
-                                   cart_itm_name=data_in_post['cartName'],
-                                   cart_date_added=timezone.now(),
-                                   cart_date_change=timezone.now(),
-                                   cart_number_refills=0,
-                                   departament=request.user.departament,
-                                   delivery_doc=doc_id,
-                                   )
-                m1.save()
-                list_cplx.append((m1.id, m1.cart_number, cart_type))
-
-                cart_number += 1
+            with transaction.atomic():
+                for i in range(count_items):
+                    m1 = CartridgeItem(cart_number=cart_number,
+                                       cart_itm_name=data_in_post['cartName'],
+                                       cart_date_added=timezone.now(),
+                                       cart_date_change=timezone.now(),
+                                       cart_number_refills=0,
+                                       departament=request.user.departament,
+                                       delivery_doc=doc_id,
+                                       )
+                    m1.save()
+                    list_cplx.append((m1.id, m1.cart_number, cart_type))
+                    cart_number += 1
+            
             if count_items == 1:
                 tmpl_message = 'Расходник %s успешно добавлен.'
             elif count_items > 1:
@@ -731,6 +733,7 @@ def transfer_to_firm(request):
                 m1.cart_date_change = timezone.now()
                 m1.save(update_fields=['filled_firm', 'cart_status', 'cart_date_change'])
                 list_cplx.append((m1.pk, str(m1.cart_itm_name), m1.cart_number))
+            
             sign_tr_empty_cart_to_firm.send(sender=None, 
                                             list_cplx=list_cplx, 
                                             request=request, 
