@@ -56,9 +56,10 @@ def ajax_add_session_items(request):
                 cart_number += 1
         
         if cart_number == 1:
-            tmpl_message = 'Расходник %s успешно добавлен.'
+            tmpl_message = 'Расходник успешно добавлен.'
         elif cart_number > 1:
-            tmpl_message = 'Расходники %s успешно добавлены.'
+            tmpl_message = 'Расходники успешно добавлены.'
+
         # запускаем сигнал добавления событий
         sign_add_full_to_stock.send(sender=None, list_cplx=list_cplx, request=request)
         
@@ -83,7 +84,7 @@ def ajax_add_session_items(request):
         simple_cache = dict()
         list_names = CartridgeItemName.objects.all()
         for elem in list_names:
-            simple_cache[elem.pk] = str(elem.cart_itm_name)
+            simple_cache[elem.pk] = elem.cart_itm_name
         # формируем http ответ
         # формат  [ [name, title,  numbers=[1,2,3,4]] ... ]
         list_items = list()
@@ -93,18 +94,21 @@ def ajax_add_session_items(request):
                                'title': str(SCDoc.objects.get(pk=elem[1]))})
         
         html = render_to_string('index/add_over_ajax.html', context={'list_items': list_items})
-
+        tmp_dict = dict()
+        tmp_dict['html'] = html
+        tmp_dict['mes']  = tmpl_message
     else:
         #form.errors
         pass
-    return HttpResponse(html)
+    #return HttpResponse(html)
+    return JsonResponse(tmp_dict, safe=False)
 
 @check_ajax_auth
 def clear_session(request):
     """Очищаем сессионную переменную от cumulative_list
     """
     request.session['cumulative_list'] = None
-    return HttpResponse('')
+    return HttpResponse('Сессия очищена')
 
 
 @check_ajax_auth

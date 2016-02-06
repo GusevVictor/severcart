@@ -57,6 +57,7 @@ form input[type="text"] {
 
 .marginTop {
     margin-top:15px;
+    overflow: hidden; /* disable margin collapse */
 }
 
 .marginBot {
@@ -507,6 +508,10 @@ input[type="submit"].button.login:active {
 /* --- end button style ---*/
 
 /* ---messages--- */
+div.ajax_messages {
+    display: none;
+}
+
 ul.messages {
     list-style: none;
 /*    padding:10px; */

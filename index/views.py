@@ -135,23 +135,28 @@ def add_cartridge_name(request):
 
 @login_required
 def add_cartridge_item(request):
-    """Обработку данных формы производим в ajax_add_session_items
+    """Обработку данных формы производим в ajax_add_session_items. Здесь 
+       отображаем заполненную форму.
     """
     from docs.models import SCDoc
+    form_obj = AddItems()
+    form_obj.fields['doc'].queryset = SCDoc.objects.filter(departament=request.user.departament)
     session_data = request.session.get('cumulative_list')
+    if not session_data:
+        # если в сессии нужные данные отсутствуют, то сразу рендерим форму
+        return render(request, 'index/add_items.html', {'form': form_obj, 'session': ''})    
+    
     session_data = json.loads(session_data)
     simple_cache = dict()
     list_names = CartridgeItemName.objects.all()
     for elem in list_names:
-        simple_cache[elem.pk] = str(elem.cart_itm_name)
+        simple_cache[elem.pk] = elem.cart_itm_name
     list_items = list()
     for elem in session_data:
         list_items.append({'name'   : simple_cache.get(elem[0]),
                            'numbers': str(elem[2])[1:-1],
                            'title'  : str(SCDoc.objects.get(pk=elem[1]))})
     html = render_to_string('index/add_over_ajax.html', context={'list_items': list_items})
-    form_obj = AddItems()
-    form_obj.fields['doc'].queryset = SCDoc.objects.filter(departament=request.user.departament)
     return render(request, 'index/add_items.html', {'form': form_obj, 'session': html})
 
 

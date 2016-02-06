@@ -93,12 +93,17 @@ $( function(){
                 },
                 success: function( msg ) {
                     $('.spinner').css('display', 'none');
-                    $('.session_data').html(msg);
-                    //window.location.href = '/basket/';
+                    $('.session_data').html(msg.html);
+                    $('.success_msg').show();
+                    $('.success_msg').html(msg.mes);
+                    setTimeout(function() { $('.success_msg').hide(); }, 12000);
+
                 },
                 error: function() {
-                    $('.session_data').html('<p>Server error :(</p>');
+                    $('.error_msg').show();
+                    $('.error_msg').html('Server error :(');
                     $('.spinner').css('display', 'none');
+                    setTimeout(function() { $('.error_msg').hide(); }, 12000);
                 },
             });            
         }
@@ -120,10 +125,14 @@ $( function(){
             },
             success: function( msg ) {
                 $('.spinner').css('display', 'none');
-                $('.session_data').html(msg);
+                $('.session_data').html('');
+                $('.ajax_messages').show();
+                $('.success_msg').html(msg.mes);
+
             },
             error: function() {
-                $('.session_data').html('<p>Server error :(</p>');
+                $('.ajax_messages').show();
+                $('.success_msg').html('Server error :(');
                 $('.spinner').css('display', 'none');
             },
         });

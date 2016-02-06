@@ -8,13 +8,8 @@
 {% block content %}
     <div class="row">
         <div class="large-6 columns">
-            {% if messages %}
-                <ul class="messages">
-                    {% for message in messages %}
-                        <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
-                    {% endfor %}
-                </ul>
-            {% endif %}
+            <div class="success_msg"></div>
+            <div class="error_msg"></div>
         </div>
     </div>
     <div class="row">
@@ -37,6 +32,7 @@
                     {{ form.cartCount }}
                 </div>
                 <div class="form_error_text cart_count_error">Поле должно быть более нуля</div>
+                <div class="marginTop"></div>
                 <div class="marginTop">
                     <input type="submit" value="Добавить" class="button success add_items no_follow"/>
                     &nbsp;&nbsp;&nbsp;
