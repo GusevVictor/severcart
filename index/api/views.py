@@ -27,6 +27,8 @@ def ajax_add_session_items(request):
     if form.is_valid():
         data_in_post = form.cleaned_data
         cart_name_id = data_in_post.get('cartName').pk
+        cart_name    = data_in_post.get('cartName').cart_itm_name
+        cart_name    = str(cart_name)
         if data_in_post.get('doc'):
             cart_doc_id = data_in_post.get('doc')
         else:
@@ -52,7 +54,7 @@ def ajax_add_session_items(request):
                                    delivery_doc=cart_doc_id,
                                    )
                 m1.save()
-                list_cplx.append((m1.id, cart_number, cart_name_id))
+                list_cplx.append((m1.id, cart_number, cart_name))
                 cart_number += 1
         
         if cart_number == 1:
@@ -89,9 +91,13 @@ def ajax_add_session_items(request):
         # формат  [ [name, title,  numbers=[1,2,3,4]] ... ]
         list_items = list()
         for elem in use2var:
+            try:
+               title = str(SCDoc.objects.get(pk=elem[1]))
+            except SCDoc.DoesNotExist:
+                title = ''
             list_items.append({'name': simple_cache.get(elem[0]), 
                                'numbers': str(elem[2])[1:-1], 
-                               'title': str(SCDoc.objects.get(pk=elem[1]))})
+                               'title': title})
         
         html = render_to_string('index/add_over_ajax.html', context={'list_items': list_items})
         tmp_dict = dict()
