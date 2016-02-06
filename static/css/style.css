@@ -299,7 +299,7 @@ label.required {
    text-align: left;
 }
 
-.input_row input, .input_row select {
+.input_row input[type="text"], .input_row select {
     width:220px;
     height: 33px;
     display: inline-block;
@@ -331,7 +331,6 @@ ul.errorlist {
     list-style: none;
     font-size: 12px;
     color: red;
-    margin-top: -10px;
 }
 
 .errorlog {
