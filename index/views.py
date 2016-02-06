@@ -152,10 +152,17 @@ def add_cartridge_item(request):
     for elem in list_names:
         simple_cache[elem.pk] = elem.cart_itm_name
     list_items = list()
+    #try:
+    #    str(SCDoc.objects.get(pk=elem[1]))
     for elem in session_data:
-        list_items.append({'name'   : simple_cache.get(elem[0]),
-                           'numbers': str(elem[2])[1:-1],
-                           'title'  : str(SCDoc.objects.get(pk=elem[1]))})
+        try:
+           title = str(SCDoc.objects.get(pk=elem[1]))
+        except SCDoc.DoesNotExist:
+            title = ''
+        list_items.append({'name': simple_cache.get(elem[0]), 
+                           'numbers': str(elem[2])[1:-1], 
+                           'title': title})
+
     html = render_to_string('index/add_over_ajax.html', context={'list_items': list_items})
     return render(request, 'index/add_items.html', {'form': form_obj, 'session': html})
 
