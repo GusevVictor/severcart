@@ -1,0 +1,9 @@
+{% for elem in list_items %}
+<div>
+    <p><strong>Название</strong> {{ elem.name }}</p>
+    <p><strong>Договор</strong> {{ elem.title }}</p>
+    <p><strong>Присвоенные номера</strong></p>
+    <p>{{ elem.numbers }}</p>
+</div>
+<hr/>
+{% endfor %}

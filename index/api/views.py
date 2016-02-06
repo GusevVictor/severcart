@@ -1,11 +1,15 @@
 # -*- coding:utf-8 -*-
 import time
 import json
+from django.db import transaction
+from django.utils import timezone
 from django.http import JsonResponse, HttpResponse
-from index.models import City, CartridgeItem, OrganizationUnits
+from django.template.loader import render_to_string
+from index.models import City, CartridgeItem, OrganizationUnits, CartridgeItemName
 from index.helpers import check_ajax_auth
 from index.signals import sign_turf_cart, sign_add_full_to_stock
 from index.forms.add_items import AddItems
+from docs.models import SCDoc
 
 import logging
 logger = logging.getLogger(__name__)
@@ -28,53 +32,72 @@ def ajax_add_session_items(request):
         else:
             cart_doc_id = 0
         cart_count   = int(data_in_post.get('cartCount'))
-        tmp_list = [cart_name_id, cart_doc_id, cart_count]
+        # Добавляем картриджи в БД
+        last_num     = CartridgeItem.objects.filter(departament=request.user.departament).order_by('-cart_number')
+        if last_num:
+            last_num = last_num[0].cart_number
+        else:
+            last_num = 0
+        cart_number  = last_num + 1
+        # получаем объект текущего пользователя
+        list_cplx = []
+        with transaction.atomic():
+            for i in range(cart_count):
+                m1 = CartridgeItem(cart_number=cart_number,
+                                   cart_itm_name=data_in_post.get('cartName'),
+                                   cart_date_added=timezone.now(),
+                                   cart_date_change=timezone.now(),
+                                   cart_number_refills=0,
+                                   departament=request.user.departament,
+                                   delivery_doc=cart_doc_id,
+                                   )
+                m1.save()
+                list_cplx.append((m1.id, cart_number, cart_name_id))
+                cart_number += 1
+        
+        if cart_number == 1:
+            tmpl_message = 'Расходник %s успешно добавлен.'
+        elif cart_number > 1:
+            tmpl_message = 'Расходники %s успешно добавлены.'
+        # запускаем сигнал добавления событий
+        sign_add_full_to_stock.send(sender=None, list_cplx=list_cplx, request=request)
+        
+        numbers = [ i[1] for i in list_cplx ] 
+        # наполняем сессионную переменную cumulative_list
+        tmp_list = [cart_name_id, cart_doc_id, numbers]
         if request.session.get('cumulative_list', False):
             # если в сессионной переменной уже что-то есть
             session_data = request.session.get('cumulative_list')
             session_data = json.loads(session_data)
             session_data.append(tmp_list)
+            use2var = session_data
             session_data = json.dumps(session_data)
             # перезаписываем переменную в сессии новыми значениями
             request.session['cumulative_list'] = session_data
         else:
             # если сессионная added_list пуста
-            tmp_list = json.dumps([ tmp_list ])
-            request.session['cumulative_list'] = tmp_list
+            use2var = [ tmp_list ]
+            tmp_list = json.dumps(use2var)
+            request.session['cumulative_list'] = tmp_list        
+        # заполняем тупой кэш нужными данными названий картриджей и их айдишников, это минимизирует обращения к базу
+        simple_cache = dict()
+        list_names = CartridgeItemName.objects.all()
+        for elem in list_names:
+            simple_cache[elem.pk] = str(elem.cart_itm_name)
+        # формируем http ответ
+        # формат  [ [name, title,  numbers=[1,2,3,4]] ... ]
+        list_items = list()
+        for elem in use2var:
+            list_items.append({'name': simple_cache.get(elem[0]), 
+                               'numbers': str(elem[2])[1:-1], 
+                               'title': str(SCDoc.objects.get(pk=elem[1]))})
+        
+        html = render_to_string('index/add_over_ajax.html', context={'list_items': list_items})
+
     else:
         #form.errors
         pass
-    return HttpResponse('<p>' + request.session['cumulative_list'] + '</p>')
-
-    last_num     = CartridgeItem.objects.filter(departament=request.user.departament).order_by('-cart_number')
-    if last_num:
-        last_num = last_num[0].cart_number
-    else:
-        last_num = 0
-    cart_number  = last_num + 1
-    # получаем объект текущего пользователя
-    list_cplx = []
-    with transaction.atomic():
-        for i in range(count_items):
-            m1 = CartridgeItem(cart_number=cart_number,
-                               cart_itm_name=data_in_post['cartName'],
-                               cart_date_added=timezone.now(),
-                               cart_date_change=timezone.now(),
-                               cart_number_refills=0,
-                               departament=request.user.departament,
-                               delivery_doc=doc_id,
-                               )
-            m1.save()
-            list_cplx.append((m1.id, m1.cart_number, cart_type))
-            cart_number += 1
-    
-    if count_items == 1:
-        tmpl_message = 'Расходник %s успешно добавлен.'
-    elif count_items > 1:
-        tmpl_message = 'Расходники %s успешно добавлены.'
-    
-    sign_add_full_to_stock.send(sender=None, list_cplx=list_cplx, request=request)
-
+    return HttpResponse(html)
 
 @check_ajax_auth
 def clear_session(request):
