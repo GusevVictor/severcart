@@ -9,4 +9,5 @@ urlpatterns = [
     url(r'^$', handbook.as_view(), name='handbook'),
     url(r'^view_names/', NamesView.as_view(), name='view_names'),
     url(r'^edit_name/', edit_name, name='edit_name'),
+    url(r'^api/', include('docs.api.urls')),
 ]

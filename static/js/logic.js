@@ -558,4 +558,51 @@ $( function(){
         }    
     });
 
+    $('.del_cart_name').click( function() {
+        var selected = $('.checkboxes input:checked').attr('value');
+        if ( selected ) {
+            var ansver = window.confirm('Вы точно хотите удалить название расходного материала?');
+            if ( ansver ) {
+                // если пользователь ответил Да, то запускаем аякс запрос
+                $.ajax({
+                    method: 'POST',
+                    url: '/docs/api/del_cart_name/',
+                    data:  {'cart_name_id': selected },
+                    beforeSend: function( xhr, settings ){
+                        $('.spinner').css('display', 'inline');
+                        csrftoken = getCookie('csrftoken');
+                        if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
+                            xhr.setRequestHeader('X-CSRFToken', csrftoken);
+                        }
+                    },
+                    success: function( msg ) {
+                        var tr = $('.checkboxes input:checked').parent().parent();
+                        if (msg.error == '1') {
+                            setTimeout(function() { }, 4000);
+                            $('.spinner').hide(); 
+                            $('.success_msg').hide();
+                            $('.error_msg').show();
+                            $('.error_msg').html(msg.text);
+                        }
+
+                        if (msg.error == '0') {
+                            setTimeout(function() { tr.remove(); }, 4000);
+                            $('.spinner').hide();
+                            $('.error_msg').hide();
+                            $('.success_msg').show();
+                            $('.success_msg').html(msg.text);
+                        }
+
+                    },
+                    error: function() {
+                        $('.spinner').hide();
+                        $('.error_msg').show();
+                        setTimeout(function() { $('.error_msg').html('<p>Server not available.</p>'); }, 12000);
+                    },
+                });
+
+            }
+        }
+    });
+
 });
