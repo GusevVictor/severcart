@@ -1,5 +1,5 @@
 from django import forms
-from django.core.exceptions import ValidationError
+#from django.core.exceptions import ValidationError
 from index.models import CartridgeItemName, CartridgeType
 
 class EditName(forms.Form):
@@ -14,15 +14,15 @@ class EditName(forms.Form):
     def clean_cartName(self):
         """Проверят на пустоту введенные данные.
         """
-        if not self.cleaned_data.get('cartName', ''):
-            raise ValidationError('Поле обязательно для заполнения.')
+        if not self.cleaned_data.get('cartName', '').strip():
+            raise forms.ValidationError('Поле обязательно для заполнения.')
         return self.cleaned_data.get('cartName').strip()
 
     def clean_cartType(self):
         """
         """
         if not self.cleaned_data.get('cartType', ''):
-            raise ValidationError('Поле обязательно для заполнения.')
+            raise forms.ValidationError('Поле обязательно для заполнения.')
         return self.cleaned_data.get('cartType')
 
     def clean_comment(self):

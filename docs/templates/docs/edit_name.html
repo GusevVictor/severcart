@@ -6,7 +6,12 @@
 <div class="row">
     <div class="small-6 columns">
         <form method="POST" action="">{% csrf_token %}
-            {{ form.as_p }}
+            {% for field in form %}
+                <div class="marginTop"></div>
+                {{ field.label_tag }}
+                {{ field }}
+                {{ field.errors }}
+            {% endfor %}
             <div class="input_row">
                 <input class="button success" type="submit" value="Сохранить и закрыть" />
                 <a class="button no_follow back" href="">Отменить</a>
