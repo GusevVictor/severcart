@@ -8,7 +8,9 @@ from django.utils.decorators import method_decorator
 from django.contrib import messages
 from django.utils import timezone
 from .models import SCDoc
+from index.models import CartridgeItemName
 from .forms.add_doc import AddDoc
+from .forms.edit_name import EditName
 
 class handbook(TemplateView):
     template_name = 'docs/handbook.html'
@@ -138,3 +140,48 @@ def delivery(request):
         # метод не поддерживается
         pass
     return render(request, 'docs/delivery.html', context)
+
+
+@login_required
+def edit_name(request):
+    """
+    """
+    context = dict()
+    name_id = request.GET.get('id', '')
+    
+    if not name_id:
+        raise Http404
+    try:
+        name_id = int(name_id)
+    except ValueError:
+        name_id = 0
+
+    try:
+        m1 =  CartridgeItemName.objects.get(pk=name_id)
+    except CartridgeItemName.DoesNotExist:
+        raise Http404
+
+    if request.method == 'POST':
+        form = EditName(request.POST)
+        if form.is_valid():
+            data_in_post = form.cleaned_data
+            cartName = data_in_post.get('cartName','')
+            cartType = data_in_post.get('cartType','')
+            comment = data_in_post.get('comment','')
+            # сохраняем изменения в БД
+            m1.cart_itm_name = cartName
+            m1.cart_itm_type = cartType
+            m1.comment       = comment
+            m1.save()
+            return HttpResponseRedirect(reverse('docs:view_names'))
+        else:
+            # если в веденных данных есть ошибка
+            context['form'] = form
+
+    else:
+        # если пользователь перишёл через GET запрос
+        form = EditName(initial={ 'cartName': m1.cart_itm_name, 
+                            'cartType': m1.cart_itm_type, 
+                            'comment': m1.comment })
+        context['form'] = form
+    return render(request, 'docs/edit_name.html', context)

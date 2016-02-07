@@ -1,0 +1,38 @@
+{% extends "index/base.html" %}
+{% load pagination  %}
+{% block title %}Справочники{% endblock %}
+{% block h3 %}Справочники{% endblock %}
+{% block submenu %}
+<div class="row">
+    <div class="large-12 columns">
+        <a class="button success" href="{% url 'add_name' %}?back={% url 'docs:view_names' %}">Добавить</a>
+        <a class="button no_follow edit_cart_name" href="{% url 'docs:edit_name' %}">Редактировать</a>
+        <a class="button no_follow alert" href="#">Удалить</a>
+    </div>
+</div>
+{% endblock %}
+{% block content %}
+<div class="row marginTop">
+    <div class="large-12 columns">
+        <form>
+            <table class="checkboxes">
+                <tr>
+                    <th class="first_checkbox">&nbsp;&nbsp;&nbsp;</th>
+                    <th class="cart_name">Название</th>
+                    <th class="cart_name">Тип</th>
+                    <th>Комментарий</th>
+                </tr>
+                {% for elem in items %}
+                <tr>
+                    <td><input type="radio" value={{ elem.pk }} name="name_id"></td>
+                    <td>{{ elem.cart_itm_name }}</td>
+                    <td>{{ elem.cart_itm_type }}</td>
+                    <td>{{ elem.comment }}</td>
+                </tr>
+                {% endfor %}
+            </table>
+        </form>
+    </div>
+</div>
+{% found_pagination items page_size %}
+{% endblock %}

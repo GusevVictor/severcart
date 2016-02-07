@@ -18,7 +18,7 @@
                 {% csrf_token %}
                 <label class="required" for="{{ form.cartName.id_for_label }}">Название расходника</label>
                 <div class="input_row">
-                    {{ form.cartName }} <a class="dj_button add" href="{% url 'add_name' %}"></a>
+                    {{ form.cartName }} <a class="dj_button add" href="{% url 'add_name' %}?back={% url 'add_items' %}"></a>
                 </div>
                 <div class="form_error_text cart_name_error">Поле обязательно для заполнения</div>
                 

@@ -55,15 +55,6 @@ $( function(){
 
     $('.add_items').click( function(e) {
         /* Выполняем проверку на принадлежность орг. юниту*/
-        /*var user_ou = $('.user_ou').text();
-        if (user_ou.length == 0) {
-            $('.error_msg').css('display', 'block');
-            $('.error_msg').text('Не определена принадлежность пользователя организации!');
-            e.preventDefault(); // отменяем переход по ссылке
-            setTimeout(function() { $('.error_msg').css('display', 'none'); }, 15000);
-        } else {
-            window.location.href = '/add_items/';
-        } */
         var cart_name = $('#id_cartName option:selected').val();
         var docum     = $('#id_doc option:selected').val();        
         var cont      = parseInt($('#id_cartCount').val());        
@@ -152,7 +143,20 @@ $( function(){
             window.location.href = loc;
         }
 
-    }); 
+    });
+
+    $('.edit_cart_name').click(function() {
+        /* Редактируем человекочитаемое имя картриджа и его тип. 
+        */
+        var cbox = $('.checkboxes input:checked');
+        var name_id = cbox.val();
+        if (name_id) {
+            var loc = $(this).attr('href');
+            loc = loc + '?id=' + name_id + '&back=' + window.location.pathname; 
+            window.location.href = loc;
+        }
+    });
+
 
     $('.tr_to_recycle_bin').click( function() {
         var selected = [];

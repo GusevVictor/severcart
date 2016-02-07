@@ -9,5 +9,5 @@ def found_pagination(items_objects, size_perpage):
     Фукция на вход принимает объект Page класса Paginator.
     """
     return {
-        'items': items_objects, 'spp': size_perpage
+        'items': items_objects, 'spp': str(size_perpage)
     }

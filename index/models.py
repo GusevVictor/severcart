@@ -18,6 +18,7 @@ class OrganizationUnits(MPTTModel):
 
 class CartridgeType(models.Model):
     cart_type = models.CharField(max_length=256, verbose_name='Название нового типа')
+    comment = models.TextField('Комментарий', blank=True)
 
     def __str__(self):
         return self.cart_type
@@ -25,6 +26,7 @@ class CartridgeType(models.Model):
 class CartridgeItemName(models.Model):
     cart_itm_name = models.CharField(max_length=256)
     cart_itm_type = models.ForeignKey(CartridgeType)
+    comment = models.TextField('Комментарий', blank=True)
 
     def __str__(self):
         return self.cart_itm_name

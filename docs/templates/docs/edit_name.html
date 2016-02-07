@@ -1,0 +1,17 @@
+{% extends "index/base.html" %}
+{% block title %}Изменение имени{% endblock %}
+{% block h3 %}Изменение имени{% endblock %}
+{% block submenu %}{% endblock %}
+{% block content %}
+<div class="row">
+    <div class="small-6 columns">
+        <form method="POST" action="">{% csrf_token %}
+            {{ form.as_p }}
+            <div class="input_row">
+                <input class="button success" type="submit" value="Сохранить и закрыть" />
+                <a class="button no_follow back" href="">Отменить</a>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}
