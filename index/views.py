@@ -217,15 +217,13 @@ def add_type(request):
         if form_obj.is_valid():
             data_in_post = form_obj.cleaned_data
             cart_type = data_in_post['cart_type']
-            cart_type = cart_type.strip()
-            if CartridgeType.objects.filter(cart_type__iexact=cart_type):
-                # регистронезвисимый поиск.
-                messages.error(request, 'Новый тип "%s" уже существует!' % (cart_type))
-            else:    
-                m1 = CartridgeType(cart_type=cart_type)
-                m1.save()
-                messages.success(request, 'Новый тип "%s" успешно добавлен.' % (cart_type))
+            cart_type = cart_type.strip() 
+            m1 = CartridgeType(cart_type=cart_type)
+            m1.save()
+            messages.success(request, 'Новый тип "%s" успешно добавлен.' % (cart_type))
             return HttpResponseRedirect(request.path)
+        else:
+            form = form_obj
     else:
         form_obj = AddCartridgeType()
     return render(request, 'index/add_type.html', {'form': form_obj})

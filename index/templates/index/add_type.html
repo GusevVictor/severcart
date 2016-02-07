@@ -15,14 +15,19 @@
 </div>
 <div class="row">
     <div class="large-6 columns">
-        <form class="dancon" action="" method="post">
-            {% csrf_token %}
-            {{ form.as_p }}
-            <input type="submit" value="Добавить" class="button success" />
-            &nbsp;&nbsp;&nbsp;&nbsp;
-            <a class="button" href="{% url 'add_name' %}">Отмена</a>
+        <form class="dancon" action="" method="post">{% csrf_token %}
+            {% for field in form %}
+                <div class="marginTop"></div>
+                {{ field.label_tag }}
+                {{ field }}
+                {{ field.errors }}
+            {% endfor %}
+            <div class="marginTop input_row">
+                <input type="submit" value="Добавить" class="button success" />
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                <a class="button" href="{% url 'add_name' %}">Отмена</a>
+            </div>
         </form>
     </div>
 </div>
-
 {% endblock %}
