@@ -113,6 +113,7 @@ class Stock(SeverCartView):
 
 @login_required
 def add_cartridge_name(request):
+    back_url = request.GET.get('back','')
     if request.method == 'POST':
         form_obj = AddCartridgeName(request.POST)
         if form_obj.is_valid():
@@ -126,8 +127,8 @@ def add_cartridge_name(request):
                 # добавляем новый тип расходного материала
                 form_obj.save()
                 messages.success(request, '%s успешно добавлен.' % (cart_name,))
-            return HttpResponseRedirect(request.path)
-
+            base_url = request.path + '?back=' + back_url
+            return HttpResponseRedirect(base_url)
     else:
         form_obj = AddCartridgeName()
     return render(request, 'index/add_name.html', {'form': form_obj})
