@@ -558,16 +558,24 @@ $( function(){
         }    
     });
 
-    $('.del_cart_name').click( function() {
+    $('.del_cart_name, .del_cart_type').click( function() {
         var selected = $('.checkboxes input:checked').attr('value');
+        var css_class = $(this).attr('class');
         if ( selected ) {
-            var ansver = window.confirm('Вы точно хотите удалить название расходного материала?');
+            var ansver = window.confirm('Вы точно хотите удалить?');
             if ( ansver ) {
+                if ( css_class.indexOf('del_cart_name') != -1 ) {
+                    var atype = 'cart_name';
+                }
+
+                if ( css_class.indexOf('del_cart_type') != -1 ) {
+                    var atype = 'cart_type';
+                }
                 // если пользователь ответил Да, то запускаем аякс запрос
                 $.ajax({
                     method: 'POST',
                     url: '/docs/api/del_cart_name/',
-                    data:  {'cart_name_id': selected },
+                    data:  {'cart_name_id': selected , 'atype': atype },
                     beforeSend: function( xhr, settings ){
                         $('.spinner').css('display', 'inline');
                         csrftoken = getCookie('csrftoken');
@@ -604,6 +612,7 @@ $( function(){
             }
         }
     });
+
 
     $('.edit_cart_type').click( function() {
         var selected = $('.checkboxes input:checked').attr('value');

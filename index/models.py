@@ -25,7 +25,7 @@ class CartridgeType(models.Model):
 
 class CartridgeItemName(models.Model):
     cart_itm_name = models.CharField(max_length=256)
-    cart_itm_type = models.ForeignKey(CartridgeType)
+    cart_itm_type = models.ForeignKey(CartridgeType, on_delete=models.PROTECT)
     comment = models.TextField('Комментарий', blank=True)
 
     def __str__(self):
