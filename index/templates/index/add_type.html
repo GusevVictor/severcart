@@ -15,7 +15,7 @@
 </div>
 <div class="row">
     <div class="large-6 columns">
-        <form class="dancon" action="" method="post">{% csrf_token %}
+        <form action="" method="post">{% csrf_token %}
             {% for field in form %}
                 <div class="marginTop"></div>
                 {{ field.label_tag }}
@@ -23,9 +23,13 @@
                 {{ field.errors }}
             {% endfor %}
             <div class="marginTop input_row">
-                <input type="submit" value="Добавить" class="button success" />
-                &nbsp;&nbsp;&nbsp;&nbsp;
-                <a class="button no_follow back" href="#">Отмена</a>
+                {% if cart_type_id %}
+                    <input type="submit" value="Сохранить" class="button success" />
+                {% else %}
+                    <input type="submit" value="Добавить" class="button success" />
+                {% endif %}
+                &nbsp;&nbsp;&nbsp;
+                <a class="button no_follow back" href="#">Вернуться</a>
             </div>
         </form>
     </div>

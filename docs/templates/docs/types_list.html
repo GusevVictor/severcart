@@ -1,0 +1,43 @@
+{% extends "index/base.html" %}{% load staticfiles %}
+{% load pagination  %}
+{% block title %}Справочник типов расходников{% endblock %}
+{% block h3 %}Справочник типов расходников{% endblock %}
+{% block submenu %}
+<div class="row">
+    <div class="large-6 columns">
+        <div class="success_msg"></div>
+        <div class="error_msg"></div>
+    </div>
+</div>
+<div class="row">
+    <div class="large-12 columns">
+        <a class="button success" href="{% url 'add_type' %}?back={% url 'docs:view_types' %}">Добавить</a>
+        <a class="button no_follow edit_cart_type" href="{% url 'add_type' %}">Редактировать</a>
+        <a class="button no_follow alert del_cart_type" href="#">Удалить</a>
+        <img class="spinner" src="{% static 'img/loader.gif' %}" />
+    </div>
+</div>
+{% endblock %}
+{% block content %}
+<div class="row marginTop">
+    <div class="large-12 columns">
+        <form>
+            <table class="checkboxes">
+                <tr>
+                    <th class="first_checkbox">&nbsp;&nbsp;&nbsp;</th>
+                    <th class="cart_type">Тип</th>
+                    <th>Комментарий</th>
+                </tr>
+                {% for elem in items %}
+                <tr>
+                    <td><input type="radio" value={{ elem.pk }} name="name_id"></td>
+                    <td>{{ elem.cart_type }}</td>
+                    <td>{{ elem.comment }}</td>
+                </tr>
+                {% endfor %}
+            </table>
+        </form>
+    </div>
+</div>
+{% found_pagination items page_size %}
+{% endblock %}

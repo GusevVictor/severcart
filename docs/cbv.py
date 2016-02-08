@@ -5,7 +5,7 @@ from django.utils.decorators import method_decorator
 from django.views.generic.base import View
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.shortcuts import render
-from index.models import CartridgeItemName
+from index.models import CartridgeItemName, CartridgeType
 
 class GridNamesView(View):
     """
@@ -44,7 +44,7 @@ class GridNamesView(View):
 
 
 class NamesView(GridNamesView):
-    """
+    """Просмотр списка названий расходных материалов.
     """
     @method_decorator(login_required)
     def dispatch(self, *args, **kwargs):
@@ -56,3 +56,19 @@ class NamesView(GridNamesView):
         self.context['page_size'] = page_size
         self.context['items'] = self.pagination(all_names, page_size)
         return render(request, 'docs/names_list.html', self.context)
+
+
+class TypesView(GridNamesView):
+    """Просмотр списка типов расходных материалов.
+    """
+    @method_decorator(login_required)
+    def dispatch(self, *args, **kwargs):
+        return super(TypesView, self).dispatch(*args, **kwargs)
+
+    def get(self, request,**kwargs):
+        all_names = CartridgeType.objects.all().order_by('pk')
+        page_size = self.items_per_page()
+        self.context['page_size'] = page_size
+        self.context['items'] = self.pagination(all_names, page_size)
+        return render(request, 'docs/types_list.html', self.context)
+

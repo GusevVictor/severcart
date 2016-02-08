@@ -605,4 +605,12 @@ $( function(){
         }
     });
 
+    $('.edit_cart_type').click( function() {
+        var selected = $('.checkboxes input:checked').attr('value');
+        if (!selected) { return; }
+        var move_url = $(this).attr('href');
+        var loc = move_url + '?id=' + selected + '&back=' + window.location.pathname;
+        window.location.href = loc;
+    });
+
 });

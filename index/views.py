@@ -210,24 +210,55 @@ def tree_list(request):
 
 @login_required
 def add_type(request):
+    """Добавление нового типа расходника, а также редактирование существующего
     """
+    back_url = request.GET.get('back', '')
+    cart_type_id = request.GET.get('id', '')
+    if cart_type_id:
+        try:
+            cart_type_id = int(cart_type_id)
+        except ValueError:
+            cart_type_id = 0
+        try:
+            m1 =  CartridgeType.objects.get(pk=cart_type_id)
+        except CartridgeType.DoesNotExist:
+            raise Http404
+        else:
+            form_update = True
+    else:
+        form_update = False
 
-    """
     if request.method == 'POST':
-        form_obj = AddCartridgeType(request.POST)
+        
+        if form_update: 
+            form_obj = AddCartridgeType(request.POST, update=form_update, initial={'cart_type': m1.cart_type, 'comment': m1.comment})
+        else:
+            form_obj = AddCartridgeType(request.POST, update=form_update)
+
         if form_obj.is_valid():
             data_in_post = form_obj.cleaned_data
             cart_type = data_in_post['cart_type']
-            cart_type = cart_type.strip() 
-            m1 = CartridgeType(cart_type=cart_type)
-            m1.save()
-            messages.success(request, 'Новый тип "%s" успешно добавлен.' % (cart_type))
-            return HttpResponseRedirect(request.path)
+            cart_type_comment = data_in_post['comment']
+            if cart_type_id:
+                m1.cart_type=cart_type
+                m1.comment=cart_type_comment
+                m1.save()
+                back_url = request.path + '?id=' + str(cart_type_id) + '&back=' + back_url
+                messages.success(request, '"%s" успешно сохранён.' % (cart_type))
+            else:
+                m1 = CartridgeType(cart_type=cart_type, comment=cart_type_comment)
+                m1.save()
+                back_url = request.path + '?back=' + back_url
+                messages.success(request, 'Новый тип "%s" успешно добавлен.' % (cart_type))
+            return HttpResponseRedirect(back_url)
         else:
             form = form_obj
     else:
-        form_obj = AddCartridgeType()
-    return render(request, 'index/add_type.html', {'form': form_obj})
+        if cart_type_id:
+            form_obj = AddCartridgeType(initial={'cart_type': m1.cart_type, 'comment': m1.comment}, update=form_update)
+        else:
+            form_obj = AddCartridgeType(update=form_update)
+    return render(request, 'index/add_type.html', {'form': form_obj, 'cart_type_id': cart_type_id})
 
 
 @login_required
