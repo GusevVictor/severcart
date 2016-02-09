@@ -1,0 +1,45 @@
+{% extends "index/base.html" %}{% load staticfiles %}
+{% load pagination  %}
+{% block title %}Акты передачи на заправку{% endblock %}
+{% block h3 %}Акты передачи на заправку{% endblock %}
+{% block submenu %}
+<div class="row">
+    <div class="large-6 columns">
+        <div class="success_msg"></div>
+        <div class="error_msg"></div>
+    </div>
+</div>
+{% endblock %}
+{% block content %}
+<div class="row marginTop">
+    <div class="large-12 columns">
+        <form>
+            <table class="checkboxes">
+                <tr>
+                    <th class="first_checkbox">&nbsp;&nbsp;&nbsp;</th>
+                    <th class="cart_name">Дата генерации</th>
+                    <th class="fio">Кто передал</th>
+                    <th>Кому передал</th>
+                    <th class="actions">Действие</th>
+                </tr>
+                {% for elem in docs %}
+                <tr>
+                    <td><input type="radio" value={{ elem.pk }} name="name_id"></td>
+                    <td>{{ elem.date|date:"d.m.Y" }}</td>
+                    <td>{{ elem.user }}</td>
+                    <td>{{ elem.firm }}</td>
+                    <td>
+                        <select class="action" data="{{ elem.pk }}">
+                            <option selected></option>
+                            <option value="docx_with_group">Сформировать с группировкой</option>
+                            <option value="docx_without_group">Сформировать без группировки</option>
+                        </select>
+                    </td>
+                </tr>
+                {% endfor %}
+            </table>
+        </form>
+    </div>
+</div>
+{% found_pagination items page_size %}
+{% endblock %}

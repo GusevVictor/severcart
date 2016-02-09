@@ -11,6 +11,7 @@ from .models import SCDoc
 from index.models import CartridgeItemName
 from .forms.add_doc import AddDoc
 from .forms.edit_name import EditName
+from .cbv import GridNamesView
 
 class handbook(TemplateView):
     template_name = 'docs/handbook.html'
@@ -185,3 +186,18 @@ def edit_name(request):
                             'comment': m1.comment })
         context['form'] = form
     return render(request, 'docs/edit_name.html', context)
+
+
+class ViewSendActs(GridNamesView):
+    """Просмотр списка актов передачи на заправку
+    """
+    @method_decorator(login_required)
+    def dispatch(self, *args, **kwargs):
+        return super(ViewSendActs, self).dispatch(*args, **kwargs)
+
+    def get(self, request, **kwargs):
+        all_acts = SCDoc.objects.filter(doc_type=3).filter(departament=request.user.departament).order_by('pk')
+        page_size = self.items_per_page()
+        self.context['page_size'] = page_size
+        self.context['docs'] = self.pagination(all_acts, page_size)
+        return render(request, 'docs/acts_list.html', self.context)

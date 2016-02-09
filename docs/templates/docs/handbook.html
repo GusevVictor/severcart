@@ -13,7 +13,7 @@
         <p><a href="{% url 'docs:service' %}">Договора на обслуживание</a></p>
         <p><a href="{% url 'docs:delivery' %}">Договора на поставку</a></p>
         <p><a href="#">Акты на списание ?</a></p>
-        <p><a href="#">Акты передачи на заправку ?</a></p>
+        <p><a href="{% url 'docs:view_send_acts' %}">Акты передачи на заправку</a></p>
     </div>
     <div class="small-4 columns">
         <p><a href="{% url 'reports:main_summary' %}">Отчёты</a></p>

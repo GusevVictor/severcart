@@ -647,6 +647,10 @@ table.checkboxes th.cart_name {
     width:106px;
 }
 
+table.checkboxes th.fio {
+    width:250px;
+}
+
 table.checkboxes th.cart_count {
     width:102px;
 }
@@ -716,7 +720,13 @@ th.action_type input {
     margin-right: 6px;
 }
 
-.cartridge_action option {
+select.action {
+    height: auto;
+    display: inline-block;
+    width: auto;
+}
+
+.cartridge_action option, select.action option {
     padding: 5px;
 }
 
