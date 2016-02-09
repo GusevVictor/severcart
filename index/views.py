@@ -726,13 +726,15 @@ def transfer_to_firm(request):
                     act_number = str(timezone.now().year) + '/' + str(act_docs)
                 else:
                     act_number = str(timezone.now().year) + '/1'
+
                 act_doc = SCDoc(number=act_number,
                                 date=timezone.now(),
                                 firm=select_firm,
                                 title='Act',
                                 short_cont=jsoning_list,
                                 departament=request.user.departament,
-                                doc_type=3)
+                                doc_type=3,
+                                user=str(request.user.fio),)
                 act_doc.save()
 
             for inx in tmp:
