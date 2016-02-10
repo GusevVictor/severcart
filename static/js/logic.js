@@ -408,7 +408,7 @@ $( function(){
     
     });
 
-    /* Действие над строкой в таблице (редактирование, просмотр) */
+    /* Действие над строкой в таблице с картриджами (редактирование, просмотр) */
     $('.cartridge_action').each( function() {
         var mainSelect = $(this);
         mainSelect.bind('change', function() {
@@ -430,6 +430,49 @@ $( function(){
             }
         });
     });
+
+    /*  Действия для генерации docx файлов актов  */
+    $('.docx_action').each( function() {
+        var mainSelect = $(this);
+        mainSelect.bind('change', function() {
+            var doc_id = mainSelect.attr('data');
+            var doc_action = mainSelect.children(':selected').attr('value');
+            if (doc_action) {
+                var win = window.open('', '_blank');
+                $.ajax({
+                    method: 'POST',
+                    url: '/docs/api/generate_act/',
+                    data:  {'doc_id': doc_id, 'doc_action': doc_action },
+                    beforeSend: function( xhr, settings ){
+                        $('.spinner').show();
+                        csrftoken = getCookie('csrftoken');
+                        if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
+                            xhr.setRequestHeader('X-CSRFToken', csrftoken);
+                        }
+                    },
+                    success: function( msg ) {
+                        if (msg.error == '0') {
+                            setTimeout(function() { }, 4000);
+                            $('.spinner').hide(); 
+                            $('.error_msg').hide();
+                            $('.success_msg').show();
+                            $('.success_msg').html(msg.text);
+                            win.location.href = msg.url;
+                            win.focus();
+                            setTimeout(function() { $('.success_msg').hide(); }, 12000);
+                        } 
+
+                    },
+                    error: function() {
+                        $('.spinner').hide();
+                        $('.error_msg').show();
+                        setTimeout(function() { $('.error_msg').html('<p>Server not available.</p>'); }, 12000);
+                    },
+                });
+            }
+        });
+    });
+
 
     $('.events_see_more').click( function( event ) {
         event.preventDefault();

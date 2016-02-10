@@ -723,9 +723,9 @@ def transfer_to_firm(request):
                 act_docs = SCDoc.objects.filter(departament=request.user.departament).filter(doc_type=3).count()
                 if act_docs:
                     act_docs   = act_docs + 1
-                    act_number = str(timezone.now().year) + '/' + str(act_docs)
+                    act_number = str(timezone.now().year) + '_' + str(act_docs)
                 else:
-                    act_number = str(timezone.now().year) + '/1'
+                    act_number = str(timezone.now().year) + '_1'
 
                 act_doc = SCDoc(number=act_number,
                                 date=timezone.now(),

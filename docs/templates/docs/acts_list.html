@@ -17,22 +17,24 @@
             <table class="checkboxes">
                 <tr>
                     <th class="first_checkbox">&nbsp;&nbsp;&nbsp;</th>
-                    <th class="cart_name">Дата генерации</th>
+                    <th>Внутренний номер</th>
+                    <th class="cart_name">Дата передачи</th>
                     <th class="fio">Кто передал</th>
                     <th>Кому передал</th>
-                    <th class="actions">Действие</th>
+                    <th class="actions">Действие <img class="spinner" src="{% static 'img/loader.gif' %}" /></th>
                 </tr>
                 {% for elem in docs %}
                 <tr>
                     <td><input type="radio" value={{ elem.pk }} name="name_id"></td>
+                    <td>{{ elem.number }}</td>
                     <td>{{ elem.date|date:"d.m.Y" }}</td>
                     <td>{{ elem.user }}</td>
                     <td>{{ elem.firm }}</td>
                     <td>
-                        <select class="action" data="{{ elem.pk }}">
+                        <select class="action docx_action" data="{{ elem.pk }}">
                             <option selected></option>
-                            <option value="docx_with_group">Сформировать с группировкой</option>
-                            <option value="docx_without_group">Сформировать без группировки</option>
+                            <option value="docx_with_group" data="{{ elem.pk }}">Сформировать docx с группировкой</option>
+                            <option value="docx_without_group" data="{{ elem.pk }}">Сформировать docx без группировки</option>
                         </select>
                     </td>
                 </tr>

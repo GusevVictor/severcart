@@ -2,6 +2,7 @@
 
 import operator
 import logging
+from django.conf import settings
 
 def group_names(any_list=None):
     """Принимает список наменований и номеров в формате [[1, 'CE505A'], [2, 'CE505A'], [3, 'CE505A'], [6, 'Q7553A'], [7, 'Q7553A'], ]
@@ -29,6 +30,7 @@ def group_names(any_list=None):
     # генерируем список, отсортированный по возврастанию количества
     result = sorted(result.items(), key=operator.itemgetter(1))
     return result
+
 
 if __name__ == '__main__':
     """Simple unit test ;)
