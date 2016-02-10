@@ -3,7 +3,6 @@
 from django.db import models
 from mptt.models import MPTTModel, TreeForeignKey
 from django.contrib.auth.models import User
-#from docs.models import SCDoc
 
 
 class OrganizationUnits(MPTTModel):
@@ -16,12 +15,14 @@ class OrganizationUnits(MPTTModel):
     def __str__(self):
         return self.name
 
+
 class CartridgeType(models.Model):
     cart_type = models.CharField(max_length=256, verbose_name='Название нового типа')
     comment = models.TextField('Комментарий', blank=True)
 
     def __str__(self):
         return self.cart_type
+
 
 class CartridgeItemName(models.Model):
     cart_itm_name = models.CharField(max_length=256)

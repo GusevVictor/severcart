@@ -1,3 +1,5 @@
+# -*- coding:utf-8 -*-
+
 from django import forms
 from accounts.models import AnconUser
 from index.models import OrganizationUnits

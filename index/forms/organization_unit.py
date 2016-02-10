@@ -1,8 +1,7 @@
+# -*- coding:utf-8 -*-
+
 from django import forms
 from .models import Category
-
-
-
 
 class AddItems(forms.Form):
     cart_name = forms.CharField(label='Название расходника', max_length=256)
