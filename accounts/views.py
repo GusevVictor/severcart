@@ -69,9 +69,9 @@ def edit_user(request):
         
         username = user_object.username
         try:
-            department = user_object.department
+            departament = user_object.departament
         except AttributeError:
-            department = ''    
+            departament = ''    
         
         try:
             fio = user_object.fio
@@ -80,7 +80,7 @@ def edit_user(request):
 
         is_admin = user_object.is_admin
         form = RegistrationForm(initial = {'username': username,
-                                           'department': department,
+                                           'departament': departament,
                                            'fio': fio,
                                            'is_admin': is_admin,
                                           })
