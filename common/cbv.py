@@ -7,6 +7,9 @@ from django.views.generic.base import View
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from index.models import CartridgeItem
 
+import logging
+logger = logging.getLogger('simp')
+
 class GridListView(View):
     """Используется для показа списка документов.
     """
@@ -43,15 +46,27 @@ class GridListView(View):
 class CartridgesView(GridListView):
     """Базовый класс для показа списка картриджей.
     """
-    context = dict()
-
+    
     @method_decorator(login_required)
     def dispatch(self, *args, **kwargs):
+        self.request = args[0]
         return super(CartridgesView, self).dispatch(*args, **kwargs)
 
     def sort_columns(self):
         """Сортировка данных на основе выбранного стобца.
         """
+        #отслеживаем случай когда пользователь ушел на другой url и нужно
+        # сбросить настроки сортировок.
+        self.context = dict()
+        # при переходе на новую страницу, сбрасываем сортировки
+        if self.request.session.get('back', ''):
+            if self.request.META['PATH_INFO'] != self.request.session['back']:
+                self.request.session['sort'] = None
+                self.request.session['back'] = self.request.META['PATH_INFO']
+        else:
+            # инициализация при первом заходе
+            self.request.session['back'] = self.request.META['PATH_INFO']
+        
         select_action = self.request.GET.get('action', '')
         if select_action == 'number':
             self.context['select_number'] = True
@@ -72,7 +87,7 @@ class CartridgesView(GridListView):
                 self.context['type_triangle'] = '▲'
 
         elif select_action == 'recovery':
-            self.context['select_count']  = True
+            self.context['select_count']       = True
             if self.request.session.get('sort') == 'cart_number_refills':
                 self.request.session['sort'] = '-cart_number_refills'
                 self.context['count_triangle'] = '▼'
@@ -100,7 +115,7 @@ class CartridgesView(GridListView):
         else:
             # переходим в веточку если пользователь не выбирал сортировок
             # дальнейшие преобразования производим на основе предыдущих действий, если они были
-            sort_order = self.request.session.get('sort')
+            sort_order = self.request.session.get('sort', '')
             if sort_order == 'cart_number' or sort_order == '-cart_number':
                 self.context['select_number'] = True
                 self.context['number_triangle'] = '▲' if sort_order == 'cart_number' else '▼'
@@ -120,7 +135,7 @@ class CartridgesView(GridListView):
                 # по умолчанию будем сортивать по id в порядке возрастания номеров
                 self.context['select_number'] = True
                 self.request.session['sort'] = 'cart_number'
-                self.context['number_triangle'] = '▲' if sort_order == 'cart_number' else '▼'
+                self.context['number_triangle'] = '▲'
 
     def search_num(self):
         """Работаем с поисковой формой по номеру картриджа
@@ -140,5 +155,5 @@ class CartridgesView(GridListView):
     def get(self, *args, **kwargs):
         """Избавляем себя от дублирований.
         """
-        self.search_num()
         self.sort_columns()
+        self.search_num()
