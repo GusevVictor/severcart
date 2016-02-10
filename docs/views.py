@@ -11,7 +11,7 @@ from .models import SCDoc
 from index.models import CartridgeItemName
 from .forms.add_doc import AddDoc
 from .forms.edit_name import EditName
-from .cbv import GridNamesView
+from common.cbv import GridListView
 
 class handbook(TemplateView):
     template_name = 'docs/handbook.html'
@@ -188,7 +188,7 @@ def edit_name(request):
     return render(request, 'docs/edit_name.html', context)
 
 
-class ViewSendActs(GridNamesView):
+class ViewSendActs(GridListView):
     """Просмотр списка актов передачи на заправку
     """
     @method_decorator(login_required)

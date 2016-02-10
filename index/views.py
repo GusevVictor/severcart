@@ -13,7 +13,7 @@ from django.utils.decorators import method_decorator
 from django.contrib.sessions.models import Session
 from django.db.models import Q
 from django.template.loader import render_to_string
-from .cbv import SeverCartView
+from common.cbv import CartridgesView
 from .forms.add_cartridge_name import AddCartridgeName
 from .forms.add_items import AddItems
 from .forms.add_city import CityF
@@ -93,22 +93,20 @@ def dashboard(request):
     return render(request, 'index/dashboard.html', context)
 
 
-class Stock(SeverCartView):
+class Stock(CartridgesView):
+    """Списки заправленных, новых картриджей на складе
     """
-    """
-    template_name = 'index/stock.html'
-
     @method_decorator(login_required)
     def dispatch(self, *args, **kwargs):
         return super(Stock, self).dispatch(*args, **kwargs)
 
-    def get_context_data(self, **kwargs):
-        context = super(Stock, self).get_context_data(**kwargs)
-        self.all_items = self.all_items.filter(Q(cart_status=1) & Q(departament=self.request.user.departament))
-        cartridjes = sc_paginator(self.all_items, self.request, self.size_perpage)
-        context['size_perpage'] = str(self.size_perpage)
-        context['cartrjs'] = cartridjes
-        return context
+    def get(self, request, *args, **kwargs):
+        super(Stock, self).get(*args, **kwargs)
+        self.all_items = self.all_items.filter(cart_status=1).filter(departament=self.request.user.departament)
+        page_size = self.items_per_page()
+        self.context['size_perpage'] = page_size
+        self.context['cartrjs'] = self.pagination(self.all_items, page_size)
+        return render(request, 'index/stock.html', self.context)
 
 
 @login_required
@@ -338,60 +336,48 @@ def transfer_to_stock(request):
     return render(request, 'index/transfer_for_stock.html', {'checked_cartr': checked_cartr})
 
 
-class Use(SeverCartView):
-    """Задействованные расходники.
+class Use(CartridgesView):
+    """Списки заправленных, новых картриджей на складе
     """
-    template_name = 'index/use.html'
-
     @method_decorator(login_required)
     def dispatch(self, *args, **kwargs):
         return super(Use, self).dispatch(*args, **kwargs)
 
-    def get_queryset(self):
-        return
-
-    def get_context_data(self, **kwargs):
+    def get(self, request, *args, **kwargs):
+        super(Use, self).get(*args, **kwargs)
         try:
             root_ou   = self.request.user.departament
             children  = root_ou.get_children()
         except AttributeError:
             children = ''
         
-        context = super(Use, self).get_context_data(**kwargs)
         self.all_items = self.all_items.filter(departament__in=children).filter(cart_status=2)
-        if children:
-            context['children'] = str(children[0])
-        else:
-            context['children'] = ''
-        cartridjes = sc_paginator(self.all_items, self.request, self.size_perpage)
-        context['cartrjs'] = cartridjes
-        context['size_perpage'] = str(self.size_perpage)
-        return context
+        page_size = self.items_per_page()
+        self.context['size_perpage'] = page_size
+        self.context['cartrjs'] = self.pagination(self.all_items, page_size)
+        return render(request, 'index/use.html', self.context)
 
 
-class Empty(SeverCartView):
-    """Список пустых картриджей.
+class Empty(CartridgesView):
+    """Списки заправленных, новых картриджей на складе
     """
-    template_name = 'index/empty.html'
-
     @method_decorator(login_required)
     def dispatch(self, *args, **kwargs):
         return super(Empty, self).dispatch(*args, **kwargs)
 
-    def get_context_data(self, **kwargs):
-        context = super(Empty, self).get_context_data(**kwargs)
+    def get(self, request, *args, **kwargs):
+        super(Empty, self).get(*args, **kwargs)
         root_ou = self.request.user.departament
         self.all_items = self.all_items.filter( Q(departament=root_ou) & Q(cart_status=3) )
-        cartridjes = sc_paginator(self.all_items, self.request, self.size_perpage)
-        context['size_perpage'] = str(self.size_perpage)
-        context['cartrjs'] = cartridjes
-        return context
+        page_size = self.items_per_page()
+        self.context['size_perpage'] = page_size
+        self.context['cartrjs'] = self.pagination(self.all_items, page_size)
+        return render(request, 'index/empty.html', self.context)
 
 
 @login_required
 def toner_refill(request):
     """
-
     """
 
     city_id = request.GET.get('city', '')
@@ -563,41 +549,36 @@ def manage_users(request):
     return render(request, 'index/manage_users.html', {'urs': usr})
 
 
-class At_work(SeverCartView):
+class At_work(CartridgesView):
     """Список картриджей находящихся на заправке.
     """
-    template_name = 'index/at_work.html'
-
     @method_decorator(login_required)
     def dispatch(self, *args, **kwargs):
         return super(At_work, self).dispatch(*args, **kwargs)
 
-    def get_context_data(self, **kwargs):
-        context = super(At_work, self).get_context_data(**kwargs)
+    def get(self, request, *args, **kwargs):
+        super(At_work, self).get(*args, **kwargs)
         self.all_items = self.all_items.filter(Q(cart_status=4) & Q(departament=self.request.user.departament))
-        cartridjes = sc_paginator(self.all_items, self.request, self.size_perpage)
-        context['size_perpage'] = str(self.size_perpage)
-        context['cartrjs'] = cartridjes
-        return context
+        page_size = self.items_per_page()
+        self.context['size_perpage'] = page_size
+        self.context['cartrjs'] = self.pagination(self.all_items, page_size)
+        return render(request, 'index/at_work.html', self.context)
 
 
-
-class Basket(SeverCartView):
+class Basket(CartridgesView):
     """Список картриджей на выброс.
     """
-    template_name = 'index/basket.html'
-    
     @method_decorator(login_required)
     def dispatch(self, *args, **kwargs):
         return super(Basket, self).dispatch(*args, **kwargs)
 
-    def get_context_data(self, **kwargs):
-        context = super(Basket, self).get_context_data(**kwargs)
+    def get(self, request, *args, **kwargs):
+        super(Basket, self).get(*args, **kwargs)
         self.all_items = self.all_items.filter( (Q(cart_status=5) | Q(cart_status=6)) & Q(departament=self.request.user.departament) )
-        cartridjes = sc_paginator(self.all_items, self.request, self.size_perpage)
-        context['size_perpage'] = str(self.size_perpage)
-        context['cartrjs'] = cartridjes
-        return context
+        page_size = self.items_per_page()
+        self.context['size_perpage'] = page_size
+        self.context['cartrjs'] = self.pagination(self.all_items, page_size)
+        return render(request, 'index/basket.html', self.context)
 
 
 @login_required
