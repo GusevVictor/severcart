@@ -139,7 +139,7 @@ $( function(){
 
         if ( selected.length !== 0 ) {
             var get_path = selected.join('s')
-            var loc = '/transfe_for_use/?select=' + get_path;
+            var loc = '/transfe_for_use/?select=' + get_path + '&back=' + window.location.pathname;
             window.location.href = loc;
         }
 

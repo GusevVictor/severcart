@@ -15,6 +15,7 @@ class GridListView(View):
     """
     @method_decorator(login_required)
     def dispatch(self, *args, **kwargs):
+        self.context = dict()
         return super(GridListView, self).dispatch(*args, **kwargs)
 
     def pagination(self, all_items, size_perpage):
@@ -57,7 +58,6 @@ class CartridgesView(GridListView):
         """
         #отслеживаем случай когда пользователь ушел на другой url и нужно
         # сбросить настроки сортировок.
-        self.context = dict()
         # при переходе на новую страницу, сбрасываем сортировки
         if self.request.session.get('back', ''):
             if self.request.META['PATH_INFO'] != self.request.session['back']:
