@@ -1,3 +1,5 @@
+# -*- coding:utf-8 -*-
+
 """
 Django settings for Severcart project.
 
@@ -82,14 +84,13 @@ WSGI_APPLICATION = 'newskald_ru.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'SKLAD3',
-        'USER': 'zavhoz',
-        'PASSWORD': 'zavhoz',
-        'HOST': '127.0.0.1',
-        'PORT': '5432',
+        'NAME': os.getenv('DB_NAME'),
+        'USER': os.getenv('DB_USER'),
+        'PASSWORD': os.getenv('DB_PASSWD'),
+        'HOST': os.getenv('DB_HOST'),
+        'PORT': os.getenv('DB_PORT'),
     }
 }
-
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.8/topics/i18n/
@@ -195,8 +196,4 @@ MAX_EVENT_LIST = 16
 MAX_TABLE_ROWS_FIRST_PAGE = 14 # должен резервировать место для шапки акта
 
 MAX_TABLE_ROWS = 20
-
-
-
-
 
