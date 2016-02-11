@@ -4,10 +4,10 @@
 {% load staticfiles %}
 {% load docsf %}
 {% block jqueryui%}
-<link rel="stylesheet" href="{% static 'css/jquery-ui.css' %}" />
-<script src="{% static 'js/jquery-ui.js' %}"></script>
-<script src="{% static 'js/datepicker.js' %}"></script>
-<script src="{% static 'js/datepicker-ru.js' %}"></script>
+<link rel="stylesheet" href="{{ STATIC_URL }}css/jquery-ui.css" />
+<script src="{{ STATIC_URL }}js/jquery-ui.js"></script>
+<script src="{{ STATIC_URL }}js/datepicker.js"></script>
+<script src="{{ STATIC_URL }}js/datepicker-ru.js"></script>
 {% endblock %}
 {% block submenu %}
 {% if not not_show_form %}

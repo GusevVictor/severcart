@@ -38,7 +38,7 @@
                     &nbsp;&nbsp;&nbsp;
                     <a href="{% url 'stock' %}" class="button"/>Отменить</a>&nbsp;&nbsp;&nbsp;
                     <a href="#" class="clear_session button no_follow"/>Очистить сессию</a>
-                    <img class="spinner" src="{% static 'img/loader.gif' %}" />
+                    <img class="spinner" src="{{ STATIC_URL }}img/loader.gif" />
                 </div>
             </form>
         </div>

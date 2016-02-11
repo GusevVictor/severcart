@@ -2,9 +2,9 @@
 {% block title %}Поиск залежавшихся расходников{% endblock %}
 {% block h3 %}Поиск залежавшихся расходников{% endblock %}
 {% block jqueryui%}
-<link rel="stylesheet" href="{% static 'css/jquery.powertip-dark.min.css' %}" />
-<script src="{% static 'js/jquery.powertip.min.js' %}"></script>
-<script src="{% static 'js/activate.powertip.js' %}"></script>
+<link rel="stylesheet" href="{{ STATIC_URL }}css/jquery.powertip-dark.min.css" />
+<script src="{{ STATIC_URL }}js/jquery.powertip.min.js"></script>
+<script src="{{ STATIC_URL }}js/activate.powertip.js"></script>
 {% endblock %}
 {% block content %}
 <div class="row">

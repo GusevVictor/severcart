@@ -8,27 +8,27 @@
         <table class="dashboard">
             <tbody>
             <tr>
-                <td class="pic"><img src="{% static 'img/dashboard/stock.png' %}" /></td>
+                <td class="pic"><img src="{{ STATIC_URL }}img/dashboard/stock.png" /></td>
                 <td>Количество на складе(пригодных к использованию)</td>
                 <td class="quad">{{ full_on_stock }}</td>
             </tr>
             <tr>
-                <td class="pic"><img src="{% static 'img/dashboard/uses.png' %}" /></td>
+                <td class="pic"><img src="{{ STATIC_URL }}img/dashboard/uses.png" /></td>
                 <td>Количество задействованных</td>
                 <td class="quad">{{ uses }}</td>
             </tr>
             <tr>
-                <td class="pic"><img src="{% static 'img/dashboard/empty.png' %}" /></td>
+                <td class="pic"><img src="{{ STATIC_URL }}img/dashboard/empty.png" /></td>
                 <td>Количество на складе (пустые, готовые к перезаправке)</td>
                 <td class="quad">{{ empty_on_stock }}</td>
             </tr>
             <tr>
-                <td class="pic"><img src="{% static 'img/dashboard/filled.png' %}" /></td>
+                <td class="pic"><img src="{{ STATIC_URL }}img/dashboard/filled.png" /></td>
                 <td>Сейчас заправляется</td>
                 <td class="quad">{{ filled }}</td>
             </tr>
             <tr>
-                <td class="pic"><img src="{% static 'img/dashboard/rbin.png' %}" /></td>
+                <td class="pic"><img src="{{ STATIC_URL }}img/dashboard/rbin.png" /></td>
                 <td>В корзине</td>
                 <td class="quad">{{ recycler_bin }}</td>
             </tr>

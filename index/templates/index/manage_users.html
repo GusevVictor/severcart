@@ -1,9 +1,9 @@
 {% extends "index/base.html" %}
 {% load staticfiles %}
 {% block jqueryui%}
-    <link rel="stylesheet" href="{% static 'css/jquery-ui.css' %}" />
-    <script src="{% static 'js/jquery-ui.js' %}"></script>
-    <script src="{% static 'js/dialog.js' %}"></script>
+    <link rel="stylesheet" href="{{ STATIC_URL }}css/jquery-ui.css" />
+    <script src="{{ STATIC_URL }}js/jquery-ui.js"></script>
+    <script src="{{ STATIC_URL }}js/dialog.js"></script>
 {% endblock %}
 {% block title %}Управление пользователями{% endblock %}
 {% block h3 %}Управление пользователями{% endblock %}
@@ -63,6 +63,6 @@
         <p><span class="ui-icon ui-icon-alert" style="float:left; margin:0 7px 20px 0;"></span>
         Вы уверены, что хотите удалить пользовател<span class="chislo"></span> <b></b>?
         </p>
-        <div><img class="spinner" src="{% static 'img/loader.gif' %}" /></div>
+        <div><img class="spinner" src="{{ STATIC_URL }}img/loader.gif" /></div>
     </div>
 {% endblock %}

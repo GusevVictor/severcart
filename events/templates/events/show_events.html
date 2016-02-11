@@ -3,10 +3,10 @@
 {% block title %}Просмотр событий{% endblock %}
 {% load staticfiles %}
 {% block jqueryui%}
-<link rel="stylesheet" href="{% static 'css/jquery-ui.css' %}" />
-<script src="{% static 'js/jquery-ui.js' %}"></script>
-<script src="{% static 'js/datepicker.js' %}"></script>
-<script src="{% static 'js/datepicker-ru.js' %}"></script>
+<link rel="stylesheet" href="{{ STATIC_URL }}css/jquery-ui.css" />
+<script src="{{ STATIC_URL }}js/jquery-ui.js"></script>
+<script src="{{ STATIC_URL }}js/datepicker.js"></script>
+<script src="{{ STATIC_URL }}js/datepicker-ru.js"></script>
 {% endblock %}
 {% block content %} 
 <div class="row">
@@ -42,7 +42,7 @@
     {% if count_events > max_count_events %}
         <div class="row">
             <div class="large-12 columns">
-                <div class="text-center"><a next_page="{{ next_page }}" class="events_see_more button" href="">Показать ещё...</a><img class="spinner" src="{% static 'img/loader.gif' %}" /></div>
+                <div class="text-center"><a next_page="{{ next_page }}" class="events_see_more button" href="">Показать ещё...</a><img class="spinner" src="{{ STATIC_URL }}img/loader.gif" /></div>
             </div>
         </div>
     {% endif %}

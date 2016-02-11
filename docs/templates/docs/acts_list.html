@@ -21,7 +21,7 @@
                     <th class="cart_name">Дата передачи</th>
                     <th class="fio">Кто передал</th>
                     <th>Кому передал</th>
-                    <th class="actions">Действие <img class="spinner" src="{% static 'img/loader.gif' %}" /></th>
+                    <th class="actions">Действие <img class="spinner" src="{{ STATIC_URL }}img/loader.gif" /></th>
                 </tr>
                 {% for elem in docs %}
                 <tr>

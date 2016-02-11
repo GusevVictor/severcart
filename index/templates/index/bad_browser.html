@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="UTF-8" />
-<link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}" />
+<link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/style.css" />
 <title>Обновите браузер!</title>
 </head>
 <body>
@@ -12,31 +12,31 @@
     <div class="brow_list">
         <div class="bl">
             <div class="pic">
-                <a href="http://www.google.com/chrome"><img src="{% static 'img/brow/chrome.png' %}"/></a>
+                <a href="http://www.google.com/chrome"><img src="{{ STATIC_URL }}img/brow/chrome.png"/></a>
             </div>
             <p><a href="http://www.google.com/chrome">Google Chrome</a></p>
         </div><!--
      --><div class="bl">
             <div class="pic">
-                <a href="http://www.mozilla.org/firefox"><img src="{% static 'img/brow/firefox.png' %}"/></a>
+                <a href="http://www.mozilla.org/firefox"><img src="{{ STATIC_URL }}img/brow/firefox.png"/></a>
             </div>
             <p><a href="http://www.mozilla.org/firefox">Mozilla Firefox</a></p>
         </div><!--
      --><div class="bl">
             <div class="pic">
-                <a href="http://windows.microsoft.com/en-US/internet-explorer/downloads/ie"><img src="{% static 'img/brow/ie.png' %}"/></a>
+                <a href="http://windows.microsoft.com/en-US/internet-explorer/downloads/ie"><img src="{{ STATIC_URL }}img/brow/ie.png"/></a>
             </div>
             <p><a href="http://windows.microsoft.com/en-US/internet-explorer/downloads/ie">Internet Explorer</a></p>
         </div><!--
      --><div class="bl">
             <div class="pic">
-                <a href="http://www.opera.com/download"><img src="{% static 'img/brow/opera.png' %}"/></a>
+                <a href="http://www.opera.com/download"><img src="{{ STATIC_URL }}img/brow/opera.png"/></a>
             </div>
             <p><a href="http://www.opera.com/download">Opera</a></p>
         </div><!--
      --><div class="bl">
             <div class="pic">
-                <a href="http://www.apple.com/safari/download"><img src="{% static 'img/brow/safari.png' %}"/></a>
+                <a href="http://www.apple.com/safari/download"><img src="{{ STATIC_URL }}img/brow/safari.png"/></a>
             </div>
             <p><a href="http://www.apple.com/safari/download">Apple Safari</a></p>
         </div>
