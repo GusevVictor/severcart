@@ -1,3 +1,5 @@
+# -*- coding:utf-8 -*-
+
 import datetime
 from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect, Http404

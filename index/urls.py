@@ -1,3 +1,5 @@
+# -*- coding:utf-8 -*-
+
 from django.conf.urls import url
 from index.views import dashboard
 from index.views import Stock
