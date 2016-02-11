@@ -11,8 +11,8 @@ p2 = input('Enter password again: ')
 
 
 if p1 == p2:
-	user.set_password('root')
-	user.save()
-	print('User admin create.')
+    user.set_password(p1)
+    user.save()
+    print('User admin create.')
 else:
-	print('User not created. Passwords not equal.')
+    print('User not created. Passwords not equal.')
