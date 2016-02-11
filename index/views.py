@@ -139,7 +139,7 @@ def add_cartridge_item(request):
     """
     from docs.models import SCDoc
     form_obj = AddItems()
-    form_obj.fields['doc'].queryset = SCDoc.objects.filter(departament=request.user.departament)
+    form_obj.fields['doc'].queryset = SCDoc.objects.filter(departament=request.user.departament).filter(doc_type=1)
     session_data = request.session.get('cumulative_list')
     if not session_data:
         # если в сессии нужные данные отсутствуют, то сразу рендерим форму
@@ -151,8 +151,6 @@ def add_cartridge_item(request):
     for elem in list_names:
         simple_cache[elem.pk] = elem.cart_itm_name
     list_items = list()
-    #try:
-    #    str(SCDoc.objects.get(pk=elem[1]))
     for elem in session_data:
         try:
            title = str(SCDoc.objects.get(pk=elem[1]))
