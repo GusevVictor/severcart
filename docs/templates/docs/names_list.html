@@ -11,7 +11,7 @@
 </div>
 <div class="row">
     <div class="large-12 columns">
-        <a class="button success" href="{% url 'add_name' %}?back={% url 'docs:view_names' %}">Добавить</a>
+        <a class="button success" href="{% url 'add_name' %}">Добавить</a>
         <a class="button no_follow edit_cart_name" href="{% url 'docs:edit_name' %}">Редактировать</a>
         <a class="button no_follow alert del_cart_name" href="#">Удалить</a>
         <img class="spinner" src="{{ STATIC_URL }}img/loader.gif" />

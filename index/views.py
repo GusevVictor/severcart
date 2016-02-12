@@ -14,6 +14,7 @@ from django.contrib.sessions.models import Session
 from django.db.models import Q
 from django.template.loader import render_to_string
 from common.cbv import CartridgesView
+from common.helpers import BreadcrumbsPath
 from .forms.add_cartridge_name import AddCartridgeName
 from .forms.add_items import AddItems
 from .forms.add_city import CityF
@@ -111,7 +112,8 @@ class Stock(CartridgesView):
 
 @login_required
 def add_cartridge_name(request):
-    back_url = request.GET.get('back','')
+    back = BreadcrumbsPath(request).before_page(request)
+    print('back=', back)
     if request.method == 'POST':
         form_obj = AddCartridgeName(request.POST)
         if form_obj.is_valid():
@@ -129,7 +131,7 @@ def add_cartridge_name(request):
             return HttpResponseRedirect(base_url)
     else:
         form_obj = AddCartridgeName()
-    return render(request, 'index/add_name.html', {'form': form_obj})
+    return render(request, 'index/add_name.html', {'form': form_obj, 'back': back})
 
 
 @login_required
@@ -137,13 +139,14 @@ def add_cartridge_item(request):
     """Обработку данных формы производим в ajax_add_session_items. Здесь 
        отображаем заполненную форму.
     """
+    back = BreadcrumbsPath(request).before_page(request)
     from docs.models import SCDoc
     form_obj = AddItems()
     form_obj.fields['doc'].queryset = SCDoc.objects.filter(departament=request.user.departament).filter(doc_type=1)
     session_data = request.session.get('cumulative_list')
     if not session_data:
         # если в сессии нужные данные отсутствуют, то сразу рендерим форму
-        return render(request, 'index/add_items.html', {'form': form_obj, 'session': ''})    
+        return render(request, 'index/add_items.html', {'form': form_obj, 'session': '', 'back': back})    
     
     session_data = json.loads(session_data)
     simple_cache = dict()
@@ -161,7 +164,7 @@ def add_cartridge_item(request):
                            'title': title})
 
     html = render_to_string('index/add_over_ajax.html', context={'list_items': list_items})
-    return render(request, 'index/add_items.html', {'form': form_obj, 'session': html})
+    return render(request, 'index/add_items.html', {'form': form_obj, 'session': html, 'back': back})
 
 
 @login_required
@@ -208,7 +211,7 @@ def tree_list(request):
 def add_type(request):
     """Добавление нового типа расходника, а также редактирование существующего
     """
-    back_url = request.GET.get('back', '')
+    back = BreadcrumbsPath(request).before_page(request)
     cart_type_id = request.GET.get('id', '')
     if cart_type_id:
         try:
@@ -254,7 +257,7 @@ def add_type(request):
             form_obj = AddCartridgeType(initial={'cart_type': m1.cart_type, 'comment': m1.comment}, update=form_update)
         else:
             form_obj = AddCartridgeType(update=form_update)
-    return render(request, 'index/add_type.html', {'form': form_obj, 'cart_type_id': cart_type_id})
+    return render(request, 'index/add_type.html', {'form': form_obj, 'cart_type_id': cart_type_id, 'back': back})
 
 
 @login_required

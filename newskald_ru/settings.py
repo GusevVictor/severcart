@@ -24,7 +24,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '^g$4c6-__#353*u_t9iovxd5g#)i$0o=bv5-ku+v=7#3ku*m%#'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
@@ -38,6 +38,7 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'debug_toolbar',
     'index',
     'mptt',
     'accounts',
@@ -109,13 +110,20 @@ USE_TZ = False
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.8/howto/static-files/
 #STATIC_ROOT = os.path.join(BASE_DIR, 'static')
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+
+if DEBUG:
+    STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
+
+
+if not DEBUG:
+    STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 STATIC_URL = '/static/'
 
-STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
+#STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
 
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+if not DEBUG:
+    MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 MEDIA_URL = '/media/'
 
@@ -197,4 +205,7 @@ MAX_EVENT_LIST = 16
 MAX_TABLE_ROWS_FIRST_PAGE = 14 # должен резервировать место для шапки акта
 
 MAX_TABLE_ROWS = 20
+
+HISTORY_LENGTH = 5
+
 

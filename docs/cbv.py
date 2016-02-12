@@ -5,7 +5,7 @@ from django.utils.decorators import method_decorator
 from django.shortcuts import render
 from common.cbv import GridListView
 from index.models import CartridgeItemName, CartridgeType
-
+from common.helpers import BreadcrumbsPath
 
 class NamesView(GridListView):
     """Просмотр списка названий расходных материалов.
@@ -15,6 +15,7 @@ class NamesView(GridListView):
         return super(NamesView, self).dispatch(*args, **kwargs)
 
     def get(self, request,**kwargs):
+        self.context['back'] = BreadcrumbsPath(request).before_page(request)
         all_names = CartridgeItemName.objects.all().order_by('pk')
         page_size = self.items_per_page()
         self.context['page_size'] = page_size
@@ -30,6 +31,7 @@ class TypesView(GridListView):
         return super(TypesView, self).dispatch(*args, **kwargs)
 
     def get(self, request,**kwargs):
+        self.context['back'] = BreadcrumbsPath(request).before_page(request)
         all_names = CartridgeType.objects.all().order_by('pk')
         page_size = self.items_per_page()
         self.context['page_size'] = page_size

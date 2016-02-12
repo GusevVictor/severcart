@@ -6,6 +6,7 @@ from django.utils.decorators import method_decorator
 from django.views.generic.base import View
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from index.models import CartridgeItem
+from .helpers import BreadcrumbsPath
 
 import logging
 logger = logging.getLogger('simp')
@@ -51,6 +52,7 @@ class CartridgesView(GridListView):
     @method_decorator(login_required)
     def dispatch(self, *args, **kwargs):
         self.request = args[0]
+        BreadcrumbsPath(self.request)
         return super(CartridgesView, self).dispatch(*args, **kwargs)
 
     def sort_columns(self):

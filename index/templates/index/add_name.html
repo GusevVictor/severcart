@@ -28,7 +28,7 @@
                 <label class="required marginTop" for="{{ form.cart_itm_type.id_for_label }}">Тип:</label>
                 <div class="input_row">
                     {{ form.cart_itm_type }}
-                    <a class="dj_button add" href="{% url 'add_type' %}?back={% url 'add_name' %}"></a>
+                    <a class="dj_button add" href="{% url 'add_type' %}"></a>
                 </div>
                 <div class="input_row">
                     {{ form.cart_itm_type.errors }}
@@ -37,7 +37,7 @@
                 <div class="input_row marginTop">
                     <input type="submit" value="Добавить" class="button success"/>
                     &nbsp;&nbsp;&nbsp;&nbsp;
-                    <a class="button no_follow back" href="#">Отмена</a>
+                    <a class="button" href="{{ back }}">Вернуться</a>
                 </div>
             </form>
         </div>

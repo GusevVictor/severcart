@@ -14,6 +14,7 @@ from index.models import CartridgeItemName
 from .forms.add_doc import AddDoc
 from .forms.edit_name import EditName
 from common.cbv import GridListView
+from common.helpers import BreadcrumbsPath
 
 class handbook(TemplateView):
     template_name = 'docs/handbook.html'
@@ -151,7 +152,7 @@ def edit_name(request):
     """
     context = dict()
     name_id = request.GET.get('id', '')
-    
+    back = BreadcrumbsPath(request).before_page(request)
     if not name_id:
         raise Http404
     try:
