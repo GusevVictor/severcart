@@ -7,13 +7,12 @@ from django.http import JsonResponse, HttpResponse
 from django.template.loader import render_to_string
 from index.models import City, CartridgeItem, OrganizationUnits, CartridgeItemName
 from index.helpers import check_ajax_auth
-from index.signals import sign_turf_cart, sign_add_full_to_stock
+from index.signals import sign_turf_cart, sign_add_full_to_stock, sign_tr_empty_cart_to_stock
 from index.forms.add_items import AddItems
 from docs.models import SCDoc
 
 import logging
 logger = logging.getLogger(__name__)
-
 
 @check_ajax_auth
 def ajax_add_session_items(request):
@@ -108,6 +107,32 @@ def ajax_add_session_items(request):
         pass
     #return HttpResponse(html)
     return JsonResponse(tmp_dict, safe=False)
+
+
+@check_ajax_auth
+def transfer_to_stock(request):
+    """Возврат исчерпаного картриджа от пользователя обратно на склад.
+    """
+    if request.method != 'POST':
+        return HttpResponse('<h1>Only use POST requests!</h1>')    
+
+    checked_cartr = request.POST.getlist('selected[]')
+    list_cplx = [] 
+    ansver = dict()
+    for inx in checked_cartr:
+        m1 = CartridgeItem.objects.get(pk=inx)
+        m1.cart_status = 3     # пустой объект на складе
+        tmp_dept = m1.departament
+        m1.departament = request.user.departament
+        m1.cart_date_change = timezone.now()
+        m1.save()
+        list_cplx.append((m1.id, str(m1.cart_itm_name), str(tmp_dept), m1.cart_number))
+
+    sign_tr_empty_cart_to_stock.send(sender=None, list_cplx=list_cplx, request=request)
+    ansver['error'] = '0'
+    ansver['text']   = 'Расходники успешно перемещены.'
+    return JsonResponse(ansver, safe=False)
+
 
 @check_ajax_auth
 def clear_session(request):

@@ -32,10 +32,8 @@ from .models import CartridgeItemName
 from events.models import Events
 from events.helpers import events_decoder
 from .helpers import recursiveChildren, check_ajax_auth
-from .sc_paginator import sc_paginator
 from .signals import ( sign_tr_cart_to_uses, 
                        sign_tr_cart_to_basket,
-                       sign_tr_empty_cart_to_stock,
                        sign_tr_empty_cart_to_firm,
                        sign_tr_filled_cart_to_stock )
 
@@ -301,40 +299,6 @@ def transfe_for_use(request):
                                             org=str(get(parent_id)))
         return HttpResponseRedirect(reverse('stock'))
     return render(request, 'index/transfe_for_use.html', {'checked_cartr': checked_cartr, 'bulk': children})
-
-
-@login_required
-def transfer_to_stock(request):
-    """Возврат исчерпаного картриджа от пользователя обратно на склад.
-    """
-    checked_cartr = request.GET.get('select', '')
-    tmp = ''
-    if checked_cartr:
-        checked_cartr = checked_cartr.split('s')
-        checked_cartr = [int(i) for i in checked_cartr]
-        tmp = checked_cartr
-        tmp2 = []
-        # преобразовываем айдишники в условные номера
-        for cart_id in checked_cartr:
-            tmp2.append(CartridgeItem.objects.get(pk=cart_id).cart_number)
-        checked_cartr = str(tmp2)
-        checked_cartr = checked_cartr[1:-1]
-
-    if request.method == 'POST':
-        list_cplx = [] 
-        tmp_dept = ''       
-        for inx in tmp:
-            m1 = CartridgeItem.objects.get(pk=inx)
-            m1.cart_status = 3     # пустой объект на складе
-            tmp_dept = m1.departament
-            m1.departament = request.user.departament
-            m1.cart_date_change = timezone.now()
-            m1.save(update_fields=['departament', 'cart_status', 'cart_date_change'])
-            list_cplx.append((m1.id, str(m1.cart_itm_name), str(tmp_dept), m1.cart_number))
-
-        sign_tr_empty_cart_to_stock.send(sender=None, list_cplx=list_cplx, request=request)
-        return HttpResponseRedirect('/use/')
-    return render(request, 'index/transfer_for_stock.html', {'checked_cartr': checked_cartr})
 
 
 class Use(CartridgesView):

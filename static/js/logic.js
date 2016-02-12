@@ -220,6 +220,7 @@ $( function(){
 
     $('.tr_to_stock').click( function() {
         var selected = [];
+        var tr = $('.checkboxes input:checked').parent().parent();
         $('.checkboxes input:checked').each(function() {
             if ($(this).attr('value')) {
                 selected.push( $(this).attr('value') );    
@@ -227,9 +228,38 @@ $( function(){
         });
 
         if ( selected.length !== 0 ) {
-            var get_path = selected.join('s')
-            var loc = '/transfer_to_stock/?select=' + get_path;
-            window.location.href = loc;
+            var ansver = window.confirm('Вы точно хотите вернуть выбранные объекты обратно на склад?');
+            if ( ansver ) {
+                // если пользователь ответил Да, то запускаем аякс запрос
+                $.ajax({
+                    method: 'POST',
+                    url: '/api/transfer_to_stock/',
+                    data:  {'selected': selected},
+                    beforeSend: function( xhr, settings ){
+                        $('.spinner').show();
+                        csrftoken = getCookie('csrftoken');
+                        if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
+                            xhr.setRequestHeader('X-CSRFToken', csrftoken);
+                        }
+                    },
+                    success: function( msg ) {
+                        if (msg.error == '0') {
+                            setTimeout(function() { 
+                                $('.spinner').hide(); 
+                                $('.error_msg').hide();
+                                $('.success_msg').show();
+                                $('.success_msg').html(msg.text);
+                                tr.hide();
+                            }, 4000);
+                        }
+                    },
+                    error: function() {
+                        $('.spinner').hide();
+                        $('.error_msg').show();
+                        setTimeout(function() { $('.error_msg').html('<p>Server not available.</p>'); }, 12000);
+                    },
+                });
+            }
         }
     });
 
@@ -588,7 +618,7 @@ $( function(){
     });
 
     $('.all_magnit input').click( function() {
-        // выбор колонки с чипами
+        // выбор колонки с магнитными барабанами
         var select_checkboxes = $('.magnit');
         if ( $('.all_magnit input').prop('checked') ) {
             select_checkboxes.each(function() {

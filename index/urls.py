@@ -8,7 +8,6 @@ from index.views import add_cartridge_item
 from index.views import tree_list
 from index.views import add_type
 from index.views import transfe_for_use
-from index.views import transfer_to_stock
 from index.views import transfer_to_firm
 from index.views import from_firm_to_stock
 from index.views import transfe_to_basket
@@ -27,14 +26,13 @@ from index.views import Basket
 from index.views import edit_cartridge_comment
 
 urlpatterns = [
-    url('^$', dashboard, name='dashboard'),
-    url('^stock/', Stock.as_view(), name='stock'),
+    url(r'^$', dashboard, name='dashboard'),
+    url(r'^stock/', Stock.as_view(), name='stock'),
     url(r'^add_name/', add_cartridge_name, name='add_name'),
     url(r'^add_items/', add_cartridge_item, name='add_items'),
     url(r'^tree_list/', tree_list, name='tree_list'),
     url(r'^add_type/', add_type, name='add_type'),
     url(r'^transfe_for_use/', transfe_for_use, name='transfe_for_use'),
-    url(r'^transfer_to_stock/', transfer_to_stock, name='transfer_to_stock'),
     url(r'^transfer_to_firm/', transfer_to_firm, name='transfer_to_firm'),
     url(r'^from_firm_to_stock/', from_firm_to_stock, name='from_firm_to_stock'),
     url(r'^transfe_to_basket/', transfe_to_basket, name='transfe_to_basket'),
