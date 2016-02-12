@@ -6,3 +6,4 @@ psycopg2==2.6.1
 python-docx==0.8.5
 sqlparse==0.1.18
 whitenoise
+django-debug-toolbar==1.4
