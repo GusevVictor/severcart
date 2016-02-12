@@ -706,6 +706,7 @@ def transfer_to_firm(request):
 def from_firm_to_stock(request):
     """Возврашаем заправленные расходники обратно на базу.
     """
+    back = BreadcrumbsPath(request).before_page(request)
     checked_cartr = request.GET.get('select', '')
     tmp = ''
     list_cart = []
@@ -738,7 +739,10 @@ def from_firm_to_stock(request):
 
         sign_tr_filled_cart_to_stock.send(sender=None, list_cplx=list_cplx, request=request)
         return HttpResponseRedirect(reverse('at_work'))
-    return render(request, 'index/from_firm_to_stock.html', {'checked_cartr': checked_cartr, 'list_cart': list_cart, 'list_length': list_length})
+    return render(request, 'index/from_firm_to_stock.html', {'checked_cartr': checked_cartr, 
+                                                            'list_cart': list_cart, 
+                                                            'list_length': list_length, 
+                                                            'back': back})
 
 def bad_browser(request):
     """Сообщение о необходимости обновить браузер.
