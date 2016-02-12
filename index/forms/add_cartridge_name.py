@@ -12,7 +12,7 @@ class AddCartridgeName(forms.ModelForm):
     def clean_cart_itm_name(self):
         """проверяем данные на наличие дублей.
         """
-        data = self.cleaned_data.get('cart_itm_name').strip().lower()
+        data = self.cleaned_data.get('cart_itm_name').strip()
         search_type = CartridgeItemName.objects.filter(cart_itm_name=data)
         if search_type:
             raise forms.ValidationError('Данное наменование уже существует!')            

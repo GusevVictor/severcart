@@ -22,7 +22,7 @@ class AddCartridgeType(ModelForm):
     def clean_cart_type(self):
         """проверяем данные на наличие дублей.
         """
-        data = self.cleaned_data.get('cart_type').strip().lower()
+        data = self.cleaned_data.get('cart_type').strip()
         if self.update:
             return data
         else:
