@@ -402,9 +402,8 @@ def add_city(request):
 @login_required
 def add_firm(request):
     """
-
     """
-
+    back = BreadcrumbsPath(request).before_page(request)
     if request.method == 'POST':
         form_obj = FirmTonerRefillF(request.POST)
         if form_obj.is_valid():
@@ -415,10 +414,11 @@ def add_firm(request):
                                  firm_address=data_in_post['firm_address'],
                                  firm_comments=data_in_post['firm_comments'], )
             m1.save()
+            messages.success(request, 'Контрагент "%s" успешно добавлен.' % (data_in_post['firm_name'],))
             return HttpResponseRedirect('index.views.toner_refill')
     else:
         form_obj = FirmTonerRefillF()
-    return render(request, 'index/add_firm.html', {'form': form_obj})
+    return render(request, 'index/add_firm.html', {'form': form_obj, 'back': back})
 
 
 @login_required

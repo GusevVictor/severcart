@@ -1,15 +1,16 @@
-from django.forms import ModelForm
-from index.models import FirmTonerRefill
+# -*- coding:utf-8 -*-
+
+from index.models import FirmTonerRefill, City
 from django import forms
 
-
-class FirmTonerRefillF(ModelForm):
-    class Meta:
-        model = FirmTonerRefill
-        fields = ['firm_name', 'firm_city', 'firm_contacts', 'firm_address', 'firm_comments']
-
-        widgets = {
-            'firm_contacts': forms.Textarea(attrs={'rows': 4, 'cols': 15}),
-            'firm_address': forms.Textarea(attrs={'rows': 4, 'cols': 15}),
-            'firm_comments': forms.Textarea(attrs={'rows': 2, 'cols': 15}),
-        }
+class FirmTonerRefillF(forms.Form):
+    firm_name     = forms.CharField(required=True, error_messages={'required': 'Поле обязательно для заполнения.'}, label='Название')
+    firm_city     = forms.ModelChoiceField(queryset=City.objects.all(), 
+                                            error_messages={'required': 'Поле обязательно для заполнения.'}, 
+                                            required=True,
+                                            label='Город',)
+    firm_contacts = forms.CharField(widget=forms.Textarea(attrs={'rows': 4, 'cols': 15}), label='Контакты', required=False)
+    firm_address  = forms.CharField(widget=forms.Textarea(attrs={'rows': 4, 'cols': 15}), label='Адрес', required=False)
+    firm_comments = forms.CharField(widget=forms.Textarea(attrs={'rows': 2, 'cols': 15}), label='Коментарии', required=False)
+    
+    required_css_class = 'required'
