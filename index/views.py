@@ -344,7 +344,7 @@ class Empty(CartridgesView):
 def toner_refill(request):
     """
     """
-
+    back = BreadcrumbsPath(request).before_page(request)
     city_id = request.GET.get('city', '')
     cities = CityM.objects.all()
 
@@ -378,7 +378,7 @@ def toner_refill(request):
     return render(request, 'index/toner_refill.html', {'cities': new_list,
                                                        'firms': firms,
                                                        'select': city_id,
-                                                       'city_url': city_url_parametr
+                                                       'city_url': city_url_parametr,
                                                        })
 
 
@@ -386,6 +386,7 @@ def toner_refill(request):
 def add_city(request):
     """
     """
+    back = BreadcrumbsPath(request).before_page(request)
     if request.method == 'POST':
         form_obj = CityF(request.POST)
         if form_obj.is_valid():
@@ -395,7 +396,7 @@ def add_city(request):
             return HttpResponseRedirect(reverse('index.views.toner_refill'))
     else:
         form_obj = CityF()
-    return render(request, 'index/add_city.html', {'form': form_obj})
+    return render(request, 'index/add_city.html', {'form': form_obj, 'back': back})
 
 
 @login_required
