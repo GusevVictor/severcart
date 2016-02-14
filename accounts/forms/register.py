@@ -21,11 +21,12 @@ class RegistrationForm(forms.ModelForm):
                                       required=True,
                                       label = 'Организация',
                                       )
+
     is_admin = forms.BooleanField(required=False, label='Администратор?')
 
     class Meta:
         model = AnconUser
-        fields = ['username', 'password1', 'password2', 'fio', 'departament', 'is_admin']
+        fields = ['username', 'password1', 'password2', 'fio', 'email','departament', 'is_admin']
 
     def clean(self):
         """

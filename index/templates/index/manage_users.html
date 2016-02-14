@@ -31,6 +31,7 @@
                         <th>&nbsp;</th>
                         <th>Пользователь</th>
                         <th>Логин</th>
+                        <th>Почта</th>
                         <th>Организация</th>
                         <th>Админ?</th>
                     </tr>
@@ -43,6 +44,11 @@
                                 <td>&nbsp;&nbsp;&nbsp;</td>
                             {% endif %}
                             <td>{{ i.username }}</td>
+                            {% if i.email %}
+                                <td>{{ i.email }}</td>
+                            {% else %}
+                                <td>&nbsp;&nbsp;&nbsp;</td>
+                            {% endif %}
                             {% if i.departament %}
                                 <td>{{ i.departament }}</td>
                             {% else %}
