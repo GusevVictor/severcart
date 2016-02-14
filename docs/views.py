@@ -152,7 +152,7 @@ def edit_name(request):
     """
     context = dict()
     name_id = request.GET.get('id', '')
-    back = BreadcrumbsPath(request).before_page(request)
+    context['back'] = BreadcrumbsPath(request).before_page(request)
     if not name_id:
         raise Http404
     try:
