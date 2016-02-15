@@ -1,11 +1,11 @@
-{% extends "index/base.html" %}
+{% extends "index/base.html" %}{% load i18n %}
 {% load pagination  %}
-{% block title %}Кариджи на заправке{% endblock %}
-{% block h3 %}Кариджи на заправке{% endblock %}
+{% block title %}{% trans "Cartridges on rebuilding" %}{% endblock %}
+{% block h3 %}{% trans "Cartridges on rebuilding" %}{% endblock %}
 {% block submenu %}
 <div class="row">
     <div class="large-12 columns">
-        <a class="from_firm_to_stock button" href="#">Вернуть на склад</a>
+        <a class="from_firm_to_stock button" href="#">{% trans "Return to the stock" %}</a>
     </div>
 </div>
 <div class="row">
@@ -19,12 +19,12 @@
             <form>
                 <tr>
                     <th class="first_checkbox"><input type="checkbox" class="check_all"></th>
-                    <th class="cart_number {% if select_number %}active_cell{% endif %}"><a href="?action=number">Номер {{number_triangle}}</a><br/><input class="search_number" name="search_number" value="{{search_number}}"  /></th>
-                    <th class="cart_name{% if select_type %} active_cell{% endif %}"><a href="?action=name">Название {{type_triangle}}</a></th>
-                    <th class="cart_count{% if select_count %} active_cell{% endif %}"><a href="?action=recovery">Кол-во {{count_triangle}}<br/>перезаправок</a></th>
-                    <th class="cart_date{% if select_date %} active_cell{% endif %}"><a  href="?action=change_date">Дата {{datec_triangle}} передачи<br/>на заправку</a></th>
-                    <th class="firm_filled">Заправщик</th>
-                    <th class="actions">Комментарий</th>
+                    <th class="cart_number {% if select_number %}active_cell{% endif %}"><a href="?action=number">{% trans "Number" %} {{number_triangle}}</a><br/><input class="search_number" name="search_number" value="{{search_number}}"  /></th>
+                    <th class="cart_name{% if select_type %} active_cell{% endif %}"><a href="?action=name">{% trans "Name" %} {{type_triangle}}</a></th>
+                    <th class="cart_count{% if select_count %} active_cell{% endif %}"><a href="?action=recovery">{% trans "Amount" %} {{count_triangle}}<br/>{% trans "recovery" %}</a></th>
+                    <th class="cart_date{% if select_date %} active_cell{% endif %}"><a href="?action=change_date">{% trans "Date" %} {{datec_triangle}} {% trans "transfer" %}<br/>{% trans "on recovery" %}</a></th>
+                    <th class="firm_filled">{% trans "refueller" %}</th>
+                    <th class="actions">{% trans "comment" %}</th>
                 </tr>
                 {% for i in cartrjs %}
                     <tr>

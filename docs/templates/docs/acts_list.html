@@ -1,7 +1,7 @@
-{% extends "index/base.html" %}{% load staticfiles %}
+{% extends "index/base.html" %}{% load staticfiles %}{% load i18n %}
 {% load pagination  %}
-{% block title %}Акты передачи на заправку{% endblock %}
-{% block h3 %}Акты передачи на заправку{% endblock %}
+{% block title %}{% trans "Acts of transfer for restoration" %}{% endblock %}
+{% block h3 %}{% trans "Acts of transfer for restoration" %}{% endblock %}
 {% block submenu %}
 <div class="row">
     <div class="large-6 columns">
@@ -17,13 +17,12 @@
             <table class="checkboxes">
                 <tr>
                     <th class="first_checkbox">&nbsp;&nbsp;&nbsp;</th>
-                    <th>Внутренний номер</th>
-                    <th class="cart_name">Дата передачи</th>
-                    <th class="fio">Кто передал</th>
-                    <th>Кому передал</th>
-                    <th class="actions">Действие <img class="spinner" src="{{ STATIC_URL }}img/loader.gif" /></th>
-                </tr>
-                {% for elem in docs %}
+                    <th>{% trans "Extension number" %}</th>
+                    <th class="cart_name">{% trans "Date of transfer" %}</th>
+                    <th class="fio">{% trans "Who passed" %}</th>
+                    <th>{% trans "Who gave" %}</th>
+                    <th class="actions">{% trans "Action" %} <img class="spinner" src="{{ STATIC_URL }}img/loader.gif" /></th>
+                </tr>{% for elem in docs %}
                 <tr>
                     <td><input type="radio" value={{ elem.pk }} name="name_id"></td>
                     <td>{{ elem.number }}</td>
@@ -33,12 +32,11 @@
                     <td>
                         <select class="action docx_action" data="{{ elem.pk }}">
                             <option selected></option>
-                            <option value="docx_with_group" data="{{ elem.pk }}">Сформировать docx с группировкой</option>
-                            <option value="docx_without_group" data="{{ elem.pk }}">Сформировать docx без группировки</option>
+                            <option value="docx_with_group" data="{{ elem.pk }}">{% trans "Form a group with docx" %}</option>
+                            <option value="docx_without_group" data="{{ elem.pk }}">{% trans "Form a group without docx" %}</option>
                         </select>
                     </td>
-                </tr>
-                {% endfor %}
+                </tr>{% endfor %}
             </table>
         </form>
     </div>

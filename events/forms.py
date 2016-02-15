@@ -50,6 +50,3 @@ class DateForm(forms.Form):
                 return {'date_value': int(date_value), 'month_value': int(month_value), 'year_value': int(year_value)}
             else:
                 return None
-
-
-# raise ValidationError("Поле обязательно для заполнения.")

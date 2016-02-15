@@ -1,42 +1,42 @@
-{% extends "index/base.html" %}
+{% extends "index/base.html" %}{% load i18n %}
 {% load staticfiles %}
 {% load filters %}
 {% load mptt_tags %}
 {% block content %}
 <div class="row">
     <div class="large-6 columns">
-        <h4>Добавление новой структурной единицы</h4>
+        <h4>{% trans "Addition of a new structural unit" %}</h4>
         <form action="" method="POST">
             {% csrf_token %}
-            <label>Название структурного подразделения</label>
+            <label>{% trans "Name structural unit" %}</label>
             <input name="name" type="text"/>
             {% if error1 %}
                 <ul class="errorlist">
                     <li>{{error1}}</li>
                 </ul>
             {% endif %}
-            <label>Подчиняется</label>
+            <label>{% trans "Compliant" %}</label>
             <select size="1" name="departament">
                 <option value="0" selected>&nbsp;&nbsp;&nbsp;</option>
                 {% for node,structure in bulk|tree_info:"ancestors" %}
                     <option value="{{ node.pk }}">{{ node.level | nbsp }}{{ node.name }}</option>
                 {% endfor %}
             </select>
-            <input type="submit" value="Добавить" class="button"/>
+            <input type="submit" value="{% trans 'Add' %}" class="button"/>
         </form>
     </div>
 
     <div class="large-6 columns">
-        <h4>Структура организации</h4>
+        <h4>{% trans "Structure of the organization" %}</h4>
         <div>
-            <a class="del_node button alert">Удалить</a><img class="spinner" src="{{ STATIC_URL }}img/loader.gif" />
+            <a class="del_node button alert">{% trans "Delete" %}</a><img class="spinner" src="{{ STATIC_URL }}img/loader.gif" />
         </div>
         <div class="marginTop"></div>
         <table class="checkboxes">
             <tr>
                 <th></th>
-                <th>Название</th>
-                <th>Номер</th>
+                <th>{% trans "Name" %}</th>
+                <th>{% trans "Number" %}</th>
             </tr>
             {% for node,structure in bulk|tree_info:"ancestors" %}
                 <tr>
@@ -46,8 +46,6 @@
                 </tr>
             {% endfor %}
         </table>
-        
     </div>
 </div>
-
 {% endblock %}

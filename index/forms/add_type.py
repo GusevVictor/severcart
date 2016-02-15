@@ -1,13 +1,14 @@
 # -*- coding:utf-8 -*-
 
 from django import forms
+from django.utils.translation import ugettext_lazy as _
 from django.forms import ModelForm
 from index.models import CartridgeType
 
 
 class AddCartridgeType(ModelForm):
     required_css_class = 'required'
-    cart_type = forms.CharField(error_messages={'required' : 'Поле обязательно для заполнения.'}, label='Тип расходного материала')
+    cart_type = forms.CharField(error_messages={'required' : _('Required field.')}, label=_('Type consumables'))
     
     class Meta:
         model = CartridgeType
@@ -28,7 +29,7 @@ class AddCartridgeType(ModelForm):
         else:
             search_type = CartridgeType.objects.filter(cart_type=data)
             if search_type:
-                raise forms.ValidationError('Данное наменование уже существует!')            
+                raise forms.ValidationError(_('This name already exists!'))            
             else:
                 return data
 
@@ -36,5 +37,5 @@ class AddCartridgeType(ModelForm):
         """Проверяет, что длина комментария не превышает допустимой длины.
         """
         if len(self.cleaned_data['comment']) > 161:
-            raise forms.ValidationError('Превышено максимальное количество символов. Допустимо не более 160.')
+            raise forms.ValidationError(_('You have exceeded the maximum number of characters. No more than 160.'))
         return self.cleaned_data['comment'].strip()

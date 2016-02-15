@@ -1,7 +1,6 @@
-{% extends "index/base.html" %}
-{% block title %}Изменение имени{% endblock %}
-{% block h3 %}Изменение имени{% endblock %}
-{% block submenu %}{% endblock %}
+{% extends "index/base.html" %}{% load i18n %}
+{% block title %}{% trans "Change name" %}{% endblock %}
+{% block h3 %}{% trans "Change name" %}{% endblock %}
 {% block content %}
 <div class="row">
     <div class="small-6 columns">
@@ -13,8 +12,8 @@
                 {{ field.errors }}
             {% endfor %}
             <div class="input_row">
-                <input class="button success" type="submit" value="Сохранить и закрыть" />
-                <a class="button" href="{{ back }}">Вернуться</a>
+                <input class="button success" type="submit" value='{% trans "Save and close" %}' />
+                <a class="button" href="{{ back }}">{% trans "Back" %}</a>
             </div>
         </form>
     </div>

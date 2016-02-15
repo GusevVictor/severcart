@@ -109,9 +109,9 @@ def delete(request):
     ar = [int(i) for i in ar ]
     logger.debug(request.user.id)
     if request.user.id in ar:
-        return HttpResponse('Ошибка! Пользователь %s не может удалить сам себя' % (request.user,))
+        return HttpResponse(_('Error! User %(user_name)s can not remove himself') % {'user_name': request.user})
     
     for ind in ar:
         usr = AnconUser.objects.get(pk=ind)
         usr.delete()
-    return HttpResponse('User(s) deleted!')
+    return HttpResponse(_('User(s) deleted!'))

@@ -1,26 +1,21 @@
-{% extends "index/base.html" %}
-{% block title %}Справочники{% endblock %}
-{% block h3 %}Справочники{% endblock %}
-{% block submenu %}{% endblock %}
+{% extends "index/base.html" %}{% load i18n %}
+{% block title %}{% trans "References" %}{% endblock %}
+{% block h3 %}{% trans "References" %}{% endblock %}
 {% block content %}
 <div class="row">
     <div class="small-4 columns">
-        <p><a href="{% url 'accounts:manage_users' %}">Пользователи</a></p>
-        <p><a href="{% url 'tree_list' %}">Структура организации</a></p>
-        <p><a href="{% url 'toner_refill' %}">Контрагенты</a></p>
+        <p><a href="{% url 'accounts:manage_users' %}">{% trans "Users" %}</a></p>
+        <p><a href="{% url 'tree_list' %}">{% trans "Organization units" %}</a></p>
+        <p><a href="{% url 'toner_refill' %}">{% trans "Firms" %}</a></p>
     </div>
     <div class="small-4 columns">
-        <p><a href="{% url 'docs:service' %}">Договора на обслуживание ?</a></p>
-        <p><a href="{% url 'docs:delivery' %}">Договора на поставку</a></p>
-        <p><a href="#">Акты на списание ?</a></p>
-        <p><a href="{% url 'docs:view_send_acts' %}">Акты передачи на заправку</a></p>
+        <p><a href="{% url 'docs:delivery' %}">{% trans "Agreement for the supply" %}</a></p>
+        <p><a href="{% url 'docs:view_send_acts' %}">{% trans "Acts of transfer at the gas station" %}</a></p>
     </div>
     <div class="small-4 columns">
-        <p><a href="{% url 'reports:main_summary' %}">Отчёты</a></p>
-        <p><a href="{% url 'docs:view_names' %}">Список названий расходников</a></p>
-        <p><a href="{% url 'docs:view_types' %}">Список типов расходников</a></p>
-        <p><a href="#"></a></p>
-        <p><a href="#"></a></p>
+        <p><a href="{% url 'reports:main_summary' %}">{% trans "Reports" %}</a></p>
+        <p><a href="{% url 'docs:view_names' %}">{% trans "List the names of consumables" %}</a></p>
+        <p><a href="{% url 'docs:view_types' %}">{% trans "List of consumables types" %}</a></p>
     </div>
 </div>
 {% endblock %}

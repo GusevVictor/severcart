@@ -1,38 +1,39 @@
-{% extends "index/base.html" %}
+{% extends "index/base.html" %}{% load i18n %}
+{% block title %}{% trans "Edit firm" %}{% endblock %}
+{% block h3 %}{% trans "Edit firm" %}{% endblock %}
 {% block content %}
 <div class="row">
     <div class="large-6 columns">
-        <form action="" method="post">
+        <form action="" method="POST">
             {% csrf_token %}
             {{ form.non_field_errors }}
             <p>
                 {{ form.firm_name.errors }}
-                <label for="{{ form.firm_name.id_for_label }}">Название</label>
+                <label for="{{ form.firm_name.id_for_label }}">{% trans "Name" %}</label>
                 {{ form.firm_name }}
             </p>
             <p>
                 {{ form.firm_city.errors }}
-                <label for="{{ form.firm_city.id_for_label }}">Выберите город</label>
+                <label for="{{ form.firm_city.id_for_label }}">{% trans "Select city" %}</label>
                 {{ form.firm_city }}
             </p>
             <p>
                 {{ form.firm_contacts.errors }}
-                <label for="{{ form.firm_contacts.id_for_label }}">Контакты</label>
+                <label for="{{ form.firm_contacts.id_for_label }}">{% trans "Contacts" %}</label>
                 {{ form.firm_contacts }}
             </p>
             <p>
                 {{ form.firm_address.errors }}
-                <label for="{{ form.firm_address.id_for_label }}">Адрес</label>
+                <label for="{{ form.firm_address.id_for_label }}">{% trans "Address" %}</label>
                 {{ form.firm_address }}
             </p>
             <p>
                 {{ form.firm_comments.errors }}
-                <label for="{{ form.firm_comments.id_for_label }}">Комментарии</label>
+                <label for="{{ form.firm_comments.id_for_label }}">{% trans "Comments" %}</label>
                 {{ form.firm_comments }}
             </p>
-            <input type="submit" value="Сохранить изменения" class="button success" />
+            <input type="submit" value="{% trans 'Save' %}" class="button success" />
         </form>
     </div>
 </div>
-
 {% endblock %}

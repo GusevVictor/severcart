@@ -2,43 +2,40 @@
 
 from django import forms
 from accounts.models import AnconUser
+from django.utils.translation import ugettext_lazy as _
 from index.models import OrganizationUnits
 
 class RegistrationForm(forms.ModelForm):
     """Form for registering a new account.
     """
-    username = forms.CharField(widget=forms.TextInput, label="Логин")
+    username = forms.CharField(widget=forms.TextInput, label=_('Login'))
     password1 = forms.CharField(widget=forms.PasswordInput,
-                                label="Пароль")
+                                label=_('Password'))
     password2 = forms.CharField(widget=forms.PasswordInput,
-                                label="Повторите пароль")
+                                label=_('Password again'))
 
     required_css_class = 'required'
 
     departament = forms.ModelChoiceField(queryset=OrganizationUnits.objects.root_nodes(),
-                                      error_messages={'required': 'Поле обязательно для заполнения.'},
+                                      error_messages={'required': _('Required field')},
                                       empty_label=' ',
                                       required=True,
-                                      label = 'Организация',
+                                      label = _('Organization unit'),
                                       )
 
-    is_admin = forms.BooleanField(required=False, label='Администратор?')
+    is_admin = forms.BooleanField(required=False, label=_('Administrator?'))
 
     class Meta:
         model = AnconUser
         fields = ['username', 'password1', 'password2', 'fio', 'email','departament', 'is_admin']
 
     def clean(self):
-        """
-        Verifies that the values entered into the password fields match
-
-        NOTE: Errors here will appear in ``non_field_errors()`` because it applies to more than one field.
+        """Verifies that the values entered into the password fields match
         """
         # вызывает ошибку дублирования логина
-        #self.cleaned_data = super(RegistrationForm, self).clean()
         if 'password1' in self.cleaned_data and 'password2' in self.cleaned_data:
             if self.cleaned_data['password1'] != self.cleaned_data['password2']:
-                raise forms.ValidationError("Пароли не совпадают. Введите их повторно.")
+                raise forms.ValidationError(_('Passwords do not match. Please enter them again'))
         return self.cleaned_data
 
     def save(self, commit=True):

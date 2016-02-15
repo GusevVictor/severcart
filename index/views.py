@@ -13,6 +13,7 @@ from django.utils.decorators import method_decorator
 from django.contrib.sessions.models import Session
 from django.db.models import Q
 from django.template.loader import render_to_string
+from django.utils.translation import ugettext_lazy as _
 from common.cbv import CartridgesView
 from common.helpers import BreadcrumbsPath
 from .forms.add_cartridge_name import AddCartridgeName
@@ -119,11 +120,11 @@ def add_cartridge_name(request):
             cart_name = cart_name.strip()
             if CartridgeItemName.objects.filter(cart_itm_name__iexact=cart_name):
                 # если имя расходника уже занято
-                messages.error(request, '%s уже существует.' % (cart_name,))
+                messages.error(request, _('%(cart_name)s already exists') % {'cart_name': cart_name})
             else:    
                 # добавляем новый тип расходного материала
                 form_obj.save()
-                messages.success(request, '%s успешно добавлен.' % (cart_name,))
+                messages.success(request, _('%(cart_name)s success added') % {'cart_name': cart_name})
             return HttpResponseRedirect(request.path)
     else:
         form_obj = AddCartridgeName()
@@ -180,7 +181,7 @@ def tree_list(request):
         if uid == 0:
             for node in OrganizationUnits.objects.root_nodes():
                 if node == org_name:
-                    error1 = 'Организационная единица %s уже существует' % (org_name,)
+                    error1 = _('Organization unit %(org_name)s exist') % {'org_name': org_name}
                     break        
             else:
                 # если ноды нет, добавляем
@@ -193,7 +194,7 @@ def tree_list(request):
             else:    
                 for node in temp_name.get_children():
                     if node == org_name:
-                        error1 = 'Организационная единица %s уже существует' % (org_name,)
+                        error1 =  _('Organization unit %(org_name)s exist') % {'org_name': org_name}
                         break
                 else:
                     rn = OrganizationUnits.objects.get(pk=uid)
@@ -239,12 +240,12 @@ def add_type(request):
                 m1.comment=cart_type_comment
                 m1.save()
                 back_url = request.path + '?id=' + str(cart_type_id) + '&back=' + back_url
-                messages.success(request, '"%s" успешно сохранён.' % (cart_type))
+                messages.success(request, _('%(cart_type)s success save') % {'cart_type': cart_type})
             else:
                 m1 = CartridgeType(cart_type=cart_type, comment=cart_type_comment)
                 m1.save()
                 back_url = request.path + '?back=' + back_url
-                messages.success(request, 'Новый тип "%s" успешно добавлен.' % (cart_type))
+                messages.success(request, _('New type %(cart_type)s success added') % {'cart_type': cart_type})
             return HttpResponseRedirect(back_url)
         else:
             form = form_obj
@@ -363,7 +364,7 @@ def toner_refill(request):
     else:
         firms = FirmTonerRefill.objects.all()
     # завершаем работу с пагинацией
-    new_list = [{'id': 0, 'city_name': 'Выбрать все'}]
+    new_list = [{'id': 0, 'city_name': _('Select all')}]
     for i in cities:
         tmp_dict = {'id': i.id, 'city_name': i.city_name}
         new_list.append(tmp_dict)
@@ -412,7 +413,7 @@ def add_firm(request):
                                  firm_address=data_in_post['firm_address'],
                                  firm_comments=data_in_post['firm_comments'], )
             m1.save()
-            messages.success(request, 'Контрагент "%s" успешно добавлен.' % (data_in_post['firm_name'],))
+            messages.success(request, _('Firm "%(firm_name)s" success added.') % {'firm_name': data_in_post['firm_name']})
             return HttpResponseRedirect('index.views.toner_refill')
     else:
         form_obj = FirmTonerRefillF()
@@ -564,7 +565,7 @@ def transfe_to_basket(request):
     tmp = ''
     if checked_cartr:
         checked_cartr = checked_cartr.split('s')
-        checked_cartr = [int(i) for i in checked_cartr]
+        checked_cartrw = [int(i) for i in checked_cartr]
         tmp = checked_cartr
         tmp2 = []
         # преобразовываем айдишники в условные номера
@@ -646,7 +647,7 @@ def transfer_to_firm(request):
             if firmid == 0:
                 raise ValueError
         except ValueError:
-            messages.error(request, 'Вы выбрали некорректную фирму')
+            messages.error(request, _('You input not correct firm name'))
             return render(request, 'index/transfer_to_firm.html', {'checked_cartr': checked_cartr, 
                                                                     'firms' : firms, 
                                                                 })            

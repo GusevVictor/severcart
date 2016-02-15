@@ -6,6 +6,7 @@ import json
 from django.http import JsonResponse, HttpResponse
 from django.db.models.deletion import ProtectedError
 from django.conf import settings
+from django.utils.translation import ugettext_lazy as _
 from docx import Document
 from docx.shared import Inches
 from index.models import CartridgeItemName, CartridgeType
@@ -20,7 +21,7 @@ def del_cart_name(request):
     """Удаляем имя расходного материала через аякс
     """
     if request.method != 'POST':
-        return HttpResponse('<h1>Only use POST requests!</h1>')    
+        return HttpResponse('<h1>' + _('Only use POST requests!') + '</h1>')
     
     resp_dict = dict()
     cart_name_id = request.POST.get('cart_name_id', '')
@@ -36,29 +37,29 @@ def del_cart_name(request):
             m1 = CartridgeItemName.objects.get(pk=cart_name_id)
         except CartridgeItemName.DoesNotExist:
             resp_dict['error'] = '1'
-            resp_dict['text']  = 'Объект с таким ID не найден.'
+            resp_dict['text']  = _('The object with the ID is not found.')
         try:
             m1.delete()
         except ProtectedError:
             resp_dict['error'] = '1'
-            resp_dict['text']  = 'Имя удалить невозможно, т. к. на него ссылаются другие объекты.'    
+            resp_dict['text']  = _('Name can not be removed, ie. other objects reference it.')
         else:
             resp_dict['error'] = '0'
-            resp_dict['text']  = 'Имя успешно удалено.'
+            resp_dict['text']  = _('Name deleted successfully.')
     elif atype == 'cart_type':
         try:
             m1 = CartridgeType.objects.get(pk=cart_name_id)
         except CartridgeType.DoesNotExist:
             resp_dict['error'] = '1'
-            resp_dict['text']  = 'Объект с таким ID не найден.'
+            resp_dict['text']  = _('The object with the ID is not found.')
         try:
             m1.delete()
         except ProtectedError:
             resp_dict['error'] = '1'
-            resp_dict['text']  = 'Тип удалить невозможно, т. к. на него ссылаются другие объекты.'    
+            resp_dict['text']  = _('Type can not be deleted, ie the other sites link to it.')
         else:
             resp_dict['error'] = '0'
-            resp_dict['text']  = 'Имя успешно удалено.'
+            resp_dict['text']  = _('Name deleted successfully.')
     return JsonResponse(resp_dict, safe=False)
 
 
@@ -71,7 +72,7 @@ def generate_act(request):
 
     resp_dict = dict()
     if request.method != 'POST':
-        return HttpResponse('<h1>Only use POST requests!</h1>')    
+        return HttpResponse('<h1>' + _('Only use POST requests!') + '</h1>')    
     
     doc_id = request.POST.get('doc_id', '')
     doc_action = request.POST.get('doc_action', '')
@@ -85,7 +86,7 @@ def generate_act(request):
         m1 = SCDoc.objects.get(pk=doc_id)
     except SCDoc.DoesNotExist:
         resp_dict['error'] = '1'
-        resp_dict['text']  = 'Объект с таким ID не найден.'
+        resp_dict['text']  = _('The object with the ID is not found.')
         return JsonResponse(resp_dict, safe=False)
 
     jsontext = m1.short_cont
@@ -98,8 +99,8 @@ def generate_act(request):
             document = Document()
             table = document.add_table(rows=1, cols=2)
             hdr_cells = table.rows[0].cells
-            hdr_cells[0].text = 'Название картриджа'
-            hdr_cells[1].text = 'Количество'
+            hdr_cells[0].text = _('The name of the cartridge')
+            hdr_cells[1].text = _('Amount')
             for item in names_counts:
                 row_cells = table.add_row().cells
                 row_cells[0].text = str(item[0])
@@ -107,11 +108,11 @@ def generate_act(request):
             document.add_page_break()
             document.save(file_full_name)
             resp_dict['error'] = '0'
-            resp_dict['text']  = 'Документ %s_1.docx сформирован.' % (m1.number)
+            resp_dict['text']  = _('Document %(doc_number)s_1.docx generated') % { 'doc_number': m1.number }
             resp_dict['url'] = 'http://' + request.META['HTTP_HOST'] + '/media/%s_1.docx' % (m1.number)
         else:
             resp_dict['error'] = '1'
-            resp_dict['text']  = 'Документ сформировать невозможно.'        
+            resp_dict['text']  = _('Document form is impossible.')        
 
     elif doc_action == 'docx_without_group':
         file_full_name = os.path.join(settings.MEDIA_ROOT, m1.number + '_0.docx')
@@ -119,8 +120,8 @@ def generate_act(request):
         document = Document()
         table = document.add_table(rows=1, cols=2)
         hdr_cells = table.rows[0].cells
-        hdr_cells[0].text = 'Номер'
-        hdr_cells[1].text = 'Название картриджа'
+        hdr_cells[0].text = _('Number')
+        hdr_cells[1].text = _('The name of the cartridge')
         for item in jsontext:
             row_cells = table.add_row().cells
             row_cells[0].text = str(item[0])
@@ -128,10 +129,10 @@ def generate_act(request):
         document.add_page_break()
         document.save(file_full_name)
         resp_dict['error'] = '0'
-        resp_dict['text']  = 'Документ %s_0.docx сформирован.' % (m1.number)
+        resp_dict['text']  = _('Document %(doc_number)s_0.docx generated') % { 'doc_number': m1.number }
         resp_dict['url'] = 'http://' + request.META['HTTP_HOST'] + '/media/%s_0.docx' % (m1.number)
     else:
         resp_dict['error'] = '1'
-        resp_dict['text']  = 'Данное действие не реализовано.'
+        resp_dict['text']  = _('This action is not implemented.')
     
     return JsonResponse(resp_dict, safe=False)

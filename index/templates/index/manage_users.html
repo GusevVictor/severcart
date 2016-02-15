@@ -1,74 +1,74 @@
-{% extends "index/base.html" %}
+{% extends "index/base.html" %}{% load i18n %}
 {% load staticfiles %}
 {% block jqueryui%}
     <link rel="stylesheet" href="{{ STATIC_URL }}css/jquery-ui.css" />
     <script src="{{ STATIC_URL }}js/jquery-ui.js"></script>
     <script src="{{ STATIC_URL }}js/dialog.js"></script>
 {% endblock %}
-{% block title %}Управление пользователями{% endblock %}
-{% block h3 %}Управление пользователями{% endblock %}
+{% block title %}{% trans "User management" %}{% endblock %}
+{% block h3 %}{% trans "User management" %}{% endblock %}
 {% block content %}
-    <div class="row">
-        <div class="large-6 columns">
-            <a class="add_user button success" href="{% url 'accounts:register' %}">Добавить</a>
-            <a class="edit_user button" href="#">Редактировать</a>
-            <a class="del_user button alert" href="#">Удалить</a>
-        </div>
+<div class="row">
+    <div class="large-6 columns">
+        <a class="add_user button success" href="{% url 'accounts:register' %}">{% trans "Add" %}</a>
+        <a class="edit_user button" href="#">{% trans "Edit" %}</a>
+        <a class="del_user button alert" href="#">{% trans "Delete" %}</a>
     </div>
-    <div class="row">
-        <div class="large-6 columns marginTop"></div>
-    </div>
-    <div class="row">
-        <div class="large-6 columns">
-            <div class="errorlog"></div>   
-        </div>        
-    </div> 
-    <div class="row">
-        <div class="large-6 columns">
-            <table class="checkboxes">
-                <form>
-                    <tr>
-                        <th>&nbsp;</th>
-                        <th>Пользователь</th>
-                        <th>Логин</th>
-                        <th>Почта</th>
-                        <th>Организация</th>
-                        <th>Админ?</th>
+</div>
+<div class="row">
+    <div class="large-6 columns marginTop"></div>
+</div>
+<div class="row">
+    <div class="large-6 columns">
+        <div class="errorlog"></div>   
+    </div>        
+</div> 
+<div class="row">
+    <div class="large-6 columns">
+        <table class="checkboxes">
+            <form>
+                <tr>
+                    <th>&nbsp;</th>
+                    <th>{% trans "User" %}</th>
+                    <th>{% trans "Login" %}</th>
+                    <th>{% trans "E-Mail" %}</th>
+                    <th>{% trans "Organization unit" %}</th>
+                    <th>{% trans "Admin?" %}</th>
+                </tr>
+                {% for i in urs %}
+                    <tr class="userid-{{ i.id }}">
+                        <td><input type="checkbox" value="{{ i.id }}"></td>
+                        {% if i.fio %}
+                            <td>{{ i.fio }}</td>
+                        {% else %}
+                            <td>&nbsp;&nbsp;&nbsp;</td>
+                        {% endif %}
+                        <td>{{ i.username }}</td>
+                        {% if i.email %}
+                            <td>{{ i.email }}</td>
+                        {% else %}
+                            <td>&nbsp;&nbsp;&nbsp;</td>
+                        {% endif %}
+                        {% if i.departament %}
+                            <td>{{ i.departament }}</td>
+                        {% else %}
+                            <td>&nbsp;&nbsp;&nbsp;</td>
+                        {% endif %}
+                        {% if i.is_admin %}
+                            <td>{% trans "Yes" %}</td>
+                        {% else %}
+                            <td>{% trans "No" %}</td>
+                        {% endif %}
                     </tr>
-                    {% for i in urs %}
-                        <tr class="userid-{{ i.id }}">
-                            <td><input type="checkbox" value="{{ i.id }}"></td>
-                            {% if i.fio %}
-                                <td>{{ i.fio }}</td>
-                            {% else %}
-                                <td>&nbsp;&nbsp;&nbsp;</td>
-                            {% endif %}
-                            <td>{{ i.username }}</td>
-                            {% if i.email %}
-                                <td>{{ i.email }}</td>
-                            {% else %}
-                                <td>&nbsp;&nbsp;&nbsp;</td>
-                            {% endif %}
-                            {% if i.departament %}
-                                <td>{{ i.departament }}</td>
-                            {% else %}
-                                <td>&nbsp;&nbsp;&nbsp;</td>
-                            {% endif %}
-                            {% if i.is_admin %}
-                                <td>Да</td>
-                            {% else %}
-                                <td>Нет</td>
-                            {% endif %}
-                        </tr>
-                    {% endfor %}
-                </form>
-            </table>
-        </div>
+                {% endfor %}
+            </form>
+        </table>
     </div>
-    <div class="dialog-confirm" title="Точно удалить?">
-        <p><span class="ui-icon ui-icon-alert" style="float:left; margin:0 7px 20px 0;"></span>
-        Вы уверены, что хотите удалить пользовател<span class="chislo"></span> <b></b>?
-        </p>
-        <div><img class="spinner" src="{{ STATIC_URL }}img/loader.gif" /></div>
-    </div>
+</div>
+<div class="dialog-confirm" title="Точно удалить?">
+    <p><span class="ui-icon ui-icon-alert" style="float:left; margin:0 7px 20px 0;"></span>
+    Вы уверены, что хотите удалить пользовател<span class="chislo"></span> <b></b>?
+    </p>
+    <div><img class="spinner" src="{{ STATIC_URL }}img/loader.gif" /></div>
+</div>
 {% endblock %}

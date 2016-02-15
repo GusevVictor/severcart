@@ -1,6 +1,6 @@
-{% extends "index/base.html" %}
-{% block title %}Добавление нового контрагента{% endblock %}
-{% block h3 %}Добавление нового контрагента{% endblock %}
+{% extends "index/base.html" %}{% load i18n %}
+{% block title %}{% trans "Add new firm" %}{% endblock %}
+{% block h3 %}{% trans "Add new firm" %}{% endblock %}
 {% block content %}
 <div class="row">
     <div class="large-6 columns">
@@ -23,8 +23,8 @@
                 {{ field }}
                 {{ field.errors }}
             {% endfor %}
-            <input type="submit" value="Добавить" class="button success" />
-            <a class="button" href="{{ back }}">Вернуться</a>
+            <input type="submit" value='{% trans "Add" %}' class="button success" />
+            <a class="button" href="{{ back }}">{% trans "Back" %}</a>
         </form>
     </div>
 </div>

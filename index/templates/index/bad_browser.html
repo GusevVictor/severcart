@@ -1,14 +1,14 @@
-<!DOCTYPE html>{% load staticfiles %}
-<html>
+<!DOCTYPE html>{% load staticfiles %}{% load i18n %}
+<html lang="{% trans 'lang' %}">
 <head>
 <meta charset="UTF-8" />
 <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/style.css" />
-<title>Обновите браузер!</title>
+<title>{% trans "Upgrade your browser!" %}</title>
 </head>
 <body>
 <div class="center_panel">
-    <div class="header">Внимание! Вы пользуетесь устаревшим браузером.</div>
-    <p>Мы настоятельно рекомендуем Вам установить новую версию одиного из перечисленных браузеров.</p>
+    <div class="header">{% trans "Attention! You are using an outdated browser." %}</div>
+    <p>{% trans "We strongly recommend that you install the new version of one of the listed browsers." %}</p>
     <div class="brow_list">
         <div class="bl">
             <div class="pic">

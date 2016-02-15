@@ -5,6 +5,7 @@ from django.db import transaction
 from django.utils import timezone
 from django.http import JsonResponse, HttpResponse
 from django.template.loader import render_to_string
+from django.utils.translation import ugettext_lazy as _
 from index.models import City, CartridgeItem, OrganizationUnits, CartridgeItemName
 from index.helpers import check_ajax_auth
 from index.signals import sign_turf_cart, sign_add_full_to_stock, sign_tr_empty_cart_to_stock
@@ -19,7 +20,7 @@ def ajax_add_session_items(request):
     """Довляем новые картриджи на склад через Аякс
     """
     if request.method != 'POST':
-        return HttpResponse('<h1>Only use POST requests!</h1>')    
+        return HttpResponse('<h1>' + _('Only use POST requests!') + '</h1>')    
     # если пришёл запрос то пополняем сессионную переменную
     # результаты отображаем на странице
     form = AddItems(request.POST)
@@ -57,9 +58,9 @@ def ajax_add_session_items(request):
                 cart_number += 1
         
         if cart_number == 1:
-            tmpl_message = 'Расходник успешно добавлен.'
+            tmpl_message = _('Cartridge successfully added.')
         elif cart_number > 1:
-            tmpl_message = 'Расходники успешно добавлены.'
+            tmpl_message = _('Cartridges successfully added.')
 
         # запускаем сигнал добавления событий
         sign_add_full_to_stock.send(sender=None, list_cplx=list_cplx, request=request)
@@ -114,7 +115,7 @@ def transfer_to_stock(request):
     """Возврат исчерпаного картриджа от пользователя обратно на склад.
     """
     if request.method != 'POST':
-        return HttpResponse('<h1>Only use POST requests!</h1>')    
+        return HttpResponse('<h1>' + _('Only use POST requests!') + '</h1>')    
 
     checked_cartr = request.POST.getlist('selected[]')
     list_cplx = [] 
@@ -130,7 +131,7 @@ def transfer_to_stock(request):
 
     sign_tr_empty_cart_to_stock.send(sender=None, list_cplx=list_cplx, request=request)
     ansver['error'] = '0'
-    ansver['text']   = 'Расходники успешно перемещены.'
+    ansver['text']   = _('Cartridges successfully moved.')
     return JsonResponse(ansver, safe=False)
 
 
@@ -139,7 +140,7 @@ def clear_session(request):
     """Очищаем сессионную переменную от cumulative_list
     """
     request.session['cumulative_list'] = None
-    return HttpResponse('Сессия очищена')
+    return HttpResponse(_('Session cleared'))
 
 
 @check_ajax_auth
@@ -155,11 +156,6 @@ def city_list(request):
     return JsonResponse(tmp_dict, safe=False)
 
 
-def inx(request):
-    """Пока заглушечка.
-    """
-    return HttpResponse('<h1>Api it works!</h1>')
-
 @check_ajax_auth
 def del_node(request):
     """Удаляем нод(у)(ы) из структуры организации
@@ -170,7 +166,7 @@ def del_node(request):
     for ind in ar:
         node = OrganizationUnits.objects.get(pk=ind)
         node.delete()
-    return HttpResponse('Data deleted!')
+    return HttpResponse(_('Data deleted!'))
 
 
 @check_ajax_auth
@@ -187,4 +183,4 @@ def turf_cartridge(request):
 
     sign_turf_cart.send(sender=None, list_cplx=list_cplx, request=request)
 
-    return HttpResponse('Cartridjes deleted!')
+    return HttpResponse(_('Cartridjes deleted!'))

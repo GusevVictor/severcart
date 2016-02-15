@@ -1,6 +1,6 @@
-{% extends "index/base.html" %}
-{% block title %}Договора поставки{% endblock %}
-{% block h3 %}Договора поставки{% endblock %}
+{% extends "index/base.html" %}{% load i18n %}
+{% block title %}{% trans "delivery agreement" %}{% endblock %}
+{% block h3 %}{% trans "delivery agreement" %}{% endblock %}
 {% load staticfiles %}
 {% load docsf %}
 {% block jqueryui%}
@@ -17,45 +17,45 @@
             {% csrf_token %}
             <div class="row">
                 <div class="small-2 columns left">
-                    <label class='required' for="{{ form.number.id_for_label }}">Номер</label>
+                    <label class='required' for="{{ form.number.id_for_label }}">{% trans "Number" %}</label>
                     {{ form.number }}
                     {{ form.number.errors }}
                 </div>
                 <div class="small-4 columns left">
-                    <label class='required' for="{{ form.title.id_for_label }}">Название</label>
+                    <label class='required' for="{{ form.title.id_for_label }}">{% trans "Name" %}</label>
                     {{ form.title }}
                     {{ form.title.errors }}
                 </div>
                 <div class="small-2 columns left">
-                    <label for="{{ form.money.id_for_label }}">Сумма, руб.</label>
+                    <label for="{{ form.money.id_for_label }}">{% trans "Amount" %}, {% trans "Currency" %}</label>
                     {{ form.money }}
                     {{ form.money.errors }}
                 </div>
             </div>
             <div class="row">
                 <div class="small-4 columns left">
-                    <label for="{{ form.short_cont.id_for_label }}">Краткое содержание</label>
+                    <label for="{{ form.short_cont.id_for_label }}">{% trans "Summary" %}</label>
                     {{ form.short_cont }}
                     {{ form.short_cont.errors }}
                 </div>
                 <div class="small-3 columns left">
-                    <label class='required' for="{{ form.firm.id_for_label }}">Контрагент</label>
+                    <label class='required' for="{{ form.firm.id_for_label }}">{% trans "Firm" %}</label>
                     {{ form.firm }}
                     {{ form.firm.errors }}
                 </div>
                 <div class="small-3 columns left">
-                    <label for="{{ form.date.id_for_label }}">Дата</label>
+                    <label for="{{ form.date.id_for_label }}">{% trans "Date" %}</label>
                     <div class="calendar">{{ form.date }}</div>
                     {{ form.date.errors }}
                 </div>
             </div>
             {% if edit %}
                 <input type="submit" value="&nbsp;&nbsp;Сохранить&nbsp;&nbsp;" class="save_doc button success"/>
-                <a class="cansel_doc button alert" href="#">Отменить</a>
+                <a class="cansel_doc button alert" href="#">{% trans "Cancel" %}</a>
             {% else %}
                 <input type="submit" value="&nbsp;&nbsp;Добавить&nbsp;&nbsp;" class="button success"/>
-                <a class="edit_doc button" href="#">Редактировать</a>
-                <a class="delete_doc button alert" href="#">Удалить</a>
+                <a class="edit_doc button" href="#">{% trans "Edit" %}</a>
+                <a class="delete_doc button alert" href="#">{% trans "Delete" %}</a>
             {% endif %}
         </form>
     </div>
@@ -80,12 +80,12 @@
             <table class="checkboxes">
                 <tr>
                     <th>&nbsp;&nbsp;&nbsp;</th>
-                    <th>Номер</th>
-                    <th>Название</th>
-                    <th>Дата документа</th>
-                    <th>Контрагент</th>
-                    <th>Сумма, руб.</th>
-                    <th>Краткое содержимое</th>
+                    <th>{% trans "Number" %}</th>
+                    <th>{% trans "Name" %}</th>
+                    <th>{% trans "Document date" %}</th>
+                    <th>{% trans "Firm" %}</th>
+                    <th>{% trans "Amount" %},{% trans "Currency" %}</th>
+                    <th>{% trans "Summary" %}</th>
                 </tr>
                 {% for doc in docs %}
                 <tr>

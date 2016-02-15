@@ -1,14 +1,13 @@
 # -*- coding:utf-8 -*-
 
 from django import forms
-
+from django.utils.translation import ugettext_lazy as _
 
 class AuthenticationForm(forms.Form):
+    """Login form
     """
-    Login form
-    """
-    username = forms.CharField(label='Имя пользователя', widget=forms.widgets.TextInput)
-    password = forms.CharField(label='Пароль', widget=forms.widgets.PasswordInput)
+    username = forms.CharField(label=_('User name'), widget=forms.widgets.TextInput)
+    password = forms.CharField(label=_('Password'), widget=forms.widgets.PasswordInput)
 
     class Meta:
         fields = ['username', 'password']

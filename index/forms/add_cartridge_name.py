@@ -15,6 +15,6 @@ class AddCartridgeName(forms.ModelForm):
         data = self.cleaned_data.get('cart_itm_name').strip()
         search_type = CartridgeItemName.objects.filter(cart_itm_name=data)
         if search_type:
-            raise forms.ValidationError('Данное наменование уже существует!')            
+            raise forms.ValidationError(_('This name already exists!'))            
         else:
             return data

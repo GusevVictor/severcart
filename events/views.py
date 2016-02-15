@@ -8,6 +8,7 @@ from django.conf import settings
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.utils import timezone
 from django.db.models import Q
+from django.utils.translation import ugettext_lazy as _
 from .models  import Events
 from index.models import CartridgeItem
 from .helpers import events_decoder, date_to_str
@@ -125,5 +126,5 @@ def view_cartridge_events(request):
     except IndexError:
         context['frdly_es']     = []
         context['cart_number']  = ''
-        context['cart_type']    = 'Не найдено'
+        context['cart_type']    = _('Not found')
     return render(request, 'events/view_cartridge_events.html', context)

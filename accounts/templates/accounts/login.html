@@ -1,13 +1,13 @@
-<!DOCTYPE html>{% load staticfiles %}
+<!DOCTYPE html>{% load staticfiles %}{% load i18n %}
 <html lang="ru">
 <head>
     <meta charset="utf-8"/>
-    <link href="{{ STATIC_URL }}img/favicon.ico" %}" rel="shortcut icon"/>
-    <link rel="stylesheet" href="{{ STATIC_URL }}css/normalize.css" %}"/>
-    <link rel="stylesheet" href="{{ STATIC_URL }}css/style.css" %}"/>
-    <script src="{{ STATIC_URL }}js/vendor/jquery.js" %}"></script>
+    <link href="{{ STATIC_URL }}img/favicon.ico" rel="shortcut icon" />
+    <link rel="stylesheet" href="{{ STATIC_URL }}css/normalize.css" />
+    <link rel="stylesheet" href="{{ STATIC_URL }}css/style.css" />
+    <script src="{{ STATIC_URL }}js/vendor/jquery.js"></script>
     <script src="{{ STATIC_URL }}js/logic.js"></script>
-    <title>Залогиньтесь</title>
+    <title>{% trans "Login page" %}</title>
     <noscript>
         <meta http-equiv="refresh" content="3;url={% url 'bad_browser' %}"/>
     </noscript>
@@ -16,17 +16,17 @@
 <div class="cont">
 <div class="wrapper">
 {% if error %}
-    <p class="errornote">Введите корректный логин или пароль!</p>
+    <p class="errornote">{% trans "Please enter a valid username or password!" %}</p>
 {% endif %}
 <div class="login_form">
     <form action="{{ app_path }}" method="post" id="login-form">{% csrf_token %}
-        <p><label for="{{ form.username.id_for_label }}">Логин</label>
+        <p><label for="{{ form.username.id_for_label }}">{% trans "Login" %}</label>
         {{ form.username }}</p>
-        <p><label for="{{ form.password.id_for_label }}">Пароль</label>
+        <p><label for="{{ form.password.id_for_label }}">{% trans "Password" %}</label>
         {{ form.password }}</p>
         <input type="hidden" name="next" value="{{ next }}"/>
         <br/>
-        <input class="button login" type="submit" value="Войти"/>
+        <input class="button login" type="submit" value={% trans "Enter" %}/>
     </form>
 
     <script>

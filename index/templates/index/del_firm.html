@@ -1,15 +1,15 @@
-{% extends "index/base.html" %}
-{% block title %}Удаление фирмы{% endblock %}
-{% block h3 %}Вы точно хотите удалить обслуживающую фирму с параметрами:{% endblock %}
+{% extends "index/base.html" %}{% load i18n %}
+{% block title %}{% trans "Removal company" %}{% endblock %}
+{% block h3 %}{% trans "You sure you want to remove the service companies with the parameters:" %}{% endblock %}
 {% block content %}
     <div class="row">
         <div class="large-6 columns">
             <table>
                 <tr>
-                    <th>Название</th>
-                    <th>Контакты</th>
-                    <th>Адрес</th>
-                    <th>Комментарии</th>
+                    <th>{% trans "Name" %}</th>
+                    <th>{% trans "Contacts" %}</th>
+                    <th>{% trans "Address" %}</th>
+                    <th>{% trans "Comments" %}</th>
                 </tr>
                 <tr>
                     <td>{{ firm.firm_name }}</td>
@@ -20,13 +20,12 @@
             </table>
         </div>
         <div class="large-6 columns">
-            <form action="" method="post">
+            <form action="" method="POST">
                 {% csrf_token %}
                 <input name="id" value="{{ firm.id }}" type="hidden" />
                 <input type="submit" value="Удалить" class="button"/>
             </form>
-            <a href="/toner_refill/" class="button">Отмена</a>
+            <a href="/toner_refill/" class="button">{% trans "Back" %}</a>
         </div>
     </div>
-
 {% endblock %}

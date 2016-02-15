@@ -1,13 +1,13 @@
-{% extends "index/base.html" %}
+{% extends "index/base.html" %}{% load i18n %}
 {% load filters %}
 {% block content %}
     <div class="row">
         <div class="large-6 columns">
             <form action="" method="POST">
                 {% csrf_token %}
-                <label>Что передаём</label>
+                <label>{% trans "What transe" %}</label>
                 <input name="name" type="text"  value="{{checked_cartr }}"  readonly/>
-                <input type="submit" value="Вернуть на склад" class="button"/>
+                <input type="submit" value="{% trans 'Return to stock' %}" class="button"/>
             </form>
         </div>
     </div>

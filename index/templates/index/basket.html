@@ -1,13 +1,13 @@
-{% extends "index/base.html" %}
+{% extends "index/base.html" %}{% load i18n %}
 {% load staticfiles %}
 {% load pagination  %}
-{% block title %}Кариджи для списания{% endblock %}
-{% block h3 %}Кариджи для списания{% endblock %}
+{% block title %}{% trans "Basket" %}{% endblock %}
+{% block h3 %}{% trans "Basket" %}{% endblock %}
 {% block submenu %}
 <div class="row">
     <div class="large-12 columns">
-        <a class="from_basket_to_stock button" href="#">Вернуть на склад</a>
-        <a class="turf button alert" href="#">&nbsp;&nbsp;Списать&nbsp;&nbsp;</a>
+        <a class="from_basket_to_stock button" href="#">{% trans "Return to the stock" %}</a>
+        <a class="turf button alert" href="#">&nbsp;&nbsp;{% trans "Delete" %}&nbsp;&nbsp;</a>
         <img class="spinner" src="{{ STATIC_URL }}img/loader.gif" />
     </div>
 </div>
@@ -22,12 +22,12 @@
             <form>
                 <tr>
                     <th class="first_checkbox"><input type="checkbox" class="check_all"></th>
-                    <th class="cart_number {% if select_number %}active_cell{% endif %}"><a href="?action=number">Номер {{number_triangle}}</a><br/><input class="search_number" name="search_number" value="{{search_number}}"  /></th>
-                    <th class="cart_name{% if select_type %} active_cell{% endif %}"><a href="?action=name">Название {{type_triangle}}</a></th>
-                    <th class="cart_count{% if select_count %} active_cell{% endif %}"><a href="?action=recovery">Кол-во<br/>перезаправок {{count_triangle}}</a></th>
-                    <th class="cart_date{% if select_date %} active_cell{% endif %}"><a  href="?action=change_date">Дата помещения {{datec_triangle}}<br/>в корзину</a></th>
-                    <th>Комментарий</th>
-                    <th class="actions">Действие</th>
+                    <th class="cart_number {% if select_number %}active_cell{% endif %}"><a href="?action=number">{% trans "Number" %} {{number_triangle}}</a><br/><input class="search_number" name="search_number" value="{{search_number}}" /></th>
+                    <th class="cart_name{% if select_type %} active_cell{% endif %}"><a href="?action=name">{% trans "Name" %} {{type_triangle}}</a></th>
+                    <th class="cart_count{% if select_count %} active_cell{% endif %}"><a href="?action=recovery">{% trans "Amount" %}<br/>{% trans "recovery" %} {{count_triangle}}</a></th>
+                    <th class="cart_date{% if select_date %} active_cell{% endif %}"><a href="?action=change_date">{% trans "Date return" %} {{datec_triangle}}<br/>{% trans "in basket" %}</a></th>
+                    <th>{% trans "comment" %}</th>
+                    <th class="actions">{% trans "Actions" %}</th>
                 </tr>
                 {% for i in cartrjs %}
                     <tr>
@@ -39,9 +39,9 @@
                         <td><div class="comment_in_cell" title="{{ i.comment }}">{{ i.comment|truncatechars:40 }}</div></td>
                         <td><select class="cartridge_action" data="{{ i.pk }}">
                             <option selected></option>
-                            <option value="edit">Редактировать</option>
-                            <option value="view_events">Просмотр событий</option>
-                            <option value="view_delivery" data="{{ i.delivery_doc }}">Договор поставки</option>
+                            <option value="edit">{% trans "Edit a comment" %}</option>
+                            <option value="view_events">{% trans "Event viewer" %}</option>
+                            <option value="view_delivery" data="{{ i.delivery_doc }}">{% trans "Delivery agreement" %}</option>
                         </select>
                         </td>
                     </tr>
@@ -51,8 +51,5 @@
 
     </div>
 </div>
-
 {% found_pagination cartrjs size_perpage %}
 {% endblock %}
-
-

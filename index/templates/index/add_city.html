@@ -1,14 +1,14 @@
-{% extends "index/base.html" %}
-{% block title %}Добавить город{% endblock %}
-{% block h3 %}Добавить город{% endblock %}
+{% extends "index/base.html" %}{% load i18n %}
+{% block title %}{% trans "Add city" %}{% endblock %}
+{% block h3 %}{% trans "Add city" %}{% endblock %}
 {% block content %}
 <div class="row">
     <div class="large-6 columns">
         <form action="" method="post">
             {% csrf_token %}
             {{ form.as_p }}
-            <input type="submit" value="Добавить" class="button success" />
-            <a class="button" href="{{ back }}">Вернуться</a>
+            <input type="submit" value='{% trans "Add" %}' class="button success" />
+            <a class="button" href="{{ back }}">{% trans "Back" %}</a>
         </form>
     </div>
 </div>

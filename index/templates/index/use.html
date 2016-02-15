@@ -1,7 +1,7 @@
-{% extends "index/base.html" %}
+{% extends "index/base.html" %}{% load i18n %}
 {% load pagination  %}
-{% block title %}Расходники в пользовании{% endblock %}
-{% block h3 %}Расходники в пользовании{% endblock %}
+{% block title %}{% trans "Consumables in use" %}{% endblock %}
+{% block h3 %}{% trans "Consumables in use" %}{% endblock %}
 {% block submenu %}
 <div class="row">
     <div class="large-6 columns">
@@ -11,8 +11,8 @@
 </div>
 <div class="row">
     <div class="large-12 columns">
-        <a class="tr_to_stock button no_follow" href="#">Вернуть на склад</a>
-        <a class="tr_empty_to_recycle_bin button alert" href="#">В корзину</a>
+        <a class="tr_to_stock button no_follow" href="#">{% trans "Return to the stock" %}</a>
+        <a class="tr_empty_to_recycle_bin button alert" href="#">{% trans "Basket" %}</a>
         <img class="spinner" src="{{ STATIC_URL }}img/loader.gif" />
     </div>
 </div>
@@ -27,15 +27,14 @@
             <form>
                 <tr>
                     <th class="first_checkbox"><input type="checkbox" class="check_all"></th>
-                    <th class="cart_number {% if select_number %}active_cell{% endif %}"><a href="?action=number">Номер {{number_triangle}}</a><br/><input class="search_number" name="search_number" value="{{search_number}}"  /></th>
-                    <th class="cart_name{% if select_type %} active_cell{% endif %}"><a href="?action=name">Название {{type_triangle}}</a></th>
-                    <th class="cart_count{% if select_count %} active_cell{% endif %}"><a href="?action=recovery">Кол-во<br/>перезаправок {{count_triangle}}</a></th>
-                    <th class="cart_date{% if select_date %} active_cell{% endif %}"><a href="?action=change_date">Дата передачи {{datec_triangle}} <br/>в пользование</a></th>
-                    <th class="org_user">Пользователь</th>
-                    <th>Комментарий</th>
-                    <th class="actions">Действие</th>
-                </tr>
-                {% for i in cartrjs %}
+                    <th class="cart_number {% if select_number %}active_cell{% endif %}"><a href="?action=number">{% trans "Number" %} {{number_triangle}}</a><br/><input class="search_number" name="search_number" value="{{search_number}}"  /></th>
+                    <th class="cart_name{% if select_type %} active_cell{% endif %}"><a href="?action=name">{% trans "Name" %} {{type_triangle}}</a></th>
+                    <th class="cart_count{% if select_count %} active_cell{% endif %}"><a href="?action=recovery">{% trans "Amount" %}<br/>{% trans "recovery" %} {{count_triangle}}</a></th>
+                    <th class="cart_date{% if select_date %} active_cell{% endif %}"><a href="?action=change_date">{% trans "Date transfe" %} {{datec_triangle}} <br/>{% trans "in use" %}</a></th>
+                    <th class="org_user">{% trans "User" %}</th>
+                    <th>{% trans "Comment" %}</th>
+                    <th class="actions">{% trans "Action" %}</th>
+                </tr>{% for i in cartrjs %}
                     <tr>
                         <td><input type="checkbox" class="checkbox" value="{{ i.pk }}"></td>
                         <td>{{ i.cart_number }}</td>
@@ -46,19 +45,16 @@
                         <td><div class="comment_in_cell" title="{{ i.comment }}">{{ i.comment|truncatechars:40 }}</div></td>
                         <td><select class="cartridge_action" data="{{ i.pk }}">
                             <option selected></option>
-                            <option value="edit">Редактировать</option>
-                            <option value="view_events">Просмотр событий</option>
-                            <option value="view_delivery" data="{{ i.delivery_doc }}">Договор поставки</option>
+                            <option value="edit">{% trans "Edit a comment" %}ь</option>
+                            <option value="view_events">{% trans "Event viewer" %}</option>
+                            <option value="view_delivery" data="{{ i.delivery_doc }}">{% trans "Delivery agreement" %}</option>
                         </select>
                         </td>
                     </tr>
                 {% endfor %}
             </form>
         </table>
-
     </div>
 </div>
-
 {% found_pagination cartrjs size_perpage %}
-
 {% endblock %}

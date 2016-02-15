@@ -1,59 +1,60 @@
 {% extends "index/base.html" %}
+{% load i18n %}
 {% load staticfiles %}
-{% block title %}Текущее состояние материальных запасов{% endblock %}
+{% block title %}{% trans "Stocks of consumables" %}{% endblock %}
 {% block content %}
 <div class="row">
     <div class="large-6 columns">
-        <h4>Рабочий стол</h4>
+        <h4>{% trans "Desktop" %}</h4>
         <table class="dashboard">
             <tbody>
             <tr>
                 <td class="pic"><img src="{{ STATIC_URL }}img/dashboard/stock.png" /></td>
-                <td>Количество на складе(пригодных к использованию)</td>
+                <td>{% trans "Quantity in stock (usable)" %}</td>
                 <td class="quad">{{ full_on_stock }}</td>
             </tr>
             <tr>
                 <td class="pic"><img src="{{ STATIC_URL }}img/dashboard/uses.png" /></td>
-                <td>Количество задействованных</td>
+                <td>{% trans "The number of installed" %}</td>
                 <td class="quad">{{ uses }}</td>
             </tr>
             <tr>
                 <td class="pic"><img src="{{ STATIC_URL }}img/dashboard/empty.png" /></td>
-                <td>Количество на складе (пустые, готовые к перезаправке)</td>
+                <td>{% trans "Number of empty, ready to recharge" %}</td>
                 <td class="quad">{{ empty_on_stock }}</td>
             </tr>
             <tr>
                 <td class="pic"><img src="{{ STATIC_URL }}img/dashboard/filled.png" /></td>
-                <td>Сейчас заправляется</td>
+                <td>{% trans "Now dressed" %}</td>
                 <td class="quad">{{ filled }}</td>
             </tr>
             <tr>
                 <td class="pic"><img src="{{ STATIC_URL }}img/dashboard/rbin.png" /></td>
-                <td>В корзине</td>
+                <td>{% trans "In basket" %}</td>
                 <td class="quad">{{ recycler_bin }}</td>
             </tr>
             </tbody>
         </table>
-        <h4>Расходавание картриджей</h4>
+        <h4>{% trans "Spending cartridges" %}</h4>
         <table class="statistics">
             <tbody>
             <tr>
-                <td>За текущие сутки</td>
+                <td>{% trans "For the current day" %}</td>
                 <td class="text-center">{{ use_day }}</td>
             </tr>
             <tr>
-                <td>С начала месяца</td>
+                <td>{% trans "Since the beginning of the month" %}</td>
                 <td class="text-center">{{ use_month }}</td>
             </tr>
             <tr>
-                <td>С начала года</td>
+                <td>{% trans "Since the beginning of the year" %}</td>
                 <td class="text-center">{{ use_year }}</td>
             </tr>
             </tbody>
         </table>
     </div>
     <div class="large-6 columns">
-        <h4>События</h4>
+        <h4>{% trans "Events" %}</h4>
         <div>
             <table class="top_events">
                 {% for line in events_list %}
@@ -67,7 +68,7 @@
                     <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;...</td><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;...</td>
                 </tr>
                 </table>
-                <div class="text-right marginTop"><a href="{% url 'show_events' %}">Просмотр всех событий</a></div>
+                <div class="text-right marginTop"><a href="{% url 'show_events' %}">{% trans "View all events" %}</a></div>
             {% else %}
                 </table>
             {% endif %}

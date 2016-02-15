@@ -1,6 +1,7 @@
 # -*- coding:utf-8 -*-
 
 from django.db import models
+from django.utils.translation import ugettext_lazy as _
 from index.models import OrganizationUnits
 
 class Events(models.Model):
@@ -8,15 +9,15 @@ class Events(models.Model):
     """
 
     ETYPE_CHOICES = (
-        ('AD', 'Добавление нового расходника'),
-        ('TR', 'Передача расходника в пользование'), # 
-        ('TF', 'Передача расходника на заправку'),
-        ('RS', 'Возврат восстановленного картриджа на склад'),
-        ('TB', 'Перемещение в корзину'),
-        ('DC', 'Списание расходника'),
-        ('TS', 'Передача пустого расходника на склад'),
-        ('CU', 'Создание нового пользователя'),
-        ('DU', 'Удаление пользователя'),
+        ('AD', _('Adding a new consumables')),
+        ('TR', _('Transfer consumables for use')),
+        ('TF', _('Transfer Consumables for refueling')),
+        ('RS', _('Return to the remanufactured cartridge on storage')),
+        ('TB', _('Move to basket')),
+        ('DC', _('Delete cartridge')),
+        ('TS', _('Passing an empty consumables stock')),
+        ('CU', _('Creating a new user')),
+        ('DU', _('Removing a user')),
     )
     # устанавливаем слабую связанность для объектов
     date_time   = models.DateTimeField()

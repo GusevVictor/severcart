@@ -1,7 +1,7 @@
-{% extends "index/base.html" %}
+{% extends "index/base.html" %}{% load i18n %}
 {% load filters %}
-{% block title %}Возврат картриджей на склад{% endblock %}
-{% block h3 %}Возврат картриджей на склад{% endblock %}
+{% block title %}{% trans "Return cartridge to the stock" %}{% endblock %}
+{% block h3 %}{% trans "Return cartridge to the stock" %}{% endblock %}
 {% block content %}
 <div class="row">
     <div class="large-6 columns">
@@ -18,17 +18,17 @@
     <div class="large-12 columns">
         <form action="" method="POST">
         {% csrf_token %}
-        <input name="checked_cartr" type="hidden"  value="{{ checked_cartr }}"  readonly/>
-        <input name="list_length" type="hidden"  value="{{ list_length }}"  readonly/>
+        <input name="checked_cartr" type="hidden" value="{{ checked_cartr }}" readonly/>
+        <input name="list_length" type="hidden" value="{{ list_length }}" readonly/>
         <table class="actions_firm">
         <tr>
-        <th class="action_type">Номер</th>
-        <th class="action_type">Название</th>
-        <th class="all_filled"><input type="checkbox" name="filled" id="filled" class="header_checkbox" checked/><label for="filled">Заправка<br/> и очистка</label></th>
-        <th class="all_fotoreceptor"><input type="checkbox" name="fotoreceptor" id="fotoreceptor" /><label for="fotoreceptor">Замена<br/>фотовала</label></th>
-        <th class="all_rakel"><input type="checkbox" name="rakel" id="rakel" /><label for="rakel">Замена<br/>ракеля</label></th>
-        <th class="all_chip"><input type="checkbox" name="chip" id="chip" /><label for="chip">Замена<br/>чипа</label></th>
-        <th class="all_magnit"><input type="checkbox" name="magnit" id="magnit" /><label for="magnit">Замена<br/>магнитного вала</label></th>
+        <th class="action_type">{% trans "Number" %}</th>
+        <th class="action_type">{% trans "Name" %}</th>
+        <th class="all_filled"><input type="checkbox" name="filled" id="filled" class="header_checkbox" checked/><label for="filled">{% trans "Filling<br/> and cleaning" %}</label></th>
+        <th class="all_fotoreceptor"><input type="checkbox" name="fotoreceptor" id="fotoreceptor" /><label for="fotoreceptor">{% trans "Replacing <br/> fotovala" %}</label></th>
+        <th class="all_rakel"><input type="checkbox" name="rakel" id="rakel" /><label for="rakel">{% trans "Replacement<br/>squeegee" %}</label></th>
+        <th class="all_chip"><input type="checkbox" name="chip" id="chip" /><label for="chip">{% trans "Replacement<br/>chip" %}</label></th>
+        <th class="all_magnit"><input type="checkbox" name="magnit" id="magnit" /><label for="magnit">{% trans "Replacing<br/>the magnetic roller" %}</label></th>
         </tr>
         {% for elem in list_cart %}
         <tr>
@@ -41,8 +41,8 @@
         <td><input type="checkbox" class="magnit" name="cart_{{elem.pk}}" value="magnit"/></td>
         </tr>{% endfor %}
         </table>
-        <input type="submit" value="Вернуть на склад" class="button"/>
-        <a class="button" href="{{ back }}">Вернуться</a>
+        <input type="submit" value="{% trans 'Return to stock' %}" class="button"/>
+        <a class="button" href="{{ back }}">{% trans "Back" %}</a>
         </form>
     </div>
 </div>

@@ -1,15 +1,15 @@
-{% extends "index/base.html" %}
+{% extends "index/base.html" %}{% load i18n %}
 {% load filters %}
-{% block title %}Передача в пользование{% endblock %}
-{% block h3 %}Передача в пользование{% endblock %}
+{% block title %}{% trans "Transfer of use" %}{% endblock %}
+{% block h3 %}{% trans "Transfer of use" %}{% endblock %}
 {% block content %}
     <div class="row">
         <div class="large-6 columns">
             <form action="" method="POST">
                 {% csrf_token %}
-                <label class="required">Что передаём</label>
+                <label class="required">{% trans "What transfe" %}</label>
                 <input name="name" type="text"  value="{{checked_cartr }}"  readonly/>
-                <label class="required marginTop">Кому передаём</label>
+                <label class="required marginTop">{% trans "To pass" %}</label>
                 <select size="1" name="par_id">
                     {% for i in bulk %}
                         {% if forloop.counter == 1 %}
@@ -21,8 +21,8 @@
                     {% endfor %}
                 </select>
                 <div class="marginTop">
-                    <input type="submit" value="Передать" class="button"/>
-                    <a class="button no_follow back">Отмена</a>
+                    <input type="submit" value="{trans 'Transfer to'}" class="button"/>
+                    <a class="button no_follow back">{trans 'Back'}</a>
                 </div>
             </form>
         </div>

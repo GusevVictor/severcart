@@ -1,5 +1,5 @@
-<!DOCTYPE html>{% load staticfiles %}
-<html lang="ru">
+<!DOCTYPE html>{% load staticfiles %}{% load i18n %}
+<html lang={% trans "lang" %}>
 <head>
     <meta charset="utf-8" />
     <link href="{{ STATIC_URL }}img/favicon.ico" rel="shortcut icon" />
@@ -30,14 +30,14 @@
                 </div>
                 <div class="large-6 columns right">
                     <p class="login-string">
-                        <span class="user_ou">{% if request.user.departament %}{{request.user.departament}}{% endif %}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ request.user.get_username }}&nbsp;&nbsp;&nbsp;&nbsp;<a href="{% url 'auth:logout' %}">выход</a></p> 
+                        <span class="user_ou">{% if request.user.departament %}{{request.user.departament}}{% endif %}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ request.user.get_username }}&nbsp;&nbsp;&nbsp;&nbsp;<a href="{% url 'auth:logout' %}">{% trans "Exit" %}</a></p> 
                 </div>
         </div>
         {% block submenu %}{% endblock %}
         {% block content %}{% endblock %}
     </div>
     <div class="footer">
-        <div class="text_in_footer">Версия: 0.0.15&nbsp;&nbsp;&nbsp;&copy;&nbsp;&nbsp;&nbsp;<a href="http://servercart.org">servercart.org</a>&nbsp;&nbsp;&nbsp;2016</div>
+        <div class="text_in_footer">{% trans "Version" %}: 0.0.15&nbsp;&nbsp;&nbsp;&copy;&nbsp;&nbsp;&nbsp;<a href="http://servercart.org">servercart.org</a>&nbsp;&nbsp;&nbsp;2016</div>
     </div>
 </body>
 </html>

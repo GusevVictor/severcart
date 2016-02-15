@@ -1,6 +1,6 @@
-{% extends "index/base.html" %}{% load staticfiles %}
-{% block title %}Добавление объектов на склад{% endblock %}
-{% block h3 %}Добавление объектов на склад{% endblock %}
+{% extends "index/base.html" %}{% load staticfiles %}{% load i18n %}
+{% block title %}{% trans "Adding objects to the stock" %}{% endblock %}
+{% block h3 %}{% trans "Adding objects to the stock" %}{% endblock %}
 {% block jqueryui %}
     <link rel="stylesheet" href="{{ STATIC_URL }}css/pm_widget.css" />
     <script src="{{ STATIC_URL }}js/pm_widget.js"></script>
@@ -16,28 +16,28 @@
         <div class="large-6 columns">
             <form action="" method="post">
                 {% csrf_token %}
-                <label class="required" for="{{ form.cartName.id_for_label }}">Название расходника</label>
+                <label class="required" for="{{ form.cartName.id_for_label }}">{% trans "Name consumables" %}</label>
                 <div class="input_row">
                     {{ form.cartName }} <a class="dj_button add" href="{% url 'add_name' %}"></a>
                 </div>
-                <div class="form_error_text cart_name_error">Поле обязательно для заполнения</div>
+                <div class="form_error_text cart_name_error">{% trans "Required field" %}</div>
                 
-                <label class="marginTop" for="{{ form.doc.id_for_label }}">Договор поставки</label>
+                <label class="marginTop" for="{{ form.doc.id_for_label }}">{% trans "Delivery agreement" %}</label>
                 <div class="input_row">
                     {{ form.doc }} <a class="dj_button add" href="{% url 'docs:delivery' %}"></a>
                 </div>
 
-                <label class='required marginTop' for="{{ form.cartCount.id_for_label }}">Количество</label>
+                <label class='required marginTop' for="{{ form.cartCount.id_for_label }}">{% trans "Amount" %}</label>
                 <div class="input_row">
                     {{ form.cartCount }}
                 </div>
-                <div class="form_error_text cart_count_error">Поле должно быть более нуля</div>
+                <div class="form_error_text cart_count_error">{% trans "The field must be greater than zero" %}</div>
                 <div class="marginTop"></div>
                 <div class="marginTop">
-                    <input type="submit" value="Добавить" class="button success add_items no_follow"/>
+                    <input type="submit" value='{% trans "Add" %}' class="button success add_items no_follow"/>
                     &nbsp;&nbsp;&nbsp;
-                    <a href="{{ back }}" class="button"/>Вернуться</a>&nbsp;&nbsp;&nbsp;
-                    <a href="#" class="clear_session button no_follow"/>Очистить сессию</a>
+                    <a href="{{ back }}" class="button"/>{% trans "Back" %}</a>&nbsp;&nbsp;&nbsp;
+                    <a href="#" class="clear_session button no_follow"/>{% trans "Clear session" %}</a>
                     <img class="spinner" src="{{ STATIC_URL }}img/loader.gif" />
                 </div>
             </form>

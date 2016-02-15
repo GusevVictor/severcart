@@ -70,7 +70,8 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
-                'django.core.context_processors.static',
+#                'django.core.context_processors.static',
+                'django.template.context_processors.static',
             ],
             'loaders': [
                 'django.template.loaders.app_directories.Loader',
@@ -106,6 +107,14 @@ USE_L10N = True
 
 USE_TZ = False
 
+from django.utils.translation import ugettext_lazy as _
+
+LANGUAGES = (
+    ('ru', _('Russian')),
+    ('en', _('English')),
+)
+
+LOCALE_PATHS = (os.path.join(BASE_DIR, 'locale'), )
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.8/howto/static-files/

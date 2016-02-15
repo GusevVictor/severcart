@@ -1,6 +1,6 @@
-{% extends "index/severcartcbv.html" %}
-{% block title %}Наличие материальных запасов{% endblock %}
-{% block h3 %}Список новых или заправленных{% endblock %}
+{% extends "index/severcartcbv.html" %}{% load i18n %}
+{% block title %}{% trans "List of new or refilled cartridges" %}{% endblock %}
+{% block h3 %}{% trans "List of new or refilled cartridges" %}{% endblock %}
 {% block submenu %}
 <div class="row">
     <div class="large-6 columns">
@@ -10,9 +10,9 @@
 </div>
 <div class="row">
     <div class="large-12 columns">
-        <a class="add_items button success" href="{% url 'add_items' %}">Добавить расходники</a>
-        <a class="tr_for_use button no_follow" href="#">Передать в пользование</a>
-        <a class="tr_to_recycle_bin button alert" href="#">В корзину</a>
+        <a class="add_items button success" href="{% url 'add_items' %}">{% trans "Add consumables" %}</a>
+        <a class="tr_for_use button no_follow" href="#">{% trans "Transferred for use" %}</a>
+        <a class="tr_to_recycle_bin button alert" href="#">{% "In basket" %}</a>
     </div>
 </div>
 <div class="row">

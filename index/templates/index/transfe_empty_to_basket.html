@@ -1,14 +1,15 @@
-{% extends "index/base.html" %}
+{% extends "index/base.html" %}{% load i18n %}
 {% load filters %}
-{% block title %}Перемещение пустых расходников в корзину{% endblock %}
+{% block title %}{% trans "Moving empty consumables to cart" %}{% endblock %}
+{% block h3 %}{% trans "Moving empty consumables to cart" %}{% endblock %}
 {% block content %}
     <div class="row">
         <div class="large-6 columns">
             <form action="" method="POST">
                 {% csrf_token %}
-                <label>Что передаём</label>
-                <input name="name" type="text"  value="{{checked_cartr }}"  readonly/>
-                <input type="submit" value="В корзину" class="button"/>
+                <label>{% trans "What transfe?" %}</label>
+                <input name="name" type="text" value="{{checked_cartr }}"  readonly/>
+                <input type="submit" value="{% trans 'In basket' %}" class="button"/>
             </form>
         </div>
     </div>

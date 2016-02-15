@@ -1,16 +1,17 @@
 # -*- coding:utf-8 -*-
 
 from django.db import models
+from django.utils.translation import ugettext_lazy as _
 from index.models import FirmTonerRefill, OrganizationUnits
     
 class SCDoc(models.Model):
     """Документы - договора на поставку, заправку/обслуживание, акты списания, акты передачи
     """
     DOC_TYPE = (
-        (1, 'Договор поставки'),
-        (2, 'Договор обслуживания'),
-        (3, 'Акт передачи'),
-        (4, 'Акт списания'),
+        (1, _('Delivery agreement')),
+        (2, _('Service agreement')),
+        (3, _('Deed of conveyance')),
+        (4, _('Act of write-off')),
     )
     number      = models.CharField(db_index=True, max_length=256)
     date        = models.DateField(db_index=True)

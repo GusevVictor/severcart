@@ -1,45 +1,44 @@
-{% extends "index/base.html" %}
-{% block title %}Добавление нового названия{% endblock %}
-{% block h3 %}Добавление нового названия{% endblock %}
+{% extends "index/base.html" %}{% load i18n %}
+{% block title %}{% trans "Adding a new name" %}{% endblock %}
+{% block h3 %}{% trans "Adding a new name" %}{% endblock %}
 {% block content %}
-    <div class="row">
-        <div class="large-6 columns">
-            {% if messages %}
-                <ul class="messages">
-                    {% for message in messages %}
-                        <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
-                    {% endfor %}
-                </ul>
-            {% endif %}
-        </div>
+<div class="row">
+    <div class="large-6 columns">
+        {% if messages %}
+            <ul class="messages">
+                {% for message in messages %}
+                    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
     </div>
-    <div class="row">
-        <div class="large-6 columns">
-            <form action="" method="post">
-                {% csrf_token %}
-                <label class="required" for="{{ form.cart_itm_name.id_for_label }}">Название расходника:</label>
-                <div class="input_row">
-                    {{ form.cart_itm_name }}
-                </div>
-                <div class="input_row">
-                    {{ form.cart_itm_name.errors }}
-                </div>
-                <!-- {{ form.subject.errors }} -->
-                <label class="required marginTop" for="{{ form.cart_itm_type.id_for_label }}">Тип:</label>
-                <div class="input_row">
-                    {{ form.cart_itm_type }}
-                    <a class="dj_button add" href="{% url 'add_type' %}"></a>
-                </div>
-                <div class="input_row">
-                    {{ form.cart_itm_type.errors }}
-                </div>
-                <div class="marginTop"></div>
-                <div class="input_row marginTop">
-                    <input type="submit" value="Добавить" class="button success"/>
-                    &nbsp;&nbsp;&nbsp;&nbsp;
-                    <a class="button" href="{{ back }}">Вернуться</a>
-                </div>
-            </form>
-        </div>
+</div>
+<div class="row">
+    <div class="large-6 columns">
+        <form action="" method="post">
+            {% csrf_token %}
+            <label class="required" for="{{ form.cart_itm_name.id_for_label }}">{% trans "Name consumables" %}</label>
+            <div class="input_row">
+                {{ form.cart_itm_name }}
+            </div>
+            <div class="input_row">
+                {{ form.cart_itm_name.errors }}
+            </div>
+            <!-- {{ form.subject.errors }} -->
+            <label class="required marginTop" for="{{ form.cart_itm_type.id_for_label }}">{% trans "Type" %}</label>
+            <div class="input_row">
+                {{ form.cart_itm_type }}
+                <a class="dj_button add" href="{% url 'add_type' %}"></a>
+            </div>
+            <div class="input_row">
+                {{ form.cart_itm_type.errors }}
+            </div>
+            <div class="marginTop"></div>
+            <div class="input_row marginTop">
+                <input type="submit" value='{% trans "Add" %}' class="button success"/>&nbsp;&nbsp;&nbsp;&nbsp;
+                <a class="button" href="{{ back }}">{% trans "Back" %}</a>
+            </div>
+        </form>
     </div>
+</div>
 {% endblock %}

@@ -1,21 +1,22 @@
 import datetime
 from django import forms
+from django.utils.translation import ugettext_lazy as _
 from django.core.exceptions import ValidationError
 from index.models import FirmTonerRefill
 from events.forms import del_leding_zero
 
 class AddDoc(forms.Form):
-    number   = forms.CharField(max_length = 64, label = 'Номер', required = True)
+    number = forms.CharField(max_length=64, label=_('Number'), required=True)
 
-    title   = forms.CharField(max_length = 256, label = 'Название', required = True)
+    title  = forms.CharField(max_length=256, label=_('Name'), required=True)
 
-    firm = forms.ModelChoiceField(queryset=FirmTonerRefill.objects.all(),
-                                  error_messages={'required': 'Поле обязательно для заполнения.'},
-                                  label='Фирма поставщик',
+    firm   = forms.ModelChoiceField(queryset=FirmTonerRefill.objects.all(),
+                                  error_messages={'required': _('Required field.')},
+                                  label=_('Firm supplier'),
                                   required=True,
                                   )
     
-    short_cont = forms.CharField(max_length = 256, label='Краткое содержимое', required=False, widget=forms.widgets.Textarea())
+    short_cont = forms.CharField(max_length=256, label=_('Summary'), required=False, widget=forms.widgets.Textarea())
 
     money = forms.CharField(required=False)
     
@@ -25,7 +26,7 @@ class AddDoc(forms.Form):
         """Проверят на пустоту введенные данные.
         """
         if not self.cleaned_data.get('number', ''):
-            raise ValidationError("Поле обязательно для заполнения.")
+            raise ValidationError(_('Required field.'))
         return self.cleaned_data.get('number', '').strip()
 
     def clean_money(self):
@@ -44,7 +45,7 @@ class AddDoc(forms.Form):
         try:
             money = [ int(i) for i in money ]
         except ValueError:
-            raise ValidationError('Вы ввели ошибочную сумму.')
+            raise ValidationError(_('You have entered wrong amount'))
         else:
             # преобразуем сумму в копейки/центы/евроценты
             if len(money) == 1:
@@ -52,13 +53,13 @@ class AddDoc(forms.Form):
             elif len(money) == 2:
                 return (money[0] * 100) + money[1]
             else:
-                raise ValidationError('Вы ввели ошибочную сумму.')
+                raise ValidationError(_('You have entered wrong amount'))
 
     def clean_title(self):
         """
         """
         if not self.cleaned_data.get('title', ''):
-            raise ValidationError('Поле обязательно для заполнения.')
+            raise ValidationError(_('Required field.'))
         return self.cleaned_data.get('title', '').strip()
 
     def clean_short_cont(self):

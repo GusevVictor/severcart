@@ -1,6 +1,6 @@
-{% extends "index/base.html" %}
-{% block h3 %}Просмотр событий{% endblock %}
-{% block title %}Просмотр событий{% endblock %}
+{% extends "index/base.html" %}{% load i18n %}
+{% block h3 %}{% trans "Viewing of events" %}{% endblock %}
+{% block title %}{% trans "Viewing of events" %}{% endblock %}
 {% load staticfiles %}
 {% block jqueryui%}
 <link rel="stylesheet" href="{{ STATIC_URL }}css/jquery-ui.css" />
@@ -11,40 +11,40 @@
 {% block content %} 
 <div class="row">
     <div class="large-12 columns">
-        <p>Выберите просматриваемый период</p>
+        <p>{% trans "Select a period viewed" %}</p>
         <form action="" method="POST" class="input_date">
             {% csrf_token %}
-            с <div class="calendar">{{ form.start_date}}</div><!-- <span class="datepicker"></span>
-         -->по <div class="calendar">{{ form.end_date }}</div>
-            <input type="submit" value="Показать" class="button success" />
-            <a href="{% url 'show_events' %}" class="button alert">  Сброс  </a>
+            {% trans "From" %} <div class="calendar">{{ form.start_date}}</div><!-- <span class="datepicker"></span>
+         -->{% trans "By" %}<div class="calendar">{{ form.end_date }}</div>
+            <input type="submit" value='{% trans "show" %}' class="button success" />
+            <a href="{% url 'show_events' %}" class="button alert"> {% trans "Reset" %} </a>
         </form>
     </div>
 </div>
 {% if list_events %}
+<div class="row">
+    <div class="large-12 columns">
+        <p></p>
+        <div class="text-right"><strong>{% trans "Total Events:" %} </strong> {{ count_events }}</div>
+        <table class="all_events_view">
+        <tr>
+            <th class="date_and_time">{% trans "Date and time" %} </th>
+            <th class="text_event">{% trans "Event text" %} </th>
+        </tr>
+        {% for elem in list_events %}
+            <tr>
+                <td>{{ elem.data_env|date:"d.m.Y G:i" }}</td><td>{{ elem.text_com|safe }}</td>
+            </tr>
+        {% endfor %}
+        </table>
+    </div>
+</div>
+    {% if count_events > max_count_events %}
     <div class="row">
         <div class="large-12 columns">
-            <p></p>
-            <div class="text-right"><strong>Всего событий: </strong> {{ count_events }}</div>
-            <table class="all_events_view">
-            <tr>
-                <th class="date_and_time">Дата и время</th>
-                <th class="text_event">Текст события</th>
-            </tr>
-            {% for elem in list_events %}
-                <tr>
-                    <td>{{ elem.data_env|date:"d.m.Y G:i" }}</td><td>{{ elem.text_com|safe }}</td>
-                </tr>
-            {% endfor %}
-            </table>
+            <div class="text-center"><a next_page="{{ next_page }}" class="events_see_more button" href="">{% trans "Show more..." %}</a><img class="spinner" src="{{ STATIC_URL }}img/loader.gif" /></div>
         </div>
     </div>
-    {% if count_events > max_count_events %}
-        <div class="row">
-            <div class="large-12 columns">
-                <div class="text-center"><a next_page="{{ next_page }}" class="events_see_more button" href="">Показать ещё...</a><img class="spinner" src="{{ STATIC_URL }}img/loader.gif" /></div>
-            </div>
-        </div>
     {% endif %}
 {% endif %}
 {% endblock %}

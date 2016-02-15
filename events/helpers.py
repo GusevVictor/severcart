@@ -1,5 +1,7 @@
 # -*- coding:utf-8 -*-
 
+from django.utils.translation import ugettext as _
+
 def date_to_str(date_dict):
     """Преобразует словарь содержащий компоненты дат в строку.
     """
@@ -25,9 +27,11 @@ def events_decoder(qso, simple=True):
             entry_obj = {}
             data_env = entry.date_time
             if simple:
-                text_com = 'Добавлен пользователем %s.' % (entry.event_user, )
+                text_com = _('Added user %(user_name)s.') % {'user_name': entry.event_user}
             else:
-                text_com = '№ %s (%s) добавлен пользователем %s.' % (entry.cart_number, entry.cart_type, entry.event_user)
+                text_com = _('№ %(cart_number)s (%(cart_type)s) added user %(user_name)s.') % {'cart_number': entry.cart_number, 
+                                                                                                'cart_type': entry.cart_type, 
+                                                                                                'user_name': entry.event_user}
             entry_obj['data_env'] = data_env
             entry_obj['text_com'] = text_com
             frdly_es.append(entry_obj)
@@ -36,14 +40,12 @@ def events_decoder(qso, simple=True):
             entry_obj = {}
             data_env = entry.date_time
             if simple:
-                text_com = 'Передача в пользование %s пользователем %s.' % (
-                                                                            entry.event_org,
-                                                                            entry.event_user )
+                text_com = _('Transfer to use %(event_org)s user %(event_user)s.') % {'event_org': entry.event_org, 'event_user': entry.event_user }
             else:
-                text_com = '№ %s (%s) передан в пользование %s пользователем %s.' % (entry.cart_number, 
-                                                                                    entry.cart_type, 
-                                                                                    entry.event_org,
-                                                                                    entry.event_user )
+                text_com = _('№ %(cart_number)s (%(cart_type)s) transfer to use %(event_org)s user %(event_user)s.') % { 'cart_number': entry.cart_number, 
+                                                                                    'cart_type': entry.cart_type, 
+                                                                                    'event_org': entry.event_org,
+                                                                                    'event_user': entry.event_user }
             entry_obj['data_env'] = data_env
             entry_obj['text_com'] = text_com
             frdly_es.append(entry_obj)
@@ -52,14 +54,14 @@ def events_decoder(qso, simple=True):
             entry_obj = {}
             data_env = entry.date_time
             if simple:
-                text_com = 'Передача на заправку "%s" пользователем %s.' % (
-                                                                            entry.event_firm,
-                                                                            entry.event_user )
+                text_com = _('Transfer to restore "%(event_firm)s" user %(event_user)s.') % {'event_firm': entry.event_firm,
+                                                                            'event_user': entry.event_user }
             else:
-                text_com = '№ %s (%s) передача на заправку "%s" пользователем %s.' % (entry.cart_number, 
-                                                                            entry.cart_type, 
-                                                                            entry.event_firm,
-                                                                            entry.event_user )
+                text_com = _('№ %(cart_number)s (%(cart_type)s) transfer to restore "%(event_firm)s" user %(event_user)s.') % {
+                                                                            'cart_number': entry.cart_number, 
+                                                                            'cart_type': entry.cart_type, 
+                                                                            'event_firm': entry.event_firm,
+                                                                            'event_user': entry.event_user }
             entry_obj['data_env'] = data_env
             entry_obj['text_com'] = text_com
             frdly_es.append(entry_obj)
@@ -70,22 +72,22 @@ def events_decoder(qso, simple=True):
             entry.cart_action = '00000' if entry.cart_action == 0 else entry.cart_action
             action_num  = [ int(i) for i in str(entry.cart_action) ]
             action_text = ''
-            action_text += 'заправка и очистка, ' if action_num[0] == 1 else ''
-            action_text += 'замена фотовала, ' if action_num[1] == 1 else ''
-            action_text += 'замена ракеля, ' if action_num[2] == 1 else ''
-            action_text += 'замена чипа, ' if action_num[3] == 1 else ''
-            action_text += 'замена магнитного вала, ' if action_num[4] == 1 else ''
+            action_text += _('filling and cleaning, ') if action_num[0] == 1 else ''
+            action_text += _('Replacement fotoreceptor, ') if action_num[1] == 1 else ''
+            action_text += _('replacement of squeegee, ') if action_num[2] == 1 else ''
+            action_text += _('chip replacement, ') if action_num[3] == 1 else ''
+            action_text += _('replacing the magnetic roller, ') if action_num[4] == 1 else ''
             if simple:
-                text_com = 'Возврат с заправки в фирме "%s" пользователем %s.' % (
-                                                                        entry.event_firm,
-                                                                        entry.event_user )
+                text_com = _('Return to the filling in the firm "%(event_firm)s" user %(event_user)s.') % {
+                                                                        'event_firm': entry.event_firm,
+                                                                        'event_user': entry.event_user }
             else:
-                text_com = '№ %s (%s) возвращён с заправки в фирме "%s" пользователем %s.' % (
-                                                                        entry.cart_number, 
-                                                                        entry.cart_type, 
-                                                                        entry.event_firm,
-                                                                        entry.event_user )
-            text_com += '<br/>Проводились следующие работы: '
+                text_com = _('№ %(cart_number)s (%(cart_type)s) return to the filling in the firm "%(event_firm)s" user %(event_user)s.') % {
+                                                                        'cart_number': entry.cart_number, 
+                                                                        'cart_type': entry.cart_type, 
+                                                                        'event_firm': entry.event_firm,
+                                                                        'event_user': entry.event_user }
+            text_com += _('<br/>The following work: ')
             text_com += action_text 
             entry_obj['data_env'] = data_env
             entry_obj['text_com'] = text_com
@@ -95,9 +97,12 @@ def events_decoder(qso, simple=True):
             entry_obj = {}
             data_env = entry.date_time
             if simple:
-                text_com = 'Перемещение в корзину пользователем %s.' % (entry.event_user, )
+                text_com = _('Moving in user to basket %(event_user)s.') % {'event_user': entry.event_user, }
             else:
-                text_com = '№ %s (%s) перемещён в корзину пользователем %s.' % (entry.cart_number, entry.cart_type, entry.event_user, )
+                text_com = _('№ %(cart_number)s (%(cart_type)s) moving in user to basket %(event_user)s.') % {
+                                                                                'cart_number': entry.cart_number, 
+                                                                                'cart_type': entry.cart_type, 
+                                                                                'event_user': entry.event_user, }
             entry_obj['data_env'] = data_env
             entry_obj['text_com'] = text_com
             frdly_es.append(entry_obj)
@@ -106,9 +111,12 @@ def events_decoder(qso, simple=True):
             entry_obj = {}
             data_env = entry.date_time
             if simple:
-                text_com = 'Списание пользователем %s.' % (entry.event_user, )
+                text_com = _('Deleted user %(event_user)s.') % {'event_user': entry.event_user}
             else:
-                text_com = '№ %s (%s) списан пользователем %s.' % (entry.cart_number, entry.cart_type, entry.event_user, )
+                text_com = _('№ %(cart_number)s (%(cart_type)s) deleted user %(event_user)s.') % { 
+                                                                    'cart_number': entry.cart_number, 
+                                                                    'cart_type': entry.cart_type, 
+                                                                    'event_user': entry.event_user, }
             entry_obj['data_env'] = data_env
             entry_obj['text_com'] = text_com
             frdly_es.append(entry_obj)
@@ -117,14 +125,14 @@ def events_decoder(qso, simple=True):
             entry_obj = {}
             data_env = entry.date_time
             if simple:
-                text_com = 'Возврат на склад от %s пользователем %s.' % (entry.event_org,
-                                                                        entry.event_user)
+                text_com = _('Return to stock from %(event_org)s user %(event_user)s.') % {'event_org': entry.event_org,
+                                                                                       'event_user': entry.event_user, }
             else:
-                text_com = '№ %s (%s) возвращён на склад от %s пользователем %s.' % (
-                                                                        entry.cart_number, 
-                                                                        entry.cart_type, 
-                                                                        entry.event_org,
-                                                                        entry.event_user)
+                text_com = _('№ %(cart_number)s (%(cart_type)s) return to stock from %(event_org)s user %(event_user)s.') % {
+                                                                        'cart_number': entry.cart_number, 
+                                                                        'cart_type': entry.cart_type, 
+                                                                        'event_org': entry.event_org,
+                                                                        'event_user': entry.event_user }
             entry_obj['data_env'] = data_env
             entry_obj['text_com'] = text_com
             frdly_es.append(entry_obj)
