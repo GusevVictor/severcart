@@ -1,6 +1,6 @@
-{% extends "index/base.html" %}{% load staticfiles %}
-{% block title %}Поиск изношенных расходников{% endblock %}
-{% block h3 %}Поиск изношенных расходников{% endblock %}
+{% extends "index/base.html" %}{% load staticfiles %}{% load i18n %}
+{% block title %}{% trans "Search of used consumables" %}{% endblock %}
+{% block h3 %}{% trans "Search of used consumables" %}{% endblock %}
 {% block jqueryui %}
 <link rel="stylesheet" href="{{ STATIC_URL }}css/pm_widget.css" />
 <script src="{{ STATIC_URL }}js/pm_widget.js"></script>
@@ -12,18 +12,18 @@
         <div class="row">
             <div class="large-6 columns">
                 <form method="POST">{% csrf_token %}
-                <label class='required' for="{{ form.org.id_for_label }}">Организация</label>
+                <label class='required' for="{{ form.org.id_for_label }}">{% trans "Organization unit" %}</label>
                 {{ form.org }}
                 {{ form.org.errors }}
                 <div class="marginTop"></div>
-                <label class="required" for="{{ form.cont.id_for_label }}">Количество перезаправок (более или равно)</label>
+                <label class="required" for="{{ form.cont.id_for_label }}">{% trans "The number of reloads (more or equal)" %}</label>
                     {{ form.cont }}
                     {{ form.cont.errors }}
-                <div class="marginTop"></div>              
-                    <input class="button no_follow generate_report" value="Сформировать" type="submit" />
+                <div class="marginTop"></div>
+                    <input class="button no_follow generate_report" value="{% trans 'Generate' %}" type="submit" />
                     <img class="spinner" src="{{ STATIC_URL }}img/loader.gif" />
                 </form>
-            </div>        
+            </div>
         </div>
     </div>
     <div class="large-4 columns">

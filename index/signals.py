@@ -18,7 +18,7 @@ sign_tr_filled_cart_to_stock = Signal(providing_args=['list_cplx', 'request'])
 
 def event_add_cart(**kwargs):
     if len(kwargs.get('list_cplx', 0)) == 0:
-        raise ValueError('Ошибка в обработчике event_add_cart!')
+        raise ValueError('Error in handler event_add_cart!')
     
     with transaction.atomic():
         for elem in kwargs.get('list_cplx'):
@@ -35,7 +35,7 @@ def event_add_cart(**kwargs):
 
 def event_transfe_cart_to_uses(**kwargs):
     if len(kwargs.get('list_cplx', 0)) == 0:
-        raise ValueError('Ошибка в обработчике event_transfe_cart_to_uses!')
+        raise ValueError('Error in handler event_transfe_cart_to_uses!')
     
     with transaction.atomic():
         for elem in kwargs.get('list_cplx'):
@@ -52,7 +52,7 @@ def event_transfe_cart_to_uses(**kwargs):
 
 def event_transfe_cart_to_basket(**kwargs):
     if len(kwargs.get('list_cplx', 0)) == 0:
-        raise ValueError('Ошибка в обработчике event_transfe_cart_to_basket!')
+        raise ValueError('Error in handler event_transfe_cart_to_basket!')
     
     with transaction.atomic():
         for elem in kwargs.get('list_cplx'):
@@ -69,7 +69,7 @@ def event_transfe_cart_to_basket(**kwargs):
 
 def event_tr_empty_cart_to_stock(**kwargs):
     if len(kwargs.get('list_cplx', 0)) == 0:
-        raise ValueError('Ошибка в обработчике event_tr_empty_cart_to_stock!')
+        raise ValueError('Error in handler event_tr_empty_cart_to_stock!')
 
     with transaction.atomic():
         for elem in kwargs.get('list_cplx'):
@@ -87,7 +87,7 @@ def event_tr_empty_cart_to_stock(**kwargs):
 
 def event_turf_cart(**kwargs):
     if len(kwargs.get('list_cplx', 0)) == 0:
-        raise ValueError('Ошибка в обработчике event_turf_cart!')
+        raise ValueError('Error in handler event_turf_cart!')
 
     with transaction.atomic():
         for elem in kwargs.get('list_cplx'):
@@ -103,7 +103,7 @@ def event_turf_cart(**kwargs):
 
 def event_tr_empty_cart_to_firm(**kwargs):
     if len(kwargs.get('list_cplx', 0)) == 0:
-        raise ValueError('Ошибка в обработчике event_tr_empty_cart_to_firm!')
+        raise ValueError('Error in handler event_tr_empty_cart_to_firm!')
 
     with transaction.atomic():
         for elem in kwargs.get('list_cplx'):
@@ -121,7 +121,7 @@ def event_tr_empty_cart_to_firm(**kwargs):
 
 def event_tr_filled_cart_to_stock(**kwargs):
     if len(kwargs.get('list_cplx', 0)) == 0:
-        raise ValueError('Ошибка в обработчике event_tr_filled_cart_to_stock!')
+        raise ValueError('Error in handler event_tr_filled_cart_to_stock!')
 
     with transaction.atomic():    
         for elem in kwargs.get('list_cplx'):

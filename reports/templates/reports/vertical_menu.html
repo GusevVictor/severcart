@@ -1,4 +1,4 @@
-{% load filters %}
+{% load filters %}{% load i18n %}
 <ul class="vert-menu">
     <li class="{% navactive request 'reports:main_summary' %}"><a href="{% url 'reports:main_summary' %}">Отчёт по залежавшимся</a></li>
     <li class="{% navactive request 'reports:amortizing' %}"><a href="{% url 'reports:amortizing' %}">Отчёт по амортизации</a></li>

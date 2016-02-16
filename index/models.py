@@ -2,6 +2,7 @@
 
 from django.db import models
 from mptt.models import MPTTModel, TreeForeignKey
+from django.utils.translation import ugettext_lazy as _
 from django.contrib.auth.models import User
 
 
@@ -17,8 +18,8 @@ class OrganizationUnits(MPTTModel):
 
 
 class CartridgeType(models.Model):
-    cart_type = models.CharField(max_length=256, verbose_name='Название нового типа')
-    comment = models.TextField('Комментарий', blank=True)
+    cart_type = models.CharField(max_length=256, verbose_name=_('The name of the new type'))
+    comment = models.TextField(_('Comment'), blank=True)
 
     def __str__(self):
         return self.cart_type
@@ -27,14 +28,14 @@ class CartridgeType(models.Model):
 class CartridgeItemName(models.Model):
     cart_itm_name = models.CharField(max_length=256)
     cart_itm_type = models.ForeignKey(CartridgeType, on_delete=models.PROTECT)
-    comment = models.TextField('Комментарий', blank=True)
+    comment = models.TextField(_('Comment'), blank=True)
 
     def __str__(self):
         return self.cart_itm_name
 
 
 class City(models.Model):
-    city_name = models.CharField('Введите название города', max_length=256)
+    city_name = models.CharField(_('Enter the name of the city'), max_length=256)
 
     def __str__(self):
         return self.city_name
@@ -45,22 +46,22 @@ class FirmTonerRefill(models.Model):
     Хранит списки фирм занимающиеся заправкой и восстановление
     картриджей.
     """
-    firm_name = models.CharField('Название', max_length=256)
-    firm_city = models.ForeignKey(City, verbose_name='Выберите город')
-    firm_contacts = models.TextField('Контакты', null=True)
-    firm_address = models.TextField('Адресс', null=True)
-    firm_comments = models.TextField('Комментарии', null=True)
+    firm_name = models.CharField(_('Name'), max_length=256)
+    firm_city = models.ForeignKey(City, verbose_name=_('Select city'))
+    firm_contacts = models.TextField(_('Contacts'), null=True)
+    firm_address = models.TextField(_('Address'), null=True)
+    firm_comments = models.TextField(_('Comment'), null=True)
 
     def __str__(self):
         return self.firm_name
 
 STATUS = (
-        (1, 'Полон и на складе'),
-        (2, 'Задействован'),
-        (3, 'Пуст и на складе'),
-        (4, 'Заправляется'),
-        (5, 'Полон и в корзине'),
-        (6, 'Пуст и в корзине'),
+        (1, _('Full and in stock')),
+        (2, _('In use')),
+        (3, _('Empty and in stock')),
+        (4, _('On restoration')),
+        (5, _('Full and in basket')),
+        (6, _('Empty and in basket')),
     )
 
 
@@ -75,6 +76,6 @@ class CartridgeItem(models.Model):
     cart_status = models.IntegerField(choices=STATUS, default=1)
     cart_number_refills = models.IntegerField(default=0, db_index=True)
     filled_firm = models.ForeignKey(FirmTonerRefill, null=True, on_delete=models.PROTECT,)
-    comment = models.TextField('Комментарий', blank=True)
+    comment = models.TextField(_('Comment'), blank=True)
     delivery_doc = models.IntegerField(db_index=True, null=True, default=0)
     node_order_by = ['pk']
