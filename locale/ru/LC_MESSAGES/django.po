@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-02-16 10:10+0500\n"
-"PO-Revision-Date: 2016-02-15 23:18+0500\n"
+"POT-Creation-Date: 2016-02-16 13:58+0500\n"
+"PO-Revision-Date: 2016-02-16 14:02+0500\n"
 "Last-Translator: \n"
 "Language-Team: severcart.org <sfcl@mail.ru>\n"
 "Language: ru\n"
@@ -29,19 +29,14 @@ msgstr "Ошибка в обработке данных."
 msgid "User %(user_name)s can not be deleted"
 msgstr "Пользователя %(user_name)s удалить нельзя."
 
-#: .\accounts\api\views.py:30
+#: .\accounts\api\views.py:31
 msgid "Object not found"
 msgstr "Объект не найден."
 
-#: .\accounts\api\views.py:39
+#: .\accounts\api\views.py:37
 #, python-format
 msgid "User %(user_name)s was successfully deleted"
 msgstr "Пользователь %(user_name)s успешно удалён."
-
-#: .\accounts\api\views.py:41
-#, python-format
-msgid "Users %(user_name)s was successfully deleted"
-msgstr "Пользователи %(user_name)s успешно удалёны."
 
 #: .\accounts\forms\authenticate.py:9
 msgid "User name"
@@ -54,7 +49,7 @@ msgstr "Пароль"
 
 #: .\accounts\forms\register.py:11 .\accounts\models.py:13
 #: .\accounts\templates\accounts\login.html:23 .\index\forms\add_user.py:12
-#: .\index\templates\index\manage_users.html:33
+#: .\index\templates\index\manage_users.html:27
 msgid "Login"
 msgstr "Логин"
 
@@ -68,7 +63,7 @@ msgid "Required field"
 msgstr "Обязательное поле"
 
 #: .\accounts\forms\register.py:23 .\accounts\models.py:14
-#: .\index\templates\index\manage_users.html:35
+#: .\index\templates\index\manage_users.html:29
 #: .\reports\templates\reports\amortizing.html:15
 #: .\reports\templates\reports\main_summary.html:15
 msgid "Organization unit"
@@ -93,7 +88,6 @@ msgstr "Зарегистрировать пользователя"
 
 #: .\accounts\templates\accounts\edit_user.html:12
 #: .\index\templates\index\add_type.html:27
-#: .\index\templates\index\edit_firm.html:35
 msgid "Save"
 msgstr "Сохранить"
 
@@ -105,7 +99,8 @@ msgstr "Сохранить"
 #: .\index\templates\index\add_name.html:39
 #: .\index\templates\index\add_type.html:32
 #: .\index\templates\index\del_firm.html:28
-#: .\index\templates\index\edit_cartridge_comment.html:13
+#: .\index\templates\index\edit_cartridge_comment.html:12
+#: .\index\templates\index\edit_firm.html:18
 #: .\index\templates\index\from_firm_to_stock.html:45
 msgid "Back"
 msgstr "Вернуться"
@@ -131,8 +126,8 @@ msgstr "Ошибка! Пользователь %(user_name)s не может у�
 msgid "User(s) deleted!"
 msgstr "Пользователь(ли) удален(ы)!"
 
-#: .\docs\api\views.py:24 .\docs\api\views.py:75 .\index\api\views.py:23
-#: .\index\api\views.py:118
+#: .\docs\api\views.py:24 .\docs\api\views.py:75 .\index\api\views.py:27
+#: .\index\api\views.py:58 .\index\api\views.py:153
 msgid "Only use POST requests!"
 msgstr "Поддерживаются только POST запросы!"
 
@@ -206,11 +201,10 @@ msgstr "Данное действие не реализовано."
 #: .\index\templates\index\at_work.html:23
 #: .\index\templates\index\basket.html:26
 #: .\index\templates\index\del_firm.html:9
-#: .\index\templates\index\edit_firm.html:12
 #: .\index\templates\index\empty.html:24
 #: .\index\templates\index\from_firm_to_stock.html:26
 #: .\index\templates\index\severcartcbv.html:11
-#: .\index\templates\index\toner_refill.html:22
+#: .\index\templates\index\toner_refill.html:28
 #: .\index\templates\index\tree_list.html:38
 #: .\index\templates\index\use.html:31
 #: .\reports\templates\reports\amortizing_ajax.html:5
@@ -337,8 +331,8 @@ msgstr "Отменить"
 #: .\docs\templates\docs\delivery.html:57
 #: .\docs\templates\docs\names_list.html:15
 #: .\docs\templates\docs\types_list.html:15
-#: .\index\templates\index\manage_users.html:14
-#: .\index\templates\index\toner_refill.html:9
+#: .\index\templates\index\manage_users.html:15
+#: .\index\templates\index\toner_refill.html:15
 msgid "Edit"
 msgstr "Редактировать"
 
@@ -346,7 +340,7 @@ msgstr "Редактировать"
 #: .\docs\templates\docs\names_list.html:16
 #: .\docs\templates\docs\types_list.html:16
 #: .\index\templates\index\basket.html:10
-#: .\index\templates\index\manage_users.html:15
+#: .\index\templates\index\manage_users.html:16
 #: .\index\templates\index\tree_list.html:32
 msgid "Delete"
 msgstr "Удалить"
@@ -361,7 +355,8 @@ msgid "Change name"
 msgstr "Изменение имени"
 
 #: .\docs\templates\docs\edit_name.html:15
-#: .\index\templates\index\edit_cartridge_comment.html:12
+#: .\index\templates\index\edit_cartridge_comment.html:11
+#: .\index\templates\index\edit_firm.html:17
 msgid "Save and close"
 msgstr "Сохранить и закрыть"
 
@@ -411,7 +406,7 @@ msgstr "Список типов расходников"
 #: .\index\templates\index\add_items.html:37
 #: .\index\templates\index\add_name.html:38
 #: .\index\templates\index\add_type.html:29
-#: .\index\templates\index\manage_users.html:13
+#: .\index\templates\index\manage_users.html:14
 #: .\index\templates\index\tree_list.html:25
 msgid "Add"
 msgstr "Добавить"
@@ -639,27 +634,35 @@ msgstr "Описание"
 msgid "Not found"
 msgstr "Объект не найден."
 
-#: .\index\api\views.py:61
+#: .\index\api\views.py:42
+msgid "Firm not found"
+msgstr "Контрагент не найден"
+
+#: .\index\api\views.py:47
+msgid "Firm deleted!"
+msgstr "Контрагент удалён!"
+
+#: .\index\api\views.py:96
 msgid "Cartridge successfully added."
 msgstr "Картридж успешно добавлен."
 
-#: .\index\api\views.py:63
+#: .\index\api\views.py:98
 msgid "Cartridges successfully added."
 msgstr "Картриджи успешно добавлены."
 
-#: .\index\api\views.py:134
+#: .\index\api\views.py:169
 msgid "Cartridges successfully moved."
 msgstr "Расходники успешно перемещены."
 
-#: .\index\api\views.py:143
+#: .\index\api\views.py:178
 msgid "Session cleared"
 msgstr "Сессия очищена"
 
-#: .\index\api\views.py:169
+#: .\index\api\views.py:204
 msgid "Data deleted!"
 msgstr "Данные удалены!"
 
-#: .\index\api\views.py:186
+#: .\index\api\views.py:221
 msgid "Cartridjes deleted!"
 msgstr "Картриджи удалены!"
 
@@ -667,23 +670,24 @@ msgstr "Картриджи удалены!"
 msgid "This name already exists!"
 msgstr "Данное наменование уже существует!"
 
+#: .\index\forms\add_firm.py:12 .\index\models.py:50
+msgid "Select city"
+msgstr "Выбрать город"
+
 #: .\index\forms\add_firm.py:13 .\index\models.py:51
 #: .\index\templates\index\del_firm.html:10
-#: .\index\templates\index\edit_firm.html:22
-#: .\index\templates\index\toner_refill.html:23
+#: .\index\templates\index\toner_refill.html:29
 msgid "Contacts"
 msgstr "Контакты"
 
 #: .\index\forms\add_firm.py:14 .\index\models.py:52
 #: .\index\templates\index\del_firm.html:11
-#: .\index\templates\index\edit_firm.html:27
-#: .\index\templates\index\toner_refill.html:24
+#: .\index\templates\index\toner_refill.html:30
 msgid "Address"
 msgstr "Адрес"
 
 #: .\index\forms\add_firm.py:15 .\index\templates\index\del_firm.html.py:12
-#: .\index\templates\index\edit_firm.html:32
-#: .\index\templates\index\toner_refill.html:25
+#: .\index\templates\index\toner_refill.html:31
 msgid "Comments"
 msgstr "Комментарии"
 
@@ -727,10 +731,6 @@ msgstr "Название нового типа"
 msgid "Enter the name of the city"
 msgstr "Введите название города"
 
-#: .\index\models.py:50 .\index\templates\index\edit_firm.html.py:17
-msgid "Select city"
-msgstr "Выбрать город"
-
 #: .\index\models.py:59
 msgid "Full and in stock"
 msgstr "Полон и на складе"
@@ -765,7 +765,7 @@ msgstr "Внутренняя ошибка сервера."
 
 #: .\index\templates\index\add_city.html:2
 #: .\index\templates\index\add_city.html:3
-#: .\index\templates\index\toner_refill.html:8
+#: .\index\templates\index\toner_refill.html:14
 msgid "Add city"
 msgstr "Добавить город"
 
@@ -1031,29 +1031,29 @@ msgstr "Замена<br/>чипа"
 msgid "Replacing<br/>the magnetic roller"
 msgstr "Замена<br/>магнитного вала"
 
-#: .\index\templates\index\manage_users.html:8
-#: .\index\templates\index\manage_users.html:9
+#: .\index\templates\index\manage_users.html:3
+#: .\index\templates\index\manage_users.html:4
 msgid "User management"
 msgstr "Управление пользователями"
 
-#: .\index\templates\index\manage_users.html:32
+#: .\index\templates\index\manage_users.html:26
 #: .\index\templates\index\use.html:34
 msgid "User"
 msgstr "Пользователь"
 
-#: .\index\templates\index\manage_users.html:34
+#: .\index\templates\index\manage_users.html:28
 msgid "E-Mail"
 msgstr "E-Mail"
 
-#: .\index\templates\index\manage_users.html:36
+#: .\index\templates\index\manage_users.html:30
 msgid "Admin?"
 msgstr "Администратор?"
 
-#: .\index\templates\index\manage_users.html:58
+#: .\index\templates\index\manage_users.html:52
 msgid "Yes"
 msgstr "Да"
 
-#: .\index\templates\index\manage_users.html:60
+#: .\index\templates\index\manage_users.html:54
 msgid "No"
 msgstr "Нет"
 
@@ -1077,15 +1077,15 @@ msgstr "Добавить расходники"
 msgid "Transferred for use"
 msgstr "Передать в пользование"
 
-#: .\index\templates\index\toner_refill.html:7
+#: .\index\templates\index\toner_refill.html:13
 msgid "Add firm"
 msgstr "Добавить контрагента"
 
-#: .\index\templates\index\toner_refill.html:10
+#: .\index\templates\index\toner_refill.html:16
 msgid "Delete firm"
 msgstr "Удалить контрагента"
 
-#: .\index\templates\index\toner_refill.html:41
+#: .\index\templates\index\toner_refill.html:47
 msgid "Seelct city:"
 msgstr "Выбрать город:"
 
@@ -1196,7 +1196,7 @@ msgstr "Выбрать все"
 msgid "Firm \"%(firm_name)s\" success added."
 msgstr "Контрагент \"%(firm_name)s\" успешно добавлен."
 
-#: .\index\views.py:650
+#: .\index\views.py:612
 msgid "You input not correct firm name"
 msgstr "Вы ввели неправильное имя контрагента."
 
@@ -1275,3 +1275,6 @@ msgstr "Дата изменения"
 #: .\reports\templates\reports\main_summary.html:43
 msgid "Number<br/> reloads"
 msgstr "Количество<br/> перезаправок"
+
+#~ msgid "Users %(user_name)s was successfully deleted"
+#~ msgstr "Пользователи %(user_name)s успешно удалёны."

@@ -6,6 +6,7 @@ from index.api.views import (   ajax_add_session_items,
                                 turf_cartridge,
                                 clear_session,
                                 transfer_to_stock,
+                                del_firm,
                             )
 from accounts.api.views import del_users
 
@@ -17,4 +18,5 @@ urlpatterns = [
     url('^ajax_add_session_items/', ajax_add_session_items),
     url('^clear_session/', clear_session),
     url('^transfer_to_stock/', transfer_to_stock),
+    url('^del_firm/', del_firm),
 ]

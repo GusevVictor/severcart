@@ -5,8 +5,12 @@ from django.db import transaction
 from django.utils import timezone
 from django.http import JsonResponse, HttpResponse
 from django.template.loader import render_to_string
-from django.utils.translation import ugettext_lazy as _
-from index.models import City, CartridgeItem, OrganizationUnits, CartridgeItemName
+from django.utils.translation import ugettext as _
+from index.models import ( City, 
+                           CartridgeItem, 
+                           OrganizationUnits, 
+                           CartridgeItemName, 
+                           FirmTonerRefill )
 from index.helpers import check_ajax_auth
 from index.signals import sign_turf_cart, sign_add_full_to_stock, sign_tr_empty_cart_to_stock
 from index.forms.add_items import AddItems
@@ -16,11 +20,42 @@ import logging
 logger = logging.getLogger(__name__)
 
 @check_ajax_auth
+def del_firm(request):
+    """
+    """
+    if request.method != 'POST':
+        return HttpResponse('<h1>' + _('Only use POST requests!') + '</h1>')
+
+    resp_dict = dict()
+    firm_id = request.POST.get('selected', '')
+    if firm_id:
+        try:
+            firm_id = int(firm_id)
+        except ValueError:
+            firm_id = 0
+    else:
+        firm_id = 0
+
+    try:
+        firm = FirmTonerRefill.objects.get(pk=firm_id)
+    except FirmTonerRefill.DoesNotExist:
+        resp_dict['text']  = _('Firm not found')
+        resp_dict['error'] = '1'
+        return JsonResponse(resp_dict)
+    else:
+        firm.delete()
+        resp_dict['text']  = _('Firm deleted!')
+        resp_dict['error'] = '0'
+    
+    return JsonResponse(resp_dict)
+
+
+@check_ajax_auth
 def ajax_add_session_items(request):
     """Довляем новые картриджи на склад через Аякс
     """
     if request.method != 'POST':
-        return HttpResponse('<h1>' + _('Only use POST requests!') + '</h1>')    
+        return HttpResponse('<h1>' + _('Only use POST requests!') + '</h1>')
     # если пришёл запрос то пополняем сессионную переменную
     # результаты отображаем на странице
     form = AddItems(request.POST)

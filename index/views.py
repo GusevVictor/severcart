@@ -469,44 +469,6 @@ def edit_firm(request):
 
 
 @login_required
-def del_firm(request):
-    """
-
-    """
-    firm_id = request.GET.get('select', '')
-    firm_id = firm_id.strip()
-    if firm_id:
-        try:
-            firm_id = int(firm_id)
-        except ValueError:
-            firm_id = 0
-    else:
-        firm_id = 0
-
-    try:
-        firm = FirmTonerRefill.objects.get(pk=firm_id)
-    except FirmTonerRefill.DoesNotExist:
-        raise Http404
-
-    if request.method == 'POST':
-        id_in_post = request.POST.get('id', '')
-        try:
-            id_in_post = int(firm_id)
-        except ValueError:
-            id_in_post = 0
-
-        try:
-            firm = FirmTonerRefill.objects.get(pk=firm_id)
-            firm.delete()
-        except FirmTonerRefill.DoesNotExist:
-            raise Http404
-
-        return HttpResponseRedirect(reverse('index.views.toner_refill'))
-
-    return render(request, 'index/del_firm.html', {'firm': firm})
-
-
-@login_required
 def manage_users(request):
     """
     """

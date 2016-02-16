@@ -19,7 +19,6 @@ from index.views import toner_refill
 from index.views import add_city
 from index.views import add_firm
 from index.views import edit_firm
-from index.views import del_firm
 from index.views import At_work
 from index.views import bad_browser
 from index.views import Basket
@@ -44,7 +43,6 @@ urlpatterns = [
     url(r'^add_city/', add_city, name='add_city'),
     url(r'^add_firm/', add_firm, name='add_firm'),
     url(r'^edit_firm/', edit_firm, name='edit_firm'),
-    url(r'^del_firm/', del_firm, name='del_firm'),
     url(r'^bad_browser/', bad_browser, name='bad_browser'),
     url(r'^basket/', Basket.as_view(), name='basket'),
     url(r'^edit_cartridge_comment/', edit_cartridge_comment, name='edit_cartridge_comment'),

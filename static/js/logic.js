@@ -333,17 +333,48 @@ $( function(){
     });
 
     $('.del_firm').click( function() {
-        var selected = [];
-        $('.checkboxes input:checked').each(function() {
-            selected.push( $(this).attr('value') );
-        });
+        var selected = $('.checkboxes input:checked').attr('value');
+        if ( selected ) {
+            var ansver = window.confirm('Вы точно хотите удалить контрагента?');
+            if ( ansver ) {
+                $.ajax({
+                    method: 'POST',
+                    url: '/api/del_firm/',
+                    data:  {'selected': selected},
+                    beforeSend: function( xhr, settings ){
+                        $('.spinner').css('display', 'inline');
+                        csrftoken = getCookie('csrftoken');
+                        if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
+                            xhr.setRequestHeader('X-CSRFToken', csrftoken);
+                        }
+                    },
+                    success: function( msg ) {
+                        var tr = $('.checkboxes input:checked').parent().parent();
+                        if (msg.error == '1') {
+                            setTimeout(function() { }, 4000);
+                            $('.spinner').hide(); 
+                            $('.success_msg').hide();
+                            $('.error_msg').show();
+                            $('.error_msg').html(msg.text);
+                        }
 
-        if ( selected.length !== 0 ) {
-            var get_path = selected.join('s')
-            var loc = '/del_firm/?select=' + get_path;
-            window.location.href = loc;
+                        if (msg.error == '0') {
+                            setTimeout(function() { tr.remove(); }, 4000);
+                            $('.spinner').hide();
+                            $('.error_msg').hide();
+                            $('.success_msg').show();
+                            $('.success_msg').html(msg.text);
+                        }
+
+                    },
+                    error: function() {
+                        $('.spinner').hide();
+                        $('.error_msg').show();
+                        setTimeout(function() { $('.error_msg').html('<p>Server not available.</p>'); }, 12000);
+                    },
+                });
+            }
         }
-
     });
 
     $('.del_node').click( function() {
@@ -566,7 +597,6 @@ $( function(){
         if ( selected ) {
             var ansver = window.confirm('Вы точно хотите удалить пользователя?');
             if ( ansver ) {
-                console.log('Selected=', selected);
                 $.ajax({
                     method: 'POST',
                     url: '/api/del_users/',
