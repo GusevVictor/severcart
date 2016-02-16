@@ -8,13 +8,14 @@
         <h4>{% trans "Addition of a new structural unit" %}</h4>
         <form action="" method="POST">
             {% csrf_token %}
-            <label>{% trans "Name structural unit" %}</label>
+            <label class="required">{% trans "Name structural unit" %}</label>
             <input name="name" type="text"/>
             {% if error1 %}
                 <ul class="errorlist">
                     <li>{{error1}}</li>
                 </ul>
             {% endif %}
+            <div class="marginTop"></div>
             <label>{% trans "Compliant" %}</label>
             <select size="1" name="departament">
                 <option value="0" selected>&nbsp;&nbsp;&nbsp;</option>
@@ -22,7 +23,9 @@
                     <option value="{{ node.pk }}">{{ node.level | nbsp }}{{ node.name }}</option>
                 {% endfor %}
             </select>
-            <input type="submit" value="{% trans 'Add' %}" class="button"/>
+            <div class="marginTop">
+                <input type="submit" value="{% trans 'Add' %}" class="button success"/>
+            </div>
         </form>
     </div>
 
