@@ -9,7 +9,7 @@ class FirmTonerRefillF(forms.Form):
     firm_city     = forms.ModelChoiceField(queryset=City.objects.all(), 
                                             error_messages={'required': _('Required field.')}, 
                                             required=True,
-                                            label='Город',)
+                                            label=_('Select city'),)
     firm_contacts = forms.CharField(widget=forms.Textarea(attrs={'rows': 4, 'cols': 15}), label=_('Contacts'), required=False)
     firm_address  = forms.CharField(widget=forms.Textarea(attrs={'rows': 4, 'cols': 15}), label=_('Address'), required=False)
     firm_comments = forms.CharField(widget=forms.Textarea(attrs={'rows': 2, 'cols': 15}), label=_('Comments'), required=False)

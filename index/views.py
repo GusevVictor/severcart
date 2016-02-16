@@ -343,7 +343,7 @@ class Empty(CartridgesView):
 def toner_refill(request):
     """
     """
-    back = BreadcrumbsPath(request).before_page(request)
+    BreadcrumbsPath(request)
     city_id = request.GET.get('city', '')
     cities = CityM.objects.all()
 
@@ -423,8 +423,8 @@ def add_firm(request):
 @login_required
 def edit_firm(request):
     """
-
     """
+    back = BreadcrumbsPath(request).before_page(request)
     firm_id = request.GET.get('select', '')
     firm_id = firm_id.strip()
     if firm_id:
@@ -465,7 +465,7 @@ def edit_firm(request):
         'firm_contacts': firm.firm_contacts,
         'firm_address': firm.firm_address,
         'firm_comments': firm.firm_comments})
-    return render(request, 'index/edit_firm.html', {'firm': firm, 'form': form_obj})
+    return render(request, 'index/edit_firm.html', {'firm': firm, 'form': form_obj, 'back': back})
 
 
 @login_required
