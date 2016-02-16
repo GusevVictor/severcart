@@ -753,7 +753,7 @@ def edit_cartridge_comment(request):
     """Добавляем комментарий к картриджу.
     """
     item_id = request.GET.get('id', '')
-    back    = request.GET.get('back', '/')
+    back    = BreadcrumbsPath(request).before_page(request)
     try:
         item_id = int(item_id)
     except ValueError:
@@ -767,12 +767,13 @@ def edit_cartridge_comment(request):
         form = EditCommentForm(data=request.POST)
         if form.is_valid():
             cartridge_object.comment = form.cleaned_data.get('comment')
-            cartridge_object.save(update_fields=['comment'])
+            cartridge_object.save()
+            print('back=', back)
             return HttpResponseRedirect(back)
     else:
         comment = cartridge_object.comment
         form = EditCommentForm(initial = {'comment': comment})
-    return render(request, 'index/edit_cartridge_comment.html', {'form': form})
+    return render(request, 'index/edit_cartridge_comment.html', {'form': form, 'back': back})
 
 
 def handler404(request):

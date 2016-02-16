@@ -446,10 +446,10 @@ $( function(){
             var cart_action = mainSelect.children(':selected').attr('value');
             switch (cart_action) {
                 case 'view_events':
-                    window.location.href = '/events/view_cartridge_events/?id=' + cart_id + '&back=' + window.location.pathname;
+                    window.location.href = '/events/view_cartridge_events/?id=' + cart_id;
                     break;
                 case 'edit':
-                    window.location.href = '/edit_cartridge_comment/?id=' + cart_id + '&back=' + window.location.pathname;
+                    window.location.href = '/edit_cartridge_comment/?id=' + cart_id;
                     break;
                 case 'view_delivery':
                     var doc_id =  mainSelect.find(":selected").attr('data');

@@ -7,11 +7,9 @@
     <form action="" method="POST">
         {% csrf_token %}
         {{ form.as_p }}
-        <div class="row">
-            <div class="large-6 columns">
-                <input type="submit" value="{% trans 'Save' %}" class="button success" />&nbsp;&nbsp;&nbsp;
-                <a href="{% url 'back' %}" class="button">{% trans "Back" %}</a>&nbsp;&nbsp;&nbsp;
-            </div>
+        <div class="marginTop">
+            <input type="submit" value="{% trans 'Save and close' %}" class="button success" />
+            <a href="{{ back }}" class="button">{% trans "Back" %}</a>
         </div>
     </form>
     </div>

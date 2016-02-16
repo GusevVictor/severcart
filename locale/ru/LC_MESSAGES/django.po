@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-02-15 22:24+0500\n"
+"POT-Creation-Date: 2016-02-16 10:10+0500\n"
 "PO-Revision-Date: 2016-02-15 23:18+0500\n"
 "Last-Translator: \n"
 "Language-Team: severcart.org <sfcl@mail.ru>\n"
@@ -93,7 +93,6 @@ msgstr "Зарегистрировать пользователя"
 
 #: .\accounts\templates\accounts\edit_user.html:12
 #: .\index\templates\index\add_type.html:27
-#: .\index\templates\index\edit_cartridge_comment.html:12
 #: .\index\templates\index\edit_firm.html:35
 msgid "Save"
 msgstr "Сохранить"
@@ -362,6 +361,7 @@ msgid "Change name"
 msgstr "Изменение имени"
 
 #: .\docs\templates\docs\edit_name.html:15
+#: .\index\templates\index\edit_cartridge_comment.html:12
 msgid "Save and close"
 msgstr "Сохранить и закрыть"
 
@@ -941,7 +941,7 @@ msgid "Now dressed"
 msgstr "Сейчас заправляется"
 
 #: .\index\templates\index\dashboard.html:33
-#: .\index\templates\index\empty.html:9
+#: .\index\templates\index\empty.html:9 .\index\templates\index\stock.html:15
 #: .\index\templates\index\transfe_empty_to_basket.html:12
 #: .\index\templates\index\transfe_to_basket.html:10
 msgid "In basket"
