@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-02-16 13:58+0500\n"
-"PO-Revision-Date: 2016-02-16 14:02+0500\n"
+"POT-Creation-Date: 2016-02-16 15:53+0500\n"
+"PO-Revision-Date: 2016-02-16 15:54+0500\n"
 "Last-Translator: \n"
 "Language-Team: severcart.org <sfcl@mail.ru>\n"
 "Language: ru\n"
@@ -154,10 +154,6 @@ msgstr "Название картриджа"
 #: .\docs\api\views.py:103 .\docs\templates\docs\delivery.html.py:30
 #: .\docs\templates\docs\delivery.html:87
 #: .\index\templates\index\add_items.html:30
-#: .\index\templates\index\at_work.html:24
-#: .\index\templates\index\basket.html:27 .\index\templates\index\empty.html:25
-#: .\index\templates\index\severcartcbv.html:12
-#: .\index\templates\index\use.html:32
 msgid "Amount"
 msgstr "Сумма"
 
@@ -177,7 +173,7 @@ msgstr "Документ сформировать невозможно."
 #: .\index\templates\index\basket.html:25 .\index\templates\index\empty.html:23
 #: .\index\templates\index\from_firm_to_stock.html:25
 #: .\index\templates\index\severcartcbv.html:10
-#: .\index\templates\index\tree_list.html:39
+#: .\index\templates\index\tree_list.html:42
 #: .\index\templates\index\use.html:30
 #: .\reports\templates\reports\amortizing_ajax.html:4
 #: .\reports\templates\reports\main_summary.html:40
@@ -204,8 +200,8 @@ msgstr "Данное действие не реализовано."
 #: .\index\templates\index\empty.html:24
 #: .\index\templates\index\from_firm_to_stock.html:26
 #: .\index\templates\index\severcartcbv.html:11
-#: .\index\templates\index\toner_refill.html:28
-#: .\index\templates\index\tree_list.html:38
+#: .\index\templates\index\toner_refill.html:29
+#: .\index\templates\index\tree_list.html:41
 #: .\index\templates\index\use.html:31
 #: .\reports\templates\reports\amortizing_ajax.html:5
 #: .\reports\templates\reports\main_summary.html:41
@@ -341,7 +337,7 @@ msgstr "Редактировать"
 #: .\docs\templates\docs\types_list.html:16
 #: .\index\templates\index\basket.html:10
 #: .\index\templates\index\manage_users.html:16
-#: .\index\templates\index\tree_list.html:32
+#: .\index\templates\index\tree_list.html:35
 msgid "Delete"
 msgstr "Удалить"
 
@@ -407,7 +403,7 @@ msgstr "Список типов расходников"
 #: .\index\templates\index\add_name.html:38
 #: .\index\templates\index\add_type.html:29
 #: .\index\templates\index\manage_users.html:14
-#: .\index\templates\index\tree_list.html:25
+#: .\index\templates\index\tree_list.html:27
 msgid "Add"
 msgstr "Добавить"
 
@@ -676,18 +672,18 @@ msgstr "Выбрать город"
 
 #: .\index\forms\add_firm.py:13 .\index\models.py:51
 #: .\index\templates\index\del_firm.html:10
-#: .\index\templates\index\toner_refill.html:29
+#: .\index\templates\index\toner_refill.html:30
 msgid "Contacts"
 msgstr "Контакты"
 
 #: .\index\forms\add_firm.py:14 .\index\models.py:52
 #: .\index\templates\index\del_firm.html:11
-#: .\index\templates\index\toner_refill.html:30
+#: .\index\templates\index\toner_refill.html:31
 msgid "Address"
 msgstr "Адрес"
 
 #: .\index\forms\add_firm.py:15 .\index\templates\index\del_firm.html.py:12
-#: .\index\templates\index\toner_refill.html:31
+#: .\index\templates\index\toner_refill.html:32
 msgid "Comments"
 msgstr "Комментарии"
 
@@ -820,8 +816,8 @@ msgstr "Вернуть на склад"
 #: .\index\templates\index\basket.html:27 .\index\templates\index\empty.html:25
 #: .\index\templates\index\severcartcbv.html:12
 #: .\index\templates\index\use.html:32
-msgid "recovery"
-msgstr "восстановление"
+msgid "Amount<br/>recovery"
+msgstr "Количество<br/> перезаправок"
 
 #: .\index\templates\index\at_work.html:25
 msgid "transfer"
@@ -1085,7 +1081,7 @@ msgstr "Добавить контрагента"
 msgid "Delete firm"
 msgstr "Удалить контрагента"
 
-#: .\index\templates\index\toner_refill.html:47
+#: .\index\templates\index\toner_refill.html:48
 msgid "Seelct city:"
 msgstr "Выбрать город:"
 
@@ -1142,11 +1138,11 @@ msgstr "Добавить новое структурное подразделе�
 msgid "Name structural unit"
 msgstr "Название структурного подразделения"
 
-#: .\index\templates\index\tree_list.html:18
+#: .\index\templates\index\tree_list.html:19
 msgid "Compliant"
 msgstr "Подчиняется"
 
-#: .\index\templates\index\tree_list.html:30
+#: .\index\templates\index\tree_list.html:33
 msgid "Structure of the organization"
 msgstr "Структура организации"
 
@@ -1275,6 +1271,9 @@ msgstr "Дата изменения"
 #: .\reports\templates\reports\main_summary.html:43
 msgid "Number<br/> reloads"
 msgstr "Количество<br/> перезаправок"
+
+#~ msgid "recovery"
+#~ msgstr "восстановление"
 
 #~ msgid "Users %(user_name)s was successfully deleted"
 #~ msgstr "Пользователи %(user_name)s успешно удалёны."
