@@ -1,30 +1,24 @@
 {% extends "index/base.html" %}{% load i18n %}
 {% load staticfiles %}
-{% block jqueryui%}
-    <link rel="stylesheet" href="{{ STATIC_URL }}css/jquery-ui.css" />
-    <script src="{{ STATIC_URL }}js/jquery-ui.js"></script>
-    <script src="{{ STATIC_URL }}js/dialog.js"></script>
-{% endblock %}
 {% block title %}{% trans "User management" %}{% endblock %}
 {% block h3 %}{% trans "User management" %}{% endblock %}
 {% block content %}
 <div class="row">
     <div class="large-6 columns">
-        <a class="add_user button success" href="{% url 'accounts:register' %}">{% trans "Add" %}</a>
-        <a class="edit_user button" href="#">{% trans "Edit" %}</a>
-        <a class="del_user button alert" href="#">{% trans "Delete" %}</a>
+        <div class="success_msg"></div>
+        <div class="error_msg"></div>
     </div>
 </div>
 <div class="row">
-    <div class="large-6 columns marginTop"></div>
+    <div class="large-6 columns">
+        <a class="add_user button success" href="{% url 'accounts:register' %}">{% trans "Add" %}</a>
+        <a class="edit_user button" href="#">{% trans "Edit" %}</a>
+        <a class="del_user button alert" href="#">{% trans "Delete" %}</a>
+        <img class="spinner" src="{{ STATIC_URL }}img/loader.gif" />
+    </div>
 </div>
-<div class="row">
-    <div class="large-6 columns">
-        <div class="errorlog"></div>   
-    </div>        
-</div> 
-<div class="row">
-    <div class="large-6 columns">
+<div class="row marginTop">
+    <div class="large-12 columns">
         <table class="checkboxes">
             <form>
                 <tr>
@@ -37,7 +31,7 @@
                 </tr>
                 {% for i in urs %}
                     <tr class="userid-{{ i.id }}">
-                        <td><input type="checkbox" value="{{ i.id }}"></td>
+                        <td><input type="radio" value="{{ i.id }}" name="user_id"></td>
                         {% if i.fio %}
                             <td>{{ i.fio }}</td>
                         {% else %}
@@ -64,11 +58,5 @@
             </form>
         </table>
     </div>
-</div>
-<div class="dialog-confirm" title="Точно удалить?">
-    <p><span class="ui-icon ui-icon-alert" style="float:left; margin:0 7px 20px 0;"></span>
-    Вы уверены, что хотите удалить пользовател<span class="chislo"></span> <b></b>?
-    </p>
-    <div><img class="spinner" src="{{ STATIC_URL }}img/loader.gif" /></div>
 </div>
 {% endblock %}

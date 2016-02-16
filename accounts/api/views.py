@@ -11,32 +11,28 @@ from index.helpers import check_ajax_auth
 def del_users(request):
     """
     """
-    ar = request.POST.getlist('selected[]')
+    resp_dict = dict()
+    ar = request.POST.get('selected')
     try:
-        ar = [int(i) for i in ar ]
+        ar = int(ar)
     except ValueError:
-
         HttpResponse(_('Error in data processing'), status=501)
     
     usr_name = ''
-    usrs_name = []
-    if request.user.id in ar:
-        return HttpResponse(_('User %(user_name)s can not be deleted') % {'user_name': request.user}, status=501)        
+    if request.user.id == ar:
+        resp_dict['error'] = '1'
+        resp_dict['text']  = _('User %(user_name)s can not be deleted') % {'user_name': request.user}
+        return JsonResponse(resp_dict)
     
-    for ind in ar:
-        try:
-            usr = AnconUser.objects.get(pk=ind)
-        except ObjectDoesNotExist: 
-            return HttpResponse(_('Object not found'), status=501)        
-        else:
-            usr_name = usr.username
-            usrs_name.append(usr_name)
-            usr.delete()
-
-    usrs_name = [str(elem) for elem in usrs_name]
-    usrs_name = ', '.join(usrs_name)
-    if len(ar) == 1:
-        return JsonResponse({'msg': _('User %(user_name)s was successfully deleted') % {'user_name': usrs_name} })
+    try:
+        usr = AnconUser.objects.get(pk=ar)
+    except AnconUser.DoesNotExist: 
+        resp_dict['error'] = '1'
+        resp_dict['text']  = _('Object not found')
+        return JsonResponse(resp_dict)
     else:
-        return JsonResponse({'msg': _('Users %(user_name)s was successfully deleted') % {'user_name': usrs_name} })
-    
+        usr_name = usr.username
+        usr.delete()
+        resp_dict['error'] = '0'
+        resp_dict['text']  = _('User %(user_name)s was successfully deleted') % {'user_name': usr_name}
+        return JsonResponse(resp_dict)
