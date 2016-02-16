@@ -5,7 +5,8 @@ from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
 from django.views.generic.base import View
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
-from index.models import CartridgeItem
+from django.core.cache import cache
+from index.models import CartridgeItem, CartridgeItemName
 from .helpers import BreadcrumbsPath
 
 import logging
@@ -53,6 +54,14 @@ class CartridgesView(GridListView):
     def dispatch(self, *args, **kwargs):
         self.request = args[0]
         BreadcrumbsPath(self.request)
+        # Заполняем кэш начальними данными, если пуст
+        if not cache.get('names_dict'):
+            tmp_dict = dict()
+            m1 = CartridgeItemName.objects.all()
+            for name_elem in m1:
+                tmp_dict[name_elem.pk] = name_elem.cart_itm_name
+            cache.set('names_dict', tmp_dict, 600)
+
         return super(CartridgesView, self).dispatch(*args, **kwargs)
 
     def sort_columns(self):
