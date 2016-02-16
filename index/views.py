@@ -14,6 +14,7 @@ from django.contrib.sessions.models import Session
 from django.db.models import Q
 from django.template.loader import render_to_string
 from django.utils.translation import ugettext_lazy as _
+from common.helpers import is_admin
 from common.cbv import CartridgesView
 from common.helpers import BreadcrumbsPath
 from .forms.add_cartridge_name import AddCartridgeName
@@ -165,6 +166,7 @@ def add_cartridge_item(request):
 
 
 @login_required
+@is_admin
 def tree_list(request):
     """Работаем с структурой организации
     """
@@ -469,6 +471,7 @@ def edit_firm(request):
 
 
 @login_required
+@is_admin
 def manage_users(request):
     """
     """

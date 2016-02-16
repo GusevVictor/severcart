@@ -1,6 +1,7 @@
 # -*- coding:utf-8 -*-
 
 from django.conf import settings
+from django.shortcuts import render
 
 class ShortList(object):
     """Специфический список, циклически удаляющий первые элементы
@@ -66,3 +67,12 @@ class BreadcrumbsPath(object):
         else:
             return None
 
+def is_admin(view_method):
+    "Проверяем, является ли пользователь администратором."
+    def wrapper(request, *args, **kwargs):
+        if request.user.is_admin:
+            return view_method(request, *args, **kwargs)
+        else:
+            return render(request, 'accounts/is_not_admin.html', context={})
+        
+    return wrapper

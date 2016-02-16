@@ -6,6 +6,7 @@ from django.utils import timezone
 from django.http import JsonResponse, HttpResponse
 from django.template.loader import render_to_string
 from django.utils.translation import ugettext as _
+from common.helpers import is_admin
 from index.models import ( City, 
                            CartridgeItem, 
                            OrganizationUnits, 
@@ -192,6 +193,7 @@ def city_list(request):
 
 
 @check_ajax_auth
+@is_admin
 def del_node(request):
     """Удаляем нод(у)(ы) из структуры организации
     """

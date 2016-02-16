@@ -6,12 +6,15 @@ from django.http import Http404
 from django.template import RequestContext
 from django.core.urlresolvers import reverse
 from django.contrib.auth import login as django_login, authenticate, logout as django_logout
+from django.contrib.auth.decorators import login_required
 from .forms.authenticate import AuthenticationForm
 from .forms.register import RegistrationForm
 from accounts.models import AnconUser
+from common.helpers import is_admin
 
 import logging
 logger = logging.getLogger('simp')
+
 
 def login(request):
     """Log in view
@@ -34,6 +37,8 @@ def login(request):
     return render(request, 'accounts/login.html', {'form': form, 'error': error})
 
 
+@login_required
+@is_admin
 def register(request):
     """Страница создания нового пользователя.
     """
@@ -46,6 +51,9 @@ def register(request):
         form = RegistrationForm()
     return render(request, 'accounts/register.html', {'form': form})
 
+
+@login_required
+@is_admin
 def edit_user(request):
     """Редактирование информации о пользователе.
     """
@@ -86,6 +94,7 @@ def edit_user(request):
                                           })
     return render(request, 'accounts/edit_user.html', {'form': form})
 
+
 def logout(request):
     """
     Log out view
@@ -94,14 +103,17 @@ def logout(request):
     return redirect('/')
 
 
+@login_required
+@is_admin
 def edit(request):
     """
 
     """
-
     return redirect('/')
 
 
+@login_required
+@is_admin
 def delete(request):
     """
     """

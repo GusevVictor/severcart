@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-02-16 16:34+0500\n"
-"PO-Revision-Date: 2016-02-16 16:35+0500\n"
+"POT-Creation-Date: 2016-02-16 17:25+0500\n"
+"PO-Revision-Date: 2016-02-16 17:37+0500\n"
 "Last-Translator: \n"
 "Language-Team: severcart.org <sfcl@mail.ru>\n"
 "Language: ru\n"
@@ -104,6 +104,12 @@ msgstr "Сохранить"
 #: .\index\templates\index\from_firm_to_stock.html:45
 msgid "Back"
 msgstr "Вернуться"
+
+#: .\accounts\templates\accounts\is_not_admin.html:2
+#: .\accounts\templates\accounts\is_not_admin.html:3
+#: .\accounts\templates\accounts\is_not_admin.html:7
+msgid "User not admin."
+msgstr "Недостаточно привилегий для доступа к странице."
 
 #: .\accounts\templates\accounts\login.html:10
 msgid "Login page"
@@ -626,7 +632,7 @@ msgstr "События объекта учёта"
 msgid "Description"
 msgstr "Описание"
 
-#: .\events\views.py:129
+#: .\events\views.py:131
 msgid "Not found"
 msgstr "Объект не найден."
 

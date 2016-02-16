@@ -13,9 +13,11 @@ from .models  import Events
 from index.models import CartridgeItem
 from .helpers import events_decoder, date_to_str
 from .forms   import DateForm
+from common.helpers import is_admin
 
 
 @login_required
+@is_admin
 def show_events(request):
     """Список всех событий для всего организационного подразделения.
     """
