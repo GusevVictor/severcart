@@ -1,0 +1,10 @@
+{% extends "index/base.html" %}{% load i18n %}
+{% block title %}{% trans "Service" %}{% endblock %}
+{% block h3 %}{% trans "Service" %}{% endblock %}
+{% block content %}
+<div class="row">
+    <div class="large-4 columns">
+        <p><a href="{% url 'show_events' %}">{% trans "Events" %}</a></p>
+    </div>
+</div>
+{% endblock %}

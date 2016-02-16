@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-02-16 15:53+0500\n"
-"PO-Revision-Date: 2016-02-16 15:54+0500\n"
+"POT-Creation-Date: 2016-02-16 16:34+0500\n"
+"PO-Revision-Date: 2016-02-16 16:35+0500\n"
 "Last-Translator: \n"
 "Language-Team: severcart.org <sfcl@mail.ru>\n"
 "Language: ru\n"
@@ -878,14 +878,14 @@ msgstr "Пустые"
 
 #: .\index\templates\index\base_menu.html:11
 #: .\index\templates\index\basket.html:4 .\index\templates\index\basket.html:5
-#: .\index\templates\index\use.html:15
 msgid "Basket"
 msgstr "Корзина"
 
 #: .\index\templates\index\base_menu.html:12
-#: .\index\templates\index\dashboard.html:57
-msgid "Events"
-msgstr "События"
+#: .\service\templates\service\submenu.html:2
+#: .\service\templates\service\submenu.html:3
+msgid "Service"
+msgstr "Обслуживание"
 
 #: .\index\templates\index\basket.html:28 .\index\templates\index\empty.html:26
 msgid "Date return"
@@ -940,8 +940,9 @@ msgstr "Сейчас заправляется"
 #: .\index\templates\index\empty.html:9 .\index\templates\index\stock.html:15
 #: .\index\templates\index\transfe_empty_to_basket.html:12
 #: .\index\templates\index\transfe_to_basket.html:10
+#: .\index\templates\index\use.html:15
 msgid "In basket"
-msgstr "В корзине"
+msgstr "В корзину"
 
 #: .\index\templates\index\dashboard.html:38
 msgid "Spending cartridges"
@@ -958,6 +959,11 @@ msgstr "С начала месяца"
 #: .\index\templates\index\dashboard.html:50
 msgid "Since the beginning of the year"
 msgstr "С начала года"
+
+#: .\index\templates\index\dashboard.html:57
+#: .\service\templates\service\submenu.html:7
+msgid "Events"
+msgstr "События"
 
 #: .\index\templates\index\dashboard.html:71
 msgid "View all events"
@@ -1196,11 +1202,11 @@ msgstr "Контрагент \"%(firm_name)s\" успешно добавлен."
 msgid "You input not correct firm name"
 msgstr "Вы ввели неправильное имя контрагента."
 
-#: .\newskald_ru\settings.py:113
+#: .\newskald_ru\settings.py:114
 msgid "Russian"
 msgstr "Русский"
 
-#: .\newskald_ru\settings.py:114
+#: .\newskald_ru\settings.py:115
 msgid "English"
 msgstr "Английский"
 

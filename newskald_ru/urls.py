@@ -12,6 +12,7 @@ urlpatterns = [
     url(r'^events/', include('events.urls')),
     url(r'^docs/', include('docs.urls', namespace='docs')),
     url(r'^reports/', include('reports.urls', namespace='reports')),
+    url(r'^service/', include('service.urls', namespace='service')),
 ] 
 
 if settings.DEBUG:

@@ -1,28 +1,28 @@
 # -*- coding:utf-8 -*-
 
 from django.conf.urls import url
-from index.views import dashboard
-from index.views import Stock
-from index.views import add_cartridge_name
-from index.views import add_cartridge_item
-from index.views import tree_list
-from index.views import add_type
-from index.views import transfe_for_use
-from index.views import transfer_to_firm
-from index.views import from_firm_to_stock
-from index.views import transfe_to_basket
-from index.views import from_basket_to_stock
-from index.views import At_work
-from index.views import Use
-from index.views import Empty
-from index.views import toner_refill
-from index.views import add_city
-from index.views import add_firm
-from index.views import edit_firm
-from index.views import At_work
-from index.views import bad_browser
-from index.views import Basket
-from index.views import edit_cartridge_comment
+from index.views import ( dashboard,
+                        Stock,
+                        add_cartridge_name,
+                        add_cartridge_item,
+                        tree_list,
+                        add_type,
+                        transfe_for_use,
+                        transfer_to_firm,
+                        from_firm_to_stock,
+                        transfe_to_basket,
+                        from_basket_to_stock,
+                        At_work,
+                        Use,
+                        Empty,
+                        toner_refill,
+                        add_city,
+                        add_firm,
+                        edit_firm,
+                        At_work,
+                        bad_browser,
+                        Basket,
+                        edit_cartridge_comment, )
 
 urlpatterns = [
     url(r'^$', dashboard, name='dashboard'),
