@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-02-17 12:06+0500\n"
-"PO-Revision-Date: 2016-02-17 12:09+0500\n"
+"PO-Revision-Date: 2016-02-17 15:49+0500\n"
 "Last-Translator: \n"
 "Language-Team: severcart.org <sfcl@mail.ru>\n"
 "Language: ru\n"
@@ -1163,7 +1163,7 @@ msgstr "Что передаём"
 
 #: .\index\templates\index\transfe_for_use.html:12
 msgid "To pass"
-msgstr "Кто передал"
+msgstr "Кому передать"
 
 #: .\index\templates\index\transfe_for_use.html:24
 msgid "Transfer to"

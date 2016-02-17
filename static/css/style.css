@@ -72,11 +72,6 @@ form input[type="text"] {
     vertical-align: baseline;
 }
 
-.login-string {
-    text-align: right;
-    line-height: 25px;
-}
-
 
 .form_error_text {
     display: none;

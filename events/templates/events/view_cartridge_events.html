@@ -2,10 +2,17 @@
 {% load staticfiles %}
 {% block title %}{% trans "Events accounting object" %} {{ cart_number }} ({{ cart_type }}){% endblock %}
 {% block breadcrumbs %}<a href="/"><img src="{{ STATIC_URL }}img/home.png" /></a> / <a href="{% url 'show_events' %}">{% trans "Events" %}</a> / {% trans "Events accounting object" %}{% endblock %}
+{% block submenu %}
+<div class="row">
+    <div class="large-12 columns">
+        <a class="button" href="{{ back }}">{% trans "Back" %}</a>
+    </div>
+</div>
+{% endblock %}
 {% block content %}
 <div class="row">
     <div class="large-12 columns">
-        <table class="view_cart_events">
+        <table class="view_cart_events marginTop">
             <tr>
                 <th class="date_and_time">{% trans "Date and time" %}</th>
                 <th>{% trans "Description" %}</th>

@@ -9,6 +9,7 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.utils import timezone
 from django.db.models import Q
 from django.utils.translation import ugettext_lazy as _
+from common.helpers import BreadcrumbsPath
 from .models  import Events
 from index.models import CartridgeItem
 from .helpers import events_decoder, date_to_str
@@ -107,7 +108,9 @@ def show_events(request):
 def view_cartridge_events(request):
     """Просмотр событий происходящих с данным картриджем.
     """
+    context = dict()
     cart_id = request.GET.get('id', '')
+    context['back'] = BreadcrumbsPath(request).before_page(request)
     try:
         cart_id = int(cart_id)
     except ValueError:
@@ -118,7 +121,6 @@ def view_cartridge_events(request):
     except AttributeError:
         dept_id = 0
 
-    context = {}
     list_events = Events.objects.filter(cart_index=cart_id).filter(departament=dept_id).order_by('pk')
     try:
         frdly_es = events_decoder(list_events)
