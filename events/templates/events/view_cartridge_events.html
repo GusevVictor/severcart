@@ -18,7 +18,7 @@
                 <th>{% trans "Description" %}</th>
             </tr>{% for entry in frdly_es %}
             <tr>
-                <td>{{ entry.data_env|date:"d M Y G:i" }}</td>
+                <td>{{ entry.data_env|date:"d.m.Y G:i" }}</td>
                 <td>{{ entry.text_com|safe }}</td>
             </tr>{% endfor %}
         </table>

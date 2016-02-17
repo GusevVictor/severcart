@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-02-17 12:06+0500\n"
-"PO-Revision-Date: 2016-02-17 15:49+0500\n"
+"PO-Revision-Date: 2016-02-17 16:07+0500\n"
 "Last-Translator: \n"
 "Language-Team: severcart.org <sfcl@mail.ru>\n"
 "Language: ru\n"
@@ -520,7 +520,7 @@ msgstr "заправка и очистка, "
 
 #: .\events\helpers.py:76
 msgid "Replacement fotoreceptor, "
-msgstr "Замена фотобарабана, "
+msgstr "замена фотобарабана, "
 
 #: .\events\helpers.py:77
 msgid "replacement of squeegee, "
@@ -539,7 +539,8 @@ msgstr "замена магнитного барабана, "
 msgid ""
 "Return to the filling in the firm \"%(event_firm)s\" user %(event_user)s."
 msgstr ""
-"Return to the filling in the firm \"%(event_firm)s\" user %(event_user)s."
+"Возврат с обслуживания в фирме \"%(event_firm)s\" пользователем "
+"%(event_user)s."
 
 #: .\events\helpers.py:85
 #, python-format
@@ -552,7 +553,7 @@ msgstr ""
 
 #: .\events\helpers.py:90
 msgid "<br/>The following work: "
-msgstr "<br/>Следующую работу: "
+msgstr "<br/>Проводилась работа: "
 
 #: .\events\helpers.py:100
 #, python-format
