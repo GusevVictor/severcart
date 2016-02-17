@@ -59,6 +59,15 @@ def ajax_add_session_items(request):
         return HttpResponse('<h1>' + _('Only use POST requests!') + '</h1>')
     # если пришёл запрос то пополняем сессионную переменную
     # результаты отображаем на странице
+    tmp_dict = dict()
+    try:
+        m1 = request.user.departament.pk
+    except AttributeError:
+        
+        tmp_dict['mes']  = _('User not assosiate with organization unit!<br/>Error code: 101.')
+        tmp_dict['error'] = '1'
+        return JsonResponse(tmp_dict)
+    tmp_dict['error'] = '0'
     form = AddItems(request.POST)
     if form.is_valid():
         data_in_post = form.cleaned_data
@@ -136,7 +145,6 @@ def ajax_add_session_items(request):
                                'title': title})
         
         html = render_to_string('index/add_over_ajax.html', context={'list_items': list_items})
-        tmp_dict = dict()
         tmp_dict['html'] = html
         tmp_dict['mes']  = tmpl_message
     else:

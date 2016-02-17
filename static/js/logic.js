@@ -83,12 +83,21 @@ $( function(){
                     }
                 },
                 success: function( msg ) {
-                    $('.spinner').css('display', 'none');
-                    $('.session_data').html(msg.html);
-                    $('.success_msg').show();
-                    $('.success_msg').html(msg.mes);
-                    setTimeout(function() { $('.success_msg').hide(); }, 12000);
+                    if (msg.error == '1') {
+                        $('.spinner').hide(); 
+                        $('.success_msg').hide();
+                        $('.error_msg').show();
+                        $('.error_msg').html(msg.mes);
+                    }
 
+                    if (msg.error == '0') {
+                        $('.spinner').hide();
+                        $('.error_msg').hide();
+                        $('.session_data').html(msg.html);
+                        $('.success_msg').show();
+                        $('.success_msg').html(msg.mes);
+                        setTimeout(function() { $('.success_msg').hide(); }, 12000);
+                    }
                 },
                 error: function() {
                     $('.error_msg').show();

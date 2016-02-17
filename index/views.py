@@ -241,14 +241,12 @@ def add_type(request):
                 m1.cart_type=cart_type
                 m1.comment=cart_type_comment
                 m1.save()
-                back_url = request.path + '?id=' + str(cart_type_id) + '&back=' + back_url
                 messages.success(request, _('%(cart_type)s success save') % {'cart_type': cart_type})
             else:
                 m1 = CartridgeType(cart_type=cart_type, comment=cart_type_comment)
                 m1.save()
-                back_url = request.path + '?back=' + back_url
                 messages.success(request, _('New type %(cart_type)s success added') % {'cart_type': cart_type})
-            return HttpResponseRedirect(back_url)
+            return HttpResponseRedirect(request.path)
         else:
             form = form_obj
     else:

@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-02-17 12:06+0500\n"
-"PO-Revision-Date: 2016-02-17 16:07+0500\n"
+"PO-Revision-Date: 2016-02-17 21:11+0500\n"
 "Last-Translator: \n"
 "Language-Team: severcart.org <sfcl@mail.ru>\n"
 "Language: ru\n"
@@ -201,7 +201,7 @@ msgstr "Название картриджа"
 #: .\docs\templates\docs\delivery.html:87
 #: .\index\templates\index\add_items.html:30
 msgid "Amount"
-msgstr "Сумма"
+msgstr "Количество"
 
 #: .\docs\api\views.py:111
 #, python-format
