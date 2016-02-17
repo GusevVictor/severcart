@@ -21,14 +21,8 @@ class handbook(TemplateView):
 
     @method_decorator(login_required)
     def dispatch(self, *args, **kwargs):
+        BreadcrumbsPath(args[0])
         return super(handbook, self).dispatch(*args, **kwargs)
-
-
-@login_required
-def service(request):
-    """Списки договоров на обслуживание
-    """
-    return HttpResponse('<h1>Договора обслуживания</h1>')
 
 
 @login_required
@@ -36,6 +30,7 @@ def delivery(request):
     """Списки договоров на поставку расходников
     """
     context = {}
+    context['back'] = BreadcrumbsPath(request).before_page(request)
     docs = SCDoc.objects.filter(departament=request.user.departament).filter(doc_type=1).order_by('-pk')
     context['docs'] = docs
     if request.method == 'POST':

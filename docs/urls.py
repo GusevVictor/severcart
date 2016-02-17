@@ -1,10 +1,10 @@
 from django.conf.urls import url, include
-from .views import service, delivery
+from .views import delivery
 from .views import handbook, edit_name, ViewSendActs
 from .cbv import NamesView, TypesView
 
 urlpatterns = [
-    url(r'^service/', service, name='service'),
+#    url(r'^service/', service, name='service'),
     url(r'^delivery/', delivery, name='delivery' ),
     url(r'^$', handbook.as_view(), name='handbook'),
     url(r'^view_names/', NamesView.as_view(), name='view_names'),
