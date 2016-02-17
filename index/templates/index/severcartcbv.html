@@ -1,10 +1,12 @@
 {% extends "index/base.html" %}{% load i18n %}
 {% load pagination  %}
+{% load cache %}
 {% block content %}
 <div class="row">
     <div class="large-12 columns">
         <table class="checkboxes">
             <form>
+                {% cache 500 menu request.user.username %}
                 <tr>
                     <th class="first_checkbox"><input type="checkbox" class="check_all"></th>
                     <th class="cart_number {% if select_number %}active_cell{% endif %}"><a href="?action=number">{% trans "Number" %} {{number_triangle}}</a><br/><input class="search_number" name="search_number" value="{{search_number}}"  /></th>
@@ -14,6 +16,8 @@
                     <th>{% trans "comment" %}</th>
                     <th class="actions">{% trans "Actions" %}</th>
                 </tr>
+                {% endcache %}
+                {% cache 500 maintable request.user.username %}
                 {% for i in cartrjs %}
                     <tr>
                         <td><input type="checkbox" class="checkbox" value="{{ i.id }}"></td>
@@ -31,6 +35,7 @@
                         </td>
                     </tr>
                 {% endfor %}
+                {% endcache %}
             </form>
         </table>
     </div>

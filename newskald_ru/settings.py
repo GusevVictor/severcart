@@ -61,6 +61,16 @@ MIDDLEWARE_CLASSES = (
 
 ROOT_URLCONF = 'newskald_ru.urls'
 
+
+CACHES = {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.filebased.FileBasedCache',
+        'LOCATION': os.path.join(BASE_DIR, 'cache'),
+    }
+}
+
+SESSION_ENGINE = 'django.contrib.sessions.backends.cache'
+
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
