@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-02-17 12:06+0500\n"
-"PO-Revision-Date: 2016-02-17 21:11+0500\n"
+"POT-Creation-Date: 2016-02-17 22:16+0500\n"
+"PO-Revision-Date: 2016-02-17 22:17+0500\n"
 "Last-Translator: \n"
 "Language-Team: severcart.org <sfcl@mail.ru>\n"
 "Language: ru\n"
@@ -121,7 +121,9 @@ msgstr "Сохранить"
 
 #: .\accounts\templates\accounts\edit_user.html:13
 #: .\accounts\templates\accounts\register.html:12
+#: .\docs\templates\docs\delivery.html:60
 #: .\docs\templates\docs\edit_name.html:16
+#: .\events\templates\events\view_cartridge_events.html:8
 #: .\index\templates\index\add_city.html:11
 #: .\index\templates\index\add_firm.html:27
 #: .\index\templates\index\add_items.html:39
@@ -173,7 +175,7 @@ msgid "User(s) deleted!"
 msgstr "Пользователь(ли) удален(ы)!"
 
 #: .\docs\api\views.py:24 .\docs\api\views.py:75 .\index\api\views.py:28
-#: .\index\api\views.py:59 .\index\api\views.py:154
+#: .\index\api\views.py:59 .\index\api\views.py:162
 msgid "Only use POST requests!"
 msgstr "Поддерживаются только POST запросы!"
 
@@ -198,7 +200,7 @@ msgid "The name of the cartridge"
 msgstr "Название картриджа"
 
 #: .\docs\api\views.py:103 .\docs\templates\docs\delivery.html.py:30
-#: .\docs\templates\docs\delivery.html:87
+#: .\docs\templates\docs\delivery.html:88
 #: .\index\templates\index\add_items.html:30
 msgid "Amount"
 msgstr "Количество"
@@ -214,7 +216,7 @@ msgstr "Документ сформировать невозможно."
 
 #: .\docs\api\views.py:123 .\docs\forms\add_doc.py:9
 #: .\docs\templates\docs\delivery.html:20
-#: .\docs\templates\docs\delivery.html:83
+#: .\docs\templates\docs\delivery.html:84
 #: .\index\templates\index\at_work.html:22
 #: .\index\templates\index\basket.html:25 .\index\templates\index\empty.html:23
 #: .\index\templates\index\from_firm_to_stock.html:25
@@ -237,7 +239,7 @@ msgstr "Данное действие не реализовано."
 
 #: .\docs\forms\add_doc.py:11 .\docs\forms\edit_name.py:6
 #: .\docs\templates\docs\delivery.html:25
-#: .\docs\templates\docs\delivery.html:84
+#: .\docs\templates\docs\delivery.html:85
 #: .\docs\templates\docs\names_list.html:28 .\index\forms\add_firm.py:8
 #: .\index\forms\add_user.py:10 .\index\models.py:49
 #: .\index\templates\index\at_work.html:23
@@ -268,7 +270,7 @@ msgid "Firm supplier"
 msgstr "Фирма поставщик"
 
 #: .\docs\forms\add_doc.py:19 .\docs\templates\docs\delivery.html.py:37
-#: .\docs\templates\docs\delivery.html:88
+#: .\docs\templates\docs\delivery.html:89
 msgid "Summary"
 msgstr "Краткое содержание"
 
@@ -350,12 +352,12 @@ msgid "delivery agreement"
 msgstr "Договора поставки"
 
 #: .\docs\templates\docs\delivery.html:30
-#: .\docs\templates\docs\delivery.html:87
+#: .\docs\templates\docs\delivery.html:88
 msgid "Currency"
 msgstr "руб."
 
 #: .\docs\templates\docs\delivery.html:42
-#: .\docs\templates\docs\delivery.html:86
+#: .\docs\templates\docs\delivery.html:87
 msgid "Firm"
 msgstr "Контрагент"
 
@@ -385,7 +387,7 @@ msgstr "Редактировать"
 msgid "Delete"
 msgstr "Удалить"
 
-#: .\docs\templates\docs\delivery.html:85
+#: .\docs\templates\docs\delivery.html:86
 msgid "Document date"
 msgstr "Дата документа"
 
@@ -664,7 +666,7 @@ msgid "Total Events:"
 msgstr "Всего событий: "
 
 #: .\events\templates\events\show_events.html:31
-#: .\events\templates\events\view_cartridge_events.html:10
+#: .\events\templates\events\view_cartridge_events.html:17
 msgid "Date and time"
 msgstr "Дата и время"
 
@@ -681,11 +683,17 @@ msgstr "Показать ещё..."
 msgid "Events accounting object"
 msgstr "События объекта учёта"
 
-#: .\events\templates\events\view_cartridge_events.html:11
+#: .\events\templates\events\view_cartridge_events.html:4
+#: .\index\templates\index\dashboard.html:58
+#: .\service\templates\service\submenu.html:7
+msgid "Events"
+msgstr "События"
+
+#: .\events\templates\events\view_cartridge_events.html:18
 msgid "Description"
 msgstr "Описание"
 
-#: .\events\views.py:131
+#: .\events\views.py:133
 msgid "Not found"
 msgstr "Объект не найден."
 
@@ -697,27 +705,32 @@ msgstr "Контрагент не найден"
 msgid "Firm deleted!"
 msgstr "Контрагент удалён!"
 
-#: .\index\api\views.py:97
+#: .\index\api\views.py:67
+msgid "User not assosiate with organization unit!<br/>Error code: 101."
+msgstr ""
+"Пользователь не принадлежит ни одной из организаций!<br/> Код ошибки: 101"
+
+#: .\index\api\views.py:106
 msgid "Cartridge successfully added."
 msgstr "Картридж успешно добавлен."
 
-#: .\index\api\views.py:99
+#: .\index\api\views.py:108
 msgid "Cartridges successfully added."
 msgstr "Картриджи успешно добавлены."
 
-#: .\index\api\views.py:170
+#: .\index\api\views.py:178
 msgid "Cartridges successfully moved."
 msgstr "Расходники успешно перемещены."
 
-#: .\index\api\views.py:179
+#: .\index\api\views.py:187
 msgid "Session cleared"
 msgstr "Сессия очищена"
 
-#: .\index\api\views.py:206
+#: .\index\api\views.py:214
 msgid "Data deleted!"
 msgstr "Данные удалены!"
 
-#: .\index\api\views.py:223
+#: .\index\api\views.py:231
 msgid "Cartridjes deleted!"
 msgstr "Картриджи удалены!"
 
@@ -918,7 +931,7 @@ msgstr ""
 "Мы настоятельно рекомендуем Вам установить новую версию одиного из "
 "перечисленных браузеров."
 
-#: .\index\templates\index\base.html:33
+#: .\index\templates\index\base.html:32
 msgid "Exit"
 msgstr "Выход"
 
@@ -1019,11 +1032,6 @@ msgstr "С начала месяца"
 #: .\index\templates\index\dashboard.html:51
 msgid "Since the beginning of the year"
 msgstr "С начала года"
-
-#: .\index\templates\index\dashboard.html:58
-#: .\service\templates\service\submenu.html:7
-msgid "Events"
-msgstr "События"
 
 #: .\index\templates\index\dashboard.html:72
 msgid "View all events"
@@ -1168,7 +1176,7 @@ msgstr "Кому передать"
 
 #: .\index\templates\index\transfe_for_use.html:24
 msgid "Transfer to"
-msgstr "Передача"
+msgstr "Передать"
 
 #: .\index\templates\index\transfe_to_basket.html:2
 #: .\index\templates\index\transfe_to_basket.html:3
@@ -1225,10 +1233,6 @@ msgstr "Расходники в пользовании"
 msgid "Date transfe"
 msgstr "Дата передачи"
 
-#: .\index\templates\index\use.html:33
-msgid "in use"
-msgstr "в пользование"
-
 #: .\index\views.py:124
 #, python-format
 msgid "%(cart_name)s already exists"
@@ -1244,34 +1248,34 @@ msgstr "%(cart_name)s успешно добавлен."
 msgid "Organization unit %(org_name)s exist"
 msgstr "Организационное подразделение %(org_name)s уже есть."
 
-#: .\index\views.py:245
+#: .\index\views.py:244
 #, python-format
 msgid "%(cart_type)s success save"
 msgstr "%(cart_type)s успешно сохранён."
 
-#: .\index\views.py:250
+#: .\index\views.py:248
 #, python-format
 msgid "New type %(cart_type)s success added"
 msgstr "Новый тип %(cart_type)s успешно добавлен."
 
-#: .\index\views.py:369
+#: .\index\views.py:368
 msgid "Select all"
 msgstr "Выбрать все"
 
-#: .\index\views.py:418
+#: .\index\views.py:417
 #, python-format
 msgid "Firm \"%(firm_name)s\" success added."
 msgstr "Контрагент \"%(firm_name)s\" успешно добавлен."
 
-#: .\index\views.py:616
+#: .\index\views.py:615
 msgid "You input not correct firm name"
 msgstr "Вы ввели неправильное имя контрагента."
 
-#: .\newskald_ru\settings.py:114
+#: .\newskald_ru\settings.py:124
 msgid "Russian"
 msgstr "Русский"
 
-#: .\newskald_ru\settings.py:115
+#: .\newskald_ru\settings.py:125
 msgid "English"
 msgstr "Английский"
 
@@ -1342,6 +1346,9 @@ msgstr "Дата изменения"
 #: .\reports\templates\reports\main_summary.html:45
 msgid "Number<br/> reloads"
 msgstr "Количество<br/> перезаправок"
+
+#~ msgid "in use"
+#~ msgstr "в пользование"
 
 #~ msgid "recovery"
 #~ msgstr "восстановление"

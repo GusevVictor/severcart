@@ -276,7 +276,8 @@ def transfe_for_use(request):
     
     get = lambda node_id: OrganizationUnits.objects.get(pk=node_id)
     root_ou   = request.user.departament
-    children  = root_ou.get_children()
+    #children  = root_ou.get_children()
+    children  = root_ou.get_family()
 
     if request.method == 'POST':
         data_in_post = request.POST
@@ -311,10 +312,10 @@ class Use(CartridgesView):
         super(Use, self).get(*args, **kwargs)
         try:
             root_ou   = self.request.user.departament
-            children  = root_ou.get_children()
+            children  = root_ou.get_family()
         except AttributeError:
             children = ''
-
+        print('all units=', children)
         self.all_items = self.all_items.filter(departament__in=children).filter(cart_status=2)
         page_size = self.items_per_page()
         self.context['size_perpage'] = page_size

@@ -659,11 +659,11 @@ table.checkboxes th.first_checkbox {
 }
 
 table.checkboxes th.cart_date {
-    width:158px;
+    width:110px;
 }
 
 table.checkboxes th.org_user {
-    width:100px;
+    width:250px;
 }
 
 table.checkboxes th.firm_filled {
