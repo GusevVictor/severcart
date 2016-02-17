@@ -8,7 +8,7 @@ body.all {
 }
 
 body.linen-texture {
-    background: url('../img/linen-texture2.jpg');   
+    background: url('../img/cloud.png') repeat-x;   
 }
 
 img {
