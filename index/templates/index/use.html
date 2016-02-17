@@ -1,7 +1,7 @@
 {% extends "index/base.html" %}{% load i18n %}
 {% load pagination  %}
 {% block title %}{% trans "Consumables in use" %}{% endblock %}
-{% block h3 %}{% trans "Consumables in use" %}{% endblock %}
+{% block breadcrumbs %}<a href="/"><img src="{{ STATIC_URL }}img/home.png" /></a> / {% trans "Consumables in use" %}{% endblock %}
 {% block submenu %}
 <div class="row">
     <div class="large-6 columns">
@@ -45,7 +45,7 @@
                         <td><div class="comment_in_cell" title="{{ i.comment }}">{{ i.comment|truncatechars:40 }}</div></td>
                         <td><select class="cartridge_action" data="{{ i.pk }}">
                             <option selected></option>
-                            <option value="edit">{% trans "Edit a comment" %}ь</option>
+                            <option value="edit">{% trans "Edit a comment" %}</option>
                             <option value="view_events">{% trans "Event viewer" %}</option>
                             <option value="view_delivery" data="{{ i.delivery_doc }}">{% trans "Delivery agreement" %}</option>
                         </select>

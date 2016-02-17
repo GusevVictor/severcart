@@ -1,7 +1,7 @@
 {% extends "index/base.html" %}{% load i18n %}
 {% load filters %}
 {% block title %}{% trans "Transfer of use" %}{% endblock %}
-{% block h3 %}{% trans "Transfer of use" %}{% endblock %}
+{% block breadcrumbs %}<a href="/"><img src="{{ STATIC_URL }}img/home.png" /></a> / <a href="{% url 'stock' %}">{% trans "List of new or refilled cartridges" %}</a> / {% trans "Transfer of use" %}{% endblock %}
 {% block content %}
     <div class="row">
         <div class="large-6 columns">
@@ -21,8 +21,8 @@
                     {% endfor %}
                 </select>
                 <div class="marginTop">
-                    <input type="submit" value="{trans 'Transfer to'}" class="button"/>
-                    <a class="button no_follow back">{trans 'Back'}</a>
+                    <input type="submit" value="{% trans 'Transfer to' %}" class="button"/>
+                    <a class="button no_follow back">{% trans 'Back' %}</a>
                 </div>
             </form>
         </div>

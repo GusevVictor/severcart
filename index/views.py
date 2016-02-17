@@ -517,6 +517,7 @@ def transfe_to_basket(request):
     """
     checked_cartr = request.GET.get('select', '')
     action_type = request.GET.get('atype', '')
+    back = BreadcrumbsPath(request).before_page(request)
     
     if action_type == '5':
         # перемещаем заправленный картридж в корзину
@@ -552,7 +553,7 @@ def transfe_to_basket(request):
         sign_tr_cart_to_basket.send(sender=None, list_cplx=list_cplx, request=request)
 
         return HttpResponseRedirect(reverse('stock'))
-    return render(request, 'index/transfe_to_basket.html', {'checked_cartr': checked_cartr})
+    return render(request, 'index/transfe_to_basket.html', {'checked_cartr': checked_cartr, 'back': back})
 
 
 @login_required

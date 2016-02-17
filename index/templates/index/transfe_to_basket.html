@@ -1,4 +1,6 @@
 {% extends "index/base.html" %}{% load i18n %}
+{% block title %}{% trans "Transfer to basket" %}{% endblock %}
+{% block breadcrumbs %}<a href="/"><img src="{{ STATIC_URL }}img/home.png" /></a> / <a href="{% url 'stock' %}">{% trans "List of new or refilled cartridges" %}</a> / {% trans "Transfer to basket" %}{% endblock %}
 {% load filters %}
 {% block content %}
     <div class="row">
@@ -7,7 +9,10 @@
                 {% csrf_token %}
                 <label class="required">{% trans "What transfe" %}</label>
                 <input name="name" type="text"  value="{{checked_cartr }}"  readonly/>
-                <input type="submit" value="{% trans 'In basket' %}" class="button"/>
+                <div class="marginTop">
+                    <input type="submit" value="{% trans 'In basket' %}" class="button alert"/>
+                    <a href="{{ back }}" class="button">{% trans "Back" %}</a>
+                </div>
             </form>
         </div>
     </div>

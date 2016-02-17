@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-02-16 17:25+0500\n"
-"PO-Revision-Date: 2016-02-16 17:37+0500\n"
+"POT-Creation-Date: 2016-02-17 12:06+0500\n"
+"PO-Revision-Date: 2016-02-17 12:09+0500\n"
 "Last-Translator: \n"
 "Language-Team: severcart.org <sfcl@mail.ru>\n"
 "Language: ru\n"
@@ -83,8 +83,36 @@ msgstr "Фамилие, имя, отчество"
 
 #: .\accounts\templates\accounts\edit_user.html:2
 #: .\accounts\templates\accounts\edit_user.html:3
-msgid "Registry user"
-msgstr "Зарегистрировать пользователя"
+msgid "Edit user"
+msgstr "Редактировать данные о пользователе"
+
+#: .\accounts\templates\accounts\edit_user.html:3
+#: .\accounts\templates\accounts\register.html:3
+#: .\docs\templates\docs\acts_list.html:4 .\docs\templates\docs\delivery.html:3
+#: .\docs\templates\docs\edit_name.html:3 .\docs\templates\docs\handbook.html:2
+#: .\docs\templates\docs\handbook.html:3
+#: .\docs\templates\docs\names_list.html:4
+#: .\docs\templates\docs\types_list.html:4
+#: .\index\templates\index\add_city.html:3
+#: .\index\templates\index\add_firm.html:3
+#: .\index\templates\index\add_name.html:3
+#: .\index\templates\index\add_type.html:3
+#: .\index\templates\index\base_menu.html:13
+#: .\index\templates\index\edit_firm.html:3
+#: .\index\templates\index\manage_users.html:4
+#: .\index\templates\index\toner_refill.html:3
+#: .\index\templates\index\tree_list.html:3
+#: .\reports\templates\reports\amortizing.html:3
+#: .\reports\templates\reports\main_summary.html:8
+msgid "References"
+msgstr "Справочники"
+
+#: .\accounts\templates\accounts\edit_user.html:3
+#: .\accounts\templates\accounts\register.html:3
+#: .\index\templates\index\manage_users.html:3
+#: .\index\templates\index\manage_users.html:4
+msgid "User management"
+msgstr "Управление пользователями"
 
 #: .\accounts\templates\accounts\edit_user.html:12
 #: .\index\templates\index\add_type.html:27
@@ -92,6 +120,7 @@ msgid "Save"
 msgstr "Сохранить"
 
 #: .\accounts\templates\accounts\edit_user.html:13
+#: .\accounts\templates\accounts\register.html:12
 #: .\docs\templates\docs\edit_name.html:16
 #: .\index\templates\index\add_city.html:11
 #: .\index\templates\index\add_firm.html:27
@@ -102,6 +131,8 @@ msgstr "Сохранить"
 #: .\index\templates\index\edit_cartridge_comment.html:12
 #: .\index\templates\index\edit_firm.html:18
 #: .\index\templates\index\from_firm_to_stock.html:45
+#: .\index\templates\index\transfe_for_use.html:25
+#: .\index\templates\index\transfe_to_basket.html:14
 msgid "Back"
 msgstr "Вернуться"
 
@@ -123,17 +154,26 @@ msgstr "Введите корректный логин или пароль! "
 msgid "Enter"
 msgstr "Вход"
 
-#: .\accounts\views.py:112
+#: .\accounts\templates\accounts\register.html:2
+#: .\accounts\templates\accounts\register.html:3
+msgid "Add new user"
+msgstr "Добавление нового пользователя"
+
+#: .\accounts\templates\accounts\register.html:11
+msgid "Registry user"
+msgstr "Зарегистрировать пользователя"
+
+#: .\accounts\views.py:124
 #, python-format
 msgid "Error! User %(user_name)s can not remove himself"
 msgstr "Ошибка! Пользователь %(user_name)s не может удалить сам себя."
 
-#: .\accounts\views.py:117
+#: .\accounts\views.py:129
 msgid "User(s) deleted!"
 msgstr "Пользователь(ли) удален(ы)!"
 
-#: .\docs\api\views.py:24 .\docs\api\views.py:75 .\index\api\views.py:27
-#: .\index\api\views.py:58 .\index\api\views.py:153
+#: .\docs\api\views.py:24 .\docs\api\views.py:75 .\index\api\views.py:28
+#: .\index\api\views.py:59 .\index\api\views.py:154
 msgid "Only use POST requests!"
 msgstr "Поддерживаются только POST запросы!"
 
@@ -179,10 +219,10 @@ msgstr "Документ сформировать невозможно."
 #: .\index\templates\index\basket.html:25 .\index\templates\index\empty.html:23
 #: .\index\templates\index\from_firm_to_stock.html:25
 #: .\index\templates\index\severcartcbv.html:10
-#: .\index\templates\index\tree_list.html:42
+#: .\index\templates\index\tree_list.html:44
 #: .\index\templates\index\use.html:30
 #: .\reports\templates\reports\amortizing_ajax.html:4
-#: .\reports\templates\reports\main_summary.html:40
+#: .\reports\templates\reports\main_summary.html:42
 msgid "Number"
 msgstr "Номер"
 
@@ -207,10 +247,10 @@ msgstr "Данное действие не реализовано."
 #: .\index\templates\index\from_firm_to_stock.html:26
 #: .\index\templates\index\severcartcbv.html:11
 #: .\index\templates\index\toner_refill.html:29
-#: .\index\templates\index\tree_list.html:41
+#: .\index\templates\index\tree_list.html:43
 #: .\index\templates\index\use.html:31
 #: .\reports\templates\reports\amortizing_ajax.html:5
-#: .\reports\templates\reports\main_summary.html:41
+#: .\reports\templates\reports\main_summary.html:43
 msgid "Name"
 msgstr "Название"
 
@@ -287,7 +327,7 @@ msgstr "Дата передачи"
 
 #: .\docs\templates\docs\acts_list.html:22
 msgid "Who passed"
-msgstr "Кто передал"
+msgstr "Кому передать"
 
 #: .\docs\templates\docs\acts_list.html:23
 msgid "Who gave"
@@ -316,8 +356,6 @@ msgstr "руб."
 
 #: .\docs\templates\docs\delivery.html:42
 #: .\docs\templates\docs\delivery.html:86
-#: .\index\templates\index\toner_refill.html:2
-#: .\index\templates\index\toner_refill.html:3
 msgid "Firm"
 msgstr "Контрагент"
 
@@ -343,7 +381,7 @@ msgstr "Редактировать"
 #: .\docs\templates\docs\types_list.html:16
 #: .\index\templates\index\basket.html:10
 #: .\index\templates\index\manage_users.html:16
-#: .\index\templates\index\tree_list.html:35
+#: .\index\templates\index\tree_list.html:37
 msgid "Delete"
 msgstr "Удалить"
 
@@ -356,18 +394,18 @@ msgstr "Дата документа"
 msgid "Change name"
 msgstr "Изменение имени"
 
+#: .\docs\templates\docs\edit_name.html:3
+#: .\docs\templates\docs\names_list.html:3
+#: .\docs\templates\docs\names_list.html:4
+#: .\index\templates\index\add_name.html:3
+msgid "References names cartidges"
+msgstr "Справочник имён картриджей"
+
 #: .\docs\templates\docs\edit_name.html:15
 #: .\index\templates\index\edit_cartridge_comment.html:11
 #: .\index\templates\index\edit_firm.html:17
 msgid "Save and close"
 msgstr "Сохранить и закрыть"
-
-#: .\docs\templates\docs\handbook.html:2 .\docs\templates\docs\handbook.html:3
-#: .\docs\templates\docs\names_list.html:3
-#: .\docs\templates\docs\names_list.html:4
-#: .\index\templates\index\base_menu.html:13
-msgid "References"
-msgstr "Справочники"
 
 #: .\docs\templates\docs\handbook.html:7
 msgid "Users"
@@ -378,6 +416,11 @@ msgid "Organization units"
 msgstr "Организационные подразделеня"
 
 #: .\docs\templates\docs\handbook.html:9
+#: .\index\templates\index\add_city.html:3
+#: .\index\templates\index\add_firm.html:3
+#: .\index\templates\index\edit_firm.html:3
+#: .\index\templates\index\toner_refill.html:2
+#: .\index\templates\index\toner_refill.html:3
 msgid "Firms"
 msgstr "Контрагенты"
 
@@ -390,6 +433,7 @@ msgid "Acts of transfer at the gas station"
 msgstr "Акты передачи на заправку"
 
 #: .\docs\templates\docs\handbook.html:16
+#: .\reports\templates\reports\amortizing.html:3
 msgid "Reports"
 msgstr "Отчёты"
 
@@ -409,12 +453,13 @@ msgstr "Список типов расходников"
 #: .\index\templates\index\add_name.html:38
 #: .\index\templates\index\add_type.html:29
 #: .\index\templates\index\manage_users.html:14
-#: .\index\templates\index\tree_list.html:27
+#: .\index\templates\index\tree_list.html:29
 msgid "Add"
 msgstr "Добавить"
 
 #: .\docs\templates\docs\types_list.html:3
 #: .\docs\templates\docs\types_list.html:4
+#: .\index\templates\index\add_type.html:3
 msgid "Reference types consumables"
 msgstr "Справочник типов расходников"
 
@@ -586,6 +631,13 @@ msgstr "Удаление пользователя"
 msgid "Viewing of events"
 msgstr "Просмотр событий"
 
+#: .\events\templates\events\show_events.html:3
+#: .\index\templates\index\base_menu.html:12
+#: .\service\templates\service\submenu.html:2
+#: .\service\templates\service\submenu.html:3
+msgid "Service"
+msgstr "Обслуживание"
+
 #: .\events\templates\events\show_events.html:14
 msgid "Select a period viewed"
 msgstr "Выберите просматриваемый период"
@@ -636,35 +688,35 @@ msgstr "Описание"
 msgid "Not found"
 msgstr "Объект не найден."
 
-#: .\index\api\views.py:42
+#: .\index\api\views.py:43
 msgid "Firm not found"
 msgstr "Контрагент не найден"
 
-#: .\index\api\views.py:47
+#: .\index\api\views.py:48
 msgid "Firm deleted!"
 msgstr "Контрагент удалён!"
 
-#: .\index\api\views.py:96
+#: .\index\api\views.py:97
 msgid "Cartridge successfully added."
 msgstr "Картридж успешно добавлен."
 
-#: .\index\api\views.py:98
+#: .\index\api\views.py:99
 msgid "Cartridges successfully added."
 msgstr "Картриджи успешно добавлены."
 
-#: .\index\api\views.py:169
+#: .\index\api\views.py:170
 msgid "Cartridges successfully moved."
 msgstr "Расходники успешно перемещены."
 
-#: .\index\api\views.py:178
+#: .\index\api\views.py:179
 msgid "Session cleared"
 msgstr "Сессия очищена"
 
-#: .\index\api\views.py:204
+#: .\index\api\views.py:206
 msgid "Data deleted!"
 msgstr "Данные удалены!"
 
-#: .\index\api\views.py:221
+#: .\index\api\views.py:223
 msgid "Cartridjes deleted!"
 msgstr "Картриджи удалены!"
 
@@ -781,6 +833,13 @@ msgstr "Добавление нового контрагента"
 msgid "Adding objects to the stock"
 msgstr "Добавление объектов на склад"
 
+#: .\index\templates\index\add_items.html:3
+#: .\index\templates\index\stock.html:2 .\index\templates\index\stock.html:3
+#: .\index\templates\index\transfe_for_use.html:4
+#: .\index\templates\index\transfe_to_basket.html:3
+msgid "List of new or refilled cartridges"
+msgstr "Список новых или заправленных картриджей"
+
 #: .\index\templates\index\add_items.html:19
 #: .\index\templates\index\add_name.html:20
 msgid "Name consumables"
@@ -887,12 +946,6 @@ msgstr "Пустые"
 msgid "Basket"
 msgstr "Корзина"
 
-#: .\index\templates\index\base_menu.html:12
-#: .\service\templates\service\submenu.html:2
-#: .\service\templates\service\submenu.html:3
-msgid "Service"
-msgstr "Обслуживание"
-
 #: .\index\templates\index\basket.html:28 .\index\templates\index\empty.html:26
 msgid "Date return"
 msgstr "Дата возврата"
@@ -922,56 +975,56 @@ msgstr "Просмотр событий"
 msgid "Stocks of consumables"
 msgstr "Запасы расходных материалов"
 
-#: .\index\templates\index\dashboard.html:8
+#: .\index\templates\index\dashboard.html:9
 msgid "Desktop"
 msgstr "Рабочий стол"
 
-#: .\index\templates\index\dashboard.html:13
+#: .\index\templates\index\dashboard.html:14
 msgid "Quantity in stock (usable)"
 msgstr "Количество на складе(пригодных к использованию)"
 
-#: .\index\templates\index\dashboard.html:18
+#: .\index\templates\index\dashboard.html:19
 msgid "The number of installed"
 msgstr "Количество задействованных"
 
-#: .\index\templates\index\dashboard.html:23
+#: .\index\templates\index\dashboard.html:24
 msgid "Number of empty, ready to recharge"
 msgstr "Количество пустых, готовых к перезаправке"
 
-#: .\index\templates\index\dashboard.html:28
+#: .\index\templates\index\dashboard.html:29
 msgid "Now dressed"
 msgstr "Сейчас заправляется"
 
-#: .\index\templates\index\dashboard.html:33
+#: .\index\templates\index\dashboard.html:34
 #: .\index\templates\index\empty.html:9 .\index\templates\index\stock.html:15
 #: .\index\templates\index\transfe_empty_to_basket.html:12
-#: .\index\templates\index\transfe_to_basket.html:10
+#: .\index\templates\index\transfe_to_basket.html:13
 #: .\index\templates\index\use.html:15
 msgid "In basket"
 msgstr "В корзину"
 
-#: .\index\templates\index\dashboard.html:38
+#: .\index\templates\index\dashboard.html:39
 msgid "Spending cartridges"
 msgstr "Расходавание картриджей"
 
-#: .\index\templates\index\dashboard.html:42
+#: .\index\templates\index\dashboard.html:43
 msgid "For the current day"
 msgstr "За текущие сутки"
 
-#: .\index\templates\index\dashboard.html:46
+#: .\index\templates\index\dashboard.html:47
 msgid "Since the beginning of the month"
 msgstr "С начала месяца"
 
-#: .\index\templates\index\dashboard.html:50
+#: .\index\templates\index\dashboard.html:51
 msgid "Since the beginning of the year"
 msgstr "С начала года"
 
-#: .\index\templates\index\dashboard.html:57
+#: .\index\templates\index\dashboard.html:58
 #: .\service\templates\service\submenu.html:7
 msgid "Events"
 msgstr "События"
 
-#: .\index\templates\index\dashboard.html:71
+#: .\index\templates\index\dashboard.html:72
 msgid "View all events"
 msgstr "Просмотр всех событий"
 
@@ -1039,11 +1092,6 @@ msgstr "Замена<br/>чипа"
 msgid "Replacing<br/>the magnetic roller"
 msgstr "Замена<br/>магнитного вала"
 
-#: .\index\templates\index\manage_users.html:3
-#: .\index\templates\index\manage_users.html:4
-msgid "User management"
-msgstr "Управление пользователями"
-
 #: .\index\templates\index\manage_users.html:26
 #: .\index\templates\index\use.html:34
 msgid "User"
@@ -1072,10 +1120,6 @@ msgstr "Дата добавления"
 #: .\index\templates\index\severcartcbv.html:13
 msgid "on stock"
 msgstr "на склад"
-
-#: .\index\templates\index\stock.html:2 .\index\templates\index\stock.html:3
-msgid "List of new or refilled cartridges"
-msgstr "Список новых или заправленных картриджей"
 
 #: .\index\templates\index\stock.html:13
 msgid "Add consumables"
@@ -1112,7 +1156,7 @@ msgid "Transfer of use"
 msgstr "Передача в пользование"
 
 #: .\index\templates\index\transfe_for_use.html:10
-#: .\index\templates\index\transfe_to_basket.html:8
+#: .\index\templates\index\transfe_to_basket.html:10
 #: .\index\templates\index\transfer_to_firm.html:21
 msgid "What transfe"
 msgstr "Что передаём"
@@ -1120,6 +1164,15 @@ msgstr "Что передаём"
 #: .\index\templates\index\transfe_for_use.html:12
 msgid "To pass"
 msgstr "Кто передал"
+
+#: .\index\templates\index\transfe_for_use.html:24
+msgid "Transfer to"
+msgstr "Передача"
+
+#: .\index\templates\index\transfe_to_basket.html:2
+#: .\index\templates\index\transfe_to_basket.html:3
+msgid "Transfer to basket"
+msgstr "Переместить в корзину"
 
 #: .\index\templates\index\transfer_to_firm.html:2
 #: .\index\templates\index\transfer_to_firm.html:3
@@ -1142,19 +1195,24 @@ msgstr "Передача для восстановления"
 msgid "Cansel"
 msgstr "Отмена"
 
-#: .\index\templates\index\tree_list.html:8
+#: .\index\templates\index\tree_list.html:2
+#: .\index\templates\index\tree_list.html:3
+msgid "Manage org units"
+msgstr "Управление организационными подразделениями"
+
+#: .\index\templates\index\tree_list.html:10
 msgid "Addition of a new structural unit"
 msgstr "Добавить новое структурное подразделение"
 
-#: .\index\templates\index\tree_list.html:11
+#: .\index\templates\index\tree_list.html:13
 msgid "Name structural unit"
 msgstr "Название структурного подразделения"
 
-#: .\index\templates\index\tree_list.html:19
+#: .\index\templates\index\tree_list.html:21
 msgid "Compliant"
 msgstr "Подчиняется"
 
-#: .\index\templates\index\tree_list.html:33
+#: .\index\templates\index\tree_list.html:35
 msgid "Structure of the organization"
 msgstr "Структура организации"
 
@@ -1170,41 +1228,41 @@ msgstr "Дата передачи"
 msgid "in use"
 msgstr "в пользование"
 
-#: .\index\views.py:123
+#: .\index\views.py:124
 #, python-format
 msgid "%(cart_name)s already exists"
 msgstr "%(cart_name)s уже существует."
 
-#: .\index\views.py:127
+#: .\index\views.py:128
 #, python-format
 msgid "%(cart_name)s success added"
 msgstr "%(cart_name)s успешно добавлен."
 
-#: .\index\views.py:184 .\index\views.py:197
+#: .\index\views.py:186 .\index\views.py:199
 #, python-format
 msgid "Organization unit %(org_name)s exist"
 msgstr "Организационное подразделение %(org_name)s уже есть."
 
-#: .\index\views.py:243
+#: .\index\views.py:245
 #, python-format
 msgid "%(cart_type)s success save"
 msgstr "%(cart_type)s успешно сохранён."
 
-#: .\index\views.py:248
+#: .\index\views.py:250
 #, python-format
 msgid "New type %(cart_type)s success added"
 msgstr "Новый тип %(cart_type)s успешно добавлен."
 
-#: .\index\views.py:367
+#: .\index\views.py:369
 msgid "Select all"
 msgstr "Выбрать все"
 
-#: .\index\views.py:416
+#: .\index\views.py:418
 #, python-format
 msgid "Firm \"%(firm_name)s\" success added."
 msgstr "Контрагент \"%(firm_name)s\" успешно добавлен."
 
-#: .\index\views.py:612
+#: .\index\views.py:616
 msgid "You input not correct firm name"
 msgstr "Вы ввели неправильное имя контрагента."
 
@@ -1235,14 +1293,14 @@ msgstr "Поле не может быть пустым."
 #: .\reports\templates\reports\amortizing.html:2
 #: .\reports\templates\reports\amortizing.html:3
 msgid "Search of used consumables"
-msgstr "Вы ввели ошибочные данные."
+msgstr "Поиск изношенных расходников"
 
 #: .\reports\templates\reports\amortizing.html:19
 msgid "The number of reloads (more or equal)"
 msgstr "Количество перезаправок (более или равно)"
 
 #: .\reports\templates\reports\amortizing.html:23
-#: .\reports\templates\reports\main_summary.html:27
+#: .\reports\templates\reports\main_summary.html:28
 msgid "Generate"
 msgstr "Сформировать"
 
@@ -1255,12 +1313,12 @@ msgid "Number<br/>reloads"
 msgstr "Кол-во<br/>перезаправок"
 
 #: .\reports\templates\reports\amortizing_ajax.html:8
-#: .\reports\templates\reports\main_summary.html:44
+#: .\reports\templates\reports\main_summary.html:46
 msgid "Status"
 msgstr "Статус"
 
-#: .\reports\templates\reports\main_summary.html:2
-#: .\reports\templates\reports\main_summary.html:3
+#: .\reports\templates\reports\main_summary.html:7
+#: .\reports\templates\reports\main_summary.html:8
 msgid "Search of bargain consumables"
 msgstr "Поиск залежавшихся расходников"
 
@@ -1276,11 +1334,11 @@ msgstr ""
 "Список из 10 или 20 картриджей, обращения к которым было самым позним.<br/> "
 "Либо последнее обращение было в прошлом году."
 
-#: .\reports\templates\reports\main_summary.html:42
+#: .\reports\templates\reports\main_summary.html:44
 msgid "Date changes"
 msgstr "Дата изменения"
 
-#: .\reports\templates\reports\main_summary.html:43
+#: .\reports\templates\reports\main_summary.html:45
 msgid "Number<br/> reloads"
 msgstr "Количество<br/> перезаправок"
 

@@ -1,6 +1,6 @@
 {% extends "index/base.html" %}{% load i18n %}
 {% block h3 %}{% trans "Viewing of events" %}{% endblock %}
-{% block title %}{% trans "Viewing of events" %}{% endblock %}
+{% block breadcrumbs %}<a href="/"><img src="{{ STATIC_URL }}img/home.png" /></a> / <a href="{% url 'service:submenu' %}">{% trans "Service" %}</a> / {% trans "Viewing of events" %}{% endblock %}
 {% load staticfiles %}
 {% block jqueryui%}
 <link rel="stylesheet" href="{{ STATIC_URL }}css/jquery-ui.css" />

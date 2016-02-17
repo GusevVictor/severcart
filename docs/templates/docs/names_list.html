@@ -1,7 +1,7 @@
 {% extends "index/base.html" %}{% load staticfiles %}{% load i18n %}
 {% load pagination  %}
-{% block title %}{% trans "References" %}{% endblock %}
-{% block h3 %}{% trans "References" %}{% endblock %}
+{% block title %}{% trans "References names cartidges" %}{% endblock %}
+{% block breadcrumbs %}<a href="/"><img src="{{ STATIC_URL }}img/home.png" /></a> / <a href="{% url 'docs:handbook' %}">{% trans "References" %}</a> / {% trans "References names cartidges" %}{% endblock %}
 {% block submenu %}
 <div class="row">
     <div class="large-6 columns">

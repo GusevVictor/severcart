@@ -1,6 +1,6 @@
 {% extends "index/base.html" %}{% load staticfiles %}{% load i18n %}
 {% block title %}{% trans "Search of used consumables" %}{% endblock %}
-{% block h3 %}{% trans "Search of used consumables" %}{% endblock %}
+{% block breadcrumbs %}<a href="/"><img src="{{ STATIC_URL }}img/home.png" /></a> / <a href="{% url 'docs:handbook' %}">{% trans "References" %}</a> / <a href="{% url 'reports:main_summary' %}">{% trans "Reports" %}</a> / {% trans "Search of used consumables" %}{% endblock %}
 {% block jqueryui %}
 <link rel="stylesheet" href="{{ STATIC_URL }}css/pm_widget.css" />
 <script src="{{ STATIC_URL }}js/pm_widget.js"></script>

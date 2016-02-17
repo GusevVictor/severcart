@@ -1,7 +1,7 @@
 {% extends "index/base.html" %}{% load i18n %}
 {% load pagination  %}
 {% block title %}{% trans "Blank consumables" %}{% endblock %}
-{% block h3 %}{% trans "Blank consumables" %}{% endblock %}
+{% block breadcrumbs %}<a href="/"><img src="{{ STATIC_URL }}img/home.png" /></a> / {% trans "Blank consumables" %}{% endblock %}
 {% block submenu %}
 <div class="row">
     <div class="large-12 columns">

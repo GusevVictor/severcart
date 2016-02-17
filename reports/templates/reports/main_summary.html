@@ -1,11 +1,11 @@
 {% extends "index/base.html" %}{% load staticfiles %}{% load filters %}{% load i18n %}
-{% block title %}{% trans "Search of bargain consumables" %}{% endblock %}
-{% block h3 %}{% trans "Search of bargain consumables" %}{% endblock %}
 {% block jqueryui%}
 <link rel="stylesheet" href="{{ STATIC_URL }}css/jquery.powertip-dark.min.css" />
 <script src="{{ STATIC_URL }}js/jquery.powertip.min.js"></script>
 <script src="{{ STATIC_URL }}js/activate.powertip.js"></script>
 {% endblock %}
+{% block title %}{% trans "Search of bargain consumables" %}{% endblock %}
+{% block breadcrumbs %}<a href="/"><img src="{{ STATIC_URL }}img/home.png" /></a> / <a href="{% url 'docs:handbook' %}">{% trans "References" %}</a> / {% trans "Search of bargain consumables" %}{% endblock %}
 {% block content %}
 <div class="row">
     <div class="large-8 columns">
@@ -24,7 +24,9 @@
                     <a data-powertip="{% trans 'A list of 10 or cartridge 20, which was the most recent.<br/> Or the last message was last year.' %}" class="no_follow tooltips" href="#"><img src="{{ STATIC_URL }}img/info.png" /></a>
                 </div>
                 {{ form.diap.errors }}
-                <input class="button" value="{% trans 'Generate' %}" type="submit" />
+                <div class="marginTop">
+                    <input class="button" value="{% trans 'Generate' %}" type="submit" />
+                </div>
                 </form>
             </div>        
         </div>

@@ -55,6 +55,10 @@ form input[type="text"] {
     margin: 0;
 }
 
+.breads, .breads a img {
+    vertical-align: baseline;
+}
+
 .marginTop {
     margin-top:15px;
     overflow: hidden; /* disable margin collapse */
