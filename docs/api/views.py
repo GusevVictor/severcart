@@ -6,7 +6,7 @@ import json
 from django.http import JsonResponse, HttpResponse
 from django.db.models.deletion import ProtectedError
 from django.conf import settings
-from django.utils.translation import ugettext_lazy as _
+from django.utils.translation import ugettext as _
 from docx import Document
 from docx.shared import Inches
 from index.models import CartridgeItemName, CartridgeType
