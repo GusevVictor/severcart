@@ -14,7 +14,6 @@ from django.contrib.sessions.models import Session
 from django.db.models import Q
 from django.template.loader import render_to_string
 from django.utils.translation import ugettext_lazy as _
-from django.core.cache import cache
 from common.helpers import is_admin
 from common.cbv import CartridgesView
 from common.helpers import BreadcrumbsPath
@@ -104,23 +103,10 @@ class Stock(CartridgesView):
 
     def get(self, request, *args, **kwargs):
         super(Stock, self).get(*args, **kwargs)
-        self.all_items = self.all_items.filter(cart_status=1).filter(departament=self.request.user.departament).values()
+        self.all_items = self.all_items.filter(cart_status=1).filter(departament=self.request.user.departament)
         page_size = self.items_per_page()
         self.context['size_perpage'] = page_size
-        middle_data = self.pagination(self.all_items, page_size)
-        tmp_list = list()
-        for cart_obj in middle_data:
-            tmp_dict = dict()
-            tmp_dict['id'] = cart_obj['id']
-            tmp_dict['cart_number'] = cart_obj['cart_number']
-            tmp_dict['cart_itm_name'] = cache.get('names_dict')[cart_obj['cart_itm_name_id']]
-            tmp_dict['cart_number_refills'] = cart_obj['cart_number_refills']
-            tmp_dict['cart_date_change'] = cart_obj['cart_date_change']
-            tmp_dict['comment'] = cart_obj['comment']
-            tmp_list.append(tmp_dict)
-        self.context['cartrjs'] = tmp_list
-        page_size = self.items_per_page()
-        self.context['size_perpage'] = page_size
+        self.context['cartrjs'] = self.pagination(self.all_items, page_size)
         return render(request, 'index/stock.html', self.context)
 
 
