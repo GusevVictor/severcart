@@ -1050,7 +1050,7 @@ td {
 
 /* Default Link Styles */
 a {
-  color: #2ba6cb;
+  color: #0275b8;
   text-decoration: none;
   line-height: inherit; }
   a:hover, a:focus {
@@ -2788,7 +2788,7 @@ label.error {
     font-weight: bold;
     background: #222222; }
     .top-bar-section ul li > a.button {
-      background: #2ba6cb;
+      background: #0275b8;
       font-size: 0.8125em;
       padding-right: 15px;
       padding-left: 15px; }
@@ -3609,7 +3609,7 @@ label.error {
   position: relative;
   padding: 0.6875em 1.3125em 0.75em 0.6875em;
   font-size: 0.875em;
-  background-color: #2ba6cb;
+  background-color: #0275b8;
   border-color: #2284a1;
   color: white; }
   .alert-box .close {
@@ -3665,7 +3665,7 @@ label.error {
     .breadcrumbs > * a,
     .breadcrumbs > * span {
       text-transform: uppercase;
-      color: #2ba6cb; }
+      color: #0275b8; }
     .breadcrumbs > *.current {
       cursor: default;
       color: #333333; }
@@ -3917,7 +3917,7 @@ kbd {
   position: relative;
   padding: 0.1875em 0.625em 0.25em;
   font-size: 0.875em;
-  background-color: #2ba6cb;
+  background-color: #0275b8;
   color: white; }
   .label.radius {
     -webkit-border-radius: 3px;
@@ -3974,12 +3974,12 @@ ul.pagination {
     ul.pagination li.unavailable:hover a, ul.pagination li.unavailable a:focus {
       background: transparent; }
     ul.pagination li.current a {
-      background: #2ba6cb;
+      background: #0275b8;
       color: white;
       font-weight: bold;
       cursor: default; }
       ul.pagination li.current a:hover, ul.pagination li.current a:focus {
-        background: #2ba6cb; }
+        background: #0275b8; }
   ul.pagination li {
     float: left;
     display: block; }
@@ -4016,7 +4016,7 @@ ul.pagination {
     border-color: #2284a1;
     margin-bottom: 1.25em;
     padding: 1.25em;
-    background: #2ba6cb;
+    background: #0275b8;
     -webkit-box-shadow: 0 1px 0 rgba(255, 255, 255, 0.5) inset;
     box-shadow: 0 1px 0 rgba(255, 255, 255, 0.5) inset; }
     .panel.callout > :first-child {
@@ -4088,7 +4088,7 @@ ul.pagination {
   padding: 0.125em;
   margin-bottom: 0.625em; }
   .progress .meter {
-    background: #2ba6cb;
+    background: #0275b8;
     height: 100%;
     display: block; }
   .progress.secondary .meter {
@@ -4128,7 +4128,7 @@ ul.pagination {
     font-size: 0.875em; }
     .side-nav li a {
       display: block;
-      color: #2ba6cb; }
+      color: #0275b8; }
     .side-nav li.active > a:first-child {
       color: #4d4d4d;
       font-weight: bold; }
@@ -4168,7 +4168,7 @@ ul.pagination {
       -webkit-border-radius: 1000px;
       border-radius: 1000px;
       font-weight: bold;
-      background: #2ba6cb;
+      background: #0275b8;
       padding: 0.1875em 0.5625em;
       cursor: default;
       color: white; }
@@ -4407,7 +4407,7 @@ a.th {
   color: #333333; }
   .has-tip:hover, .has-tip:focus {
     border-bottom: dotted 1px #196177;
-    color: #2ba6cb; }
+    color: #0275b8; }
   .has-tip.tip-left, .has-tip.tip-right {
     float: none !important; }
 
@@ -4436,7 +4436,7 @@ a.th {
     border-color: transparent transparent black transparent;
     top: -10px; }
   .tooltip.opened {
-    color: #2ba6cb !important;
+    color: #0275b8 !important;
     border-bottom: dotted 1px #196177 !important; }
 
 .tap-to-close {
