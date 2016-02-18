@@ -8,7 +8,9 @@ from django.core.exceptions import ValidationError
 
 class NoUse(forms.Form):
     org = forms.ModelChoiceField(queryset=OrganizationUnits.objects.root_nodes())
+    
     OPTIONS = ((10, '10'), (20, '20'), (0, _('All over the past year')))
+    
     diap = forms.ChoiceField(choices=OPTIONS)
 
     def clean_org(self):
@@ -59,3 +61,10 @@ class Amortizing(forms.Form):
         if not self.cleaned_data.get('org', ''):
             raise ValidationError(_('Required field.'))
         return self.cleaned_data.get('org', '')
+
+class UsersCartridges(forms.Form):
+    org = forms.ModelChoiceField(queryset=OrganizationUnits.objects.root_nodes(), required=True, label=_('Organization unit'))
+
+    start_date = forms.CharField(required=True, widget=forms.TextInput(attrs={'class':'datepicker', 'readonly':'readonly'}), label=_('Start date'))
+
+    required_css_class = 'required'

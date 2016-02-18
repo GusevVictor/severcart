@@ -15,8 +15,8 @@
 {% block content %}
 <div class="row">
     <div class="large-12 columns">
-        <table class="checkboxes">
-            <form>
+        <form>
+            <table class="checkboxes">
                 <tr>
                     <th class="first_checkbox"><input type="checkbox" class="check_all"></th>
                     <th class="cart_number {% if select_number %}active_cell{% endif %}"><a href="?action=number">{% trans "Number" %} {{number_triangle}}</a><br/><input class="search_number" name="search_number" value="{{search_number}}"  /></th>
@@ -37,8 +37,8 @@
                         <td><div class="comment_in_cell" title="{{ i.comment }}">{{ i.comment|truncatechars:25 }}</div></td>
                     </tr>
                 {% endfor %}
-            </form>
-        </table>
+            </table>
+        </form>
     </div>
 </div>
 {% found_pagination cartrjs size_perpage %}

@@ -1,14 +1,7 @@
 # -*- coding:utf-8 -*-
 
 from django import forms
-
-def del_leding_zero(data):
-    """Убираем лидирующий ноль, если он есть.
-    """
-    if data[0] == '0':
-        return int(data[1:])
-    else:
-        return int(data)
+from common.helpers import del_leding_zero
 
 class DateForm(forms.Form):
     #http://stackoverflow.com/questions/16356289/how-to-show-datepicker-calender-on-datefield#16356818

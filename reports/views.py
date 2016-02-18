@@ -4,7 +4,8 @@ from django.shortcuts import render
 import datetime
 from django.contrib.auth.decorators import login_required
 from django.utils import timezone
-from .forms import NoUse, Amortizing
+from common.helpers import BreadcrumbsPath
+from .forms import NoUse, Amortizing, UsersCartridges
 from index.models import CartridgeItem, OrganizationUnits
 
 @login_required
@@ -77,4 +78,9 @@ def users(request):
     """
     """
     context = {}
-    return render(request, 'reports/main_summary.html', context)
+    context['back'] = BreadcrumbsPath(request).before_page(request)
+    if request.method == 'POST':
+        pass
+    else: 
+        context['form'] = UsersCartridges(initial={'org': request.user.departament})
+    return render(request, 'reports/users.html', context)

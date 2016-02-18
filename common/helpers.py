@@ -3,6 +3,14 @@
 from django.conf import settings
 from django.shortcuts import render
 
+def del_leding_zero(data):
+    """Убираем лидирующий ноль, если он есть.
+    """
+    if data[0] == '0':
+        return int(data[1:])
+    else:
+        return int(data)
+
 class ShortList(object):
     """Специфический список, циклически удаляющий первые элементы
        при переполнении. Настраивается через settings django.

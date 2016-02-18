@@ -56,8 +56,8 @@ $( function(){
     $('.add_items').click( function(e) {
         /* Выполняем проверку на принадлежность орг. юниту*/
         var cart_name = $('#id_cartName option:selected').val();
-        var docum     = $('#id_doc option:selected').val();        
-        var cont      = parseInt($('#id_cartCount').val());        
+        var docum     = $('#id_doc option:selected').val();
+        var cont      = parseInt($('#id_cartCount').val());
         if (!cart_name) {
             $('.cart_name_error').show();
         } else {
@@ -107,7 +107,50 @@ $( function(){
                 },
             });            
         }
+    });
 
+    $('.users_use_cartridges').click( function() {
+        var org        = $('#id_org option:selected').val();
+        var start_date = $('#id_start_date').val();
+        //console.log(org, diap);
+        $.ajax({
+            method: 'POST',
+            url: '/reports/api/ajax_reports_users/',
+            data:  {'org': org, 'start_date': start_date},
+            beforeSend: function( xhr, settings ){
+                $('.spinner').show();
+                csrftoken = getCookie('csrftoken');
+                if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
+                    xhr.setRequestHeader('X-CSRFToken', csrftoken);
+                }
+            },
+            success: function( msg ) {
+                $('.spinner').hide(); 
+                /*
+                if (msg.error == '1') {
+                    
+                    $('.success_msg').hide();
+                    $('.error_msg').show();
+                    $('.error_msg').html(msg.mes);
+                }*/
+
+                if (msg.error == '0') {
+                    $('.spinner').hide();
+                    $('.error_msg').hide();
+                    $('.users_use_cartridges').html(msg.text);
+                    //$('.success_msg').show();
+                    //$('.success_msg').html(msg.mes);
+                    //setTimeout(function() { $('.success_msg').hide(); }, 12000);
+                }
+            },
+            error: function() {
+                $('.spinner').hide(); 
+            /*    $('.error_msg').show();
+                $('.error_msg').html('Server error :(');
+                $('.spinner').css('display', 'none');
+                setTimeout(function() { $('.error_msg').hide(); }, 12000); */
+            },
+        });   
 
     });
 

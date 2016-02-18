@@ -315,7 +315,6 @@ class Use(CartridgesView):
             children  = root_ou.get_family()
         except AttributeError:
             children = ''
-        print('all units=', children)
         self.all_items = self.all_items.filter(departament__in=children).filter(cart_status=2)
         page_size = self.items_per_page()
         self.context['size_perpage'] = page_size

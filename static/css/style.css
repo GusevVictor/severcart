@@ -317,6 +317,10 @@ label {
     padding-left: 15px;
 }
 
+a.current {
+    color:#000;
+    cursor: default;
+}
 
 .tooltips {
     position: absolute;
