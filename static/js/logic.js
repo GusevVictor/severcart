@@ -137,7 +137,7 @@ $( function(){
                 if (msg.error == '0') {
                     $('.spinner').hide();
                     $('.error_msg').hide();
-                    $('.users_use_cartridges').html(msg.text);
+                    $('.users_result').html(msg.text);
                     //$('.success_msg').show();
                     //$('.success_msg').html(msg.mes);
                     //setTimeout(function() { $('.success_msg').hide(); }, 12000);

@@ -46,6 +46,7 @@ def ajax_reports_users(request):
     """
     from reports.forms import UsersCartridges
     from common.helpers import del_leding_zero
+    import operator
     
     if request.method != 'POST':
         return HttpResponse('<h1>' + _('Only use POST requests!') + '</h1>')
@@ -93,6 +94,8 @@ def ajax_reports_users(request):
         m1  = m1.count()
         result[str(child)] = m1
 
+    result = sorted(result.items(), key=operator.itemgetter(1), reverse=True)
+    print('result=', result)
     context['text'] = render_to_string('reports/users_ajax.html', context={'result': result})
     context['error'] = '0'
     return JsonResponse(context)
