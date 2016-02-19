@@ -47,10 +47,15 @@ $( function(){
     });
 
     $('table.checkboxes tr:not(:first)').click(function(event) {
-    // улучшитель юзабилити таблиц, при клике по строке выбрается чекбокс    
+    // улучшитель юзабилити таблиц, при клике по строке выбирается чекбокс    
         if (event.target.type !== 'checkbox') {
             $(':checkbox', this).trigger('click');
         }
+
+        if (event.target.type !== 'radio') {
+            $(':radio', this).trigger('click');
+        }
+
     });
 
     $('.add_items').click( function(e) {
@@ -465,10 +470,10 @@ $( function(){
     });
 
 
-    var getUrlParameter = function getUrlParameter(sParam) {
-        /*
-        http://stackoverflow.com/questions/19491336/get-url-parameter-jquery
-         */
+  /*  var getUrlParameter = function getUrlParameter(sParam) {
+        
+        //http://stackoverflow.com/questions/19491336/get-url-parameter-jquery
+        
         var sPageURL = decodeURIComponent(window.location.search.substring(1)),
             sURLVariables = sPageURL.split('&'),
             sParameterName,
@@ -481,7 +486,7 @@ $( function(){
                 return sParameterName[1] === undefined ? true : sParameterName[1];
             }
         }
-    };
+    }; */
 
     $('.city_selector').change(function() {
         var loc = '';
