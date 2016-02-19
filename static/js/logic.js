@@ -272,7 +272,8 @@ $( function(){
 
     $('.tr_to_stock').click( function() {
         var selected = [];
-        var tr = $('.checkboxes input:checked').parent().parent();
+        // выбираем все строки, за исключением заголовочной
+        var tr = $('.checkboxes input:checked').parent().parent().not('.table_header');
         $('.checkboxes input:checked').each(function() {
             if ($(this).attr('value')) {
                 selected.push( $(this).attr('value') );    
