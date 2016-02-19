@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-02-18 19:06+0500\n"
-"PO-Revision-Date: 2016-02-18 19:10+0500\n"
+"POT-Creation-Date: 2016-02-18 22:29+0500\n"
+"PO-Revision-Date: 2016-02-18 22:30+0500\n"
 "Last-Translator: \n"
 "Language-Team: severcart.org <sfcl@mail.ru>\n"
 "Language: ru\n"
@@ -570,7 +570,8 @@ msgstr "Перемещен пользователем %(event_user)s в корз
 msgid ""
 "№ %(cart_number)s (%(cart_type)s) moving in user to basket %(event_user)s."
 msgstr ""
-"№ %(cart_number)s (%(cart_type)s) moving in user to basket %(event_user)s."
+"№ %(cart_number)s (%(cart_type)s) перемещён в корзину пользователем "
+"%(event_user)s."
 
 #: .\events\helpers.py:114
 #, python-format
@@ -1013,12 +1014,8 @@ msgid "Now dressed"
 msgstr "Сейчас заправляется"
 
 #: .\index\templates\index\dashboard.html:34
-#: .\index\templates\index\empty.html:9 .\index\templates\index\stock.html:15
-#: .\index\templates\index\transfe_empty_to_basket.html:12
-#: .\index\templates\index\transfe_to_basket.html:13
-#: .\index\templates\index\use.html:15
-msgid "In basket"
-msgstr "В корзину"
+msgid "In basket (count)"
+msgstr "В корзине"
 
 #: .\index\templates\index\dashboard.html:39
 msgid "Spending cartridges"
@@ -1065,6 +1062,13 @@ msgstr "Пустые расходники"
 #: .\index\templates\index\empty.html:8
 msgid "Transfer to refuel"
 msgstr "Передать на заправку"
+
+#: .\index\templates\index\empty.html:9 .\index\templates\index\stock.html:15
+#: .\index\templates\index\transfe_empty_to_basket.html:12
+#: .\index\templates\index\transfe_to_basket.html:13
+#: .\index\templates\index\use.html:15
+msgid "In basket"
+msgstr "В корзину"
 
 #: .\index\templates\index\empty.html:26
 msgid "in stock"

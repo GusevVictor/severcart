@@ -126,29 +126,24 @@ $( function(){
             },
             success: function( msg ) {
                 $('.spinner').hide(); 
-                /*
                 if (msg.error == '1') {
-                    
                     $('.success_msg').hide();
                     $('.error_msg').show();
-                    $('.error_msg').html(msg.mes);
-                }*/
+                    $('.error_msg').html(msg.text);
+                    $('.users_result').html();
+                }
 
                 if (msg.error == '0') {
                     $('.spinner').hide();
                     $('.error_msg').hide();
                     $('.users_result').html(msg.text);
-                    //$('.success_msg').show();
-                    //$('.success_msg').html(msg.mes);
-                    //setTimeout(function() { $('.success_msg').hide(); }, 12000);
                 }
             },
             error: function() {
                 $('.spinner').hide(); 
-            /*    $('.error_msg').show();
+                $('.success_msg').hide();
+                $('.error_msg').show();
                 $('.error_msg').html('Server error :(');
-                $('.spinner').css('display', 'none');
-                setTimeout(function() { $('.error_msg').hide(); }, 12000); */
             },
         });   
 
