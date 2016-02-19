@@ -17,14 +17,33 @@
     <div class="large-6 columns">
         <form action="" method="POST">
             {% csrf_token %}
-            {% for field in form %}
-                <div class="marginTop"></div>
-                {{ field.label_tag }}
-                {{ field }}
-                {{ field.errors }}
-            {% endfor %}
-            <input type="submit" value='{% trans "Add" %}' class="button success" />
-            <a class="button" href="{{ back }}">{% trans "Back" %}</a>
+            <div class="marginTop"></div>
+            {{ form.firm_name.label_tag }}
+            {{ form.firm_name }}
+            {{ form.firm_name.errors }}
+            <div class="marginTop"></div>
+            {{ form.firm_city.label_tag }}
+            <div class="input_row">
+                {{ form.firm_city }}
+                <a class="dj_button add" href="{% url 'add_city' %}"></a>
+            </div>
+            {{ form.firm_city.errors }}
+            <div class="marginTop"></div>
+            {{ form.firm_contacts.label_tag }}
+            {{ form.firm_contacts }}
+            {{ form.firm_contacts.errors }}
+            <div class="marginTop"></div>
+            {{ form.firm_address.label_tag }}
+            {{ form.firm_address }}
+            {{ form.firm_address.errors }}
+            <div class="marginTop"></div>
+            {{ form.firm_comments.label_tag }}
+            {{ form.firm_comments }}
+            {{ form.firm_comments.errors }}
+            <div class="marginTop">
+                <input type="submit" value='{% trans "Add" %}' class="button success" />
+                <a class="button" href="{{ back }}">{% trans "Back" %}</a>
+            </div>
         </form>
     </div>
 </div>

@@ -1,6 +1,8 @@
 {% extends "index/base.html" %}{% load i18n %}
 {% block title %}{% trans "Transfer cartridges refills" %}{% endblock %}
 {% block h3 %}{% trans "Transfer cartridges refills" %}{% endblock %}
+
+{% block breadcrumbs %}<a href="/"><img src="{{ STATIC_URL }}img/home.png" /></a> / <a href="{% url 'use' %}">{% trans "Consumables in use" %}</a> / {% trans "Transfer cartridges refills" %}{% endblock %}
 {% load filters %}
 {% block content %}
     <div class="row">

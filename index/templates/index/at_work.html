@@ -22,7 +22,7 @@
                     <th class="cart_number {% if select_number %}active_cell{% endif %}"><a href="?action=number">{% trans "Number" %} {{number_triangle}}</a><br/><input class="search_number" name="search_number" value="{{search_number}}"  /></th>
                     <th class="cart_name{% if select_type %} active_cell{% endif %}"><a href="?action=name">{% trans "Name" %} {{type_triangle}}</a></th>
                     <th class="cart_count{% if select_count %} active_cell{% endif %}"><a href="?action=recovery">{% trans "Amount<br/>recovery" %} {{count_triangle}}</a></th>
-                    <th class="cart_date{% if select_date %} active_cell{% endif %}"><a href="?action=change_date">{% trans "Date" %} {{datec_triangle}} {% trans "transfer" %}<br/>{% trans "on recovery" %}</a></th>
+                    <th class="cart_date{% if select_date %} active_cell{% endif %}"><a href="?action=change_date">{% trans "Date transfer on recovery" %} {{datec_triangle}}</a></th>
                     <th class="firm_filled">{% trans "refueller" %}</th>
                     <th class="actions">{% trans "comment" %}</th>
                 </tr>
