@@ -9,10 +9,8 @@ class RegistrationForm(forms.ModelForm):
     """Form for registering a new account.
     """
     username = forms.CharField(widget=forms.TextInput, label=_('Login'))
-    password1 = forms.CharField(widget=forms.PasswordInput,
-                                label=_('Password'))
-    password2 = forms.CharField(widget=forms.PasswordInput,
-                                label=_('Password again'))
+    password1 = forms.CharField(widget=forms.PasswordInput, label=_('Password'), required=True)
+    password2 = forms.CharField(widget=forms.PasswordInput, label=_('Password again'), required=True)
 
     required_css_class = 'required'
 
@@ -20,7 +18,7 @@ class RegistrationForm(forms.ModelForm):
                                       error_messages={'required': _('Required field')},
                                       empty_label=' ',
                                       required=True,
-                                      label = _('Organization unit'),
+                                      label = _('Organization'),
                                       )
 
     is_admin = forms.BooleanField(required=False, label=_('Administrator?'))
@@ -28,6 +26,19 @@ class RegistrationForm(forms.ModelForm):
     class Meta:
         model = AnconUser
         fields = ['username', 'password1', 'password2', 'fio', 'email','departament', 'is_admin']
+
+    def clean_username(self):
+        """Предотвращаяем регистрацию пользователя с одинаковыми логинами.
+        """
+        username = self.cleaned_data.get('username', '')
+        if not username:
+            raise forms.ValidationError(_('Requared field.'))
+
+        if AnconUser.objects.filter(username__iexact=username):
+            raise forms.ValidationError(_('User alrady exist.'))
+
+        return username
+
 
     def clean(self):
         """Verifies that the values entered into the password fields match

@@ -6,8 +6,13 @@
     <div class="large-6 columns">
     <form action="" method="POST">
         {% csrf_token %}
-        {{ form.as_p }}
-        <div>
+        {% for field in form %}
+            <div class="marginTop"></div>
+            {{ field.label_tag }}
+            {{ field }}
+            {{ field.errors }}
+        {% endfor %}
+        <div class="marginTop">
             <input type="submit" value="{% trans 'Registry user' %}" class="button success" />
             <a href="{% url 'auth:manage_users' %}" class="button">{% trans 'Back' %}</a>
         </div>

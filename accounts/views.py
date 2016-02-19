@@ -47,6 +47,8 @@ def register(request):
         if form.is_valid():
             user = form.save()
             return redirect(reverse('accounts:manage_users'))
+        else:
+            form = form
     else:
         form = RegistrationForm()
     return render(request, 'accounts/register.html', {'form': form})
