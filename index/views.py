@@ -414,7 +414,6 @@ def add_firm(request):
                                  firm_comments=data_in_post['firm_comments'], )
             m1.save()
             messages.success(request, _('Firm "%(firm_name)s" success added.') % {'firm_name': data_in_post['firm_name']})
-            return HttpResponseRedirect('index.views.toner_refill')
     else:
         form_obj = FirmTonerRefillF()
     return render(request, 'index/add_firm.html', {'form': form_obj, 'back': back})
