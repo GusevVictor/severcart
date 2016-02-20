@@ -82,6 +82,7 @@ $( function(){
                 $('.spinner').hide();
                 $('.error_msg').show();
                 $('.error_msg').html('<p>Server not available.</p>');
+                setTimeout(function() { $('.error_msg').hide(); }, 12000);
             },
         });
     });

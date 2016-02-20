@@ -163,6 +163,7 @@ if DEBUG:
 
 
 STATIC_ROOT_CSV = os.path.join(BASE_DIR, 'static', 'csv')
+MAX_COUNT_CSV_FILES = 20
 #MEDIA_ROOT  = os.path.join(BASE_DIR, 'media')
 
 STATIC_URL = '/static/'

@@ -141,13 +141,21 @@ def generate_act(request):
 
 @check_ajax_auth
 def generate_csv(request):
-    import csv
+    import csv, glob
     resp_dict = {}
     csv_file_name = str(int(time.time())) + '_' + str(request.user.pk) + '.csv'
     view = request.POST.get('view', '')
     if not os.path.exists(settings.STATIC_ROOT_CSV):
         os.makedirs(settings.STATIC_ROOT_CSV)
-    # TODO очистить каталог от старых файлов
+    # Прозводим ротацию каталога csv от старых файлов
+    files = filter(os.path.isfile, glob.glob(settings.STATIC_ROOT_CSV + '\*.csv'))
+    files = list(files)
+    files.sort(key=lambda x: os.path.getmtime(x))
+    try:
+        if len(files) > settings.MAX_COUNT_CSV_FILES:
+            os.remove(files[0])
+    except:
+        pass
     csv_full_name = os.path.join(settings.STATIC_ROOT_CSV, csv_file_name)
     all_items = CartridgeItem.objects.all().order_by('pk')
     if view == 'stock':
