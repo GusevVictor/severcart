@@ -103,18 +103,15 @@ table th{
     text-align: left;
 }
 
-
 span.gi {
     color: #d7d7d7;
     font-weight: bold;
     margin-right: 5px;
 }
 
-
-.spinner {
+.spinner, .export_spinner {
     margin-left: 10px;
     display: none;
-
 }
 
 .cont{

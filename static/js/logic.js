@@ -52,14 +52,12 @@ $( function(){
             return window.open('', '_blank');
         };
         var view = $(this).attr('view');
-        //var win = window.open('', '_blank');
-        //var win = $.winOpen('http://ya.ru');
         $.ajax({
             method: 'POST',
             url: '/docs/api/generate_csv/',
             data:  {'view': view },
             beforeSend: function( xhr, settings ){
-                $('.spinner').show();
+                $('.export_spinner').show();
                 csrftoken = getCookie('csrftoken');
                 if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
                     xhr.setRequestHeader('X-CSRFToken', csrftoken);
@@ -67,19 +65,13 @@ $( function(){
             },
             success: function( msg ) {
                 setTimeout(function() { }, 4000);
-                $('.spinner').hide(); 
-                //$('.error_msg').hide();
-                //$('.success_msg').show();
-                
-                //$('.success_msg').html(msg.text);
-                //win.location.href = msg.url;
+                $('.export_spinner').hide(); 
                 var w = win();
                 w.location.href = msg.url;
                 w.focus();
-                //setTimeout(function() { $('.success_msg').hide(); }, 12000);
             },
             error: function() {
-                $('.spinner').hide();
+                $('.export_spinner').hide();
                 $('.error_msg').show();
                 $('.error_msg').html('<p>Server not available.</p>');
                 setTimeout(function() { $('.error_msg').hide(); }, 12000);

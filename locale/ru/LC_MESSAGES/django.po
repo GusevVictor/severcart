@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-02-20 11:43+0500\n"
-"PO-Revision-Date: 2016-02-20 11:46+0500\n"
+"POT-Creation-Date: 2016-02-20 12:02+0500\n"
+"PO-Revision-Date: 2016-02-20 12:03+0500\n"
 "Last-Translator: \n"
 "Language-Team: severcart.org <sfcl@mail.ru>\n"
 "Language: ru\n"
@@ -983,8 +983,8 @@ msgid "Version"
 msgstr "Версия"
 
 #: .\index\templates\index\base_menu.html:6
-msgid "Home"
-msgstr "Домашняя"
+msgid "Main"
+msgstr "Главная"
 
 #: .\index\templates\index\base_menu.html:7
 msgid "Filled"
@@ -1002,10 +1002,6 @@ msgstr "Пустые"
 #: .\index\templates\index\basket.html:4 .\index\templates\index\basket.html:5
 msgid "Basket"
 msgstr "Корзина"
-
-#: .\index\templates\index\basket.html:32
-msgid "in basket"
-msgstr "в корзину"
 
 #: .\index\templates\index\basket.html:34 .\index\templates\index\empty.html:32
 #: .\index\templates\index\severcartcbv.html:15
@@ -1399,6 +1395,12 @@ msgstr "Потребление пользователями расходных �
 #: .\reports\templates\reports\users_ajax.html:4
 msgid "UserName"
 msgstr "Пользователь"
+
+#~ msgid "Home"
+#~ msgstr "Домашняя"
+
+#~ msgid "in basket"
+#~ msgstr "в корзину"
 
 #~ msgid "transfer"
 #~ msgstr "передача"
