@@ -46,6 +46,46 @@ $( function(){
         event.stopPropagation();
     });
 
+
+    $('.export_to_csv').click( function() {
+        var win = function() {
+            return window.open('', '_blank');
+        };
+        var view = $(this).attr('view');
+        //var win = window.open('', '_blank');
+        //var win = $.winOpen('http://ya.ru');
+        $.ajax({
+            method: 'POST',
+            url: '/docs/api/generate_csv/',
+            data:  {'view': view },
+            beforeSend: function( xhr, settings ){
+                $('.spinner').show();
+                csrftoken = getCookie('csrftoken');
+                if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
+                    xhr.setRequestHeader('X-CSRFToken', csrftoken);
+                }
+            },
+            success: function( msg ) {
+                setTimeout(function() { }, 4000);
+                $('.spinner').hide(); 
+                //$('.error_msg').hide();
+                //$('.success_msg').show();
+                
+                //$('.success_msg').html(msg.text);
+                //win.location.href = msg.url;
+                var w = win();
+                w.location.href = msg.url;
+                w.focus();
+                //setTimeout(function() { $('.success_msg').hide(); }, 12000);
+            },
+            error: function() {
+                $('.spinner').hide();
+                $('.error_msg').show();
+                $('.error_msg').html('<p>Server not available.</p>');
+            },
+        });
+    });
+
     $('table.checkboxes tr:not(:first)').click(function(event) {
     // улучшитель юзабилити таблиц, при клике по строке выбирается чекбокс    
         if (event.target.type !== 'checkbox') {

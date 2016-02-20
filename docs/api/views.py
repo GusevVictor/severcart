@@ -5,11 +5,12 @@ import time
 import json
 from django.http import JsonResponse, HttpResponse
 from django.db.models.deletion import ProtectedError
+from django.db.models import Q
 from django.conf import settings
 from django.utils.translation import ugettext as _
 from docx import Document
 from docx.shared import Inches
-from index.models import CartridgeItemName, CartridgeType
+from index.models import CartridgeItemName, CartridgeType, CartridgeItem
 from index.helpers import check_ajax_auth
 
 
@@ -136,3 +137,111 @@ def generate_act(request):
         resp_dict['text']  = _('This action is not implemented.')
     
     return JsonResponse(resp_dict, safe=False)
+
+
+@check_ajax_auth
+def generate_csv(request):
+    import csv
+    resp_dict = {}
+    csv_file_name = str(int(time.time())) + '_' + str(request.user.pk) + '.csv'
+    view = request.POST.get('view', '')
+    if not os.path.exists(settings.STATIC_ROOT_CSV):
+        os.makedirs(settings.STATIC_ROOT_CSV)
+    # TODO очистить каталог от старых файлов
+    csv_full_name = os.path.join(settings.STATIC_ROOT_CSV, csv_file_name)
+    all_items = CartridgeItem.objects.all().order_by('pk')
+    if view == 'stock':
+        all_items = all_items.filter(cart_status=1).filter(departament=request.user.departament)
+        with open(csv_full_name, 'w', newline='') as csvfile:
+            fieldnames = ['number', 'name', 'refills', 'date', 'comment']
+            writer = csv.DictWriter(csvfile, fieldnames, delimiter=';')
+            writer.writerow({'number': _('Number'), 
+                            'name': _('Name'), 
+                            'refills': _('Amount<br/>recovery'), 
+                            'date': _('Date add') + ' ' + _('on stock'), 
+                            'comment': _('comment')})
+            for cartridje in all_items:
+                writer.writerow({'number': cartridje.cart_number, 
+                                'name': cartridje.cart_itm_name, 
+                                'refills': cartridje.cart_number_refills, 
+                                'date': cartridje.cart_date_change, 
+                                'comment': cartridje.comment})
+    elif view == 'use':
+        try:
+            root_ou   = request.user.departament
+            children  = root_ou.get_family()
+        except AttributeError:
+            children = ''
+        all_items = all_items.filter(departament__in=children).filter(cart_status=2)
+        with open(csv_full_name, 'w', newline='') as csvfile:
+            fieldnames = ['number', 'name', 'refills', 'date', 'org', 'comment']
+            writer = csv.DictWriter(csvfile, fieldnames, delimiter=';')
+            writer.writerow({'number': _('Number'), 
+                            'name': _('Name'), 
+                            'refills': _('Amount<br/>recovery'), 
+                            'date': _('Date transfe'),
+                            'org': _('User'),
+                            'comment': _('comment')})
+            for cartridje in all_items:
+                writer.writerow({'number': cartridje.cart_number, 
+                                'name': cartridje.cart_itm_name, 
+                                'refills': cartridje.cart_number_refills, 
+                                'date': cartridje.cart_date_change,
+                                'org': cartridje.departament,
+                                'comment': cartridje.comment})
+    elif view == 'empty':
+        all_items = all_items.filter( Q(departament=request.user.departament) & Q(cart_status=3) )
+        with open(csv_full_name, 'w', newline='') as csvfile:
+            fieldnames = ['number', 'name', 'refills', 'date', 'comment']
+            writer = csv.DictWriter(csvfile, fieldnames, delimiter=';')
+            writer.writerow({'number': _('Number'), 
+                            'name': _('Name'), 
+                            'refills': _('Amount<br/>recovery'), 
+                            'date': _('Date return'), 
+                            'comment': _('comment')})
+            for cartridje in all_items:
+                writer.writerow({'number': cartridje.cart_number, 
+                                'name': cartridje.cart_itm_name, 
+                                'refills': cartridje.cart_number_refills, 
+                                'date': cartridje.cart_date_change,
+                                'comment': cartridje.comment})
+
+    elif view == 'at_work':
+        all_items = all_items.filter(Q(cart_status=4) & Q(departament=request.user.departament))
+        with open(csv_full_name, 'w', newline='') as csvfile:
+            fieldnames = ['number', 'name', 'refills', 'date', 'firm', 'comment']
+            writer = csv.DictWriter(csvfile, fieldnames, delimiter=';')
+            writer.writerow({'number': _('Number'), 
+                            'name': _('Name'), 
+                            'refills': _('Amount<br/>recovery'), 
+                            'date': _('Date transfer on recovery'), 
+                            'firm': _('Refueller'),
+                            'comment': _('comment')})
+            for cartridje in all_items:
+                writer.writerow({'number': cartridje.cart_number, 
+                                'name': cartridje.cart_itm_name, 
+                                'refills': cartridje.cart_number_refills, 
+                                'date': cartridje.cart_date_change,
+                                'firm': cartridje.filled_firm,
+                                'comment': cartridje.comment})
+    elif view == 'basket':
+        all_items = all_items.filter( (Q(cart_status=5) | Q(cart_status=6)) & Q(departament=request.user.departament) )
+        with open(csv_full_name, 'w', newline='') as csvfile:
+            fieldnames = ['number', 'name', 'refills', 'date', 'firm', 'comment']
+            writer = csv.DictWriter(csvfile, fieldnames, delimiter=';')
+            writer.writerow({'number': _('Number'), 
+                            'name': _('Name'), 
+                            'refills': _('Amount<br/>recovery'), 
+                            'date': _('Date return in basket'), 
+                            'comment': _('comment')})
+            for cartridje in all_items:
+                writer.writerow({'number': cartridje.cart_number, 
+                                'name': cartridje.cart_itm_name, 
+                                'refills': cartridje.cart_number_refills, 
+                                'date': cartridje.cart_date_change,
+                                'comment': cartridje.comment})
+    else:
+        return HttpResponse(resp_dict, status_code=501)
+    
+    resp_dict['url'] = request.META.get('HTTP_ORIGIN') + settings.STATIC_URL + 'csv/' + csv_file_name
+    return JsonResponse(resp_dict)

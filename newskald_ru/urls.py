@@ -2,6 +2,7 @@
 from django.conf import settings
 from django.conf.urls import include, url
 from django.conf.urls.static import static
+from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from django.views.generic.base import TemplateView
 
 
@@ -15,8 +16,11 @@ urlpatterns = [
     url(r'^service/', include('service.urls', namespace='service')),
 ] 
 
-if settings.DEBUG:
-    urlpatterns = urlpatterns + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+#if settings.DEBUG:
+#    urlpatterns = urlpatterns + static(settings.STATIC_ROOT, document_root=settings.STATIC_ROOT)
+#    urlpatterns = urlpatterns + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+if settings.DEBUG == True:
+    urlpatterns += staticfiles_urlpatterns()
 
 handler404 = 'index.views.handler404'
 handler500 = 'index.views.handler500'

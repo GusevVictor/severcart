@@ -9,10 +9,14 @@
     </div>
 </div>
 <div class="row">
-    <div class="large-12 columns">
+    <div class="large-6 columns">
         <a class="add_items button success" href="{% url 'add_items' %}">{% trans "Add consumables" %}</a>
         <a class="tr_for_use button no_follow" href="#">{% trans "Transferred for use" %}</a>
         <a class="tr_to_recycle_bin button alert" href="#">{% trans "In basket" %}</a>
+    </div>
+    <div class="large-6 columns text-right">
+        <img class="spinner" src="{{ STATIC_URL }}img/loader.gif" />
+        <a class="export_to_csv button no_follow" href="#" view="{{ view }}">{% trans "Export to CSV" %}</a>
     </div>
 </div>
 <div class="row">

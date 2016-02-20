@@ -71,28 +71,52 @@ CACHES = {
 
 SESSION_ENGINE = 'django.contrib.sessions.backends.cache'
 
-TEMPLATES = [
-    {
-        'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
-        'OPTIONS': {
-            'context_processors': [
-                'django.template.context_processors.debug',
-                'django.template.context_processors.request',
-                'django.contrib.auth.context_processors.auth',
-                'django.contrib.messages.context_processors.messages',
-                'django.core.context_processors.static',
-                'django.template.context_processors.static',
-            ],
-            'loaders': [
-                ('django.template.loaders.cached.Loader', [
+if DEBUG:
+    # в режиме разработки выключаем кэширование шалонов.
+    TEMPLATES = [
+        {
+            'BACKEND': 'django.template.backends.django.DjangoTemplates',
+            'DIRS': [],
+            'OPTIONS': {
+                'context_processors': [
+                    'django.template.context_processors.debug',
+                    'django.template.context_processors.request',
+                    'django.contrib.auth.context_processors.auth',
+                    'django.contrib.messages.context_processors.messages',
+                    'django.core.context_processors.static',
+                    'django.template.context_processors.static',
+                ],
+                'loaders': [
                     'django.template.loaders.filesystem.Loader',
                     'django.template.loaders.app_directories.Loader',
-                ]),
-            ],
+                ],
+            },
         },
-    },
-]
+    ]
+else:
+    # в продашен режиме включаем кэширование шалонов.
+    TEMPLATES = [
+        {
+            'BACKEND': 'django.template.backends.django.DjangoTemplates',
+            'DIRS': [],
+            'OPTIONS': {
+                'context_processors': [
+                    'django.template.context_processors.debug',
+                    'django.template.context_processors.request',
+                    'django.contrib.auth.context_processors.auth',
+                    'django.contrib.messages.context_processors.messages',
+                    'django.core.context_processors.static',
+                    'django.template.context_processors.static',
+                ],
+                'loaders': [
+                    ('django.template.loaders.cached.Loader', [
+                        'django.template.loaders.filesystem.Loader',
+                        'django.template.loaders.app_directories.Loader',
+                    ]),
+                ],
+            },
+        },
+    ]
 
 WSGI_APPLICATION = 'newskald_ru.wsgi.application'
 
@@ -137,9 +161,9 @@ if DEBUG:
     MEDIAFILES_DIRS = (os.path.join(BASE_DIR, 'media'),)
 
 
-if not DEBUG:
-    STATIC_ROOT = os.path.join(BASE_DIR, 'static')
-    MEDIA_ROOT  = os.path.join(BASE_DIR, 'media')
+
+STATIC_ROOT_CSV = os.path.join(BASE_DIR, 'static', 'csv')
+#MEDIA_ROOT  = os.path.join(BASE_DIR, 'media')
 
 STATIC_URL = '/static/'
 MEDIA_URL = '/media/'

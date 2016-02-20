@@ -103,6 +103,7 @@ class Stock(CartridgesView):
 
     def get(self, request, *args, **kwargs):
         super(Stock, self).get(*args, **kwargs)
+        self.context['view'] = 'stock'
         self.all_items = self.all_items.filter(cart_status=1).filter(departament=self.request.user.departament)
         page_size = self.items_per_page()
         self.context['size_perpage'] = page_size
@@ -310,6 +311,7 @@ class Use(CartridgesView):
 
     def get(self, request, *args, **kwargs):
         super(Use, self).get(*args, **kwargs)
+        self.context['view'] = 'use'
         try:
             root_ou   = self.request.user.departament
             children  = root_ou.get_family()
@@ -331,6 +333,7 @@ class Empty(CartridgesView):
 
     def get(self, request, *args, **kwargs):
         super(Empty, self).get(*args, **kwargs)
+        self.context['view'] = 'empty'
         root_ou = self.request.user.departament
         self.all_items = self.all_items.filter( Q(departament=root_ou) & Q(cart_status=3) )
         page_size = self.items_per_page()
@@ -485,6 +488,7 @@ class At_work(CartridgesView):
 
     def get(self, request, *args, **kwargs):
         super(At_work, self).get(*args, **kwargs)
+        self.context['view'] = 'at_work'
         self.all_items = self.all_items.filter(Q(cart_status=4) & Q(departament=self.request.user.departament))
         page_size = self.items_per_page()
         self.context['size_perpage'] = page_size
@@ -501,6 +505,7 @@ class Basket(CartridgesView):
 
     def get(self, request, *args, **kwargs):
         super(Basket, self).get(*args, **kwargs)
+        self.context['view'] = 'basket'
         self.all_items = self.all_items.filter( (Q(cart_status=5) | Q(cart_status=6)) & Q(departament=self.request.user.departament) )
         page_size = self.items_per_page()
         self.context['size_perpage'] = page_size

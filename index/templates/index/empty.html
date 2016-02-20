@@ -4,9 +4,13 @@
 {% block breadcrumbs %}<a href="/"><img src="{{ STATIC_URL }}img/home.png" /></a> / {% trans "Blank consumables" %}{% endblock %}
 {% block submenu %}
 <div class="row">
-    <div class="large-12 columns">
+    <div class="large-6 columns">
         <a class="tr_to_firm button" href="#">{% trans "Transfer to refuel" %}</a>
         <a class="tr_empty_to_recycle_bin button alert" href="#">{% trans "In basket" %}</a>
+    </div>
+    <div class="large-6 columns text-right">
+        <img class="spinner" src="{{ STATIC_URL }}img/loader.gif" />
+        <a class="export_to_csv button no_follow" href="#" view="{{ view }}">{% trans "Export to CSV" %}</a>
     </div>
 </div>
 <div class="row">

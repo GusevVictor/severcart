@@ -8,7 +8,7 @@ body.all {
 }
 
 body.linen-texture {
-    background: url('../img/cloud.png') repeat-x;   
+    background: url('../img/cloud.png') repeat-x;
 }
 
 img {
@@ -400,6 +400,7 @@ form select {
     border: 1px solid green;
 }
 
+
 a.button, input[type="submit"].button, button.button {   
 	outline:0;
 	padding: 0 10px;
@@ -422,6 +423,7 @@ a.button, input[type="submit"].button, button.button {
     font-weight: normal;
     font-size: 12px;
 }
+
 
 a.button:hover, input[type="submit"].button:hover {
     background-color: #d1d1d1;
@@ -484,6 +486,20 @@ a.button.info:active, input[type="submit"].button.info:active {
     box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.2);
     background: #277DA3;
     border: 1px solid #1C5771;    
+}
+a.export_to_csv:hover {
+    background-color: #60C185;
+}
+
+a.export_to_csv:active {
+    background-color: #3A945C;
+}
+
+a.export_to_csv{
+    margin: 0;
+    padding:0 3px 0 21px;
+    background: #7BCC9A url('../img/excel.png') no-repeat;
+    background-position: left center;
 }
 
 /* ---- login form ------ */

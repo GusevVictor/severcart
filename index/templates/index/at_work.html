@@ -4,8 +4,12 @@
 {% block breadcrumbs %}<a href="/"><img src="{{ STATIC_URL }}img/home.png" /></a> / {% trans "Cartridges on rebuilding" %}{% endblock %}
 {% block submenu %}
 <div class="row">
-    <div class="large-12 columns">
+    <div class="large-6 columns">
         <a class="from_firm_to_stock button" href="#">{% trans "Return to the stock" %}</a>
+    </div>
+    <div class="large-6 columns text-right">
+        <img class="spinner" src="{{ STATIC_URL }}img/loader.gif" />
+        <a class="export_to_csv button no_follow" href="#" view="{{ view }}">{% trans "Export to CSV" %}</a>
     </div>
 </div>
 <div class="row">
@@ -23,7 +27,7 @@
                     <th class="cart_name{% if select_type %} active_cell{% endif %}"><a href="?action=name">{% trans "Name" %} {{type_triangle}}</a></th>
                     <th class="cart_count{% if select_count %} active_cell{% endif %}"><a href="?action=recovery">{% trans "Amount<br/>recovery" %} {{count_triangle}}</a></th>
                     <th class="cart_date{% if select_date %} active_cell{% endif %}"><a href="?action=change_date">{% trans "Date transfer on recovery" %} {{datec_triangle}}</a></th>
-                    <th class="firm_filled">{% trans "refueller" %}</th>
+                    <th class="firm_filled">{% trans "Refueller" %}</th>
                     <th class="actions">{% trans "comment" %}</th>
                 </tr>
                 {% for i in cartrjs %}
