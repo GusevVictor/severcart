@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-02-19 12:16+0500\n"
-"PO-Revision-Date: 2016-02-19 12:17+0500\n"
+"POT-Creation-Date: 2016-02-20 11:43+0500\n"
+"PO-Revision-Date: 2016-02-20 11:46+0500\n"
 "Last-Translator: \n"
 "Language-Team: severcart.org <sfcl@mail.ru>\n"
 "Language: ru\n"
@@ -137,7 +137,7 @@ msgstr "Сохранить"
 #: .\docs\templates\docs\edit_name.html:16
 #: .\events\templates\events\view_cartridge_events.html:8
 #: .\index\templates\index\add_city.html:11
-#: .\index\templates\index\add_firm.html:27
+#: .\index\templates\index\add_firm.html:45
 #: .\index\templates\index\add_items.html:39
 #: .\index\templates\index\add_name.html:39
 #: .\index\templates\index\add_type.html:32
@@ -187,88 +187,141 @@ msgstr "Ошибка! Пользователь %(user_name)s не может у�
 msgid "User(s) deleted!"
 msgstr "Пользователь(ли) удален(ы)!"
 
-#: .\docs\api\views.py:24 .\docs\api\views.py:75 .\index\api\views.py:28
+#: .\docs\api\views.py:25 .\docs\api\views.py:76 .\index\api\views.py:28
 #: .\index\api\views.py:59 .\index\api\views.py:162 .\reports\api\views.py:52
 msgid "Only use POST requests!"
 msgstr "Поддерживаются только POST запросы!"
 
-#: .\docs\api\views.py:40 .\docs\api\views.py:54 .\docs\api\views.py:89
+#: .\docs\api\views.py:41 .\docs\api\views.py:55 .\docs\api\views.py:90
 msgid "The object with the ID is not found."
 msgstr "Объект с таким ID не найден."
 
-#: .\docs\api\views.py:45
+#: .\docs\api\views.py:46
 msgid "Name can not be removed, ie. other objects reference it."
 msgstr "Имя удалить невозможно, т. к. на него ссылаются другие объекты."
 
-#: .\docs\api\views.py:48 .\docs\api\views.py:62
+#: .\docs\api\views.py:49 .\docs\api\views.py:63
 msgid "Name deleted successfully."
 msgstr "Имя успешно удалено."
 
-#: .\docs\api\views.py:59
+#: .\docs\api\views.py:60
 msgid "Type can not be deleted, ie the other sites link to it."
 msgstr "Тип удалить невозможно, т. к. на него ссылаются другие объекты."
 
-#: .\docs\api\views.py:102 .\docs\api\views.py:124
+#: .\docs\api\views.py:103 .\docs\api\views.py:125
 msgid "The name of the cartridge"
 msgstr "Название картриджа"
 
-#: .\docs\api\views.py:103 .\docs\templates\docs\delivery.html.py:30
+#: .\docs\api\views.py:104 .\docs\templates\docs\delivery.html.py:30
 #: .\docs\templates\docs\delivery.html:88
 #: .\index\templates\index\add_items.html:30
 #: .\reports\templates\reports\users_ajax.html:5
 msgid "Amount"
 msgstr "Количество"
 
-#: .\docs\api\views.py:111
+#: .\docs\api\views.py:112
 #, python-format
 msgid "Document %(doc_number)s_1.docx generated"
 msgstr "Документ %(doc_number)s_1.docx сформирован."
 
-#: .\docs\api\views.py:115
+#: .\docs\api\views.py:116
 msgid "Document form is impossible."
 msgstr "Документ сформировать невозможно."
 
-#: .\docs\api\views.py:123 .\docs\forms\add_doc.py:9
-#: .\docs\templates\docs\delivery.html:20
+#: .\docs\api\views.py:124 .\docs\api\views.py:166 .\docs\api\views.py:187
+#: .\docs\api\views.py:205 .\docs\api\views.py:222 .\docs\api\views.py:240
+#: .\docs\forms\add_doc.py:9 .\docs\templates\docs\delivery.html.py:20
 #: .\docs\templates\docs\delivery.html:84
-#: .\index\templates\index\at_work.html:22
-#: .\index\templates\index\basket.html:25 .\index\templates\index\empty.html:23
+#: .\index\templates\index\at_work.html:26
+#: .\index\templates\index\basket.html:29 .\index\templates\index\empty.html:27
 #: .\index\templates\index\from_firm_to_stock.html:25
 #: .\index\templates\index\severcartcbv.html:10
 #: .\index\templates\index\tree_list.html:44
-#: .\index\templates\index\use.html:30
+#: .\index\templates\index\use.html:34
 #: .\reports\templates\reports\amortizing_ajax.html:4
 #: .\reports\templates\reports\main_summary.html:42
 msgid "Number"
 msgstr "Номер"
 
-#: .\docs\api\views.py:132
+#: .\docs\api\views.py:133
 #, python-format
 msgid "Document %(doc_number)s_0.docx generated"
 msgstr "Документ %(doc_number)s_0.docx сформирован."
 
-#: .\docs\api\views.py:136
+#: .\docs\api\views.py:137
 msgid "This action is not implemented."
 msgstr "Данное действие не реализовано."
 
-#: .\docs\forms\add_doc.py:11 .\docs\forms\edit_name.py:6
-#: .\docs\templates\docs\delivery.html:25
+#: .\docs\api\views.py:167 .\docs\api\views.py:188 .\docs\api\views.py:206
+#: .\docs\api\views.py:223 .\docs\api\views.py:241 .\docs\forms\add_doc.py:11
+#: .\docs\forms\edit_name.py:6 .\docs\templates\docs\delivery.html.py:25
 #: .\docs\templates\docs\delivery.html:85
 #: .\docs\templates\docs\names_list.html:28 .\index\forms\add_firm.py:8
 #: .\index\forms\add_user.py:10 .\index\models.py:49
-#: .\index\templates\index\at_work.html:23
-#: .\index\templates\index\basket.html:26
+#: .\index\templates\index\at_work.html:27
+#: .\index\templates\index\basket.html:30
 #: .\index\templates\index\del_firm.html:9
-#: .\index\templates\index\empty.html:24
+#: .\index\templates\index\empty.html:28
 #: .\index\templates\index\from_firm_to_stock.html:26
 #: .\index\templates\index\severcartcbv.html:11
 #: .\index\templates\index\toner_refill.html:29
 #: .\index\templates\index\tree_list.html:43
-#: .\index\templates\index\use.html:31
+#: .\index\templates\index\use.html:35
 #: .\reports\templates\reports\amortizing_ajax.html:5
 #: .\reports\templates\reports\main_summary.html:43
 msgid "Name"
 msgstr "Название"
+
+#: .\docs\api\views.py:168 .\docs\api\views.py:189 .\docs\api\views.py:207
+#: .\docs\api\views.py:224 .\docs\api\views.py:242
+#: .\index\templates\index\at_work.html:28
+#: .\index\templates\index\basket.html:31 .\index\templates\index\empty.html:29
+#: .\index\templates\index\severcartcbv.html:12
+#: .\index\templates\index\use.html:36
+msgid "Amount<br/>recovery"
+msgstr "Количество<br/> перезаправок"
+
+#: .\docs\api\views.py:169 .\index\templates\index\severcartcbv.html.py:13
+msgid "Date add"
+msgstr "Дата добавления"
+
+#: .\docs\api\views.py:169 .\index\templates\index\severcartcbv.html.py:13
+msgid "on stock"
+msgstr "на склад"
+
+#: .\docs\api\views.py:170 .\docs\api\views.py:192 .\docs\api\views.py:209
+#: .\docs\api\views.py:227 .\docs\api\views.py:244
+#: .\docs\templates\docs\types_list.html:29 .\index\forms\comment.py:11
+#: .\index\templates\index\at_work.html:31
+#: .\index\templates\index\basket.html:33
+#: .\index\templates\index\severcartcbv.html:14
+msgid "comment"
+msgstr "Комментарий"
+
+#: .\docs\api\views.py:190 .\index\templates\index\use.html.py:37
+msgid "Date transfe"
+msgstr "Дата передачи"
+
+#: .\docs\api\views.py:191 .\index\templates\index\manage_users.html.py:26
+#: .\index\templates\index\use.html:38
+msgid "User"
+msgstr "Пользователь"
+
+#: .\docs\api\views.py:208 .\index\templates\index\empty.html.py:30
+msgid "Date return"
+msgstr "Дата возврата"
+
+#: .\docs\api\views.py:225 .\index\templates\index\at_work.html.py:29
+msgid "Date transfer on recovery"
+msgstr "Дата передачи<br/> на заправку"
+
+#: .\docs\api\views.py:226 .\index\templates\index\at_work.html.py:30
+msgid "Refueller"
+msgstr "Заправщик"
+
+#: .\docs\api\views.py:243 .\index\templates\index\basket.html.py:32
+msgid "Date return in basket"
+msgstr "Дата помещения в корзину"
 
 #: .\docs\forms\add_doc.py:14 .\docs\forms\add_doc.py:29
 #: .\docs\forms\add_doc.py:62 .\index\forms\add_firm.py:8
@@ -299,8 +352,8 @@ msgstr "Тип"
 
 #: .\docs\forms\edit_name.py:10 .\docs\templates\docs\names_list.html.py:30
 #: .\index\models.py:22 .\index\models.py:31 .\index\models.py:53
-#: .\index\models.py:79 .\index\templates\index\empty.html.py:27
-#: .\index\templates\index\use.html:35
+#: .\index\models.py:79 .\index\templates\index\empty.html.py:31
+#: .\index\templates\index\use.html:39
 msgid "Comment"
 msgstr "Комментарий"
 
@@ -310,9 +363,9 @@ msgid "You have exceeded the maximum number of characters. No more than 160."
 msgstr "Превышено максимальное количество символов. Допустимо не более 160."
 
 #: .\docs\models.py:11 .\index\templates\index\add_items.html.py:25
-#: .\index\templates\index\basket.html:44 .\index\templates\index\empty.html:42
+#: .\index\templates\index\basket.html:48 .\index\templates\index\empty.html:46
 #: .\index\templates\index\severcartcbv.html:29
-#: .\index\templates\index\use.html:50
+#: .\index\templates\index\use.html:54
 msgid "Delivery agreement"
 msgstr "Договор поставки"
 
@@ -349,7 +402,7 @@ msgstr "Кому передать"
 msgid "Who gave"
 msgstr "Кому передал"
 
-#: .\docs\templates\docs\acts_list.html:24 .\index\templates\index\use.html:36
+#: .\docs\templates\docs\acts_list.html:24 .\index\templates\index\use.html:40
 msgid "Action"
 msgstr "Действие"
 
@@ -463,7 +516,7 @@ msgstr "Список типов расходников"
 #: .\docs\templates\docs\names_list.html:14
 #: .\docs\templates\docs\types_list.html:14
 #: .\index\templates\index\add_city.html:10
-#: .\index\templates\index\add_firm.html:26
+#: .\index\templates\index\add_firm.html:44
 #: .\index\templates\index\add_items.html:37
 #: .\index\templates\index\add_name.html:38
 #: .\index\templates\index\add_type.html:29
@@ -481,13 +534,6 @@ msgstr "Справочник типов расходников"
 #: .\docs\templates\docs\types_list.html:28
 msgid "type"
 msgstr "Тип"
-
-#: .\docs\templates\docs\types_list.html:29 .\index\forms\comment.py:11
-#: .\index\templates\index\at_work.html:27
-#: .\index\templates\index\basket.html:29
-#: .\index\templates\index\severcartcbv.html:14
-msgid "comment"
-msgstr "Комментарий"
 
 #: .\events\helpers.py:30
 #, python-format
@@ -901,20 +947,11 @@ msgstr "Кариджи на заправке"
 msgid "Return to the stock"
 msgstr "Вернуть на склад"
 
-#: .\index\templates\index\at_work.html:24
-#: .\index\templates\index\basket.html:27 .\index\templates\index\empty.html:25
-#: .\index\templates\index\severcartcbv.html:12
-#: .\index\templates\index\use.html:32
-msgid "Amount<br/>recovery"
-msgstr "Количество<br/> перезаправок"
-
-#: .\index\templates\index\at_work.html:25
-msgid "Date transfer on recovery"
-msgstr "Дата передачи<br/> на заправку"
-
-#: .\index\templates\index\at_work.html:26
-msgid "refueller"
-msgstr "заправщик"
+#: .\index\templates\index\at_work.html:12
+#: .\index\templates\index\basket.html:15 .\index\templates\index\empty.html:13
+#: .\index\templates\index\stock.html:19 .\index\templates\index\use.html:20
+msgid "Export to CSV"
+msgstr "Экспорт в CSV"
 
 #: .\index\templates\index\bad_browser.html:2
 #: .\index\templates\index\base.html:2
@@ -966,28 +1003,24 @@ msgstr "Пустые"
 msgid "Basket"
 msgstr "Корзина"
 
-#: .\index\templates\index\basket.html:28 .\index\templates\index\empty.html:26
-msgid "Date return"
-msgstr "Дата возврата"
-
-#: .\index\templates\index\basket.html:28
+#: .\index\templates\index\basket.html:32
 msgid "in basket"
 msgstr "в корзину"
 
-#: .\index\templates\index\basket.html:30 .\index\templates\index\empty.html:28
+#: .\index\templates\index\basket.html:34 .\index\templates\index\empty.html:32
 #: .\index\templates\index\severcartcbv.html:15
 msgid "Actions"
 msgstr "Действие"
 
-#: .\index\templates\index\basket.html:42 .\index\templates\index\empty.html:40
+#: .\index\templates\index\basket.html:46 .\index\templates\index\empty.html:44
 #: .\index\templates\index\severcartcbv.html:27
-#: .\index\templates\index\use.html:48
+#: .\index\templates\index\use.html:52
 msgid "Edit a comment"
 msgstr "Редактировать комментарий"
 
-#: .\index\templates\index\basket.html:43 .\index\templates\index\empty.html:41
+#: .\index\templates\index\basket.html:47 .\index\templates\index\empty.html:45
 #: .\index\templates\index\severcartcbv.html:28
-#: .\index\templates\index\use.html:49
+#: .\index\templates\index\use.html:53
 msgid "Event viewer"
 msgstr "Просмотр событий"
 
@@ -1072,7 +1105,7 @@ msgstr "Передать на заправку"
 msgid "In basket"
 msgstr "В корзину"
 
-#: .\index\templates\index\empty.html:26
+#: .\index\templates\index\empty.html:30
 msgid "in stock"
 msgstr "на склад"
 
@@ -1110,11 +1143,6 @@ msgstr "Замена<br/>чипа"
 msgid "Replacing<br/>the magnetic roller"
 msgstr "Замена<br/>магнитного вала"
 
-#: .\index\templates\index\manage_users.html:26
-#: .\index\templates\index\use.html:34
-msgid "User"
-msgstr "Пользователь"
-
 #: .\index\templates\index\manage_users.html:28
 msgid "E-Mail"
 msgstr "E-Mail"
@@ -1130,14 +1158,6 @@ msgstr "Да"
 #: .\index\templates\index\manage_users.html:54
 msgid "No"
 msgstr "Нет"
-
-#: .\index\templates\index\severcartcbv.html:13
-msgid "Date add"
-msgstr "Дата добавления"
-
-#: .\index\templates\index\severcartcbv.html:13
-msgid "on stock"
-msgstr "на склад"
 
 #: .\index\templates\index\stock.html:13
 msgid "Add consumables"
@@ -1240,53 +1260,49 @@ msgstr "Подчиняется"
 msgid "Structure of the organization"
 msgstr "Структура организации"
 
-#: .\index\templates\index\use.html:33
-msgid "Date transfe"
-msgstr "Дата передачи"
-
-#: .\index\views.py:124
+#: .\index\views.py:125
 #, python-format
 msgid "%(cart_name)s already exists"
 msgstr "%(cart_name)s уже существует."
 
-#: .\index\views.py:128
+#: .\index\views.py:129
 #, python-format
 msgid "%(cart_name)s success added"
 msgstr "%(cart_name)s успешно добавлен."
 
-#: .\index\views.py:186 .\index\views.py:199
+#: .\index\views.py:187 .\index\views.py:200
 #, python-format
 msgid "Organization unit %(org_name)s exist"
 msgstr "Организационное подразделение %(org_name)s уже есть."
 
-#: .\index\views.py:244
+#: .\index\views.py:245
 #, python-format
 msgid "%(cart_type)s success save"
 msgstr "%(cart_type)s успешно сохранён."
 
-#: .\index\views.py:248
+#: .\index\views.py:249
 #, python-format
 msgid "New type %(cart_type)s success added"
 msgstr "Новый тип %(cart_type)s успешно добавлен."
 
-#: .\index\views.py:367
+#: .\index\views.py:370
 msgid "Select all"
 msgstr "Выбрать все"
 
-#: .\index\views.py:416
+#: .\index\views.py:419
 #, python-format
 msgid "Firm \"%(firm_name)s\" success added."
 msgstr "Контрагент \"%(firm_name)s\" успешно добавлен."
 
-#: .\index\views.py:613
+#: .\index\views.py:618
 msgid "You input not correct firm name"
 msgstr "Вы ввели неправильное имя контрагента."
 
-#: .\newskald_ru\settings.py:126
+#: .\newskald_ru\settings.py:150
 msgid "Russian"
 msgstr "Русский"
 
-#: .\newskald_ru\settings.py:127
+#: .\newskald_ru\settings.py:151
 msgid "English"
 msgstr "Английский"
 
