@@ -166,12 +166,13 @@ STATIC_ROOT_CSV = os.path.join(BASE_DIR, 'static', 'csv')
 MAX_COUNT_CSV_FILES = 20
 #MEDIA_ROOT  = os.path.join(BASE_DIR, 'media')
 
+
 STATIC_URL = '/static/'
 MEDIA_URL = '/media/'
 
 if not DEBUG:
-    STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
-    MEDIAFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
+    STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+    MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 
 AUTH_USER_MODEL = 'accounts.AnconUser'

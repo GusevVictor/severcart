@@ -745,10 +745,13 @@ def edit_cartridge_comment(request):
 
 
 def handler404(request):
-    response = render(request, 'index/404.html', {})
-    response.status_code = 404
-    return response
-
+    if request.user.is_authenticated():
+        response = render(request, 'index/404.html', {})
+        response.status_code = 404
+        return response
+    else:
+        return HttpResponse(_('Page not found!'), status_code=404)
+    
 
 def handler500(request):
     response = render(request, 'index/500.html', {})

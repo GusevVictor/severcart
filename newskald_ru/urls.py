@@ -16,11 +16,12 @@ urlpatterns = [
     url(r'^service/', include('service.urls', namespace='service')),
 ] 
 
-#if settings.DEBUG:
+#if not settings.DEBUG:
 #    urlpatterns = urlpatterns + static(settings.STATIC_ROOT, document_root=settings.STATIC_ROOT)
 #    urlpatterns = urlpatterns + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
-if settings.DEBUG == True:
-    urlpatterns += staticfiles_urlpatterns()
+
+#if settings.DEBUG == True:
+#    urlpatterns += staticfiles_urlpatterns()
 
 handler404 = 'index.views.handler404'
 handler500 = 'index.views.handler500'

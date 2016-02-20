@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-02-20 12:02+0500\n"
-"PO-Revision-Date: 2016-02-20 12:03+0500\n"
+"POT-Creation-Date: 2016-02-20 14:27+0500\n"
+"PO-Revision-Date: 2016-02-20 14:28+0500\n"
 "Last-Translator: \n"
 "Language-Team: severcart.org <sfcl@mail.ru>\n"
 "Language: ru\n"
@@ -133,7 +133,8 @@ msgstr "Сохранить"
 
 #: .\accounts\templates\accounts\edit_user.html:13
 #: .\accounts\templates\accounts\register.html:17
-#: .\docs\templates\docs\delivery.html:60
+#: .\docs\templates\docs\delivery.html:62
+#: .\docs\templates\docs\delivery.html:82
 #: .\docs\templates\docs\edit_name.html:16
 #: .\events\templates\events\view_cartridge_events.html:8
 #: .\index\templates\index\add_city.html:11
@@ -212,8 +213,7 @@ msgstr "Тип удалить невозможно, т. к. на него ссы
 msgid "The name of the cartridge"
 msgstr "Название картриджа"
 
-#: .\docs\api\views.py:104 .\docs\templates\docs\delivery.html.py:30
-#: .\docs\templates\docs\delivery.html:88
+#: .\docs\api\views.py:104 .\docs\templates\docs\delivery.html.py:92
 #: .\index\templates\index\add_items.html:30
 #: .\reports\templates\reports\users_ajax.html:5
 msgid "Amount"
@@ -231,11 +231,12 @@ msgstr "Документ сформировать невозможно."
 #: .\docs\api\views.py:124 .\docs\api\views.py:166 .\docs\api\views.py:187
 #: .\docs\api\views.py:205 .\docs\api\views.py:222 .\docs\api\views.py:240
 #: .\docs\forms\add_doc.py:9 .\docs\templates\docs\delivery.html.py:20
-#: .\docs\templates\docs\delivery.html:84
+#: .\docs\templates\docs\delivery.html:88
 #: .\index\templates\index\at_work.html:26
 #: .\index\templates\index\basket.html:29 .\index\templates\index\empty.html:27
 #: .\index\templates\index\from_firm_to_stock.html:25
 #: .\index\templates\index\severcartcbv.html:10
+#: .\index\templates\index\stock.html:33
 #: .\index\templates\index\tree_list.html:44
 #: .\index\templates\index\use.html:34
 #: .\reports\templates\reports\amortizing_ajax.html:4
@@ -255,7 +256,7 @@ msgstr "Данное действие не реализовано."
 #: .\docs\api\views.py:167 .\docs\api\views.py:188 .\docs\api\views.py:206
 #: .\docs\api\views.py:223 .\docs\api\views.py:241 .\docs\forms\add_doc.py:11
 #: .\docs\forms\edit_name.py:6 .\docs\templates\docs\delivery.html.py:25
-#: .\docs\templates\docs\delivery.html:85
+#: .\docs\templates\docs\delivery.html:89
 #: .\docs\templates\docs\names_list.html:28 .\index\forms\add_firm.py:8
 #: .\index\forms\add_user.py:10 .\index\models.py:49
 #: .\index\templates\index\at_work.html:27
@@ -264,6 +265,7 @@ msgstr "Данное действие не реализовано."
 #: .\index\templates\index\empty.html:28
 #: .\index\templates\index\from_firm_to_stock.html:26
 #: .\index\templates\index\severcartcbv.html:11
+#: .\index\templates\index\stock.html:34
 #: .\index\templates\index\toner_refill.html:29
 #: .\index\templates\index\tree_list.html:43
 #: .\index\templates\index\use.html:35
@@ -277,15 +279,17 @@ msgstr "Название"
 #: .\index\templates\index\at_work.html:28
 #: .\index\templates\index\basket.html:31 .\index\templates\index\empty.html:29
 #: .\index\templates\index\severcartcbv.html:12
-#: .\index\templates\index\use.html:36
+#: .\index\templates\index\stock.html:35 .\index\templates\index\use.html:36
 msgid "Amount<br/>recovery"
 msgstr "Количество<br/> перезаправок"
 
 #: .\docs\api\views.py:169 .\index\templates\index\severcartcbv.html.py:13
+#: .\index\templates\index\stock.html:36
 msgid "Date add"
 msgstr "Дата добавления"
 
 #: .\docs\api\views.py:169 .\index\templates\index\severcartcbv.html.py:13
+#: .\index\templates\index\stock.html:36
 msgid "on stock"
 msgstr "на склад"
 
@@ -295,6 +299,7 @@ msgstr "на склад"
 #: .\index\templates\index\at_work.html:31
 #: .\index\templates\index\basket.html:33
 #: .\index\templates\index\severcartcbv.html:14
+#: .\index\templates\index\stock.html:37
 msgid "comment"
 msgstr "Комментарий"
 
@@ -336,8 +341,8 @@ msgstr "Поле обязательно для заполнения."
 msgid "Firm supplier"
 msgstr "Фирма поставщик"
 
-#: .\docs\forms\add_doc.py:19 .\docs\templates\docs\delivery.html.py:37
-#: .\docs\templates\docs\delivery.html:89
+#: .\docs\forms\add_doc.py:19 .\docs\templates\docs\delivery.html.py:38
+#: .\docs\templates\docs\delivery.html:93
 msgid "Summary"
 msgstr "Краткое содержание"
 
@@ -365,7 +370,7 @@ msgstr "Превышено максимальное количество сим�
 #: .\docs\models.py:11 .\index\templates\index\add_items.html.py:25
 #: .\index\templates\index\basket.html:48 .\index\templates\index\empty.html:46
 #: .\index\templates\index\severcartcbv.html:29
-#: .\index\templates\index\use.html:54
+#: .\index\templates\index\stock.html:52 .\index\templates\index\use.html:54
 msgid "Delivery agreement"
 msgstr "Договор поставки"
 
@@ -419,24 +424,28 @@ msgid "delivery agreement"
 msgstr "Договора поставки"
 
 #: .\docs\templates\docs\delivery.html:30
-#: .\docs\templates\docs\delivery.html:88
+msgid "Money"
+msgstr "Сумма"
+
+#: .\docs\templates\docs\delivery.html:30
+#: .\docs\templates\docs\delivery.html:92
 msgid "Currency"
 msgstr "руб."
 
-#: .\docs\templates\docs\delivery.html:42
-#: .\docs\templates\docs\delivery.html:87
+#: .\docs\templates\docs\delivery.html:43
+#: .\docs\templates\docs\delivery.html:91
 msgid "Firm"
 msgstr "Контрагент"
 
-#: .\docs\templates\docs\delivery.html:47
+#: .\docs\templates\docs\delivery.html:48
 msgid "Date"
 msgstr "Дата"
 
-#: .\docs\templates\docs\delivery.html:54
+#: .\docs\templates\docs\delivery.html:56
 msgid "Cancel"
 msgstr "Отменить"
 
-#: .\docs\templates\docs\delivery.html:57
+#: .\docs\templates\docs\delivery.html:59
 #: .\docs\templates\docs\names_list.html:15
 #: .\docs\templates\docs\types_list.html:15
 #: .\index\templates\index\manage_users.html:15
@@ -444,7 +453,7 @@ msgstr "Отменить"
 msgid "Edit"
 msgstr "Редактировать"
 
-#: .\docs\templates\docs\delivery.html:58
+#: .\docs\templates\docs\delivery.html:60
 #: .\docs\templates\docs\names_list.html:16
 #: .\docs\templates\docs\types_list.html:16
 #: .\index\templates\index\basket.html:10
@@ -453,7 +462,7 @@ msgstr "Редактировать"
 msgid "Delete"
 msgstr "Удалить"
 
-#: .\docs\templates\docs\delivery.html:86
+#: .\docs\templates\docs\delivery.html:90
 msgid "Document date"
 msgstr "Дата документа"
 
@@ -974,11 +983,11 @@ msgstr ""
 "Мы настоятельно рекомендуем Вам установить новую версию одиного из "
 "перечисленных браузеров."
 
-#: .\index\templates\index\base.html:32
+#: .\index\templates\index\base.html:29
 msgid "Exit"
 msgstr "Выход"
 
-#: .\index\templates\index\base.html:40
+#: .\index\templates\index\base.html:37
 msgid "Version"
 msgstr "Версия"
 
@@ -1005,18 +1014,19 @@ msgstr "Корзина"
 
 #: .\index\templates\index\basket.html:34 .\index\templates\index\empty.html:32
 #: .\index\templates\index\severcartcbv.html:15
+#: .\index\templates\index\stock.html:38
 msgid "Actions"
 msgstr "Действие"
 
 #: .\index\templates\index\basket.html:46 .\index\templates\index\empty.html:44
 #: .\index\templates\index\severcartcbv.html:27
-#: .\index\templates\index\use.html:52
+#: .\index\templates\index\stock.html:50 .\index\templates\index\use.html:52
 msgid "Edit a comment"
 msgstr "Редактировать комментарий"
 
 #: .\index\templates\index\basket.html:47 .\index\templates\index\empty.html:45
 #: .\index\templates\index\severcartcbv.html:28
-#: .\index\templates\index\use.html:53
+#: .\index\templates\index\stock.html:51 .\index\templates\index\use.html:53
 msgid "Event viewer"
 msgstr "Просмотр событий"
 
