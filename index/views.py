@@ -279,6 +279,7 @@ def transfe_for_use(request):
     root_ou   = request.user.departament
     #children  = root_ou.get_children()
     children  = root_ou.get_family()
+    children  = children[1:] # исключаем последний элемент
 
     if request.method == 'POST':
         data_in_post = request.POST

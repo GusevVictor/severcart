@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-02-20 14:27+0500\n"
-"PO-Revision-Date: 2016-02-20 14:28+0500\n"
+"PO-Revision-Date: 2016-02-21 14:28+0500\n"
 "Last-Translator: \n"
 "Language-Team: severcart.org <sfcl@mail.ru>\n"
 "Language: ru\n"
@@ -547,7 +547,7 @@ msgstr "Тип"
 #: .\events\helpers.py:30
 #, python-format
 msgid "Added user %(user_name)s."
-msgstr "Добавлен пользователь %(user_name)s."
+msgstr "Добавлен пользователем %(user_name)s."
 
 #: .\events\helpers.py:32
 #, python-format
@@ -558,7 +558,7 @@ msgstr ""
 #: .\events\helpers.py:43
 #, python-format
 msgid "Transfer to use %(event_org)s user %(event_user)s."
-msgstr "Передан в пользование %(event_org)s пользователем %(event_user)s."
+msgstr "Передан в пользование «%(event_org)s» пользователем %(event_user)s."
 
 #: .\events\helpers.py:45
 #, python-format
@@ -566,14 +566,13 @@ msgid ""
 "№ %(cart_number)s (%(cart_type)s) transfer to use %(event_org)s user "
 "%(event_user)s."
 msgstr ""
-"№ %(cart_number)s (%(cart_type)s) передача в пользование %(event_org)s "
+"№ %(cart_number)s (%(cart_type)s) передача в пользование «%(event_org)s» "
 "пользователем %(event_user)s."
 
 #: .\events\helpers.py:57
 #, python-format
 msgid "Transfer to restore \"%(event_firm)s\" user %(event_user)s."
-msgstr ""
-"Отправка на заправку в \"%(event_firm)s\" пользователем %(event_user)s."
+msgstr "Отправка на заправку в «%(event_firm)s» пользователем %(event_user)s."
 
 #: .\events\helpers.py:60
 #, python-format
@@ -581,7 +580,7 @@ msgid ""
 "№ %(cart_number)s (%(cart_type)s) transfer to restore \"%(event_firm)s\" "
 "user %(event_user)s."
 msgstr ""
-"№ %(cart_number)s (%(cart_type)s) отправлен на заправку в \"%(event_firm)s\" "
+"№ %(cart_number)s (%(cart_type)s) отправлен на заправку в «%(event_firm)s» "
 "пользователем %(event_user)s."
 
 #: .\events\helpers.py:75
@@ -659,7 +658,7 @@ msgid ""
 "№ %(cart_number)s (%(cart_type)s) return to stock from %(event_org)s user "
 "%(event_user)s."
 msgstr ""
-"№ %(cart_number)s (%(cart_type)s) возвращение на склад от %(event_org)s "
+"№ %(cart_number)s (%(cart_type)s) возвращение на склад от «%(event_org)s» "
 "пользователем %(event_user)s."
 
 #: .\events\models.py:12

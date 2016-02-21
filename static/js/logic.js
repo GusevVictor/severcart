@@ -391,7 +391,7 @@ $( function(){
 
         if ( selected.length !== 0 ) {
             var get_path = selected.join('s')
-            var loc = '/transfer_to_firm/?select=' + get_path + '&back=' + window.location.pathname;
+            var loc = '/transfer_to_firm/?select=' + get_path;
             window.location.href = loc;
         }
 

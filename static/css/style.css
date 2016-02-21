@@ -691,6 +691,7 @@ table.checkboxes th.firm_filled {
 .comment_in_cell {
     display: block;
     width:150px;
+    white-space: nowrap;
 }
 
 input.search_number {
