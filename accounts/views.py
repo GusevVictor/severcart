@@ -9,6 +9,7 @@ from django.contrib.auth import login as django_login, authenticate, logout as d
 from django.contrib.auth.decorators import login_required
 from .forms.authenticate import AuthenticationForm
 from .forms.register import RegistrationForm
+from .forms.edit import EditUserForm
 from accounts.models import AnconUser
 from common.helpers import is_admin
 
@@ -60,7 +61,7 @@ def edit_user(request):
     """Редактирование информации о пользователе.
     """
     if request.method == 'POST':
-        form = RegistrationForm(data=request.POST)
+        form = EditUserForm(data=request.POST)
 
         if form.is_valid():
             user = form.save()
@@ -88,12 +89,19 @@ def edit_user(request):
         except AttributeError:
             fio = ''
 
+        try:
+            email = user_object.email
+        except AttributeError:
+            email = ''
+
         is_admin = user_object.is_admin
-        form = RegistrationForm(initial = {'username': username,
-                                           'departament': departament,
-                                           'fio': fio,
-                                           'is_admin': is_admin,
-                                          })
+        form = EditUserForm(initial = {'user_id': uid,
+                                        'username': username,
+                                        'departament': departament,
+                                        'fio': fio,
+                                        'email': email,
+                                        'is_admin': is_admin,
+                                        })
     return render(request, 'accounts/edit_user.html', {'form': form})
 
 

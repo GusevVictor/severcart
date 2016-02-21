@@ -57,12 +57,8 @@ class RegistrationForm(forms.ModelForm):
         departament = self.cleaned_data['departament']
         
         user = AnconUser.objects.filter(username=username)
-        # проверяем есть ли уже пользователь с таким логином
-        if user:
-            #user.set_password(self.cleaned_data['password1'])
-            user.update(fio=fio, departament=departament)
-            #user.save()
-        else:
+        # проверяем есть ли уже пользователь с таким логином, если нет то создам нового
+        if not user:
             user = super(RegistrationForm, self).save(commit)
             user.set_password(self.cleaned_data['password1'])
             if commit:
