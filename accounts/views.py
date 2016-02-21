@@ -4,6 +4,7 @@ from django.shortcuts import render_to_response, redirect
 from django.shortcuts import render
 from django.http import Http404
 from django.template import RequestContext
+from django.conf import settings
 from django.core.urlresolvers import reverse
 from django.contrib.auth import login as django_login, authenticate, logout as django_logout
 from django.contrib.auth.decorators import login_required
@@ -46,7 +47,9 @@ def register(request):
     if request.method == 'POST':
         form = RegistrationForm(data=request.POST)
         if form.is_valid():
-            user = form.save()
+            if not settings.DEMO:
+                # если активирован режим ДЕМО, то нового пользователя не создаём
+                user = form.save()
             return redirect(reverse('accounts:manage_users'))
         else:
             form = form
@@ -64,7 +67,9 @@ def edit_user(request):
         form = EditUserForm(data=request.POST)
 
         if form.is_valid():
-            user = form.save()
+            if not settings.DEMO:
+                # если активирован режим ДЕМО, то изменения параметров не производим
+                user = form.save()
             return redirect(reverse('accounts:manage_users'))
     else:
         uid = request.GET.get('id', '')

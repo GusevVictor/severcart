@@ -26,6 +26,8 @@ SECRET_KEY = '^g$4c6-__#353*u_t9iovxd5g#)i$0o=bv5-ku+v=7#3ku*m%#'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+DEMO = False
+
 ALLOWED_HOSTS = ['*']
 
 
@@ -143,13 +145,6 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = False
-
-from django.utils.translation import ugettext_lazy as _
-
-LANGUAGES = (
-    ('ru', _('Russian')),
-    ('en', _('English')),
-)
 
 LOCALE_PATHS = (os.path.join(BASE_DIR, 'locale'), )
 

@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-02-20 14:27+0500\n"
-"PO-Revision-Date: 2016-02-21 14:28+0500\n"
+"POT-Creation-Date: 2016-02-21 15:04+0500\n"
+"PO-Revision-Date: 2016-02-21 15:06+0500\n"
 "Last-Translator: \n"
 "Language-Team: severcart.org <sfcl@mail.ru>\n"
 "Language: ru\n"
@@ -20,20 +20,24 @@ msgstr ""
 "%100>=11 && n%100<=14)? 2 : 3);\n"
 "X-Generator: Poedit 1.8.7\n"
 
-#: .\accounts\api\views.py:19
+#: .\accounts\api\views.py:20
 msgid "Error in data processing"
 msgstr "Ошибка в обработке данных."
 
-#: .\accounts\api\views.py:24
+#: .\accounts\api\views.py:25
 #, python-format
 msgid "User %(user_name)s can not be deleted"
 msgstr "Пользователя %(user_name)s удалить нельзя."
 
-#: .\accounts\api\views.py:31
+#: .\accounts\api\views.py:32
 msgid "Object not found"
 msgstr "Объект не найден."
 
 #: .\accounts\api\views.py:37
+msgid "In DEMO users not delete!"
+msgstr "В режиме демонстрации пользователей удалять нельзя!"
+
+#: .\accounts\api\views.py:42
 #, python-format
 msgid "User %(user_name)s was successfully deleted"
 msgstr "Пользователь %(user_name)s успешно удалён."
@@ -47,28 +51,38 @@ msgstr "Имя пользователя"
 msgid "Password"
 msgstr "Пароль"
 
-#: .\accounts\forms\register.py:11 .\accounts\models.py:13
-#: .\accounts\templates\accounts\login.html:23 .\index\forms\add_user.py:12
-#: .\index\templates\index\manage_users.html:27
+#: .\accounts\forms\edit.py:12 .\accounts\forms\register.py:11
+#: .\accounts\models.py:13 .\accounts\templates\accounts\login.html.py:23
+#: .\index\forms\add_user.py:12 .\index\templates\index\manage_users.html.py:27
 msgid "Login"
 msgstr "Логин"
+
+#: .\accounts\forms\edit.py:13 .\accounts\models.py:18
+msgid "Full name"
+msgstr "Фамилие, имя, отчество"
+
+#: .\accounts\forms\edit.py:18 .\accounts\forms\register.py:18
+#: .\docs\forms\edit_name.py:18 .\docs\forms\edit_name.py:25
+#: .\index\templates\index\add_items.html:23
+msgid "Required field"
+msgstr "Обязательное поле"
+
+#: .\accounts\forms\edit.py:21 .\accounts\forms\register.py:21
+#: .\index\forms\add_user.py:14 .\index\templates\index\manage_users.html.py:29
+msgid "Organization"
+msgstr "Организация"
+
+#: .\accounts\forms\edit.py:24 .\accounts\forms\register.py:24
+msgid "Administrator?"
+msgstr "Администратор?"
+
+#: .\accounts\forms\edit.py:31
+msgid "Error in !"
+msgstr "Ошибка проверки!"
 
 #: .\accounts\forms\register.py:13
 msgid "Password again"
 msgstr "Повтор пароля"
-
-#: .\accounts\forms\register.py:18 .\docs\forms\edit_name.py:18
-#: .\docs\forms\edit_name.py:25 .\index\templates\index\add_items.html.py:23
-msgid "Required field"
-msgstr "Обязательное поле"
-
-#: .\accounts\forms\register.py:21 .\index\forms\add_user.py:14
-msgid "Organization"
-msgstr "Организация"
-
-#: .\accounts\forms\register.py:24
-msgid "Administrator?"
-msgstr "Администратор?"
 
 #: .\accounts\forms\register.py:35
 msgid "Requared field."
@@ -82,15 +96,11 @@ msgstr "Пользователь с таким именем уже сущест�
 msgid "Passwords do not match. Please enter them again"
 msgstr "Пароли не совпадают. Пожалуйста, повторите ввод."
 
-#: .\accounts\models.py:14 .\index\templates\index\manage_users.html.py:29
-#: .\reports\forms.py:66 .\reports\templates\reports\amortizing.html.py:15
+#: .\accounts\models.py:14 .\reports\forms.py:66
+#: .\reports\templates\reports\amortizing.html:15
 #: .\reports\templates\reports\main_summary.html:15
 msgid "Organization unit"
 msgstr "Организационное подразделение"
-
-#: .\accounts\models.py:18
-msgid "Full name"
-msgstr "Фамилие, имя, отчество"
 
 #: .\accounts\templates\accounts\edit_user.html:2
 #: .\accounts\templates\accounts\edit_user.html:3
@@ -179,12 +189,12 @@ msgstr "Добавление нового пользователя"
 msgid "Registry user"
 msgstr "Зарегистрировать пользователя"
 
-#: .\accounts\views.py:126
+#: .\accounts\views.py:139
 #, python-format
 msgid "Error! User %(user_name)s can not remove himself"
 msgstr "Ошибка! Пользователь %(user_name)s не может удалить сам себя."
 
-#: .\accounts\views.py:131
+#: .\accounts\views.py:144
 msgid "User(s) deleted!"
 msgstr "Пользователь(ли) удален(ы)!"
 
@@ -235,7 +245,6 @@ msgstr "Документ сформировать невозможно."
 #: .\index\templates\index\at_work.html:26
 #: .\index\templates\index\basket.html:29 .\index\templates\index\empty.html:27
 #: .\index\templates\index\from_firm_to_stock.html:25
-#: .\index\templates\index\severcartcbv.html:10
 #: .\index\templates\index\stock.html:33
 #: .\index\templates\index\tree_list.html:44
 #: .\index\templates\index\use.html:34
@@ -264,7 +273,6 @@ msgstr "Данное действие не реализовано."
 #: .\index\templates\index\del_firm.html:9
 #: .\index\templates\index\empty.html:28
 #: .\index\templates\index\from_firm_to_stock.html:26
-#: .\index\templates\index\severcartcbv.html:11
 #: .\index\templates\index\stock.html:34
 #: .\index\templates\index\toner_refill.html:29
 #: .\index\templates\index\tree_list.html:43
@@ -278,18 +286,15 @@ msgstr "Название"
 #: .\docs\api\views.py:224 .\docs\api\views.py:242
 #: .\index\templates\index\at_work.html:28
 #: .\index\templates\index\basket.html:31 .\index\templates\index\empty.html:29
-#: .\index\templates\index\severcartcbv.html:12
 #: .\index\templates\index\stock.html:35 .\index\templates\index\use.html:36
 msgid "Amount<br/>recovery"
 msgstr "Количество<br/> перезаправок"
 
-#: .\docs\api\views.py:169 .\index\templates\index\severcartcbv.html.py:13
-#: .\index\templates\index\stock.html:36
+#: .\docs\api\views.py:169 .\index\templates\index\stock.html.py:36
 msgid "Date add"
 msgstr "Дата добавления"
 
-#: .\docs\api\views.py:169 .\index\templates\index\severcartcbv.html.py:13
-#: .\index\templates\index\stock.html:36
+#: .\docs\api\views.py:169 .\index\templates\index\stock.html.py:36
 msgid "on stock"
 msgstr "на склад"
 
@@ -297,9 +302,7 @@ msgstr "на склад"
 #: .\docs\api\views.py:227 .\docs\api\views.py:244
 #: .\docs\templates\docs\types_list.html:29 .\index\forms\comment.py:11
 #: .\index\templates\index\at_work.html:31
-#: .\index\templates\index\basket.html:33
-#: .\index\templates\index\severcartcbv.html:14
-#: .\index\templates\index\stock.html:37
+#: .\index\templates\index\basket.html:33 .\index\templates\index\stock.html:37
 msgid "comment"
 msgstr "Комментарий"
 
@@ -369,7 +372,6 @@ msgstr "Превышено максимальное количество сим�
 
 #: .\docs\models.py:11 .\index\templates\index\add_items.html.py:25
 #: .\index\templates\index\basket.html:48 .\index\templates\index\empty.html:46
-#: .\index\templates\index\severcartcbv.html:29
 #: .\index\templates\index\stock.html:52 .\index\templates\index\use.html:54
 msgid "Delivery agreement"
 msgstr "Договор поставки"
@@ -887,7 +889,7 @@ msgstr "Заправленные и в корзине"
 msgid "Empty and in basket"
 msgstr "Пустые и в корзине"
 
-#: .\index\templates\index\404.html:3
+#: .\index\templates\index\404.html:3 .\index\views.py:754
 msgid "Page not found!"
 msgstr "Страница не найдена!"
 
@@ -1012,19 +1014,16 @@ msgid "Basket"
 msgstr "Корзина"
 
 #: .\index\templates\index\basket.html:34 .\index\templates\index\empty.html:32
-#: .\index\templates\index\severcartcbv.html:15
 #: .\index\templates\index\stock.html:38
 msgid "Actions"
 msgstr "Действие"
 
 #: .\index\templates\index\basket.html:46 .\index\templates\index\empty.html:44
-#: .\index\templates\index\severcartcbv.html:27
 #: .\index\templates\index\stock.html:50 .\index\templates\index\use.html:52
 msgid "Edit a comment"
 msgstr "Редактировать комментарий"
 
 #: .\index\templates\index\basket.html:47 .\index\templates\index\empty.html:45
-#: .\index\templates\index\severcartcbv.html:28
 #: .\index\templates\index\stock.html:51 .\index\templates\index\use.html:53
 msgid "Event viewer"
 msgstr "Просмотр событий"
@@ -1290,26 +1289,18 @@ msgstr "%(cart_type)s успешно сохранён."
 msgid "New type %(cart_type)s success added"
 msgstr "Новый тип %(cart_type)s успешно добавлен."
 
-#: .\index\views.py:370
+#: .\index\views.py:371
 msgid "Select all"
 msgstr "Выбрать все"
 
-#: .\index\views.py:419
+#: .\index\views.py:420
 #, python-format
 msgid "Firm \"%(firm_name)s\" success added."
 msgstr "Контрагент \"%(firm_name)s\" успешно добавлен."
 
-#: .\index\views.py:618
+#: .\index\views.py:619
 msgid "You input not correct firm name"
 msgstr "Вы ввели неправильное имя контрагента."
-
-#: .\newskald_ru\settings.py:150
-msgid "Russian"
-msgstr "Русский"
-
-#: .\newskald_ru\settings.py:151
-msgid "English"
-msgstr "Английский"
 
 #: .\reports\api\views.py:59
 msgid "Start date required field."
@@ -1404,6 +1395,12 @@ msgstr "Потребление пользователями расходных �
 #: .\reports\templates\reports\users_ajax.html:4
 msgid "UserName"
 msgstr "Пользователь"
+
+#~ msgid "Russian"
+#~ msgstr "Русский"
+
+#~ msgid "English"
+#~ msgstr "Английский"
 
 #~ msgid "Home"
 #~ msgstr "Домашняя"

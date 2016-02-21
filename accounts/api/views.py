@@ -1,7 +1,8 @@
 # -*- coding:utf-8 -*-
 
 from django.shortcuts import render
-from django.utils.translation import ugettext_lazy as _
+from django.conf import settings
+from django.utils.translation import ugettext as _
 from django.core.exceptions import ObjectDoesNotExist
 from django.http import HttpResponse, JsonResponse
 from accounts.models import AnconUser
@@ -31,6 +32,10 @@ def del_users(request):
         resp_dict['text']  = _('Object not found')
         return JsonResponse(resp_dict)
     else:
+        if settings.DEMO:
+            resp_dict['error'] = '1'
+            resp_dict['text']  = _('In DEMO users not delete!')
+            return JsonResponse(resp_dict)
         usr_name = usr.username
         usr.delete()
         resp_dict['error'] = '0'

@@ -716,7 +716,9 @@ $( function(){
                     error: function() {
                         $('.spinner').hide();
                         $('.error_msg').show();
-                        setTimeout(function() { $('.error_msg').html('<p>Server not available.</p>'); }, 12000);
+                        $('.success_msg').hide();
+                        $('.error_msg').html('<p>Server not available.</p>');
+                        setTimeout(function() { $('.error_msg').hide(); }, 12000);
                     },
                 });
             }
