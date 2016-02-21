@@ -92,6 +92,7 @@ form input[type="password"] {
     border: 2px solid #7BCC9A;
 }
 
+
 .error_msg, .success_msg {
     padding: 10px;
     margin: 10px 0 10px;

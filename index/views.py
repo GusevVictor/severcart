@@ -477,7 +477,7 @@ def manage_users(request):
     """
     """
     usr = AnconUser.objects.all()
-    return render(request, 'index/manage_users.html', {'urs': usr})
+    return render(request, 'index/manage_users.html', {'urs': usr })
 
 
 class At_work(CartridgesView):

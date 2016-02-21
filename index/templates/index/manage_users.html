@@ -12,8 +12,9 @@
 <div class="row">
     <div class="large-6 columns">
         <a class="add_user button success" href="{% url 'accounts:register' %}">{% trans "Add" %}</a>
-        <a class="edit_user button" href="#">{% trans "Edit" %}</a>
+        <a class="edit_user button" href="">{% trans "Edit" %}</a>
         <a class="del_user button alert" href="#">{% trans "Delete" %}</a>
+        <a class="change_password button no_follow" href="{% url 'auth:change_password' %}">{% trans "Change password" %}</a>
         <img class="spinner" src="{{ STATIC_URL }}img/loader.gif" />
     </div>
 </div>

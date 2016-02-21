@@ -2,21 +2,23 @@
 
 from django.shortcuts import render_to_response, redirect
 from django.shortcuts import render
-from django.http import Http404
+from django.http import Http404, HttpResponseRedirect
 from django.template import RequestContext
 from django.conf import settings
 from django.core.urlresolvers import reverse
 from django.contrib.auth import login as django_login, authenticate, logout as django_logout
 from django.contrib.auth.decorators import login_required
+from common.helpers import BreadcrumbsPath
 from .forms.authenticate import AuthenticationForm
 from .forms.register import RegistrationForm
 from .forms.edit import EditUserForm
+from .forms.chpswd import ChangePassword
 from accounts.models import AnconUser
 from common.helpers import is_admin
 
+
 import logging
 logger = logging.getLogger('simp')
-
 
 def login(request):
     """Log in view
@@ -122,7 +124,6 @@ def logout(request):
 @is_admin
 def edit(request):
     """
-
     """
     return redirect('/')
 
@@ -142,3 +143,41 @@ def delete(request):
         usr = AnconUser.objects.get(pk=ind)
         usr.delete()
     return HttpResponse(_('User(s) deleted!'))
+
+
+@login_required
+@is_admin
+def change_password(request):
+    """Смена пароля пользователя.
+    """
+    context = {}
+    context['back'] = BreadcrumbsPath(request).before_page(request)
+    uid = request.GET.get('id', '')
+    try:
+        uid = int(uid)
+    except ValueError:
+        uid = 0
+    
+    try:
+        user_object = AnconUser.objects.get(pk=uid)
+    except AnconUser.DoesNotExist:
+        raise Http404
+
+    context['fio'] = user_object.fio
+
+    if request.method == 'POST':
+        form = ChangePassword(request.POST)
+        print('form=', form)
+        if form.is_valid():
+            data_in_post = form.cleaned_data
+            passwd = data_in_post.get('password1')
+            if not settings.DEMO:
+                # если выбран режим демонстрации, то менять пароль не разрешаем.
+                user_object.set_password(passwd)
+                user_object.save()
+            return HttpResponseRedirect(reverse('auth:manage_users'))
+        else:
+            context['form'] = form
+    else:
+        context['form'] = ChangePassword()
+    return render(request, 'accounts/change_password.html', context)

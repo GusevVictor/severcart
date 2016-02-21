@@ -725,6 +725,13 @@ $( function(){
         }
     });
 
+    $('.change_password').click( function() {
+        var selected = $('.checkboxes input:checked').attr('value');
+        var move_url = $(this).attr('href');        
+        var loc = move_url + '?id=' + selected;
+        window.location.href = loc;        
+    });
+
     $('.all_filled input').click( function() {
         // выбор колонки с заправками и очистками
         var select_checkboxes = $('.filled');

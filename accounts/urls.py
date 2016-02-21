@@ -1,15 +1,17 @@
 from django.conf.urls import url
 from index.views import manage_users
-from accounts.views import register
-from accounts.views import edit_user
-from accounts.views import login
-from accounts.views import logout
-from accounts.views import edit
-from accounts.views import delete
+from .views import ( register,
+                   edit_user,
+                   login,
+                   logout,
+                   edit,
+                   delete,
+                   change_password, )
 
 urlpatterns = [
     url(r'^$', manage_users, name='manage_users'),
     url(r'^add_user/', register, name='register'),
+    url(r'^change_password/', change_password, name='change_password'),
     url(r'^edit_user/', edit_user, name='edit_user'),
     url(r'^login/', login, name='login'),
     url(r'^logout/', logout, name='logout'),
