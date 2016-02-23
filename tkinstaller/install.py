@@ -1,7 +1,9 @@
 #!/usr/bin/env python
 # -*- coding:utf-8 -*-
 
-import sys
+import os, sys
+import subprocess
+import psycopg2
 import tkinter as tk
 
 def set_window_center(obj):
@@ -64,11 +66,17 @@ class Page2(object):
         self.app = Page3(parent=self.page2)
 
 class Page3(object):
+    """Main class.
+    """
     def __init__(self, parent):
         self.no_errors = False
+        self.base_path = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+        self.postgresql_db_path = ''
+        self.postgresql_bin_path = ''
+        self.proc = ''
         self.parent = parent
         self.page3 = tk.Toplevel(self.parent) # создаём дочернее окно
-        self.page3.protocol('WM_DELETE_WINDOW', lambda: sys.exit(1))
+        self.page3.protocol('WM_DELETE_WINDOW', lambda: self.oexit())
         self.page3.geometry('600x400')
         self.parent.withdraw()
         set_window_center(self.page3)
@@ -88,6 +96,11 @@ class Page3(object):
         self.parent.deiconify()
         self.page3.destroy()
 
+    def oexit(self):
+        self.proc.terminate()
+        self.proc.kill()
+        sys.exit(1)
+
     def action(self):
         # некоторые действия
         self.no_errors = True
@@ -96,6 +109,40 @@ class Page3(object):
             self.page3_next.pack(fill=tk.X)
         # основные манипуляции по установке ПП Severcart
         # запуск базы данных
+        self.postgresql_db_path = os.path.join(self.base_path,
+                                            'userdata',
+                                            'PostgreSQL-9.4')
+        self.postgresql_bin_path = os.path.join(self.base_path,
+                                            'modules',
+                                            'database',
+                                            'PostgreSQL-9.4',
+                                            'bin',
+                                            'pg_ctl.exe')
+
+        # start postgresql        
+        #C:\work\OpenServer\modules\database\PostgreSQL-9.4\bin\pg_ctl
+         #start -D "c:/work/openserver/userdata/PostgreSQL-9.4"
+        self.text.insert(tk.END, 'Start PostgreSQL' + '\n')
+        db_ready = False
+        try:
+            self.proc = subprocess.Popen([self.postgresql_bin_path, 'start', '-D', self.postgresql_db_path])
+        except:
+            self.text.insert(tk.END, 'PostgreSQL not start.' + '\n')
+        else:
+            self.text.insert(tk.END, 'Start PostgreSQL success.' + '\n')
+            db_ready = True
+
+        if db_ready:
+            # create db severcart
+            try:
+                conn = psycopg2.connect("dbname='postgres' user='postgres' host='localhost' password=''")
+            except:
+                self.text.insert(tk.END, 'I am unable to connect to the database.' + '\n')
+            else:
+                 self.text.insert(tk.END, 'Connect PostgreSQL success.' + '\n')
+            
+
+          
         #for i in range(100):
         #    self.text.insert(tk.END, str(i)+ '\n')
     def new_window(self):

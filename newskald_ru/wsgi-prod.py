@@ -24,7 +24,7 @@ with open(activate_env) as f:
     code = compile(f.read(), activate_env, 'exec')
     exec(code, dict(__file__=activate_env))
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'newskald_ru.settings')
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'newskald_ru.settings-prod')
 
 from django.core.wsgi import get_wsgi_application
 application = get_wsgi_application()
