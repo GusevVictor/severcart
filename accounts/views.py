@@ -163,7 +163,7 @@ def change_password(request):
     except AnconUser.DoesNotExist:
         raise Http404
 
-    context['fio'] = user_object.fio
+    context['username'] = user_object.username
 
     if request.method == 'POST':
         form = ChangePassword(request.POST)
