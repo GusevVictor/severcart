@@ -492,35 +492,13 @@ $( function(){
 
     });
 
-    $('.edit_user').click( function() {
-        var selected = [];
-        $('.checkboxes input:checked').each(function() {
-            selected.push( $(this).attr('value') );
-        });
 
-        if (selected.length == 1) {
-            window.location.href = '/manage_users/edit_user/?id=' + selected[0];
-        }
+    $('.edit_user').click( function() {
+        var uid = $('.checkboxes input:checked').attr('value');
+        window.location.href = '/manage_users/edit_user/?id=' + uid;
+        return false;
     });
 
-
-  /*  var getUrlParameter = function getUrlParameter(sParam) {
-        
-        //http://stackoverflow.com/questions/19491336/get-url-parameter-jquery
-        
-        var sPageURL = decodeURIComponent(window.location.search.substring(1)),
-            sURLVariables = sPageURL.split('&'),
-            sParameterName,
-            i;
-
-        for (i = 0; i < sURLVariables.length; i++) {
-            sParameterName = sURLVariables[i].split('=');
-
-            if (sParameterName[0] === sParam) {
-                return sParameterName[1] === undefined ? true : sParameterName[1];
-            }
-        }
-    }; */
 
     $('.city_selector').change(function() {
         var loc = '';
