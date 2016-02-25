@@ -142,7 +142,7 @@ def generate_act(request):
 @check_ajax_auth
 def generate_csv(request):
     import csv, glob
-
+    encoding = 'cp1251'
     def write_elem_with_group(all_items, csv_full_name):
         names_list = list()
         names_list = [str(cartridge.cart_itm_name) for cartridge in all_items]
@@ -156,7 +156,7 @@ def generate_csv(request):
         tmp_list = names_set = None
         # формируется список из объектов-словарей, ключ - содержит имя, значение - количество повторений
         #name_list = [{'Q3312A': 3}, {'49/53A': 2}, {'505A': 5}]
-        with open(csv_full_name, 'w', newline='') as csvfile:
+        with open(csv_full_name, 'w', newline='', encoding=encoding) as csvfile:
             fieldnames = ['name', 'amount']
             writer = csv.DictWriter(csvfile, fieldnames, delimiter=';')
             writer.writerow({'name': _('Name'), 'amount': _('Amount')})
@@ -187,7 +187,7 @@ def generate_csv(request):
         if gtype == 'exp_with_group':
             write_elem_with_group(all_items, csv_full_name)
         elif gtype == 'exp_without_group':
-            with open(csv_full_name, 'w', newline='') as csvfile:
+            with open(csv_full_name, 'w', newline='', encoding=encoding) as csvfile:
                 fieldnames = ['number', 'name', 'refills', 'date', 'comment']
                 writer = csv.DictWriter(csvfile, fieldnames, delimiter=';')
                 writer.writerow({'number': _('Number'), 
@@ -213,7 +213,7 @@ def generate_csv(request):
         if gtype == 'exp_with_group':
             write_elem_with_group(all_items, csv_full_name)
         elif gtype == 'exp_without_group':
-            with open(csv_full_name, 'w', newline='') as csvfile:
+            with open(csv_full_name, 'w', newline='', encoding=encoding) as csvfile:
                 fieldnames = ['number', 'name', 'refills', 'date', 'org', 'comment']
                 writer = csv.DictWriter(csvfile, fieldnames, delimiter=';')
                 writer.writerow({'number': _('Number'), 
@@ -236,7 +236,7 @@ def generate_csv(request):
         if gtype == 'exp_with_group':
             write_elem_with_group(all_items, csv_full_name)
         elif gtype == 'exp_without_group':
-            with open(csv_full_name, 'w', newline='') as csvfile:
+            with open(csv_full_name, 'w', newline='', encoding=encoding) as csvfile:
                 fieldnames = ['number', 'name', 'refills', 'date', 'comment']
                 writer = csv.DictWriter(csvfile, fieldnames, delimiter=';')
                 writer.writerow({'number': _('Number'), 
@@ -257,7 +257,7 @@ def generate_csv(request):
         if gtype == 'exp_with_group':
             write_elem_with_group(all_items, csv_full_name)
         elif gtype == 'exp_without_group':
-            with open(csv_full_name, 'w', newline='') as csvfile:
+            with open(csv_full_name, 'w', newline='', encoding=encoding) as csvfile:
                 fieldnames = ['number', 'name', 'refills', 'date', 'firm', 'comment']
                 writer = csv.DictWriter(csvfile, fieldnames, delimiter=';')
                 writer.writerow({'number': _('Number'), 
@@ -280,7 +280,7 @@ def generate_csv(request):
         if gtype == 'exp_with_group':
             write_elem_with_group(all_items, csv_full_name)
         elif gtype == 'exp_without_group':
-            with open(csv_full_name, 'w', newline='') as csvfile:
+            with open(csv_full_name, 'w', newline='', encoding=encoding) as csvfile:
                 fieldnames = ['number', 'name', 'refills', 'date', 'firm', 'comment']
                 writer = csv.DictWriter(csvfile, fieldnames, delimiter=';')
                 writer.writerow({'number': _('Number'), 
