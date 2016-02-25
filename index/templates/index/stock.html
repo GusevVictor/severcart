@@ -15,8 +15,13 @@
         <a class="tr_to_recycle_bin button alert" href="#">{% trans "In basket" %}</a>
     </div>
     <div class="large-6 columns text-right">
+        <a class="download_doc" href="#">{% trans 'Download' %}</a>
         <img class="export_spinner" src="{{ STATIC_URL }}img/loader.gif" />
-        <a class="export_to_csv button no_follow" href="#" view="{{ view }}">{% trans "Export to CSV" %}</a>
+        <select class="export_type">
+            <option value="exp_with_group" selected>{% trans "Export to CSV with group" %}</option>
+            <option value="exp_without_group">{% trans "Export to CSV without group" %}</option>
+        </select>
+        <a class="export_to_csv button no_follow" href="#" view="{{ view }}"></a>
     </div>
 </div>
 <div class="row">

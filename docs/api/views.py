@@ -142,9 +142,33 @@ def generate_act(request):
 @check_ajax_auth
 def generate_csv(request):
     import csv, glob
+
+    def write_elem_with_group(all_items, csv_full_name):
+        names_list = list()
+        names_list = [str(cartridge.cart_itm_name) for cartridge in all_items]
+        names_set = list(set(names_list))
+        names_set.sort()
+        tmp_list = []
+        for name in names_set:
+            tmp_list.append({name: names_list.count(name)})
+        
+        names_list = tmp_list
+        tmp_list = names_set = None
+        # формируется список из объектов-словарей, ключ - содержит имя, значение - количество повторений
+        #name_list = [{'Q3312A': 3}, {'49/53A': 2}, {'505A': 5}]
+        with open(csv_full_name, 'w', newline='') as csvfile:
+            fieldnames = ['name', 'amount']
+            writer = csv.DictWriter(csvfile, fieldnames, delimiter=';')
+            writer.writerow({'name': _('Name'), 'amount': _('Amount')})
+            for name in names_list:
+                key   = list(name.keys())[0]
+                value = list(name.values())[0]
+                writer.writerow({'name': key, 'amount': value})
+
     resp_dict = {}
     csv_file_name = str(int(time.time())) + '_' + str(request.user.pk) + '.csv'
     view = request.POST.get('view', '')
+    gtype = request.POST.get('gtype', '')
     if not os.path.exists(settings.STATIC_ROOT_CSV):
         os.makedirs(settings.STATIC_ROOT_CSV)
     # Прозводим ротацию каталога csv от старых файлов
@@ -160,20 +184,25 @@ def generate_csv(request):
     all_items = CartridgeItem.objects.all().order_by('pk')
     if view == 'stock':
         all_items = all_items.filter(cart_status=1).filter(departament=request.user.departament)
-        with open(csv_full_name, 'w', newline='') as csvfile:
-            fieldnames = ['number', 'name', 'refills', 'date', 'comment']
-            writer = csv.DictWriter(csvfile, fieldnames, delimiter=';')
-            writer.writerow({'number': _('Number'), 
-                            'name': _('Name'), 
-                            'refills': _('Amount<br/>recovery'), 
-                            'date': _('Date add') + ' ' + _('on stock'), 
-                            'comment': _('comment')})
-            for cartridje in all_items:
-                writer.writerow({'number': cartridje.cart_number, 
-                                'name': cartridje.cart_itm_name, 
-                                'refills': cartridje.cart_number_refills, 
-                                'date': cartridje.cart_date_change, 
-                                'comment': cartridje.comment})
+        if gtype == 'exp_with_group':
+            write_elem_with_group(all_items, csv_full_name)
+        elif gtype == 'exp_without_group':
+            with open(csv_full_name, 'w', newline='') as csvfile:
+                fieldnames = ['number', 'name', 'refills', 'date', 'comment']
+                writer = csv.DictWriter(csvfile, fieldnames, delimiter=';')
+                writer.writerow({'number': _('Number'), 
+                                'name': _('Name'), 
+                                'refills': _('Amount<br/>recovery'), 
+                                'date': _('Date add') + ' ' + _('on stock'), 
+                                'comment': _('comment')})
+                for cartridje in all_items:
+                    writer.writerow({'number': cartridje.cart_number, 
+                                    'name': cartridje.cart_itm_name, 
+                                    'refills': cartridje.cart_number_refills, 
+                                    'date': cartridje.cart_date_change, 
+                                    'comment': cartridje.comment})
+        else:
+            pass
     elif view == 'use':
         try:
             root_ou   = request.user.departament
@@ -181,73 +210,92 @@ def generate_csv(request):
         except AttributeError:
             children = ''
         all_items = all_items.filter(departament__in=children).filter(cart_status=2)
-        with open(csv_full_name, 'w', newline='') as csvfile:
-            fieldnames = ['number', 'name', 'refills', 'date', 'org', 'comment']
-            writer = csv.DictWriter(csvfile, fieldnames, delimiter=';')
-            writer.writerow({'number': _('Number'), 
-                            'name': _('Name'), 
-                            'refills': _('Amount<br/>recovery'), 
-                            'date': _('Date transfe'),
-                            'org': _('User'),
-                            'comment': _('comment')})
-            for cartridje in all_items:
-                writer.writerow({'number': cartridje.cart_number, 
-                                'name': cartridje.cart_itm_name, 
-                                'refills': cartridje.cart_number_refills, 
-                                'date': cartridje.cart_date_change,
-                                'org': cartridje.departament,
-                                'comment': cartridje.comment})
+        if gtype == 'exp_with_group':
+            write_elem_with_group(all_items, csv_full_name)
+        elif gtype == 'exp_without_group':
+            with open(csv_full_name, 'w', newline='') as csvfile:
+                fieldnames = ['number', 'name', 'refills', 'date', 'org', 'comment']
+                writer = csv.DictWriter(csvfile, fieldnames, delimiter=';')
+                writer.writerow({'number': _('Number'), 
+                                'name': _('Name'), 
+                                'refills': _('Amount<br/>recovery'), 
+                                'date': _('Date transfe'),
+                                'org': _('User'),
+                                'comment': _('comment')})
+                for cartridje in all_items:
+                    writer.writerow({'number': cartridje.cart_number, 
+                                    'name': cartridje.cart_itm_name, 
+                                    'refills': cartridje.cart_number_refills, 
+                                    'date': cartridje.cart_date_change,
+                                    'org': cartridje.departament,
+                                    'comment': cartridje.comment})
+        else:
+            pass
     elif view == 'empty':
         all_items = all_items.filter( Q(departament=request.user.departament) & Q(cart_status=3) )
-        with open(csv_full_name, 'w', newline='') as csvfile:
-            fieldnames = ['number', 'name', 'refills', 'date', 'comment']
-            writer = csv.DictWriter(csvfile, fieldnames, delimiter=';')
-            writer.writerow({'number': _('Number'), 
-                            'name': _('Name'), 
-                            'refills': _('Amount<br/>recovery'), 
-                            'date': _('Date return'), 
-                            'comment': _('comment')})
-            for cartridje in all_items:
-                writer.writerow({'number': cartridje.cart_number, 
-                                'name': cartridje.cart_itm_name, 
-                                'refills': cartridje.cart_number_refills, 
-                                'date': cartridje.cart_date_change,
-                                'comment': cartridje.comment})
-
+        if gtype == 'exp_with_group':
+            write_elem_with_group(all_items, csv_full_name)
+        elif gtype == 'exp_without_group':
+            with open(csv_full_name, 'w', newline='') as csvfile:
+                fieldnames = ['number', 'name', 'refills', 'date', 'comment']
+                writer = csv.DictWriter(csvfile, fieldnames, delimiter=';')
+                writer.writerow({'number': _('Number'), 
+                                'name': _('Name'), 
+                                'refills': _('Amount<br/>recovery'), 
+                                'date': _('Date return'), 
+                                'comment': _('comment')})
+                for cartridje in all_items:
+                    writer.writerow({'number': cartridje.cart_number, 
+                                    'name': cartridje.cart_itm_name, 
+                                    'refills': cartridje.cart_number_refills, 
+                                    'date': cartridje.cart_date_change,
+                                    'comment': cartridje.comment})
+        else:
+            pass
     elif view == 'at_work':
         all_items = all_items.filter(Q(cart_status=4) & Q(departament=request.user.departament))
-        with open(csv_full_name, 'w', newline='') as csvfile:
-            fieldnames = ['number', 'name', 'refills', 'date', 'firm', 'comment']
-            writer = csv.DictWriter(csvfile, fieldnames, delimiter=';')
-            writer.writerow({'number': _('Number'), 
-                            'name': _('Name'), 
-                            'refills': _('Amount<br/>recovery'), 
-                            'date': _('Date transfer on recovery'), 
-                            'firm': _('Refueller'),
-                            'comment': _('comment')})
-            for cartridje in all_items:
-                writer.writerow({'number': cartridje.cart_number, 
-                                'name': cartridje.cart_itm_name, 
-                                'refills': cartridje.cart_number_refills, 
-                                'date': cartridje.cart_date_change,
-                                'firm': cartridje.filled_firm,
-                                'comment': cartridje.comment})
+        if gtype == 'exp_with_group':
+            write_elem_with_group(all_items, csv_full_name)
+        elif gtype == 'exp_without_group':
+            with open(csv_full_name, 'w', newline='') as csvfile:
+                fieldnames = ['number', 'name', 'refills', 'date', 'firm', 'comment']
+                writer = csv.DictWriter(csvfile, fieldnames, delimiter=';')
+                writer.writerow({'number': _('Number'), 
+                                'name': _('Name'), 
+                                'refills': _('Amount<br/>recovery'), 
+                                'date': _('Date transfer on recovery'), 
+                                'firm': _('Refueller'),
+                                'comment': _('comment')})
+                for cartridje in all_items:
+                    writer.writerow({'number': cartridje.cart_number, 
+                                    'name': cartridje.cart_itm_name, 
+                                    'refills': cartridje.cart_number_refills, 
+                                    'date': cartridje.cart_date_change,
+                                    'firm': cartridje.filled_firm,
+                                    'comment': cartridje.comment})
+        else:
+            pass
     elif view == 'basket':
         all_items = all_items.filter( (Q(cart_status=5) | Q(cart_status=6)) & Q(departament=request.user.departament) )
-        with open(csv_full_name, 'w', newline='') as csvfile:
-            fieldnames = ['number', 'name', 'refills', 'date', 'firm', 'comment']
-            writer = csv.DictWriter(csvfile, fieldnames, delimiter=';')
-            writer.writerow({'number': _('Number'), 
-                            'name': _('Name'), 
-                            'refills': _('Amount<br/>recovery'), 
-                            'date': _('Date return in basket'), 
-                            'comment': _('comment')})
-            for cartridje in all_items:
-                writer.writerow({'number': cartridje.cart_number, 
-                                'name': cartridje.cart_itm_name, 
-                                'refills': cartridje.cart_number_refills, 
-                                'date': cartridje.cart_date_change,
-                                'comment': cartridje.comment})
+        if gtype == 'exp_with_group':
+            write_elem_with_group(all_items, csv_full_name)
+        elif gtype == 'exp_without_group':
+            with open(csv_full_name, 'w', newline='') as csvfile:
+                fieldnames = ['number', 'name', 'refills', 'date', 'firm', 'comment']
+                writer = csv.DictWriter(csvfile, fieldnames, delimiter=';')
+                writer.writerow({'number': _('Number'), 
+                                'name': _('Name'), 
+                                'refills': _('Amount<br/>recovery'), 
+                                'date': _('Date return in basket'), 
+                                'comment': _('comment')})
+                for cartridje in all_items:
+                    writer.writerow({'number': cartridje.cart_number, 
+                                    'name': cartridje.cart_itm_name, 
+                                    'refills': cartridje.cart_number_refills, 
+                                    'date': cartridje.cart_date_change,
+                                    'comment': cartridje.comment})
+        else:
+            pass
     else:
         return HttpResponse(resp_dict, status_code=501)
     

@@ -490,16 +490,24 @@ a.export_to_csv:hover {
 }
 
 a.export_to_csv:active {
-    background-color: #3A945C;
+    background: #3A945C url('../img/excel.png') no-repeat;
 }
 
 a.export_to_csv{
     margin: 0;
-    padding:0 3px 0 21px;
+    padding:10px;
     background: #7BCC9A url('../img/excel.png') no-repeat;
     background-position: left center;
 }
 
+select.export_type, select.export_type option {
+    display: inline-block;
+    width: 260px;
+}
+
+.download_doc {
+    display: none;
+}
 /* ---- login form ------ */
 
 input[type="submit"].button.login {

@@ -48,14 +48,14 @@ $( function(){
 
 
     $('.export_to_csv').click( function() {
-        var win = function() {
-            return window.open('', '_blank');
-        };
-        var view = $(this).attr('view');
+        $('.download_doc').attr('href', '#');
+        $('.download_doc').hide();
+        var view  = $(this).attr('view');
+        var gtype = $('.export_type option:selected').val();
         $.ajax({
             method: 'POST',
             url: '/docs/api/generate_csv/',
-            data:  {'view': view },
+            data:  {'view': view, 'gtype': gtype },
             beforeSend: function( xhr, settings ){
                 $('.export_spinner').show();
                 csrftoken = getCookie('csrftoken');
@@ -66,9 +66,9 @@ $( function(){
             success: function( msg ) {
                 setTimeout(function() { }, 4000);
                 $('.export_spinner').hide(); 
-                var w = win();
-                w.location.href = msg.url;
-                w.focus();
+                $('.download_doc').attr('href', msg.url);
+                $('.download_doc').show();
+                var a_href = msg.url;
             },
             error: function() {
                 $('.export_spinner').hide();
