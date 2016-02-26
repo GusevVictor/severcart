@@ -1,6 +1,6 @@
 # -*- coding:utf-8 -*-
 
-import os, io
+import os, io, glob
 import time
 import json
 from django.http import JsonResponse, HttpResponse
@@ -92,8 +92,23 @@ def generate_act(request):
 
     jsontext = m1.short_cont
     jsontext = json.loads(jsontext)
+
+    if not os.path.exists(settings.STATIC_ROOT_DOCX):
+        os.makedirs(settings.STATIC_ROOT_DOCX)
+
+    # ротация файлов
+    files = filter(os.path.isfile, glob.glob(settings.STATIC_ROOT_DOCX + '\*.docx'))
+    files = list(files)
+    files.sort(key=lambda x: os.path.getmtime(x))
+    try:
+        if len(files) > settings.MAX_COUNT_DOCX_FILES:
+            os.remove(files[0])
+    except:
+        pass
+
     if doc_action == 'docx_with_group':
-        file_full_name = os.path.join(settings.MEDIA_ROOT, m1.number + '_1.docx')
+        docx_file_name = m1.number + '_' + str(request.user.pk) +'_1.docx'
+        file_full_name = os.path.join(settings.STATIC_ROOT_DOCX, docx_file_name)
         names_counts = group_names(jsontext)
         if names_counts:
             # генерация печатной версии документа
@@ -109,14 +124,15 @@ def generate_act(request):
             document.add_page_break()
             document.save(file_full_name)
             resp_dict['error'] = '0'
-            resp_dict['text']  = _('Document %(doc_number)s_1.docx generated') % { 'doc_number': m1.number }
-            resp_dict['url'] = 'http://' + request.META['HTTP_HOST'] + '/media/%s_1.docx' % (m1.number)
+            resp_dict['text']  = _('Document %(doc_number)s_%(user_id)s_1.docx generated') % { 'doc_number': m1.number, 'user_id': request.user.pk}
+            resp_dict['url'] = request.META.get('HTTP_ORIGIN') + settings.STATIC_URL + 'docx/' + docx_file_name
         else:
             resp_dict['error'] = '1'
             resp_dict['text']  = _('Document form is impossible.')        
 
     elif doc_action == 'docx_without_group':
-        file_full_name = os.path.join(settings.MEDIA_ROOT, m1.number + '_0.docx')
+        docx_file_name = m1.number + '_' + str(request.user.pk) +'_0.docx'
+        file_full_name = os.path.join(settings.STATIC_ROOT_DOCX, docx_file_name)
         # генерация печатной версии документа без группировки наименований
         document = Document()
         table = document.add_table(rows=1, cols=2)
@@ -130,8 +146,8 @@ def generate_act(request):
         document.add_page_break()
         document.save(file_full_name)
         resp_dict['error'] = '0'
-        resp_dict['text']  = _('Document %(doc_number)s_0.docx generated') % { 'doc_number': m1.number }
-        resp_dict['url'] = 'http://' + request.META['HTTP_HOST'] + '/media/%s_0.docx' % (m1.number)
+        resp_dict['text']  = _('Document %(doc_number)s_%(user_id)s_0.docx generated') % { 'doc_number': m1.number, 'user_id': request.user.pk}
+        resp_dict['url'] = request.META.get('HTTP_ORIGIN') + settings.STATIC_URL + 'docx/' + docx_file_name
     else:
         resp_dict['error'] = '1'
         resp_dict['text']  = _('This action is not implemented.')
@@ -141,7 +157,7 @@ def generate_act(request):
 
 @check_ajax_auth
 def generate_csv(request):
-    import csv, glob
+    import csv
     encoding = 'cp1251'
     def write_elem_with_group(all_items, csv_full_name):
         names_list = list()

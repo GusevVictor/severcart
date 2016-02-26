@@ -561,9 +561,9 @@ $( function(){
         var mainSelect = $(this);
         mainSelect.bind('change', function() {
             var doc_id = mainSelect.attr('data');
+            $('.download_doc').hide();
             var doc_action = mainSelect.children(':selected').attr('value');
             if (doc_action) {
-                var win = window.open('', '_blank');
                 $.ajax({
                     method: 'POST',
                     url: '/docs/api/generate_act/',
@@ -577,13 +577,12 @@ $( function(){
                     },
                     success: function( msg ) {
                         if (msg.error == '0') {
-                            setTimeout(function() { }, 4000);
                             $('.spinner').hide(); 
                             $('.error_msg').hide();
                             $('.success_msg').show();
                             $('.success_msg').html(msg.text);
-                            win.location.href = msg.url;
-                            win.focus();
+                            $('.download_doc').attr('href', msg.url);
+                            $('.download_doc').show();
                             setTimeout(function() { $('.success_msg').hide(); }, 12000);
                         } 
 
