@@ -62,7 +62,7 @@ def register(request):
             if not settings.DEMO:
                 # если активирован режим ДЕМО, то нового пользователя не создаём
                 user = form.save()
-            return redirect(reverse('accounts:manage_users'))
+            return redirect(reverse('auth:manage_users'))
         else:
             form = form
     else:
@@ -82,7 +82,7 @@ def edit_user(request):
             if not settings.DEMO:
                 # если активирован режим ДЕМО, то изменения параметров не производим
                 user = form.save()
-            return redirect(reverse('accounts:manage_users'))
+            return redirect(reverse('auth:manage_users'))
     else:
         uid = request.GET.get('id', '')
         try:
