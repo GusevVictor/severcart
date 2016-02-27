@@ -471,15 +471,6 @@ def edit_firm(request):
     return render(request, 'index/edit_firm.html', {'firm': firm, 'form': form_obj, 'back': back})
 
 
-@login_required
-@is_admin
-def manage_users(request):
-    """
-    """
-    usr = AnconUser.objects.all()
-    return render(request, 'index/manage_users.html', {'urs': usr })
-
-
 class At_work(CartridgesView):
     """Список картриджей находящихся на заправке.
     """

@@ -20,6 +20,16 @@ from common.helpers import is_admin
 import logging
 logger = logging.getLogger('simp')
 
+
+@login_required
+@is_admin
+def manage_users(request):
+    """Вывод списка пользователей программы.
+    """
+    usr = AnconUser.objects.all()
+    return render(request, 'accounts/manage_users.html', {'urs': usr })
+
+
 def login(request):
     """Log in view
     """

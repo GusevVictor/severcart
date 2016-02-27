@@ -1,5 +1,5 @@
 from django.conf.urls import url
-from index.views import manage_users
+from .views import manage_users
 from .views import ( register,
                    edit_user,
                    login,

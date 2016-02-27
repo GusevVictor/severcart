@@ -8,12 +8,12 @@ from django.views.generic.base import TemplateView
 
 urlpatterns = [
     url('', include('index.urls')),
-    url(r'^manage_users/', include('accounts.urls', namespace='auth', app_name='accounts')),
     url(r'^api/', include('index.api.urls')),
     url(r'^events/', include('events.urls')),
     url(r'^docs/', include('docs.urls', namespace='docs')),
     url(r'^reports/', include('reports.urls', namespace='reports')),
     url(r'^service/', include('service.urls', namespace='service')),
+    url(r'^manage_users/', include('accounts.urls', namespace='auth')),
 ] 
 
 #if not settings.DEBUG:
