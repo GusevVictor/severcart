@@ -315,5 +315,5 @@ def generate_csv(request):
     else:
         return HttpResponse(resp_dict, status_code=501)
     
-    resp_dict['url'] = request.META.get('HTTP_ORIGIN') + settings.STATIC_URL + 'csv/' + csv_file_name
+    resp_dict['url'] = settings.STATIC_URL + 'csv/' + csv_file_name
     return JsonResponse(resp_dict)

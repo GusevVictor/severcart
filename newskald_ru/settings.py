@@ -14,41 +14,12 @@ https://docs.djangoproject.com/en/1.8/ref/settings/
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
+from .settings_dev import *
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.8/howto/deployment/checklist/
-
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '^g$4c6-__#353*u_t9iovxd5g#)i$0o=bv5-ku+v=7#3ku*m%#'
-
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-
-DEMO = False
-
-ALLOWED_HOSTS = ['*']
-
-
-# Application definition
-
-INSTALLED_APPS = (
-#    'django.contrib.admin',
-    'django.contrib.auth',
-    'django.contrib.contenttypes',
-    'django.contrib.sessions',
-    'django.contrib.messages',
-    'django.contrib.staticfiles',
-    'debug_toolbar',
-    'index',
-    'mptt',
-    'accounts',
-    'events',
-    'docs',
-    'reports',
-    'service',
-)
 
 MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -119,19 +90,6 @@ else:
             },
         },
     ]
-
-WSGI_APPLICATION = 'newskald_ru.wsgi.application'
-
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': os.getenv('DB_NAME'),
-        'USER': os.getenv('DB_USER'),
-        'PASSWORD': os.getenv('DB_PASSWD'),
-        'HOST': os.getenv('DB_HOST'),
-        'PORT': os.getenv('DB_PORT'),
-    }
-}
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.8/topics/i18n/
@@ -244,7 +202,6 @@ LOGIN_URL = '/manage_users/login/'
 MAX_EVENT_LIST = 16
 
 # Настройки шаблона docx файла
-
 MAX_TABLE_ROWS_FIRST_PAGE = 14 # должен резервировать место для шапки акта
 
 MAX_TABLE_ROWS = 20
