@@ -689,19 +689,3 @@ def edit_cartridge_comment(request):
         comment = cartridge_object.comment
         form = EditCommentForm(initial = {'comment': comment})
     return render(request, 'index/edit_cartridge_comment.html', {'form': form, 'back': back})
-
-
-def handler404(request):
-    if request.user.is_authenticated():
-        response = render(request, 'index/404.html', {})
-        response.status_code = 404
-        return response
-    else:
-        return HttpResponse(_('Page not found!'), status_code=404)
-    
-
-def handler500(request):
-    response = render(request, 'index/500.html', {})
-    response.status_code = 500
-    return response
-    
