@@ -245,6 +245,7 @@ $( function(){
 
     $('.tr_to_recycle_bin').click( function() {
         var selected = [];
+        var atype    = $(this).attr('atype') 
         $('.checkboxes input:checked').each(function() {
             if ($(this).attr('value')) {
                 selected.push( $(this).attr('value') );
@@ -252,27 +253,47 @@ $( function(){
         });
 
         if ( selected.length !== 0 ) {
-            var get_path = selected.join('s')
-            var loc = '/transfe_to_basket/?select=' + get_path + '&atype=5';
-            window.location.href = loc;
-        }
-    });
+            var ansver = window.confirm('Вы точно хотите поместить выбранные объекты в корзину?');
+            if ( ansver ) {
+                $('.spinner').show();
+                $.ajax({
+                    method: 'POST',
+                    url: '/api/transfer_to_basket/',
+                    data:  {'selected': selected, 'atype': atype},
+                    beforeSend: function( xhr, settings ){
+                        csrftoken = getCookie('csrftoken');
+                        if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
+                            xhr.setRequestHeader('X-CSRFToken', csrftoken);
+                        }
+                    },
+                    success: function( msg ) {
+                        var tr = $('.checkboxes input:checked').parent().parent().not('.table_header');
+                        if (msg.error == '1') {
+                            setTimeout(function() { $('.spinner').hide(); }, 2000);
+                            $('.success_msg').hide();
+                            $('.error_msg').show();
+                            $('.error_msg').html(msg.text);
+                        }
 
-    $('.tr_empty_to_recycle_bin').click( function() {
-        var selected = [];
-        $('.checkboxes input:checked').each(function() {
-            if ($(this).attr('value')) {
-                selected.push( $(this).attr('value') );
+                        if (msg.error == '0') {
+                            setTimeout(function() { $('.spinner').hide(); }, 2000);
+                            $('.error_msg').hide();
+                            $('.success_msg').show();
+                            $('.success_msg').html(msg.text);
+                            setTimeout(function() { tr.remove(); }, 4000);
+                        }
+
+                    },
+                    error: function() {
+                        $('.spinner').hide();
+                        $('.error_msg').show();
+                        setTimeout(function() { $('.error_msg').html('<p>Server not available.</p>'); }, 12000);
+                    },
+                });                
             }
-        });
 
-        if ( selected.length !== 0 ) {
-            var get_path = selected.join('s')
-            var loc = '/transfe_to_basket/?select=' + get_path + '&atype=6';
-            window.location.href = loc;
         }
     });
-
 
 
     $('.turf').click( function() {

@@ -515,51 +515,6 @@ class Basket(CartridgesView):
 
 
 @login_required
-def transfe_to_basket(request):
-    """Перемещаем расходники в корзинку.
-    """
-    checked_cartr = request.GET.get('select', '')
-    action_type = request.GET.get('atype', '')
-    back = BreadcrumbsPath(request).before_page(request)
-    
-    if action_type == '5':
-        # перемещаем заправленный картридж в корзину
-        cart_status = 5
-    elif action_type == '6':
-        # перемещаем пустой картридж в корзину
-        cart_status = 6
-    else:
-        raise Http404
-
-    tmp = ''
-    if checked_cartr:
-        checked_cartr = checked_cartr.split('s')
-        checked_cartrw = [int(i) for i in checked_cartr]
-        tmp = checked_cartr
-        tmp2 = []
-        # преобразовываем айдишники в условные номера
-        for cart_id in checked_cartr:
-            tmp2.append(CartridgeItem.objects.get(pk=cart_id).cart_number)
-        checked_cartr = str(tmp2)
-        checked_cartr = checked_cartr[1:-1]
-    
-    if request.method == 'POST':
-        list_cplx = []
-        for inx in tmp:
-            m1 = CartridgeItem.objects.get(pk=inx)
-            m1.cart_status = cart_status  # в корзинку картриджи  
-            m1.departament = request.user.departament
-            m1.cart_date_change = timezone.now()
-            m1.save(update_fields=['cart_status', 'departament', 'cart_date_change'])
-            list_cplx.append((m1.id, str(m1.cart_itm_name), m1.cart_number))
-        
-        sign_tr_cart_to_basket.send(sender=None, list_cplx=list_cplx, request=request)
-
-        return HttpResponseRedirect(reverse('stock'))
-    return render(request, 'index/transfe_to_basket.html', {'checked_cartr': checked_cartr, 'back': back})
-
-
-@login_required
 def from_basket_to_stock(request):
     """Возвращаем обратно картридж из корзины на склад. Ну вдруг пользователь передумал.
     """

@@ -13,7 +13,10 @@ from index.models import ( City,
                            CartridgeItemName, 
                            FirmTonerRefill )
 from index.helpers import check_ajax_auth
-from index.signals import sign_turf_cart, sign_add_full_to_stock, sign_tr_empty_cart_to_stock
+from index.signals import ( sign_turf_cart, 
+                            sign_add_full_to_stock, 
+                            sign_tr_empty_cart_to_stock,
+                            sign_tr_cart_to_basket, )
 from index.forms.add_items import AddItems
 from docs.models import SCDoc
 
@@ -229,3 +232,46 @@ def turf_cartridge(request):
     sign_turf_cart.send(sender=None, list_cplx=list_cplx, request=request)
 
     return HttpResponse(_('Cartridjes deleted!'))
+
+
+@check_ajax_auth
+def transfer_to_basket(request):
+    """Перемещение картриджей в корзину.
+    """
+    if request.method != 'POST':
+        return HttpResponse('<h1>' + _('Only use POST requests!') + '</h1>')
+    
+    ansver = dict()
+    checked_cartr = request.POST.getlist('selected[]')
+    action_type   = request.POST.get('atype', '')
+    try:
+        checked_cartr = [int(i) for i in checked_cartr ]
+    except ValueError:
+        ansver['error'] = '1'
+        ansver['text']   = _('Error converting string numbers to int.')
+        return JsonResponse(ansver)
+    
+    if action_type == '5':
+        # перемещаем заправленный картридж в корзину
+        cart_status = 5
+    elif action_type == '6':
+        # перемещаем пустой картридж в корзину
+        cart_status = 6
+    else:
+        ansver['error'] = '1'
+        ansver['text']   = _('This action type not implemented.')
+        return JsonResponse(ansver)
+
+    list_cplx = []
+    for inx in checked_cartr:
+        m1 = CartridgeItem.objects.get(pk=inx)
+        m1.cart_status = cart_status  # в корзинку картриджи  
+        m1.departament = request.user.departament
+        m1.cart_date_change = timezone.now()
+        m1.save()
+        list_cplx.append((m1.id, str(m1.cart_itm_name), m1.cart_number))
+    
+    sign_tr_cart_to_basket.send(sender=None, list_cplx=list_cplx, request=request)
+    ansver['error'] = '0'
+    ansver['text']   = _('Cartridges successfully transferred to basket.')
+    return JsonResponse(ansver)
