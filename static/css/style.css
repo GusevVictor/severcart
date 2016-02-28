@@ -99,6 +99,9 @@ form input[type="password"] {
 }
 
 
+.errornote {
+    color: #ff0000;
+}
 /* Global tables */
 table th{
     text-align: left;

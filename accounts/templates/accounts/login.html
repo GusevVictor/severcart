@@ -18,6 +18,9 @@
 {% if error %}
     <p class="errornote">{% trans "Please enter a valid username or password!" %}</p>
 {% endif %}
+{% if demo %}
+    <div class="demo_access"><p>{% trans 'Parametrs access to site' %}</p><p>{% trans 'Login' %}: admin</p><p>{% trans 'Password' %}: admin</p></div>
+{% endif %}
 <div class="login_form">
     <form action="{{ app_path }}" method="post" id="login-form">{% csrf_token %}
         <p><label for="{{ form.username.id_for_label }}">{% trans "Login" %}</label>
@@ -28,13 +31,12 @@
         <br/>
         <input class="button login" type="submit" value="{% trans 'Enter' %}"/>
     </form>
-
     <script>
         document.getElementById('id_username').focus()
     </script>
 </div>
 </div>
 </div>
-<div class="izuminka"><img src="{{ STATIC_URL }}img/shd.png" title="Made in Salekhard" /></div>
+<!-- <div class="izuminka"><img src="{{ STATIC_URL }}img/shd.png" title="Made in Salekhard" /></div> -->
 </body>
 </html>

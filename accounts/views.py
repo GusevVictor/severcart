@@ -48,7 +48,7 @@ def login(request):
     else:
         error = False
         form = AuthenticationForm()
-    return render(request, 'accounts/login.html', {'form': form, 'error': error})
+    return render(request, 'accounts/login.html', {'form': form, 'error': error, 'demo': settings.DEMO})
 
 
 @login_required
