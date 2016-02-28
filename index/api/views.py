@@ -84,8 +84,13 @@ def ajax_add_session_items(request):
         else:
             cart_doc_id = 0
         cart_count   = int(data_in_post.get('cartCount'))
+        try:
+            root_ou   = request.user.departament
+            children  = root_ou.get_family()
+        except AttributeError:
+            children = ''
         # Добавляем картриджи в БД
-        last_num     = CartridgeItem.objects.filter(departament=request.user.departament).order_by('-cart_number')
+        last_num     = CartridgeItem.objects.filter(departament__in=children).order_by('-cart_number')
         if last_num:
             last_num = last_num[0].cart_number
         else:
