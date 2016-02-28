@@ -5,10 +5,12 @@ register = template.Library()
 
 @register.filter
 def divide(value):
+    if not value:
+        return mark_safe('')
     rubl = value // 100
     kop  =  value - rubl*100
     if kop:
-    	tmp = '%s,%s' % (rubl, kop,)
+        tmp = '%s,%s' % (rubl, kop,)
     else:
-    	tmp = str(rubl)
+        tmp = str(rubl)
     return mark_safe(tmp)
