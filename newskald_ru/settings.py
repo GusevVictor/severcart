@@ -14,7 +14,7 @@ https://docs.djangoproject.com/en/1.8/ref/settings/
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
-from .settings_dev import *
+from .settings_shift3 import *
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -105,28 +105,6 @@ USE_L10N = True
 USE_TZ = False
 
 LOCALE_PATHS = (os.path.join(BASE_DIR, 'locale'), )
-
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/1.8/howto/static-files/
-
-if DEBUG:
-    STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
-    MEDIAFILES_DIRS = (os.path.join(BASE_DIR, 'media'),)
-
-
-
-STATIC_ROOT_CSV = os.path.join(BASE_DIR, 'static', 'csv')
-MAX_COUNT_CSV_FILES = 20
-
-STATIC_ROOT_DOCX = os.path.join(BASE_DIR, 'static', 'docx')
-MAX_COUNT_DOCX_FILES = 20
-
-STATIC_URL = '/static/'
-MEDIA_URL = '/media/'
-
-if not DEBUG:
-    STATIC_ROOT = os.path.join(BASE_DIR, 'static')
-    MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 
 AUTH_USER_MODEL = 'accounts.AnconUser'
