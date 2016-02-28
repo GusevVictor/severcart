@@ -494,23 +494,42 @@ $( function(){
             $.ajax({
                 method: 'POST',
                 url: '/api/del_node/',
-                data:  {len: selected.length , 'selected[]': selected},
+                data:  {'selected[]': selected},
                 beforeSend: function( xhr, settings ){
                     $('.spinner').css('display', 'inline');
                     csrftoken = getCookie('csrftoken');
                     if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
                         xhr.setRequestHeader('X-CSRFToken', csrftoken);
                     }
-                }  
-            }).done(function( msg ) {
-                $('.spinner').css('display', 'none');
+                }, 
+                success: function( msg ) {
+                    var tr = $('.checkboxes input:checked').parent().parent();
+                    if (msg.error == '1') {
+                        setTimeout(function() { }, 4000);
+                        $('.spinner').hide(); 
+                        $('.success_msg').hide();
+                        $('.error_msg').show();
+                        $('.error_msg').html(msg.text);
+                    }
 
-                window.location.href = '/tree_list/';
-                //alert( 'Data Saved: ' + msg );
+                    if (msg.error == '0') {
+                        setTimeout(function() { tr.remove(); }, 4000);
+                        $('.spinner').hide();
+                        $('.error_msg').hide();
+                        $('.success_msg').show();
+                        $('.success_msg').html(msg.text);
+                    }
+
+                },
+                error: function() {
+                        $('.spinner').hide();
+                        $('.error_msg').show();
+                        $('.success_msg').hide();
+                        $('.error_msg').html('<p>Server not available.</p>');
+                        setTimeout(function() { $('.error_msg').hide(); }, 12000);
+                },
             });
-            
         }
-
     });
 
 

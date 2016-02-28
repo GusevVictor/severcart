@@ -4,6 +4,18 @@
 {% load staticfiles %}
 {% load filters %}
 {% load mptt_tags %}
+{% block submenu %}
+<div class="row">
+    <div class="large-6 columns">
+        {% if msg %}
+            <div class="success_msg" style="display: block">{{ msg }}</div>
+        {% else %}
+            <div class="success_msg"></div>
+        {% endif%}
+        <div class="error_msg"></div>
+    </div>
+</div>
+{% endblock %}
 {% block content %}
 <div class="row">
     <div class="large-6 columns">

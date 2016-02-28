@@ -172,39 +172,42 @@ def tree_list(request):
     """Работаем с структурой организации
     """
     error1 = ''
+    context = dict()
     if request.method == 'POST':
-        uid = request.POST.get('departament', '')        
+        uid = request.POST.get('departament', '')  # старшее огр. подразделение 
         org_name = request.POST.get('name', '') 
+        org_name = org_name.strip()
         try:
             uid = int(uid)
         except ValueError:
             uid = 0
 
         # проверям, есть ли такая корневая нода уже в базе
-        if uid == 0:
+        if uid == 0: # добавление корневой ноды
             for node in OrganizationUnits.objects.root_nodes():
-                if node == org_name:
-                    error1 = _('Organization unit %(org_name)s exist') % {'org_name': org_name}
+                if node.name == org_name:
+                    context['error1'] = _('Organization unit %(org_name)s exist') % {'org_name': org_name}
                     break        
             else:
                 # если ноды нет, добавляем
                 rock = OrganizationUnits.objects.create(name=org_name)
+                context['msg'] = _('Organization unit %(org_name)s create successfuly.') % {'org_name': org_name}
         
         if uid != 0:
             temp_name = OrganizationUnits.objects.get(pk=uid)
             if temp_name.is_root_node():
                 OrganizationUnits.objects.create(name=org_name, parent=temp_name)
+                context['msg'] = _('Organization unit %(org_name)s create successfuly.') % {'org_name': org_name}
             else:    
                 for node in temp_name.get_children():
                     if node == org_name:
-                        error1 =  _('Organization unit %(org_name)s exist') % {'org_name': org_name}
+                        context['error1']=  _('Organization unit %(org_name)s exist') % {'org_name': org_name}
                         break
                 else:
                     rn = OrganizationUnits.objects.get(pk=uid)
                     OrganizationUnits.objects.create(name=org_name, parent=rn)        
-            
-    bulk = OrganizationUnits.objects.all()
-    return render(request, 'index/tree_list.html', {'bulk': bulk, 'error1': error1})
+    context['bulk'] = OrganizationUnits.objects.all()
+    return render(request, 'index/tree_list.html', context)
 
 
 @login_required

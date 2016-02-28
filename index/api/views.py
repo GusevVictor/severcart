@@ -2,8 +2,10 @@
 import time
 import json
 from django.db import transaction
+from django.db import models
 from django.utils import timezone
 from django.http import JsonResponse, HttpResponse
+from django.conf import settings
 from django.template.loader import render_to_string
 from django.utils.translation import ugettext as _
 from common.helpers import is_admin
@@ -208,13 +210,27 @@ def city_list(request):
 def del_node(request):
     """Удаляем нод(у)(ы) из структуры организации
     """
+    ansver = dict()
     ar = request.POST.getlist('selected[]')
     ar = [int(i) for i in ar ]
-    le = int(request.POST.get('len', ''))
-    for ind in ar:
-        node = OrganizationUnits.objects.get(pk=ind)
-        node.delete()
-    return HttpResponse(_('Data deleted!'))
+    if settings.DEMO:
+        ansver['error'] = '1'
+        ansver['text']  = _('In demo remove nodes not allow.')
+        return JsonResponse(ansver)
+    try:
+        for ind in ar:
+            node = OrganizationUnits.objects.get(pk=ind)
+            node.delete()
+    except models.ProtectedError:
+        ansver['error'] = '1'
+        ansver['text']  = _('But it can not be removed because other objects reference it.<br/>Error code: 102')
+    else:
+        ansver['error'] = '0'
+        if len(ar) == 1:
+            ansver['text']  = _('Name deleted successfully.')
+        else:
+            ansver['text']  = _('Names deleted successfully.')
+    return JsonResponse(ansver)
 
 
 @check_ajax_auth
