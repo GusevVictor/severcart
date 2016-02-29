@@ -1,23 +1,25 @@
 # -*- coding:utf-8 -*-
 
 import os
-
 DJ_PROJECT_DIR = os.path.dirname(__file__)
 BASE_DIR = os.path.dirname(DJ_PROJECT_DIR)
 WSGI_DIR = os.path.dirname(BASE_DIR)
 REPO_DIR = os.path.dirname(WSGI_DIR)
 DATA_DIR = os.environ.get('OPENSHIFT_DATA_DIR', BASE_DIR)
 
+import sys
+sys.path.append(os.path.join(REPO_DIR, 'libs'))
+import secrets
+SECRETS = secrets.getter(os.path.join(DATA_DIR, 'secrets.json'))
 
-
-DEBUG = True
+DEBUG = False
 
 DEMO  = True
 
 ALLOWED_HOSTS = ['*']
 
 
-SECRET_KEY = os.getenv('OPENSHIFT_SECRET_TOKEN')
+SECRET_KEY = SECRETS['secret_key']
 # Application definition
 
 INSTALLED_APPS = (
@@ -50,20 +52,15 @@ DATABASES = {
     }
 }
 
-if DEBUG:
-    STATICFILES_DIRS = (os.path.join(os.getenv('OPENSHIFT_REPO_DIR'), 'wsgi', 'static'),)
-    MEDIAFILES_DIRS = (os.path.join(os.getenv('OPENSHIFT_REPO_DIR'), 'wsgi', 'media'),)
 
-
-STATIC_ROOT_CSV = os.path.join(os.getenv('OPENSHIFT_REPO_DIR'), 'wsgi', 'static', 'csv')
+STATIC_ROOT_CSV = os.path.join(WSGI_DIR, 'static', 'csv')
 MAX_COUNT_CSV_FILES = 20
 
 
-STATIC_ROOT_DOCX = os.path.join(os.getenv('OPENSHIFT_REPO_DIR'), 'wsgi', 'static', 'docx')
+STATIC_ROOT_DOCX = os.path.join(WSGI_DIR, 'static', 'docx')
 MAX_COUNT_DOCX_FILES = 20
 
 # for collect static utility
 STATIC_ROOT = os.path.join(WSGI_DIR, 'static')
 
 STATIC_URL = '/static/'
-MEDIA_URL = '/media/'
