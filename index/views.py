@@ -142,6 +142,7 @@ def add_cartridge_item(request):
     back = BreadcrumbsPath(request).before_page(request)
     from docs.models import SCDoc
     form_obj = AddItems()
+    # отфильтровываем и показываем только договора поставки
     form_obj.fields['doc'].queryset = SCDoc.objects.filter(departament=request.user.departament).filter(doc_type=1)
     session_data = request.session.get('cumulative_list')
     if not session_data:
@@ -173,8 +174,34 @@ def add_empty_cartridge(request):
     """
     context         = {}
     back            = BreadcrumbsPath(request).before_page(request)
-    context['form'] = AddEmptyItems()
     context['back'] = back
+    form_obj = AddEmptyItems()
+    from docs.models import SCDoc
+    # отфильтровываем и показываем только договора поставки
+    form_obj.fields['doc'].queryset = SCDoc.objects.filter(departament=request.user.departament).filter(doc_type=1)
+    context['form'] = form_obj
+    session_data = request.session.get('empty_cart_list')
+    if not session_data:
+        # если в сессии нужные данные отсутствуют, то сразу рендерим форму
+        return render(request, 'index/add_empty_cartridge.html', context)
+    
+    session_data = json.loads(session_data)
+    simple_cache = dict()
+    list_names = CartridgeItemName.objects.all()
+    for elem in list_names:
+        simple_cache[elem.pk] = elem.cart_itm_name
+    list_items = list()
+    for elem in session_data:
+        try:
+           title = str(SCDoc.objects.get(pk=elem[1]))
+        except SCDoc.DoesNotExist:
+            title = ''
+        list_items.append({'name': simple_cache.get(elem[0]), 
+                           'numbers': str(elem[2])[1:-1], 
+                           'title': title})
+
+    context['session'] = render_to_string('index/add_over_ajax.html', context={'list_items': list_items})
+    ########################
     return render(request, 'index/add_empty_cartridge.html', context)
 
 
