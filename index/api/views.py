@@ -139,28 +139,51 @@ def ajax_add_session_items(request):
         else:
             pass
 
-        # наполняем сессионную переменную cumulative_list
-        numbers = [ i[1] for i in list_cplx ] 
-        tmp_list = [cart_name_id, cart_doc_id, numbers]
-        if request.session.get('cumulative_list', False):
-            # если в сессионной переменной уже что-то есть
-            session_data = request.session.get('cumulative_list')
-            session_data = json.loads(session_data)
-            session_data.append(tmp_list)
-            use2var = session_data
-            session_data = json.dumps(session_data)
-            # перезаписываем переменную в сессии новыми значениями
-            request.session['cumulative_list'] = session_data
-        else:
-            # если сессионная added_list пуста
-            use2var = [ tmp_list ]
-            tmp_list = json.dumps(use2var)
-            request.session['cumulative_list'] = tmp_list        
-        # заполняем тупой кэш нужными данными названий картриджей и их айдишников, это минимизирует обращения к базу
+        # заполняем тупой кэш нужными данными названий картриджей и их айдишников, это минимизирует обращения к базе
+        # в будующем
         simple_cache = dict()
         list_names = CartridgeItemName.objects.all()
         for elem in list_names:
             simple_cache[elem.pk] = elem.cart_itm_name
+
+        numbers = [ i[1] for i in list_cplx ]
+        # для экономного расходования дискового пространства будем использовать идешники
+        tmp_list = [cart_name_id, cart_doc_id, numbers]
+        if cart_status == 1:
+            # наполняем сессионную переменную cumulative_list если производится 
+            # добавление новых картриджей на склад
+            if request.session.get('cumulative_list', False):
+                # если в сессионной переменной уже что-то есть
+                session_data = request.session.get('cumulative_list')
+                session_data = json.loads(session_data)
+                session_data.append(tmp_list)
+                use2var = session_data
+                session_data = json.dumps(session_data)
+                # перезаписываем переменную в сессии новыми значениями
+                request.session['cumulative_list'] = session_data
+            else:
+                # если сессионная cumulative_list пуста
+                use2var = [ tmp_list ]
+                tmp_list = json.dumps(use2var)
+                request.session['cumulative_list'] = tmp_list
+        elif cart_status == 3:
+            # наполняем сессионную переменную empty_cart_list если производится 
+            # добавление БУшных картриджей на склад
+            if request.session.get('empty_cart_list', False):
+                # если в сессионной переменной уже что-то есть
+                session_data = request.session.get('empty_cart_list')
+                session_data = json.loads(session_data)
+                session_data.append(tmp_list)
+                use2var = session_data
+                session_data = json.dumps(session_data)
+                # перезаписываем переменную в сессии новыми значениями
+                request.session['empty_cart_list'] = session_data
+            else:
+                # если сессионная empty_cart_list пуста
+                use2var = [ tmp_list ]
+                tmp_list = json.dumps(use2var)
+                request.session['empty_cart_list'] = tmp_list
+
         # формируем http ответ
         # формат  [ [name, title,  numbers=[1,2,3,4]] ... ]
         list_items = list()
@@ -209,9 +232,16 @@ def transfer_to_stock(request):
 
 @check_ajax_auth
 def clear_session(request):
-    """Очищаем сессионную переменную от cumulative_list
+    """Очищаем сессионные переменные
     """
-    request.session['cumulative_list'] = None
+    cart_type    = request.POST.get('cart_type')
+    if cart_type == 'full':
+        request.session['cumulative_list'] = None
+    elif cart_type == 'empty':
+        request.session['empty_cart_list'] = None
+    else:
+        pass
+    
     return HttpResponse(_('Session cleared'))
 
 

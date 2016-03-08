@@ -189,10 +189,11 @@ $( function(){
     });
 
     $('.clear_session').click( function() {
+        var cart_type = $(this).attr('data'); 
         $.ajax({
             method: 'POST',
             url: '/api/clear_session/',
-            data:  {'tst': 'tst'},
+            data:  {'cart_type': cart_type},
             beforeSend: function( xhr, settings ){
                 $('.spinner').css('display', 'inline');
                 csrftoken = getCookie('csrftoken');
@@ -205,7 +206,6 @@ $( function(){
                 $('.session_data').html('');
                 $('.ajax_messages').show();
                 $('.success_msg').html(msg.mes);
-
             },
             error: function() {
                 $('.ajax_messages').show();

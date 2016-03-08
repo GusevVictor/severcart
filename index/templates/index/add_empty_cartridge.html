@@ -42,8 +42,9 @@
             </div>
             <div class="form_error_text cart_count_error">{% trans "The field must be greater than zero" %}</div>
             <div class="marginTop">
-                <input type="submit" value="{% trans 'Add empty cartridges' %}" class="button success add_items no_follow" data="empty" />&nbsp;&nbsp;&nbsp;
-                <a href="{{ back }}" class="button"/>{% trans "Back" %}</a>&nbsp;&nbsp;&nbsp;
+                <input type="submit" value="{% trans 'Add empty cartridges' %}" class="button success add_items no_follow" data="empty" />
+                <a href="{{ back }}" class="button"/>{% trans "Back" %}</a>
+                <a href="#" data="empty" class="clear_session button no_follow"/>{% trans "Clear session" %}</a>
                 <img class="spinner" src="{{ STATIC_URL }}img/loader.gif" />
             </div>
         </form>

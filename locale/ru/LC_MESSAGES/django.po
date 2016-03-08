@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-02-28 17:45+0500\n"
-"PO-Revision-Date: 2016-02-28 17:48+0500\n"
+"POT-Creation-Date: 2016-03-08 19:38+0500\n"
+"PO-Revision-Date: 2016-03-08 19:46+0500\n"
 "Last-Translator: \n"
 "Language-Team: severcart.org <sfcl@mail.ru>\n"
 "Language: ru\n"
@@ -74,6 +74,7 @@ msgstr "Фамилие, имя, отчество"
 
 #: .\accounts\forms\edit.py:18 .\accounts\forms\register.py:18
 #: .\docs\forms\edit_name.py:18 .\docs\forms\edit_name.py:25
+#: .\index\templates\index\add_empty_cartridge.html:32
 #: .\index\templates\index\add_items.html:23
 msgid "Required field"
 msgstr "Обязательное поле"
@@ -159,6 +160,7 @@ msgstr "Сменить пароль"
 #: .\docs\templates\docs\edit_name.html:16
 #: .\events\templates\events\view_cartridge_events.html:8
 #: .\index\templates\index\add_city.html:11
+#: .\index\templates\index\add_empty_cartridge.html:46
 #: .\index\templates\index\add_firm.html:45
 #: .\index\templates\index\add_items.html:39
 #: .\index\templates\index\add_name.html:39
@@ -272,9 +274,9 @@ msgstr "Ошибка! Пользователь %(user_name)s не может у�
 msgid "User(s) deleted!"
 msgstr "Пользователь(ли) удален(ы)!"
 
-#: .\docs\api\views.py:25 .\docs\api\views.py:76 .\index\api\views.py:33
-#: .\index\api\views.py:64 .\index\api\views.py:172 .\index\api\views.py:263
-#: .\reports\api\views.py:52
+#: .\docs\api\views.py:25 .\docs\api\views.py:76 .\index\api\views.py:34
+#: .\index\api\views.py:65 .\index\api\views.py:213 .\index\api\views.py:311
+#: .\index\api\views.py:354 .\reports\api\views.py:52
 msgid "Only use POST requests!"
 msgstr "Поддерживаются только POST запросы!"
 
@@ -286,7 +288,7 @@ msgstr "Объект с таким ID не найден."
 msgid "Name can not be removed, ie. other objects reference it."
 msgstr "Имя удалить невозможно, т. к. на него ссылаются другие объекты."
 
-#: .\docs\api\views.py:49 .\docs\api\views.py:63 .\index\api\views.py:235
+#: .\docs\api\views.py:49 .\docs\api\views.py:63 .\index\api\views.py:283
 msgid "Name deleted successfully."
 msgstr "Имя успешно удалено."
 
@@ -300,6 +302,7 @@ msgstr "Название картриджа"
 
 #: .\docs\api\views.py:119 .\docs\api\views.py:178
 #: .\docs\templates\docs\delivery.html:92
+#: .\index\templates\index\add_empty_cartridge.html:39
 #: .\index\templates\index\add_items.html:30
 #: .\reports\templates\reports\users_ajax.html:5
 msgid "Amount"
@@ -319,7 +322,7 @@ msgstr "Документ сформировать невозможно."
 #: .\docs\forms\add_doc.py:9 .\docs\templates\docs\delivery.html.py:20
 #: .\docs\templates\docs\delivery.html:88
 #: .\index\templates\index\at_work.html:31
-#: .\index\templates\index\basket.html:34 .\index\templates\index\empty.html:39
+#: .\index\templates\index\basket.html:34 .\index\templates\index\empty.html:40
 #: .\index\templates\index\from_firm_to_stock.html:25
 #: .\index\templates\index\stock.html:39
 #: .\index\templates\index\tree_list.html:56
@@ -348,7 +351,7 @@ msgstr "Данное действие не реализовано."
 #: .\index\templates\index\at_work.html:32
 #: .\index\templates\index\basket.html:35
 #: .\index\templates\index\del_firm.html:9
-#: .\index\templates\index\empty.html:40
+#: .\index\templates\index\empty.html:41
 #: .\index\templates\index\from_firm_to_stock.html:26
 #: .\index\templates\index\stock.html:40
 #: .\index\templates\index\toner_refill.html:29
@@ -362,7 +365,7 @@ msgstr "Название"
 #: .\docs\api\views.py:211 .\docs\api\views.py:237 .\docs\api\views.py:260
 #: .\docs\api\views.py:281 .\docs\api\views.py:304
 #: .\index\templates\index\at_work.html:33
-#: .\index\templates\index\basket.html:36 .\index\templates\index\empty.html:41
+#: .\index\templates\index\basket.html:36 .\index\templates\index\empty.html:42
 #: .\index\templates\index\stock.html:41 .\index\templates\index\use.html:41
 msgid "Amount<br/>recovery"
 msgstr "Количество<br/> перезаправок"
@@ -387,7 +390,7 @@ msgstr "Комментарий"
 msgid "Date transfe"
 msgstr "Дата передачи"
 
-#: .\docs\api\views.py:261 .\index\templates\index\empty.html.py:42
+#: .\docs\api\views.py:261 .\index\templates\index\empty.html.py:43
 msgid "Date return"
 msgstr "Дата возврата"
 
@@ -404,7 +407,9 @@ msgid "Date return in basket"
 msgstr "Дата помещения в корзину"
 
 #: .\docs\forms\add_doc.py:14 .\docs\forms\add_doc.py:29
-#: .\docs\forms\add_doc.py:62 .\index\forms\add_firm.py:8
+#: .\docs\forms\add_doc.py:62 .\index\forms\add_empty_items.py:11
+#: .\index\forms\add_empty_items.py:20 .\index\forms\add_empty_items.py:31
+#: .\index\forms\add_empty_items.py:47 .\index\forms\add_firm.py:8
 #: .\index\forms\add_firm.py:10 .\index\forms\add_items.py:11
 #: .\index\forms\add_items.py:20 .\index\forms\add_items.py:31
 #: .\index\forms\add_items.py:47 .\index\forms\add_type.py:11
@@ -432,7 +437,7 @@ msgstr "Тип"
 
 #: .\docs\forms\edit_name.py:10 .\docs\templates\docs\names_list.html.py:30
 #: .\index\models.py:22 .\index\models.py:31 .\index\models.py:53
-#: .\index\models.py:79 .\index\templates\index\empty.html.py:43
+#: .\index\models.py:79 .\index\templates\index\empty.html.py:44
 #: .\index\templates\index\use.html:44
 msgid "Comment"
 msgstr "Комментарий"
@@ -442,8 +447,9 @@ msgstr "Комментарий"
 msgid "You have exceeded the maximum number of characters. No more than 160."
 msgstr "Превышено максимальное количество символов. Допустимо не более 160."
 
-#: .\docs\models.py:11 .\index\templates\index\add_items.html.py:25
-#: .\index\templates\index\basket.html:53 .\index\templates\index\empty.html:58
+#: .\docs\models.py:11 .\index\templates\index\add_empty_cartridge.html.py:35
+#: .\index\templates\index\add_items.html:25
+#: .\index\templates\index\basket.html:53 .\index\templates\index\empty.html:59
 #: .\index\templates\index\stock.html:58 .\index\templates\index\use.html:59
 msgid "Delivery agreement"
 msgstr "Договор поставки"
@@ -487,7 +493,7 @@ msgstr "Действие"
 
 #: .\docs\templates\docs\acts_list.html:24
 #: .\index\templates\index\at_work.html:11
-#: .\index\templates\index\basket.html:14 .\index\templates\index\empty.html:19
+#: .\index\templates\index\basket.html:14 .\index\templates\index\empty.html:20
 #: .\index\templates\index\stock.html:19 .\index\templates\index\use.html:19
 msgid "Download"
 msgstr "Скачать"
@@ -609,10 +615,23 @@ msgstr ""
 
 #: .\events\helpers.py:43
 #, python-format
+msgid "Added empty cartridge user %(user_name)s."
+msgstr "Пустой картридж добавлен пользователем %(user_name)s."
+
+#: .\events\helpers.py:45
+#, python-format
+msgid ""
+"Added empty cartridge № %(cart_number)s (%(cart_type)s) user %(user_name)s."
+msgstr ""
+"Пустой картридж № %(cart_number)s (%(cart_type)s) добавлен пользователем "
+"%(user_name)s."
+
+#: .\events\helpers.py:56
+#, python-format
 msgid "Transfer to use %(event_org)s user %(event_user)s."
 msgstr "Передан в пользование «%(event_org)s» пользователем %(event_user)s."
 
-#: .\events\helpers.py:45
+#: .\events\helpers.py:58
 #, python-format
 msgid ""
 "№ %(cart_number)s (%(cart_type)s) transfer to use %(event_org)s user "
@@ -621,12 +640,12 @@ msgstr ""
 "№ %(cart_number)s (%(cart_type)s) передача в пользование «%(event_org)s» "
 "пользователем %(event_user)s."
 
-#: .\events\helpers.py:57
+#: .\events\helpers.py:70
 #, python-format
 msgid "Transfer to restore \"%(event_firm)s\" user %(event_user)s."
 msgstr "Отправка на заправку в «%(event_firm)s» пользователем %(event_user)s."
 
-#: .\events\helpers.py:60
+#: .\events\helpers.py:73
 #, python-format
 msgid ""
 "№ %(cart_number)s (%(cart_type)s) transfer to restore \"%(event_firm)s\" "
@@ -635,27 +654,27 @@ msgstr ""
 "№ %(cart_number)s (%(cart_type)s) отправлен на заправку в «%(event_firm)s» "
 "пользователем %(event_user)s."
 
-#: .\events\helpers.py:75
+#: .\events\helpers.py:88
 msgid "filling and cleaning, "
 msgstr "заправка и очистка, "
 
-#: .\events\helpers.py:76
+#: .\events\helpers.py:89
 msgid "Replacement fotoreceptor, "
 msgstr "замена фотобарабана, "
 
-#: .\events\helpers.py:77
+#: .\events\helpers.py:90
 msgid "replacement of squeegee, "
 msgstr "замена ракеля, "
 
-#: .\events\helpers.py:78
+#: .\events\helpers.py:91
 msgid "chip replacement, "
 msgstr "замена чипа, "
 
-#: .\events\helpers.py:79
+#: .\events\helpers.py:92
 msgid "replacing the magnetic roller, "
 msgstr "замена магнитного барабана, "
 
-#: .\events\helpers.py:81
+#: .\events\helpers.py:94
 #, python-format
 msgid ""
 "Return to the filling in the firm \"%(event_firm)s\" user %(event_user)s."
@@ -663,7 +682,7 @@ msgstr ""
 "Возврат с обслуживания в фирме \"%(event_firm)s\" пользователем "
 "%(event_user)s."
 
-#: .\events\helpers.py:85
+#: .\events\helpers.py:98
 #, python-format
 msgid ""
 "№ %(cart_number)s (%(cart_type)s) return to the filling in the firm "
@@ -672,16 +691,16 @@ msgstr ""
 "№ %(cart_number)s (%(cart_type)s) возвращен с заправки в фирме "
 "\"%(event_firm)s\" пользователем %(event_user)s."
 
-#: .\events\helpers.py:90
+#: .\events\helpers.py:103
 msgid "<br/>The following work: "
 msgstr "<br/>Проводилась работа: "
 
-#: .\events\helpers.py:100
+#: .\events\helpers.py:113
 #, python-format
 msgid "Moving in user to basket %(event_user)s."
 msgstr "Перемещен пользователем %(event_user)s в корзину."
 
-#: .\events\helpers.py:102
+#: .\events\helpers.py:115
 #, python-format
 msgid ""
 "№ %(cart_number)s (%(cart_type)s) moving in user to basket %(event_user)s."
@@ -689,22 +708,22 @@ msgstr ""
 "№ %(cart_number)s (%(cart_type)s) перемещён в корзину пользователем "
 "%(event_user)s."
 
-#: .\events\helpers.py:114
+#: .\events\helpers.py:127
 #, python-format
 msgid "Deleted user %(event_user)s."
 msgstr "Удалён пользователь %(event_user)s."
 
-#: .\events\helpers.py:116
+#: .\events\helpers.py:129
 #, python-format
 msgid "№ %(cart_number)s (%(cart_type)s) deleted user %(event_user)s."
 msgstr "№ %(cart_number)s (%(cart_type)s) удален пользователем %(event_user)s."
 
-#: .\events\helpers.py:128
+#: .\events\helpers.py:141
 #, python-format
 msgid "Return to stock from %(event_org)s user %(event_user)s."
 msgstr "Возврат на склад от %(event_org)s пользователем %(event_user)s."
 
-#: .\events\helpers.py:131
+#: .\events\helpers.py:144
 #, python-format
 msgid ""
 "№ %(cart_number)s (%(cart_type)s) return to stock from %(event_org)s user "
@@ -718,34 +737,38 @@ msgid "Adding a new consumables"
 msgstr "Добавление нового расходника"
 
 #: .\events\models.py:13
+msgid "Adding a new empty cartriges"
+msgstr " пустых картриджейДобавление"
+
+#: .\events\models.py:14
 msgid "Transfer consumables for use"
 msgstr "Передача расходника в пользование"
 
-#: .\events\models.py:14
+#: .\events\models.py:15
 msgid "Transfer Consumables for refueling"
 msgstr "Передача расходника на заправку"
 
-#: .\events\models.py:15
+#: .\events\models.py:16
 msgid "Return to the remanufactured cartridge on storage"
 msgstr "Возврат восстановленного картриджа на склад"
 
-#: .\events\models.py:16
+#: .\events\models.py:17
 msgid "Move to basket"
 msgstr "Перемещение в корзину"
 
-#: .\events\models.py:17
+#: .\events\models.py:18
 msgid "Delete cartridge"
 msgstr "Удаление картриджа"
 
-#: .\events\models.py:18
+#: .\events\models.py:19
 msgid "Passing an empty consumables stock"
 msgstr "Перемещение пустого расходника на склад"
 
-#: .\events\models.py:19
+#: .\events\models.py:20
 msgid "Creating a new user"
 msgstr "Создание нового пользователя"
 
-#: .\events\models.py:20
+#: .\events\models.py:21
 msgid "Removing a user"
 msgstr "Удаление пользователя"
 
@@ -813,72 +836,85 @@ msgstr "События"
 msgid "Description"
 msgstr "Описание"
 
-#: .\events\views.py:133
+#: .\events\views.py:132
 msgid "Not found"
 msgstr "Объект не найден."
 
-#: .\index\api\views.py:48
+#: .\index\api\views.py:49
 msgid "Firm not found"
 msgstr "Контрагент не найден"
 
-#: .\index\api\views.py:53
+#: .\index\api\views.py:54
 msgid "Firm deleted!"
 msgstr "Контрагент удалён!"
 
-#: .\index\api\views.py:72
+#: .\index\api\views.py:73
 msgid "User not assosiate with organization unit!<br/>Error code: 101."
 msgstr ""
 "Пользователь не принадлежит ни одной из организаций!<br/> Код ошибки: 101"
 
-#: .\index\api\views.py:116
+#: .\index\api\views.py:102
+msgid "Error in attrib \"data\" in input button add_item"
+msgstr "Фшибка в атрибуте \"data\" формы ввода add_item"
+
+#: .\index\api\views.py:130
 msgid "Cartridge successfully added."
 msgstr "Картридж успешно добавлен."
 
-#: .\index\api\views.py:118
+#: .\index\api\views.py:132
 msgid "Cartridges successfully added."
 msgstr "Картриджи успешно добавлены."
 
-#: .\index\api\views.py:188
+#: .\index\api\views.py:229
 msgid "Cartridges successfully moved."
 msgstr "Расходники успешно перемещены."
 
-#: .\index\api\views.py:197
+#: .\index\api\views.py:245
 msgid "Session cleared"
 msgstr "Сессия очищена"
 
-#: .\index\api\views.py:223
+#: .\index\api\views.py:271
 msgid "In demo remove nodes not allow."
 msgstr "В режиме демонтсрации удалять ноды нельзя."
 
-#: .\index\api\views.py:231
+#: .\index\api\views.py:279
 msgid ""
 "But it can not be removed because other objects reference it.<br/>Error "
 "code: 102"
 msgstr "Удаление невозможно, т. к. на объект ссылаются.<br/>Код ошибки: 102."
 
-#: .\index\api\views.py:237
+#: .\index\api\views.py:285
 msgid "Names deleted successfully."
 msgstr "Организационные подразделения успешно удалены."
 
-#: .\index\api\views.py:255
+#: .\index\api\views.py:303
 msgid "Cartridjes deleted!"
 msgstr "Картриджи удалены!"
 
-#: .\index\api\views.py:272
+#: .\index\api\views.py:320
 msgid "Error converting string numbers to int."
 msgstr "Ошибка конвертации строки в интеджер."
 
-#: .\index\api\views.py:283
+#: .\index\api\views.py:331
 msgid "This action type not implemented."
 msgstr "Данный тип действия не реализован."
 
-#: .\index\api\views.py:297
+#: .\index\api\views.py:345
 msgid "Cartridges successfully transferred to basket."
 msgstr "Картридж(и) успешно перемещены в корзину."
 
 #: .\index\forms\add_cartridge_name.py:18 .\index\forms\add_type.py:32
 msgid "This name already exists!"
 msgstr "Данное наменование уже существует!"
+
+#: .\index\forms\add_empty_items.py:41 .\index\forms\add_items.py:41
+msgid "You have entered the wrong data."
+msgstr "Вы ввели ошибочные данные."
+
+#: .\index\forms\add_empty_items.py:44 .\index\forms\add_items.py:44
+#: .\reports\forms.py:53
+msgid "The value must be greater than zero."
+msgstr "Значение должно быть больше нуля."
 
 #: .\index\forms\add_firm.py:12 .\index\models.py:50
 msgid "Select city"
@@ -900,14 +936,6 @@ msgstr "Адрес"
 #: .\index\templates\index\toner_refill.html:32
 msgid "Comments"
 msgstr "Комментарии"
-
-#: .\index\forms\add_items.py:41
-msgid "You have entered the wrong data."
-msgstr "Вы ввели ошибочные данные."
-
-#: .\index\forms\add_items.py:44 .\reports\forms.py:53
-msgid "The value must be greater than zero."
-msgstr "Значение должно быть больше нуля."
 
 #: .\index\forms\add_type.py:11
 msgid "Type consumables"
@@ -971,6 +999,37 @@ msgstr "Внутренняя ошибка сервера."
 msgid "Add city"
 msgstr "Добавить город"
 
+#: .\index\templates\index\add_empty_cartridge.html:2
+#: .\index\templates\index\add_empty_cartridge.html:3
+msgid "Adding empty cartridges to the stock"
+msgstr "Добавление пустых катриджей на склад"
+
+#: .\index\templates\index\add_empty_cartridge.html:3
+msgid "Empty cartridges"
+msgstr "Пустые картриджи"
+
+#: .\index\templates\index\add_empty_cartridge.html:20
+msgid "Filter"
+msgstr "Фильтр"
+
+#: .\index\templates\index\add_empty_cartridge.html:25
+msgid "Cartridge name"
+msgstr "Название катриджа"
+
+#: .\index\templates\index\add_empty_cartridge.html:43
+#: .\index\templates\index\add_items.html:34
+msgid "The field must be greater than zero"
+msgstr "Поле должно быть более нуля"
+
+#: .\index\templates\index\add_empty_cartridge.html:45
+msgid "Add empty cartridges"
+msgstr "Добавить"
+
+#: .\index\templates\index\add_empty_cartridge.html:47
+#: .\index\templates\index\add_items.html:40
+msgid "Clear session"
+msgstr "Очистить сессию"
+
 #: .\index\templates\index\add_firm.html:2
 #: .\index\templates\index\add_firm.html:3
 msgid "Add new firm"
@@ -991,14 +1050,6 @@ msgstr "Список новых или заправленных картридж
 #: .\index\templates\index\add_name.html:20
 msgid "Name consumables"
 msgstr "Название расходника"
-
-#: .\index\templates\index\add_items.html:34
-msgid "The field must be greater than zero"
-msgstr "Поле должно быть более нуля"
-
-#: .\index\templates\index\add_items.html:40
-msgid "Clear session"
-msgstr "Очистить сессию"
 
 #: .\index\templates\index\add_name.html:2
 #: .\index\templates\index\add_name.html:3
@@ -1025,13 +1076,13 @@ msgid "Return to the stock"
 msgstr "Вернуть на склад"
 
 #: .\index\templates\index\at_work.html:14
-#: .\index\templates\index\basket.html:17 .\index\templates\index\empty.html:22
+#: .\index\templates\index\basket.html:17 .\index\templates\index\empty.html:23
 #: .\index\templates\index\stock.html:22 .\index\templates\index\use.html:22
 msgid "Export to CSV with group"
 msgstr "Экспорт в CSV с группировкой"
 
 #: .\index\templates\index\at_work.html:15
-#: .\index\templates\index\basket.html:18 .\index\templates\index\empty.html:23
+#: .\index\templates\index\basket.html:18 .\index\templates\index\empty.html:24
 #: .\index\templates\index\stock.html:23 .\index\templates\index\use.html:23
 msgid "Export to CSV without group"
 msgstr "Экспорт в CSV без группировки"
@@ -1086,17 +1137,17 @@ msgstr "Пустые"
 msgid "Basket"
 msgstr "Корзина"
 
-#: .\index\templates\index\basket.html:39 .\index\templates\index\empty.html:44
+#: .\index\templates\index\basket.html:39 .\index\templates\index\empty.html:45
 #: .\index\templates\index\stock.html:44
 msgid "Actions"
 msgstr "Действие"
 
-#: .\index\templates\index\basket.html:51 .\index\templates\index\empty.html:56
+#: .\index\templates\index\basket.html:51 .\index\templates\index\empty.html:57
 #: .\index\templates\index\stock.html:56 .\index\templates\index\use.html:57
 msgid "Edit a comment"
 msgstr "Редактировать комментарий"
 
-#: .\index\templates\index\basket.html:52 .\index\templates\index\empty.html:57
+#: .\index\templates\index\basket.html:52 .\index\templates\index\empty.html:58
 #: .\index\templates\index\stock.html:57 .\index\templates\index\use.html:58
 msgid "Event viewer"
 msgstr "Просмотр событий"
@@ -1175,13 +1226,17 @@ msgstr "Пустые расходники"
 msgid "Transfer to refuel"
 msgstr "Передать на заправку"
 
-#: .\index\templates\index\empty.html:15 .\index\templates\index\stock.html:15
+#: .\index\templates\index\empty.html:15
+msgid "Add_empty"
+msgstr "Добавить пустые"
+
+#: .\index\templates\index\empty.html:16 .\index\templates\index\stock.html:15
 #: .\index\templates\index\transfe_empty_to_basket.html:12
 #: .\index\templates\index\use.html:15
 msgid "In basket"
 msgstr "В корзину"
 
-#: .\index\templates\index\empty.html:42
+#: .\index\templates\index\empty.html:43
 msgid "in stock"
 msgstr "на склад"
 
@@ -1314,46 +1369,46 @@ msgstr "Подчиняется"
 msgid "Structure of the organization"
 msgstr "Структура организации"
 
-#: .\index\views.py:125
+#: .\index\views.py:126
 #, python-format
 msgid "%(cart_name)s already exists"
 msgstr "%(cart_name)s уже существует."
 
-#: .\index\views.py:129
+#: .\index\views.py:130
 #, python-format
 msgid "%(cart_name)s success added"
 msgstr "%(cart_name)s успешно добавлен."
 
-#: .\index\views.py:189 .\index\views.py:204
+#: .\index\views.py:228 .\index\views.py:243
 #, python-format
 msgid "Organization unit %(org_name)s exist"
 msgstr "Организационное подразделение %(org_name)s уже существует."
 
-#: .\index\views.py:194 .\index\views.py:200
+#: .\index\views.py:233 .\index\views.py:239
 #, python-format
 msgid "Organization unit %(org_name)s create successfuly."
 msgstr "Организационное подразделение %(org_name)s успешно создано."
 
-#: .\index\views.py:248
+#: .\index\views.py:287
 #, python-format
 msgid "%(cart_type)s success save"
 msgstr "%(cart_type)s успешно сохранён."
 
-#: .\index\views.py:252
+#: .\index\views.py:291
 #, python-format
 msgid "New type %(cart_type)s success added"
 msgstr "Новый тип %(cart_type)s успешно добавлен."
 
-#: .\index\views.py:374
+#: .\index\views.py:413
 msgid "Select all"
 msgstr "Выбрать все"
 
-#: .\index\views.py:423
+#: .\index\views.py:462
 #, python-format
 msgid "Firm \"%(firm_name)s\" success added."
 msgstr "Контрагент \"%(firm_name)s\" успешно добавлен."
 
-#: .\index\views.py:568
+#: .\index\views.py:607
 msgid "You input not correct firm name"
 msgstr "Вы ввели неправильное имя контрагента."
 
