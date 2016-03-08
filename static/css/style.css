@@ -332,6 +332,10 @@ label {
     margin: 0px;
 }
 
+#id_doc {
+    width:430px;
+}
+
 .filter_spinner {
     padding: 0;
     margin: 0;

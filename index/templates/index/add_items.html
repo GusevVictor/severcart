@@ -16,11 +16,23 @@
         <div class="large-6 columns">
             <form action="" method="post">
                 {% csrf_token %}
-                <label class="required" for="{{ form.cartName.id_for_label }}">{% trans "Name consumables" %}</label>
-                <div class="input_row">
-                    {{ form.cartName }} <a class="dj_button add" href="{% url 'add_name' %}"></a>
+                            <div class="row">
+                <div class="large-6 medium-6 columns">
+                    <label for="id_filter_ca">{% trans "Filter" %}</label>
+                    <input class="inline left" id="id_filter_ca" name="filter_ca" type="text">
+                    <img class="inline right filter_spinner" src="{{ STATIC_URL }}img/loader.gif" />
                 </div>
-                <div class="form_error_text cart_name_error">{% trans "Required field" %}</div>
+                <div class="large-6 medium-6 columns">
+                    <label class="required" for="id_cartName">{% trans "Cartridge name" %}</label>
+                    <div class="input_row">
+                        <select class="dinamic_list" id="id_cartName">
+                            <option></option>
+                        </select>
+                        <a class="dj_button add" href="{% url 'add_name' %}"></a>
+                    </div>
+                    <div class="form_error_text cart_name_error">{% trans "Required field" %}</div>
+                </div>
+            </div>
                 
                 <label class="marginTop" for="{{ form.doc.id_for_label }}">{% trans "Delivery agreement" %}</label>
                 <div class="input_row">

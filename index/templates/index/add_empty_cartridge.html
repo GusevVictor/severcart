@@ -15,6 +15,7 @@
 <div class="row">
     <div class="large-6 columns">
         <form>
+            {% csrf_token %}
             <div class="row">
                 <div class="large-6 medium-6 columns">
                     <label for="id_filter_ca">{% trans "Filter" %}</label>

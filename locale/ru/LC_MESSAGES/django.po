@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-03-08 19:38+0500\n"
-"PO-Revision-Date: 2016-03-08 19:46+0500\n"
+"PO-Revision-Date: 2016-03-08 20:18+0500\n"
 "Last-Translator: \n"
 "Language-Team: severcart.org <sfcl@mail.ru>\n"
 "Language: ru\n"
@@ -616,15 +616,15 @@ msgstr ""
 #: .\events\helpers.py:43
 #, python-format
 msgid "Added empty cartridge user %(user_name)s."
-msgstr "Пустой картридж добавлен пользователем %(user_name)s."
+msgstr "Пользователь %(user_name)s добавил пустой картридж."
 
 #: .\events\helpers.py:45
 #, python-format
 msgid ""
 "Added empty cartridge № %(cart_number)s (%(cart_type)s) user %(user_name)s."
 msgstr ""
-"Пустой картридж № %(cart_number)s (%(cart_type)s) добавлен пользователем "
-"%(user_name)s."
+"Пользователь %(user_name)s добавил пустой картридж № %(cart_number)s "
+"(%(cart_type)s)."
 
 #: .\events\helpers.py:56
 #, python-format
@@ -901,7 +901,7 @@ msgstr "Данный тип действия не реализован."
 
 #: .\index\api\views.py:345
 msgid "Cartridges successfully transferred to basket."
-msgstr "Картридж(и) успешно перемещены в корзину."
+msgstr "Картридж(и) успешно перемещен(ы) в корзину."
 
 #: .\index\forms\add_cartridge_name.py:18 .\index\forms\add_type.py:32
 msgid "This name already exists!"
@@ -1038,13 +1038,13 @@ msgstr "Добавление нового контрагента"
 #: .\index\templates\index\add_items.html:2
 #: .\index\templates\index\add_items.html:3
 msgid "Adding objects to the stock"
-msgstr "Добавление объектов на склад"
+msgstr "Добавление новых на склад"
 
 #: .\index\templates\index\add_items.html:3
 #: .\index\templates\index\stock.html:2 .\index\templates\index\stock.html:3
 #: .\index\templates\index\transfe_for_use.html:4
 msgid "List of new or refilled cartridges"
-msgstr "Список новых или заправленных картриджей"
+msgstr "Список новых или заправленных"
 
 #: .\index\templates\index\add_items.html:19
 #: .\index\templates\index\add_name.html:20
