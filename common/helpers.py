@@ -69,7 +69,7 @@ class BreadcrumbsPath(object):
         """
         bread_list = request.session['bcback']
         current_url = request.META['PATH_INFO']
-        index_current_url = bread_list.index(current_url, -1)
+        index_current_url = bread_list.index(current_url)
         if len(bread_list) >= 2:
             return bread_list[index_current_url-1]
         else:

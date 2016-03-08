@@ -9,6 +9,7 @@ from django.db import transaction
 
 
 sign_add_full_to_stock       = Signal(providing_args=['num', 'cart_type', 'user', 'request'])
+sign_add_empty_to_stock      = Signal(providing_args=['num', 'cart_type', 'user', 'request'])
 sign_tr_cart_to_uses         = Signal(providing_args=['list_cplx', 'org' , 'request'])
 sign_tr_cart_to_basket       = Signal(providing_args=['list_cplx', 'request'])
 sign_tr_empty_cart_to_stock  = Signal(providing_args=['list_cplx', 'request'])
@@ -28,6 +29,22 @@ def event_add_cart(**kwargs):
                 cart_number = elem[1],
                 cart_type   = elem[2],
                 event_type  = 'AD',
+                event_user  = str(kwargs.get('request').user),
+            )
+            m1.save()
+
+def event_add_empty_cart(**kwargs):
+    if len(kwargs.get('list_cplx', 0)) == 0:
+        raise ValueError('Error in handler event_add_cart!')
+    
+    with transaction.atomic():
+        for elem in kwargs.get('list_cplx'):
+            m1 = Events(departament = kwargs.get('request').user.departament.pk,
+                date_time   = timezone.now(),
+                cart_index  = elem[0],
+                cart_number = elem[1],
+                cart_type   = elem[2],
+                event_type  = 'ADE',
                 event_user  = str(kwargs.get('request').user),
             )
             m1.save()
@@ -153,6 +170,7 @@ def event_tr_filled_cart_to_stock(**kwargs):
             m1.save()
 
 sign_add_full_to_stock.connect(event_add_cart)
+sign_add_empty_to_stock.connect(event_add_empty_cart)
 sign_tr_cart_to_uses.connect(event_transfe_cart_to_uses)
 sign_tr_cart_to_basket.connect(event_transfe_cart_to_basket)
 sign_tr_empty_cart_to_stock.connect(event_tr_empty_cart_to_stock)

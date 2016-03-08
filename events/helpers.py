@@ -36,6 +36,19 @@ def events_decoder(qso, simple=True):
             entry_obj['text_com'] = text_com
             frdly_es.append(entry_obj)
 
+        elif entry.event_type == 'ADE':
+            entry_obj = {}
+            data_env = entry.date_time
+            if simple:
+                text_com = _('Added empty cartridge user %(user_name)s.') % {'user_name': entry.event_user}
+            else:
+                text_com = _('Added empty cartridge № %(cart_number)s (%(cart_type)s) user %(user_name)s.') % {'cart_number': entry.cart_number, 
+                                                                                                'cart_type': entry.cart_type, 
+                                                                                                'user_name': entry.event_user}
+            entry_obj['data_env'] = data_env
+            entry_obj['text_com'] = text_com
+            frdly_es.append(entry_obj)
+
         elif entry.event_type == 'TR':
             entry_obj = {}
             data_env = entry.date_time

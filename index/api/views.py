@@ -18,7 +18,8 @@ from index.helpers import check_ajax_auth
 from index.signals import ( sign_turf_cart, 
                             sign_add_full_to_stock, 
                             sign_tr_empty_cart_to_stock,
-                            sign_tr_cart_to_basket, )
+                            sign_tr_cart_to_basket, 
+                            sign_add_empty_to_stock, )
 from index.forms.add_items import AddItems
 from docs.models import SCDoc
 
@@ -79,6 +80,7 @@ def ajax_add_session_items(request):
         cart_name_id = data_in_post.get('cartName').pk
         cart_name    = data_in_post.get('cartName').cart_itm_name
         cart_name    = str(cart_name)
+        cart_type    = request.POST.get('cart_type')
         if data_in_post.get('doc'):
             cart_doc_id = data_in_post.get('doc')
         else:
@@ -89,15 +91,26 @@ def ajax_add_session_items(request):
             children  = root_ou.get_family()
         except AttributeError:
             children = ''
-        # Добавляем картриджи в БД
+
+        # чтобы не плодить лишние сущности зделано одно вью для добавления разных картриджей
+        if cart_type == 'full':
+            cart_status = 1
+        elif cart_type == 'empty':
+            cart_status = 3
+        else:
+            tmp_dict['error'] ='1'
+            tmp_dict['mes']   = _('Error in attrib "data" in input button add_item')
+            return JsonResponse(tmp_dict)
+
+        # находим нужный номер для отсчёта добавления новых картриджей
         last_num     = CartridgeItem.objects.filter(departament__in=children).order_by('-cart_number')
         if last_num:
             last_num = last_num[0].cart_number
         else:
             last_num = 0
         cart_number  = last_num + 1
-        # получаем объект текущего пользователя
         list_cplx = []
+        # Добавляем картриджи в БД
         with transaction.atomic():
             for i in range(cart_count):
                 m1 = CartridgeItem(cart_number=cart_number,
@@ -106,6 +119,7 @@ def ajax_add_session_items(request):
                                    cart_date_change=timezone.now(),
                                    cart_number_refills=0,
                                    departament=request.user.departament,
+                                   cart_status=cart_status,
                                    delivery_doc=cart_doc_id,
                                    )
                 m1.save()
@@ -118,30 +132,58 @@ def ajax_add_session_items(request):
             tmpl_message = _('Cartridges successfully added.')
 
         # запускаем сигнал добавления событий
-        sign_add_full_to_stock.send(sender=None, list_cplx=list_cplx, request=request)
-        
-        numbers = [ i[1] for i in list_cplx ] 
-        # наполняем сессионную переменную cumulative_list
-        tmp_list = [cart_name_id, cart_doc_id, numbers]
-        if request.session.get('cumulative_list', False):
-            # если в сессионной переменной уже что-то есть
-            session_data = request.session.get('cumulative_list')
-            session_data = json.loads(session_data)
-            session_data.append(tmp_list)
-            use2var = session_data
-            session_data = json.dumps(session_data)
-            # перезаписываем переменную в сессии новыми значениями
-            request.session['cumulative_list'] = session_data
+        if cart_status == 1:
+            sign_add_full_to_stock.send(sender=None, list_cplx=list_cplx, request=request)
+        elif cart_status == 3:
+            sign_add_empty_to_stock.send(sender=None, list_cplx=list_cplx, request=request)
         else:
-            # если сессионная added_list пуста
-            use2var = [ tmp_list ]
-            tmp_list = json.dumps(use2var)
-            request.session['cumulative_list'] = tmp_list        
-        # заполняем тупой кэш нужными данными названий картриджей и их айдишников, это минимизирует обращения к базу
+            pass
+
+        # заполняем тупой кэш нужными данными названий картриджей и их айдишников, это минимизирует обращения к базе
+        # в будующем
         simple_cache = dict()
         list_names = CartridgeItemName.objects.all()
         for elem in list_names:
             simple_cache[elem.pk] = elem.cart_itm_name
+
+        numbers = [ i[1] for i in list_cplx ]
+        # для экономного расходования дискового пространства будем использовать идешники
+        tmp_list = [cart_name_id, cart_doc_id, numbers]
+        if cart_status == 1:
+            # наполняем сессионную переменную cumulative_list если производится 
+            # добавление новых картриджей на склад
+            if request.session.get('cumulative_list', False):
+                # если в сессионной переменной уже что-то есть
+                session_data = request.session.get('cumulative_list')
+                session_data = json.loads(session_data)
+                session_data.append(tmp_list)
+                use2var = session_data
+                session_data = json.dumps(session_data)
+                # перезаписываем переменную в сессии новыми значениями
+                request.session['cumulative_list'] = session_data
+            else:
+                # если сессионная cumulative_list пуста
+                use2var = [ tmp_list ]
+                tmp_list = json.dumps(use2var)
+                request.session['cumulative_list'] = tmp_list
+        elif cart_status == 3:
+            # наполняем сессионную переменную empty_cart_list если производится 
+            # добавление БУшных картриджей на склад
+            if request.session.get('empty_cart_list', False):
+                # если в сессионной переменной уже что-то есть
+                session_data = request.session.get('empty_cart_list')
+                session_data = json.loads(session_data)
+                session_data.append(tmp_list)
+                use2var = session_data
+                session_data = json.dumps(session_data)
+                # перезаписываем переменную в сессии новыми значениями
+                request.session['empty_cart_list'] = session_data
+            else:
+                # если сессионная empty_cart_list пуста
+                use2var = [ tmp_list ]
+                tmp_list = json.dumps(use2var)
+                request.session['empty_cart_list'] = tmp_list
+
         # формируем http ответ
         # формат  [ [name, title,  numbers=[1,2,3,4]] ... ]
         list_items = list()
@@ -160,7 +202,6 @@ def ajax_add_session_items(request):
     else:
         #form.errors
         pass
-    #return HttpResponse(html)
     return JsonResponse(tmp_dict, safe=False)
 
 
@@ -191,9 +232,16 @@ def transfer_to_stock(request):
 
 @check_ajax_auth
 def clear_session(request):
-    """Очищаем сессионную переменную от cumulative_list
+    """Очищаем сессионные переменные
     """
-    request.session['cumulative_list'] = None
+    cart_type    = request.POST.get('cart_type')
+    if cart_type == 'full':
+        request.session['cumulative_list'] = None
+    elif cart_type == 'empty':
+        request.session['empty_cart_list'] = None
+    else:
+        pass
+    
     return HttpResponse(_('Session cleared'))
 
 
@@ -295,4 +343,25 @@ def transfer_to_basket(request):
     sign_tr_cart_to_basket.send(sender=None, list_cplx=list_cplx, request=request)
     ansver['error'] = '0'
     ansver['text']   = _('Cartridges successfully transferred to basket.')
+    return JsonResponse(ansver)
+
+
+@check_ajax_auth
+def names_suggests(request):
+    """
+    """
+    if request.method != 'POST':
+        return HttpResponse('<h1>' + _('Only use POST requests!') + '</h1>')
+
+    ansver   = dict()
+    tmp_list = list()
+    cart_name       = request.POST.get('cart_name', '')
+    cart_name       = cart_name.strip()
+    if cart_name:
+        names_list      = CartridgeItemName.objects.filter(cart_itm_name__icontains=cart_name)
+        for name_item in names_list:
+            tmp_list.append([name_item.pk, name_item.cart_itm_name])
+        ansver['res']  = tmp_list
+    else:
+        ansver['res']   = [['', '']]
     return JsonResponse(ansver)

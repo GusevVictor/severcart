@@ -79,7 +79,6 @@ def show_events(request):
                                            )
 
             elif start_date and end_date:
-                print('4', start_date, end_date)
                 # вторая дата не попадает в диапазон, поэтому приболяем к ней 1 день
                 end_date = end_date + datetime.timedelta(days=1)
                 list_events = list_events.filter(Q(date_time__lte=end_date) & Q(date_time__gte=start_date))
