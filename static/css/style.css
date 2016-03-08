@@ -113,7 +113,9 @@ span.gi {
     margin-right: 5px;
 }
 
-.spinner, .export_spinner {
+.spinner, 
+.export_spinner,
+.filter_spinner {
     margin-left: 10px;
     display: none;
 }
@@ -311,12 +313,28 @@ label.required {
     display: inline-block;
 }
 
+
 .input_row select {
-    margin-right: 10px;
+    margin-right: 0px;
 }
 
 label {
     padding-left: 15px;
+}
+
+#id_filter_ca {
+    width: 200px;
+}
+
+#id_cartName {
+    width: 180px;
+    display: inline-block;   
+    margin: 0px;
+}
+
+.filter_spinner {
+    padding: 0;
+    margin: 0;
 }
 
 a.current {

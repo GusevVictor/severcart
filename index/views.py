@@ -22,6 +22,7 @@ from .forms.add_items import AddItems
 from .forms.add_city import CityF
 from .forms.add_type import AddCartridgeType
 from .forms.add_firm import FirmTonerRefillF
+from .forms.add_empty_items import AddEmptyItems
 from .forms.comment import EditCommentForm
 from .models import CartridgeType
 from accounts.models import AnconUser
@@ -164,6 +165,17 @@ def add_cartridge_item(request):
 
     html = render_to_string('index/add_over_ajax.html', context={'list_items': list_items})
     return render(request, 'index/add_items.html', {'form': form_obj, 'session': html, 'back': back})
+
+
+@login_required
+def add_empty_cartridge(request):
+    """Добавление пустых картриджей.
+    """
+    context         = {}
+    back            = BreadcrumbsPath(request).before_page(request)
+    context['form'] = AddEmptyItems()
+    context['back'] = back
+    return render(request, 'index/add_empty_cartridge.html', context)
 
 
 @login_required

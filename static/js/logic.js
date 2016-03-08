@@ -96,6 +96,7 @@ $( function(){
         var cart_name = $('#id_cartName option:selected').val();
         var docum     = $('#id_doc option:selected').val();
         var cont      = parseInt($('#id_cartCount').val());
+        var cart_type = $(this).attr('data'); 
         if (!cart_name) {
             $('.cart_name_error').show();
         } else {
@@ -112,7 +113,7 @@ $( function(){
             $.ajax({
                 method: 'POST',
                 url: '/api/ajax_add_session_items/',
-                data:  {'cartName': cart_name, 'doc': docum, 'cartCount': cont },
+                data:  {'cartName': cart_name, 'doc': docum, 'cartCount': cont, 'cart_type': cart_type },
                 beforeSend: function( xhr, settings ){
                     $('.spinner').css('display', 'inline');
                     csrftoken = getCookie('csrftoken');
@@ -881,6 +882,55 @@ $( function(){
         var move_url = $(this).attr('href');
         var loc = move_url + '?id=' + selected + '&back=' + window.location.pathname;
         window.location.href = loc;
+    });
+
+    $('#id_filter_ca').keyup( function(e) {
+        var code = (e.keyCode ? e.keyCode : e.which);
+        // the tab key will force the focus to the next input
+          // already on keydown, let's prevent that
+          // unless the alt key is pressed for convenience
+        if (code == 9 || code == 13 || code == 38 || code == 40 || code == 18 || code == 17 || code == 39 || code == 37) {
+            e.preventDefault();
+            return false;
+          // let's prevent default enter behavior while a suggestion
+          // is being accepted (e.g. while submitting a form)
+        } else {
+            var cart_name = $(this).val();
+            cart_name = cart_name.trim();
+            if (!cart_name) {
+                // отсекаем часть ненужных-пустых запросов к серверу
+                $('.dinamic_list').find('option').remove().end(); // очищаем весь  select 
+                return false;
+            }
+            $('.filter_spinner').css('display', 'block');
+            $.ajax({
+                method: 'POST',
+                url: '/api/names_suggests/',
+                data: {'cart_name': cart_name},
+                beforeSend: function( xhr, settings ){
+                    csrftoken = getCookie('csrftoken');
+                    if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
+                        xhr.setRequestHeader('X-CSRFToken', csrftoken);
+                    }
+                },
+                success: function( msg ) {
+                    $('.filter_spinner').hide();
+                    $('.error_msg').hide();
+                    $('.dinamic_list').find('option').remove().end(); // очищаем весь  select 
+                    for (var i = 0; i < msg.res.length; i++) {
+                        // добавляем в селект новые опции
+                        $('.dinamic_list').append($('<option>', { value: msg.res[i][0], text : msg.res[i][1] }));;
+                    }
+
+                },
+                error: function() {
+                    $('.filter_spinner').hide();
+                    $('.error_msg').show();
+                    setTimeout(function() { $('.error_msg').html('<p>Server not available.</p>'); }, 12000);
+                },
+            });
+        }
+          
     });
 
 });

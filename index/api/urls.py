@@ -2,7 +2,8 @@
 from django.conf.urls import include, url
 from index.api.views import (   ajax_add_session_items, 
                                 city_list,
-                                del_node, 
+                                del_node,
+                                names_suggests, 
                                 turf_cartridge,
                                 clear_session,
                                 transfer_to_stock,
@@ -21,4 +22,5 @@ urlpatterns = [
     url('^transfer_to_stock/', transfer_to_stock),
     url('^transfer_to_basket/', transfer_to_basket),
     url('^del_firm/', del_firm),
+    url('^names_suggests/', names_suggests),
 ]

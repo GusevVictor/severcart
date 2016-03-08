@@ -18,7 +18,8 @@ from index.helpers import check_ajax_auth
 from index.signals import ( sign_turf_cart, 
                             sign_add_full_to_stock, 
                             sign_tr_empty_cart_to_stock,
-                            sign_tr_cart_to_basket, )
+                            sign_tr_cart_to_basket, 
+                            sign_add_empty_to_stock, )
 from index.forms.add_items import AddItems
 from docs.models import SCDoc
 
@@ -79,6 +80,7 @@ def ajax_add_session_items(request):
         cart_name_id = data_in_post.get('cartName').pk
         cart_name    = data_in_post.get('cartName').cart_itm_name
         cart_name    = str(cart_name)
+        cart_type    = request.POST.get('cart_type')
         if data_in_post.get('doc'):
             cart_doc_id = data_in_post.get('doc')
         else:
@@ -89,15 +91,26 @@ def ajax_add_session_items(request):
             children  = root_ou.get_family()
         except AttributeError:
             children = ''
-        # Добавляем картриджи в БД
+
+        # чтобы не плодить лишние сущности зделано одно вью для добавления разных картриджей
+        if cart_type == 'full':
+            cart_status = 1
+        elif cart_type == 'empty':
+            cart_status = 3
+        else:
+            tmp_dict['error'] ='1'
+            tmp_dict['mes']   = _('Error in attrib "data" in input button add_item')
+            return JsonResponse(tmp_dict)
+
+        # находим нужный номер для отсчёта добавления новых картриджей
         last_num     = CartridgeItem.objects.filter(departament__in=children).order_by('-cart_number')
         if last_num:
             last_num = last_num[0].cart_number
         else:
             last_num = 0
         cart_number  = last_num + 1
-        # получаем объект текущего пользователя
         list_cplx = []
+        # Добавляем картриджи в БД
         with transaction.atomic():
             for i in range(cart_count):
                 m1 = CartridgeItem(cart_number=cart_number,
@@ -106,6 +119,7 @@ def ajax_add_session_items(request):
                                    cart_date_change=timezone.now(),
                                    cart_number_refills=0,
                                    departament=request.user.departament,
+                                   cart_status=cart_status,
                                    delivery_doc=cart_doc_id,
                                    )
                 m1.save()
@@ -118,10 +132,15 @@ def ajax_add_session_items(request):
             tmpl_message = _('Cartridges successfully added.')
 
         # запускаем сигнал добавления событий
-        sign_add_full_to_stock.send(sender=None, list_cplx=list_cplx, request=request)
-        
-        numbers = [ i[1] for i in list_cplx ] 
+        if cart_status == 1:
+            sign_add_full_to_stock.send(sender=None, list_cplx=list_cplx, request=request)
+        elif cart_status == 3:
+            sign_add_empty_to_stock.send(sender=None, list_cplx=list_cplx, request=request)
+        else:
+            pass
+
         # наполняем сессионную переменную cumulative_list
+        numbers = [ i[1] for i in list_cplx ] 
         tmp_list = [cart_name_id, cart_doc_id, numbers]
         if request.session.get('cumulative_list', False):
             # если в сессионной переменной уже что-то есть
@@ -160,7 +179,6 @@ def ajax_add_session_items(request):
     else:
         #form.errors
         pass
-    #return HttpResponse(html)
     return JsonResponse(tmp_dict, safe=False)
 
 
@@ -295,4 +313,25 @@ def transfer_to_basket(request):
     sign_tr_cart_to_basket.send(sender=None, list_cplx=list_cplx, request=request)
     ansver['error'] = '0'
     ansver['text']   = _('Cartridges successfully transferred to basket.')
+    return JsonResponse(ansver)
+
+
+@check_ajax_auth
+def names_suggests(request):
+    """
+    """
+    if request.method != 'POST':
+        return HttpResponse('<h1>' + _('Only use POST requests!') + '</h1>')
+
+    ansver   = dict()
+    tmp_list = list()
+    cart_name       = request.POST.get('cart_name', '')
+    cart_name       = cart_name.strip()
+    if cart_name:
+        names_list      = CartridgeItemName.objects.filter(cart_itm_name__icontains=cart_name)
+        for name_item in names_list:
+            tmp_list.append([name_item.pk, name_item.cart_itm_name])
+        ansver['res']  = tmp_list
+    else:
+        ansver['res']   = [['', '']]
     return JsonResponse(ansver)

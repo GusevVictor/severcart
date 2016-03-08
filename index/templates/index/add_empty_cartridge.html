@@ -1,0 +1,57 @@
+{% extends "index/base.html" %}{% load staticfiles %}{% load i18n %}
+{% block title %}{% trans "Adding empty cartridges to the stock" %}{% endblock %}
+{% block breadcrumbs %}<a href="/"><img src="{{ STATIC_URL }}img/home.png" /></a> / <a href="{% url 'empty' %}">{% trans "Empty cartridges" %}</a> / {% trans "Adding empty cartridges to the stock" %}{% endblock %}
+{% block jqueryui %}
+    <link rel="stylesheet" href="{{ STATIC_URL }}css/pm_widget.css" />
+    <script src="{{ STATIC_URL }}js/pm_widget.js"></script>
+{% endblock %}
+{% block content %}
+<div class="row">
+    <div class="large-6 columns">
+        <div class="success_msg"></div>
+        <div class="error_msg"></div>
+    </div>
+</div>
+<div class="row">
+    <div class="large-6 columns">
+        <form>
+            <div class="row">
+                <div class="large-6 medium-6 columns">
+                    <label for="id_filter_ca">{% trans "Filter" %}</label>
+                    <input class="inline left" id="id_filter_ca" name="filter_ca" type="text">
+                    <img class="inline right filter_spinner" src="{{ STATIC_URL }}img/loader.gif" />
+                </div>
+                <div class="large-6 medium-6 columns">
+                    <label class="required" for="id_cartName">{% trans "Cartridge name" %}</label>
+                    <div class="input_row">
+                        <select class="dinamic_list" id="id_cartName">
+                            <option></option>
+                        </select>
+                        <a class="dj_button add" href="{% url 'add_name' %}"></a>
+                    </div>
+                    <div class="form_error_text cart_name_error">{% trans "Required field" %}</div>
+                </div>
+            </div>
+            <label class="marginTop" for="{{ form.doc.id_for_label }}">{% trans "Delivery agreement" %}</label>
+            <div class="input_row">
+                {{ form.doc }} <a class="dj_button add" href="{% url 'docs:delivery' %}"></a>
+            </div>
+            <label class='required marginTop' for="{{ form.cartCount.id_for_label }}">{% trans "Amount" %}</label>
+            <div class="input_row">
+                {{ form.cartCount }}
+            </div>
+            <div class="form_error_text cart_count_error">{% trans "The field must be greater than zero" %}</div>
+            <div class="marginTop">
+                <input type="submit" value="{% trans 'Add empty cartridges' %}" class="button success add_items no_follow" data="empty" />&nbsp;&nbsp;&nbsp;
+                <a href="{{ back }}" class="button"/>{% trans "Back" %}</a>&nbsp;&nbsp;&nbsp;
+                <img class="spinner" src="{{ STATIC_URL }}img/loader.gif" />
+            </div>
+        </form>
+    </div>
+    <div class="large-6 column">
+        <div class="session_data">
+            <p>{{ session }}</p>
+        </div>
+    </div>
+</div>
+{% endblock %}

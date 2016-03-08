@@ -10,6 +10,7 @@ class Events(models.Model):
 
     ETYPE_CHOICES = (
         ('AD', _('Adding a new consumables')),
+        ('ADE', _('Adding a new empty cartriges')),
         ('TR', _('Transfer consumables for use')),
         ('TF', _('Transfer Consumables for refueling')),
         ('RS', _('Return to the remanufactured cartridge on storage')),
