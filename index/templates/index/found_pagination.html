@@ -1,8 +1,8 @@
 
     <div class="row">
-        <div class="large-12 columns">
+        <div class="large-10 columns">
             {% if items.paginator.num_pages > 1 %}
-            <ul class="pagination left">
+            <ul class="pagination">
                 {% if items.has_previous %}
                     <li class="arrow"><a href="?page={{ items.previous_page_number }}">&laquo;</a></li>
                 {% else %}
@@ -22,7 +22,9 @@
                 {% endif %}
             </ul>
             {% endif %}
-            <ul class="page_size right">
+        </div>
+        <div class="large-2 columns">
+            <ul class="page_size">
                 <li><a {% if spp == '12' %}class="current"{% endif %} href="?page_size=12">12</a></li>
                 <li><a {% if spp == '24' %}class="current"{% endif %} href="?page_size=24">24</a></li>
                 <li><a {% if spp == '48' %}class="current"{% endif %} href="?page_size=48">48</a></li>
