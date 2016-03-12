@@ -201,7 +201,6 @@ def add_empty_cartridge(request):
                            'title': title})
 
     context['session'] = render_to_string('index/add_over_ajax.html', context={'list_items': list_items})
-    ########################
     return render(request, 'index/add_empty_cartridge.html', context)
 
 
