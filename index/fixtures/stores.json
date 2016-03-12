@@ -1,0 +1,10943 @@
+[{
+  "model": "index.cartridgetype",
+  "pk": 1,
+  "fields": {
+    "cart_type": "\u041a\u0430\u0440\u0442\u0440\u0438\u0434\u0436",
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgetype",
+  "pk": 3,
+  "fields": {
+    "cart_type": "\u0422\u043e\u043d\u0435\u0440\u0442\u0443\u0431\u0430",
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 12,
+  "fields": {
+    "cart_itm_name": "HP C4810A",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 13,
+  "fields": {
+    "cart_itm_name": "HP 92274\u0410",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 14,
+  "fields": {
+    "cart_itm_name": "HP C3900A",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 15,
+  "fields": {
+    "cart_itm_name": "HP C4092A",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 16,
+  "fields": {
+    "cart_itm_name": "HP Q2612A",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 17,
+  "fields": {
+    "cart_itm_name": "HP Q2610A",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 18,
+  "fields": {
+    "cart_itm_name": "HP C4911A",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 19,
+  "fields": {
+    "cart_itm_name": "HP C4912A",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 20,
+  "fields": {
+    "cart_itm_name": "HP C4913A",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 21,
+  "fields": {
+    "cart_itm_name": "HP C4844A",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 22,
+  "fields": {
+    "cart_itm_name": "HP Q2613A",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 23,
+  "fields": {
+    "cart_itm_name": "HP C7115A",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 24,
+  "fields": {
+    "cart_itm_name": "HP C7115X",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 25,
+  "fields": {
+    "cart_itm_name": "HP C3906A",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 26,
+  "fields": {
+    "cart_itm_name": "HP C4127A",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 27,
+  "fields": {
+    "cart_itm_name": "HP C4127X",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 28,
+  "fields": {
+    "cart_itm_name": "HP Q5949X",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 29,
+  "fields": {
+    "cart_itm_name": "HP Q5949A",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 30,
+  "fields": {
+    "cart_itm_name": "HP Q2613X",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 31,
+  "fields": {
+    "cart_itm_name": "HP Q6003A",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 32,
+  "fields": {
+    "cart_itm_name": "HP Q6002A",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 33,
+  "fields": {
+    "cart_itm_name": "HP Q6001A",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 34,
+  "fields": {
+    "cart_itm_name": "HP Q6000A",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 35,
+  "fields": {
+    "cart_itm_name": "HP 51644Y",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 36,
+  "fields": {
+    "cart_itm_name": "HP 51644M",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 37,
+  "fields": {
+    "cart_itm_name": "HP 51644C",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 38,
+  "fields": {
+    "cart_itm_name": "HP 51640A",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 39,
+  "fields": {
+    "cart_itm_name": "HP C9429A",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 40,
+  "fields": {
+    "cart_itm_name": "HP C9427A",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 41,
+  "fields": {
+    "cart_itm_name": "HP C9425A",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 42,
+  "fields": {
+    "cart_itm_name": "HP C9426A",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 43,
+  "fields": {
+    "cart_itm_name": "HP C5016A",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 44,
+  "fields": {
+    "cart_itm_name": "HP C9428A",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 45,
+  "fields": {
+    "cart_itm_name": "HP Q3960A",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 46,
+  "fields": {
+    "cart_itm_name": "HP Q3961A",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 47,
+  "fields": {
+    "cart_itm_name": "HP Q3962A",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 48,
+  "fields": {
+    "cart_itm_name": "HP Q3963A",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 49,
+  "fields": {
+    "cart_itm_name": "HP Q3971A",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 50,
+  "fields": {
+    "cart_itm_name": "HP Q3972A",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 51,
+  "fields": {
+    "cart_itm_name": "HP Q3973A",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 52,
+  "fields": {
+    "cart_itm_name": "HP Q7560A",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 53,
+  "fields": {
+    "cart_itm_name": "HP Q7561A",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 54,
+  "fields": {
+    "cart_itm_name": "HP Q7562A",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 55,
+  "fields": {
+    "cart_itm_name": "HP Q7563A",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 56,
+  "fields": {
+    "cart_itm_name": "HP Q6470A",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 57,
+  "fields": {
+    "cart_itm_name": "HP Q6471A",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 58,
+  "fields": {
+    "cart_itm_name": "HP Q6472A",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 59,
+  "fields": {
+    "cart_itm_name": "HP Q6473A",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 60,
+  "fields": {
+    "cart_itm_name": "HP Q7581A",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 61,
+  "fields": {
+    "cart_itm_name": "HP Q7582A",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 62,
+  "fields": {
+    "cart_itm_name": "HP Q7583A",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 63,
+  "fields": {
+    "cart_itm_name": "HP C3903A",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 64,
+  "fields": {
+    "cart_itm_name": "HP 51649A",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 65,
+  "fields": {
+    "cart_itm_name": "HP 51629A",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 66,
+  "fields": {
+    "cart_itm_name": "HP 51645AE",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 67,
+  "fields": {
+    "cart_itm_name": "HP C1823A",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 68,
+  "fields": {
+    "cart_itm_name": "HP Q6511A",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 69,
+  "fields": {
+    "cart_itm_name": "HP Q6511X",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 70,
+  "fields": {
+    "cart_itm_name": "HP C4096A",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 71,
+  "fields": {
+    "cart_itm_name": "HP C6656A",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 72,
+  "fields": {
+    "cart_itm_name": "HP C6656AE",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 73,
+  "fields": {
+    "cart_itm_name": "HP C6657A",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 74,
+  "fields": {
+    "cart_itm_name": "HP C6657AE",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 75,
+  "fields": {
+    "cart_itm_name": "HP C9730A",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 76,
+  "fields": {
+    "cart_itm_name": "HP C9731A",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 77,
+  "fields": {
+    "cart_itm_name": "HP C9732A",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 78,
+  "fields": {
+    "cart_itm_name": "HP C9733A",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 79,
+  "fields": {
+    "cart_itm_name": "HP C8727AE",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 80,
+  "fields": {
+    "cart_itm_name": "HP Q2624A",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 81,
+  "fields": {
+    "cart_itm_name": "HP Q2670A ",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 82,
+  "fields": {
+    "cart_itm_name": "HP Q2671A",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 83,
+  "fields": {
+    "cart_itm_name": "HP Q2672A",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 84,
+  "fields": {
+    "cart_itm_name": "HP Q2673A",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 85,
+  "fields": {
+    "cart_itm_name": "HP C8061A",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 86,
+  "fields": {
+    "cart_itm_name": "HP C8061X",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 87,
+  "fields": {
+    "cart_itm_name": "HP C4129X",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 88,
+  "fields": {
+    "cart_itm_name": "HP 51645G",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 89,
+  "fields": {
+    "cart_itm_name": "HP C6614DE",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 90,
+  "fields": {
+    "cart_itm_name": "HP C6578D",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 91,
+  "fields": {
+    "cart_itm_name": "HP C6578A",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 92,
+  "fields": {
+    "cart_itm_name": "HP C1823D",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 93,
+  "fields": {
+    "cart_itm_name": "HP 51641\u0410E",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 94,
+  "fields": {
+    "cart_itm_name": "HP Q5942A",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 95,
+  "fields": {
+    "cart_itm_name": "HP Q5942X",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 96,
+  "fields": {
+    "cart_itm_name": "HP Q2681A",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 97,
+  "fields": {
+    "cart_itm_name": "HP Q2682A",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 98,
+  "fields": {
+    "cart_itm_name": "HP Q2683A",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 99,
+  "fields": {
+    "cart_itm_name": "HP C8728AE",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 100,
+  "fields": {
+    "cart_itm_name": "HP C6658AE",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 101,
+  "fields": {
+    "cart_itm_name": "HP C9700A",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 102,
+  "fields": {
+    "cart_itm_name": "HP C9701A",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 103,
+  "fields": {
+    "cart_itm_name": "HP C9702A",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 104,
+  "fields": {
+    "cart_itm_name": "HP C9703A",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 105,
+  "fields": {
+    "cart_itm_name": "HP C4191A",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 106,
+  "fields": {
+    "cart_itm_name": "HP C4192A",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 107,
+  "fields": {
+    "cart_itm_name": "HP C4193A",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 108,
+  "fields": {
+    "cart_itm_name": "HP C4194A",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 109,
+  "fields": {
+    "cart_itm_name": "HP C8765",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 110,
+  "fields": {
+    "cart_itm_name": "HP C8766",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 111,
+  "fields": {
+    "cart_itm_name": "HP C8767",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 112,
+  "fields": {
+    "cart_itm_name": "HP C9363",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 113,
+  "fields": {
+    "cart_itm_name": "HP C9369",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 114,
+  "fields": {
+    "cart_itm_name": "HP C9368",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 115,
+  "fields": {
+    "cart_itm_name": "HP C4837AE",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 116,
+  "fields": {
+    "cart_itm_name": "HP C4836AE",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 117,
+  "fields": {
+    "cart_itm_name": "HP C4838AE",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 118,
+  "fields": {
+    "cart_itm_name": "HP Q1338A",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 119,
+  "fields": {
+    "cart_itm_name": "HP C9720A",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 120,
+  "fields": {
+    "cart_itm_name": "HP C9721\u0410",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 121,
+  "fields": {
+    "cart_itm_name": "HP C9722\u0410",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 122,
+  "fields": {
+    "cart_itm_name": "HP C9723\u0410",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 123,
+  "fields": {
+    "cart_itm_name": "HP Q1339A",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 124,
+  "fields": {
+    "cart_itm_name": "HP Q5950A",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 125,
+  "fields": {
+    "cart_itm_name": "HP Q5951A",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 126,
+  "fields": {
+    "cart_itm_name": "HP Q5952A",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 127,
+  "fields": {
+    "cart_itm_name": "HP Q5953A",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 128,
+  "fields": {
+    "cart_itm_name": "HP Q7553A",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 129,
+  "fields": {
+    "cart_itm_name": "HP Q7553X",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 130,
+  "fields": {
+    "cart_itm_name": "HP Q7553XD",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 131,
+  "fields": {
+    "cart_itm_name": "HP Q7551A",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 132,
+  "fields": {
+    "cart_itm_name": "HP Q7551X",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 133,
+  "fields": {
+    "cart_itm_name": "HP Q7551XD",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 134,
+  "fields": {
+    "cart_itm_name": "HP CB436A",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 135,
+  "fields": {
+    "cart_itm_name": "HP C9364HE",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 136,
+  "fields": {
+    "cart_itm_name": "HP C9363HE",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 137,
+  "fields": {
+    "cart_itm_name": "HP C9505AE",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 138,
+  "fields": {
+    "cart_itm_name": "HP C8766HE",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 139,
+  "fields": {
+    "cart_itm_name": "HP CB332HE",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 140,
+  "fields": {
+    "cart_itm_name": "HP C8767HE",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 141,
+  "fields": {
+    "cart_itm_name": "HP C9504HE",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 142,
+  "fields": {
+    "cart_itm_name": "HP C9369HE",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 143,
+  "fields": {
+    "cart_itm_name": "HP Q5945A",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 144,
+  "fields": {
+    "cart_itm_name": "HP C4182X",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 145,
+  "fields": {
+    "cart_itm_name": "HP CB540A",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 146,
+  "fields": {
+    "cart_itm_name": "HP CB541A",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 147,
+  "fields": {
+    "cart_itm_name": "HP CB542A",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 148,
+  "fields": {
+    "cart_itm_name": "HP CB543A",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 149,
+  "fields": {
+    "cart_itm_name": "HP CC530A",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 150,
+  "fields": {
+    "cart_itm_name": "HP CC530AD",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 151,
+  "fields": {
+    "cart_itm_name": "HP CC531A",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 152,
+  "fields": {
+    "cart_itm_name": "HP CC532A",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 153,
+  "fields": {
+    "cart_itm_name": "HP CC533A",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 154,
+  "fields": {
+    "cart_itm_name": "HP C9351AE",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 155,
+  "fields": {
+    "cart_itm_name": "HP C9351BE",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 156,
+  "fields": {
+    "cart_itm_name": "HP C9351CE",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 157,
+  "fields": {
+    "cart_itm_name": "HP C9352AE",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 158,
+  "fields": {
+    "cart_itm_name": "HP C9352CE",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 159,
+  "fields": {
+    "cart_itm_name": "HP C9368AE",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 160,
+  "fields": {
+    "cart_itm_name": "HP C9361HE",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 161,
+  "fields": {
+    "cart_itm_name": "HP Q7516A",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 162,
+  "fields": {
+    "cart_itm_name": "HP CB435A",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 163,
+  "fields": {
+    "cart_itm_name": "HP CE505A",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 164,
+  "fields": {
+    "cart_itm_name": "HP CE505X",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 165,
+  "fields": {
+    "cart_itm_name": "HP CC364A",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 166,
+  "fields": {
+    "cart_itm_name": "HP CC364X",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 167,
+  "fields": {
+    "cart_itm_name": "HP C4930A",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 168,
+  "fields": {
+    "cart_itm_name": "HP C4931A",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 169,
+  "fields": {
+    "cart_itm_name": "HP C4932A",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 170,
+  "fields": {
+    "cart_itm_name": "HP C4933A",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 171,
+  "fields": {
+    "cart_itm_name": "HP C4934A",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 172,
+  "fields": {
+    "cart_itm_name": "HP C4935A",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 173,
+  "fields": {
+    "cart_itm_name": "HP C9390A",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 174,
+  "fields": {
+    "cart_itm_name": "HP C9448A",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 175,
+  "fields": {
+    "cart_itm_name": "HP C9449A",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 176,
+  "fields": {
+    "cart_itm_name": "HP C9451A",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 177,
+  "fields": {
+    "cart_itm_name": "HP C9452A",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 178,
+  "fields": {
+    "cart_itm_name": "HP C9453A",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 179,
+  "fields": {
+    "cart_itm_name": "HP C9454A",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 180,
+  "fields": {
+    "cart_itm_name": "HP C9455A",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 181,
+  "fields": {
+    "cart_itm_name": "HP C9450A",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 182,
+  "fields": {
+    "cart_itm_name": "HP C9457A",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 183,
+  "fields": {
+    "cart_itm_name": "HP C9458A",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 184,
+  "fields": {
+    "cart_itm_name": "HP C9459A",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 185,
+  "fields": {
+    "cart_itm_name": "HP C9456A",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 186,
+  "fields": {
+    "cart_itm_name": "HP CD951A",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 187,
+  "fields": {
+    "cart_itm_name": "HP CB339A",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 188,
+  "fields": {
+    "cart_itm_name": "HP CB342A",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 189,
+  "fields": {
+    "cart_itm_name": "HP CB344A",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 190,
+  "fields": {
+    "cart_itm_name": "HP CB345A",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 191,
+  "fields": {
+    "cart_itm_name": "HP CB346A",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 192,
+  "fields": {
+    "cart_itm_name": "HP CB351A",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 193,
+  "fields": {
+    "cart_itm_name": "HP CD952A",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 194,
+  "fields": {
+    "cart_itm_name": "HP CB350A",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 195,
+  "fields": {
+    "cart_itm_name": "HP CB348A",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 196,
+  "fields": {
+    "cart_itm_name": "HP CB349A",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 197,
+  "fields": {
+    "cart_itm_name": "HP CB340A",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 198,
+  "fields": {
+    "cart_itm_name": "HP CB341A ",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 199,
+  "fields": {
+    "cart_itm_name": "HP C9464A",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 200,
+  "fields": {
+    "cart_itm_name": "HP C9465A",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 201,
+  "fields": {
+    "cart_itm_name": "HP C9466A",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 202,
+  "fields": {
+    "cart_itm_name": "HP C9467A",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 203,
+  "fields": {
+    "cart_itm_name": "HP C9468A",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 204,
+  "fields": {
+    "cart_itm_name": "HP C9469A",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 205,
+  "fields": {
+    "cart_itm_name": "HP C9470A",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 206,
+  "fields": {
+    "cart_itm_name": "HP C9471A",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 207,
+  "fields": {
+    "cart_itm_name": "HP C9485A",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 208,
+  "fields": {
+    "cart_itm_name": "HP C9487A",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 209,
+  "fields": {
+    "cart_itm_name": "HP C9484A",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 210,
+  "fields": {
+    "cart_itm_name": "HP C9486A",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 211,
+  "fields": {
+    "cart_itm_name": "HP C9483A",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 212,
+  "fields": {
+    "cart_itm_name": "HP C9480A",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 213,
+  "fields": {
+    "cart_itm_name": "HP C9481A",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 214,
+  "fields": {
+    "cart_itm_name": "HP C9482A",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 215,
+  "fields": {
+    "cart_itm_name": "HP C9370A",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 216,
+  "fields": {
+    "cart_itm_name": "HP C9371A",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 217,
+  "fields": {
+    "cart_itm_name": "HP C9372A",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 218,
+  "fields": {
+    "cart_itm_name": "HP C9373A",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 219,
+  "fields": {
+    "cart_itm_name": "HP C9374A",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 220,
+  "fields": {
+    "cart_itm_name": "HP C9397A",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 221,
+  "fields": {
+    "cart_itm_name": "HP C9398A",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 222,
+  "fields": {
+    "cart_itm_name": "HP C9399A",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 223,
+  "fields": {
+    "cart_itm_name": "HP C9400A",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 224,
+  "fields": {
+    "cart_itm_name": "HP C9401A",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 225,
+  "fields": {
+    "cart_itm_name": "HP C9403A",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 226,
+  "fields": {
+    "cart_itm_name": "HP C4940A",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 227,
+  "fields": {
+    "cart_itm_name": "HP C4941A",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 228,
+  "fields": {
+    "cart_itm_name": "HP C4942A",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 229,
+  "fields": {
+    "cart_itm_name": "HP C4943A",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 230,
+  "fields": {
+    "cart_itm_name": "HP C4944A",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 231,
+  "fields": {
+    "cart_itm_name": "HP C4945A",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 232,
+  "fields": {
+    "cart_itm_name": "HP C5058A",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 233,
+  "fields": {
+    "cart_itm_name": "HP C5059A",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 234,
+  "fields": {
+    "cart_itm_name": "HP C5060A",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 235,
+  "fields": {
+    "cart_itm_name": "HP C5061A",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 236,
+  "fields": {
+    "cart_itm_name": "HP C5062A",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 237,
+  "fields": {
+    "cart_itm_name": "HP C5063A",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 238,
+  "fields": {
+    "cart_itm_name": "HP C5064A",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 239,
+  "fields": {
+    "cart_itm_name": "HP C5065A",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 240,
+  "fields": {
+    "cart_itm_name": "HP C5082A",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 241,
+  "fields": {
+    "cart_itm_name": "HP C5083A",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 242,
+  "fields": {
+    "cart_itm_name": "HP C5084A",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 243,
+  "fields": {
+    "cart_itm_name": "HP C5085A",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 244,
+  "fields": {
+    "cart_itm_name": "HP C5095A",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 245,
+  "fields": {
+    "cart_itm_name": "HP CH565A",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 246,
+  "fields": {
+    "cart_itm_name": "HP C4841A",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 247,
+  "fields": {
+    "cart_itm_name": "HP C4842A",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 248,
+  "fields": {
+    "cart_itm_name": "HP C4843A",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 249,
+  "fields": {
+    "cart_itm_name": "HP Q2612AD",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 250,
+  "fields": {
+    "cart_itm_name": "HP Q5949XD",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 251,
+  "fields": {
+    "cart_itm_name": "HP Q2610D",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 252,
+  "fields": {
+    "cart_itm_name": "HP Q6511XD",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 253,
+  "fields": {
+    "cart_itm_name": "HP Q5942XD",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 254,
+  "fields": {
+    "cart_itm_name": "HP C4149A",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 255,
+  "fields": {
+    "cart_itm_name": "HP C4150A",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 256,
+  "fields": {
+    "cart_itm_name": "HP C4151A",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 257,
+  "fields": {
+    "cart_itm_name": "HP C4152A",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 258,
+  "fields": {
+    "cart_itm_name": "HP CB390A",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 259,
+  "fields": {
+    "cart_itm_name": "HP CB381A",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 260,
+  "fields": {
+    "cart_itm_name": "HP CB382A",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 261,
+  "fields": {
+    "cart_itm_name": "HP CB383A",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 262,
+  "fields": {
+    "cart_itm_name": "HP Q6460A",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 263,
+  "fields": {
+    "cart_itm_name": "HP Q6461A",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 264,
+  "fields": {
+    "cart_itm_name": "HP Q6462A",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 265,
+  "fields": {
+    "cart_itm_name": "HP Q6463A",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 266,
+  "fields": {
+    "cart_itm_name": "HP CB400A",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 267,
+  "fields": {
+    "cart_itm_name": "HP CB401A",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 268,
+  "fields": {
+    "cart_itm_name": "HP CB402A",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 269,
+  "fields": {
+    "cart_itm_name": "HP CB403A",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 270,
+  "fields": {
+    "cart_itm_name": "HP CE250A",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 271,
+  "fields": {
+    "cart_itm_name": "HP CE250X",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 272,
+  "fields": {
+    "cart_itm_name": "HP CE251A",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 273,
+  "fields": {
+    "cart_itm_name": "HP CE252A",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 274,
+  "fields": {
+    "cart_itm_name": "HP CE253A",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 275,
+  "fields": {
+    "cart_itm_name": "HP C8543X",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 276,
+  "fields": {
+    "cart_itm_name": "HP C3909A",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 277,
+  "fields": {
+    "cart_itm_name": "HP C3909X",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 278,
+  "fields": {
+    "cart_itm_name": "HP C9385AE",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 279,
+  "fields": {
+    "cart_itm_name": "HP C9396AE",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 280,
+  "fields": {
+    "cart_itm_name": "HP C9386AE",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 281,
+  "fields": {
+    "cart_itm_name": "HP C9391AE",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 282,
+  "fields": {
+    "cart_itm_name": "HP C9387AE",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 283,
+  "fields": {
+    "cart_itm_name": "HP C9388AE",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 284,
+  "fields": {
+    "cart_itm_name": "HP C9392AE",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 285,
+  "fields": {
+    "cart_itm_name": "HP C9393AE",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 286,
+  "fields": {
+    "cart_itm_name": "HP C5011AE",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 287,
+  "fields": {
+    "cart_itm_name": "HP C5010AE",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 288,
+  "fields": {
+    "cart_itm_name": "HP CB334AE",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 289,
+  "fields": {
+    "cart_itm_name": "HP CC653AE",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 290,
+  "fields": {
+    "cart_itm_name": "HP CC654AE",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 291,
+  "fields": {
+    "cart_itm_name": "HP CC656AE",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 292,
+  "fields": {
+    "cart_itm_name": "HP CD971AE",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 293,
+  "fields": {
+    "cart_itm_name": "HP CD975AE",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 294,
+  "fields": {
+    "cart_itm_name": "HP CD972AE",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 295,
+  "fields": {
+    "cart_itm_name": "HP CD973AE",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 296,
+  "fields": {
+    "cart_itm_name": "HP CD974AE",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 297,
+  "fields": {
+    "cart_itm_name": "HP C9502HE",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 298,
+  "fields": {
+    "cart_itm_name": "HP CB335HE",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 299,
+  "fields": {
+    "cart_itm_name": "HP CB336HE",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 300,
+  "fields": {
+    "cart_itm_name": "HP CB337HE",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 301,
+  "fields": {
+    "cart_itm_name": "HP CB338HE",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 302,
+  "fields": {
+    "cart_itm_name": "HP C9362HE",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 303,
+  "fields": {
+    "cart_itm_name": "HP C6615DE",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 304,
+  "fields": {
+    "cart_itm_name": "HP C8765HE",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 305,
+  "fields": {
+    "cart_itm_name": "HP 51640CE",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 306,
+  "fields": {
+    "cart_itm_name": "HP 51640ME",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 307,
+  "fields": {
+    "cart_itm_name": "HP 51640YE",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 308,
+  "fields": {
+    "cart_itm_name": "HP 51629G",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 309,
+  "fields": {
+    "cart_itm_name": "HP C1816A",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 310,
+  "fields": {
+    "cart_itm_name": "HP 51633M",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 311,
+  "fields": {
+    "cart_itm_name": "HP 51625AE",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 312,
+  "fields": {
+    "cart_itm_name": "HP C6628A",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 313,
+  "fields": {
+    "cart_itm_name": "HP 51626G",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 314,
+  "fields": {
+    "cart_itm_name": "HP 51626AE",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 315,
+  "fields": {
+    "cart_itm_name": "HP C6615NE",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 316,
+  "fields": {
+    "cart_itm_name": "HP C6625AE",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 317,
+  "fields": {
+    "cart_itm_name": "HP C8763HE",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 318,
+  "fields": {
+    "cart_itm_name": "HP CC640HE",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 319,
+  "fields": {
+    "cart_itm_name": "HP CC641HE",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 320,
+  "fields": {
+    "cart_itm_name": "HP CC643HE",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 321,
+  "fields": {
+    "cart_itm_name": "HP CC644HE",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 322,
+  "fields": {
+    "cart_itm_name": "HP CC627AE",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 323,
+  "fields": {
+    "cart_itm_name": "HP CE255A",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 324,
+  "fields": {
+    "cart_itm_name": "HP CE255X",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 325,
+  "fields": {
+    "cart_itm_name": "HP CE278A",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 326,
+  "fields": {
+    "cart_itm_name": "HP 92298A",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 327,
+  "fields": {
+    "cart_itm_name": "HP 92298X",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 328,
+  "fields": {
+    "cart_itm_name": "HP C4127D",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 329,
+  "fields": {
+    "cart_itm_name": "HP C8061D",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 330,
+  "fields": {
+    "cart_itm_name": "HP Q1338D",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 331,
+  "fields": {
+    "cart_itm_name": "HP C8550A",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 332,
+  "fields": {
+    "cart_itm_name": "HP C8551A",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 333,
+  "fields": {
+    "cart_itm_name": "HP C8552A",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 334,
+  "fields": {
+    "cart_itm_name": "HP C8553A",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 335,
+  "fields": {
+    "cart_itm_name": "HP CE285A",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 336,
+  "fields": {
+    "cart_itm_name": "HP CE310A",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 337,
+  "fields": {
+    "cart_itm_name": "HP CE311A",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 338,
+  "fields": {
+    "cart_itm_name": "HP CE312A",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 339,
+  "fields": {
+    "cart_itm_name": "HP CE313A",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 340,
+  "fields": {
+    "cart_itm_name": "HP CE260A",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 341,
+  "fields": {
+    "cart_itm_name": "HP CE260X",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 342,
+  "fields": {
+    "cart_itm_name": "HP CE261A",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 343,
+  "fields": {
+    "cart_itm_name": "HP CE262A",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 344,
+  "fields": {
+    "cart_itm_name": "HP CE263A",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 345,
+  "fields": {
+    "cart_itm_name": "HP CE740A",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 346,
+  "fields": {
+    "cart_itm_name": "HP CE741A",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 347,
+  "fields": {
+    "cart_itm_name": "HP CE742A",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 348,
+  "fields": {
+    "cart_itm_name": "HP CE743A",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 349,
+  "fields": {
+    "cart_itm_name": "HP CE270A",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 350,
+  "fields": {
+    "cart_itm_name": "HP CE271A",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 351,
+  "fields": {
+    "cart_itm_name": "HP CE272A",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 352,
+  "fields": {
+    "cart_itm_name": "HP CE273A",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 353,
+  "fields": {
+    "cart_itm_name": "HP CB380A",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 354,
+  "fields": {
+    "cart_itm_name": "HP Q7570A",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 355,
+  "fields": {
+    "cart_itm_name": "HP CF280A",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 356,
+  "fields": {
+    "cart_itm_name": "HP CF280X",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 357,
+  "fields": {
+    "cart_itm_name": "HP CF280XD",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 358,
+  "fields": {
+    "cart_itm_name": "HP CE320A",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 359,
+  "fields": {
+    "cart_itm_name": "HP CE320AD",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 360,
+  "fields": {
+    "cart_itm_name": "HP CE321A",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 361,
+  "fields": {
+    "cart_itm_name": "HP CE322A",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 362,
+  "fields": {
+    "cart_itm_name": "HP CE323A",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 363,
+  "fields": {
+    "cart_itm_name": "HP C8092A",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 364,
+  "fields": {
+    "cart_itm_name": "HP CE255XD",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 365,
+  "fields": {
+    "cart_itm_name": "HP Q7432A",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 366,
+  "fields": {
+    "cart_itm_name": "HP CE390A",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 367,
+  "fields": {
+    "cart_itm_name": "HP CE390X",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 368,
+  "fields": {
+    "cart_itm_name": "HP CE390XD",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 369,
+  "fields": {
+    "cart_itm_name": "HP Q3216A",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 370,
+  "fields": {
+    "cart_itm_name": "Brother TN-2075",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 371,
+  "fields": {
+    "cart_itm_name": "Brother TN-2085",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 372,
+  "fields": {
+    "cart_itm_name": "Brother TN-2135",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 373,
+  "fields": {
+    "cart_itm_name": "Brother TN-2175",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 374,
+  "fields": {
+    "cart_itm_name": "Canon EP-22",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 375,
+  "fields": {
+    "cart_itm_name": "Canon EP-25",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 376,
+  "fields": {
+    "cart_itm_name": "Canon BC-20",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 377,
+  "fields": {
+    "cart_itm_name": "Canon BC-02",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 378,
+  "fields": {
+    "cart_itm_name": "Canon CL-41",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 379,
+  "fields": {
+    "cart_itm_name": "Canon CL-51 High Yield",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 380,
+  "fields": {
+    "cart_itm_name": "Canon PG-40",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 381,
+  "fields": {
+    "cart_itm_name": "Canon PG-50 High Yield",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 382,
+  "fields": {
+    "cart_itm_name": "Canon CL-52",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 383,
+  "fields": {
+    "cart_itm_name": "Canon EP-A",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 384,
+  "fields": {
+    "cart_itm_name": "Canon EP-27",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 385,
+  "fields": {
+    "cart_itm_name": "Canon E16",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 386,
+  "fields": {
+    "cart_itm_name": "Canon Cartrige T",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 387,
+  "fields": {
+    "cart_itm_name": "Canon E30",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 388,
+  "fields": {
+    "cart_itm_name": "Canon FX-3",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 389,
+  "fields": {
+    "cart_itm_name": "Canon BC-22e",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 390,
+  "fields": {
+    "cart_itm_name": "Canon BC-29F",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 391,
+  "fields": {
+    "cart_itm_name": "Canon 1514A003",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 392,
+  "fields": {
+    "cart_itm_name": "Canon 1513A003",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 393,
+  "fields": {
+    "cart_itm_name": "Canon 1512A003",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 394,
+  "fields": {
+    "cart_itm_name": "Canon 1515A003",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 395,
+  "fields": {
+    "cart_itm_name": "Canon 703",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 396,
+  "fields": {
+    "cart_itm_name": "Canon 712",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 397,
+  "fields": {
+    "cart_itm_name": "Canon 715",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 398,
+  "fields": {
+    "cart_itm_name": "Canon 708",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 399,
+  "fields": {
+    "cart_itm_name": "Canon 708H",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 400,
+  "fields": {
+    "cart_itm_name": "Canon 710H",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 401,
+  "fields": {
+    "cart_itm_name": "Canon 710",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 402,
+  "fields": {
+    "cart_itm_name": "Canon C13S050167",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 403,
+  "fields": {
+    "cart_itm_name": "Canon C13S050166",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 404,
+  "fields": {
+    "cart_itm_name": "Canon C13S050290",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 405,
+  "fields": {
+    "cart_itm_name": "Canon C13S051111",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 406,
+  "fields": {
+    "cart_itm_name": "Canon C13S051100",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 407,
+  "fields": {
+    "cart_itm_name": "Canon 706",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 408,
+  "fields": {
+    "cart_itm_name": "Canon FX-10",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 409,
+  "fields": {
+    "cart_itm_name": "Canon 701BK",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 410,
+  "fields": {
+    "cart_itm_name": "Canon 701C",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 411,
+  "fields": {
+    "cart_itm_name": "Canon 701M",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 412,
+  "fields": {
+    "cart_itm_name": "Canon 701Y",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 413,
+  "fields": {
+    "cart_itm_name": "Canon PG-37",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 414,
+  "fields": {
+    "cart_itm_name": "Canon CL-38",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 415,
+  "fields": {
+    "cart_itm_name": "Canon CL-511",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 416,
+  "fields": {
+    "cart_itm_name": "Canon CL-513",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 417,
+  "fields": {
+    "cart_itm_name": "Canon PG-510",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 418,
+  "fields": {
+    "cart_itm_name": "Canon PG-512",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 419,
+  "fields": {
+    "cart_itm_name": "Canon PGI-520BK",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 420,
+  "fields": {
+    "cart_itm_name": "Canon CLI-521BK",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 421,
+  "fields": {
+    "cart_itm_name": "Canon CLI-521C",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 422,
+  "fields": {
+    "cart_itm_name": "Canon CLI-521M",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 423,
+  "fields": {
+    "cart_itm_name": "Canon CLI-521Y",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 424,
+  "fields": {
+    "cart_itm_name": "Canon PGI-5BK",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 425,
+  "fields": {
+    "cart_itm_name": "Canon CLI-8BK ",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 426,
+  "fields": {
+    "cart_itm_name": "Canon CLI-8C",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 427,
+  "fields": {
+    "cart_itm_name": "Canon CLI-8M",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 428,
+  "fields": {
+    "cart_itm_name": "Canon CLI-8Y",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 429,
+  "fields": {
+    "cart_itm_name": "Canon PGI-9PBK",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 430,
+  "fields": {
+    "cart_itm_name": "Canon PGI-9Y",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 431,
+  "fields": {
+    "cart_itm_name": "Canon PGI-9C",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 432,
+  "fields": {
+    "cart_itm_name": "Canon PGI-9M",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 433,
+  "fields": {
+    "cart_itm_name": "Canon PFI-302MBK",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 434,
+  "fields": {
+    "cart_itm_name": "Canon PFI-301C",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 435,
+  "fields": {
+    "cart_itm_name": "Canon PFI-302PGY",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 436,
+  "fields": {
+    "cart_itm_name": "Canon PFI-301B",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 437,
+  "fields": {
+    "cart_itm_name": "Canon PFI-302GY",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 438,
+  "fields": {
+    "cart_itm_name": "Canon PFI-302BK",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 439,
+  "fields": {
+    "cart_itm_name": "Canon PFI-301Y",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 440,
+  "fields": {
+    "cart_itm_name": "Canon PFI-301G",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 441,
+  "fields": {
+    "cart_itm_name": "Canon PFI-301\u0420\u0421",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 442,
+  "fields": {
+    "cart_itm_name": "Canon PFI-301M",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 443,
+  "fields": {
+    "cart_itm_name": "Canon PFI-301PM",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 444,
+  "fields": {
+    "cart_itm_name": "Canon PFI-301R",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 445,
+  "fields": {
+    "cart_itm_name": "Canon PFI-103MBK",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 446,
+  "fields": {
+    "cart_itm_name": "Canon PFI-101R",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 447,
+  "fields": {
+    "cart_itm_name": "Canon PFI-101B",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 448,
+  "fields": {
+    "cart_itm_name": "Canon PFI-101PC",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 449,
+  "fields": {
+    "cart_itm_name": "Canon PFI-101G",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 450,
+  "fields": {
+    "cart_itm_name": "Canon PFI-101PM",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 451,
+  "fields": {
+    "cart_itm_name": "Canon PFI-101Y",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 452,
+  "fields": {
+    "cart_itm_name": "Canon PFI-103BK",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 453,
+  "fields": {
+    "cart_itm_name": "Canon PFI-103PGY",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 454,
+  "fields": {
+    "cart_itm_name": "Canon PFI-103GY",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 455,
+  "fields": {
+    "cart_itm_name": "Canon PFI-101M",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 456,
+  "fields": {
+    "cart_itm_name": "Canon PFI-101C",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 457,
+  "fields": {
+    "cart_itm_name": "Canon PFI-102MBK",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 458,
+  "fields": {
+    "cart_itm_name": "Canon PFI-102M",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 459,
+  "fields": {
+    "cart_itm_name": "Canon PFI-102Y",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 460,
+  "fields": {
+    "cart_itm_name": "Canon PFI-102BK",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 461,
+  "fields": {
+    "cart_itm_name": "Canon PFI-102C",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 462,
+  "fields": {
+    "cart_itm_name": "Canon PFI-104M",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 463,
+  "fields": {
+    "cart_itm_name": "Canon PFI-303C",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 464,
+  "fields": {
+    "cart_itm_name": "Canon PFI-303Y",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 465,
+  "fields": {
+    "cart_itm_name": "Canon PFI-303BK",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 466,
+  "fields": {
+    "cart_itm_name": "Canon PFI-303M",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 467,
+  "fields": {
+    "cart_itm_name": "Canon PFI-303MBK",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 468,
+  "fields": {
+    "cart_itm_name": "Canon PFI-703C",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 469,
+  "fields": {
+    "cart_itm_name": "Canon PFI-703M",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 470,
+  "fields": {
+    "cart_itm_name": "Canon PFI-703Y",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 471,
+  "fields": {
+    "cart_itm_name": "Canon PFI-703BK",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 472,
+  "fields": {
+    "cart_itm_name": "Canon PFI-703MBK",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 473,
+  "fields": {
+    "cart_itm_name": "Canon 715H",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 474,
+  "fields": {
+    "cart_itm_name": "Canon 701LY",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 475,
+  "fields": {
+    "cart_itm_name": "Canon 701LM",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 476,
+  "fields": {
+    "cart_itm_name": "Canon 701LC",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 477,
+  "fields": {
+    "cart_itm_name": "Canon BC-05",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 478,
+  "fields": {
+    "cart_itm_name": "Canon BC-09F",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 479,
+  "fields": {
+    "cart_itm_name": "Canon BC-06",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 480,
+  "fields": {
+    "cart_itm_name": "Canon EP-32",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 481,
+  "fields": {
+    "cart_itm_name": "Canon 713",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 482,
+  "fields": {
+    "cart_itm_name": "Canon 3484B002",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 483,
+  "fields": {
+    "cart_itm_name": "Canon 3479B002",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 484,
+  "fields": {
+    "cart_itm_name": "Canon 3480B002",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 485,
+  "fields": {
+    "cart_itm_name": "Epson C13T009401",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 486,
+  "fields": {
+    "cart_itm_name": "Epson C13T007402",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 487,
+  "fields": {
+    "cart_itm_name": "Epson C13T052040",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 488,
+  "fields": {
+    "cart_itm_name": "Epson C13T051142",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 489,
+  "fields": {
+    "cart_itm_name": "Epson C13T026402",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 490,
+  "fields": {
+    "cart_itm_name": "Epson C13T027401",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 491,
+  "fields": {
+    "cart_itm_name": "Epson C13T026401",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 492,
+  "fields": {
+    "cart_itm_name": "Epson C13T027403",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 493,
+  "fields": {
+    "cart_itm_name": "Epson C13S020193",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 494,
+  "fields": {
+    "cart_itm_name": "Epson C13S020122",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 495,
+  "fields": {
+    "cart_itm_name": "Epson C13S020118",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 496,
+  "fields": {
+    "cart_itm_name": "Epson C13S020130",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 497,
+  "fields": {
+    "cart_itm_name": "Epson C13S020126",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 498,
+  "fields": {
+    "cart_itm_name": "Epson C13T001011",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 499,
+  "fields": {
+    "cart_itm_name": "Epson C13T050142",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 500,
+  "fields": {
+    "cart_itm_name": "Epson C13T033640",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 501,
+  "fields": {
+    "cart_itm_name": "Epson C13T033340",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 502,
+  "fields": {
+    "cart_itm_name": "Epson C13T033540",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 503,
+  "fields": {
+    "cart_itm_name": "Epson C13T033440",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 504,
+  "fields": {
+    "cart_itm_name": "Epson C13T033140",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 505,
+  "fields": {
+    "cart_itm_name": "Epson C13T033240",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 506,
+  "fields": {
+    "cart_itm_name": "Epson C13T054040",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 507,
+  "fields": {
+    "cart_itm_name": "Epson C13T054240",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 508,
+  "fields": {
+    "cart_itm_name": "Epson C13T054440",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 509,
+  "fields": {
+    "cart_itm_name": "Epson C13T054740",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 510,
+  "fields": {
+    "cart_itm_name": "Epson C13T054840",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 511,
+  "fields": {
+    "cart_itm_name": "Epson C13T054340",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 512,
+  "fields": {
+    "cart_itm_name": "Epson C13T054940",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 513,
+  "fields": {
+    "cart_itm_name": "Epson C13T054140",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 514,
+  "fields": {
+    "cart_itm_name": "Epson S020049",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 515,
+  "fields": {
+    "cart_itm_name": "Epson S020062",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 516,
+  "fields": {
+    "cart_itm_name": "Epson S020047",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 517,
+  "fields": {
+    "cart_itm_name": "Epson C13S050213",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 518,
+  "fields": {
+    "cart_itm_name": "Epson C13S050212",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 519,
+  "fields": {
+    "cart_itm_name": "Epson C13S050210",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 520,
+  "fields": {
+    "cart_itm_name": "Epson C13S050211",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 521,
+  "fields": {
+    "cart_itm_name": "Epson C13S050149",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 522,
+  "fields": {
+    "cart_itm_name": "Epson C13S050146",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 523,
+  "fields": {
+    "cart_itm_name": "Epson C13S050147",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 524,
+  "fields": {
+    "cart_itm_name": "Epson C13S050148",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 525,
+  "fields": {
+    "cart_itm_name": "Epson S020025",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 526,
+  "fields": {
+    "cart_itm_name": "Epson S020039",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 527,
+  "fields": {
+    "cart_itm_name": "Epson C13S020036",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 528,
+  "fields": {
+    "cart_itm_name": "Epson C13S020034",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 529,
+  "fields": {
+    "cart_itm_name": "Epson C13T03814",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 530,
+  "fields": {
+    "cart_itm_name": "Epson C13T03904",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 531,
+  "fields": {
+    "cart_itm_name": "Epson C13T048640",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 532,
+  "fields": {
+    "cart_itm_name": "Epson C13T048540",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 533,
+  "fields": {
+    "cart_itm_name": "Epson C13T048340",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 534,
+  "fields": {
+    "cart_itm_name": "Epson C13T048240",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 535,
+  "fields": {
+    "cart_itm_name": "Epson C13T048440",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 536,
+  "fields": {
+    "cart_itm_name": "Epson C13T048140",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 537,
+  "fields": {
+    "cart_itm_name": "Epson 8755",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 538,
+  "fields": {
+    "cart_itm_name": "Epson C13S020147",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 539,
+  "fields": {
+    "cart_itm_name": "Epson C13S020143",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 540,
+  "fields": {
+    "cart_itm_name": "Epson C13T08214A",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 541,
+  "fields": {
+    "cart_itm_name": "Epson C13T08224A",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 542,
+  "fields": {
+    "cart_itm_name": "Epson C13T08244A",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 543,
+  "fields": {
+    "cart_itm_name": "Epson C13T08234A",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 544,
+  "fields": {
+    "cart_itm_name": "Epson C13T08254A",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 545,
+  "fields": {
+    "cart_itm_name": "Epson C13T08264A",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 546,
+  "fields": {
+    "cart_itm_name": "Epson C13S015307BA",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 547,
+  "fields": {
+    "cart_itm_name": "Epson C13T04614A",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 548,
+  "fields": {
+    "cart_itm_name": "Epson C13T04724A",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 549,
+  "fields": {
+    "cart_itm_name": "Epson C13T04734A",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 550,
+  "fields": {
+    "cart_itm_name": "Epson C13T04744A",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 551,
+  "fields": {
+    "cart_itm_name": "Epson C13S051188",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 552,
+  "fields": {
+    "cart_itm_name": "Epson C13S050435",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 553,
+  "fields": {
+    "cart_itm_name": "Epson C13S050436",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 554,
+  "fields": {
+    "cart_itm_name": "Epson C13T591100",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 555,
+  "fields": {
+    "cart_itm_name": "Epson C13T591200",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 556,
+  "fields": {
+    "cart_itm_name": "Epson C13T591300",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 557,
+  "fields": {
+    "cart_itm_name": "Epson C13T591400",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 558,
+  "fields": {
+    "cart_itm_name": "Epson C13T591500",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 559,
+  "fields": {
+    "cart_itm_name": "Epson C13T591600",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 560,
+  "fields": {
+    "cart_itm_name": "Epson C13T591700",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 561,
+  "fields": {
+    "cart_itm_name": "Epson C13T591800",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 562,
+  "fields": {
+    "cart_itm_name": "Epson C13T624100",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 563,
+  "fields": {
+    "cart_itm_name": "Epson C13T624200",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 564,
+  "fields": {
+    "cart_itm_name": "Epson C13T624300",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 565,
+  "fields": {
+    "cart_itm_name": "Epson C13T624400",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 566,
+  "fields": {
+    "cart_itm_name": "Epson C13T624500",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 567,
+  "fields": {
+    "cart_itm_name": "Epson C13T624600",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 568,
+  "fields": {
+    "cart_itm_name": "Epson C13T624700",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 569,
+  "fields": {
+    "cart_itm_name": "Epson C13T624800",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 570,
+  "fields": {
+    "cart_itm_name": "Epson C13T612200",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 571,
+  "fields": {
+    "cart_itm_name": "Epson C13T612300",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 572,
+  "fields": {
+    "cart_itm_name": "Epson C13T612400",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 573,
+  "fields": {
+    "cart_itm_name": "Epson C13T612800",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 574,
+  "fields": {
+    "cart_itm_name": "Epson C13T603100",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 575,
+  "fields": {
+    "cart_itm_name": "Epson C13T603200",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 576,
+  "fields": {
+    "cart_itm_name": "Epson C13T603300",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 577,
+  "fields": {
+    "cart_itm_name": "Epson C13T603400",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 578,
+  "fields": {
+    "cart_itm_name": "Epson C13T603500",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 579,
+  "fields": {
+    "cart_itm_name": "Epson C13T603600",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 580,
+  "fields": {
+    "cart_itm_name": "Epson C13T603700",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 581,
+  "fields": {
+    "cart_itm_name": "Epson C13T612800",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 582,
+  "fields": {
+    "cart_itm_name": "Epson C13T596100",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 583,
+  "fields": {
+    "cart_itm_name": "Epson C13T596200",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 584,
+  "fields": {
+    "cart_itm_name": "Epson C13T596300",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 585,
+  "fields": {
+    "cart_itm_name": "Epson C13T596900",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 586,
+  "fields": {
+    "cart_itm_name": "Epson C13T596B00",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 587,
+  "fields": {
+    "cart_itm_name": "Epson C13T596400",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 588,
+  "fields": {
+    "cart_itm_name": "Epson C13T596700",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 589,
+  "fields": {
+    "cart_itm_name": "Epson C13T596500",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 590,
+  "fields": {
+    "cart_itm_name": "Epson C13T596600",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 591,
+  "fields": {
+    "cart_itm_name": "Epson C13T596800",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 592,
+  "fields": {
+    "cart_itm_name": "Epson C13T596A00",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 593,
+  "fields": {
+    "cart_itm_name": "Epson C13T636100",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 594,
+  "fields": {
+    "cart_itm_name": "Epson C13T636200",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 595,
+  "fields": {
+    "cart_itm_name": "Epson C13T636300",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 596,
+  "fields": {
+    "cart_itm_name": "Epson C13T636400",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 597,
+  "fields": {
+    "cart_itm_name": "Epson C13T636500",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 598,
+  "fields": {
+    "cart_itm_name": "Epson C13T636600",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 599,
+  "fields": {
+    "cart_itm_name": "Epson C13T636800",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 600,
+  "fields": {
+    "cart_itm_name": "Epson C13T636900",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 601,
+  "fields": {
+    "cart_itm_name": "Epson C13T636A00",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 602,
+  "fields": {
+    "cart_itm_name": "Epson C13T636B00",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 603,
+  "fields": {
+    "cart_itm_name": "Epson C13T636700",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 604,
+  "fields": {
+    "cart_itm_name": "Epson C13T603900",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 605,
+  "fields": {
+    "cart_itm_name": "Epson C13T580100",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 606,
+  "fields": {
+    "cart_itm_name": "Epson C13T580200",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 607,
+  "fields": {
+    "cart_itm_name": "Epson C13T580300",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 608,
+  "fields": {
+    "cart_itm_name": "Epson C13T580500",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 609,
+  "fields": {
+    "cart_itm_name": "Epson C13T580600",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 610,
+  "fields": {
+    "cart_itm_name": "Epson C13T580700",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 611,
+  "fields": {
+    "cart_itm_name": "Epson C13T580800",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 612,
+  "fields": {
+    "cart_itm_name": "Epson C13T580900",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 613,
+  "fields": {
+    "cart_itm_name": "Epson C13T613200",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 614,
+  "fields": {
+    "cart_itm_name": "Epson C13T613300",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 615,
+  "fields": {
+    "cart_itm_name": "Epson C13T613400",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 616,
+  "fields": {
+    "cart_itm_name": "Epson C13T613800",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 617,
+  "fields": {
+    "cart_itm_name": "Epson C13T614200",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 618,
+  "fields": {
+    "cart_itm_name": "Epson C13T614300",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 619,
+  "fields": {
+    "cart_itm_name": "Epson C13T614400",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 620,
+  "fields": {
+    "cart_itm_name": "Epson C13T614800",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 621,
+  "fields": {
+    "cart_itm_name": "Epson C13T605100",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 622,
+  "fields": {
+    "cart_itm_name": "Epson C13T605200",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 623,
+  "fields": {
+    "cart_itm_name": "Epson C13T605300",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 624,
+  "fields": {
+    "cart_itm_name": "Epson C13T605400",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 625,
+  "fields": {
+    "cart_itm_name": "Epson C13T605500",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 626,
+  "fields": {
+    "cart_itm_name": "Epson C13T605600",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 627,
+  "fields": {
+    "cart_itm_name": "Epson C13T606700",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 628,
+  "fields": {
+    "cart_itm_name": "Epson C13T613800",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 629,
+  "fields": {
+    "cart_itm_name": "Epson C13T605900",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 630,
+  "fields": {
+    "cart_itm_name": "Epson C13T606100",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 631,
+  "fields": {
+    "cart_itm_name": "Epson C13T606200",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 632,
+  "fields": {
+    "cart_itm_name": "Epson C13T606300",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 633,
+  "fields": {
+    "cart_itm_name": "Epson C13T606400",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 634,
+  "fields": {
+    "cart_itm_name": "Epson C13T606500",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 635,
+  "fields": {
+    "cart_itm_name": "Epson C13T606600",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 636,
+  "fields": {
+    "cart_itm_name": "Epson C13T614800",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 637,
+  "fields": {
+    "cart_itm_name": "Epson C13T606900",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 638,
+  "fields": {
+    "cart_itm_name": "Epson C13T605700",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 639,
+  "fields": {
+    "cart_itm_name": "Epson C13S050477",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 640,
+  "fields": {
+    "cart_itm_name": "Epson C13S050474",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 641,
+  "fields": {
+    "cart_itm_name": "Epson C13S050475",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 642,
+  "fields": {
+    "cart_itm_name": "Epson C13S050476",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 643,
+  "fields": {
+    "cart_itm_name": "Epson C13S051127",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 644,
+  "fields": {
+    "cart_itm_name": "Epson C13S051125",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 645,
+  "fields": {
+    "cart_itm_name": "Epson C13S051126",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 646,
+  "fields": {
+    "cart_itm_name": "Epson C13S051124",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 647,
+  "fields": {
+    "cart_itm_name": "Epson C13S051158",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 648,
+  "fields": {
+    "cart_itm_name": "Epson C13S051162",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 649,
+  "fields": {
+    "cart_itm_name": "Epson C13S051160",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 650,
+  "fields": {
+    "cart_itm_name": "Epson C13S051161",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 651,
+  "fields": {
+    "cart_itm_name": "Epson C13S051165",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 652,
+  "fields": {
+    "cart_itm_name": "Epson C13S051163",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 653,
+  "fields": {
+    "cart_itm_name": "Epson C13S051164",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 654,
+  "fields": {
+    "cart_itm_name": "Epson C13S051159",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 655,
+  "fields": {
+    "cart_itm_name": "Epson C13T08114A",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 656,
+  "fields": {
+    "cart_itm_name": "Epson C13T08124A",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 657,
+  "fields": {
+    "cart_itm_name": "Epson C13T08134A",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 658,
+  "fields": {
+    "cart_itm_name": "Epson C13T08144A",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 659,
+  "fields": {
+    "cart_itm_name": "Epson C13T08154A",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 660,
+  "fields": {
+    "cart_itm_name": "Epson C13T08164A",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 661,
+  "fields": {
+    "cart_itm_name": "Epson C13T08174A",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 662,
+  "fields": {
+    "cart_itm_name": "Epson C13T07314A",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 663,
+  "fields": {
+    "cart_itm_name": "Epson C13T07214A",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 664,
+  "fields": {
+    "cart_itm_name": "Epson C13T07324A",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 665,
+  "fields": {
+    "cart_itm_name": "Epson C13T07334A",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 666,
+  "fields": {
+    "cart_itm_name": "Epson C13T07344A",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 667,
+  "fields": {
+    "cart_itm_name": "Epson C13T07354A",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 668,
+  "fields": {
+    "cart_itm_name": "Epson C13T10324A10",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 669,
+  "fields": {
+    "cart_itm_name": "Epson C13T10334A10",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 670,
+  "fields": {
+    "cart_itm_name": "Epson C13T10344A10",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 671,
+  "fields": {
+    "cart_itm_name": "Epson C13T10314A10",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 672,
+  "fields": {
+    "cart_itm_name": "Epson C13T09214A10",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 673,
+  "fields": {
+    "cart_itm_name": "Epson C13T09224A10",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 674,
+  "fields": {
+    "cart_itm_name": "Epson C13T09234A10",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 675,
+  "fields": {
+    "cart_itm_name": "Epson C13T09244A10",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 676,
+  "fields": {
+    "cart_itm_name": "Epson C13T09254A10",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 677,
+  "fields": {
+    "cart_itm_name": "Epson EPS015329",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 678,
+  "fields": {
+    "cart_itm_name": "Epson EPS015032",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 679,
+  "fields": {
+    "cart_itm_name": "Epson EPS015022",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 680,
+  "fields": {
+    "cart_itm_name": "Epson EPS015019",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 681,
+  "fields": {
+    "cart_itm_name": "Epson FM-NC617BK",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 682,
+  "fields": {
+    "cart_itm_name": "Epson C13S050198",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 683,
+  "fields": {
+    "cart_itm_name": "Epson C13S050197",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 684,
+  "fields": {
+    "cart_itm_name": "Epson C13S050195",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 685,
+  "fields": {
+    "cart_itm_name": "Epson C13S050196",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 686,
+  "fields": {
+    "cart_itm_name": "Epson C13S050229",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 687,
+  "fields": {
+    "cart_itm_name": "Epson C13S050228",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 688,
+  "fields": {
+    "cart_itm_name": "Epson C13S050226",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 689,
+  "fields": {
+    "cart_itm_name": "Epson C13S050227",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 690,
+  "fields": {
+    "cart_itm_name": "Epson C13S050033",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 691,
+  "fields": {
+    "cart_itm_name": "Epson C13S050035",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 692,
+  "fields": {
+    "cart_itm_name": "Epson C13S050036",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 693,
+  "fields": {
+    "cart_itm_name": "Epson C13S050034",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 694,
+  "fields": {
+    "cart_itm_name": "Epson C13S050190",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 695,
+  "fields": {
+    "cart_itm_name": "Epson C13S050189",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 696,
+  "fields": {
+    "cart_itm_name": "Epson C13S050187",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 697,
+  "fields": {
+    "cart_itm_name": "Epson C13S050188",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 698,
+  "fields": {
+    "cart_itm_name": "Epson C13S050193",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 699,
+  "fields": {
+    "cart_itm_name": "Epson C13S050192",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 700,
+  "fields": {
+    "cart_itm_name": "Epson C13S050191",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 701,
+  "fields": {
+    "cart_itm_name": "Epson C13S050319",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 702,
+  "fields": {
+    "cart_itm_name": "Epson C13S050318",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 703,
+  "fields": {
+    "cart_itm_name": "Epson C13S050317",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 704,
+  "fields": {
+    "cart_itm_name": "Epson C13S050316",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 705,
+  "fields": {
+    "cart_itm_name": "Xerox 106R00462",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 706,
+  "fields": {
+    "cart_itm_name": "Xerox 106R00461",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 707,
+  "fields": {
+    "cart_itm_name": "Xerox 106R00646",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 708,
+  "fields": {
+    "cart_itm_name": "Xerox 603P06174",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 709,
+  "fields": {
+    "cart_itm_name": "Xerox 113R00495",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 710,
+  "fields": {
+    "cart_itm_name": "Xerox 113R00443",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 711,
+  "fields": {
+    "cart_itm_name": "Xerox 106R00586",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 712,
+  "fields": {
+    "cart_itm_name": "Xerox 106R01048",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 713,
+  "fields": {
+    "cart_itm_name": "Xerox 006R01179",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 714,
+  "fields": {
+    "cart_itm_name": "Xerox 109R00725",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 715,
+  "fields": {
+    "cart_itm_name": "Xerox 3R97036",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 716,
+  "fields": {
+    "cart_itm_name": "Xerox 109R00639",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 717,
+  "fields": {
+    "cart_itm_name": "Xerox 106R01159",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 718,
+  "fields": {
+    "cart_itm_name": "Xerox 106R00676",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 719,
+  "fields": {
+    "cart_itm_name": "Xerox 106R00677",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 720,
+  "fields": {
+    "cart_itm_name": "Xerox 106R00678",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 721,
+  "fields": {
+    "cart_itm_name": "Xerox 106R00679",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 722,
+  "fields": {
+    "cart_itm_name": "Xerox 106R00680",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 723,
+  "fields": {
+    "cart_itm_name": "Xerox 106R00681",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 724,
+  "fields": {
+    "cart_itm_name": "Xerox 106R00682",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 725,
+  "fields": {
+    "cart_itm_name": "Xerox 106R00684",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 726,
+  "fields": {
+    "cart_itm_name": "Xerox 106R00687",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 727,
+  "fields": {
+    "cart_itm_name": "Xerox 106R00688",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 728,
+  "fields": {
+    "cart_itm_name": "Xerox 106R00441",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 729,
+  "fields": {
+    "cart_itm_name": "Xerox 106R00442",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 730,
+  "fields": {
+    "cart_itm_name": "Xerox 013R00606",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 731,
+  "fields": {
+    "cart_itm_name": "Xerox 013R00607",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 732,
+  "fields": {
+    "cart_itm_name": "Xerox 006R01020",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 733,
+  "fields": {
+    "cart_itm_name": "Xerox 106R01034",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 734,
+  "fields": {
+    "cart_itm_name": "Xerox 106R01033",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 735,
+  "fields": {
+    "cart_itm_name": "Xerox 109R00746",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 736,
+  "fields": {
+    "cart_itm_name": "Xerox 109R00747",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 737,
+  "fields": {
+    "cart_itm_name": "Xerox 109R00748",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 738,
+  "fields": {
+    "cart_itm_name": "Xerox 106R01148",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 739,
+  "fields": {
+    "cart_itm_name": "Xerox 106R01149",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 740,
+  "fields": {
+    "cart_itm_name": "Xerox 113R00656",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 741,
+  "fields": {
+    "cart_itm_name": "Xerox 113R00657",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 742,
+  "fields": {
+    "cart_itm_name": "Xerox 113R00668",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 743,
+  "fields": {
+    "cart_itm_name": "Xerox 016197800",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 744,
+  "fields": {
+    "cart_itm_name": "Xerox 016197700",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 745,
+  "fields": {
+    "cart_itm_name": "Xerox 016197900",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 746,
+  "fields": {
+    "cart_itm_name": "Xerox 016198000",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 747,
+  "fields": {
+    "cart_itm_name": "Xerox 016197600",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 748,
+  "fields": {
+    "cart_itm_name": "Xerox 016197300",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 749,
+  "fields": {
+    "cart_itm_name": "Xerox 016197400",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 750,
+  "fields": {
+    "cart_itm_name": "Xerox 016197500",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 751,
+  "fields": {
+    "cart_itm_name": "Xerox 113R00627",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 752,
+  "fields": {
+    "cart_itm_name": "Xerox 113R00628",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 753,
+  "fields": {
+    "cart_itm_name": "Xerox 013R00621",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 754,
+  "fields": {
+    "cart_itm_name": "Xerox 013R00625",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 755,
+  "fields": {
+    "cart_itm_name": "Xerox 006R01278",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 756,
+  "fields": {
+    "cart_itm_name": "Xerox 113R00619 ",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 757,
+  "fields": {
+    "cart_itm_name": "Xerox 106R01073",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 758,
+  "fields": {
+    "cart_itm_name": "Xerox 106R01074",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 759,
+  "fields": {
+    "cart_itm_name": "Xerox 106R01075",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 760,
+  "fields": {
+    "cart_itm_name": "Xerox 106R01076",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 761,
+  "fields": {
+    "cart_itm_name": "Xerox 106R01082",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 762,
+  "fields": {
+    "cart_itm_name": "Xerox 106R01083",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 763,
+  "fields": {
+    "cart_itm_name": "Xerox 106R01084",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 764,
+  "fields": {
+    "cart_itm_name": "Xerox 106R01085",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 765,
+  "fields": {
+    "cart_itm_name": "Xerox 106R01144",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 766,
+  "fields": {
+    "cart_itm_name": "Xerox 106R01145",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 767,
+  "fields": {
+    "cart_itm_name": "Xerox 106R01146",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 768,
+  "fields": {
+    "cart_itm_name": "Xerox 106R01147",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 769,
+  "fields": {
+    "cart_itm_name": "Xerox 113R00445",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 770,
+  "fields": {
+    "cart_itm_name": "Xerox 113R00446",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 771,
+  "fields": {
+    "cart_itm_name": "Xerox 106R01374",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 772,
+  "fields": {
+    "cart_itm_name": "Xerox 106R01373",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 773,
+  "fields": {
+    "cart_itm_name": "Xerox 106R01414",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 774,
+  "fields": {
+    "cart_itm_name": "Xerox 106R01415",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 775,
+  "fields": {
+    "cart_itm_name": "Xerox 106R01370",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 776,
+  "fields": {
+    "cart_itm_name": "Xerox 106R01371",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 777,
+  "fields": {
+    "cart_itm_name": "Xerox 113R00711",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 778,
+  "fields": {
+    "cart_itm_name": "Xerox 113R00712",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 779,
+  "fields": {
+    "cart_itm_name": "Xerox 106R01294",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 780,
+  "fields": {
+    "cart_itm_name": "Xerox 113R00737",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 781,
+  "fields": {
+    "cart_itm_name": "Xerox 106R01203",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 782,
+  "fields": {
+    "cart_itm_name": "Xerox 106R01206",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 783,
+  "fields": {
+    "cart_itm_name": "Xerox 106R01204",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 784,
+  "fields": {
+    "cart_itm_name": "Xerox 106R01205",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 785,
+  "fields": {
+    "cart_itm_name": "Xerox 106R01338",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 786,
+  "fields": {
+    "cart_itm_name": "Xerox 106R01335",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 787,
+  "fields": {
+    "cart_itm_name": "Xerox 106R01336",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 788,
+  "fields": {
+    "cart_itm_name": "Xerox 106R01337",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 789,
+  "fields": {
+    "cart_itm_name": "Xerox 106R01221",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 790,
+  "fields": {
+    "cart_itm_name": "Xerox 106R01217",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 791,
+  "fields": {
+    "cart_itm_name": "Xerox 106R01214",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 792,
+  "fields": {
+    "cart_itm_name": "Xerox 106R01218",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 793,
+  "fields": {
+    "cart_itm_name": "Xerox 106R01219",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 794,
+  "fields": {
+    "cart_itm_name": "Xerox 106R01215",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 795,
+  "fields": {
+    "cart_itm_name": "Xerox 106R01216",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 796,
+  "fields": {
+    "cart_itm_name": "Xerox 106R01220",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 797,
+  "fields": {
+    "cart_itm_name": "Xerox 106R01282",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 798,
+  "fields": {
+    "cart_itm_name": "Xerox 106R01283",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 799,
+  "fields": {
+    "cart_itm_name": "Xerox 106R01284",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 800,
+  "fields": {
+    "cart_itm_name": "Xerox 106R01285",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 801,
+  "fields": {
+    "cart_itm_name": "Xerox 106R01389",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 802,
+  "fields": {
+    "cart_itm_name": "Xerox 106R01390",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 803,
+  "fields": {
+    "cart_itm_name": "Xerox 106R01388",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 804,
+  "fields": {
+    "cart_itm_name": "Xerox 106R01403",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 805,
+  "fields": {
+    "cart_itm_name": "Xerox 106R01402",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 806,
+  "fields": {
+    "cart_itm_name": "Xerox 106R01400",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 807,
+  "fields": {
+    "cart_itm_name": "Xerox 106R01401",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 808,
+  "fields": {
+    "cart_itm_name": "Xerox 106R01391",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 809,
+  "fields": {
+    "cart_itm_name": "Xerox 108R00767",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 810,
+  "fields": {
+    "cart_itm_name": "Xerox 108R00768",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 811,
+  "fields": {
+    "cart_itm_name": "Xerox 108R00764",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 812,
+  "fields": {
+    "cart_itm_name": "Xerox 108R00765",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 813,
+  "fields": {
+    "cart_itm_name": "Xerox 108R00766",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 814,
+  "fields": {
+    "cart_itm_name": "Xerox 106R01163",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 815,
+  "fields": {
+    "cart_itm_name": "Xerox 106R01160",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 816,
+  "fields": {
+    "cart_itm_name": "Xerox 106R01161",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 817,
+  "fields": {
+    "cart_itm_name": "Xerox 106R01162",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 818,
+  "fields": {
+    "cart_itm_name": "Xerox 106R01080",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 819,
+  "fields": {
+    "cart_itm_name": "Xerox 106R01150",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 820,
+  "fields": {
+    "cart_itm_name": "Xerox 106R01151",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 821,
+  "fields": {
+    "cart_itm_name": "Xerox 106R01152",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 822,
+  "fields": {
+    "cart_itm_name": "Xerox 106R01077",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 823,
+  "fields": {
+    "cart_itm_name": "Xerox 106R01078",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 824,
+  "fields": {
+    "cart_itm_name": "Xerox 106R01079",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 825,
+  "fields": {
+    "cart_itm_name": "Xerox 106R01378",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 826,
+  "fields": {
+    "cart_itm_name": "Xerox 106R01379",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 827,
+  "fields": {
+    "cart_itm_name": "Xerox 106R01411",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 828,
+  "fields": {
+    "cart_itm_name": "Xerox 106R01412",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 829,
+  "fields": {
+    "cart_itm_name": "Xerox 106R01485",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 830,
+  "fields": {
+    "cart_itm_name": "Xerox 106R01486",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 831,
+  "fields": {
+    "cart_itm_name": "Xerox 106R01413",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 832,
+  "fields": {
+    "cart_itm_name": "Xerox 113R00689",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 833,
+  "fields": {
+    "cart_itm_name": "Xerox 113R00690",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 834,
+  "fields": {
+    "cart_itm_name": "Xerox 113R00691",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 835,
+  "fields": {
+    "cart_itm_name": "Xerox 113R00692",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 836,
+  "fields": {
+    "cart_itm_name": "Xerox 113R00693",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 837,
+  "fields": {
+    "cart_itm_name": "Xerox 113R00694",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 838,
+  "fields": {
+    "cart_itm_name": "Xerox 113R00695",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 839,
+  "fields": {
+    "cart_itm_name": "Xerox 113R00722",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 840,
+  "fields": {
+    "cart_itm_name": "Xerox 113R00726",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 841,
+  "fields": {
+    "cart_itm_name": "Xerox 113R00719",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 842,
+  "fields": {
+    "cart_itm_name": "Xerox 113R00723",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 843,
+  "fields": {
+    "cart_itm_name": "Xerox 113R00721",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 844,
+  "fields": {
+    "cart_itm_name": "Xerox 113R00725",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 845,
+  "fields": {
+    "cart_itm_name": "Xerox 113R00720",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 846,
+  "fields": {
+    "cart_itm_name": "Xerox 113R00724",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 847,
+  "fields": {
+    "cart_itm_name": "Xerox 106R01245",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 848,
+  "fields": {
+    "cart_itm_name": "Xerox 106R01246",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 849,
+  "fields": {
+    "cart_itm_name": "Xerox 108R00772",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 850,
+  "fields": {
+    "cart_itm_name": "Xerox 108R00746",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 851,
+  "fields": {
+    "cart_itm_name": "Xerox 108R00747",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 852,
+  "fields": {
+    "cart_itm_name": "Xerox 108R00748",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 853,
+  "fields": {
+    "cart_itm_name": "Xerox 108R00749",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 854,
+  "fields": {
+    "cart_itm_name": "Xerox 013R00601",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 855,
+  "fields": {
+    "cart_itm_name": "Xerox 106R01305",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 856,
+  "fields": {
+    "cart_itm_name": "Samsung SCX-5312D6",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 857,
+  "fields": {
+    "cart_itm_name": "Samsung ML-6060D6",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 858,
+  "fields": {
+    "cart_itm_name": "Samsung ML-2150D8",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 859,
+  "fields": {
+    "cart_itm_name": "Samsung ML-1610D2",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 860,
+  "fields": {
+    "cart_itm_name": "Samsung ML-1520D3",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 861,
+  "fields": {
+    "cart_itm_name": "Samsung ML-4500D3",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 862,
+  "fields": {
+    "cart_itm_name": "Samsung ML-1210D3",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 863,
+  "fields": {
+    "cart_itm_name": "Samsung ML-6060D6/XRH",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 864,
+  "fields": {
+    "cart_itm_name": "Samsung ML-1710D3",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 865,
+  "fields": {
+    "cart_itm_name": "Samsung INK-M40",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 866,
+  "fields": {
+    "cart_itm_name": "Samsung INK-C40",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 867,
+  "fields": {
+    "cart_itm_name": "Samsung SCX-4216D3",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 868,
+  "fields": {
+    "cart_itm_name": "Samsung SCX-4100D3",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 869,
+  "fields": {
+    "cart_itm_name": "Samsung ML-2550DA",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 870,
+  "fields": {
+    "cart_itm_name": "Samsung ML-2250D5",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 871,
+  "fields": {
+    "cart_itm_name": "Samsung SCX-4720D3",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 872,
+  "fields": {
+    "cart_itm_name": "Samsung SCX-4720D5",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 873,
+  "fields": {
+    "cart_itm_name": "Samsung MLT-D108S",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 874,
+  "fields": {
+    "cart_itm_name": "Samsung MLT-D106S",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 875,
+  "fields": {
+    "cart_itm_name": "Samsung ML-D2850A",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 876,
+  "fields": {
+    "cart_itm_name": "Samsung ML-D2850B",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 877,
+  "fields": {
+    "cart_itm_name": "Samsung ML-D3470A",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 878,
+  "fields": {
+    "cart_itm_name": "Samsung ML-D3470B",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 879,
+  "fields": {
+    "cart_itm_name": "Samsung ML-D4550A",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 880,
+  "fields": {
+    "cart_itm_name": "Samsung ML-D4550B",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 881,
+  "fields": {
+    "cart_itm_name": "Samsung SCX-D4200A",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 882,
+  "fields": {
+    "cart_itm_name": "Samsung SCX-4521D3",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 883,
+  "fields": {
+    "cart_itm_name": "Samsung SCX-D4725A",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 884,
+  "fields": {
+    "cart_itm_name": "Samsung MLT-D209S",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 885,
+  "fields": {
+    "cart_itm_name": "Samsung MLT-D209L",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 886,
+  "fields": {
+    "cart_itm_name": "Samsung MLT-D105S",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 887,
+  "fields": {
+    "cart_itm_name": "Samsung MLT-D105L",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 888,
+  "fields": {
+    "cart_itm_name": "Samsung MLT-D109S",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 889,
+  "fields": {
+    "cart_itm_name": "Samsung ML-D1630A",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 890,
+  "fields": {
+    "cart_itm_name": "Samsung CLT-K409S",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 891,
+  "fields": {
+    "cart_itm_name": "Samsung CLT-C409S",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 892,
+  "fields": {
+    "cart_itm_name": "Samsung CLT-M409S",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 893,
+  "fields": {
+    "cart_itm_name": "Samsung CLT-Y409S",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 894,
+  "fields": {
+    "cart_itm_name": "Samsung CLP-K300A",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 895,
+  "fields": {
+    "cart_itm_name": "Samsung CLP-C300A",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 896,
+  "fields": {
+    "cart_itm_name": "Samsung CLP-M300A",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 897,
+  "fields": {
+    "cart_itm_name": "Samsung CLP-Y300A",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 898,
+  "fields": {
+    "cart_itm_name": "Samsung CLP-K600A",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 899,
+  "fields": {
+    "cart_itm_name": "Samsung CLP-C600A",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 900,
+  "fields": {
+    "cart_itm_name": "Samsung CLP-M600A",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 901,
+  "fields": {
+    "cart_itm_name": "Samsung CLP-Y600A",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 902,
+  "fields": {
+    "cart_itm_name": "Samsung CLP-K350A",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 903,
+  "fields": {
+    "cart_itm_name": "Samsung CLP-C350A",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 904,
+  "fields": {
+    "cart_itm_name": "Samsung CLP-M350A",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 905,
+  "fields": {
+    "cart_itm_name": "Samsung CLP-Y350A",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 906,
+  "fields": {
+    "cart_itm_name": "Samsung CLP-500D7K",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 907,
+  "fields": {
+    "cart_itm_name": "Samsung CLP-500D5C",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 908,
+  "fields": {
+    "cart_itm_name": "Samsung CLP-500D5Y",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 909,
+  "fields": {
+    "cart_itm_name": "Samsung CLP-500D5M",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 910,
+  "fields": {
+    "cart_itm_name": "Samsung CLP-510D3K",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 911,
+  "fields": {
+    "cart_itm_name": "Samsung CLP-510D7K",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 912,
+  "fields": {
+    "cart_itm_name": "Samsung CLP-510D2C",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 913,
+  "fields": {
+    "cart_itm_name": "Samsung CLP-510D5C",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 914,
+  "fields": {
+    "cart_itm_name": "Samsung CLP-510D2Y",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 915,
+  "fields": {
+    "cart_itm_name": "Samsung CLP-510D5Y",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 916,
+  "fields": {
+    "cart_itm_name": "Samsung CLP-510D5M",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 917,
+  "fields": {
+    "cart_itm_name": "Samsung CLP-510D2M",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 918,
+  "fields": {
+    "cart_itm_name": "Ricoh 888216",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 919,
+  "fields": {
+    "cart_itm_name": "Ricoh 885322",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 920,
+  "fields": {
+    "cart_itm_name": "Ricoh 885323",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 921,
+  "fields": {
+    "cart_itm_name": "Ricoh 885324",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 922,
+  "fields": {
+    "cart_itm_name": "Ricoh 885321 ",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 923,
+  "fields": {
+    "cart_itm_name": "Ricoh 412477",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 924,
+  "fields": {
+    "cart_itm_name": "Ricoh 402887",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 925,
+  "fields": {
+    "cart_itm_name": "Ricoh 406052",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 926,
+  "fields": {
+    "cart_itm_name": "Ricoh 406053",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 927,
+  "fields": {
+    "cart_itm_name": "Ricoh 406054",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 928,
+  "fields": {
+    "cart_itm_name": "Ricoh 406055",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 929,
+  "fields": {
+    "cart_itm_name": "Lexmark 10N0217E",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 930,
+  "fields": {
+    "cart_itm_name": "Lexmark 10N0227E",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 931,
+  "fields": {
+    "cart_itm_name": "Lexmark 10N0016E",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 932,
+  "fields": {
+    "cart_itm_name": "Lexmark 10N0026E",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 933,
+  "fields": {
+    "cart_itm_name": "Lexmark 12A1970",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 934,
+  "fields": {
+    "cart_itm_name": "Lexmark 12A1980",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 935,
+  "fields": {
+    "cart_itm_name": "Lexmark 12A1990",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 936,
+  "fields": {
+    "cart_itm_name": "Lexmark 12A1985",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 937,
+  "fields": {
+    "cart_itm_name": "Lexmark 12A1975E",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 938,
+  "fields": {
+    "cart_itm_name": "Lexmark 12016SE",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 939,
+  "fields": {
+    "cart_itm_name": "Lexmark 12036SE",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 940,
+  "fields": {
+    "cart_itm_name": "Lexmark E250A21E",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 941,
+  "fields": {
+    "cart_itm_name": "Lexmark E250A11E",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 942,
+  "fields": {
+    "cart_itm_name": "Lexmark E352H11E",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 943,
+  "fields": {
+    "cart_itm_name": "Lexmark E352H21E",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 944,
+  "fields": {
+    "cart_itm_name": "Lexmark 64016HE",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 945,
+  "fields": {
+    "cart_itm_name": "Lexmark 64016SE",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 946,
+  "fields": {
+    "cart_itm_name": "Lexmark 64036HE",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 947,
+  "fields": {
+    "cart_itm_name": "Lexmark 64036SE",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 948,
+  "fields": {
+    "cart_itm_name": "Lexmark W84020H",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 949,
+  "fields": {
+    "cart_itm_name": "Lexmark E260A11E",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 950,
+  "fields": {
+    "cart_itm_name": "Lexmark E260A21E",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 951,
+  "fields": {
+    "cart_itm_name": "Lexmark T650H11E",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 952,
+  "fields": {
+    "cart_itm_name": "Lexmark T650A11E",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 953,
+  "fields": {
+    "cart_itm_name": "Lexmark T650H04E",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 954,
+  "fields": {
+    "cart_itm_name": "Lexmark T650H21E",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 955,
+  "fields": {
+    "cart_itm_name": "Lexmark T650A21E",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 956,
+  "fields": {
+    "cart_itm_name": "Lexmark 15G042K",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 957,
+  "fields": {
+    "cart_itm_name": "Lexmark 15G041K",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 958,
+  "fields": {
+    "cart_itm_name": "Lexmark 15G032K",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 959,
+  "fields": {
+    "cart_itm_name": "Lexmark 15G031K",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 960,
+  "fields": {
+    "cart_itm_name": "Lexmark 15G042C",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 961,
+  "fields": {
+    "cart_itm_name": "Lexmark 15G041C",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 962,
+  "fields": {
+    "cart_itm_name": "Lexmark 15G032C",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 963,
+  "fields": {
+    "cart_itm_name": "Lexmark 15G031C",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 964,
+  "fields": {
+    "cart_itm_name": "Lexmark 15G042M",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 965,
+  "fields": {
+    "cart_itm_name": "Lexmark 15G041M",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 966,
+  "fields": {
+    "cart_itm_name": "Lexmark 15G032M",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 967,
+  "fields": {
+    "cart_itm_name": "Lexmark 15G031M",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 968,
+  "fields": {
+    "cart_itm_name": "Lexmark 15G042Y",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 969,
+  "fields": {
+    "cart_itm_name": "Lexmark 15G041Y",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 970,
+  "fields": {
+    "cart_itm_name": "Lexmark 15G032Y",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 971,
+  "fields": {
+    "cart_itm_name": "Lexmark 15G031Y",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 972,
+  "fields": {
+    "cart_itm_name": "Lexmark X644X11E",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 973,
+  "fields": {
+    "cart_itm_name": "Lexmark X644H11E",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 974,
+  "fields": {
+    "cart_itm_name": "Lexmark X644A11E",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 975,
+  "fields": {
+    "cart_itm_name": "Lexmark X644X21E",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 976,
+  "fields": {
+    "cart_itm_name": "Lexmark X644H21E",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 977,
+  "fields": {
+    "cart_itm_name": "Lexmark X644A21E",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 978,
+  "fields": {
+    "cart_itm_name": "Lexmark X850H21G",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 979,
+  "fields": {
+    "cart_itm_name": "Lexmark X651H11E",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 980,
+  "fields": {
+    "cart_itm_name": "Lexmark X651A11E",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 981,
+  "fields": {
+    "cart_itm_name": "Lexmark X651H04E",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 982,
+  "fields": {
+    "cart_itm_name": "Lexmark X651A21E",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 983,
+  "fields": {
+    "cart_itm_name": "Lexmark 0018S0090",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 984,
+  "fields": {
+    "cart_itm_name": "Lexmark X264A21G",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 985,
+  "fields": {
+    "cart_itm_name": "Lexmark X264H21G",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 986,
+  "fields": {
+    "cart_itm_name": "Lexmark X340A11G",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 987,
+  "fields": {
+    "cart_itm_name": "Lexmark X340A21G",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 988,
+  "fields": {
+    "cart_itm_name": "Lexmark 12A4715",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 989,
+  "fields": {
+    "cart_itm_name": "Lexmark 12A4710",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 990,
+  "fields": {
+    "cart_itm_name": "Lexmark 12A3715",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 991,
+  "fields": {
+    "cart_itm_name": "Lexmark 12A3710",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 992,
+  "fields": {
+    "cart_itm_name": "Lexmark 12A7465",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 993,
+  "fields": {
+    "cart_itm_name": "Lexmark 12A7462",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 994,
+  "fields": {
+    "cart_itm_name": "Lexmark 12A7365",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 995,
+  "fields": {
+    "cart_itm_name": "Lexmark 12A7360",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 996,
+  "fields": {
+    "cart_itm_name": "Lexmark 12A7362",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 997,
+  "fields": {
+    "cart_itm_name": "Lexmark 12A7460",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 998,
+  "fields": {
+    "cart_itm_name": "Lexmark 12A7468",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 999,
+  "fields": {
+    "cart_itm_name": "Lexmark X463X11G",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 1000,
+  "fields": {
+    "cart_itm_name": "Lexmark X463H11G",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 1001,
+  "fields": {
+    "cart_itm_name": "Lexmark X463A11G",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 1002,
+  "fields": {
+    "cart_itm_name": "Lexmark X463X21G",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 1003,
+  "fields": {
+    "cart_itm_name": "Lexmark X463H21G",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 1004,
+  "fields": {
+    "cart_itm_name": "Lexmark X463A21G",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 1005,
+  "fields": {
+    "cart_itm_name": "Lexmark 0C500H2KG",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 1006,
+  "fields": {
+    "cart_itm_name": "Lexmark 0C500H2CG",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 1007,
+  "fields": {
+    "cart_itm_name": "Lexmark 0C500H2MG",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 1008,
+  "fields": {
+    "cart_itm_name": "Lexmark 0C500H2YG",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 1009,
+  "fields": {
+    "cart_itm_name": "Lexmark 0C500S2KG",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 1010,
+  "fields": {
+    "cart_itm_name": "Lexmark 0C500S2CG",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 1011,
+  "fields": {
+    "cart_itm_name": "Lexmark 0C500S2MG",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 1012,
+  "fields": {
+    "cart_itm_name": "Lexmark 0C500S2YG",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 1013,
+  "fields": {
+    "cart_itm_name": "Lexmark 20K1403",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 1014,
+  "fields": {
+    "cart_itm_name": "Lexmark 20K0503",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 1015,
+  "fields": {
+    "cart_itm_name": "Lexmark 20K1400",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 1016,
+  "fields": {
+    "cart_itm_name": "Lexmark 20K0500",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 1017,
+  "fields": {
+    "cart_itm_name": "Lexmark 20K1401",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 1018,
+  "fields": {
+    "cart_itm_name": "Lexmark 20K0501",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 1019,
+  "fields": {
+    "cart_itm_name": "Lexmark 20K1402",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 1020,
+  "fields": {
+    "cart_itm_name": "Lexmark 20K0502",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 1021,
+  "fields": {
+    "cart_itm_name": "Lexmark C5220KS",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 1022,
+  "fields": {
+    "cart_itm_name": "Lexmark C5220CS",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 1023,
+  "fields": {
+    "cart_itm_name": "Lexmark C5220MS",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 1024,
+  "fields": {
+    "cart_itm_name": "Lexmark C5220YS",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 1025,
+  "fields": {
+    "cart_itm_name": "Lexmark C5222KS",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 1026,
+  "fields": {
+    "cart_itm_name": "Lexmark C5222CS",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 1027,
+  "fields": {
+    "cart_itm_name": "Lexmark C5222MS",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 1028,
+  "fields": {
+    "cart_itm_name": "Lexmark C5222YS",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 1029,
+  "fields": {
+    "cart_itm_name": "Lexmark C540H2KG",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 1030,
+  "fields": {
+    "cart_itm_name": "Lexmark C540H2CG",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 1031,
+  "fields": {
+    "cart_itm_name": "Lexmark C540H2MG",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 1032,
+  "fields": {
+    "cart_itm_name": "Lexmark C540H2YG",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 1033,
+  "fields": {
+    "cart_itm_name": "Lexmark C544X2CG",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 1034,
+  "fields": {
+    "cart_itm_name": "Lexmark C544X2MG",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 1035,
+  "fields": {
+    "cart_itm_name": "Lexmark C544X2YG",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 1036,
+  "fields": {
+    "cart_itm_name": "Lexmark C544X2KG",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 1037,
+  "fields": {
+    "cart_itm_name": "Lexmark C734A1KG",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 1038,
+  "fields": {
+    "cart_itm_name": "Lexmark C734A1CG",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 1039,
+  "fields": {
+    "cart_itm_name": "Lexmark C734A1MG",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 1040,
+  "fields": {
+    "cart_itm_name": "Lexmark C734A1YG",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 1041,
+  "fields": {
+    "cart_itm_name": "Lexmark C734A2KG",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 1042,
+  "fields": {
+    "cart_itm_name": "Lexmark C734A2CG",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 1043,
+  "fields": {
+    "cart_itm_name": "Lexmark C734A2MG",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 1044,
+  "fields": {
+    "cart_itm_name": "Lexmark C734A2YG",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 1045,
+  "fields": {
+    "cart_itm_name": "Lexmark C7700KH",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 1046,
+  "fields": {
+    "cart_itm_name": "Lexmark C7700CH",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 1047,
+  "fields": {
+    "cart_itm_name": "Lexmark C7700MH",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 1048,
+  "fields": {
+    "cart_itm_name": "Lexmark C7700YH",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 1049,
+  "fields": {
+    "cart_itm_name": "Lexmark C7700KS",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 1050,
+  "fields": {
+    "cart_itm_name": "Lexmark C7700CS",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 1051,
+  "fields": {
+    "cart_itm_name": "Lexmark C7700MS",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 1052,
+  "fields": {
+    "cart_itm_name": "Lexmark C7700YS",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 1053,
+  "fields": {
+    "cart_itm_name": "Lexmark C7702KH",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 1054,
+  "fields": {
+    "cart_itm_name": "Lexmark C7702CH",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 1055,
+  "fields": {
+    "cart_itm_name": "Lexmark C7702MH",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 1056,
+  "fields": {
+    "cart_itm_name": "Lexmark C7702YH",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 1057,
+  "fields": {
+    "cart_itm_name": "Lexmark C7702KS",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 1058,
+  "fields": {
+    "cart_itm_name": "Lexmark C7702YS",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 1059,
+  "fields": {
+    "cart_itm_name": "Lexmark C7702CS",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 1060,
+  "fields": {
+    "cart_itm_name": "Lexmark C7702MS",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 1061,
+  "fields": {
+    "cart_itm_name": "Lexmark C780H1KG",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 1062,
+  "fields": {
+    "cart_itm_name": "Lexmark C780A1KG",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 1063,
+  "fields": {
+    "cart_itm_name": "Lexmark C780H2KG",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 1064,
+  "fields": {
+    "cart_itm_name": "Lexmark C780A2KG",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 1065,
+  "fields": {
+    "cart_itm_name": "Lexmark C780H1CG",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 1066,
+  "fields": {
+    "cart_itm_name": "Lexmark C780H2CG",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 1067,
+  "fields": {
+    "cart_itm_name": "Lexmark C780A1CG",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 1068,
+  "fields": {
+    "cart_itm_name": "Lexmark C780A2CG",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 1069,
+  "fields": {
+    "cart_itm_name": "Lexmark C780H1MG",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 1070,
+  "fields": {
+    "cart_itm_name": "Lexmark C780A2MG",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 1071,
+  "fields": {
+    "cart_itm_name": "Lexmark C780A1MG",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 1072,
+  "fields": {
+    "cart_itm_name": "Lexmark C780H2MG",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 1073,
+  "fields": {
+    "cart_itm_name": "Lexmark C780A1YG",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 1074,
+  "fields": {
+    "cart_itm_name": "Lexmark C780A2YG",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 1075,
+  "fields": {
+    "cart_itm_name": "Lexmark C780H1YG",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 1076,
+  "fields": {
+    "cart_itm_name": "Lexmark C780H2YG",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 1077,
+  "fields": {
+    "cart_itm_name": "Lexmark 12N0768",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 1078,
+  "fields": {
+    "cart_itm_name": "Lexmark 12N0769",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 1079,
+  "fields": {
+    "cart_itm_name": "Lexmark 12N0770",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 1080,
+  "fields": {
+    "cart_itm_name": "Lexmark 12N0771",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 1081,
+  "fields": {
+    "cart_itm_name": "Lexmark C9202CH",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 1082,
+  "fields": {
+    "cart_itm_name": "Lexmark C9202MH",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 1083,
+  "fields": {
+    "cart_itm_name": "Lexmark C9202YH",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 1084,
+  "fields": {
+    "cart_itm_name": "Lexmark C9202KH",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 1085,
+  "fields": {
+    "cart_itm_name": "Lexmark C930H2KG",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 1086,
+  "fields": {
+    "cart_itm_name": "Lexmark C930H2CG",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 1087,
+  "fields": {
+    "cart_itm_name": "Lexmark C930H2MG",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 1088,
+  "fields": {
+    "cart_itm_name": "Lexmark C930H2YG",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 1089,
+  "fields": {
+    "cart_itm_name": "Lexmark 10B042K",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 1090,
+  "fields": {
+    "cart_itm_name": "Lexmark 10B042C",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 1091,
+  "fields": {
+    "cart_itm_name": "Lexmark 10B042M",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 1092,
+  "fields": {
+    "cart_itm_name": "Lexmark 10B042Y",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 1093,
+  "fields": {
+    "cart_itm_name": "Lexmark 10B041K",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 1094,
+  "fields": {
+    "cart_itm_name": "Lexmark 10B041C",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 1095,
+  "fields": {
+    "cart_itm_name": "Lexmark 10B041M",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 1096,
+  "fields": {
+    "cart_itm_name": "Lexmark 10B041Y",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 1097,
+  "fields": {
+    "cart_itm_name": "Lexmark 10B032C",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 1098,
+  "fields": {
+    "cart_itm_name": "Lexmark 10B032M",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 1099,
+  "fields": {
+    "cart_itm_name": "Lexmark 10B032Y",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 1100,
+  "fields": {
+    "cart_itm_name": "Lexmark 10B032K",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 1101,
+  "fields": {
+    "cart_itm_name": "Lexmark 10B031Y",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 1102,
+  "fields": {
+    "cart_itm_name": "Lexmark 10B031M",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 1103,
+  "fields": {
+    "cart_itm_name": "Lexmark 10B031K",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 1104,
+  "fields": {
+    "cart_itm_name": "Lexmark 10B031C",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 1105,
+  "fields": {
+    "cart_itm_name": "Konica Minolta 8935804",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 1106,
+  "fields": {
+    "cart_itm_name": "Konica Minolta 950246",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 1107,
+  "fields": {
+    "cart_itm_name": "Konica Minolta 950236",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 1108,
+  "fields": {
+    "cart_itm_name": "Konica Minolta 950367",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 1109,
+  "fields": {
+    "cart_itm_name": "MB MB202LT",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 1110,
+  "fields": {
+    "cart_itm_name": "Sharp ZT-81TD1",
+    "cart_itm_type": 1,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 1111,
+  "fields": {
+    "cart_itm_name": "HP C3105A",
+    "cart_itm_type": 3,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 1112,
+  "fields": {
+    "cart_itm_name": "HP C3102A",
+    "cart_itm_type": 3,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 1113,
+  "fields": {
+    "cart_itm_name": "HP C3103A",
+    "cart_itm_type": 3,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 1114,
+  "fields": {
+    "cart_itm_name": "HP C3104A",
+    "cart_itm_type": 3,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 1115,
+  "fields": {
+    "cart_itm_name": "HP 885266",
+    "cart_itm_type": 3,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 1116,
+  "fields": {
+    "cart_itm_name": "HP 885460",
+    "cart_itm_type": 3,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 1117,
+  "fields": {
+    "cart_itm_name": "HP 885450",
+    "cart_itm_type": 3,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 1118,
+  "fields": {
+    "cart_itm_name": "Brother TN-3030",
+    "cart_itm_type": 3,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 1119,
+  "fields": {
+    "cart_itm_name": "Brother TN-8000",
+    "cart_itm_type": 3,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 1120,
+  "fields": {
+    "cart_itm_name": "Brother TN-3130",
+    "cart_itm_type": 3,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 1121,
+  "fields": {
+    "cart_itm_name": "Brother TN-3170",
+    "cart_itm_type": 3,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 1122,
+  "fields": {
+    "cart_itm_name": "Brother TN-3230",
+    "cart_itm_type": 3,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 1123,
+  "fields": {
+    "cart_itm_name": "Brother TN-3280",
+    "cart_itm_type": 3,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 1124,
+  "fields": {
+    "cart_itm_name": "Brother TN-3060",
+    "cart_itm_type": 3,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 1125,
+  "fields": {
+    "cart_itm_name": "Canon 6836A002",
+    "cart_itm_type": 3,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 1126,
+  "fields": {
+    "cart_itm_name": "Canon C-EXV7",
+    "cart_itm_type": 3,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 1127,
+  "fields": {
+    "cart_itm_name": "Canon NPG-11",
+    "cart_itm_type": 3,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 1128,
+  "fields": {
+    "cart_itm_name": "Canon 6647A002",
+    "cart_itm_type": 3,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 1129,
+  "fields": {
+    "cart_itm_name": "Canon C-EXV6",
+    "cart_itm_type": 3,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 1130,
+  "fields": {
+    "cart_itm_name": "Canon NPG-1",
+    "cart_itm_type": 3,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 1131,
+  "fields": {
+    "cart_itm_name": "Canon C-EXV18",
+    "cart_itm_type": 3,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 1132,
+  "fields": {
+    "cart_itm_name": "Canon 0384B002",
+    "cart_itm_type": 3,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 1133,
+  "fields": {
+    "cart_itm_name": "Canon C-EXV11",
+    "cart_itm_type": 3,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 1134,
+  "fields": {
+    "cart_itm_name": "Canon C-EXV12",
+    "cart_itm_type": 3,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 1135,
+  "fields": {
+    "cart_itm_name": "Canon C-EXV22",
+    "cart_itm_type": 3,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 1136,
+  "fields": {
+    "cart_itm_name": "Epson C13S050097",
+    "cart_itm_type": 3,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 1137,
+  "fields": {
+    "cart_itm_name": "Epson C13S050098",
+    "cart_itm_type": 3,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 1138,
+  "fields": {
+    "cart_itm_name": "Epson C13S050099",
+    "cart_itm_type": 3,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 1139,
+  "fields": {
+    "cart_itm_name": "Epson C13S050100",
+    "cart_itm_type": 3,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 1140,
+  "fields": {
+    "cart_itm_name": "Epson C13S051170",
+    "cart_itm_type": 3,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 1141,
+  "fields": {
+    "cart_itm_name": "Epson C13S050040",
+    "cart_itm_type": 3,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 1142,
+  "fields": {
+    "cart_itm_name": "Epson C13S050039",
+    "cart_itm_type": 3,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 1143,
+  "fields": {
+    "cart_itm_name": "Epson C13S050041",
+    "cart_itm_type": 3,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 1144,
+  "fields": {
+    "cart_itm_name": "Epson C13S050245",
+    "cart_itm_type": 3,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 1145,
+  "fields": {
+    "cart_itm_name": "Epson C13S050242",
+    "cart_itm_type": 3,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 1146,
+  "fields": {
+    "cart_itm_name": "Epson C13S050244",
+    "cart_itm_type": 3,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 1147,
+  "fields": {
+    "cart_itm_name": "Epson C13S050243",
+    "cart_itm_type": 3,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 1148,
+  "fields": {
+    "cart_itm_name": "Epson C13S050038",
+    "cart_itm_type": 3,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 1149,
+  "fields": {
+    "cart_itm_name": "Epson C13S050155",
+    "cart_itm_type": 3,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 1150,
+  "fields": {
+    "cart_itm_name": "Epson C13S050156",
+    "cart_itm_type": 3,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 1151,
+  "fields": {
+    "cart_itm_name": "Epson C13S050157",
+    "cart_itm_type": 3,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 1152,
+  "fields": {
+    "cart_itm_name": "Epson C13S051110",
+    "cart_itm_type": 3,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 1153,
+  "fields": {
+    "cart_itm_name": "Epson C13S050091",
+    "cart_itm_type": 3,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 1154,
+  "fields": {
+    "cart_itm_name": "Epson C13S050090",
+    "cart_itm_type": 3,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 1155,
+  "fields": {
+    "cart_itm_name": "Epson C13S050088",
+    "cart_itm_type": 3,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 1156,
+  "fields": {
+    "cart_itm_name": "Epson C13S050089",
+    "cart_itm_type": 3,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 1157,
+  "fields": {
+    "cart_itm_name": "Xerox 006R01044",
+    "cart_itm_type": 3,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 1158,
+  "fields": {
+    "cart_itm_name": "Xerox 006R90288",
+    "cart_itm_type": 3,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 1159,
+  "fields": {
+    "cart_itm_name": "Xerox 006R90287",
+    "cart_itm_type": 3,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 1160,
+  "fields": {
+    "cart_itm_name": "Xerox 006R90286",
+    "cart_itm_type": 3,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 1161,
+  "fields": {
+    "cart_itm_name": "Xerox 006R90285",
+    "cart_itm_type": 3,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 1162,
+  "fields": {
+    "cart_itm_name": "Xerox 006R90247",
+    "cart_itm_type": 3,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 1163,
+  "fields": {
+    "cart_itm_name": "Xerox 006R90250",
+    "cart_itm_type": 3,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 1164,
+  "fields": {
+    "cart_itm_name": "Xerox 006R90249",
+    "cart_itm_type": 3,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 1165,
+  "fields": {
+    "cart_itm_name": "Xerox 006R90248",
+    "cart_itm_type": 3,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 1166,
+  "fields": {
+    "cart_itm_name": "Xerox 006R90269",
+    "cart_itm_type": 3,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 1167,
+  "fields": {
+    "cart_itm_name": "Xerox 106R01277",
+    "cart_itm_type": 3,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 1168,
+  "fields": {
+    "cart_itm_name": "Xerox 006R90159",
+    "cart_itm_type": 3,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 1169,
+  "fields": {
+    "cart_itm_name": "Xerox 006R00303",
+    "cart_itm_type": 3,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 1170,
+  "fields": {
+    "cart_itm_name": "Xerox 006R01125",
+    "cart_itm_type": 3,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 1171,
+  "fields": {
+    "cart_itm_name": "Xerox 006R01124",
+    "cart_itm_type": 3,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 1172,
+  "fields": {
+    "cart_itm_name": "Xerox 006R01123",
+    "cart_itm_type": 3,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 1173,
+  "fields": {
+    "cart_itm_name": "Xerox 006R01122",
+    "cart_itm_type": 3,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 1174,
+  "fields": {
+    "cart_itm_name": "Xerox 006R01046",
+    "cart_itm_type": 3,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 1175,
+  "fields": {
+    "cart_itm_name": "Xerox 106R01596",
+    "cart_itm_type": 3,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 1176,
+  "fields": {
+    "cart_itm_name": "Xerox 106R01595",
+    "cart_itm_type": 3,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 1177,
+  "fields": {
+    "cart_itm_name": "Xerox 106R01594",
+    "cart_itm_type": 3,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 1178,
+  "fields": {
+    "cart_itm_name": "Xerox 106R01593",
+    "cart_itm_type": 3,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 1179,
+  "fields": {
+    "cart_itm_name": "Xerox 106R01592",
+    "cart_itm_type": 3,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 1180,
+  "fields": {
+    "cart_itm_name": "Xerox 106R01591",
+    "cart_itm_type": 3,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 1181,
+  "fields": {
+    "cart_itm_name": "Xerox 006R01551",
+    "cart_itm_type": 3,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 1182,
+  "fields": {
+    "cart_itm_name": "Xerox 006R01146",
+    "cart_itm_type": 3,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 1183,
+  "fields": {
+    "cart_itm_name": "Xerox 106R01597",
+    "cart_itm_type": 3,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 1184,
+  "fields": {
+    "cart_itm_name": "Xerox 106R01452",
+    "cart_itm_type": 3,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 1185,
+  "fields": {
+    "cart_itm_name": "Xerox 106R01453",
+    "cart_itm_type": 3,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 1186,
+  "fields": {
+    "cart_itm_name": "Xerox 106R01454",
+    "cart_itm_type": 3,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 1187,
+  "fields": {
+    "cart_itm_name": "Xerox 106R01455",
+    "cart_itm_type": 3,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 1188,
+  "fields": {
+    "cart_itm_name": "Xerox 106R01477",
+    "cart_itm_type": 3,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 1189,
+  "fields": {
+    "cart_itm_name": "Xerox 106R01478",
+    "cart_itm_type": 3,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 1190,
+  "fields": {
+    "cart_itm_name": "Xerox 106R01479",
+    "cart_itm_type": 3,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 1191,
+  "fields": {
+    "cart_itm_name": "Xerox 106R01480",
+    "cart_itm_type": 3,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 1192,
+  "fields": {
+    "cart_itm_name": "Xerox 006R01552",
+    "cart_itm_type": 3,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 1193,
+  "fields": {
+    "cart_itm_name": "Samsung SCX-6320D8",
+    "cart_itm_type": 3,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 1194,
+  "fields": {
+    "cart_itm_name": "Ricoh 888087",
+    "cart_itm_type": 3,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 1195,
+  "fields": {
+    "cart_itm_name": "Ricoh 888063",
+    "cart_itm_type": 3,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 1196,
+  "fields": {
+    "cart_itm_name": "Ricoh 885274",
+    "cart_itm_type": 3,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 1197,
+  "fields": {
+    "cart_itm_name": "Ricoh Type 810",
+    "cart_itm_type": 3,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 1198,
+  "fields": {
+    "cart_itm_name": "Ricoh 885476",
+    "cart_itm_type": 3,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 1199,
+  "fields": {
+    "cart_itm_name": "Ricoh 888182",
+    "cart_itm_type": 3,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 1200,
+  "fields": {
+    "cart_itm_name": "Ricoh 888261",
+    "cart_itm_type": 3,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 1201,
+  "fields": {
+    "cart_itm_name": "Ricoh 885094",
+    "cart_itm_type": 3,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 1202,
+  "fields": {
+    "cart_itm_name": "Ricoh 841040",
+    "cart_itm_type": 3,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 1203,
+  "fields": {
+    "cart_itm_name": "Ricoh 885473",
+    "cart_itm_type": 3,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 1204,
+  "fields": {
+    "cart_itm_name": "Panasonic KX-FA83A",
+    "cart_itm_type": 3,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 1205,
+  "fields": {
+    "cart_itm_name": "Lexmark X203A11G",
+    "cart_itm_type": 3,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 1206,
+  "fields": {
+    "cart_itm_name": "Lexmark X203A21G",
+    "cart_itm_type": 3,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 1207,
+  "fields": {
+    "cart_itm_name": "Konica Minolta 65018893",
+    "cart_itm_type": 3,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 1208,
+  "fields": {
+    "cart_itm_name": "Konica Minolta 8937722",
+    "cart_itm_type": 3,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 1209,
+  "fields": {
+    "cart_itm_name": "Konica Minolta TN-210K",
+    "cart_itm_type": 3,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 1210,
+  "fields": {
+    "cart_itm_name": "Konica Minolta TN-210C",
+    "cart_itm_type": 3,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 1211,
+  "fields": {
+    "cart_itm_name": "Konica Minolta TN-210M",
+    "cart_itm_type": 3,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 1212,
+  "fields": {
+    "cart_itm_name": "Konica Minolta TN-210Y",
+    "cart_itm_type": 3,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 1213,
+  "fields": {
+    "cart_itm_name": "Kyocera TK-100",
+    "cart_itm_type": 3,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 1214,
+  "fields": {
+    "cart_itm_name": "Kyocera TK-410",
+    "cart_itm_type": 3,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 1215,
+  "fields": {
+    "cart_itm_name": "Kyocera TK-3130",
+    "cart_itm_type": 3,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 1216,
+  "fields": {
+    "cart_itm_name": "Kyocera TK-3110",
+    "cart_itm_type": 3,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 1217,
+  "fields": {
+    "cart_itm_name": "Kyocera TK-3150",
+    "cart_itm_type": 3,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 1218,
+  "fields": {
+    "cart_itm_name": "Kyocera TK-3100",
+    "cart_itm_type": 3,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 1219,
+  "fields": {
+    "cart_itm_name": "OKI 01103409",
+    "cart_itm_type": 3,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 1220,
+  "fields": {
+    "cart_itm_name": "OKI 40433203",
+    "cart_itm_type": 3,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 1221,
+  "fields": {
+    "cart_itm_name": "OKI 41331702",
+    "cart_itm_type": 3,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 1222,
+  "fields": {
+    "cart_itm_name": "OKI 43034808/43034816",
+    "cart_itm_type": 3,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 1223,
+  "fields": {
+    "cart_itm_name": "OKI 43034807/43034815",
+    "cart_itm_type": 3,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 1224,
+  "fields": {
+    "cart_itm_name": "OKI 43034806/43034814",
+    "cart_itm_type": 3,
+    "comment": ""
+  }
+},
+{
+  "model": "index.cartridgeitemname",
+  "pk": 1225,
+  "fields": {
+    "cart_itm_name": "OKI 43034805/43034813",
+    "cart_itm_type": 3,
+    "comment": ""
+  }
+}
+]

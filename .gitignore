@@ -15,3 +15,5 @@ http.bat
 cache/
 
 static/csv/
+
+insert_strings.py
