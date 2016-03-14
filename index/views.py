@@ -14,6 +14,7 @@ from django.contrib.sessions.models import Session
 from django.db.models import Q
 from django.template.loader import render_to_string
 from django.utils.translation import ugettext_lazy as _
+from django.views.decorators.cache import never_cache
 from common.helpers import is_admin
 from common.cbv import CartridgesView
 from common.helpers import BreadcrumbsPath
@@ -44,6 +45,7 @@ import logging
 logger = logging.getLogger('simp')
 
 @login_required
+@never_cache
 def dashboard(request):
     """Морда сайта. Отображает текущее состояние всего, что считаем.
     """
@@ -99,6 +101,7 @@ class Stock(CartridgesView):
     """Списки заправленных, новых картриджей на складе
     """
     @method_decorator(login_required)
+    @method_decorator(never_cache)
     def dispatch(self, *args, **kwargs):
         return super(Stock, self).dispatch(*args, **kwargs)
 
@@ -113,6 +116,7 @@ class Stock(CartridgesView):
 
 
 @login_required
+@never_cache
 def add_cartridge_name(request):
     back = BreadcrumbsPath(request).before_page(request)
     if request.method == 'POST':
@@ -135,6 +139,7 @@ def add_cartridge_name(request):
 
 
 @login_required
+@never_cache
 def add_cartridge_item(request):
     """Обработку данных формы производим в ajax_add_session_items. Здесь 
        отображаем заполненную форму.
@@ -169,6 +174,7 @@ def add_cartridge_item(request):
 
 
 @login_required
+@never_cache
 def add_empty_cartridge(request):
     """Добавление пустых картриджей.
     """
@@ -206,6 +212,7 @@ def add_empty_cartridge(request):
 
 @login_required
 @is_admin
+@never_cache
 def tree_list(request):
     """Работаем с структурой организации
     """
@@ -249,6 +256,7 @@ def tree_list(request):
 
 
 @login_required
+@never_cache
 def add_type(request):
     """Добавление нового типа расходника, а также редактирование существующего
     """
@@ -300,6 +308,7 @@ def add_type(request):
 
 
 @login_required
+@never_cache
 def transfe_for_use(request):
     """Передача расходника в пользование.
     """
@@ -348,6 +357,7 @@ class Use(CartridgesView):
     """Списки заправленных, новых картриджей на складе
     """
     @method_decorator(login_required)
+    @method_decorator(never_cache)
     def dispatch(self, *args, **kwargs):
         return super(Use, self).dispatch(*args, **kwargs)
 
@@ -370,6 +380,7 @@ class Empty(CartridgesView):
     """Списки заправленных, новых картриджей на складе
     """
     @method_decorator(login_required)
+    @method_decorator(never_cache)
     def dispatch(self, *args, **kwargs):
         return super(Empty, self).dispatch(*args, **kwargs)
 
@@ -385,6 +396,7 @@ class Empty(CartridgesView):
 
 
 @login_required
+@never_cache
 def toner_refill(request):
     """
     """
@@ -427,6 +439,7 @@ def toner_refill(request):
 
 
 @login_required
+@never_cache
 def add_city(request):
     """
     """
@@ -444,6 +457,7 @@ def add_city(request):
 
 
 @login_required
+@never_cache
 def add_firm(request):
     """
     """
@@ -465,6 +479,7 @@ def add_firm(request):
 
 
 @login_required
+@never_cache
 def edit_firm(request):
     """
     """
@@ -516,6 +531,7 @@ class At_work(CartridgesView):
     """Список картриджей находящихся на заправке.
     """
     @method_decorator(login_required)
+    @method_decorator(never_cache)
     def dispatch(self, *args, **kwargs):
         return super(At_work, self).dispatch(*args, **kwargs)
 
@@ -533,6 +549,7 @@ class Basket(CartridgesView):
     """Список картриджей на выброс.
     """
     @method_decorator(login_required)
+    @method_decorator(never_cache)
     def dispatch(self, *args, **kwargs):
         return super(Basket, self).dispatch(*args, **kwargs)
 
@@ -547,6 +564,7 @@ class Basket(CartridgesView):
 
 
 @login_required
+@never_cache
 def from_basket_to_stock(request):
     """Возвращаем обратно картридж из корзины на склад. Ну вдруг пользователь передумал.
     """
@@ -575,6 +593,7 @@ def from_basket_to_stock(request):
 
 
 @login_required
+@never_cache
 def transfer_to_firm(request):
     """Передача расходных материалов на заправку.
     """
@@ -658,6 +677,7 @@ def transfer_to_firm(request):
 
 
 @login_required
+@never_cache
 def from_firm_to_stock(request):
     """Возврашаем заправленные расходники обратно на базу.
     """
@@ -705,6 +725,7 @@ def bad_browser(request):
     return render(request, 'index/bad_browser.html')
 
 @login_required
+@never_cache
 def edit_cartridge_comment(request):
     """Добавляем комментарий к картриджу.
     """

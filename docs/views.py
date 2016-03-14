@@ -9,6 +9,7 @@ from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
 from django.contrib import messages
 from django.utils import timezone
+from django.views.decorators.cache import never_cache
 from .models import SCDoc
 from index.models import CartridgeItemName
 from .forms.add_doc import AddDoc
@@ -20,12 +21,14 @@ class handbook(TemplateView):
     template_name = 'docs/handbook.html'
 
     @method_decorator(login_required)
+    @method_decorator(never_cache)
     def dispatch(self, *args, **kwargs):
         BreadcrumbsPath(args[0])
         return super(handbook, self).dispatch(*args, **kwargs)
 
 
 @login_required
+@never_cache
 def delivery(request):
     """Списки договоров на поставку расходников
     """
@@ -142,6 +145,7 @@ def delivery(request):
 
 
 @login_required
+@never_cache
 def edit_name(request):
     """
     """
@@ -190,6 +194,7 @@ class ViewSendActs(GridListView):
     """Просмотр списка актов передачи на заправку
     """
     @method_decorator(login_required)
+    @method_decorator(never_cache)
     def dispatch(self, *args, **kwargs):
         return super(ViewSendActs, self).dispatch(*args, **kwargs)
 

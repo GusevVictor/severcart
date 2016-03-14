@@ -4,11 +4,13 @@ from django.shortcuts import render
 import datetime
 from django.contrib.auth.decorators import login_required
 from django.utils import timezone
+from django.views.decorators.cache import never_cache
 from common.helpers import BreadcrumbsPath
 from .forms import NoUse, Amortizing, UsersCartridges
 from index.models import CartridgeItem, OrganizationUnits
 
 @login_required
+@never_cache
 def main_summary(request):
     """
     """
@@ -47,6 +49,7 @@ def main_summary(request):
     return render(request, 'reports/main_summary.html', context)
 
 @login_required
+@never_cache
 def amortizing(request):
     """Отчёт по амортизации. Выбрать списки картриджей с заданным количеством перезаправок.
     """
@@ -74,6 +77,7 @@ def amortizing(request):
     return render(request, 'reports/amortizing.html', context)
 
 @login_required
+@never_cache
 def users(request):
     """
     """
