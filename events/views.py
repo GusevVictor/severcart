@@ -9,6 +9,7 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.utils import timezone
 from django.db.models import Q
 from django.utils.translation import ugettext_lazy as _
+from django.views.decorators.cache import never_cache
 from common.helpers import BreadcrumbsPath
 from .models  import Events
 from index.models import CartridgeItem
@@ -19,6 +20,7 @@ from common.helpers import is_admin
 
 @login_required
 @is_admin
+@never_cache
 def show_events(request):
     """Список всех событий для всего организационного подразделения.
     """
@@ -104,6 +106,7 @@ def show_events(request):
     return render(request, 'events/show_events.html', context)    
 
 @login_required
+@never_cache
 def view_cartridge_events(request):
     """Просмотр событий происходящих с данным картриджем.
     """

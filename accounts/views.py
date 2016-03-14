@@ -4,6 +4,7 @@ from django.shortcuts import render_to_response, redirect
 from django.shortcuts import render
 from django.http import Http404, HttpResponseRedirect
 from django.template import RequestContext
+from django.views.decorators.cache import never_cache
 from django.conf import settings
 from django.core.urlresolvers import reverse
 from django.contrib.auth import login as django_login, authenticate, logout as django_logout
@@ -23,6 +24,7 @@ logger = logging.getLogger('simp')
 
 @login_required
 @is_admin
+@never_cache
 def manage_users(request):
     """Вывод списка пользователей программы.
     """
@@ -53,6 +55,7 @@ def login(request):
 
 @login_required
 @is_admin
+@never_cache
 def register(request):
     """Страница создания нового пользователя.
     """
@@ -72,6 +75,7 @@ def register(request):
 
 @login_required
 @is_admin
+@never_cache
 def edit_user(request):
     """Редактирование информации о пользователе.
     """
@@ -157,6 +161,7 @@ def delete(request):
 
 @login_required
 @is_admin
+@never_cache
 def change_password(request):
     """Смена пароля пользователя.
     """
