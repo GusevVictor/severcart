@@ -9,7 +9,20 @@ def install(package):
     pip.main(['install', package])
 
 
+def prompt_exit():
+    input('Для выхода нажмите любую клавишу... ')
+    sys.exit(1)
+
 if __name__ == '__main__':
+    # проверям версию Python, всё из-за mod_wsgi и lxml
+    # версия интерпритатора только 3.4.4
+    if not( sys.version_info.major == 3 and
+    sys.version_info.minor == 4 and
+    sys.version_info.micro == 4 ):
+        print('Дальнейшее продолжение невозможно, версия Python не равна 3.4.4.')
+        prompt_exit()
+
+
     # Производим активацию virtualenv
     BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
     PROJ_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -26,12 +39,12 @@ if __name__ == '__main__':
 
     
     CPU_ARCH = platform.architecture()[0]
-
+    OS       = sys.platform
     print('-------------------------------------------------')
     print('--------Установка пакетов зависимостей-----------')
     print('-------------------------------------------------')
     try:
-        if CPU_ARCH == '64bit':
+        if CPU_ARCH == '64bit' and OS == 'win32':
             print('Установка пакетов зависимостей для 64 битной Windows')
             output = subprocess.check_output(['pip', 'install', 'Django==1.9.4'])
             sys.stdout.write(output.decode('utf-8'))
@@ -43,7 +56,7 @@ if __name__ == '__main__':
             output = subprocess.check_output(['pip', 'install', 'Noarch/python-docx-0.8.5.tar.gz', '--disable-pip-version-check'])
             sys.stdout.write(output.decode('utf-8'))
             install('django-debug-toolbar')
-        elif CPU_ARCH == '32bit':
+        elif CPU_ARCH == '32bit' and OS == 'win32':
             print('Установка пакетов зависимостей для 32 битной Windows')
             output = subprocess.check_output(['pip', 'install', 'Django==1.9.4'])
             sys.stdout.write(output.decode('utf-8'))
@@ -59,10 +72,9 @@ if __name__ == '__main__':
             print('Поддержка данных процессоров не релизована.')
     except:
         print('Дальнейшее продолжение установки невозможно!')
+        prompt_exit()
     else:
         # производим запуск миграции схемы Severcart и Django        
-        sys.path.append(os.path.join(BASE_DIR, 'Severcart'))
-        sys.path.append(os.path.join(BASE_DIR, 'Severcart', 'newskald_ru'))
         os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'newskald_ru.settings')
 
         import django
@@ -78,6 +90,7 @@ if __name__ == '__main__':
             execute_from_command_line(['manage.py', 'migrate'])
         except:
             print('В процессе миграции произошла ошибка.')
+            prompt_exit()
         else:
             print('Схема успешно мигрирована.')
         
@@ -116,3 +129,4 @@ if __name__ == '__main__':
         print('-------------------------------------------------')
         print('----------Установка успешно завершена------------')
         print('-------------------------------------------------')
+        prompt_exit()
