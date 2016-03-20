@@ -2,11 +2,14 @@
 # -*- coding:utf-8 -*-
 
 import platform
-import os, sys, pip
+import os, sys
+#import pip
 import subprocess
 
 def install(package):
-    pip.main(['install', package])
+    #pip.main(['install', package])
+    output = subprocess.check_output(['pip', 'install'] + package)
+    sys.stdout.write(output.decode('utf-8'))
 
 
 def prompt_exit():
@@ -46,16 +49,13 @@ if __name__ == '__main__':
     try:
         if CPU_ARCH == '64bit' and OS == 'win32':
             print('Установка пакетов зависимостей для 64 битной Windows')
-            output = subprocess.check_output(['pip', 'install', 'Django==1.9.4'])
-            sys.stdout.write(output.decode('utf-8'))
-            install('Noarch/django-mptt-0.8.0.tar.gz')
-            output = subprocess.check_output(['pip', 'install', 'Win64/lxml-3.4.4-cp34-none-win_amd64.whl', '--no-cache-dir'])
-            sys.stdout.write(output.decode('utf-8'))
-            install('Win64/Pillow-3.1.0-cp34-none-win_amd64.whl')
-            install('Win64/psycopg2-2.6.1-cp34-none-win_amd64.whl')
-            output = subprocess.check_output(['pip', 'install', 'Noarch/python-docx-0.8.5.tar.gz', '--disable-pip-version-check'])
-            sys.stdout.write(output.decode('utf-8'))
-            install('django-debug-toolbar')
+            install(['Django==1.9.4'])
+            install(['Noarch/django-mptt-0.8.0.tar.gz'])
+            install(['Win64/lxml-3.4.4-cp34-none-win_amd64.whl', '--no-cache-dir'])
+            install(['Win64/Pillow-3.1.0-cp34-none-win_amd64.whl'])
+            install(['Win64/psycopg2-2.6.1-cp34-none-win_amd64.whl'])
+            install(['Noarch/python-docx-0.8.5.tar.gz', '--disable-pip-version-check'])
+            install(['django-debug-toolbar'])
         elif CPU_ARCH == '32bit' and OS == 'win32':
             print('Установка пакетов зависимостей для 32 битной Windows')
             output = subprocess.check_output(['pip', 'install', 'Django==1.9.4'])
