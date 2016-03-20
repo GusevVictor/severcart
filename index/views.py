@@ -169,7 +169,7 @@ def add_cartridge_item(request):
                            'numbers': str(elem[2])[1:-1], 
                            'title': title})
 
-    html = render_to_string('index/add_over_ajax.html', context={'list_items': list_items})
+    html = render_to_string('index/add_over_ajax.html', context={'list_items': list_items, 'data': 'full'})
     return render(request, 'index/add_items.html', {'form': form_obj, 'session': html, 'back': back})
 
 
@@ -206,7 +206,7 @@ def add_empty_cartridge(request):
                            'numbers': str(elem[2])[1:-1], 
                            'title': title})
 
-    context['session'] = render_to_string('index/add_over_ajax.html', context={'list_items': list_items})
+    context['session'] = render_to_string('index/add_over_ajax.html', context={'list_items': list_items, 'data': 'empty'})
     return render(request, 'index/add_empty_cartridge.html', context)
 
 
