@@ -65,6 +65,13 @@ if __name__ == '__main__':
             install(['Win32/psycopg2-2.6.1-cp34-none-win32.whl'])
             install(['Noarch/python-docx-0.8.5.tar.gz', '--disable-pip-version-check'])
             install(['django-debug-toolbar'])
+        elif OS == 'linux':
+            print('Установка пакетов зависимостей для Linux')
+            install(['Django'])
+            install(['django-mptt'])
+            install(['psycopg2'])
+            install(['python-docx'])
+            install(['django-debug-toolbar'])
         else:
             print('Поддержка данной архитиктуры не релизована.')
             prompt_exit()
