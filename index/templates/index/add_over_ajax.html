@@ -1,11 +1,9 @@
-{% load i18n %}
-
+{% load i18n %}{% load staticfiles %}
 {% for elem in list_items %}
 <div>
-    <p>{{ elem.name }}</p>
-    <p>{{ elem.title }}</p>
-    <p>{% trans "Assigned numbers" %}</p>
-    <p>{{ elem.numbers }}</p>
+    <p><img src="{% static 'img/ribbon.png' %}" /> {{ elem.name }}</p>
+    <p><img src="{% static 'img/doc.png' %}" /> {{ elem.title }}</p>
+    <p><img src="{% static 'img/lable.png' %}" /> {{ elem.numbers }}</p>
 </div>
 <hr/>
 {% endfor %}
