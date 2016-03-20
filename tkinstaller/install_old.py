@@ -6,6 +6,8 @@ import subprocess
 import psycopg2
 import tkinter as tk
 
+sys.exit(1)
+
 user_name     = ''
 user_password = ''
 
