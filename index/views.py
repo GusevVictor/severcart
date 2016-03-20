@@ -152,7 +152,7 @@ def add_cartridge_item(request):
     session_data = request.session.get('cumulative_list')
     if not session_data:
         # если в сессии нужные данные отсутствуют, то сразу рендерим форму
-        return render(request, 'index/add_items.html', {'form': form_obj, 'session': '', 'back': back})    
+        return render(request, 'index/add_items.html', {'form': form_obj, 'session': '', 'back': back})
     
     session_data = json.loads(session_data)
     simple_cache = dict()
@@ -169,7 +169,7 @@ def add_cartridge_item(request):
                            'numbers': str(elem[2])[1:-1], 
                            'title': title})
 
-    html = render_to_string('index/add_over_ajax.html', context={'list_items': list_items, 'data': 'full'})
+    html = render_to_string('index/add_over_ajax.html', context={'list_items': list_items})
     return render(request, 'index/add_items.html', {'form': form_obj, 'session': html, 'back': back})
 
 
@@ -206,7 +206,7 @@ def add_empty_cartridge(request):
                            'numbers': str(elem[2])[1:-1], 
                            'title': title})
 
-    context['session'] = render_to_string('index/add_over_ajax.html', context={'list_items': list_items, 'data': 'empty'})
+    context['session'] = render_to_string('index/add_over_ajax.html', context={'list_items': list_items})
     return render(request, 'index/add_empty_cartridge.html', context)
 
 

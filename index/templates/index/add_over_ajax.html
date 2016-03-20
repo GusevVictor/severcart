@@ -1,7 +1,4 @@
 {% load i18n %}{% load staticfiles %}
-<div class="text-right">
-<a href="#" data="{{ data }}" class="clear_session button no_follow"/>{% trans "Clear session" %}</a>
-</div>
 {% for elem in list_items %}
 <div>
     <p><img src="{% static 'img/ribbon.png' %}" /> {{ elem.name }}</p>
