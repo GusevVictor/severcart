@@ -33,7 +33,7 @@ if __name__ == '__main__':
     PROJ_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
     sys.path.append(PROJ_DIR)
-    sys.path.append(os.path.join(PROJ_DIR, 'newskald_ru'))
+    sys.path.append(os.path.join(PROJ_DIR, 'conf'))
     sys.path.append(os.path.join(BASE_DIR, 'Scripts'))
 
     if OS == 'win32':
@@ -88,7 +88,7 @@ if __name__ == '__main__':
         prompt_exit()
     else:
         # производим запуск миграции схемы Severcart и Django        
-        os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'newskald_ru.settings')
+        os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'conf.settings')
 
         import django
         from django.conf import settings

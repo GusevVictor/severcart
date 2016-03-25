@@ -13,42 +13,16 @@ https://docs.djangoproject.com/en/1.8/ref/settings/
 """
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
-import os
+import os, sys
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
+sys.path.append(os.path.join(BASE_DIR, 'conf'))
+
+from settings_prod import *
+
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.8/howto/deployment/checklist/
-
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '^g$4c6-__#353*u_t9iovxd5g#)i$0o=bv5-ku+v=7#3ku*m%#'
-
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
-
-DEMO = False
-
-ALLOWED_HOSTS = ['*']
-
-
-# Application definition
-
-INSTALLED_APPS = (
-#    'django.contrib.admin',
-    'django.contrib.auth',
-    'django.contrib.contenttypes',
-    'django.contrib.sessions',
-    'django.contrib.messages',
-    'django.contrib.staticfiles',
-    'debug_toolbar',
-    'index',
-    'mptt',
-    'accounts',
-    'events',
-    'docs',
-    'reports',
-    'service',
-)
 
 MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -61,7 +35,7 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.security.SecurityMiddleware',
 )
 
-ROOT_URLCONF = 'newskald_ru.urls'
+ROOT_URLCONF = 'conf.urls'
 
 
 CACHES = {
@@ -78,7 +52,7 @@ if DEBUG:
     TEMPLATES = [
         {
             'BACKEND': 'django.template.backends.django.DjangoTemplates',
-            'DIRS': [],
+            'DIRS': [os.path.join(BASE_DIR, 'templates'),],
             'OPTIONS': {
                 'context_processors': [
                     'django.template.context_processors.debug',
@@ -100,7 +74,7 @@ else:
     TEMPLATES = [
         {
             'BACKEND': 'django.template.backends.django.DjangoTemplates',
-            'DIRS': [],
+            'DIRS': [os.path.join(BASE_DIR, 'templates'),],
             'OPTIONS': {
                 'context_processors': [
                     'django.template.context_processors.debug',
@@ -119,19 +93,6 @@ else:
             },
         },
     ]
-
-WSGI_APPLICATION = 'newskald_ru.wsgi_prod.application'
-
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'severcart',
-        'USER': 'scuser',
-        'PASSWORD': '123456',
-        'HOST': '127.0.0.1',
-        'PORT': '5432',
-    }
-}
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.8/topics/i18n/
@@ -159,8 +120,9 @@ if DEBUG:
 
 STATIC_ROOT_CSV = os.path.join(BASE_DIR, 'static', 'csv')
 MAX_COUNT_CSV_FILES = 20
-#MEDIA_ROOT  = os.path.join(BASE_DIR, 'media')
 
+STATIC_ROOT_DOCX = os.path.join(BASE_DIR, 'static', 'docx')
+MAX_COUNT_DOCX_FILES = 20
 
 STATIC_URL = '/static/'
 MEDIA_URL = '/media/'
@@ -243,7 +205,6 @@ LOGIN_URL = '/manage_users/login/'
 MAX_EVENT_LIST = 16
 
 # Настройки шаблона docx файла
-
 MAX_TABLE_ROWS_FIRST_PAGE = 14 # должен резервировать место для шапки акта
 
 MAX_TABLE_ROWS = 20
