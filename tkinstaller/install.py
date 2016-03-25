@@ -19,11 +19,13 @@ def prompt_exit():
 if __name__ == '__main__':
     # проверям версию Python, всё из-за mod_wsgi и lxml
     # версия интерпритатора только 3.4.4
-    if not( sys.version_info.major == 3 and
-    sys.version_info.minor == 4 and
-    sys.version_info.micro == 4 ):
-        print('Дальнейшее продолжение невозможно, версия Python не равна 3.4.4.')
-        prompt_exit()
+    OS       = sys.platform
+    if OS == 'win32':
+        if not( sys.version_info.major == 3 and
+        sys.version_info.minor == 4 and
+        sys.version_info.micro == 4 ):
+             print('Дальнейшее продолжение невозможно, версия Python не равна 3.4.4.')
+             prompt_exit()
 
 
     # Производим активацию virtualenv
@@ -34,7 +36,13 @@ if __name__ == '__main__':
     sys.path.append(os.path.join(PROJ_DIR, 'newskald_ru'))
     sys.path.append(os.path.join(BASE_DIR, 'Scripts'))
 
-    ACTIVATE_SCRIPT = os.path.join(BASE_DIR, 'Scripts', 'activate_this.py')
+    if OS == 'win32':
+        ACTIVATE_SCRIPT = os.path.join(BASE_DIR, 'Scripts', 'activate_this.py')
+    elif OS == 'linux':
+        ACTIVATE_SCRIPT = os.path.join(BASE_DIR, 'bin', 'activate_this.py')
+    else:
+        print('Установка Severcart для данной платформы не предусмотрена.')
+        prompt_exit()
     activate_env=os.path.expanduser(ACTIVATE_SCRIPT)
     with open(activate_env) as f:
         code = compile(f.read(), activate_env, 'exec')
@@ -42,7 +50,6 @@ if __name__ == '__main__':
 
     
     CPU_ARCH = platform.architecture()[0]
-    OS       = sys.platform
     print('-------------------------------------------------')
     print('--------Установка пакетов зависимостей-----------')
     print('-------------------------------------------------')
@@ -75,7 +82,8 @@ if __name__ == '__main__':
         else:
             print('Поддержка данной архитиктуры не релизована.')
             prompt_exit()
-    except:
+    except Exception as e:
+        print(str(e))
         print('Дальнейшее продолжение установки невозможно!')
         prompt_exit()
     else:

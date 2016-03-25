@@ -12,8 +12,6 @@ media/
 
 http.bat
 
-cache/
-
 static/csv/
 
 static/docx/*
