@@ -166,6 +166,13 @@ span.gi {
 
 }
 
+input.loc, 
+input.loc:active,
+input.loc:focus,
+input.loc:hover {
+    background: url('../img/security.png') no-repeat right center;
+}
+
 
 /* Vertical menu */
 ul.vert-menu {

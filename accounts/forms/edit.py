@@ -9,7 +9,7 @@ class EditUserForm(forms.Form):
     """Редактирование информации о текущем пользователе.
     """
     user_id    = forms.CharField(widget=forms.HiddenInput(), required=True)
-    username   = forms.CharField(widget=forms.TextInput(attrs={'readonly': True}), label=_('Login'), required=True)
+    username   = forms.CharField(widget=forms.TextInput(attrs={'readonly': True, 'class': 'loc'}), label=_('Login'), required=True)
     fio        = forms.CharField(label=_('Full name'), required=False)
     email      = forms.EmailField(required=False)
     required_css_class = 'required'
