@@ -80,7 +80,7 @@ class Page3(object):
     def __init__(self, parent):
         self.no_errors = False
         self.base_path = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-        self.django_base_path = os.path.join(self.base_path, 'ancon', 'newskald_ru')
+        self.django_base_path = os.path.join(self.base_path, 'ancon', 'conf')
         self.postgresql_db_path = ''
         self.postgresql_bin_path = ''
         self.proc = ''
@@ -170,7 +170,7 @@ class Page3(object):
 
             # migrate python schema
             sys.path.append(os.path.join(self.base_path, 'ancon'))
-            sys.path.append(os.path.join(self.base_path, 'ancon', 'newskald_ru'))
+            sys.path.append(os.path.join(self.base_path, 'ancon', 'conf'))
             sys.path.append(os.path.join(self.base_path, 'venv', 'Scripts'))
             # Activate your virtual env
             activate_env=os.path.expanduser(os.path.join(self.base_path, 'venv', 'Scripts', 'activate_this.py'))
@@ -178,7 +178,7 @@ class Page3(object):
                 code = compile(f.read(), activate_env, 'exec')
                 exec(code, dict(__file__=activate_env))
 
-            os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'newskald_ru.settings-prod')
+            os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'conf.settings-prod')
             from django.core.management import execute_from_command_line
             migrate_ok = False
             try:
