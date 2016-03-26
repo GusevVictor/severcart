@@ -34,7 +34,7 @@ INSTALLED_APPS = (
     'service',
 )
 
-WSGI_APPLICATION = 'newskald_ru.wsgi_dev.application'
+WSGI_APPLICATION = 'conf.wsgi_dev.application'
 
 DATABASES = {
     'default': {
