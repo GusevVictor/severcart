@@ -17,3 +17,5 @@ static/csv/
 static/docx/*
 
 insert_strings.py
+
+cache/*.djcache
