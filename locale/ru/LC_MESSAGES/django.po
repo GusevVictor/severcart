@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-03-08 19:38+0500\n"
-"PO-Revision-Date: 2016-03-08 20:18+0500\n"
+"PO-Revision-Date: 2016-03-27 11:29+0500\n"
 "Last-Translator: \n"
 "Language-Team: severcart.org <sfcl@mail.ru>\n"
 "Language: ru\n"
@@ -611,7 +611,8 @@ msgstr "Добавлен пользователем %(user_name)s."
 #, python-format
 msgid "№ %(cart_number)s (%(cart_type)s) added user %(user_name)s."
 msgstr ""
-"№ %(cart_number)s (%(cart_type)s) добавлен пользователем %(user_name)s."
+"Новый картридж  под № %(cart_number)s (%(cart_type)s) добавлен пользователем "
+"%(user_name)s."
 
 #: .\events\helpers.py:43
 #, python-format
