@@ -38,6 +38,24 @@ var getUrlParameter = function getUrlParameter(sParam) {
     }
 };
 
+function pretty_del_table_row(jqrow) {
+    return function(show_mes) {
+        var i = 0;
+        var counter = 0;
+        counter = setInterval(function(){ 
+            /* Реализум мигание строки в процессе удаления. */
+            jqrow.toggleClass('red_bg');
+            
+            if (i >= 5) {
+                clearInterval(counter);
+                jqrow.remove();
+                show_mes();
+            }
+            i++;
+        }, 500);
+    }
+}
+
 
 $( function(){
 
@@ -253,10 +271,15 @@ $( function(){
             }
         });
 
+
         if ( selected.length !== 0 ) {
             var ansver = window.confirm('Вы точно хотите поместить выбранные объекты в корзину?');
             if ( ansver ) {
                 $('.spinner').show();
+                var tr = $('.checkboxes input:checked').parent().parent().not('.table_header');
+                /* мигание красным цветом */
+                var freezy_f = pretty_del_table_row(tr);
+
                 $.ajax({
                     method: 'POST',
                     url: '/api/transfer_to_basket/',
@@ -268,7 +291,7 @@ $( function(){
                         }
                     },
                     success: function( msg ) {
-                        var tr = $('.checkboxes input:checked').parent().parent().not('.table_header');
+                        
                         if (msg.error == '1') {
                             setTimeout(function() { $('.spinner').hide(); }, 2000);
                             $('.success_msg').hide();
@@ -279,9 +302,11 @@ $( function(){
                         if (msg.error == '0') {
                             setTimeout(function() { $('.spinner').hide(); }, 2000);
                             $('.error_msg').hide();
-                            $('.success_msg').show();
-                            $('.success_msg').html(msg.text);
-                            setTimeout(function() { tr.remove(); }, 4000);
+                            $('.success_msg').hide();
+                            freezy_f(function() {
+                                $('.success_msg').show();
+                                $('.success_msg').html(msg.text);
+                            });
                         }
 
                     },
@@ -444,6 +469,8 @@ $( function(){
         var selected = $('.checkboxes input:checked').attr('value');
         if ( selected ) {
             var ansver = window.confirm('Вы точно хотите удалить контрагента?');
+            var tr = $('.checkboxes input:checked').parent().parent();
+            var freezy_f = pretty_del_table_row(tr);
             if ( ansver ) {
                 $.ajax({
                     method: 'POST',
@@ -457,7 +484,7 @@ $( function(){
                         }
                     },
                     success: function( msg ) {
-                        var tr = $('.checkboxes input:checked').parent().parent();
+                        
                         if (msg.error == '1') {
                             setTimeout(function() { }, 4000);
                             $('.spinner').hide(); 
@@ -467,11 +494,12 @@ $( function(){
                         }
 
                         if (msg.error == '0') {
-                            setTimeout(function() { tr.remove(); }, 4000);
                             $('.spinner').hide();
                             $('.error_msg').hide();
-                            $('.success_msg').show();
-                            $('.success_msg').html(msg.text);
+                            freezy_f(function() {
+                                $('.success_msg').show();
+                                $('.success_msg').html(msg.text);
+                            });
                         }
 
                     },
