@@ -331,21 +331,27 @@ $( function(){
         });
 
         if ( selected.length !== 0 ) {
-            $.ajax({
-                method: 'POST',
-                url: '/api/turf_cartridge/',
-                data:  {len: selected.length , 'selected[]': selected},
-                beforeSend: function( xhr, settings ){
-                    $('.spinner').css('display', 'inline');
-                    csrftoken = getCookie('csrftoken');
-                    if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
-                        xhr.setRequestHeader('X-CSRFToken', csrftoken);
-                    }
-                }  
-            }).done(function( msg ) {
-                $('.spinner').css('display', 'none');
-                window.location.href = '/basket/';
-            });
+            var ansver = window.confirm('Вы точно хотите удалить расходник(и)?');
+            var tr = $('.checkboxes input:checked').parent().parent();
+            var freezy_f = pretty_del_table_row(tr);
+            if (ansver) {
+                $.ajax({
+                    method: 'POST',
+                    url: '/api/turf_cartridge/',
+                    data:  {len: selected.length , 'selected[]': selected},
+                    beforeSend: function( xhr, settings ){
+                        $('.spinner').css('display', 'inline');
+                        csrftoken = getCookie('csrftoken');
+                        if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
+                            xhr.setRequestHeader('X-CSRFToken', csrftoken);
+                        }
+                    }  
+                    }).done(function( msg ) {
+                        $('.spinner').hide();
+                        freezy_f(function() {  });
+                        /* window.location.href = '/basket/'; */
+                });
+            }
         }
     });
 
