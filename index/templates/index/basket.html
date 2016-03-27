@@ -29,7 +29,7 @@
     <div class="large-12 columns">
         <table class="checkboxes">
             <form>
-                <tr>
+                <tr class="table_header">
                     <th class="first_checkbox"><input type="checkbox" class="check_all"></th>
                     <th class="cart_number {% if select_number %}active_cell{% endif %}"><a href="?action=number">{% trans "Number" %} {{number_triangle}}</a><br/><input class="search_number" name="search_number" value="{{search_number}}" /></th>
                     <th class="cart_name{% if select_type %} active_cell{% endif %}"><a href="?action=name">{% trans "Name" %} {{type_triangle}}</a></th>

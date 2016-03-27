@@ -332,7 +332,7 @@ $( function(){
 
         if ( selected.length !== 0 ) {
             var ansver = window.confirm('Вы точно хотите удалить расходник(и)?');
-            var tr = $('.checkboxes input:checked').parent().parent();
+            var tr = $('.checkboxes input:checked').parent().parent().not('.table_header');
             var freezy_f = pretty_del_table_row(tr);
             if (ansver) {
                 $.ajax({
