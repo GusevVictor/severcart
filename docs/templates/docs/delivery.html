@@ -78,7 +78,7 @@
 </div>
 {% endif %}
 <div class="row">
-    <div class="large-12 columns">
+    <div class="large-12 columns">{% if not_show_form %}<a class="button" href="{{ back }}">{% trans 'Back' %}</a>{% endif %}
         <div class="marginTop">
             <table class="checkboxes">
                 <form>
