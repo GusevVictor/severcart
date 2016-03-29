@@ -130,6 +130,10 @@ span.gi {
     text-align: center;
 }
 
+span.user_ou {
+    font-size:12px;
+}
+
 table.checkboxes tr.red_bg {
     background-color: #ff6464;
 }
