@@ -38,7 +38,7 @@ if __name__ == '__main__':
 
     if OS == 'win32':
         ACTIVATE_SCRIPT = os.path.join(BASE_DIR, 'Scripts', 'activate_this.py')
-    elif OS == 'linux':
+    elif  'linux' in OS:
         ACTIVATE_SCRIPT = os.path.join(BASE_DIR, 'bin', 'activate_this.py')
     else:
         print('Установка Severcart для данной платформы не предусмотрена.')
@@ -72,7 +72,7 @@ if __name__ == '__main__':
             install(['Win32/psycopg2-2.6.1-cp34-none-win32.whl'])
             install(['Noarch/python-docx-0.8.5.tar.gz', '--disable-pip-version-check'])
             install(['django-debug-toolbar'])
-        elif OS == 'linux':
+        elif 'linux' in OS:
             print('Установка пакетов зависимостей для Linux')
             install(['Django'])
             install(['django-mptt'])
