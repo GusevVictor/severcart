@@ -8,11 +8,18 @@ SEVERCART_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 site.addsitedir(os.path.join(BASE_DIR, 'Lib', 'site-packages'))
 
+sys.path.append(SEVERCART_DIR)
 sys.path.append(os.path.join(SEVERCART_DIR, 'conf'))
 sys.path.append(os.path.join(BASE_DIR, 'Scripts'))
 
 # Activate your virtual env
-activate_env=os.path.expanduser(os.path.join(BASE_DIR, 'Scripts', 'activate_this.py'))
+OS = sys.platform
+
+if 'win32' in OS: 
+    activate_env=os.path.expanduser(os.path.join(BASE_DIR, 'Scripts', 'activate_this.py'))
+
+if 'linux' in OS:
+    activate_env=os.path.expanduser(os.path.join(BASE_DIR, 'bin', 'activate_this.py'))
 
 with open(activate_env) as f:
     code = compile(f.read(), activate_env, 'exec')
@@ -22,3 +29,4 @@ os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'conf.settings')
 
 from django.core.wsgi import get_wsgi_application
 application = get_wsgi_application()
+
