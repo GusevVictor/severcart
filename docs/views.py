@@ -10,6 +10,7 @@ from django.utils.decorators import method_decorator
 from django.contrib import messages
 from django.utils import timezone
 from django.views.decorators.cache import never_cache
+from django.utils.translation import ugettext as _
 from .models import SCDoc
 from index.models import CartridgeItemName
 from .forms.add_doc import AddDoc
@@ -61,7 +62,7 @@ def delivery(request):
                 doc.short_cont = data_in_post.get('short_cont','')
                 doc.money = data_in_post.get('money','')
                 doc.save()
-                messages.success(request, 'Документ %s успешно сохранён.' % (doc.number, ))
+                messages.success(request, _('%(doc_num)s success saved.') % {'doc_num': doc.number})
             else:
                 # если пользователь просто создаёт новый документ
                 doc = SCDoc(number = data_in_post.get('number',''),
@@ -74,7 +75,8 @@ def delivery(request):
                            doc_type = 1,
                            )
                 doc.save()
-                messages.success(request, 'Новый %s документ успешно создан.' % (doc.number,))
+                messages.success(request, _('New %(doc_num)s success created.') % {'doc_num': doc.number})
+
             context['form'] = form    
             return HttpResponseRedirect(request.path)
         else:

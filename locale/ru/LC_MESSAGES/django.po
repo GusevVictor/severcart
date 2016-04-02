@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-03-08 19:38+0500\n"
-"PO-Revision-Date: 2016-03-29 21:54+0500\n"
+"POT-Creation-Date: 2016-04-02 12:48+0500\n"
+"PO-Revision-Date: 2016-04-02 12:50+0500\n"
 "Last-Translator: \n"
 "Language-Team: severcart.org <sfcl@mail.ru>\n"
 "Language: ru\n"
@@ -40,7 +40,7 @@ msgstr "В режиме демонстрации пользователей уд
 #: .\accounts\api\views.py:42
 #, python-format
 msgid "User %(user_name)s was successfully deleted"
-msgstr "Пользователь %(user_name)s успешно удалён."
+msgstr "Пользователь «%(user_name)s» успешно удалён."
 
 #: .\accounts\forms\authenticate.py:9
 msgid "User name"
@@ -74,8 +74,8 @@ msgstr "Фамилие, имя, отчество"
 
 #: .\accounts\forms\edit.py:18 .\accounts\forms\register.py:18
 #: .\docs\forms\edit_name.py:18 .\docs\forms\edit_name.py:25
-#: .\index\templates\index\add_empty_cartridge.html:32
-#: .\index\templates\index\add_items.html:23
+#: .\index\templates\index\add_empty_cartridge.html:33
+#: .\index\templates\index\add_items.html:33
 msgid "Required field"
 msgstr "Обязательное поле"
 
@@ -156,13 +156,13 @@ msgstr "Сменить пароль"
 #: .\accounts\templates\accounts\edit_user.html:13
 #: .\accounts\templates\accounts\register.html:17
 #: .\docs\templates\docs\delivery.html:62
-#: .\docs\templates\docs\delivery.html:82
+#: .\docs\templates\docs\delivery.html:81
 #: .\docs\templates\docs\edit_name.html:16
 #: .\events\templates\events\view_cartridge_events.html:8
 #: .\index\templates\index\add_city.html:11
-#: .\index\templates\index\add_empty_cartridge.html:46
+#: .\index\templates\index\add_empty_cartridge.html:47
 #: .\index\templates\index\add_firm.html:45
-#: .\index\templates\index\add_items.html:39
+#: .\index\templates\index\add_items.html:51
 #: .\index\templates\index\add_name.html:39
 #: .\index\templates\index\add_type.html:32
 #: .\index\templates\index\del_firm.html:28
@@ -211,7 +211,7 @@ msgstr "Вход"
 #: .\docs\templates\docs\types_list.html:14
 #: .\index\templates\index\add_city.html:10
 #: .\index\templates\index\add_firm.html:44
-#: .\index\templates\index\add_items.html:37
+#: .\index\templates\index\add_items.html:49
 #: .\index\templates\index\add_name.html:38
 #: .\index\templates\index\add_type.html:29
 #: .\index\templates\index\tree_list.html:41
@@ -265,12 +265,12 @@ msgstr "Добавление нового пользователя"
 msgid "Registry user"
 msgstr "Зарегистрировать пользователя"
 
-#: .\accounts\views.py:150
+#: .\accounts\views.py:154
 #, python-format
 msgid "Error! User %(user_name)s can not remove himself"
 msgstr "Ошибка! Пользователь %(user_name)s не может удалить сам себя."
 
-#: .\accounts\views.py:155
+#: .\accounts\views.py:159
 msgid "User(s) deleted!"
 msgstr "Пользователь(ли) удален(ы)!"
 
@@ -301,9 +301,9 @@ msgid "The name of the cartridge"
 msgstr "Название картриджа"
 
 #: .\docs\api\views.py:119 .\docs\api\views.py:178
-#: .\docs\templates\docs\delivery.html:92
-#: .\index\templates\index\add_empty_cartridge.html:39
-#: .\index\templates\index\add_items.html:30
+#: .\docs\templates\docs\delivery.html:91
+#: .\index\templates\index\add_empty_cartridge.html:40
+#: .\index\templates\index\add_items.html:42
 #: .\reports\templates\reports\users_ajax.html:5
 msgid "Amount"
 msgstr "Количество"
@@ -320,7 +320,7 @@ msgstr "Документ сформировать невозможно."
 #: .\docs\api\views.py:140 .\docs\api\views.py:209 .\docs\api\views.py:235
 #: .\docs\api\views.py:258 .\docs\api\views.py:279 .\docs\api\views.py:302
 #: .\docs\forms\add_doc.py:9 .\docs\templates\docs\delivery.html.py:20
-#: .\docs\templates\docs\delivery.html:88
+#: .\docs\templates\docs\delivery.html:87
 #: .\index\templates\index\at_work.html:31
 #: .\index\templates\index\basket.html:34 .\index\templates\index\empty.html:40
 #: .\index\templates\index\from_firm_to_stock.html:25
@@ -345,7 +345,7 @@ msgstr "Данное действие не реализовано."
 #: .\docs\api\views.py:259 .\docs\api\views.py:280 .\docs\api\views.py:303
 #: .\docs\forms\add_doc.py:11 .\docs\forms\edit_name.py:6
 #: .\docs\templates\docs\delivery.html:25
-#: .\docs\templates\docs\delivery.html:89
+#: .\docs\templates\docs\delivery.html:88
 #: .\docs\templates\docs\names_list.html:28 .\index\forms\add_firm.py:8
 #: .\index\forms\add_user.py:10 .\index\models.py:49
 #: .\index\templates\index\at_work.html:32
@@ -422,7 +422,7 @@ msgid "Firm supplier"
 msgstr "Фирма поставщик"
 
 #: .\docs\forms\add_doc.py:19 .\docs\templates\docs\delivery.html.py:38
-#: .\docs\templates\docs\delivery.html:93
+#: .\docs\templates\docs\delivery.html:92
 msgid "Summary"
 msgstr "Краткое содержание"
 
@@ -447,8 +447,8 @@ msgstr "Комментарий"
 msgid "You have exceeded the maximum number of characters. No more than 160."
 msgstr "Превышено максимальное количество символов. Допустимо не более 160."
 
-#: .\docs\models.py:11 .\index\templates\index\add_empty_cartridge.html.py:35
-#: .\index\templates\index\add_items.html:25
+#: .\docs\models.py:11 .\index\templates\index\add_empty_cartridge.html.py:36
+#: .\index\templates\index\add_items.html:37
 #: .\index\templates\index\basket.html:53 .\index\templates\index\empty.html:59
 #: .\index\templates\index\stock.html:58 .\index\templates\index\use.html:59
 msgid "Delivery agreement"
@@ -515,12 +515,12 @@ msgid "Money"
 msgstr "Сумма"
 
 #: .\docs\templates\docs\delivery.html:30
-#: .\docs\templates\docs\delivery.html:92
+#: .\docs\templates\docs\delivery.html:91
 msgid "Currency"
 msgstr "руб."
 
 #: .\docs\templates\docs\delivery.html:43
-#: .\docs\templates\docs\delivery.html:91
+#: .\docs\templates\docs\delivery.html:90
 msgid "Firm"
 msgstr "Контрагент"
 
@@ -532,7 +532,7 @@ msgstr "Дата"
 msgid "Cancel"
 msgstr "Отменить"
 
-#: .\docs\templates\docs\delivery.html:90
+#: .\docs\templates\docs\delivery.html:89
 msgid "Document date"
 msgstr "Дата документа"
 
@@ -601,6 +601,16 @@ msgstr "Справочник типов расходников"
 #: .\docs\templates\docs\types_list.html:28
 msgid "type"
 msgstr "Тип"
+
+#: .\docs\views.py:64
+#, python-format
+msgid "%(doc_num)s success saved."
+msgstr "Документ «%(doc_num)s» успешно сохранён."
+
+#: .\docs\views.py:77
+#, python-format
+msgid "New %(doc_num)s success created."
+msgstr "Новый «%(doc_num)s» успешно создан."
 
 #: .\events\helpers.py:30
 #, python-format
@@ -837,7 +847,7 @@ msgstr "События"
 msgid "Description"
 msgstr "Описание"
 
-#: .\events\views.py:132
+#: .\events\views.py:135
 msgid "Not found"
 msgstr "Объект не найден."
 
@@ -1009,25 +1019,27 @@ msgstr "Добавление пустых катриджей на склад"
 msgid "Empty cartridges"
 msgstr "Пустые картриджи"
 
-#: .\index\templates\index\add_empty_cartridge.html:20
+#: .\index\templates\index\add_empty_cartridge.html:21
+#: .\index\templates\index\add_items.html:21
 msgid "Filter"
 msgstr "Фильтр"
 
-#: .\index\templates\index\add_empty_cartridge.html:25
+#: .\index\templates\index\add_empty_cartridge.html:26
+#: .\index\templates\index\add_items.html:26
 msgid "Cartridge name"
 msgstr "Название катриджа"
 
-#: .\index\templates\index\add_empty_cartridge.html:43
-#: .\index\templates\index\add_items.html:34
+#: .\index\templates\index\add_empty_cartridge.html:44
+#: .\index\templates\index\add_items.html:46
 msgid "The field must be greater than zero"
 msgstr "Поле должно быть более нуля"
 
-#: .\index\templates\index\add_empty_cartridge.html:45
+#: .\index\templates\index\add_empty_cartridge.html:46
 msgid "Add empty cartridges"
 msgstr "Добавить"
 
-#: .\index\templates\index\add_empty_cartridge.html:47
-#: .\index\templates\index\add_items.html:40
+#: .\index\templates\index\add_empty_cartridge.html:54
+#: .\index\templates\index\add_items.html:58
 msgid "Clear session"
 msgstr "Очистить сессию"
 
@@ -1047,19 +1059,14 @@ msgstr "Добавление новых на склад"
 msgid "List of new or refilled cartridges"
 msgstr "Список новых или заправленных"
 
-#: .\index\templates\index\add_items.html:19
-#: .\index\templates\index\add_name.html:20
-msgid "Name consumables"
-msgstr "Название расходника"
-
 #: .\index\templates\index\add_name.html:2
 #: .\index\templates\index\add_name.html:3
 msgid "Adding a new name"
 msgstr "Добавление нового названия"
 
-#: .\index\templates\index\add_over_ajax.html:7
-msgid "Assigned numbers"
-msgstr "Присвоенные номера"
+#: .\index\templates\index\add_name.html:20
+msgid "Name consumables"
+msgstr "Название расходника"
 
 #: .\index\templates\index\add_type.html:2
 #: .\index\templates\index\add_type.html:3
@@ -1370,46 +1377,46 @@ msgstr "Подчиняется"
 msgid "Structure of the organization"
 msgstr "Структура организации"
 
-#: .\index\views.py:126
-#, python-format
-msgid "%(cart_name)s already exists"
-msgstr "%(cart_name)s уже существует."
-
 #: .\index\views.py:130
 #, python-format
-msgid "%(cart_name)s success added"
-msgstr "%(cart_name)s успешно добавлен."
+msgid "%(cart_name)s already exists"
+msgstr "«%(cart_name)s» уже существует."
 
-#: .\index\views.py:228 .\index\views.py:243
+#: .\index\views.py:134
+#, python-format
+msgid "%(cart_name)s success added"
+msgstr "«%(cart_name)s» успешно добавлен."
+
+#: .\index\views.py:234 .\index\views.py:249
 #, python-format
 msgid "Organization unit %(org_name)s exist"
 msgstr "Организационное подразделение %(org_name)s уже существует."
 
-#: .\index\views.py:233 .\index\views.py:239
+#: .\index\views.py:239 .\index\views.py:245
 #, python-format
 msgid "Organization unit %(org_name)s create successfuly."
 msgstr "Организационное подразделение %(org_name)s успешно создано."
 
-#: .\index\views.py:287
+#: .\index\views.py:294
 #, python-format
 msgid "%(cart_type)s success save"
 msgstr "%(cart_type)s успешно сохранён."
 
-#: .\index\views.py:291
+#: .\index\views.py:298
 #, python-format
 msgid "New type %(cart_type)s success added"
 msgstr "Новый тип %(cart_type)s успешно добавлен."
 
-#: .\index\views.py:413
+#: .\index\views.py:424
 msgid "Select all"
 msgstr "Выбрать все"
 
-#: .\index\views.py:462
+#: .\index\views.py:475
 #, python-format
 msgid "Firm \"%(firm_name)s\" success added."
 msgstr "Контрагент \"%(firm_name)s\" успешно добавлен."
 
-#: .\index\views.py:607
+#: .\index\views.py:625
 msgid "You input not correct firm name"
 msgstr "Вы ввели неправильное имя контрагента."
 
@@ -1510,6 +1517,9 @@ msgstr "Пользователь"
 #: .\templates\404.html:5
 msgid "Page not found!"
 msgstr "Страница не найдена!"
+
+#~ msgid "Assigned numbers"
+#~ msgstr "Присвоенные номера"
 
 #~ msgid "Data deleted!"
 #~ msgstr "Данные удалены!"
