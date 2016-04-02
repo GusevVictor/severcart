@@ -48,9 +48,9 @@ class BreadcrumbsPath(object):
             # загружаем список из сессии
             bread_list = ShortList(request.session['bcback'])
             end_elem = bread_list.get(-1)
-            if request.META['PATH_INFO'] != end_elem:
+            if request.path_info != end_elem:
                 # если пользователь поменял страницу
-                bread_list.push(request.META['PATH_INFO'])
+                bread_list.push(request.path_info)
                 request.session['bcback'] = bread_list.dump()
             else:
                 pass
@@ -58,7 +58,7 @@ class BreadcrumbsPath(object):
         else:
             # инициализация при первом заходе после установки
             bread_list = []
-            bread_list.append(request.META['PATH_INFO'])
+            bread_list.append(request.path_info)
             request.session['bcback'] = bread_list
 
         # возвращаем не инстанс класса, а строку с данными
@@ -68,7 +68,7 @@ class BreadcrumbsPath(object):
         """Возвращает предыдущую страницу
         """
         bread_list = request.session['bcback']
-        current_url = request.META['PATH_INFO']
+        current_url = request.path_info
         index_current_url = bread_list.index(current_url)
         if len(bread_list) >= 2:
             return bread_list[index_current_url-1]
