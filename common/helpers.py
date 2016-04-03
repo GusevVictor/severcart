@@ -2,6 +2,10 @@
 
 from django.conf import settings
 from django.shortcuts import render
+from reportlab.pdfgen import canvas
+from reportlab.lib.pagesizes import A4
+from reportlab.lib.units import mm
+
 
 def del_leding_zero(data):
     """Убираем лидирующий ноль, если он есть.
@@ -84,3 +88,75 @@ def is_admin(view_method):
             return render(request, 'accounts/is_not_admin.html', context={})
         
     return wrapper
+
+
+class Sticker(object):
+    """Ресует наклейки на странице А4.
+    """
+    
+    def __init__(self, file_name='hello3.pdf'):
+        """
+        """
+        self.count  = 0
+        self.page   = 1
+        self.row    = 0
+        self.column = 0
+        self.canv   = canvas.Canvas(file_name, pagesize=A4)
+        self.canv.translate(mm, mm)
+        self.font_size = 2.5*mm # максмальное количество символов в ячейке - 14
+        self.canv.setFont('Courier-Bold', self.font_size)
+
+    def add(self, ou_number='5', cartridge_name='Q2612A', cartridge_number='1245'):
+        """Рисует одну наклейку. 
+        """
+        x = 10 + (self.column * 19.5)
+        y = 283 - (self.row * 14.7)
+        self.canv.rect(x*mm, y*mm, 16.5*mm, 4*mm, fill=0)
+        self.canv.drawString(x*mm, (y+1)*mm, self.center(ou_number))
+
+        self.canv.rect((x-0)*mm, (y-4)*mm, 16.5*mm, 4*mm, fill=0)
+        self.canv.drawString((x-0)*mm, (y-3)*mm, self.center(cartridge_name))
+
+        self.canv.rect((x-0)*mm, (y-8)*mm, 16.5*mm, 4*mm, fill=0)
+        self.canv.drawString((x-0)*mm, (y-7)*mm, self.center(cartridge_number))
+
+        self.column += 1
+        # Если количество наклеек превышает 10, то обнуляем счётчик колонок и
+        # инкрементируем счётчик строк.
+        if self.column == 10:
+            self.column = 0
+            self.row += 1
+
+        if self.row == 19:
+            self.row = 0
+            # добавляем новыую пустую страницу.
+            self.page_break()
+        self.count  += 1
+
+    def center(self, str_obj):
+        """Центрирует строку по ширине наклейки добавляя слева пробельные символы.
+        """
+        import math
+        str_obj = str(str_obj)
+        if len(str_obj) == 11:
+            left_padding = 0
+        elif len(str_obj) > 11:
+            #усекаем строку слева, результирующая строка = 11 символам 
+            str_obj = str_obj[-11:]
+            left_padding = 0
+        else:
+            left_padding = math.ceil((11 - len(str_obj)) / 2)
+        return ' '*left_padding + str_obj
+
+
+    def page_break(self):
+        """
+        """
+        self.canv.showPage()
+        self.canv.setFont('Courier-Bold', self.font_size)
+
+    def fin(self):
+        """Формируем результирующий документ.
+        """
+        self.canv.showPage()
+        self.canv.save()
