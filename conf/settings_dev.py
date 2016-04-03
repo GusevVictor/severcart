@@ -55,6 +55,7 @@ if DEBUG:
     MEDIAFILES_DIRS = (os.path.join(BASE_DIR, 'media'),)
 
 
+
 STATIC_ROOT_CSV = os.path.join(BASE_DIR, 'static', 'csv')
 MAX_COUNT_CSV_FILES = 20
 
@@ -67,6 +68,4 @@ MEDIA_URL = '/media/'
 if not DEBUG:
     STATIC_ROOT = os.path.join(BASE_DIR, 'static')
     MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-
-
-
+    

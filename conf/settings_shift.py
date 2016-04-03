@@ -1,17 +1,21 @@
 # -*- coding:utf-8 -*-
 
+import os, json
+
 import os
 DJ_PROJECT_DIR = os.path.dirname(__file__)
 BASE_DIR = os.path.dirname(DJ_PROJECT_DIR)
 WSGI_DIR = os.path.dirname(BASE_DIR)
-WSGI_DIR = os.path.dirname(WSGI_DIR)
 REPO_DIR = os.path.dirname(WSGI_DIR)
 DATA_DIR = os.environ.get('OPENSHIFT_DATA_DIR', BASE_DIR)
 
 import sys
 sys.path.append(os.path.join(REPO_DIR, 'libs'))
-import secrets
-SECRETS = secrets.getter(os.path.join(DATA_DIR, 'secrets.json'))
+
+
+json_data=open(os.path.join(DATA_DIR, 'secrets.json')).read()
+
+SECRETS = json.loads(json_data)
 
 DEBUG = False
 

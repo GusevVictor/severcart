@@ -151,15 +151,26 @@ LOCALE_PATHS = (os.path.join(BASE_DIR, 'locale'), )
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.8/howto/static-files/
 
+
 if DEBUG:
     STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
     MEDIAFILES_DIRS = (os.path.join(BASE_DIR, 'media'),)
 
 
-
 STATIC_ROOT_CSV = os.path.join(BASE_DIR, 'static', 'csv')
 MAX_COUNT_CSV_FILES = 20
-#MEDIA_ROOT  = os.path.join(BASE_DIR, 'media')
+
+STATIC_ROOT_DOCX = os.path.join(BASE_DIR, 'static', 'docx')
+MAX_COUNT_DOCX_FILES = 20
+
+STATIC_URL = '/static/'
+MEDIA_URL = '/media/'
+
+
+if not DEBUG:
+    STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+    MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+    
 
 
 STATIC_URL = '/static/'
@@ -249,5 +260,3 @@ MAX_TABLE_ROWS_FIRST_PAGE = 14 # должен резервировать мес�
 MAX_TABLE_ROWS = 20
 
 HISTORY_LENGTH = 5
-
-
