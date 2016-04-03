@@ -163,6 +163,9 @@ MAX_COUNT_CSV_FILES = 20
 STATIC_ROOT_DOCX = os.path.join(BASE_DIR, 'static', 'docx')
 MAX_COUNT_DOCX_FILES = 20
 
+STATIC_ROOT_PDF = os.path.join(BASE_DIR, 'static', 'pdf')
+MAX_COUNT_PDF_FILES = 20
+
 STATIC_URL = '/static/'
 MEDIA_URL = '/media/'
 
