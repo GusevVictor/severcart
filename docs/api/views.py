@@ -73,7 +73,7 @@ def generate_act(request):
 
     resp_dict = dict()
     if request.method != 'POST':
-        return HttpResponse('<h1>' + _('Only use POST requests!') + '</h1>')    
+        return HttpResponse('<h1>' + _('Only use POST requests!') + '</h1>')
     
     doc_id = request.POST.get('doc_id', '')
     doc_action = request.POST.get('doc_action', '')
@@ -316,4 +316,60 @@ def generate_csv(request):
         return HttpResponse(resp_dict, status_code=501)
     
     resp_dict['url'] = settings.STATIC_URL + 'csv/' + csv_file_name
+    return JsonResponse(resp_dict)
+
+
+@check_ajax_auth
+def generate_pdf(request):
+    """
+    """
+    if request.method != 'POST':
+        return HttpResponse('<h1>' + _('Only use POST requests!') + '</h1>')
+    
+    from common.helpers import Sticker 
+    resp_dict = {}
+    pdf_file_name = str(int(time.time())) + '_' + str(request.user.pk) + '.pdf'
+    cart_type = request.POST.get('cart_type', '')
+    if not os.path.exists(settings.STATIC_ROOT_PDF):
+        os.makedirs(settings.STATIC_ROOT_PDF)
+    # Прозводим ротацию каталога pdf от старых файлов
+    files = filter(os.path.isfile, glob.glob(settings.STATIC_ROOT_PDF + '\*.pdf'))
+    files = list(files)
+    files.sort(key=lambda x: os.path.getmtime(x))
+    try:
+        if len(files) > settings.MAX_COUNT_PDF_FILES:
+            os.remove(files[0])
+    except:
+        pass
+    pdf_full_name = os.path.join(settings.STATIC_ROOT_PDF, pdf_file_name)
+    if cart_type == 'full':
+        session_data = request.session.get('cumulative_list')
+    elif cart_type == 'empty':
+        session_data = request.session.get('empty_cart_list')
+    else:
+        pass
+
+    # если сессионные данные отсутствуют, то сразу возвращаем результат
+    if not session_data:
+        resp_dict['url'] = ''
+        return JsonResponse(resp_dict)
+
+    session_data = json.loads(session_data)
+    # формат session_data [ [name, title,  numbers=[1,2,3,4]] ... ]
+    simple_cache = dict()
+    list_names = CartridgeItemName.objects.all()
+    for elem in list_names:
+        simple_cache[elem.pk] = elem.cart_itm_name
+
+    pdf_doc = Sticker(file_name=pdf_full_name)
+    for elem in session_data:
+        for stik in elem[2]:
+            cartridge_name = simple_cache.get(elem[0])
+            cartridge_name = cartridge_name.split(' ')
+            cartridge_name = cartridge_name[1]
+            pdf_doc.add(ou_number=request.user.departament.pk, cartridge_name=cartridge_name, cartridge_number=stik)
+    
+
+    pdf_doc.fin()
+    resp_dict['url'] = settings.STATIC_URL + 'pdf/' + pdf_file_name
     return JsonResponse(resp_dict)

@@ -115,7 +115,8 @@ span.gi {
 
 .spinner, 
 .export_spinner,
-.filter_spinner {
+.filter_spinner,
+.spinner_pdf {
     margin-left: 10px;
     display: none;
 }
@@ -128,6 +129,10 @@ span.gi {
     position: absolute;
     display: table;
     text-align: center;
+}
+
+.download_pdf {
+    display: none;
 }
 
 span.user_ou {

@@ -55,6 +55,9 @@
         </div>
         <div class="large-6 column">
             <div class="text-right">
+                <a class="download_pdf" href="#">{% trans "Download" %}</a>
+                <img class="spinner_pdf" src="{{ STATIC_URL }}img/loader.gif" />
+                <a href="#" data="full" class="generate_pdf button no_follow"/>{% trans "Generate PDF" %}</a>
                 <a href="#" data="full" class="clear_session button no_follow"/>{% trans "Clear session" %}</a>
             </div>
             <div class="session_data">

@@ -140,6 +140,9 @@ $( function(){
                     }
                 },
                 success: function( msg ) {
+                    // Прячем ссылку закачки pdf файлов
+                    $('.download_pdf').hide();
+
                     if (msg.error == '1') {
                         $('.spinner').hide(); 
                         $('.success_msg').hide();
@@ -213,14 +216,15 @@ $( function(){
             url: '/api/clear_session/',
             data:  {'cart_type': cart_type},
             beforeSend: function( xhr, settings ){
-                $('.spinner').css('display', 'inline');
+                $('.spinner_pdf').show();
                 csrftoken = getCookie('csrftoken');
                 if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
                     xhr.setRequestHeader('X-CSRFToken', csrftoken);
                 }
             },
             success: function( msg ) {
-                $('.spinner').css('display', 'none');
+                $('.spinner_pdf').hide();
+                $('.download_pdf').hide();
                 $('.session_data').html('');
                 $('.ajax_messages').show();
                 $('.success_msg').html(msg.mes);
@@ -228,7 +232,35 @@ $( function(){
             error: function() {
                 $('.ajax_messages').show();
                 $('.success_msg').html('Server error :(');
-                $('.spinner').css('display', 'none');
+                $('.spinner_pdf').hide();
+            },
+        });
+    });
+
+    $('.generate_pdf').click( function() {
+        var cart_type = $(this).attr('data'); 
+        $.ajax({
+            method: 'POST',
+            url: '/docs/api/generate_pdf/',
+            data:  {'cart_type': cart_type, 'cart_type': cart_type},
+            beforeSend: function( xhr, settings ){
+                $('.spinner_pdf').show();
+                csrftoken = getCookie('csrftoken');
+                if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
+                    xhr.setRequestHeader('X-CSRFToken', csrftoken);
+                }
+            },
+            success: function( msg ) {
+                $('.spinner_pdf').hide();
+                if ( msg.url ) {
+                    $('.download_pdf').show();
+                    $('.download_pdf').attr('href', msg.url)
+                }
+            },
+            error: function() {
+                $('.ajax_messages').show();
+                $('.success_msg').html('Server error :(');
+                $('.spinner_pdf').hide();
             },
         });
     });
