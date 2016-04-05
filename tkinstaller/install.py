@@ -143,6 +143,17 @@ if __name__ == '__main__':
                 flag = True
 
         print('-------------------------------------------------')
+        print('--Генерация ключа подписи сессионной переменной--')
+        print('-------------------------------------------------')
+        from django.utils.crypto import get_random_string
+        import json
+        chars = 'abcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*(-_=+)'
+        secret_key = get_random_string(50, chars)
+        SECRETS = dict()
+        SECRETS['secret_key'] = secret_key
+        with open(os.path.join(PROJ_DIR, 'conf', 'secrets.json'), 'w') as j:
+            json.dump(SECRETS, j)
+        print('-------------------------------------------------')
         print('----------Установка успешно завершена------------')
         print('-------------------------------------------------')
         prompt_exit()
