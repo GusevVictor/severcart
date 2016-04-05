@@ -62,6 +62,7 @@ if __name__ == '__main__':
             install(['Win64/Pillow-3.1.0-cp34-none-win_amd64.whl'])
             install(['Win64/psycopg2-2.6.1-cp34-none-win_amd64.whl'])
             install(['Noarch/python-docx-0.8.5.tar.gz', '--disable-pip-version-check'])
+            install(['reportlab'])
             install(['django-debug-toolbar'])
         elif CPU_ARCH == '32bit' and OS == 'win32':
             print('Установка пакетов зависимостей для 32 битной Windows')
@@ -71,6 +72,7 @@ if __name__ == '__main__':
             install(['Win32/Pillow-3.1.0-cp34-none-win32.whl'])
             install(['Win32/psycopg2-2.6.1-cp34-none-win32.whl'])
             install(['Noarch/python-docx-0.8.5.tar.gz', '--disable-pip-version-check'])
+            install(['reportlab'])
             install(['django-debug-toolbar'])
         elif 'linux' in OS:
             print('Установка пакетов зависимостей для Linux')
@@ -78,6 +80,7 @@ if __name__ == '__main__':
             install(['django-mptt'])
             install(['psycopg2'])
             install(['python-docx'])
+            install(['reportlab'])
             install(['django-debug-toolbar'])
         else:
             print('Поддержка данной архитиктуры не релизована.')
