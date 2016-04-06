@@ -160,3 +160,4 @@ class Sticker(object):
         """
         self.canv.showPage()
         self.canv.save()
+
