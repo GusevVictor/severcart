@@ -24,6 +24,26 @@ from settings_dev import *
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.8/howto/deployment/checklist/
 
+# Application definition
+
+INSTALLED_APPS = (
+#    'django.contrib.admin',
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',
+    'django.contrib.messages',
+    'django.contrib.staticfiles',
+    #'debug_toolbar',
+    'index',
+    'mptt',
+    'accounts',
+    'events',
+    'docs',
+    'reports',
+    'service',
+    'search',
+)
+
 MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
