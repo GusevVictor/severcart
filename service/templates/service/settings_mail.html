@@ -1,0 +1,13 @@
+{% extends "index/base.html" %}{% load i18n %}
+{% block title %}{% trans "Email" %}{% endblock %}
+{% block breadcrumbs %}<a href="/"><img src="{{ STATIC_URL }}img/home.png" /></a>/ <a href="{% url 'service:submenu' %}">{% trans "Service" %}</a> / {% trans "Settings Email" %}{% endblock %}
+{% block content %}
+<div class="row">
+    <div class="large-6 columns">
+        <form action="" method="POST">
+            {{ form.as_p }}
+            <input type="submit" value="{% trans 'Save' %}">
+        </form>
+    </div>
+</div>
+{% endblock %}
