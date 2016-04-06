@@ -745,7 +745,6 @@ def edit_cartridge_comment(request):
         if form.is_valid():
             cartridge_object.comment = form.cleaned_data.get('comment')
             cartridge_object.save()
-            print('back=', back)
             return HttpResponseRedirect(back)
     else:
         comment = cartridge_object.comment
