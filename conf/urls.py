@@ -14,4 +14,5 @@ urlpatterns = [
     url(r'^reports/', include('reports.urls', namespace='reports')),
     url(r'^service/', include('service.urls', namespace='service')),
     url(r'^manage_users/', include('accounts.urls', namespace='auth')),
+    url(r'^search/', include('search.urls', namespace='find')),
 ] 
