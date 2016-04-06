@@ -8,4 +8,4 @@ class Settings(models.Model):
     email_sender  = models.EmailField(max_length=254, null=True, blank=True)
     smtp_login    = models.CharField(max_length=256, null=True)
     smtp_password = models.CharField(max_length=256, null=True)
-    use_ssl       = models.IntegerField(default=0, null=True)
+    use_ssl       = models.NullBooleanField(null=True)
