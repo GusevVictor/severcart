@@ -10,7 +10,14 @@
                 <li class="{% navactive request 'at_work' %}"><a href="{% url 'at_work' %}">{% trans "On restoration" %}</a></li>
                 <li class="{% navactive request 'basket' %}"><a href="{% url 'basket' %}">{% trans "Basket" %}</a></li>
                 <li class="{% navactive request 'service:submenu' %}"><a href="{% url 'service:submenu' %}">{% trans "Service" %}</a></li>
-                <li class="right {% navactive request 'auth:manage_users' %} {% navactive request 'tree_list' %} {% navactive request 'toner_refill' %} {% navactive request 'docs:handbook' %}"><a href="{% url 'docs:handbook' %}">{% trans "References" %}</a></li>
+                <li class="{% navactive request 'auth:manage_users' %} {% navactive request 'tree_list' %} {% navactive request 'toner_refill' %} {% navactive request 'docs:handbook' %}"><a href="{% url 'docs:handbook' %}">{% trans "References" %}</a></li>
+                <li class="search">
+                    <form action="{% url 'find:search' %}" method="GET">
+                        <input class="search_query" type="text" name="query" value="{% trans 'Find by number' %}" />
+                        <input type="submit" class="search_button" value="?" />
+                    </form>
+                </li>
+
             </ul>
         </div>
     </div>

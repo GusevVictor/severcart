@@ -253,7 +253,7 @@ ul.menu li a {
     color:#fff;
     text-decoration:none;
     display:inline-block;
-    padding: 0 15px;
+    padding: 0 12px;
     outline: 0;
 }
 
@@ -865,3 +865,21 @@ div.calendar .ui-datepicker-trigger {
     cursor: pointer;
 }
 /* end date input form */
+
+/* Search service */
+.search .search_query {
+    display: inline-block;
+    width: 120px;
+    height: 20px;
+    font-size: 12px;
+    border: 0px solid #000;
+}
+
+.search .search_button {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border: 0px solid #000;
+}
+
+/* End search service */
