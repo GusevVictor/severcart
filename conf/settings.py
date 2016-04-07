@@ -207,5 +207,3 @@ MAX_TABLE_ROWS_FIRST_PAGE = 14 # должен резервировать мес�
 MAX_TABLE_ROWS = 20
 
 HISTORY_LENGTH = 5
-
-
