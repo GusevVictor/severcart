@@ -4,33 +4,21 @@
 {% block content %}
 <div class="row">
     <div class="large-6 columns">
-        {% if messages %}
-            <ul class="messages">
-                {% for message in messages %}
-                    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
-                {% endfor %}
-            </ul>
-        {% endif %}
-    </div>
-</div>
-<div class="row">
-    <div class="large-6 columns">
-        <h2>{% trans 'Form settings connect to mail server' %}</h2>
-        <form action="" method="POST">{% csrf_token %}
-            {{ form.as_p }}
-            <input type="submit" name="settings_email" class="button" value="{% trans 'Save' %}">
+        <form action="" method="POST" class="settings_email_form">{% csrf_token %}
+            <fieldset>
+                <legend>{% trans 'Settings mail server' %}</legend>
+                {{ settings_form.as_p }}
+                <input type="submit" class="settings_email button no_follow" value="{% trans 'Save' %}">
+            </fieldset>
         </form>
     </div>
     <div class="large-6 columns">
-        <h2>{% trans 'Send check email' %}</h2>
-        {% if send_message %}
-            <div class="sucessfull">
-                {{ send_message }}
-            </div>
-        {% endif %}
-        <form action="" method="POST">{% csrf_token %}
-            {{ sender_form.as_p }}
-            <input type="submit" name="sender_email" class="button" value="&nbsp;&nbsp;{% trans 'Send' %}&nbsp;&nbsp;">
+        <form action="" method="POST" class="send_email_form">{% csrf_token %}
+            <fieldset>
+                <legend>{% trans 'Send check email' %}</legend>
+                {{ sender_form.as_p }}
+                <input type="submit" class="send_email button no_follow" value="&nbsp;&nbsp;{% trans 'Send' %}&nbsp;&nbsp;">
+            </fieldset>
         </form>
     </div>
 </div>

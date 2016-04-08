@@ -1006,4 +1006,38 @@ $( function(){
         $(this).attr('value', '');
     });
 
+    $('.settings_email').click( function() {
+        var smtp_server   = $('#id_smtp_server').val();
+        var smtp_port     = $('#id_smtp_port').val();
+        var email_sender  = $('#id_email_sender').val();
+        var smtp_login    = $('#id_smtp_login').val();
+        var smtp_password = $('#id_smtp_password').val();
+        var id_use_ssl    = $('#id_use_ssl').is(':checked');
+        console.log(smtp_server, smtp_port, email_sender, smtp_login, smtp_password, id_use_ssl)
+
+    });
+
+    $('.send_email').click( function() {
+        var text   = $('#id_text').val();
+        var email   = $('#id_email').val();
+        $.ajax({
+            method: 'POST',
+            url: '/service/api/send_test_email/',
+            data: {'text': text, 'email': email},
+            beforeSend: function( xhr, settings ){
+                csrftoken = getCookie('csrftoken');
+                if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
+                    xhr.setRequestHeader('X-CSRFToken', csrftoken);
+                }
+            },
+            success: function( msg ) {
+                console.log(msg);
+
+            },
+            error: function( msg ) {
+                console.log(msg);                
+            },
+        });
+    });
+
 });
