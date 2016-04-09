@@ -18,23 +18,23 @@
                         {{ settings_form.smtp_port }}
                     </div>
                 </div>
-                <div class="marginTop">
+                <div class="marginTop25">
                     <label class="required">{{ settings_form.email_sender.label }}</label>
                     {{ settings_form.email_sender }}
                 </div>
-                <div class="marginTop">
+                <div class="marginTop25">
                     <label class="required">{{ settings_form.smtp_login.label }}</label>
                     {{ settings_form.smtp_login }}
                 </div>
-                <div class="marginTop">
+                <div class="marginTop25">
                     <label class="required">{{ settings_form.smtp_password.label }}</label>
                     {{ settings_form.smtp_password }}
                 </div>
-                <div class="marginTop">
+                <div class="marginTop25">
                     <label>{{ settings_form.use_ssl.label }}</label>
                     {{ settings_form.use_ssl }}
                 </div>
-                <div class="marginTop">
+                <div class="marginTop25">
                     <input type="submit" class="settings_email button no_follow" value="{% trans 'Save' %}">&nbsp;&nbsp;&nbsp;
                     <img class="spinner_sett" src="{{ STATIC_URL }}img/loader.gif" />
                 </div>

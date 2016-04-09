@@ -65,8 +65,13 @@ form input[type="password"] {
 }
 
 .marginTop {
-    margin-top:25px;
+    margin-top:15px;
     overflow: hidden; /* disable margin collapse */
+}
+
+.marginTop25 {
+	margin-top:25px;
+    overflow: hidden;
 }
 
 .marginBot {
@@ -885,7 +890,7 @@ div.calendar .ui-datepicker-trigger {
 /* Search service */
 .search .search_query {
     display: inline-block;
-    width: 120px;
+    width: 115px;
     height: 20px;
     font-size: 12px;
     border: 0px solid #000;
