@@ -4,11 +4,40 @@
 {% block content %}
 <div class="row">
     <div class="large-6 columns">
+        <div class="success_msg_set" style="display: none;"></div>
         <form action="" method="POST" class="settings_email_form">{% csrf_token %}
             <fieldset>
                 <legend>{% trans 'Settings mail server' %}</legend>
-                {{ settings_form.as_p }}
-                <input type="submit" class="settings_email button no_follow" value="{% trans 'Save' %}">
+                <div class="row">
+                    <div class="large-6 medium-6 columns">
+                        <label class="required">{{ settings_form.smtp_server.label }}</label>
+                        {{ settings_form.smtp_server }}
+                    </div>
+                    <div class="large-6 medium-6 columns">
+                        <label class="required">{{ settings_form.smtp_port.label }}</label>
+                        {{ settings_form.smtp_port }}
+                    </div>
+                </div>
+                <div class="marginTop">
+                    <label class="required">{{ settings_form.email_sender.label }}</label>
+                    {{ settings_form.email_sender }}
+                </div>
+                <div class="marginTop">
+                    <label class="required">{{ settings_form.smtp_login.label }}</label>
+                    {{ settings_form.smtp_login }}
+                </div>
+                <div class="marginTop">
+                    <label class="required">{{ settings_form.smtp_password.label }}</label>
+                    {{ settings_form.smtp_password }}
+                </div>
+                <div class="marginTop">
+                    <label>{{ settings_form.use_ssl.label }}</label>
+                    {{ settings_form.use_ssl }}
+                </div>
+                <div class="marginTop">
+                    <input type="submit" class="settings_email button no_follow" value="{% trans 'Save' %}">&nbsp;&nbsp;&nbsp;
+                    <img class="spinner_sett" src="{{ STATIC_URL }}img/loader.gif" />
+                </div>
             </fieldset>
         </form>
     </div>

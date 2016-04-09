@@ -65,7 +65,7 @@ form input[type="password"] {
 }
 
 .marginTop {
-    margin-top:15px;
+    margin-top:25px;
     overflow: hidden; /* disable margin collapse */
 }
 
@@ -90,10 +90,15 @@ form input[type="password"] {
     border: 2px solid #ff6464;
 }
 
-.success_msg {
+.success_msg,
+.success_msg_set {
     display: none;
     color: #7BCC9A;
     border: 2px solid #7BCC9A;
+}
+
+.success_msg_set {
+    padding: 10px;
 }
 
 
@@ -120,7 +125,8 @@ span.gi {
 .spinner, 
 .export_spinner,
 .filter_spinner,
-.spinner_pdf {
+.spinner_pdf,
+.spinner_sett {
     margin-left: 10px;
     display: none;
 }
@@ -137,6 +143,12 @@ span.gi {
 
 .download_pdf {
     display: none;
+}
+
+input[type='email'],
+input[type='number'],
+input[type='text'] {
+    margin: 0;
 }
 
 span.user_ou {

@@ -6,7 +6,7 @@ from django.utils.translation import ugettext_lazy as _
 class SMTPsettings(forms.Form):
     """Ввод информации для подключению к SMTP серверу
     """
-    smtp_server    = forms.CharField(label=_('Sever address'))
+    smtp_server    = forms.CharField(label=_('Sever address'), widget=forms.TextInput(attrs={'class': 'inline left'}))
     smtp_port      = forms.IntegerField(label=_('Sever port'))
     email_sender   = forms.EmailField(label=_('Email sender'))
     smtp_login     = forms.CharField(label=_('SMTP login'))

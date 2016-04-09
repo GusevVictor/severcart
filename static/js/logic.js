@@ -1012,8 +1012,45 @@ $( function(){
         var email_sender  = $('#id_email_sender').val();
         var smtp_login    = $('#id_smtp_login').val();
         var smtp_password = $('#id_smtp_password').val();
-        var id_use_ssl    = $('#id_use_ssl').is(':checked');
-        console.log(smtp_server, smtp_port, email_sender, smtp_login, smtp_password, id_use_ssl)
+        var use_ssl    = $('#id_use_ssl').is(':checked');
+        $.ajax({
+            method: 'POST',
+            url: '/service/api/settings_email/',
+            data: {'smtp_server': smtp_server, 'smtp_port': smtp_port,
+                   'email_sender': email_sender, 'smtp_login': smtp_login,
+                   'smtp_password': smtp_password, 'use_ssl': use_ssl,
+            },
+            beforeSend: function( xhr, settings ){
+                csrftoken = getCookie('csrftoken');
+                $('.spinner_sett').show();
+                if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
+                    xhr.setRequestHeader('X-CSRFToken', csrftoken);
+                }
+            },
+            success: function( msg ) {
+                $('.settings_email_form').find('.form_error_text').remove();
+                for (var key in msg.errors) {
+                    // Check for proper key in dictionary
+                    if (key in {'smtp_server': 1, 'smtp_port': 1, 'email_sender': 1, 
+                                'smtp_login': 1, 'smtp_password': 1, 'use_ssl': 1}) {
+                        // Читаем сообщение об ошибке
+                        error = msg.errors[key][0];
+                        field = $('.settings_email_form').find('#id_' + key);
+                        // Прикрепляем сообщение с ошибкой после поля
+                        field.after('<div class="form_error_text" style="display: block;">' + error + '</div>');
+                    }
+                }
+                $('.spinner_sett').hide();
+                if (!msg.errors) {
+                    $('.success_msg_set').show();
+                    $('.success_msg_set').text(msg.text);
+                    setTimeout(function() { $('.success_msg_set').hide(); }, 12000);
+                }
+            },
+            error: function( msg ) {
+                console.log(msg);                
+            },
+        });
 
     });
 
