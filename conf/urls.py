@@ -5,6 +5,7 @@ from django.conf.urls import include, url
 from django.conf.urls.static import static
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from django.views.generic.base import TemplateView
+from index.views import robots_txt, favicon_ico
 
 urlpatterns = [
     url('', include('index.urls')),
@@ -15,4 +16,6 @@ urlpatterns = [
     url(r'^service/', include('service.urls', namespace='service')),
     url(r'^manage_users/', include('accounts.urls', namespace='auth')),
     url(r'^search/', include('search.urls', namespace='find')),
+    url(r'^robots\.txt', robots_txt),
+    url(r'^favicon\.ico', favicon_ico),
 ] 

@@ -750,3 +750,32 @@ def edit_cartridge_comment(request):
         comment = cartridge_object.comment
         form = EditCommentForm(initial = {'comment': comment})
     return render(request, 'index/edit_cartridge_comment.html', {'form': form, 'back': back})
+
+
+def robots_txt(request):
+    """Возвращает содержимое robots.txt
+    """
+    text = 'User-agent: *\nAllow: /\n'
+    response = HttpResponse(text)
+    response['Content-Type'] = 'text/plain'
+    return response
+
+
+def favicon_ico(request):
+    """Возвращает содержимое favicon.ico
+    """
+    import os
+    from django.conf import settings
+
+    icof = os.path.join(settings.BASE_DIR, 'static', 'img', 'favicon.ico')
+    
+    if os.path.isfile(icof):
+        with open(icof, 'rb') as fp:
+            content = fp.read()
+    else:
+        content = ''
+
+    response = HttpResponse(content)
+    response['Content-Type'] = 'image/x-icon'
+    return response    
+
