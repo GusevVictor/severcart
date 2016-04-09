@@ -20,7 +20,7 @@ WSGI_APPLICATION = 'conf.wsgi_dev.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'sklad6',
+        'NAME': os.getenv('DB_NAME'),
         'USER': os.getenv('DB_USER'),
         'PASSWORD': os.getenv('DB_PASSWD'),
         'HOST': os.getenv('DB_HOST'),
