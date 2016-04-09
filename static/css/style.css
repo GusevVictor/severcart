@@ -16,6 +16,10 @@ img {
     margin:0;
 }
 
+fieldset legend{
+    background: none;   
+}
+
 hr {
     display: block;
     height: 1px;
