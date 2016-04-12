@@ -3,47 +3,57 @@
 from django.shortcuts import render
 from django.conf import settings
 from django.utils.translation import ugettext as _
+from django.core.mail import send_mail
 from django.http import HttpResponse, JsonResponse
+from django.core.mail.backends.smtp import EmailBackend
 from index.helpers import check_ajax_auth
 from service.helpers import SevercartConfigs
 from service.forms.input_server_settings import SMTPsettings
+from service.forms.send_test_mail import SendTestMail
+
 
 @check_ajax_auth
 def send_test_email(request):
     """
     """
     resp_dict = dict()
+    errors        = list()
     text  = request.POST.get('text')
     email = request.POST.get('email')
+    form = SendTestMail(request.POST)
+    if form.is_valid():
+        data_in_post = form.cleaned_data
+        resp_dict['errors'] = ''
+        mconf         = SevercartConfigs()
+        subject       = text.strip()
+        message       = text.strip()
+        from_email    = mconf.email_sender
+        to_email      = email
+        auth_user     = mconf.smtp_login
+        auth_password = mconf.smtp_password
+        connection    = EmailBackend(
+                            host = mconf.smtp_server,
+                            port = mconf.smtp_port,
+                            username=mconf.smtp_login,
+                            password=mconf.smtp_password,
+                            use_tls=True
+                        )
+        try:
+            send_mail(subject, 
+                      message, 
+                      from_email, 
+                      [to_email], 
+                      connection=connection)
+        except Exception as e:
+            resp_dict['errors'] =str(e)
+            
 
-    return JsonResponse(resp_dict)
-    try:
-        ar = int(ar)
-    except ValueError:
-        HttpResponse(_('Error in data processing'), status=501)
-    
-    usr_name = ''
-    if request.user.id == ar:
-        resp_dict['error'] = '1'
-        resp_dict['text']  = _('User %(user_name)s can not be deleted') % {'user_name': request.user}
-        return JsonResponse(resp_dict)
-    
-    try:
-        usr = AnconUser.objects.get(pk=ar)
-    except AnconUser.DoesNotExist: 
-        resp_dict['error'] = '1'
-        resp_dict['text']  = _('Object not found')
-        return JsonResponse(resp_dict)
     else:
-        if settings.DEMO:
-            resp_dict['error'] = '1'
-            resp_dict['text']  = _('In DEMO users not delete!')
-            return JsonResponse(resp_dict)
-        usr_name = usr.username
-        usr.delete()
-        resp_dict['error'] = '0'
-        resp_dict['text']  = _('User %(user_name)s was successfully deleted') % {'user_name': usr_name}
-        return JsonResponse(resp_dict)
+        # если форма содержит ошибки, то сообщаем о них пользователю.
+        error_message = dict([(key, [error for error in value]) for key, value in form.errors.items()])
+        resp_dict['errors'] = error_message
+    
+    return JsonResponse(resp_dict)
 
 
 @check_ajax_auth
