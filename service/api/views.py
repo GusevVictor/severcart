@@ -46,6 +46,8 @@ def send_test_email(request):
                       connection=connection)
         except Exception as e:
             resp_dict['errors'] =str(e)
+        else:
+            resp_dict['text'] = _('Mail successfully sended!')
             
 
     else:

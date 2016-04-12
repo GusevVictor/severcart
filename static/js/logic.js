@@ -1062,13 +1062,25 @@ $( function(){
             url: '/service/api/send_test_email/',
             data: {'text': text, 'email': email},
             beforeSend: function( xhr, settings ){
+                $('.spinner_send').show();
                 csrftoken = getCookie('csrftoken');
                 if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
                     xhr.setRequestHeader('X-CSRFToken', csrftoken);
                 }
             },
             success: function( msg ) {
-                console.log(msg);
+                $('.spinner_send').hide();
+                if (msg.errors) {
+                    $('.success_msg_send').hide();
+                    $('.error_msg_send').show();
+                    $('.error_msg_send'). text(msg.errors);
+                    setTimeout(function() { $('.error_msg_send').hide(); }, 20000);                    
+                } else {
+                    $('.success_msg_send').show();
+                    $('.success_msg_send').text(msg.text);
+                    $('.error_msg_send').hide();
+                    setTimeout(function() { $('.success_msg_send').hide(); }, 20000);
+                }
 
             },
             error: function( msg ) {

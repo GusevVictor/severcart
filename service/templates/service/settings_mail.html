@@ -42,11 +42,13 @@
         </form>
     </div>
     <div class="large-6 columns">
+        <div class="success_msg_send" style="display: none;"></div>
+        <div class="error_msg_send" style="display: none;"></div>
         <form action="" method="POST" class="send_email_form">{% csrf_token %}
             <fieldset>
                 <legend>{% trans 'Send check email' %}</legend>
                 {{ sender_form.as_p }}
-                <input type="submit" class="send_email button no_follow" value="&nbsp;&nbsp;{% trans 'Send' %}&nbsp;&nbsp;">
+                <input type="submit" class="send_email button no_follow" value="&nbsp;&nbsp;{% trans 'Send' %}&nbsp;&nbsp;">&nbsp;&nbsp;<img class="spinner_send" src="{{ STATIC_URL }}img/loader.gif" />
             </fieldset>
         </form>
     </div>
