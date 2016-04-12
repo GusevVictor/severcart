@@ -30,7 +30,7 @@ hr {
 }
 
 div.main_content {
-    min-width: 1000px;
+    width: 1000px;
     margin: 0 auto 0;
     background: #f3f3f3;
     min-height: 100%;
