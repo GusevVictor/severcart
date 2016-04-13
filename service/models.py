@@ -9,3 +9,5 @@ class Settings(models.Model):
     smtp_login    = models.CharField(max_length=256, null=True)
     smtp_password = models.CharField(max_length=256, null=True)
     use_ssl       = models.NullBooleanField(null=True)
+    use_tls       = models.NullBooleanField(null=True)
+

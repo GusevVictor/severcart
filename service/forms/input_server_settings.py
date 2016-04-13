@@ -12,5 +12,6 @@ class SMTPsettings(forms.Form):
     smtp_login     = forms.CharField(label=_('SMTP login'))
     smtp_password  = forms.CharField(label=_('SMTP password'))
     use_ssl        = forms.BooleanField(label=_('Use SSL'), required=False)
+    use_tls        = forms.BooleanField(label=_('Use TLS'), required=False)
 
     required_css_class = 'required'

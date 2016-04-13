@@ -30,10 +30,18 @@
                     <label class="required">{{ settings_form.smtp_password.label }}</label>
                     {{ settings_form.smtp_password }}
                 </div>
-                <div class="marginTop25">
-                    <label>{{ settings_form.use_ssl.label }}</label>
-                    {{ settings_form.use_ssl }}
+                <div class="marginTop25"></div>
+                <div class="row">
+                    <div class="large-6 medium-6 columns">
+                        <label>{{ settings_form.use_ssl.label }}</label>
+                        {{ settings_form.use_ssl }}
+                    </div>
+                    <div class="large-6 medium-6 columns">
+                        <label>{{ settings_form.use_tls.label }}</label>
+                        {{ settings_form.use_tls }}
+                    </div>
                 </div>
+
                 <div class="marginTop25">
                     <input type="submit" class="settings_email button no_follow" value="{% trans 'Save' %}">&nbsp;&nbsp;&nbsp;
                     <img class="spinner_sett" src="{{ STATIC_URL }}img/loader.gif" />

@@ -15,6 +15,7 @@ class SevercartConfigs(object):
             self.smtp_login     = ''
             self.smtp_password  = ''
             self.use_ssl        = ''
+            self.use_tls        = ''
         else:
             # если таблица уже содержит данные, то инициализируем внутренние переменные
             self.smtp_server    = self.m1.smtp_server
@@ -23,6 +24,7 @@ class SevercartConfigs(object):
             self.smtp_login     = self.m1.smtp_login
             self.smtp_password  = self.m1.smtp_password
             self.use_ssl        = self.m1.use_ssl
+            self.use_tls        = self.m1.use_tls
 
     def commit(self):
         """Сохранение значений настроечных переменных в СУБД.
@@ -37,6 +39,7 @@ class SevercartConfigs(object):
             self.m1.smtp_login     = self.smtp_login
             self.m1.smtp_password  = self.smtp_password
             self.m1.use_ssl        = self.use_ssl
+            self.m1.use_tls        = self.use_tls
             self.m1.save()
         else:
             # если в таблица пустая, то создаём первую строку           
@@ -46,5 +49,6 @@ class SevercartConfigs(object):
                             email_sender   = self.email_sender,
                             smtp_login     = self.smtp_login,
                             smtp_password  = self.smtp_password,
-                            use_ssl        = self.use_ssl
+                            use_ssl        = self.use_ssl,
+                            use_tls        = self.use_tls
                             )

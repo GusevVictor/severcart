@@ -36,7 +36,9 @@ def send_test_email(request):
                             port = mconf.smtp_port,
                             username=mconf.smtp_login,
                             password=mconf.smtp_password,
-                            use_tls=True
+                            use_tls=mconf.use_tls,
+                            use_ssl=mconf.use_ssl,
+                            timeout=60
                         )
         try:
             send_mail(subject, 
@@ -74,6 +76,7 @@ def settings_email(request):
         mconf.smtp_login    = data_in_post['smtp_login']
         mconf.smtp_password = data_in_post['smtp_password']
         mconf.use_ssl       = data_in_post['use_ssl']
+        mconf.use_tls       = data_in_post['use_tls']
         mconf.commit()
         resp_dict['errors'] = ''
         resp_dict['text']   = _('Settings successfully saved.')

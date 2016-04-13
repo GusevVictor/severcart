@@ -34,5 +34,6 @@ def settings_mail(request):
         'smtp_login'    : conf.smtp_login,
         'smtp_password' : conf.smtp_password,
         'use_ssl'       : conf.use_ssl,
+        'use_tls'       : conf.use_tls,
     })
     return render(request, 'service/settings_mail.html', context)
