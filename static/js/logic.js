@@ -1013,12 +1013,14 @@ $( function(){
         var smtp_login    = $('#id_smtp_login').val();
         var smtp_password = $('#id_smtp_password').val();
         var use_ssl    = $('#id_use_ssl').is(':checked');
+        var use_tls    = $('#id_use_tls').is(':checked');
         $.ajax({
             method: 'POST',
             url: '/service/api/settings_email/',
             data: {'smtp_server': smtp_server, 'smtp_port': smtp_port,
                    'email_sender': email_sender, 'smtp_login': smtp_login,
                    'smtp_password': smtp_password, 'use_ssl': use_ssl,
+                   'use_tls': use_tls
             },
             beforeSend: function( xhr, settings ){
                 csrftoken = getCookie('csrftoken');
@@ -1070,12 +1072,23 @@ $( function(){
             },
             success: function( msg ) {
                 $('.spinner_send').hide();
-                if (msg.errors) {
+                $('.send_email_form').find('.form_error_text').remove();
+                for (var key in msg.errors) {
+                    // Check for proper key in dictionary
+                    if (key in {'text': 1, 'email': 1}) {
+                        // Читаем сообщение об ошибке
+                        error = msg.errors[key][0];
+                        field = $('.send_email_form').find('#id_' + key);
+                        // Прикрепляем сообщение с ошибкой после поля
+                        field.after('<div class="form_error_text" style="display: block;">' + error + '</div>');
+                    }
+                }
+                if (msg.errors)  {
                     $('.success_msg_send').hide();
                     $('.error_msg_send').show();
-                    $('.error_msg_send'). text(msg.errors);
-                    setTimeout(function() { $('.error_msg_send').hide(); }, 20000);                    
-                } else {
+                    $('.error_msg_send').text(msg.errors);
+                    setTimeout(function() { $('.error_msg_send').hide(); }, 20000);
+                } else  {
                     $('.success_msg_send').show();
                     $('.success_msg_send').text(msg.text);
                     $('.error_msg_send').hide();
