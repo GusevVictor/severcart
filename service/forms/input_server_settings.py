@@ -10,7 +10,7 @@ class SMTPsettings(forms.Form):
     smtp_port      = forms.IntegerField(label=_('Sever port'))
     email_sender   = forms.EmailField(label=_('Email sender'))
     smtp_login     = forms.CharField(label=_('SMTP login'))
-    smtp_password  = forms.CharField(label=_('SMTP password'))
+    smtp_password  = forms.CharField(label=_('SMTP password'), max_length=32, widget=forms.PasswordInput)
     use_ssl        = forms.BooleanField(label=_('Use SSL'), required=False)
     use_tls        = forms.BooleanField(label=_('Use TLS'), required=False)
 

@@ -28,7 +28,8 @@
                 </div>
                 <div class="marginTop25">
                     <label class="required">{{ settings_form.smtp_password.label }}</label>
-                    {{ settings_form.smtp_password }}
+                    <!-- {{ settings_form.smtp_password }} -->
+                    <input id="id_smtp_password" maxlength="32" name="smtp_password" type="password" value={{ settings_form.smtp_password.value }}>
                 </div>
                 <div class="marginTop25"></div>
                 <div class="row">
