@@ -1,6 +1,9 @@
 # -*- coding:utf-8 -*-
 
 from service.models import Settings
+from django.core.mail.backends.smtp import EmailBackend
+from django.core.mail import send_mail
+
 
 class SevercartConfigs(object):
     """Вспомогательный класс для хранения настроечных параметров в СУБД.
@@ -52,3 +55,26 @@ class SevercartConfigs(object):
                             use_ssl        = self.use_ssl,
                             use_tls        = self.use_tls
                             )
+
+def send_email(reciver=None, title=None, text=None):
+    """Своя обёртка вокруг django send_email.
+    """
+    mconf         = SevercartConfigs()
+    subject       = text.strip()
+    message       = text.strip()
+    from_email    = mconf.email_sender
+    to_email      = reciver
+    auth_user     = mconf.smtp_login
+    auth_password = mconf.smtp_password
+
+    connection = EmailBackend(
+                    host = mconf.smtp_server,
+                    port = mconf.smtp_port,
+                    username=mconf.smtp_login,
+                    password=mconf.smtp_password,
+                    use_tls=mconf.use_tls,
+                    use_ssl=mconf.use_ssl,
+                    timeout=60
+                )
+    send_mail(title, text, from_email, [reciver], connection=connection)
+    return None

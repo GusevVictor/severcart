@@ -3,13 +3,11 @@
 from django.shortcuts import render
 from django.conf import settings
 from django.utils.translation import ugettext as _
-from django.core.mail import send_mail
 from django.http import HttpResponse, JsonResponse
-from django.core.mail.backends.smtp import EmailBackend
 from index.helpers import check_ajax_auth
-from service.helpers import SevercartConfigs
 from service.forms.input_server_settings import SMTPsettings
 from service.forms.send_test_mail import SendTestMail
+from service.helpers import SevercartConfigs, send_email
 
 
 @check_ajax_auth
@@ -17,41 +15,21 @@ def send_test_email(request):
     """
     """
     resp_dict = dict()
-    errors        = list()
-    text  = request.POST.get('text')
-    email = request.POST.get('email')
+    errors    = list()
     form = SendTestMail(request.POST)
     if form.is_valid():
         data_in_post = form.cleaned_data
+        email = data_in_post.get('email', '')
+        text  = data_in_post.get('text', '')
+        print(email, text)
         resp_dict['errors'] = ''
-        mconf         = SevercartConfigs()
-        subject       = text.strip()
-        message       = text.strip()
-        from_email    = mconf.email_sender
-        to_email      = email
-        auth_user     = mconf.smtp_login
-        auth_password = mconf.smtp_password
-        connection    = EmailBackend(
-                            host = mconf.smtp_server,
-                            port = mconf.smtp_port,
-                            username=mconf.smtp_login,
-                            password=mconf.smtp_password,
-                            use_tls=mconf.use_tls,
-                            use_ssl=mconf.use_ssl,
-                            timeout=60
-                        )
         try:
-            send_mail(subject, 
-                      message, 
-                      from_email, 
-                      [to_email], 
-                      connection=connection)
+            send_email(reciver=email, title=text, text=text)
         except Exception as e:
             resp_dict['errors'] =str(e)
         else:
             resp_dict['text'] = _('Mail successfully sended!')
             
-
     else:
         # если форма содержит ошибки, то сообщаем о них пользователю.
         error_message = dict([(key, [error for error in value]) for key, value in form.errors.items()])
