@@ -14,6 +14,7 @@ from .forms.authenticate import AuthenticationForm
 from .forms.register import RegistrationForm
 from .forms.edit import EditUserForm
 from .forms.chpswd import ChangePassword
+from .forms.send_email import SendMail
 from accounts.models import AnconUser
 from common.helpers import is_admin
 
@@ -196,3 +197,13 @@ def change_password(request):
     else:
         context['form'] = ChangePassword()
     return render(request, 'accounts/change_password.html', context)
+
+def send_email(request):
+    """
+    """
+    context = {}
+    if request.method == 'POST':
+        form = SendMail(request.POST)
+    else:
+        context['form'] = SendMail()
+    return render(request, 'accounts/send_email.html', context)

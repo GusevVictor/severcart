@@ -203,7 +203,24 @@ table.checkboxes tr.red_bg {
     width: 150px;
     margin: auto;
     background-color: #d6d6d6;
+}
 
+#login-form .forgot_password {
+    text-decoration: none;
+    outline: none;
+    color:green;
+    display: inline-block;
+    margin:14px 0 0 0;
+    border-bottom: 1px solid green;
+}
+
+#login-form .forgot_password:hover {
+    border-bottom: 0 solid green;   
+}
+
+#login-form .forgot_password:active {
+    font-weight: bold;
+    border-bottom: 0 solid green;      
 }
 
 input.loc, 

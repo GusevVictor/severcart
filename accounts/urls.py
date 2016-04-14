@@ -6,7 +6,8 @@ from .views import ( register,
                    logout,
                    edit,
                    delete,
-                   change_password, )
+                   change_password, 
+                   send_email )
 
 urlpatterns = [
     url(r'^$', manage_users, name='manage_users'),
@@ -17,4 +18,5 @@ urlpatterns = [
     url(r'^logout/', logout, name='logout'),
     url(r'^edit/', edit, name='edit'),
     url(r'^delete/', delete, name='del'),
+    url(r'^send_email/', send_email, name='send_email'),
 ]
