@@ -362,7 +362,8 @@ def generate_pdf(request):
     for elem in list_names:
         simple_cache[elem.pk] = elem.cart_itm_name
 
-    pagesize = SevercartConfigs().page_format
+    conf = SevercartConfigs()
+    pagesize = conf.page_format
     pdf_doc = Sticker(file_name=pdf_full_name, pagesize=pagesize)
     for elem in session_data:
         for stik in elem[2]:
