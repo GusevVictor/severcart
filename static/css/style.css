@@ -55,10 +55,18 @@ form label {
     margin-bottom: 10px;
 }
 
+div.wrapper form label,
+div.wrapper form input{
+    display:block;
+    margin:auto;
+}
+
+
 form input[type="text"], 
 form input[type="password"] {
     margin: 0;
 }
+
 
 .breads, .breads a img {
     vertical-align: baseline;
@@ -373,6 +381,11 @@ ul.menu > li.select:hover:after {
 label.required {
    background: url('../img/aster.png') left center no-repeat;
    text-align: left;
+}
+
+div.wrapper label.required {
+    text-align: center;
+    background: none;  
 }
 
 .input_row input[type="text"], .input_row select {

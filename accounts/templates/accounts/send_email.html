@@ -8,7 +8,10 @@
         <p>{% trans 'Please enter your email address. On it will send the message to change the password.' %}</p>
         <form method="POST" action="">{% csrf_token %}
             {{ form.email.label_tag }}&nbsp;&nbsp;&nbsp;{{ form.email }}&nbsp;&nbsp;&nbsp;
-            <input type="submit" class="send_repair_email button no_follow" name="submit" value="{% trans 'Send' %}" /><img class="spinner_send" src="{{ STATIC_URL }}img/loader.gif" />
+            <div class="marginTop">
+                <input type="submit" class="send_repair_email button no_follow" name="submit" value="{% trans 'Send' %}" />
+            </div>
+            <img class="spinner_send" src="{{ STATIC_URL }}img/loader.gif" />
         </form>
         <script>
             document.getElementById('id_email').focus()

@@ -7,7 +7,8 @@ from .views import ( register,
                    edit,
                    delete,
                    change_password, 
-                   send_email )
+                   send_email,
+                   recover_password )
 
 urlpatterns = [
     url(r'^$', manage_users, name='manage_users'),
@@ -19,5 +20,6 @@ urlpatterns = [
     url(r'^edit/', edit, name='edit'),
     url(r'^delete/', delete, name='del'),
     url(r'^send_email/', send_email, name='send_email'),
+    url(r'^recover_password/(?P<secret_key>[a-zA-Z0-9]{64})/$', recover_password, name='recover_password'),
     url(r'^api/', include('accounts.api.urls')),
 ]

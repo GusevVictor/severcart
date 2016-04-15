@@ -183,7 +183,6 @@ def change_password(request):
 
     if request.method == 'POST':
         form = ChangePassword(request.POST)
-        print('form=', form)
         if form.is_valid():
             data_in_post = form.cleaned_data
             passwd = data_in_post.get('password1')
@@ -207,3 +206,28 @@ def send_email(request):
     else:
         context['form'] = SendMail()
     return render(request, 'accounts/send_email.html', context)
+
+def recover_password(request, secret_key):
+    """Форма установки нового пароля паользователя.
+    """
+    context = dict()
+    try:
+        user_obj = AnconUser.objects.get(secret_key=secret_key)
+    except AnconUser.DoesNotExist:
+        raise Http404
+
+    if request.method == 'POST':
+        form = ChangePassword(request.POST)
+        if form.is_valid():
+            data_in_post = form.cleaned_data
+            passwd = data_in_post.get('password1')
+            if not settings.DEMO:
+                # если выбран режим демонстрации, то менять пароль не разрешаем.
+                user_obj.set_password(passwd)
+                user_obj.save()
+            return HttpResponseRedirect(reverse('auth:login'))
+        else:
+            context['form'] = form
+    else:
+        context['form'] = ChangePassword()
+    return render(request, 'accounts/recover_password.html', context)
