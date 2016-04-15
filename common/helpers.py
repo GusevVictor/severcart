@@ -3,7 +3,7 @@
 from django.conf import settings
 from django.shortcuts import render
 from reportlab.pdfgen import canvas
-from reportlab.lib.pagesizes import A4
+from reportlab.lib.pagesizes import A4, A5
 from reportlab.lib.units import mm
 
 
@@ -101,17 +101,32 @@ class Sticker(object):
         self.page   = 1
         self.row    = 0
         self.column = 0
+        self.pagesize = pagesize
+        if pagesize == 'A4':
+            pagesize = A4
+        elif pagesize == 'A5':
+            pagesize = A5
+        else:
+            pagesize = A4
+
         self.canv   = canvas.Canvas(file_name, pagesize=pagesize)
         self.canv.translate(mm, mm)
         self.font_size = 2.5*mm # максмальное количество символов в ячейке - 14
         self.canv.setFont('Courier-Bold', self.font_size)
-        self.pagesize = pagesize
 
     def add(self, ou_number='5', cartridge_name='Q2612A', cartridge_number='1245'):
         """Рисует одну наклейку. 
         """
-        x = 10 + (self.column * 19.5)
-        y = 283 - (self.row * 14.7)
+        if self.pagesize == 'A4':
+            x = 10 + (self.column * 19.5)
+            y = 283 - (self.row * 14.7)
+        elif self.pagesize == 'A5':
+            x = 7 + (self.column * 19.5)
+            y = 198 - (self.row * 14.7)
+        else:
+            x = 10 + (self.column * 19.5)
+            y = 283 - (self.row * 14.7)
+
         self.canv.rect(x*mm, y*mm, 16.5*mm, 4*mm, fill=0)
         self.canv.drawString(x*mm, (y+1)*mm, self.center(ou_number))
 
@@ -127,12 +142,13 @@ class Sticker(object):
         if self.pagesize == 'A4': 
             MAX_COLUMNS = 10
             MAX_ROWS    = 19
-
         elif self.pagesize == 'A5':
-            MAX_COLUMNS = 5
-            MAX_ROWS    = 10
-
-
+            MAX_COLUMNS = 7
+            MAX_ROWS    = 13
+        else:
+            # A4 по-умолчанию
+            MAX_COLUMNS = 10
+            MAX_ROWS    = 19
 
         if self.column == MAX_COLUMNS:
             self.column = 0
