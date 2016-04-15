@@ -8,6 +8,7 @@ from common.helpers import is_admin
 from django.utils.translation import ugettext_lazy as _
 from service.forms.input_server_settings import SMTPsettings
 from service.forms.send_test_mail import SendTestMail
+from service.forms.stickers import StickFormat
 from service.helpers import SevercartConfigs
 
 
@@ -37,3 +38,25 @@ def settings_mail(request):
         'use_tls'       : conf.use_tls,
     })
     return render(request, 'service/settings_mail.html', context)
+
+
+@login_required
+@is_admin
+def stickers(request):
+    """
+    """
+    context = {}
+    conf = SevercartConfigs()
+    if request.method == 'POST':
+        form = StickFormat(request.POST)
+        if form.is_valid:
+            choice = request.POST.get('choice', '')
+            conf.page_format = choice
+            conf.commit()
+            context['form'] = form
+        else:
+            context['form'] = form    
+    else:
+        form = StickFormat(initial={'choice': conf.page_format})
+        context['form'] = form
+    return render(request, 'service/stickers.html', context)

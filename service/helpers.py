@@ -19,7 +19,7 @@ class SevercartConfigs(object):
             self.smtp_password  = ''
             self.use_ssl        = ''
             self.use_tls        = ''
-            self.page_format    = ''
+            self.page_format    = 'A4'
         else:
             # если таблица уже содержит данные, то инициализируем внутренние переменные
             self.smtp_server    = self.m1.smtp_server

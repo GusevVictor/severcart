@@ -15,4 +15,4 @@ class Settings(models.Model):
 
     # настройки формата печатаемых наклеек
     # принимает значения A4, A5, ...
-    page_format  =  models.CharField(max_length=2, null=True)
+    page_format  =  models.CharField(max_length=2, null=True, default='A4')
