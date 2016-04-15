@@ -90,15 +90,24 @@ form input[type="password"] {
 }
 
 .error_msg,
-.error_msg_send {
+.error_msg_send,
+.error_msg_send_email {
     display: none;
     color: #ff6464;
     border: 2px solid #ff6464;
 }
 
+.error_msg_send_email,
+.success_msg_send_email {
+    width:400px;
+    margin:auto;
+    padding: 10px;
+}
+
 .success_msg,
 .success_msg_set,
-.success_msg_send {
+.success_msg_send,
+.success_msg_send_email {
     display: none;
     color: #7BCC9A;
     border: 2px solid #7BCC9A;

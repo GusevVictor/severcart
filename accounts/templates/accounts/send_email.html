@@ -3,6 +3,8 @@
 {% block content %}
 <div class="row">
     <div class="large-6 columns">
+        <div class="error_msg_send_email" style="display:none"></div>
+        <div class="success_msg_send_email" style="display:none"></div>
         <p>{% trans 'Please enter your email address. On it will send the message to change the password.' %}</p>
         <form method="POST" action="">{% csrf_token %}
             {{ form.email.label_tag }}&nbsp;&nbsp;&nbsp;{{ form.email }}&nbsp;&nbsp;&nbsp;

@@ -1,4 +1,4 @@
-from django.conf.urls import url
+from django.conf.urls import include, url
 from .views import manage_users
 from .views import ( register,
                    edit_user,
@@ -19,4 +19,5 @@ urlpatterns = [
     url(r'^edit/', edit, name='edit'),
     url(r'^delete/', delete, name='del'),
     url(r'^send_email/', send_email, name='send_email'),
+    url(r'^api/', include('accounts.api.urls')),
 ]

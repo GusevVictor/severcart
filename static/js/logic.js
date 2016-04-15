@@ -1056,6 +1056,39 @@ $( function(){
 
     });
 
+    $('.send_repair_email').click( function() {
+        var email   = $('#id_email').val();
+        $.ajax({
+            method: 'POST',
+            url: '/manage_users/api/send_repair_email/',
+            data: {'email': email},
+            beforeSend: function( xhr, settings ){
+                $('.spinner_send').show();
+                csrftoken = getCookie('csrftoken');
+                if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
+                    xhr.setRequestHeader('X-CSRFToken', csrftoken);
+                }
+            },
+            success: function( msg ) {
+                $('.spinner_send').hide();
+                if (msg.errors) {
+                    $('.error_msg_send_email').show();
+                    $('.error_msg_send_email').text(msg.errors);
+                    setTimeout(function() { $('.error_msg_send_email').hide(); }, 20000);
+                } else {
+                    $('.success_msg_send_email').show();
+                    $('.error_msg_send_email').hide();
+                    $('.success_msg_send_email').text(msg.text);
+                    setTimeout(function() { $('.success_msg_send_email').hide(); }, 20000);
+                }
+            },
+            error: function( msg ) {
+                $('.spinner_send').hide();
+                console.log(msg);
+            },
+        });
+    });
+
     $('.send_email').click( function() {
         var text   = $('#id_text').val();
         var email   = $('#id_email').val();
