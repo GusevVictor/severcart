@@ -326,7 +326,8 @@ def generate_pdf(request):
     if request.method != 'POST':
         return HttpResponse('<h1>' + _('Only use POST requests!') + '</h1>')
     
-    from common.helpers import Sticker 
+    from common.helpers import Sticker
+    from service.helpers import SevercartConfigs
     resp_dict = {}
     pdf_file_name = str(int(time.time())) + '_' + str(request.user.pk) + '.pdf'
     cart_type = request.POST.get('cart_type', '')
@@ -361,7 +362,8 @@ def generate_pdf(request):
     for elem in list_names:
         simple_cache[elem.pk] = elem.cart_itm_name
 
-    pdf_doc = Sticker(file_name=pdf_full_name)
+    pagesize = SevercartConfigs().page_format
+    pdf_doc = Sticker(file_name=pdf_full_name, pagesize=pagesize)
     for elem in session_data:
         for stik in elem[2]:
             cartridge_name = simple_cache.get(elem[0])

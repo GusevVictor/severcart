@@ -43,7 +43,7 @@ def settings_mail(request):
 @login_required
 @is_admin
 def stickers(request):
-    """
+    """Вывод формы настройки отрисовки наклеек.
     """
     context = {}
     conf = SevercartConfigs()

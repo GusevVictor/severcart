@@ -94,17 +94,18 @@ class Sticker(object):
     """Ресует наклейки на странице А4.
     """
     
-    def __init__(self, file_name='hello3.pdf'):
+    def __init__(self, file_name='hello3.pdf', pagesize='A4'):
         """
         """
         self.count  = 0
         self.page   = 1
         self.row    = 0
         self.column = 0
-        self.canv   = canvas.Canvas(file_name, pagesize=A4)
+        self.canv   = canvas.Canvas(file_name, pagesize=pagesize)
         self.canv.translate(mm, mm)
         self.font_size = 2.5*mm # максмальное количество символов в ячейке - 14
         self.canv.setFont('Courier-Bold', self.font_size)
+        self.pagesize = pagesize
 
     def add(self, ou_number='5', cartridge_name='Q2612A', cartridge_number='1245'):
         """Рисует одну наклейку. 
@@ -123,11 +124,21 @@ class Sticker(object):
         self.column += 1
         # Если количество наклеек превышает 10, то обнуляем счётчик колонок и
         # инкрементируем счётчик строк.
-        if self.column == 10:
+        if self.pagesize == 'A4': 
+            MAX_COLUMNS = 10
+            MAX_ROWS    = 19
+
+        elif self.pagesize == 'A5':
+            MAX_COLUMNS = 5
+            MAX_ROWS    = 10
+
+
+
+        if self.column == MAX_COLUMNS:
             self.column = 0
             self.row += 1
 
-        if self.row == 19:
+        if self.row == MAX_ROWS:
             self.row = 0
             # добавляем новыую пустую страницу.
             self.page_break()
