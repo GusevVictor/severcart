@@ -1,7 +1,6 @@
 # -*- coding:utf-8 -*-
 
 from django.shortcuts import render
-from django.http import HttpResponse
 from django.core.urlresolvers import reverse
 from django.contrib.auth.decorators import login_required
 from django.views.decorators.cache import never_cache

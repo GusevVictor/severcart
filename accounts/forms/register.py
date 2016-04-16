@@ -11,7 +11,7 @@ class RegistrationForm(forms.ModelForm):
     username = forms.CharField(widget=forms.TextInput, label=_('Login'))
     password1 = forms.CharField(widget=forms.PasswordInput, label=_('Password'), required=True)
     password2 = forms.CharField(widget=forms.PasswordInput, label=_('Password again'), required=True)
-
+    fio       = forms.CharField(widget=forms.TextInput, label=_('Full Name'))
     required_css_class = 'required'
 
     departament = forms.ModelChoiceField(queryset=OrganizationUnits.objects.root_nodes(),
@@ -50,12 +50,7 @@ class RegistrationForm(forms.ModelForm):
         return self.cleaned_data
 
     def save(self, commit=True):
-        username   = self.cleaned_data['username']
-        password1  = self.cleaned_data['password1']
-        fio        = self.cleaned_data['fio']
-        is_admin   = self.cleaned_data['is_admin']
-        departament = self.cleaned_data['departament']
-        
+        username   = self.cleaned_data['username']        
         user = AnconUser.objects.filter(username=username)
         # проверяем есть ли уже пользователь с таким логином, если нет то создам нового
         if not user:

@@ -64,12 +64,9 @@ def send_email(reciver=None, title=None, text=None):
     """Своя обёртка вокруг django send_email.
     """
     mconf         = SevercartConfigs()
-    subject       = text.strip()
+    subject       = title.strip()
     message       = text.strip()
     from_email    = mconf.email_sender
-    to_email      = reciver
-    auth_user     = mconf.smtp_login
-    auth_password = mconf.smtp_password
 
     connection = EmailBackend(
                     host = mconf.smtp_server,
@@ -80,5 +77,5 @@ def send_email(reciver=None, title=None, text=None):
                     use_ssl=mconf.use_ssl,
                     timeout=60
                 )
-    send_mail(title, text, from_email, [reciver], connection=connection)
+    send_mail(subject, message, from_email, [reciver], connection=connection)
     return None

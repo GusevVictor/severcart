@@ -1,16 +1,14 @@
 # -*- coding:utf-8 -*-
 
 import json
-from django.db import transaction
 from django.shortcuts import render
-from django.http import HttpResponseRedirect, HttpResponse, JsonResponse, Http404
+from django.http import HttpResponseRedirect, HttpResponse, Http404
 from django.utils import timezone
 from django.core.urlresolvers import reverse
-from django.core.exceptions import MultipleObjectsReturned, ObjectDoesNotExist
+from django.core.exceptions import ObjectDoesNotExist
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
-from django.contrib.sessions.models import Session
 from django.db.models import Q
 from django.template.loader import render_to_string
 from django.utils.translation import ugettext_lazy as _
@@ -26,8 +24,6 @@ from .forms.add_firm import FirmTonerRefillF
 from .forms.add_empty_items import AddEmptyItems
 from .forms.comment import EditCommentForm
 from .models import CartridgeType
-from accounts.models import AnconUser
-from django.contrib.auth.models import User
 from .models import CartridgeItem
 from .models import OrganizationUnits
 from .models import City as CityM
@@ -35,9 +31,8 @@ from .models import FirmTonerRefill
 from .models import CartridgeItemName
 from events.models import Events
 from events.helpers import events_decoder
-from .helpers import recursiveChildren, check_ajax_auth
+from .helpers import check_ajax_auth
 from .signals import ( sign_tr_cart_to_uses, 
-                       sign_tr_cart_to_basket,
                        sign_tr_empty_cart_to_firm,
                        sign_tr_filled_cart_to_stock )
 
@@ -216,7 +211,6 @@ def add_empty_cartridge(request):
 def tree_list(request):
     """Работаем с структурой организации
     """
-    error1 = ''
     context = dict()
     if request.method == 'POST':
         uid = request.POST.get('departament', '')  # старшее огр. подразделение 
@@ -235,7 +229,6 @@ def tree_list(request):
                     break        
             else:
                 # если ноды нет, добавляем
-                rock = OrganizationUnits.objects.create(name=org_name)
                 context['msg'] = _('Organization unit %(org_name)s create successfuly.') % {'org_name': org_name}
         
         if uid != 0:
@@ -497,13 +490,13 @@ def edit_firm(request):
     if request.method == 'POST':
         form_obj = FirmTonerRefillF(request.POST)
         if form_obj.is_valid():
-            all = form_obj.cleaned_data
+            data_in_post = form_obj.cleaned_data
             m1 = FirmTonerRefill.objects.get(pk=firm_id)
-            m1.firm_name = all['firm_name']
-            m1.firm_city = all['firm_city']
-            m1.firm_contacts = all['firm_contacts']
-            m1.firm_address = all['firm_address']
-            m1.firm_comments = all['firm_comments']
+            m1.firm_name = data_in_post['firm_name']
+            m1.firm_city = data_in_post['firm_city']
+            m1.firm_contacts = data_in_post['firm_contacts']
+            m1.firm_address = data_in_post['firm_address']
+            m1.firm_comments = data_in_post['firm_comments']
             m1.save(update_fields=[
                 'firm_name',
                 'firm_city',

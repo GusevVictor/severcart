@@ -2,7 +2,6 @@
 
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
-from index.models import OrganizationUnits
 
 class Events(models.Model):
     """Список событий, использется для генерации различных отчётов.

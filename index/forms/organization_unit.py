@@ -2,7 +2,7 @@
 
 from django import forms
 from django.utils.translation import ugettext_lazy as _
-from .models import Category, CartridgeType
+from .models import CartridgeType
 
 class AddItems(forms.Form):
     cart_name = forms.CharField(label=_('name consumables'), max_length=256)

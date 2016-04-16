@@ -5,7 +5,7 @@ from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
 from django.views.generic.base import View
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
-from index.models import CartridgeItem, CartridgeItemName
+from index.models import CartridgeItem
 from .helpers import BreadcrumbsPath
 
 import logging
@@ -154,7 +154,7 @@ class CartridgesView(GridListView):
                 self.all_items = self.all_items.filter(Q(cart_number=search_number))
             self.context['search_number'] = search_number
     
-    def get(self, *args, **kwargs):
+    def get(self):
         """Избавляем себя от дублирований.
         """
         self.sort_columns()

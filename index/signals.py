@@ -1,9 +1,7 @@
 # -*- coding:utf-8 -*-
 
-from django.apps import AppConfig
 from django.dispatch import Signal
 from django.utils import timezone
-from .models import CartridgeItem
 from events.models import Events
 from django.db import transaction
 

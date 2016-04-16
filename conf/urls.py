@@ -1,10 +1,6 @@
 # -*- coding:utf-8 -*-
 
-from django.conf import settings
 from django.conf.urls import include, url
-from django.conf.urls.static import static
-from django.contrib.staticfiles.urls import staticfiles_urlpatterns
-from django.views.generic.base import TemplateView
 from index.views import robots_txt, favicon_ico
 
 urlpatterns = [

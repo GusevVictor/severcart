@@ -7,7 +7,7 @@ from django.utils import timezone
 from django.views.decorators.cache import never_cache
 from common.helpers import BreadcrumbsPath
 from .forms import NoUse, Amortizing, UsersCartridges
-from index.models import CartridgeItem, OrganizationUnits
+from index.models import CartridgeItem
 
 @login_required
 @never_cache
@@ -55,24 +55,7 @@ def amortizing(request):
     """
     context = {}
     dept_id = request.user.departament.pk
-    if request.method == 'POST':
-        form = Amortizing(request.POST)
-        if form.is_valid():
-            data_in_post = form.cleaned_data
-            org  = data_in_post.get('org', '')
-            cont = data_in_post.get('cont', '')
-            list_cart = CartridgeItem.objects.filter(departament=org).filter(cart_number_refills__gte=cont)
-            
-
-            form = Amortizing(initial={ 'org': org, 'cont': cont })
-            context['form'] = form
-        else:
-            # показываем форму, если произошли ошибки
-            context['form'] = form
-
-    # если GET метод ( или какой-либо другой) то создаём пустую форму
-    else:
-        context['form'] = Amortizing(initial={'org': dept_id, 'cont': 1 })
+    context['form'] = Amortizing(initial={'org': dept_id, 'cont': 1 })
 
     return render(request, 'reports/amortizing.html', context)
 

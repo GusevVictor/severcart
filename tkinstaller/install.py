@@ -94,7 +94,6 @@ if __name__ == '__main__':
         os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'conf.settings')
 
         import django
-        from django.conf import settings
         from django.core.management import execute_from_command_line
 
         django.setup()
@@ -112,7 +111,6 @@ if __name__ == '__main__':
         
         # создаём суперпользователя admin
         from accounts.models import AnconUser
-        from django.db import IntegrityError
         print('-------------------------------------------------')
         print('--------------Создание пользователя--------------')
         print('-------------------------------------------------')

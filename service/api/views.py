@@ -1,9 +1,7 @@
 # -*- coding:utf-8 -*-
 
-from django.shortcuts import render
-from django.conf import settings
 from django.utils.translation import ugettext as _
-from django.http import HttpResponse, JsonResponse
+from django.http import JsonResponse
 from index.helpers import check_ajax_auth
 from service.forms.input_server_settings import SMTPsettings
 from service.forms.send_test_mail import SendTestMail
@@ -15,7 +13,6 @@ def send_test_email(request):
     """
     """
     resp_dict = dict()
-    errors    = list()
     form = SendTestMail(request.POST)
     if form.is_valid():
         data_in_post = form.cleaned_data

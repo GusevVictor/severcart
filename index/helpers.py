@@ -1,9 +1,7 @@
 # -*- coding:utf-8 -*-
 
 from django.http import HttpResponse
-from django.contrib.sessions.models import Session
 from django.utils.translation import ugettext_lazy as _
-from accounts.models import AnconUser
 
 import logging
 logger = logging.getLogger('simp')

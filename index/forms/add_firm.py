@@ -1,6 +1,6 @@
 # -*- coding:utf-8 -*-
 
-from index.models import FirmTonerRefill, City
+from index.models import City
 from django import forms
 from django.utils.translation import ugettext_lazy as _
 

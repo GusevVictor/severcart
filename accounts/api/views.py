@@ -1,9 +1,7 @@
 # -*- coding:utf-8 -*-
 
-from django.shortcuts import render
 from django.conf import settings
 from django.utils.translation import ugettext as _
-from django.core.exceptions import ObjectDoesNotExist
 from django.http import HttpResponse, JsonResponse
 from django.utils.crypto import get_random_string
 from accounts.models import AnconUser

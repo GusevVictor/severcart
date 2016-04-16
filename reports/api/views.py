@@ -1,10 +1,8 @@
 # -*- coding:utf-8 -*-
 
-import json
 import datetime
 from django.http import JsonResponse, HttpResponse
 from django.template.loader import render_to_string
-from django.utils import timezone
 from django.utils.translation import ugettext as _
 from index.helpers import check_ajax_auth
 from index.models import CartridgeItem, OrganizationUnits
@@ -44,7 +42,6 @@ def ajax_report(request):
 def ajax_reports_users(request):
     """
     """
-    from reports.forms import UsersCartridges
     from common.helpers import del_leding_zero
     import operator
     

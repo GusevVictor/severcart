@@ -3,16 +3,14 @@
 import datetime
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render
-from django.http import HttpResponse, Http404
+from django.http import Http404
 from django.conf import settings
-from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
-from django.utils import timezone
+from django.core.paginator import Paginator, PageNotAnInteger
 from django.db.models import Q
 from django.utils.translation import ugettext_lazy as _
 from django.views.decorators.cache import never_cache
 from common.helpers import BreadcrumbsPath
 from .models  import Events
-from index.models import CartridgeItem
 from .helpers import events_decoder, date_to_str
 from .forms   import DateForm
 from common.helpers import is_admin

@@ -1,15 +1,14 @@
 # -*- coding:utf-8 -*-
 
-import time
 import json
 import datetime
-from django.http import JsonResponse, HttpResponse
+from django.http import JsonResponse
 from django.template import Template, Context
 from events.models import Events
 from django.conf import settings
 from django.db.models import Q
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
-from events.helpers import events_decoder, date_to_str
+from events.helpers import events_decoder
 from index.helpers import check_ajax_auth
 
 import logging

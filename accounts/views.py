@@ -1,8 +1,8 @@
 # -*- coding:utf-8 -*-
 
-from django.shortcuts import render_to_response, redirect
+from django.shortcuts import redirect
 from django.shortcuts import render
-from django.http import Http404, HttpResponseRedirect, HttpResponse
+from django.http import Http404, HttpResponseRedirect
 from django.template import RequestContext
 from django.views.decorators.cache import never_cache
 from django.conf import settings
@@ -65,7 +65,7 @@ def register(request):
         if form.is_valid():
             if not settings.DEMO:
                 # если активирован режим ДЕМО, то нового пользователя не создаём
-                user = form.save()
+                form.save()
             return redirect(reverse('auth:manage_users'))
         else:
             form = form
@@ -173,13 +173,10 @@ def change_password(request):
     return render(request, 'accounts/change_password.html', context)
 
 def send_email(request):
-    """
+    """Отправка письма для восстановления пароля.
     """
     context = {}
-    if request.method == 'POST':
-        form = SendMail(request.POST)
-    else:
-        context['form'] = SendMail()
+    context['form'] = SendMail()
     return render(request, 'accounts/send_email.html', context)
 
 def recover_password(request, secret_key):

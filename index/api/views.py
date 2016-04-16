@@ -1,5 +1,5 @@
 # -*- coding:utf-8 -*-
-import time
+
 import json
 from django.db import transaction
 from django.db import models
@@ -250,7 +250,6 @@ def city_list(request):
     """Возвращает список городов полученных из базы в ввиде json.
     """
     cites = City.objects.all()
-    your_data = []
     tmp_dict = {}
     for elem in cites:
         tmp_dict[elem.id] = elem.city_name
