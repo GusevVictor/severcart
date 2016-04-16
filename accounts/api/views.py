@@ -10,7 +10,6 @@ from accounts.models import AnconUser
 from index.helpers import check_ajax_auth
 from accounts.forms.send_email import SendMail
 from service.helpers import send_email
-from accounts.models import AnconUser
 
 
 @check_ajax_auth

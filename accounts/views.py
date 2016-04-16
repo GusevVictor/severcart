@@ -2,7 +2,7 @@
 
 from django.shortcuts import render_to_response, redirect
 from django.shortcuts import render
-from django.http import Http404, HttpResponseRedirect
+from django.http import Http404, HttpResponseRedirect, HttpResponse
 from django.template import RequestContext
 from django.views.decorators.cache import never_cache
 from django.conf import settings
@@ -133,31 +133,6 @@ def logout(request):
     """
     django_logout(request)
     return redirect('/')
-
-
-@login_required
-@is_admin
-def edit(request):
-    """
-    """
-    return redirect('/')
-
-
-@login_required
-@is_admin
-def delete(request):
-    """
-    """
-    ar = request.POST.getlist('selected[]')
-    ar = [int(i) for i in ar ]
-    logger.debug(request.user.id)
-    if request.user.id in ar:
-        return HttpResponse(_('Error! User %(user_name)s can not remove himself') % {'user_name': request.user})
-    
-    for ind in ar:
-        usr = AnconUser.objects.get(pk=ind)
-        usr.delete()
-    return HttpResponse(_('User(s) deleted!'))
 
 
 @login_required

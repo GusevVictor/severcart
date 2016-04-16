@@ -2,7 +2,7 @@
 
 from django import forms
 from index.models import CartridgeItemName
-
+from django.utils.translation import ugettext_lazy as _
 
 class AddCartridgeName(forms.ModelForm):
     class Meta:
