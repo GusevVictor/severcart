@@ -124,9 +124,9 @@ def ajax_add_session_items(request):
             num_obj.last_number = cart_number
             num_obj.commit()
         
-        if cart_number == 1:
+        if len(cart_count) == 1:
             tmpl_message = _('Cartridge successfully added.')
-        elif cart_number > 1:
+        elif len(cart_count) > 1:
             tmpl_message = _('Cartridges successfully added.')
 
         # запускаем сигнал добавления событий
