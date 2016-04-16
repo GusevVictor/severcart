@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-04-02 12:48+0500\n"
-"PO-Revision-Date: 2016-04-02 12:50+0500\n"
+"POT-Creation-Date: 2016-04-16 13:12+0500\n"
+"PO-Revision-Date: 2016-04-16 13:24+0500\n"
 "Last-Translator: \n"
 "Language-Team: severcart.org <sfcl@mail.ru>\n"
 "Language: ru\n"
@@ -20,35 +20,51 @@ msgstr ""
 "%100>=11 && n%100<=14)? 2 : 3);\n"
 "X-Generator: Poedit 1.8.7\n"
 
-#: .\accounts\api\views.py:20
+#: .\accounts\api\views.py:25
 msgid "Error in data processing"
 msgstr "Ошибка в обработке данных."
 
-#: .\accounts\api\views.py:25
+#: .\accounts\api\views.py:30
 #, python-format
 msgid "User %(user_name)s can not be deleted"
 msgstr "Пользователя %(user_name)s удалить нельзя."
 
-#: .\accounts\api\views.py:32
+#: .\accounts\api\views.py:37
 msgid "Object not found"
 msgstr "Объект не найден."
 
-#: .\accounts\api\views.py:37
+#: .\accounts\api\views.py:42
 msgid "In DEMO users not delete!"
 msgstr "В режиме демонстрации пользователей удалять нельзя!"
 
-#: .\accounts\api\views.py:42
+#: .\accounts\api\views.py:47
 #, python-format
 msgid "User %(user_name)s was successfully deleted"
 msgstr "Пользователь «%(user_name)s» успешно удалён."
+
+#: .\accounts\api\views.py:62
+msgid "Email was not found."
+msgstr "Почтовый ящик не найден."
+
+#: .\accounts\api\views.py:66
+msgid "Email should not be repeated for different users."
+msgstr "Почта должна быть уникальной."
+
+#: .\accounts\api\views.py:69
+msgid "Forgotten password recovery"
+msgstr "Восстановление забытого пароля"
+
+#: .\accounts\api\views.py:87 .\service\api\views.py:31
+msgid "Mail successfully sended!"
+msgstr "Письмо успешно отправленно!"
 
 #: .\accounts\forms\authenticate.py:9
 msgid "User name"
 msgstr "Имя пользователя"
 
 #: .\accounts\forms\authenticate.py:10 .\accounts\forms\chpswd.py:9
-#: .\accounts\forms\register.py:12 .\accounts\templates\accounts\login.html:22
-#: .\accounts\templates\accounts\login.html:28 .\index\forms\add_user.py:13
+#: .\accounts\forms\register.py:12 .\accounts\templates\accounts\login.html:8
+#: .\accounts\templates\accounts\login.html:14 .\index\forms\add_user.py:13
 msgid "Password"
 msgstr "Пароль"
 
@@ -61,14 +77,14 @@ msgid "Passwords do not match. Please enter them again"
 msgstr "Пароли не совпадают. Пожалуйста, повторите ввод."
 
 #: .\accounts\forms\edit.py:12 .\accounts\forms\register.py:11
-#: .\accounts\models.py:13 .\accounts\templates\accounts\login.html.py:22
-#: .\accounts\templates\accounts\login.html:26
+#: .\accounts\models.py:14 .\accounts\templates\accounts\login.html.py:8
+#: .\accounts\templates\accounts\login.html:12
 #: .\accounts\templates\accounts\manage_users.html:28
 #: .\index\forms\add_user.py:12
 msgid "Login"
 msgstr "Логин"
 
-#: .\accounts\forms\edit.py:13 .\accounts\models.py:18
+#: .\accounts\forms\edit.py:13 .\accounts\models.py:19
 msgid "Full name"
 msgstr "Фамилие, имя, отчество"
 
@@ -101,11 +117,19 @@ msgstr "Поле обязательно для заполнения."
 msgid "User alrady exist."
 msgstr "Пользователь с таким именем уже существует."
 
-#: .\accounts\models.py:14 .\reports\forms.py:66
+#: .\accounts\forms\send_email.py:10 .\service\forms\send_test_mail.py:11
+msgid "Email recipient"
+msgstr "Почта получателя"
+
+#: .\accounts\models.py:15 .\reports\forms.py:66
 #: .\reports\templates\reports\amortizing.html:15
 #: .\reports\templates\reports\main_summary.html:15
 msgid "Organization unit"
 msgstr "Организационное подразделение"
+
+#: .\accounts\models.py:21
+msgid "Secret key"
+msgstr "Секретный ключ"
 
 #: .\accounts\templates\accounts\change_password.html:2
 #: .\accounts\templates\accounts\change_password.html:3
@@ -149,6 +173,7 @@ msgstr "Сменить пароль для пользователя:"
 
 #: .\accounts\templates\accounts\change_password.html:23
 #: .\accounts\templates\accounts\manage_users.html:17
+#: .\accounts\templates\accounts\recover_password.html:19
 msgid "Change password"
 msgstr "Сменить пароль"
 
@@ -181,6 +206,8 @@ msgstr "Редактировать данные пользователя"
 
 #: .\accounts\templates\accounts\edit_user.html:12
 #: .\index\templates\index\add_type.html:27
+#: .\service\templates\service\settings_mail.html:47
+#: .\service\templates\service\stickers.html:9
 msgid "Save"
 msgstr "Сохранить"
 
@@ -190,21 +217,25 @@ msgstr "Сохранить"
 msgid "User not admin."
 msgstr "Недостаточно привилегий для доступа к странице."
 
-#: .\accounts\templates\accounts\login.html:10
+#: .\accounts\templates\accounts\login.html:2
 msgid "Login page"
 msgstr "Логин"
 
-#: .\accounts\templates\accounts\login.html:19
+#: .\accounts\templates\accounts\login.html:5
 msgid "Please enter a valid username or password!"
 msgstr "Введите корректный логин или пароль! "
 
-#: .\accounts\templates\accounts\login.html:22
+#: .\accounts\templates\accounts\login.html:8
 msgid "Parametrs access to site"
 msgstr "Параметры доступа к сайту"
 
-#: .\accounts\templates\accounts\login.html:32
+#: .\accounts\templates\accounts\login.html:18
 msgid "Enter"
 msgstr "Вход"
+
+#: .\accounts\templates\accounts\login.html:19
+msgid "Forgot your password?"
+msgstr "Забыли пароль?"
 
 #: .\accounts\templates\accounts\manage_users.html:14
 #: .\docs\templates\docs\names_list.html:14
@@ -237,6 +268,7 @@ msgstr "Удалить"
 
 #: .\accounts\templates\accounts\manage_users.html:27 .\docs\api\views.py:239
 #: .\index\templates\index\use.html.py:43
+#: .\search\templates\search\serp.html:11
 msgid "User"
 msgstr "Пользователь"
 
@@ -256,6 +288,10 @@ msgstr "Да"
 msgid "No"
 msgstr "Нет"
 
+#: .\accounts\templates\accounts\recover_password.html:2
+msgid "Recover password"
+msgstr "Восстановления пароля"
+
 #: .\accounts\templates\accounts\register.html:2
 #: .\accounts\templates\accounts\register.html:3
 msgid "Add new user"
@@ -265,18 +301,35 @@ msgstr "Добавление нового пользователя"
 msgid "Registry user"
 msgstr "Зарегистрировать пользователя"
 
-#: .\accounts\views.py:154
+#: .\accounts\templates\accounts\send_email.html:2
+msgid "Password reset"
+msgstr "Сброс пароля"
+
+#: .\accounts\templates\accounts\send_email.html:8
+msgid ""
+"Please enter your email address. On it will send the message to change the "
+"password."
+msgstr ""
+"Пожалуйста введите почтовый ящик. На него будет отправленна ссылка для "
+"восстановления пароля."
+
+#: .\accounts\templates\accounts\send_email.html:12
+#: .\service\templates\service\settings_mail.html:60
+msgid "Send"
+msgstr "Отправить"
+
+#: .\accounts\views.py:155
 #, python-format
 msgid "Error! User %(user_name)s can not remove himself"
 msgstr "Ошибка! Пользователь %(user_name)s не может удалить сам себя."
 
-#: .\accounts\views.py:159
+#: .\accounts\views.py:160
 msgid "User(s) deleted!"
 msgstr "Пользователь(ли) удален(ы)!"
 
-#: .\docs\api\views.py:25 .\docs\api\views.py:76 .\index\api\views.py:34
-#: .\index\api\views.py:65 .\index\api\views.py:213 .\index\api\views.py:311
-#: .\index\api\views.py:354 .\reports\api\views.py:52
+#: .\docs\api\views.py:25 .\docs\api\views.py:76 .\docs\api\views.py:327
+#: .\index\api\views.py:34 .\index\api\views.py:65 .\index\api\views.py:213
+#: .\index\api\views.py:311 .\index\api\views.py:354 .\reports\api\views.py:52
 msgid "Only use POST requests!"
 msgstr "Поддерживаются только POST запросы!"
 
@@ -329,6 +382,7 @@ msgstr "Документ сформировать невозможно."
 #: .\index\templates\index\use.html:39
 #: .\reports\templates\reports\amortizing_ajax.html:4
 #: .\reports\templates\reports\main_summary.html:42
+#: .\search\templates\search\serp.html:9
 msgid "Number"
 msgstr "Номер"
 
@@ -359,6 +413,7 @@ msgstr "Данное действие не реализовано."
 #: .\index\templates\index\use.html:40
 #: .\reports\templates\reports\amortizing_ajax.html:5
 #: .\reports\templates\reports\main_summary.html:43
+#: .\search\templates\search\serp.html:10
 msgid "Name"
 msgstr "Название"
 
@@ -438,7 +493,7 @@ msgstr "Тип"
 #: .\docs\forms\edit_name.py:10 .\docs\templates\docs\names_list.html.py:30
 #: .\index\models.py:22 .\index\models.py:31 .\index\models.py:53
 #: .\index\models.py:79 .\index\templates\index\empty.html.py:44
-#: .\index\templates\index\use.html:44
+#: .\index\templates\index\use.html:44 .\search\templates\search\serp.html:14
 msgid "Comment"
 msgstr "Комментарий"
 
@@ -492,6 +547,8 @@ msgid "Action"
 msgstr "Действие"
 
 #: .\docs\templates\docs\acts_list.html:24
+#: .\index\templates\index\add_empty_cartridge.html:54
+#: .\index\templates\index\add_items.html:58
 #: .\index\templates\index\at_work.html:11
 #: .\index\templates\index\basket.html:14 .\index\templates\index\empty.html:20
 #: .\index\templates\index\stock.html:19 .\index\templates\index\use.html:19
@@ -602,12 +659,12 @@ msgstr "Справочник типов расходников"
 msgid "type"
 msgstr "Тип"
 
-#: .\docs\views.py:64
+#: .\docs\views.py:65
 #, python-format
 msgid "%(doc_num)s success saved."
 msgstr "Документ «%(doc_num)s» успешно сохранён."
 
-#: .\docs\views.py:77
+#: .\docs\views.py:78
 #, python-format
 msgid "New %(doc_num)s success created."
 msgstr "Новый «%(doc_num)s» успешно создан."
@@ -790,6 +847,8 @@ msgstr "Просмотр событий"
 
 #: .\events\templates\events\show_events.html:3
 #: .\index\templates\index\base_menu.html:12
+#: .\service\templates\service\settings_mail.html:3
+#: .\service\templates\service\stickers.html:3
 #: .\service\templates\service\submenu.html:2
 #: .\service\templates\service\submenu.html:3
 msgid "Service"
@@ -1038,8 +1097,13 @@ msgstr "Поле должно быть более нуля"
 msgid "Add empty cartridges"
 msgstr "Добавить"
 
-#: .\index\templates\index\add_empty_cartridge.html:54
-#: .\index\templates\index\add_items.html:58
+#: .\index\templates\index\add_empty_cartridge.html:56
+#: .\index\templates\index\add_items.html:60
+msgid "Generate PDF"
+msgstr "Сформировать PDF"
+
+#: .\index\templates\index\add_empty_cartridge.html:57
+#: .\index\templates\index\add_items.html:61
 msgid "Clear session"
 msgstr "Очистить сессию"
 
@@ -1144,6 +1208,10 @@ msgstr "Пустые"
 #: .\index\templates\index\basket.html:4 .\index\templates\index\basket.html:5
 msgid "Basket"
 msgstr "Корзина"
+
+#: .\index\templates\index\base_menu.html:16
+msgid "Find by number"
+msgstr "Поиск по номеру"
 
 #: .\index\templates\index\basket.html:39 .\index\templates\index\empty.html:45
 #: .\index\templates\index\stock.html:44
@@ -1477,6 +1545,7 @@ msgstr "Кол-во<br/>перезаправок"
 
 #: .\reports\templates\reports\amortizing_ajax.html:8
 #: .\reports\templates\reports\main_summary.html:46
+#: .\search\templates\search\serp.html:12
 msgid "Status"
 msgstr "Статус"
 
@@ -1514,12 +1583,94 @@ msgstr "Потребление пользователями расходных �
 msgid "UserName"
 msgstr "Пользователь"
 
+#: .\search\templates\search\error.html:2
+msgid "Error search by number"
+msgstr "Ошибка поиска по номеру"
+
+#: .\search\templates\search\error.html:6
+msgid "Error on prepare request"
+msgstr "Ошибка в обработке запроса"
+
+#: .\search\templates\search\serp.html:2 .\search\templates\search\serp.html:3
+msgid "Search result"
+msgstr "Результаты поиска"
+
+#: .\search\templates\search\serp.html:13
+msgid "Date added"
+msgstr "Дата добавления"
+
+#: .\service\api\views.py:60
+msgid "Settings successfully saved."
+msgstr "Настройки успешно сохранены."
+
+#: .\service\forms\input_server_settings.py:9
+msgid "Sever address"
+msgstr "Адрес сервера"
+
+#: .\service\forms\input_server_settings.py:10
+msgid "Sever port"
+msgstr "Порт сервера"
+
+#: .\service\forms\input_server_settings.py:11
+msgid "Email sender"
+msgstr "Почта отправителя"
+
+#: .\service\forms\input_server_settings.py:12
+msgid "SMTP login"
+msgstr "SMTP логин"
+
+#: .\service\forms\input_server_settings.py:13
+msgid "SMTP password"
+msgstr "SMTP пароль"
+
+#: .\service\forms\input_server_settings.py:14
+msgid "Use SSL"
+msgstr "SSL"
+
+#: .\service\forms\input_server_settings.py:15
+msgid "Use TLS"
+msgstr "TLS"
+
+#: .\service\forms\send_test_mail.py:10
+msgid "Text message"
+msgstr "Тестовое сообщение"
+
+#: .\service\forms\stickers.py:10
+msgid "Select format"
+msgstr "Выбрать формат"
+
+#: .\service\templates\service\settings_mail.html:2
+msgid "Email"
+msgstr "Почта"
+
+#: .\service\templates\service\settings_mail.html:3
+msgid "Settings Email"
+msgstr "Настройки почты"
+
+#: .\service\templates\service\settings_mail.html:10
+msgid "Settings mail server"
+msgstr "Настроки почтового сервера"
+
+#: .\service\templates\service\settings_mail.html:58
+msgid "Send check email"
+msgstr "Отправить тестовое письмо"
+
+#: .\service\templates\service\stickers.html:2
+#: .\service\templates\service\stickers.html:3
+msgid "Settings format stickers"
+msgstr "Настройка форматов наклеек"
+
+#: .\service\templates\service\submenu.html:8
+msgid "E-mail"
+msgstr "Почта"
+
+#: .\service\templates\service\submenu.html:9
+msgid "Stickers"
+msgstr "Наклейки"
+
 #: .\templates\404.html:5
 msgid "Page not found!"
 msgstr "Страница не найдена!"
-
-#~ msgid "Assigned numbers"
-#~ msgstr "Присвоенные номера"
 
 #~ msgid "Data deleted!"
 #~ msgstr "Данные удалены!"
