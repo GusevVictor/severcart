@@ -5,6 +5,7 @@ from django.http import HttpResponseRedirect
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from common.helpers import is_admin
+from django.contrib import messages
 from django.utils.translation import ugettext_lazy as _
 from service.forms.input_server_settings import SMTPsettings
 from service.forms.send_test_mail import SendTestMail
@@ -54,6 +55,7 @@ def stickers(request):
             conf.page_format = choice
             conf.commit()
             context['form'] = form
+            messages.success(request, _('Settings success saved.'))
         else:
             context['form'] = form    
     else:

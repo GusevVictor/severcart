@@ -4,7 +4,18 @@
 {% block content %}
 <div class="row">
     <div class="large-6 columns">
-        <form method="POST" action="">{% csrf_token %}
+        {% if messages %}
+            <ul class="messages">
+                {% for message in messages %}
+                    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    </div>
+</div>
+<div class="row">
+    <div class="large-6 columns">
+        <form method="POST" action="" class="stickers_format">{% csrf_token %}
             {{ form.as_p }}
             <input type="submit" class="button" value="{% trans 'Save' %}" >
         </form>

@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-04-16 13:12+0500\n"
-"PO-Revision-Date: 2016-04-16 13:24+0500\n"
+"POT-Creation-Date: 2016-04-16 14:07+0500\n"
+"PO-Revision-Date: 2016-04-16 14:08+0500\n"
 "Last-Translator: \n"
 "Language-Team: severcart.org <sfcl@mail.ru>\n"
 "Language: ru\n"
@@ -207,7 +207,7 @@ msgstr "Редактировать данные пользователя"
 #: .\accounts\templates\accounts\edit_user.html:12
 #: .\index\templates\index\add_type.html:27
 #: .\service\templates\service\settings_mail.html:47
-#: .\service\templates\service\stickers.html:9
+#: .\service\templates\service\stickers.html:20
 msgid "Save"
 msgstr "Сохранить"
 
@@ -1667,6 +1667,10 @@ msgstr "Почта"
 #: .\service\templates\service\submenu.html:9
 msgid "Stickers"
 msgstr "Наклейки"
+
+#: .\service\views.py:58
+msgid "Settings success saved."
+msgstr "Настройки успешно сохранены."
 
 #: .\templates\404.html:5
 msgid "Page not found!"

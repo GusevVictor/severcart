@@ -179,6 +179,9 @@ input[type='text'] {
     margin: 0;
 }
 
+form.stickers_format ul {
+    list-style-type: none;
+}
 span.user_ou {
     font-size:12px;
 }
