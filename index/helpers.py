@@ -2,6 +2,7 @@
 
 from django.http import HttpResponse
 from django.utils.translation import ugettext_lazy as _
+from .models import Numerator
 
 import logging
 logger = logging.getLogger('simp')
@@ -24,3 +25,29 @@ def check_ajax_auth(any_views):
         return any_views(*args, **argv)
         
     return wrapper
+
+
+class LastNumber(object):
+    """Вспомогательный класс для хранения последнего присвоенного номера в СУБД.
+    """
+    def __init__(self, request):        
+        self.request = request
+        try:
+            self.m1 = Numerator.objects.get(departament=request.user.departament)
+        except Numerator.DoesNotExist:
+            self.last_number    = 1
+            self.departament    = request.user.departament
+            self.m1 = Numerator(last_number=self.last_number, departament=self.departament)
+        else:
+            self.last_number    = self.m1.last_number
+            self.departament    = self.m1.departament
+
+    def get_num(self):
+        return self.last_number
+
+    def commit(self):
+        """
+        """
+        self.m1.last_number = self.last_number
+        self.m1.departament = self.departament
+        self.m1.save()

@@ -14,7 +14,7 @@ from index.models import ( City,
                            OrganizationUnits, 
                            CartridgeItemName, 
                            FirmTonerRefill )
-from index.helpers import check_ajax_auth
+from index.helpers import check_ajax_auth, LastNumber
 from index.signals import ( sign_turf_cart, 
                             sign_add_full_to_stock, 
                             sign_tr_empty_cart_to_stock,
@@ -103,13 +103,9 @@ def ajax_add_session_items(request):
             return JsonResponse(tmp_dict)
 
         # находим нужный номер для отсчёта добавления новых картриджей
-        last_num     = CartridgeItem.objects.filter(departament__in=children).order_by('-cart_number')
-        if last_num:
-            last_num = last_num[0].cart_number
-        else:
-            last_num = 0
-        cart_number  = last_num + 1
-        list_cplx = []
+        num_obj      = LastNumber(request)
+        cart_number  = num_obj.get_num()
+        list_cplx    = []
         # Добавляем картриджи в БД
         with transaction.atomic():
             for i in range(cart_count):
@@ -125,6 +121,8 @@ def ajax_add_session_items(request):
                 m1.save()
                 list_cplx.append((m1.id, cart_number, cart_name))
                 cart_number += 1
+            num_obj.last_number = cart_number
+            num_obj.commit()
         
         if cart_number == 1:
             tmpl_message = _('Cartridge successfully added.')
