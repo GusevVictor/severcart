@@ -78,3 +78,7 @@ class CartridgeItem(models.Model):
     comment = models.TextField(_('Comment'), blank=True)
     delivery_doc = models.IntegerField(db_index=True, null=True, default=0)
     node_order_by = ['pk']
+
+class Numerator(models.Model):
+    departament = models.ForeignKey(OrganizationUnits, default=1)
+    last_number = models.IntegerField(db_index=True, default=1)
