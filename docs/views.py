@@ -95,7 +95,8 @@ def delivery(request):
                 raise Http404
 
             date = str(doc.date.day) + '/' +  str(doc.date.month) + '/' + str(doc.date.year)
-            money = doc.money / 100
+            money = doc.money if doc.money else 0
+            money /= 100
             form = AddDoc(initial={
                 'number': doc.number,
                 'title': doc.title,
