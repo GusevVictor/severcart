@@ -32,7 +32,7 @@ from .models import CartridgeItemName
 from events.models import Events
 from events.helpers import events_decoder
 from .helpers import check_ajax_auth
-from .signals import ( sign_tr_cart_to_uses, 
+from .signals import (
                        sign_tr_empty_cart_to_firm,
                        sign_tr_filled_cart_to_stock )
 
@@ -305,45 +305,28 @@ def add_type(request):
 def transfe_for_use(request):
     """Передача расходника в пользование.
     """
+    context = dict()
     checked_cartr = request.GET.get('select', '')
     tmp = ''
     if checked_cartr:
         checked_cartr = checked_cartr.split('s')
         checked_cartr = [int(i) for i in checked_cartr]
         tmp = checked_cartr
+        context['ids_list'] = ','.join([str(i) for i in tmp])
         tmp2 = []
         # преобразовываем айдишники в условные номера
         for cart_id in checked_cartr:
             tmp2.append(CartridgeItem.objects.get(pk=cart_id).cart_number)
         checked_cartr = str(tmp2)
         checked_cartr = checked_cartr[1:-1]
+        context['checked_cartr'] = checked_cartr
     
     get = lambda node_id: OrganizationUnits.objects.get(pk=node_id)
     root_ou   = request.user.departament
-    #children  = root_ou.get_children()
     children  = root_ou.get_family()
     children  = children[1:] # исключаем последний элемент
-
-    if request.method == 'POST':
-        data_in_post = request.POST
-        parent_id = data_in_post['par_id']
-        parent_id = int(parent_id)
-
-        list_cplx = []
-        for inx in tmp:
-            m1 = CartridgeItem.objects.get(pk=inx)
-            m1.cart_status = 2 # объект находится в пользовании
-            m1.departament = get(parent_id)
-            m1.cart_date_change = timezone.now()
-            m1.save(update_fields=['departament', 'cart_status', 'cart_date_change'])
-            
-            list_cplx.append((m1.id, str(m1.cart_itm_name), m1.cart_number))
-        sign_tr_cart_to_uses.send(sender=None, 
-                                            list_cplx=list_cplx,
-                                            request=request,
-                                            org=str(get(parent_id)))
-        return HttpResponseRedirect(reverse('stock'))
-    return render(request, 'index/transfe_for_use.html', {'checked_cartr': checked_cartr, 'bulk': children})
+    context['bulk'] = children
+    return render(request, 'index/transfe_for_use.html', context)
 
 
 class Use(CartridgesView):

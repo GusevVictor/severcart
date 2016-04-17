@@ -275,7 +275,7 @@ $( function(){
 
         if ( selected.length !== 0 ) {
             var get_path = selected.join('s')
-            var loc = '/transfe_for_use/?select=' + get_path + '&back=' + window.location.pathname;
+            var loc = '/transfe_for_use/?select=' + get_path;
             window.location.href = loc;
         }
 
@@ -1133,6 +1133,69 @@ $( function(){
                 console.log(msg);                
             },
         });
+    });
+
+    $('.select_ou').each( function() {
+        var select_ou = $(this);
+        select_ou.bind('change', function() {
+            var id_ou = select_ou.children(':selected').attr('value');
+            $.ajax({
+                method: 'POST',
+                url: '/api/get_cart_ou/',
+                data: {'id_ou': id_ou},
+                beforeSend: function( xhr, settings ){
+                    $('.spinner').show();
+                    csrftoken = getCookie('csrftoken');
+                    if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
+                        xhr.setRequestHeader('X-CSRFToken', csrftoken);
+                    }
+                },
+                success: function( msg ) {
+                    $('.spinner').hide();
+                    $('.check_use_cartridge').show();
+                    $('.check_use_cartridge').html(msg.html);
+
+                },
+                error: function( msg ) {
+                    console.log(msg);
+                },
+            });
+        })
+    });
+
+    $('.move_to_use').click(function () {
+        var moved = $('.moved_cart_numb').attr('data');
+        moved = moved.split(',')
+        var id_ou = $('.select_ou').children(':selected').attr('value'); 
+        var installed = [];
+        $('.check_use_cartridge input:checked').each(function() {
+            installed.push( $(this).attr('value') );
+        });
+        $.ajax({
+            method: 'POST',
+            url: '/api/move_to_use/',
+            data: {'moved[]': moved, 'id_ou': id_ou, 'installed[]': installed},
+            beforeSend: function( xhr, settings ){
+                $('.spinner').show();
+                csrftoken = getCookie('csrftoken');
+                if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
+                    xhr.setRequestHeader('X-CSRFToken', csrftoken);
+                }
+            },
+            success: function( msg ) {
+                $('.spinner').hide();
+                if (msg.error == '0') {
+                    window.location.href = msg.url;
+                }
+                
+                
+
+            },
+            error: function( msg ) {
+                console.log(msg);
+            },
+        });
+
     });
 
 });

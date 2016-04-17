@@ -8,9 +8,9 @@
             <form action="" method="POST">
                 {% csrf_token %}
                 <label class="required">{% trans "What transfe" %}</label>
-                <input name="name" type="text"  value="{{checked_cartr }}"  readonly/>
+                <input name="name" type="text"  value="{{checked_cartr }}" class="moved_cart_numb loc" data="{{ ids_list }}" readonly/>
                 <label class="required marginTop">{% trans "To pass" %}</label>
-                <select size="1" name="par_id">
+                <select size="1" name="par_id" class="select_ou">
                     {% for i in bulk %}
                         {% if forloop.counter == 1 %}
                             <option selected disabled>&nbsp;&nbsp;&nbsp;</option>
@@ -20,9 +20,11 @@
                         {% endif %}
                     {% endfor %}
                 </select>
+                <div class="check_use_cartridge marginTop"></div>
                 <div class="marginTop">
-                    <input type="submit" value="{% trans 'Transfer to' %}" class="button"/>
+                    <input type="submit" value="{% trans 'Transfer to' %}" class="move_to_use button no_follow"/>
                     <a class="button no_follow back">{% trans 'Back' %}</a>
+                    <img class="spinner" src="{{ STATIC_URL }}img/loader.gif" />
                 </div>
             </form>
         </div>

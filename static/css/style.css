@@ -97,6 +97,10 @@ form input[type="password"] {
     font-size: 12px;
 }
 
+.check_use_cartridge {
+    display: none;
+}
+
 .error_msg,
 .error_msg_send,
 .error_msg_send_email {

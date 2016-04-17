@@ -9,6 +9,8 @@ from index.api.views import (   ajax_add_session_items,
                                 transfer_to_stock,
                                 del_firm,
                                 transfer_to_basket,
+                                get_cart_ou,
+                                move_to_use,
                             )
 from accounts.api.views import del_users
 
@@ -23,4 +25,6 @@ urlpatterns = [
     url('^transfer_to_basket/', transfer_to_basket),
     url('^del_firm/', del_firm),
     url('^names_suggests/', names_suggests),
+    url('^get_cart_ou/', get_cart_ou),
+    url('^move_to_use/', move_to_use),
 ]

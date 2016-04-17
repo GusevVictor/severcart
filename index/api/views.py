@@ -6,6 +6,7 @@ from django.db import models
 from django.utils import timezone
 from django.http import JsonResponse, HttpResponse
 from django.conf import settings
+from django.core.urlresolvers import reverse
 from django.template.loader import render_to_string
 from django.utils.translation import ugettext as _
 from common.helpers import is_admin
@@ -19,7 +20,8 @@ from index.signals import ( sign_turf_cart,
                             sign_add_full_to_stock, 
                             sign_tr_empty_cart_to_stock,
                             sign_tr_cart_to_basket, 
-                            sign_add_empty_to_stock, )
+                            sign_add_empty_to_stock, 
+                            sign_tr_cart_to_uses, )
 from index.forms.add_items import AddItems
 from docs.models import SCDoc
 
@@ -124,9 +126,9 @@ def ajax_add_session_items(request):
             num_obj.last_number = cart_number
             num_obj.commit()
         
-        if len(cart_count) == 1:
+        if cart_count == 1:
             tmpl_message = _('Cartridge successfully added.')
-        elif len(cart_count) > 1:
+        elif cart_count > 1:
             tmpl_message = _('Cartridges successfully added.')
 
         # запускаем сигнал добавления событий
@@ -361,4 +363,75 @@ def names_suggests(request):
         ansver['res']  = tmp_list
     else:
         ansver['res']   = [['', '']]
+    return JsonResponse(ansver)
+
+
+@check_ajax_auth
+def get_cart_ou(request):
+    """Получение списка установленных РМ у пользователя
+    """
+    if request.method != 'POST':
+        return HttpResponse('<h1>' + _('Only use POST requests!') + '</h1>')
+
+    ansver  = dict()
+    context = dict()
+    id_ou = request.POST.get('id_ou', '')
+    departament = OrganizationUnits.objects.get(pk=id_ou)
+    context['list_items'] = CartridgeItem.objects.filter(departament=departament)
+    ansver['html'] = render_to_string('index/get_cart_ou.html', context)
+    return JsonResponse(ansver)
+
+@check_ajax_auth
+def move_to_use(request):
+    """
+    """
+    if request.method != 'POST':
+        return HttpResponse('<h1>' + _('Only use POST requests!') + '</h1>')
+
+    ansver  = dict()
+    data_in_post = request.POST
+    moved = request.POST.getlist('moved[]')
+    id_ou = data_in_post['id_ou']
+    installed = request.POST.getlist('installed[]')
+    # производим фильтрацию полученных данных
+    try:
+        installed = [int(i) for i in installed]
+        moved     = [int(i) for i in moved]
+        id_ou     = int(id_ou) 
+    except ValueError as e:
+        ansver['error'] = '1'
+        ansver['text'] = str(e)
+        return JsonResponse(ansver)
+    
+    get = lambda node_id: OrganizationUnits.objects.get(pk=node_id)
+    list_cplx = []
+    for inx in moved:
+        m1 = CartridgeItem.objects.get(pk=inx)
+        m1.cart_status = 2 # объект находится в пользовании
+        m1.departament = get(id_ou)
+        m1.cart_date_change = timezone.now()
+        m1.save()
+        
+        list_cplx.append((m1.id, str(m1.cart_itm_name), m1.cart_number))
+    sign_tr_cart_to_uses.send(sender=None, 
+                                        list_cplx=list_cplx,
+                                        request=request,
+                                        org=str(get(id_ou)))
+
+    list_cplx = [] 
+    if  installed:
+        for inx in installed:
+            m1 = CartridgeItem.objects.get(pk=inx)
+            m1.cart_status = 3     # пустой объект на складе
+            tmp_dept = m1.departament
+            m1.departament = request.user.departament
+            m1.cart_date_change = timezone.now()
+            m1.save()
+            list_cplx.append((m1.id, str(m1.cart_itm_name), str(tmp_dept), m1.cart_number))
+
+        sign_tr_empty_cart_to_stock.send(sender=None, list_cplx=list_cplx, request=request)
+   
+    ansver['error'] = '0'
+    ansver['url']   = reverse('stock')
+    
     return JsonResponse(ansver)
