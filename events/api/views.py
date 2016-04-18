@@ -9,12 +9,14 @@ from django.conf import settings
 from django.db.models import Q
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from events.helpers import events_decoder
+from common.helpers import is_admin
 from index.helpers import check_ajax_auth
 
 import logging
 logger = logging.getLogger(__name__)
 
 @check_ajax_auth
+@is_admin
 def show_event_page(request):
     """Передача списка событий исходя из номера пагинации.
     """

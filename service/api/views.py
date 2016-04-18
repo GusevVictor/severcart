@@ -6,9 +6,10 @@ from index.helpers import check_ajax_auth
 from service.forms.input_server_settings import SMTPsettings
 from service.forms.send_test_mail import SendTestMail
 from service.helpers import SevercartConfigs, send_email
-
+from common.helpers import is_admin
 
 @check_ajax_auth
+@is_admin
 def send_test_email(request):
     """
     """
@@ -36,6 +37,7 @@ def send_test_email(request):
 
 
 @check_ajax_auth
+@is_admin
 def settings_email(request):
     """
     """

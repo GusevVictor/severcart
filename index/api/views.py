@@ -24,11 +24,13 @@ from index.signals import ( sign_turf_cart,
                             sign_tr_cart_to_uses, )
 from index.forms.add_items import AddItems
 from docs.models import SCDoc
+from common.helpers import is_admin
 
 import logging
 logger = logging.getLogger(__name__)
 
 @check_ajax_auth
+@is_admin
 def del_firm(request):
     """
     """

@@ -8,9 +8,10 @@ from accounts.models import AnconUser
 from index.helpers import check_ajax_auth
 from accounts.forms.send_email import SendMail
 from service.helpers import send_email
-
+from common.helpers import is_admin
 
 @check_ajax_auth
+@is_admin
 def del_users(request):
     """
     """

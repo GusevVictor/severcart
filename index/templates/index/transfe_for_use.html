@@ -37,7 +37,7 @@
                 <div class="check_use_cartridge marginTop"></div>
                 <div class="marginTop">
                     <input type="submit" value="{% trans 'Transfer to' %}" class="move_to_use button no_follow block"/>
-                    <a class="button no_follow back">{% trans 'Back' %}</a>
+                    <a href={% url 'stock' %} class="button">{% trans 'Back' %}</a>
                     <img class="spinner" src="{{ STATIC_URL }}img/loader.gif" />
                 </div>
             </form>
