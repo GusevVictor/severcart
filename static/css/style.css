@@ -540,15 +540,48 @@ a.button, input[type="submit"].button, button.button {
     font-size: 12px;
 }
 
+a.button.block, input[type="submit"].button.block, button.button.block {   
+    outline:0;
+    padding: 0 10px;
+    color: #282828;
+    -webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+    border-radius: 6px;
+    background-color: #ececec;
+    border: 1px solid #a8a8a8;
+    cursor: pointer;
+    font-weight: normal;
+    text-decoration: none;
+    text-align: center;
+    height: 26px;
+    line-height: 25px;
+    display: inline-block !important;
+    vertical-align: middle;
+    margin: 0 15px 0 0;
+    font-family: arial,sans-serif;
+    font-weight: normal;
+    font-size: 12px;
+}
 
 a.button:hover, input[type="submit"].button:hover {
     background-color: #d1d1d1;
     text-decoration: none;
 }
 
+
+a.button.block:hover, input[type="submit"].button.block:hover {
+    background-color: #ececec;
+    text-decoration: none;
+}
+
 a.button:active, input[type="submit"].button:active {
     box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.2);
     background: #aaa;
+    border: 1px solid #a8a8a8;
+}
+
+a.button.block:active, input[type="submit"].button.block:active {
+    background: #ececec;
     border: 1px solid #a8a8a8;
 }
 

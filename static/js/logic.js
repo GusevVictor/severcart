@@ -1154,7 +1154,7 @@ $( function(){
                     $('.spinner').hide();
                     $('.check_use_cartridge').show();
                     $('.check_use_cartridge').html(msg.html);
-
+                    $('.move_to_use').removeClass('block');
                 },
                 error: function( msg ) {
                     console.log(msg);
@@ -1171,31 +1171,32 @@ $( function(){
         $('.check_use_cartridge input:checked').each(function() {
             installed.push( $(this).attr('value') );
         });
-        $.ajax({
-            method: 'POST',
-            url: '/api/move_to_use/',
-            data: {'moved[]': moved, 'id_ou': id_ou, 'installed[]': installed},
-            beforeSend: function( xhr, settings ){
-                $('.spinner').show();
-                csrftoken = getCookie('csrftoken');
-                if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
-                    xhr.setRequestHeader('X-CSRFToken', csrftoken);
-                }
-            },
-            success: function( msg ) {
-                $('.spinner').hide();
-                if (msg.error == '0') {
-                    window.location.href = msg.url;
-                }
-                
-                
+        if (!$('.move_to_use').hasClass('block')) {
+            $.ajax({
+                method: 'POST',
+                url: '/api/move_to_use/',
+                data: {'moved[]': moved, 'id_ou': id_ou, 'installed[]': installed},
+                beforeSend: function( xhr, settings ){
+                    $('.spinner').show();
+                    csrftoken = getCookie('csrftoken');
+                    if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
+                        xhr.setRequestHeader('X-CSRFToken', csrftoken);
+                    }
+                },
+                success: function( msg ) {
+                    $('.spinner').hide();
+                    if (msg.error == '0') {
+                        window.location.href = msg.url;
+                    }
+                    
+                    
 
-            },
-            error: function( msg ) {
-                console.log(msg);
-            },
-        });
-
+                },
+                error: function( msg ) {
+                    console.log(msg);
+                },
+            });
+        }
     });
 
 });

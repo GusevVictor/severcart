@@ -314,12 +314,15 @@ def transfe_for_use(request):
         tmp = checked_cartr
         context['ids_list'] = ','.join([str(i) for i in tmp])
         tmp2 = []
+        cartr_objs = list()
         # преобразовываем айдишники в условные номера
         for cart_id in checked_cartr:
             tmp2.append(CartridgeItem.objects.get(pk=cart_id).cart_number)
+            cartr_objs.append(CartridgeItem.objects.get(pk=cart_id))
         checked_cartr = str(tmp2)
         checked_cartr = checked_cartr[1:-1]
         context['checked_cartr'] = checked_cartr
+        context['cartr_objs']    = cartr_objs
     
     get = lambda node_id: OrganizationUnits.objects.get(pk=node_id)
     root_ou   = request.user.departament

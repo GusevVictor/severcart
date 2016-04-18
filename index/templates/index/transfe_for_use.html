@@ -7,8 +7,22 @@
         <div class="large-6 columns">
             <form action="" method="POST">
                 {% csrf_token %}
-                <label class="required">{% trans "What transfe" %}</label>
-                <input name="name" type="text"  value="{{checked_cartr }}" class="moved_cart_numb loc" data="{{ ids_list }}" readonly/>
+                <label>{% trans "What transfe" %}</label>
+                <table>
+                    <tr>
+                        <th>{% trans 'Number' %}</th>
+                        <th>{% trans 'Name' %}</th>
+                        <th>{% trans 'Count refill' %}</th>
+                    </tr>
+                {% for elem in cartr_objs %}
+                    <tr>
+                        <td>{{ elem.cart_number }}</td>
+                        <td>{{ elem.cart_itm_name }}</td>
+                        <td>{{ elem.cart_number_refills }}</td>
+                    </tr>
+                {% endfor %}
+                </table>
+                <input name="name" type="hidden"  value="{{checked_cartr }}" class="moved_cart_numb loc" data="{{ ids_list }}" readonly/>
                 <label class="required marginTop">{% trans "To pass" %}</label>
                 <select size="1" name="par_id" class="select_ou">
                     {% for i in bulk %}
@@ -22,7 +36,7 @@
                 </select>
                 <div class="check_use_cartridge marginTop"></div>
                 <div class="marginTop">
-                    <input type="submit" value="{% trans 'Transfer to' %}" class="move_to_use button no_follow"/>
+                    <input type="submit" value="{% trans 'Transfer to' %}" class="move_to_use button no_follow block"/>
                     <a class="button no_follow back">{% trans 'Back' %}</a>
                     <img class="spinner" src="{{ STATIC_URL }}img/loader.gif" />
                 </div>
