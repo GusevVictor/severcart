@@ -59,11 +59,39 @@ function pretty_del_table_row(jqrow) {
 
 $( function(){
 
+    // проверям существует ли блок dashboard_events
+    // если да, то загружаем аяксом его контент 
+    var dashboard_events = $('.dashboard_events');
+    if (dashboard_events.length) {
+        var time_zone_offset = new Date();
+        time_zone_offset = time_zone_offset.getTimezoneOffset() / 60
+        time_zone_offset = -1 * time_zone_offset; // меняем знак
+        $.ajax({
+            method: 'POST',
+            url: '/api/view_events/',
+            data:  {'time_zone_offset': time_zone_offset },
+            beforeSend: function( xhr, settings ){
+                csrftoken = getCookie('csrftoken');
+                if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
+                    xhr.setRequestHeader('X-CSRFToken', csrftoken);
+                }
+            },
+            success: function( msg ) {
+                $('.dashboard_events').css('background', 'none');
+                $('.dashboard_events').html(msg.html);
+            },
+            error: function() {
+                $('.dashboard_events').css('background', 'none');
+        
+            },
+        });
+    } 
+
+
     $('.no_follow').click( function(event) {
         event.preventDefault();
         event.stopPropagation();
     });
-
 
     $('.export_to_csv').click( function() {
         $('.download_doc').attr('href', '#');

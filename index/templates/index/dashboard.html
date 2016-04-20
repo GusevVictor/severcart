@@ -56,29 +56,13 @@
     </div>
     <div class="large-6 columns">
         <h4>{% trans "Events" %}</h4>
-        <div>
-            <table class="top_events">
-                {% for line in events_list %}
-                <tr>
-                    <td>{{ line.data_env|date:"d.m.Y G:i" }}</td><td>{{ line.text_com|safe }}</td>
-                </tr>
-                {% endfor %}
-            
-            {% if show_more %}
-                <tr>
-                    <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;...</td><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;...</td>
-                </tr>
-                </table>
-                <div class="text-right marginTop"><a href="{% url 'show_events' %}">{% trans "View all events" %}</a></div>
-            {% else %}
-                </table>
-            {% endif %}
-        </div>
+        <div class="dashboard_events"></div>
     </div>
+        
 </div>
 <div class="row">
     <div class="large-6 columns">
-
+        
     </div>
 </div>
 {% endblock %}

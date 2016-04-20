@@ -30,7 +30,6 @@ from .models import City as CityM
 from .models import FirmTonerRefill
 from .models import CartridgeItemName
 from events.models import Events
-from events.helpers import events_decoder
 from .helpers import check_ajax_auth
 from .signals import (
                        sign_tr_empty_cart_to_firm,
@@ -61,14 +60,6 @@ def dashboard(request):
         dept_id = request.user.departament.pk
     except AttributeError:
         dept_id = 0
-    MAX_EVENTS = 11
-    events_list = Events.objects.filter(departament=dept_id).order_by('-pk')[:MAX_EVENTS]
-    if events_list.count() >= MAX_EVENTS:
-        context['show_more'] = True
-    else:
-        context['show_more'] = False
-    context['events_list'] = events_decoder(events_list, simple=False)
-
     # формирование статистики
     import datetime
     cur_date  = timezone.now()

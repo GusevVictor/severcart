@@ -1,6 +1,7 @@
 # -*- coding:utf-8 -*-
 
 from django.utils.translation import ugettext as _
+from datetime import datetime, timedelta
 
 def date_to_str(date_dict):
     """Преобразует словарь содержащий компоненты дат в строку.
@@ -17,11 +18,12 @@ def date_to_str(date_dict):
     year  = str(year)
     return '/'.join([ day, month, year ])
 
-def events_decoder(qso, simple=True):
+def events_decoder(qso, time_zone_offset, simple=True):
     """Функция докодер симолических мнемоник в человекочитаемый формат. 
         Единственный обязательный аргумент на входе - список объектов QuerySet
     """
     frdly_es = []
+
     for entry in qso:
         if entry.event_type == 'AD':
             entry_obj = {}
@@ -32,7 +34,7 @@ def events_decoder(qso, simple=True):
                 text_com = _('№ %(cart_number)s (%(cart_type)s) added user %(user_name)s.') % {'cart_number': entry.cart_number, 
                                                                                                 'cart_type': entry.cart_type, 
                                                                                                 'user_name': entry.event_user}
-            entry_obj['data_env'] = data_env
+            entry_obj['data_env'] = data_env + timedelta(hours=time_zone_offset)
             entry_obj['text_com'] = text_com
             frdly_es.append(entry_obj)
 
@@ -45,7 +47,7 @@ def events_decoder(qso, simple=True):
                 text_com = _('Added empty cartridge № %(cart_number)s (%(cart_type)s) user %(user_name)s.') % {'cart_number': entry.cart_number, 
                                                                                                 'cart_type': entry.cart_type, 
                                                                                                 'user_name': entry.event_user}
-            entry_obj['data_env'] = data_env
+            entry_obj['data_env'] = data_env + timedelta(hours=time_zone_offset)
             entry_obj['text_com'] = text_com
             frdly_es.append(entry_obj)
 
@@ -59,7 +61,7 @@ def events_decoder(qso, simple=True):
                                                                                     'cart_type': entry.cart_type, 
                                                                                     'event_org': entry.event_org,
                                                                                     'event_user': entry.event_user }
-            entry_obj['data_env'] = data_env
+            entry_obj['data_env'] = data_env + timedelta(hours=time_zone_offset)
             entry_obj['text_com'] = text_com
             frdly_es.append(entry_obj)
 
@@ -75,7 +77,7 @@ def events_decoder(qso, simple=True):
                                                                             'cart_type': entry.cart_type, 
                                                                             'event_firm': entry.event_firm,
                                                                             'event_user': entry.event_user }
-            entry_obj['data_env'] = data_env
+            entry_obj['data_env'] = data_env + timedelta(hours=time_zone_offset)
             entry_obj['text_com'] = text_com
             frdly_es.append(entry_obj)
 
@@ -102,7 +104,7 @@ def events_decoder(qso, simple=True):
                                                                         'event_user': entry.event_user }
             text_com += _('<br/>The following work: ')
             text_com += action_text 
-            entry_obj['data_env'] = data_env
+            entry_obj['data_env'] = data_env + timedelta(hours=time_zone_offset)
             entry_obj['text_com'] = text_com
             frdly_es.append(entry_obj)
 
@@ -116,7 +118,7 @@ def events_decoder(qso, simple=True):
                                                                                 'cart_number': entry.cart_number, 
                                                                                 'cart_type': entry.cart_type, 
                                                                                 'event_user': entry.event_user, }
-            entry_obj['data_env'] = data_env
+            entry_obj['data_env'] = data_env + timedelta(hours=time_zone_offset)
             entry_obj['text_com'] = text_com
             frdly_es.append(entry_obj)
 
@@ -130,7 +132,7 @@ def events_decoder(qso, simple=True):
                                                                     'cart_number': entry.cart_number, 
                                                                     'cart_type': entry.cart_type, 
                                                                     'event_user': entry.event_user, }
-            entry_obj['data_env'] = data_env
+            entry_obj['data_env'] = data_env + timedelta(hours=time_zone_offset)
             entry_obj['text_com'] = text_com
             frdly_es.append(entry_obj)
 
@@ -146,7 +148,7 @@ def events_decoder(qso, simple=True):
                                                                         'cart_type': entry.cart_type, 
                                                                         'event_org': entry.event_org,
                                                                         'event_user': entry.event_user }
-            entry_obj['data_env'] = data_env
+            entry_obj['data_env'] = data_env + timedelta(hours=time_zone_offset)
             entry_obj['text_com'] = text_com
             frdly_es.append(entry_obj)
 

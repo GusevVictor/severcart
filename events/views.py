@@ -88,7 +88,7 @@ def show_events(request):
             context['count_events'] = int(list_events.count())
             context['next_page'] = 2
             context['max_count_events'] = MAX_EVENT_LIST
-            context['list_events'] = events_decoder(p.page(1), simple=False)
+            context['list_events'] = events_decoder(p.page(1), 0,simple=False)
             context['form'] = date_form
             return render(request, 'events/show_events.html', context)
 
@@ -99,7 +99,7 @@ def show_events(request):
     p = Paginator(list_events, MAX_EVENT_LIST)
     context['next_page'] = 2
     context['max_count_events'] = MAX_EVENT_LIST
-    context['list_events'] = events_decoder(p.page(1), simple=False)
+    context['list_events'] = events_decoder(p.page(1), 0,simple=False)
     context['form'] = date_form
     return render(request, 'events/show_events.html', context)    
 

@@ -10,6 +10,8 @@ from django.core.urlresolvers import reverse
 from django.template.loader import render_to_string
 from django.utils.translation import ugettext as _
 from common.helpers import is_admin
+from events.models import Events
+from events.helpers import events_decoder
 from index.models import ( City, 
                            CartridgeItem, 
                            OrganizationUnits, 
@@ -436,4 +438,32 @@ def move_to_use(request):
     ansver['error'] = '0'
     ansver['url']   = reverse('stock')
     
+    return JsonResponse(ansver)
+
+@check_ajax_auth
+def view_events(request):
+    """Загрузка блока с событиями для страницы dashboard
+    """
+    ansver  = dict()
+    context = dict()
+    time_zone_offset = request.POST.get('time_zone_offset', 0);
+    try:
+        time_zone_offset = int(time_zone_offset)
+    except ValueError:
+        time_zone_offset = 0
+
+    try:
+        dept_id = request.user.departament.pk
+    except AttributeError:
+        dept_id = 0
+    
+    MAX_EVENTS = 11
+    events_list = Events.objects.filter(departament=dept_id).order_by('-pk')[:MAX_EVENTS]
+    if events_list.count() >= MAX_EVENTS:
+        context['show_more'] = True
+    else:
+        context['show_more'] = False
+    context['events_list'] = events_decoder(events_list, time_zone_offset, simple=False)
+    html = render_to_string('index/events.html', context)
+    ansver['html'] = html
     return JsonResponse(ansver)
