@@ -28,7 +28,7 @@ def show_event_page(request):
     
     MAX_EVENT_LIST = settings.MAX_EVENT_LIST
     next_page = request.POST.get('next_page', '')
-    
+    time_zone_offset = request.POST.get('time_zone_offset', 0)
     try:
         next_page = int(next_page)
     except ValueError:
@@ -38,6 +38,11 @@ def show_event_page(request):
         dept_id = request.user.departament.pk
     except AttributeError:
         dept_id = 0
+        
+    try:
+        time_zone_offset = int(time_zone_offset)
+    except ValueError:
+        time_zone_offset = 0
 
     list_events = Events.objects.filter(departament=dept_id).order_by('-pk')
     # возвращаем данные из сессионного словаря
@@ -92,7 +97,7 @@ def show_event_page(request):
         return JsonResponse(tmp_dict, safe=False)
 
 
-    list_events = events_decoder(content, simple=False)
+    list_events = events_decoder(content, time_zone_offset, simple=False)
     html_content = ''
     for event_line in list_events:
         c = Context(dict(date_env = event_line.get('data_env','')))

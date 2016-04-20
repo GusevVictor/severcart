@@ -93,6 +93,13 @@ form input[type="password"] {
     background: url(../img/big_spinner.gif) center center no-repeat;
 }
 
+.show_all_events {
+    width: 100%;
+    min-height: 64px;
+    background-color: #f3f3f3;
+    background: url(../img/big_spinner.gif) center center no-repeat;
+}
+
 .vertical-top {
     vertical-align: baseline;
 }

@@ -1,0 +1,13 @@
+{% load i18n %}{% load staticfiles %}
+<div class="text-right"><strong>{% trans "Total Events:" %} </strong> {{ count_events }}</div>
+<table class="all_events_view">
+<tr>
+    <th class="date_and_time">{% trans "Date and time" %} </th>
+    <th class="text_event">{% trans "Event text" %} </th>
+</tr>
+{% for elem in events_list %}
+<tr>
+    <td>{{ elem.data_env|date:"d.m.Y G:i" }}</td><td>{{ elem.text_com|safe }}</td>
+</tr>
+{% endfor %}
+</table>

@@ -69,7 +69,7 @@ $( function(){
         $.ajax({
             method: 'POST',
             url: '/api/view_events/',
-            data:  {'time_zone_offset': time_zone_offset },
+            data:  {'time_zone_offset': time_zone_offset, 'detail': 0 },
             beforeSend: function( xhr, settings ){
                 csrftoken = getCookie('csrftoken');
                 if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
@@ -87,6 +87,31 @@ $( function(){
         });
     } 
 
+    var show_all_events = $('.show_all_events');
+    if (show_all_events.length) {
+        var time_zone_offset = new Date();
+        time_zone_offset = time_zone_offset.getTimezoneOffset() / 60
+        time_zone_offset = -1 * time_zone_offset; // меняем знак
+        $.ajax({
+            method: 'POST',
+            url: '/api/view_events/',
+            data:  {'time_zone_offset': time_zone_offset, 'detail': 1 },
+            beforeSend: function( xhr, settings ){
+                csrftoken = getCookie('csrftoken');
+                if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
+                    xhr.setRequestHeader('X-CSRFToken', csrftoken);
+                }
+            },
+            success: function( msg ) {
+                $('.show_all_events').css('background', 'none');
+                $('.show_all_events').html(msg.html);
+            },
+            error: function() {
+                $('.show_all_events').css('background', 'none');
+        
+            },
+        });
+    }
 
     $('.no_follow').click( function(event) {
         event.preventDefault();
@@ -733,23 +758,25 @@ $( function(){
     });
 
 
-    $('.events_see_more').click( function( event ) {
-        event.preventDefault();
-        event.stopPropagation();
+    $('.events_see_more').click( function() {
         var button_next = $(this);
+        var time_zone_offset = new Date();
+        time_zone_offset = time_zone_offset.getTimezoneOffset() / 60
+        time_zone_offset = -1 * time_zone_offset; // меняем знак
         $.ajax({
             method: 'POST',
             url: '/events/api/show_event_page/',
-            data:  {next_page: button_next.attr('next_page')},
+            data:  {'next_page': button_next.attr('next_page'), 'time_zone_offset': time_zone_offset},
             beforeSend: function( xhr, settings ){
-                $('.spinner').css('display', 'inline');
+                $('.spinner').show();
                 csrftoken = getCookie('csrftoken');
                 if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
                     xhr.setRequestHeader('X-CSRFToken', csrftoken);
                 }
             }  
         }).done(function( msg ) {
-            $('.spinner').css('display', 'none');
+            $('.spinner').hide();
+            console.log('msg=', msg);
             if (msg.stop_pagination === '0') {
                 $('.all_events_view tr:last').after(msg.html_content);
                 var next_page = button_next.attr('next_page');

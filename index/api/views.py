@@ -447,6 +447,7 @@ def view_events(request):
     ansver  = dict()
     context = dict()
     time_zone_offset = request.POST.get('time_zone_offset', 0);
+    detail           = request.POST.get('detail', 0) 
     try:
         time_zone_offset = int(time_zone_offset)
     except ValueError:
@@ -457,13 +458,29 @@ def view_events(request):
     except AttributeError:
         dept_id = 0
     
+    try:
+        detail = int(detail)
+    except ValueError:
+        detail = 0
+
     MAX_EVENTS = 11
-    events_list = Events.objects.filter(departament=dept_id).order_by('-pk')[:MAX_EVENTS]
-    if events_list.count() >= MAX_EVENTS:
-        context['show_more'] = True
+    if detail:
+        events_list = Events.objects.filter(departament=dept_id).order_by('-pk')[:MAX_EVENTS]
+        context['count_events'] = len(events_list)
+        if events_list.count() >= MAX_EVENTS:
+            context['show_more'] = True
+        else:
+            context['show_more'] = False
+        context['events_list'] = events_decoder(events_list, time_zone_offset, simple=False)
+        html = render_to_string('events/show_all_events.html', context)
     else:
-        context['show_more'] = False
-    context['events_list'] = events_decoder(events_list, time_zone_offset, simple=False)
-    html = render_to_string('index/events.html', context)
+        events_list = Events.objects.filter(departament=dept_id).order_by('-pk')[:MAX_EVENTS]
+        if events_list.count() >= MAX_EVENTS:
+            context['show_more'] = True
+        else:
+            context['show_more'] = False
+        context['events_list'] = events_decoder(events_list, time_zone_offset, simple=False)
+        html = render_to_string('index/events.html', context)
+    
     ansver['html'] = html
     return JsonResponse(ansver)
