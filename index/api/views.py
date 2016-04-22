@@ -463,7 +463,7 @@ def view_events(request):
     except ValueError:
         detail = 0
 
-    MAX_EVENT_LIST = settings.MAX_EVENT_LIST
+    MAX_EVENT_LIST = settings.DASHBOARD_EVENT_LIST
     if detail:
         events_list = Events.objects.filter(departament=dept_id).order_by('-pk')[:MAX_EVENT_LIST]
         context['count_events'] = len(events_list)

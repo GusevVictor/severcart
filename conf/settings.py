@@ -200,6 +200,7 @@ LOGGING = {
 LOGIN_URL = '/manage_users/login/'
 
 MAX_EVENT_LIST = 16
+DASHBOARD_EVENT_LIST = 11
 
 # Настройки шаблона docx файла
 MAX_TABLE_ROWS_FIRST_PAGE = 14 # должен резервировать место для шапки акта
