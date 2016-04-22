@@ -463,19 +463,19 @@ def view_events(request):
     except ValueError:
         detail = 0
 
-    MAX_EVENTS = 11
+    MAX_EVENT_LIST = settings.MAX_EVENT_LIST
     if detail:
-        events_list = Events.objects.filter(departament=dept_id).order_by('-pk')[:MAX_EVENTS]
+        events_list = Events.objects.filter(departament=dept_id).order_by('-pk')[:MAX_EVENT_LIST]
         context['count_events'] = len(events_list)
-        if events_list.count() >= MAX_EVENTS:
+        if events_list.count() >= MAX_EVENT_LIST:
             context['show_more'] = True
         else:
             context['show_more'] = False
         context['events_list'] = events_decoder(events_list, time_zone_offset, simple=False)
         html = render_to_string('events/show_all_events.html', context)
     else:
-        events_list = Events.objects.filter(departament=dept_id).order_by('-pk')[:MAX_EVENTS]
-        if events_list.count() >= MAX_EVENTS:
+        events_list = Events.objects.filter(departament=dept_id).order_by('-pk')[:MAX_EVENT_LIST]
+        if events_list.count() >= MAX_EVENT_LIST:
             context['show_more'] = True
         else:
             context['show_more'] = False

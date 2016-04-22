@@ -5,7 +5,7 @@
     <th class="date_and_time">{% trans "Date and time" %} </th>
     <th class="text_event">{% trans "Event text" %} </th>
 </tr>
-{% for elem in events_list %}
+{% for elem in list_events %}
 <tr>
     <td>{{ elem.data_env|date:"d.m.Y G:i" }}</td><td>{{ elem.text_com|safe }}</td>
 </tr>

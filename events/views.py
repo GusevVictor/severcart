@@ -12,7 +12,7 @@ from django.views.decorators.cache import never_cache
 from common.helpers import BreadcrumbsPath
 from .models  import Events
 from .helpers import events_decoder, date_to_str
-from .forms   import DateForm
+from events.forms   import DateForm
 from common.helpers import is_admin
 
 
@@ -30,76 +30,12 @@ def show_events(request):
         dept_id = 0
     list_events = Events.objects.filter(departament=dept_id).order_by('-pk')
 
+    # сбрасываем все установленные установки дат в ноль
     request.session['start_date'] = ''
     request.session['end_date'] = ''
 
-    if request.method == 'POST':
-        # попадаем в эту ветку если пользователь нажал на кнопку Показать
-        date_form = DateForm(request.POST)
-        if date_form.is_valid():
-            data_in_post = date_form.cleaned_data
-            # получаем данные для инициализации начальными значаниями заполненной формы
-            start_date = date_to_str(data_in_post.get('start_date', ''))
-            end_date   = date_to_str(data_in_post.get('end_date', ''))
-            date_form = DateForm(initial={'start_date': start_date, 'end_date': end_date})
-            # 
-            start_date = data_in_post.get('start_date', '')
-            end_date   = data_in_post.get('end_date', '')
-            # сохраняем переданные даты в сессионном словаре, потом будем читать его значения из /events/api/ 
-            request.session['start_date'] = start_date
-            request.session['end_date']   = end_date
-            # приводим словари, содержащие компоненты дат к объекту datetime
-            if start_date:
-                st_year  = int(start_date.get('year_value'))
-                st_month = int(start_date.get('month_value'))
-                st_date  = int(start_date.get('date_value'))
-                
-                start_date = datetime.datetime(st_year, st_month, st_date)
-            if end_date:
-                en_year  = int(end_date.get('year_value'))
-                en_month = int(end_date.get('month_value'))
-                en_date  = int(end_date.get('date_value'))
-
-                end_date   = datetime.datetime(en_year, en_month, en_date)
-
-            if start_date and not(end_date):
-                list_events = list_events.filter(date_time__gte=start_date)
-
-            elif not(start_date) and not(end_date):
-                # выбираем все объекты если пользователь оставил поля ввода пустыми
-                pass
-
-            elif end_date and not(start_date):
-                list_events = list_events.filter(date_time__lte=end_date)
-
-            elif start_date == end_date :
-                list_events = list_events.filter(date_time__year=end_date.year, 
-                                           date_time__month=end_date.month, 
-                                           date_time__day=end_date.day 
-                                           )
-
-            elif start_date and end_date:
-                # вторая дата не попадает в диапазон, поэтому приболяем к ней 1 день
-                end_date = end_date + datetime.timedelta(days=1)
-                list_events = list_events.filter(Q(date_time__lte=end_date) & Q(date_time__gte=start_date))
-
-            
-            p = Paginator(list_events, MAX_EVENT_LIST)
-            context['count_events'] = int(list_events.count())
-            context['next_page'] = 2
-            context['max_count_events'] = MAX_EVENT_LIST
-            context['list_events'] = events_decoder(p.page(1), 0,simple=False)
-            context['form'] = date_form
-            return render(request, 'events/show_events.html', context)
-
     # обычный get запрос
-    date_form = DateForm()
-    context['count_events'] = int(Events.objects.filter(departament=dept_id).count())
-    
-    p = Paginator(list_events, MAX_EVENT_LIST)
-    context['next_page'] = 2
-    context['max_count_events'] = MAX_EVENT_LIST
-    context['list_events'] = events_decoder(p.page(1), 0,simple=False)
+    date_form = DateForm()    
     context['form'] = date_form
     return render(request, 'events/show_events.html', context)    
 

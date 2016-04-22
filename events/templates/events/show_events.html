@@ -14,9 +14,9 @@
         <p>{% trans "Select a period viewed" %}</p>
         <form action="" method="POST" class="input_date">
             {% csrf_token %}
-            {% trans "From" %} <div class="calendar">{{ form.start_date}}</div><!-- <span class="datepicker"></span>
-         -->{% trans "By" %}<div class="calendar">{{ form.end_date }}</div>
-            <input type="submit" value='{% trans "show" %}' class="button success" />
+            {% trans "From" %} <div class="start_date calendar">{{ form.start_date}}</div><!-- <span class="datepicker"></span>
+         -->{% trans "By" %}<div class="end_date calendar">{{ form.end_date }}</div>
+            <input type="submit" value='{% trans "show" %}' class="event_filter button success no_follow" />
             <a href="{% url 'show_events' %}" class="button alert"> {% trans "Reset" %} </a>
         </form>
     </div>

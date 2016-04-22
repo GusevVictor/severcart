@@ -94,7 +94,7 @@ $( function(){
         time_zone_offset = -1 * time_zone_offset; // меняем знак
         $.ajax({
             method: 'POST',
-            url: '/api/view_events/',
+            url: '/events/api/date_filter/',
             data:  {'time_zone_offset': time_zone_offset, 'detail': 1 },
             beforeSend: function( xhr, settings ){
                 csrftoken = getCookie('csrftoken');
@@ -112,6 +112,40 @@ $( function(){
             },
         });
     }
+
+    $('.event_filter').click( function() {
+        var filter_date = $('form.input_date').serializeArray();
+        var start_date  = filter_date[1].value;
+        var end_date    = filter_date[2].value;
+        var time_zone_offset = new Date();
+        time_zone_offset = time_zone_offset.getTimezoneOffset() / 60
+        time_zone_offset = -1 * time_zone_offset; // меняем знак
+        if (start_date || end_date) {
+            $.ajax({
+                method: 'POST',
+                url: '/events/api/date_filter/',
+                data:  {'start_date': start_date, 'end_date': end_date, 'time_zone_offset': time_zone_offset },
+                beforeSend: function( xhr, settings ){
+                    $('.spinner').show();
+                    csrftoken = getCookie('csrftoken');
+                    if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
+                        xhr.setRequestHeader('X-CSRFToken', csrftoken);
+                    }
+                },
+                success: function( msg ) {
+                    $('.spinner').hide();
+                    $('.show_all_events').css('background', 'none');
+                    $('.show_all_events').html(msg.html);
+                    if (msg.stop_pagination === '1') {
+                        $('.events_see_more').remove();
+                    }
+                },
+                error: function( msg ) {
+                    $('.show_all_events').css('background', 'none');
+                },
+            });    
+        }
+    });
 
     $('.no_follow').click( function(event) {
         event.preventDefault();
@@ -776,7 +810,6 @@ $( function(){
             }  
         }).done(function( msg ) {
             $('.spinner').hide();
-            console.log('msg=', msg);
             if (msg.stop_pagination === '0') {
                 $('.all_events_view tr:last').after(msg.html_content);
                 var next_page = button_next.attr('next_page');
@@ -784,7 +817,7 @@ $( function(){
                 next_page += 1;
                 button_next.attr({'next_page': next_page});
             } else {
-                $('.events_see_more').remove();                
+                $('.events_see_more').remove();
             }
         });
     });
