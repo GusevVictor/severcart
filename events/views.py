@@ -37,6 +37,7 @@ def show_events(request):
     # обычный get запрос
     date_form = DateForm()    
     context['form'] = date_form
+    context['next_page'] = 2
     return render(request, 'events/show_events.html', context)    
 
 @login_required

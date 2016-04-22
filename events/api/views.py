@@ -98,7 +98,7 @@ def show_event_page(request):
         tmp_dict['stop_pagination'] = '1'
         return JsonResponse(tmp_dict, safe=False)
 
-
+    next_page = next_page + 1
     list_events = events_decoder(content, time_zone_offset, simple=False)
     html_content = ''
     for event_line in list_events:
@@ -108,6 +108,7 @@ def show_event_page(request):
         html_content += html_row
     tmp_dict['html_content'] = html_content
     tmp_dict['stop_pagination'] = '0'
+    tmp_dict['next_page'] = next_page
     return JsonResponse(tmp_dict, safe=False)
 
 

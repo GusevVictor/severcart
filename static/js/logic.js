@@ -816,6 +816,7 @@ $( function(){
                 next_page = parseInt(next_page,10);
                 next_page += 1;
                 button_next.attr({'next_page': next_page});
+                console.log(next_page);
             } else {
                 $('.events_see_more').remove();
             }
