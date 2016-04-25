@@ -113,6 +113,34 @@ $( function(){
         });
     }
 
+    // Просмотр событий для одного картриджа
+    var view_cart_events = $('.view_cart_events');
+    if (view_cart_events.length) {
+        var time_zone_offset = new Date();
+        time_zone_offset = time_zone_offset.getTimezoneOffset() / 60
+        time_zone_offset = -1 * time_zone_offset; // меняем знак
+        cart_id = getUrlParameter('id');
+        $.ajax({
+            method: 'POST',
+            url: '/events/api/view_cart_events/',
+            data:  {'time_zone_offset': time_zone_offset, 'detail': 1, 'cart_id': cart_id },
+            beforeSend: function( xhr, settings ){
+                csrftoken = getCookie('csrftoken');
+                if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
+                    xhr.setRequestHeader('X-CSRFToken', csrftoken);
+                }
+            },
+            success: function( msg ) {
+                $('.view_cart_events').css('background', 'none');
+                $('.view_cart_events').html(msg.html);
+            },
+            error: function() {
+                $('.view_cart_events').css('background', 'none');
+        
+            },
+        });
+    }
+
     $('.event_filter').click( function() {
         var filter_date = $('form.input_date').serializeArray();
         var start_date  = filter_date[1].value;

@@ -12,16 +12,7 @@
 {% block content %}
 <div class="row">
     <div class="large-12 columns">
-        <table class="view_cart_events marginTop">
-            <tr>
-                <th class="date_and_time">{% trans "Date and time" %}</th>
-                <th>{% trans "Description" %}</th>
-            </tr>{% for entry in frdly_es %}
-            <tr>
-                <td>{{ entry.data_env|date:"d.m.Y G:i" }}</td>
-                <td>{{ entry.text_com|safe }}</td>
-            </tr>{% endfor %}
-        </table>
+        <div class="view_cart_events"></div>
     </div>
 </div>
 {% endblock %}

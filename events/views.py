@@ -48,24 +48,4 @@ def view_cartridge_events(request):
     context = dict()
     cart_id = request.GET.get('id', '')
     context['back'] = BreadcrumbsPath(request).before_page(request)
-    try:
-        cart_id = int(cart_id)
-    except ValueError:
-        raise Http404
-    
-    try:
-        dept_id = request.user.departament.pk
-    except AttributeError:
-        dept_id = 0
-
-    list_events = Events.objects.filter(cart_index=cart_id).filter(departament=dept_id).order_by('pk')
-    try:
-        frdly_es = events_decoder(list_events)
-        context['frdly_es']     = frdly_es
-        context['cart_number']  = list_events[0].cart_number
-        context['cart_type']    = list_events[0].cart_type
-    except IndexError:
-        context['frdly_es']     = []
-        context['cart_number']  = ''
-        context['cart_type']    = _('Not found')
     return render(request, 'events/view_cartridge_events.html', context)

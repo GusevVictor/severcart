@@ -9,6 +9,7 @@ from django.conf import settings
 from django.db.models import Q
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.template.loader import render_to_string
+from django.utils.translation import ugettext as _
 from events.helpers import events_decoder
 from common.helpers import is_admin
 from index.helpers import check_ajax_auth
@@ -204,3 +205,41 @@ def date_filter(request):
         html = render_to_string('events/show_all_events.html', context)
         ansver['html'] = html
         return JsonResponse(ansver)
+
+
+@check_ajax_auth
+def view_cart_events(request):
+    """Просмотр событий для одного экземпляра картриджа.
+    """
+    ansver = dict()
+    context = dict()
+    cart_id = request.POST.get('cart_id', 0)
+    try:
+        cart_id = int(cart_id)
+    except ValueError:
+        raise Http404
+    
+    try:
+        dept_id = request.user.departament.pk
+    except AttributeError:
+        dept_id = 0
+
+    time_zone_offset = request.POST.get('time_zone_offset', 0)
+    try:
+        time_zone_offset = int(time_zone_offset)
+    except ValueError:
+        time_zone_offset = 0
+
+    list_events = Events.objects.filter(cart_index=cart_id).filter(departament=dept_id).order_by('pk')
+    try:
+        frdly_es = events_decoder(list_events, time_zone_offset, simple=True)
+        context['frdly_es']     = frdly_es
+        context['cart_number']  = list_events[0].cart_number
+        context['cart_type']    = list_events[0].cart_type
+    except IndexError:
+        context['frdly_es']     = []
+        context['cart_number']  = ''
+        context['cart_type']    = _('Not found')
+    html = render_to_string('events/ajx_view_events_one_cartridge.html', context)
+    ansver['html'] = html
+    return JsonResponse(ansver)
