@@ -31,6 +31,11 @@
                     {{ form.money }}
                     {{ form.money.errors }}
                 </div>
+                <div class="small-3 columns left">
+                    <label class='required' for="{{ form.doc_type.id_for_label }}">{% trans "Doc type" %}</label>
+                    {{ form.doc_type }}
+                    {{ form.doc_type.errors }}
+                </div>
             </div>
             <div class="row">
                 <div class="marginTop">

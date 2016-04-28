@@ -20,7 +20,7 @@ class SCDoc(models.Model):
     short_cont  = models.TextField(null=True)
     money       = models.IntegerField(db_index=True, null=True)
     departament = models.ForeignKey(OrganizationUnits)
-    doc_type    = models.IntegerField(choices=DOC_TYPE, default=1)
+    doc_type    = models.IntegerField(choices=DOC_TYPE)
     user        = models.CharField(max_length=256, null=True)
 
     def __str__(self):

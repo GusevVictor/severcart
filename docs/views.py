@@ -60,22 +60,24 @@ def delivery(request):
                 doc.firm = data_in_post.get('firm','')
                 doc.title = data_in_post.get('title','')
                 doc.short_cont = data_in_post.get('short_cont','')
+                doc_type = data_in_post.get('doc_type', '')
                 doc.money = data_in_post.get('money','')
                 doc.save()
                 messages.success(request, _('%(doc_num)s success saved.') % {'doc_num': doc.number})
             else:
                 # если пользователь просто создаёт новый документ
-                doc = SCDoc(number = data_in_post.get('number',''),
-                           date = data_in_post.get('date',''),
-                           firm = data_in_post.get('firm',''),
-                           title = data_in_post.get('title',''),
-                           short_cont = data_in_post.get('short_cont',''),
-                           money = data_in_post.get('money',''),
-                           departament = request.user.departament,
-                           doc_type = 1,
+
+                SCDoc.objects.create(
+                           number      = data_in_post.get('number',''),
+                           date        = data_in_post.get('date',''),
+                           firm        = data_in_post.get('firm',''),
+                           title       = data_in_post.get('title',''),
+                           short_cont  = data_in_post.get('short_cont',''),
+                           money       = data_in_post.get('money',''),
+                           doc_type    = int(data_in_post.get('doc_type', 0)),
+                           departament = request.user.departament
                            )
-                doc.save()
-                messages.success(request, _('New %(doc_num)s success created.') % {'doc_num': doc.number})
+                messages.success(request, _('New %(doc_num)s success created.') % {'doc_num': data_in_post.get('number','')})
 
             context['form'] = form    
             return HttpResponseRedirect(request.path)
@@ -103,6 +105,7 @@ def delivery(request):
                 'money': money,
                 'short_cont': doc.short_cont,
                 'firm': doc.firm,
+                'doc_type': doc.doc_type,  
                 'date': date })
 
             context['form'] = form

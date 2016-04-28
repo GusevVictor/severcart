@@ -22,6 +22,14 @@ class AddDoc(forms.Form):
     
     date = forms.CharField(required=False, widget=forms.TextInput(attrs={'class':'datepicker', 'readonly':'readonly'}))
 
+    DOC_TYPE = (
+        ('', ''),
+        (1, _('Delivery agreement')),
+        (2, _('Service agreement')),
+    )
+
+    doc_type = forms.ChoiceField(choices=DOC_TYPE)
+
     def clean_number(self):
         """Проверят на пустоту введенные данные.
         """
