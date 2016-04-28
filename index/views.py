@@ -220,8 +220,9 @@ def tree_list(request):
                     break        
             else:
                 # если ноды нет, добавляем
+                OrganizationUnits.objects.create(name=org_name, parent=None)
                 context['msg'] = _('Organization unit %(org_name)s create successfuly.') % {'org_name': org_name}
-        
+
         if uid != 0:
             temp_name = OrganizationUnits.objects.get(pk=uid)
             if temp_name.is_root_node():
