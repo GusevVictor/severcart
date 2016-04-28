@@ -94,7 +94,8 @@
                         <th>{% trans "Name" %}</th>
                         <th>{% trans "Document date" %}</th>
                         <th>{% trans "Firm" %}</th>
-                        <th>{% trans "Amount" %},{% trans "Currency" %}</th>
+                        <th>{% trans "Amount" %}, {% trans "Currency" %}</th>
+                        <th>{% trans "Spent" %}, {% trans "Currency" %}</th>
                         <th>{% trans "Summary" %}</th>
                     </tr>
                     {% for doc in docs %}
@@ -113,6 +114,9 @@
                         <td>{{ doc.date|date:"d.m.Y" }}</td>
                         <td>{{ doc.firm }}</td>
                         <td>{{ doc.money | divide}}</td>
+                        <td doc_id="{{ doc.pk }}">
+                            {% if doc.spent %} {{ doc.spent }} {% else %} 0 {% endif %}
+                        </td>
                         <td title="{{ doc.short_cont }}">{{ doc.short_cont|truncatechars:30 }}</td>
                     </tr>
                     {% endfor %}
