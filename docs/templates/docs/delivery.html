@@ -90,6 +90,7 @@
                     <tr>
                         <th>&nbsp;&nbsp;&nbsp;</th>
                         <th>{% trans "Number" %}</th>
+                        <th>{% trans "Doc type" %}</th>
                         <th>{% trans "Name" %}</th>
                         <th>{% trans "Document date" %}</th>
                         <th>{% trans "Firm" %}</th>
@@ -100,6 +101,14 @@
                     <tr>
                         <td><input type="radio" name="doc" value="{{ doc.pk }}"></td>
                         <td title="{{ doc.number }}">{{ doc.number|truncatechars:20 }}</td>
+                        <td>
+                            {% if doc.doc_type == 1 %}
+                                {% trans "Delivery agreement" %}
+                            {% endif %}
+                            {% if doc.doc_type == 2 %}
+                                {% trans "Service agreement" %}
+                            {% endif %}
+                        </td>
                         <td title="{{ doc.title }}">{{ doc.title|truncatechars:20 }}</td>
                         <td>{{ doc.date|date:"d.m.Y" }}</td>
                         <td>{{ doc.firm }}</td>

@@ -9,6 +9,7 @@ from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
 from django.contrib import messages
 from django.utils import timezone
+from django.db.models import Q
 from django.views.decorators.cache import never_cache
 from django.utils.translation import ugettext as _
 from .models import SCDoc
@@ -35,7 +36,8 @@ def delivery(request):
     """
     context = {}
     context['back'] = BreadcrumbsPath(request).before_page(request)
-    docs = SCDoc.objects.filter(departament=request.user.departament).filter(doc_type=1).order_by('-pk')
+    # выбираем только договора обслуживания и поставки
+    docs = SCDoc.objects.filter(departament=request.user.departament).filter( Q(doc_type=1) | Q(doc_type=2)).order_by('-pk')
     context['docs'] = docs
     if request.method == 'POST':
         form = AddDoc(request.POST)
@@ -66,15 +68,14 @@ def delivery(request):
                 messages.success(request, _('%(doc_num)s success saved.') % {'doc_num': doc.number})
             else:
                 # если пользователь просто создаёт новый документ
-
-                SCDoc.objects.create(
+                m1 = SCDoc.objects.create(
                            number      = data_in_post.get('number',''),
                            date        = data_in_post.get('date',''),
                            firm        = data_in_post.get('firm',''),
                            title       = data_in_post.get('title',''),
                            short_cont  = data_in_post.get('short_cont',''),
                            money       = data_in_post.get('money',''),
-                           doc_type    = int(data_in_post.get('doc_type', 0)),
+                           doc_type    = data_in_post.get('doc_type', ''),
                            departament = request.user.departament
                            )
                 messages.success(request, _('New %(doc_num)s success created.') % {'doc_num': data_in_post.get('number','')})
@@ -96,7 +97,10 @@ def delivery(request):
             except SCDoc.DoesNotExist:
                 raise Http404
 
-            date = str(doc.date.day) + '/' +  str(doc.date.month) + '/' + str(doc.date.year)
+            if doc.date:
+                date = str(doc.date.day) + '/' +  str(doc.date.month) + '/' + str(doc.date.year)
+            else:
+                date = ''
             money = doc.money if doc.money else 0
             money /= 100
             form = AddDoc(initial={
