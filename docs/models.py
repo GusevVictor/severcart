@@ -14,7 +14,7 @@ class SCDoc(models.Model):
         (4, _('Act of write-off')),
     )
     number      = models.CharField(db_index=True, max_length=256)
-    date        = models.DateField(db_index=True)
+    date        = models.DateField(db_index=True, null=True)
     firm        = models.ForeignKey(FirmTonerRefill, null=True)
     title       = models.CharField(max_length=256)
     short_cont  = models.TextField(null=True)
