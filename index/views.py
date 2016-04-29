@@ -568,9 +568,17 @@ def from_basket_to_stock(request):
 def transfer_to_firm(request):
     """Передача расходных материалов на заправку.
     """
+    from .forms.tr_to_firm import TransfeToFirm
+    context = dict()
     checked_cartr = request.GET.get('select', '')
     tmp = ''
-    firms = FirmTonerRefill.objects.all()
+    form = TransfeToFirm()
+    context['form'] = form
+    checked_cartr = [1,23,23]
+    context['checked_cartr'] = checked_cartr
+    return render(request, 'index/transfer_to_firm.html', context)
+
+    """
     if checked_cartr:
         checked_cartr = checked_cartr.split('s')
         checked_cartr = [int(i) for i in checked_cartr]
@@ -585,7 +593,8 @@ def transfer_to_firm(request):
     else:
         # если кто-то зашел на страницу не выбрав расходники
         return HttpResponseRedirect(reverse('empty'))       
-
+    """
+    """
     if request.method == 'POST':
         
         try:
@@ -642,10 +651,7 @@ def transfer_to_firm(request):
                                             request=request, 
                                             firm=str(select_firm))
         return HttpResponseRedirect(reverse('empty'))
-    return render(request, 'index/transfer_to_firm.html', {'checked_cartr': checked_cartr, 
-                                                            'firms' : firms, 
-                                                            })
-
+    """
 
 @login_required
 @never_cache

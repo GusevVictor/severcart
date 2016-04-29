@@ -5,6 +5,7 @@
 {% block breadcrumbs %}<a href="/"><img src="{{ STATIC_URL }}img/home.png" /></a> / <a href="{% url 'use' %}">{% trans "Consumables in use" %}</a> / {% trans "Transfer cartridges refills" %}{% endblock %}
 {% load filters %}
 {% block content %}
+    <!-- 
     <div class="row">
         <div class="large-6 columns">
             {% if messages %}
@@ -16,21 +17,40 @@
             {% endif %}
         </div>
     </div>
+    -->
     <div class="row">
         <div class="large-6 columns">
             <form action="" method="POST">
                 {% csrf_token %}
                 <label class="required">{% trans "What transfe" %}</label>
-                <input name="name" type="text"  value="{{ checked_cartr }}"  readonly/>
-                <label class="required marginTop">{% trans "Which company" %}</label>
-                <select name="firm">
-                    <option selected value="0"> </option>
-                {% for etm in firms %}
-                    <option value={{ etm.id }}>{{ etm.firm_name }}</option>
+                {{ form.numbers }}
+                <table>
+                <tr>
+                    <td>{% trans 'Number' %}</td>
+                    <td>{% trans 'Name' %}</td>
+                </tr>
+                {% for item in checked_cartr %}
+                <tr>
+                    <td>{{ item.number }}</td>
+                    <td>{{ item.name }}</td>
+                </tr>
                 {% endfor %}
-                </select>
+                </table>
                 <div class="marginTop">
-                    <label class="marginTop"><input type="checkbox" name="gen_act" />&nbsp;&nbsp;{% trans "Generate an act of transmission?" %}</label>
+                    <div class="input_row">
+                        <label class="required marginTop">{% trans "Which company" %}</label>
+                        {{ form.firms }}<a class="add" href="{% url 'add_firm' %}"></a>
+                    </div>
+                </div>
+                <div class="marginTop">
+                    <div class="input_row">
+                        <label class='required marginTop' for="{{ form.doc.id_for_label }}">{% trans "Service agreement" %}</label>
+                        {{ form.doc }}<a class="add" href="{% url 'docs:delivery' %}"></a>
+                    </div>
+                </div>
+                <div class='marginTop'>
+                     <label for="{{ form.price.id_for_label }}">{% trans "Price" %}</label>
+                        {{ form.price }}
                 </div>
                 <div class="marginTop">
                     <input type="submit" value="{% trans 'Transfer to repair' %}" class="button"/>
