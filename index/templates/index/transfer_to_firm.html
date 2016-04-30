@@ -26,35 +26,37 @@
                 {{ form.numbers }}
                 <table>
                 <tr>
-                    <td>{% trans 'Number' %}</td>
-                    <td>{% trans 'Name' %}</td>
+                    <th>{% trans 'Number' %}</th>
+                    <th>{% trans 'Name' %}</th>
                 </tr>
-                {% for item in checked_cartr %}
+                {% for item in transfe_objs %}
                 <tr>
-                    <td>{{ item.number }}</td>
-                    <td>{{ item.name }}</td>
+                    <td>{{ item.cart_number }}</td>
+                    <td>{{ item.cart_itm_name }}</td>
                 </tr>
                 {% endfor %}
                 </table>
-                <div class="marginTop">
-                    <div class="input_row">
-                        <label class="required marginTop">{% trans "Which company" %}</label>
-                        {{ form.firms }}<a class="add" href="{% url 'add_firm' %}"></a>
+                <div class="row">
+                    <div class="large-7 medium-7 columns">
+                        <label class="required">{% trans "Which company" %}</label>
+                        <div class="input_row">
+                            {{ form.firms }} <a class="add" href="{% url 'add_firm' %}"></a>
+                        </div>
                     </div>
-                </div>
-                <div class="marginTop">
-                    <div class="input_row">
-                        <label class='required marginTop' for="{{ form.doc.id_for_label }}">{% trans "Service agreement" %}</label>
-                        {{ form.doc }}<a class="add" href="{% url 'docs:delivery' %}"></a>
-                    </div>
-                </div>
-                <div class='marginTop'>
-                     <label for="{{ form.price.id_for_label }}">{% trans "Price" %}</label>
+                    <div class="large-5 medium-5 columns">
+                        <label for="{{ form.price.id_for_label }}">{% trans 'Service price' %}, {% trans "Currency" %}</label>
                         {{ form.price }}
+                    </div>
                 </div>
                 <div class="marginTop">
-                    <input type="submit" value="{% trans 'Transfer to repair' %}" class="button"/>
-                    <a class="button no_follow back">{% trans "Cansel" %}</a>
+                    <label class='required' for="{{ form.doc.id_for_label }}">{% trans "Service agreement" %}</label>
+                    <div class="input_row">
+                        {{ form.doc }} <a class="add" href="{% url 'docs:delivery' %}"></a>
+                    </div>
+                </div>
+                <div class="marginTop">
+                    <input type="submit" value="{% trans 'Transfer to repair' %}" class="button no_follow"/>
+                    <a class="button no_follow back" href="{% url 'empty' %}">{% trans "Cansel" %}</a>
                 </div>
             </form>
         </div>

@@ -522,7 +522,7 @@ form select {
 
 /*  -----buttons style---- */
 
-.dj_button.add {
+.dj_button.add, .add {
     display: inline-block;
     width: 33px;
     height: 33px;

@@ -22,6 +22,7 @@ from .forms.add_city import CityF
 from .forms.add_type import AddCartridgeType
 from .forms.add_firm import FirmTonerRefillF
 from .forms.add_empty_items import AddEmptyItems
+from .forms.tr_to_firm import TransfeToFirm
 from .forms.comment import EditCommentForm
 from .models import CartridgeType
 from .models import CartridgeItem
@@ -568,32 +569,28 @@ def from_basket_to_stock(request):
 def transfer_to_firm(request):
     """Передача расходных материалов на заправку.
     """
-    from .forms.tr_to_firm import TransfeToFirm
+    BreadcrumbsPath(request)
     context = dict()
     checked_cartr = request.GET.get('select', '')
-    tmp = ''
-    form = TransfeToFirm()
-    context['form'] = form
-    checked_cartr = [1,23,23]
-    context['checked_cartr'] = checked_cartr
-    return render(request, 'index/transfer_to_firm.html', context)
-
-    """
     if checked_cartr:
         checked_cartr = checked_cartr.split('s')
         checked_cartr = [int(i) for i in checked_cartr]
-        tmp = checked_cartr
-        tmp2 = []
         # преобразовываем айдишники в условные номера
+        transfe_objs = list()
         for cart_id in checked_cartr:
-            tmp2.append(CartridgeItem.objects.get(pk=cart_id).cart_number)
-        checked_cartr = str(tmp2)
-        checked_cartr = checked_cartr[1:-1]
+            transfe_objs.append(CartridgeItem.objects.get(pk=cart_id))
         
+        checked_cartr = str(checked_cartr)  # преобразуем список в строку
+        checked_cartr = checked_cartr[1:-1] # убираем угловые скобочки
     else:
         # если кто-то зашел на страницу не выбрав расходники
-        return HttpResponseRedirect(reverse('empty'))       
-    """
+        return HttpResponseRedirect(reverse('empty'))
+    form = TransfeToFirm(initial = {'numbers': checked_cartr})
+    context['form'] = form
+    context['checked_cartr'] = checked_cartr
+    context['transfe_objs'] = transfe_objs
+    return render(request, 'index/transfer_to_firm.html', context)
+
     """
     if request.method == 'POST':
         
