@@ -57,26 +57,27 @@ def delivery(request):
                     raise Http404
 
                 # производим сохранения изменений
-                doc.number = data_in_post.get('number','')
-                doc.date = data_in_post.get('date','')
-                doc.firm = data_in_post.get('firm','')
-                doc.title = data_in_post.get('title','')
-                doc.short_cont = data_in_post.get('short_cont','')
-                doc_type = data_in_post.get('doc_type', '')
-                doc.money = data_in_post.get('money','')
+                doc.number          = data_in_post.get('number','')
+                doc.date_of_signing = data_in_post.get('date','')
+                doc.firm            = data_in_post.get('firm','')
+                doc.title           = data_in_post.get('title','')
+                doc.short_cont      = data_in_post.get('short_cont','')
+                doc_type            = data_in_post.get('doc_type', '')
+                doc.money           = data_in_post.get('money','')
                 doc.save()
                 messages.success(request, _('%(doc_num)s success saved.') % {'doc_num': doc.number})
             else:
                 # если пользователь просто создаёт новый документ
                 m1 = SCDoc.objects.create(
-                           number      = data_in_post.get('number',''),
-                           date        = data_in_post.get('date',''),
-                           firm        = data_in_post.get('firm',''),
-                           title       = data_in_post.get('title',''),
-                           short_cont  = data_in_post.get('short_cont',''),
-                           money       = data_in_post.get('money',''),
-                           doc_type    = data_in_post.get('doc_type', ''),
-                           departament = request.user.departament
+                           number          = data_in_post.get('number',''),
+                           date_of_signing = data_in_post.get('date', 0),
+                           date_created    = timezone.now(),
+                           firm            = data_in_post.get('firm',''),
+                           title           = data_in_post.get('title',''),
+                           short_cont      = data_in_post.get('short_cont',''),
+                           money           = data_in_post.get('money',''),
+                           doc_type        = data_in_post.get('doc_type', ''),
+                           departament     = request.user.departament
                            )
                 messages.success(request, _('New %(doc_num)s success created.') % {'doc_num': data_in_post.get('number','')})
 
@@ -97,8 +98,8 @@ def delivery(request):
             except SCDoc.DoesNotExist:
                 raise Http404
 
-            if doc.date:
-                date = str(doc.date.day) + '/' +  str(doc.date.month) + '/' + str(doc.date.year)
+            if doc.date_of_signing:
+                date = str(doc.date_of_signing.day) + '/' +  str(doc.date_of_signing.month) + '/' + str(doc.date_of_signing.year)
             else:
                 date = ''
             money = doc.money if doc.money else 0

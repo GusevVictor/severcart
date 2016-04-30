@@ -31,6 +31,7 @@ from .models import City as CityM
 from .models import FirmTonerRefill
 from .models import CartridgeItemName
 from events.models import Events
+from docs.models import SCDoc
 from .helpers import check_ajax_auth
 from .signals import (
                        sign_tr_empty_cart_to_firm,
@@ -586,6 +587,7 @@ def transfer_to_firm(request):
         # если кто-то зашел на страницу не выбрав расходники
         return HttpResponseRedirect(reverse('empty'))
     form = TransfeToFirm(initial = {'numbers': checked_cartr})
+    form.fields['doc'].queryset = SCDoc.objects.filter(departament=request.user.departament).filter(doc_type=2)
     context['form'] = form
     context['checked_cartr'] = checked_cartr
     context['transfe_objs'] = transfe_objs

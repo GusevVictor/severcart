@@ -16,7 +16,7 @@ class TransfeToFirm(forms.Form):
                                     required=True,
                                   )
 
-    doc   = forms.ModelChoiceField(queryset=SCDoc.objects.filter(Q(doc_type=3)), required=False)
+    doc   = forms.ModelChoiceField(queryset=SCDoc.objects.filter(), required=False)
 
     price = forms.IntegerField(required=False) 
 
