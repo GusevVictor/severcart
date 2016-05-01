@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-04-30 19:11+0500\n"
-"PO-Revision-Date: 2016-04-30 19:26+0500\n"
+"PO-Revision-Date: 2016-05-01 11:58+0500\n"
 "Last-Translator: \n"
 "Language-Team: severcart.org <sfcl@mail.ru>\n"
 "Language: ru\n"
@@ -1444,7 +1444,7 @@ msgstr "Расходники в пользовании"
 
 #: .\index\templates\index\transfer_to_firm.html:41
 msgid "Which company"
-msgstr "Кому передаём"
+msgstr "Кому передаём на<br/>заправку"
 
 #: .\index\templates\index\transfer_to_firm.html:47
 msgid "Service price"

@@ -19,7 +19,6 @@ def send_test_email(request):
         data_in_post = form.cleaned_data
         email = data_in_post.get('email', '')
         text  = data_in_post.get('text', '')
-        print(email, text)
         resp_dict['errors'] = ''
         try:
             send_email(reciver=email, title=text, text=text)

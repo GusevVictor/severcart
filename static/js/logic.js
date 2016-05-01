@@ -212,6 +212,53 @@ $( function(){
         });
     });
 
+    $('.transfer_to_repair').click( function() {
+        var transfer_to_firm = $('form.transfer_to_firm').serializeArray();
+        var arg_obj = { 'numbers': transfer_to_firm[1]['value'], 'firm': transfer_to_firm[2]['value'], 'sum': transfer_to_firm[3]['value'], 'doc': transfer_to_firm[4]['value'] };
+        $.ajax({
+            method: 'POST',
+            url: '/api/transfer_to_firm/',
+            data:  arg_obj,
+            beforeSend: function( xhr, settings ){
+                $('.spinner').show();
+                csrftoken = getCookie('csrftoken');
+                if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
+                    xhr.setRequestHeader('X-CSRFToken', csrftoken);
+                }
+            },
+            success: function( msg ) {
+                $('.spinner').hide();
+                if ( msg.success ) {
+                    $('.error_msg').hide();
+                    $('.success_msg').show().html(msg.success);
+                    setTimeout(function() { $('.success_msg').hide(); }, 12000);
+                }
+
+                if ( msg.errors ) {
+                    $('.success_msg').hide();
+                    $('.transfer_to_firm').find('.form_error_text').remove();
+                    for (var key in msg.errors) {
+                        // Check for proper key in dictionary
+                        if (key in {'numbers': 1, 'firm': 1, 'doc': 1, 'price': 1}) {
+                            // Читаем сообщение об ошибке
+                            error = msg.errors[key][0];
+                            field = $('.transfer_to_firm').find('#id_' + key);
+                            // Прикрепляем сообщение с ошибкой после поля
+                            field.after('<div class="form_error_text" style="display: block;">' + error + '</div>');
+                        }
+                    }
+                }
+                
+            },
+            error: function() {
+                $('.spinner').hide();
+                $('.success_msg').hide();
+                $('.error_msg').html('<p>Server not available.</p>');
+                setTimeout(function() { $('.error_msg').hide(); }, 12000);
+            },
+        });
+    });
+
     $('table.checkboxes tr:not(:first)').click(function(event) {
     // улучшитель юзабилити таблиц, при клике по строке выбирается чекбокс    
         if (event.target.type !== 'checkbox') {

@@ -10,7 +10,7 @@ class SCDoc(models.Model):
     DOC_TYPE = (
         (1, _('Delivery agreement')),
         (2, _('Service agreement')),
-        (3, _('Deed of conveyance')),
+        (3, _('Deed of conveyance')), # Акт о передаче
         (4, _('Act of write-off')),
     )
     number           = models.CharField(db_index=True, max_length=256)

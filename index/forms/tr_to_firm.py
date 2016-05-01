@@ -10,7 +10,7 @@ from django.db.models import Q
 class TransfeToFirm(forms.Form):
     numbers = forms.CharField(widget=forms.HiddenInput(), required=True)
     
-    firms = forms.ModelChoiceField(queryset=FirmTonerRefill.objects.all(),
+    firm = forms.ModelChoiceField(queryset=FirmTonerRefill.objects.all(),
                                     error_messages={'required': _('Required field.')},
                                     empty_label='',
                                     required=True,
@@ -19,9 +19,6 @@ class TransfeToFirm(forms.Form):
     doc   = forms.ModelChoiceField(queryset=SCDoc.objects.filter(), required=False)
 
     price = forms.IntegerField(required=False) 
-
-    required_css_class = 'required'
-
 
     def clean_numbers(self):
         """Производим проверку строки на соответствие вида 4,5,6,7.
@@ -32,21 +29,32 @@ class TransfeToFirm(forms.Form):
         
         ret_list = self.cleaned_data.get('numbers', '')
         ret_list = ret_list.split(',')
+        # преобразуем список строк в список айдишников
+        tmp = list()
+        for i in ret_list:
+            try:
+                i = int(i)
+            except:
+                i = 0
+            
+            tmp.append(i)
+        
+        ret_list = tmp
         return ret_list
 
     def clean_price(self):
-        """
+        """Очищаем ценник от шелухи.
         """
         price = self.cleaned_data.get('price', 0)
         try:
             price = int(price)
-        except ValueError:
-            raise ValidationError(_('You have entered the wrong data.'))
+        except:
+            price = 0            
 
-        if price <= 0:
+        if price < 0:
             raise ValidationError(_('The value must be greater than zero.'))
 
-        return self.cleaned_data.get('price', '')
+        return price
 
     def clean_doc(self):
         """
@@ -55,3 +63,13 @@ class TransfeToFirm(forms.Form):
             return None
         doc_id = self.cleaned_data.get('doc', '')
         return doc_id.pk
+
+    def clean_firm(self):
+        """
+        """
+        if not self.cleaned_data.get('firm', ''):
+            raise ValidationError(_('Required field.'))
+
+        # TODO выполнить более продвинутую проверку на существование pk в СУБД
+        firm = self.cleaned_data.get('firm')
+        return firm.pk

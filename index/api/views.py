@@ -23,8 +23,10 @@ from index.signals import ( sign_turf_cart,
                             sign_tr_empty_cart_to_stock,
                             sign_tr_cart_to_basket, 
                             sign_add_empty_to_stock, 
-                            sign_tr_cart_to_uses, )
+                            sign_tr_cart_to_uses, 
+                            sign_tr_empty_cart_to_firm, ) 
 from index.forms.add_items import AddItems
+from index.forms.tr_to_firm import TransfeToFirm
 from docs.models import SCDoc
 from common.helpers import is_admin
 
@@ -232,6 +234,72 @@ def transfer_to_stock(request):
     ansver['error'] = '0'
     ansver['text']   = _('Cartridges successfully moved.')
     return JsonResponse(ansver, safe=False)
+
+
+@check_ajax_auth
+def transfer_to_firm(request):
+    """Передача картриджей на обслуживание.
+    """
+    ansver = dict()
+    if request.method != 'POST':
+        return HttpResponse('<h1>' + _('Only use POST requests!') + '</h1>')    
+
+    form = TransfeToFirm(request.POST)
+    if form.is_valid():
+        data_in_post = form.cleaned_data
+        numbers      = data_in_post.get('numbers')
+        firm         = data_in_post.get('firm')
+        doc          = data_in_post.get('doc')
+        price        = data_in_post.get('price')
+
+        firm = FirmTonerRefill.objects.get(pk=firm) 
+        # генерируем запись о заправке
+        jsoning_list = []
+        for inx in numbers:
+            cart_number = CartridgeItem.objects.get(pk=inx).cart_number
+            cart_name   = CartridgeItem.objects.get(pk=inx).cart_itm_name
+            jsoning_list.append([cart_number, str(cart_name)])
+        jsoning_list = json.dumps(jsoning_list)
+        
+        # генерируем номер акта передачи на основе даты и его порядкового номера
+        act_docs = SCDoc.objects.filter(departament=request.user.departament).filter(doc_type=3).count()
+        if act_docs:
+            act_docs   = act_docs + 1
+            act_number = str(timezone.now().year) + '_' + str(act_docs)
+        else:
+            act_number = str(timezone.now().year) + '_1'
+
+        act_doc = SCDoc(number       = act_number,
+                        date_created = timezone.now(),
+                        firm         = firm,
+                        title        = _('Deed of conveyance'),
+                        short_cont   = jsoning_list,
+                        departament  = request.user.departament,
+                        doc_type     = 3,
+                        user         = str(request.user.fio)
+                        )
+        act_doc.save()
+        list_cplx = list()
+        for inx in numbers:
+            m1 = CartridgeItem.objects.get(pk=inx)
+            m1.cart_status = 4 # находится на заправке
+            m1.filled_firm = firm
+            m1.cart_date_change = timezone.now()
+            m1.save()
+            list_cplx.append((m1.pk, str(m1.cart_itm_name), m1.cart_number))
+            
+        sign_tr_empty_cart_to_firm.send(sender=None, 
+                                        list_cplx=list_cplx, 
+                                        request=request, 
+                                        firm=str(firm)
+                                        )
+        ansver['success'] = _('Cartridges %(cart_nums)s successfully moved to firm.') % {'cart_nums': str(numbers)}
+    else:
+        # если форма содержит ошибки, то сообщаем о них пользователю.
+        error_messages = dict([(key, [error for error in value]) for key, value in form.errors.items()])
+        ansver['errors'] = error_messages
+        print('error_messages = ', error_messages)
+    return JsonResponse(ansver)
 
 
 @check_ajax_auth

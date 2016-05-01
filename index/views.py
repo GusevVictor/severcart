@@ -33,9 +33,7 @@ from .models import CartridgeItemName
 from events.models import Events
 from docs.models import SCDoc
 from .helpers import check_ajax_auth
-from .signals import (
-                       sign_tr_empty_cart_to_firm,
-                       sign_tr_filled_cart_to_stock )
+from .signals import sign_tr_filled_cart_to_stock
 
 import logging
 logger = logging.getLogger('simp')
@@ -593,64 +591,6 @@ def transfer_to_firm(request):
     context['transfe_objs'] = transfe_objs
     return render(request, 'index/transfer_to_firm.html', context)
 
-    """
-    if request.method == 'POST':
-        
-        try:
-            firmid = int(request.POST['firm'])
-            if firmid == 0:
-                raise ValueError
-        except ValueError:
-            messages.error(request, _('You input not correct firm name'))
-            return render(request, 'index/transfer_to_firm.html', {'checked_cartr': checked_cartr, 
-                                                                    'firms' : firms, 
-                                                                })            
-        else:
-            list_cplx = []
-            select_firm = FirmTonerRefill.objects.get(pk=firmid) 
-            gen_act = request.POST.get('gen_act', '') # если чекбокс установлен, то метод вернет on
-            if gen_act == 'on':
-                from docs.models import SCDoc
-                # генерируем акт передачи
-                jsoning_list = []
-                for inx in tmp:
-                    cart_number = CartridgeItem.objects.get(pk=inx).cart_number
-                    cart_name = CartridgeItem.objects.get(pk=inx).cart_itm_name
-                    jsoning_list.append([cart_number, str(cart_name)])
-                jsoning_list = json.dumps(jsoning_list)
-                
-                # генерируем номер акта передачи на основе даты и его порядкового номера
-                act_docs = SCDoc.objects.filter(departament=request.user.departament).filter(doc_type=3).count()
-                if act_docs:
-                    act_docs   = act_docs + 1
-                    act_number = str(timezone.now().year) + '_' + str(act_docs)
-                else:
-                    act_number = str(timezone.now().year) + '_1'
-
-                act_doc = SCDoc(number=act_number,
-                                date=timezone.now(),
-                                firm=select_firm,
-                                title='Act',
-                                short_cont=jsoning_list,
-                                departament=request.user.departament,
-                                doc_type=3,
-                                user=str(request.user.fio),)
-                act_doc.save()
-
-            for inx in tmp:
-                m1 = CartridgeItem.objects.get(pk=inx)
-                m1.cart_status = 4 # находится на заправке
-                m1.filled_firm = select_firm
-                m1.cart_date_change = timezone.now()
-                m1.save(update_fields=['filled_firm', 'cart_status', 'cart_date_change'])
-                list_cplx.append((m1.pk, str(m1.cart_itm_name), m1.cart_number))
-            
-            sign_tr_empty_cart_to_firm.send(sender=None, 
-                                            list_cplx=list_cplx, 
-                                            request=request, 
-                                            firm=str(select_firm))
-        return HttpResponseRedirect(reverse('empty'))
-    """
 
 @login_required
 @never_cache
