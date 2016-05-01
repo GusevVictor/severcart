@@ -1,5 +1,6 @@
 {% extends "index/base.html" %}{% load staticfiles %}{% load i18n %}
 {% load pagination  %}
+{% load docsf %}
 {% block title %}{% trans "Acts of transfer for restoration" %}{% endblock %}
 {% block breadcrumbs %}<a href="/"><img src="{{ STATIC_URL }}img/home.png" /></a> / <a href="{% url 'docs:handbook' %}">{% trans "References" %}</a> / {% trans "Acts of transfer for restoration" %}{% endblock %}
 {% block submenu %}
@@ -18,6 +19,8 @@
                 <tr>
                     <th class="first_checkbox">&nbsp;&nbsp;&nbsp;</th>
                     <th>{% trans "Extension number" %}</th>
+                    <th>{% trans "Spent" %}, {% trans "Currency" %}</th>
+                    <th>{% trans "Contract" %}</th>
                     <th class="cart_name">{% trans "Date of transfer" %}</th>
                     <th class="fio">{% trans "Who passed" %}</th>
                     <th>{% trans "Who gave" %}</th>
@@ -26,7 +29,9 @@
                 <tr>
                     <td><input type="radio" value={{ elem.pk }} name="name_id"></td>
                     <td>{{ elem.number }}</td>
-                    <td>{{ elem.date|date:"d.m.Y" }}</td>
+                    <td>{{ elem.spent| divide }}</td>
+                    <td><a data-powertip=""><img src="{{ STATIC_URL }}img/info.png" /></a></td>
+                    <td>{{ elem.date_created|date:"d.m.Y" }}</td>
                     <td>{{ elem.user }}</td>
                     <td>{{ elem.firm }}</td>
                     <td>
@@ -41,5 +46,5 @@
         </form>
     </div>
 </div>
-{% found_pagination items page_size %}
+{% found_pagination docs page_size %}
 {% endblock %}

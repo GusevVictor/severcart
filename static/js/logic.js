@@ -214,7 +214,7 @@ $( function(){
 
     $('.transfer_to_repair').click( function() {
         var transfer_to_firm = $('form.transfer_to_firm').serializeArray();
-        var arg_obj = { 'numbers': transfer_to_firm[1]['value'], 'firm': transfer_to_firm[2]['value'], 'sum': transfer_to_firm[3]['value'], 'doc': transfer_to_firm[4]['value'] };
+        var arg_obj = { 'numbers': transfer_to_firm[1]['value'], 'firm': transfer_to_firm[2]['value'], 'price': transfer_to_firm[3]['value'], 'doc': transfer_to_firm[4]['value'] };
         $.ajax({
             method: 'POST',
             url: '/api/transfer_to_firm/',

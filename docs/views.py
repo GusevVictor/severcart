@@ -213,5 +213,6 @@ class ViewSendActs(GridListView):
         all_acts = SCDoc.objects.filter(doc_type=3).filter(departament=request.user.departament).order_by('pk')
         page_size = self.items_per_page()
         self.context['page_size'] = page_size
+        print('page_size = ', page_size)
         self.context['docs'] = self.pagination(all_acts, page_size)
         return render(request, 'docs/acts_list.html', self.context)

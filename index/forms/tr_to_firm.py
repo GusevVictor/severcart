@@ -1,5 +1,5 @@
 # -*- coding:utf-8 -*-
-
+import re
 from django import forms
 from django.core.exceptions import ValidationError
 from django.utils.translation import ugettext_lazy as _
@@ -18,7 +18,7 @@ class TransfeToFirm(forms.Form):
 
     doc   = forms.ModelChoiceField(queryset=SCDoc.objects.filter(), required=False)
 
-    price = forms.IntegerField(required=False) 
+    price = forms.CharField(required=False) 
 
     def clean_numbers(self):
         """Производим проверку строки на соответствие вида 4,5,6,7.
@@ -43,13 +43,20 @@ class TransfeToFirm(forms.Form):
         return ret_list
 
     def clean_price(self):
-        """Очищаем ценник от шелухи.
+        """Преобразуем цену в копейки/доллар центы/евро центры
         """
-        price = self.cleaned_data.get('price', 0)
+        price = self.cleaned_data.get('price', '')
+        price = re.split('[\,\.]', price)
         try:
-            price = int(price)
+            price = [int(i) for i in price]
         except:
-            price = 0            
+            price = 0
+
+        if isinstance(price, list) and len(price) == 2:
+            price = price[0]*100 + price[1]
+
+        if isinstance(price, list) and len(price) == 1:
+            price = price[0]*100
 
         if price < 0:
             raise ValidationError(_('The value must be greater than zero.'))

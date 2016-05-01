@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-04-30 19:11+0500\n"
-"PO-Revision-Date: 2016-05-01 11:58+0500\n"
+"PO-Revision-Date: 2016-05-01 15:35+0500\n"
 "Last-Translator: \n"
 "Language-Team: severcart.org <sfcl@mail.ru>\n"
 "Language: ru\n"
@@ -533,7 +533,7 @@ msgstr "Акты передачи на заправку"
 
 #: .\docs\templates\docs\acts_list.html:20
 msgid "Extension number"
-msgstr "Внутренний номер"
+msgstr "Внутренний<br/>номер"
 
 #: .\docs\templates\docs\acts_list.html:21
 msgid "Date of transfer"

@@ -251,7 +251,6 @@ def transfer_to_firm(request):
         firm         = data_in_post.get('firm')
         doc          = data_in_post.get('doc')
         price        = data_in_post.get('price')
-
         firm = FirmTonerRefill.objects.get(pk=firm) 
         # генерируем запись о заправке
         jsoning_list = []
@@ -274,9 +273,11 @@ def transfer_to_firm(request):
                         firm         = firm,
                         title        = _('Deed of conveyance'),
                         short_cont   = jsoning_list,
+                        spent        = price,
                         departament  = request.user.departament,
                         doc_type     = 3,
-                        user         = str(request.user.fio)
+                        parent_doc   = doc,
+                        user         = str(request.user)
                         )
         act_doc.save()
         list_cplx = list()
