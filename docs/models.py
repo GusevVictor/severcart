@@ -23,6 +23,7 @@ class SCDoc(models.Model):
     spent            = models.IntegerField(db_index=True, null=True)
     departament      = models.ForeignKey(OrganizationUnits)
     doc_type         = models.IntegerField(choices=DOC_TYPE)
+    parent_doc       = models.IntegerField(db_index=True, null=True)
     user             = models.CharField(max_length=256, null=True)
 
     def __str__(self):
