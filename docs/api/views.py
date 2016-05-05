@@ -12,6 +12,8 @@ from docx import Document
 from docx.shared import Inches
 from index.models import CartridgeItemName, CartridgeType, CartridgeItem
 from index.helpers import check_ajax_auth
+from docs.models import RefillingCart
+from docs.helpers import group_names
 
 
 import logging
@@ -68,9 +70,6 @@ def del_cart_name(request):
 def generate_act(request):
     """Генерация нового docx документа. Вью возвращает Url с свежезгенерированным файлом. 
     """
-    from docs.models import SCDoc
-    from docs.helpers import group_names
-
     resp_dict = dict()
     if request.method != 'POST':
         return HttpResponse('<h1>' + _('Only use POST requests!') + '</h1>')
@@ -84,13 +83,13 @@ def generate_act(request):
         doc_id = 0
 
     try:
-        m1 = SCDoc.objects.get(pk=doc_id)
-    except SCDoc.DoesNotExist:
+        m1 = RefillingCart.objects.get(pk=doc_id)
+    except RefillingCart.DoesNotExist:
         resp_dict['error'] = '1'
         resp_dict['text']  = _('The object with the ID is not found.')
         return JsonResponse(resp_dict, safe=False)
 
-    jsontext = m1.short_cont
+    jsontext = m1.json_content
     jsontext = json.loads(jsontext)
 
     if not os.path.exists(settings.STATIC_ROOT_DOCX):
@@ -116,7 +115,7 @@ def generate_act(request):
             table = document.add_table(rows=1, cols=2)
             hdr_cells = table.rows[0].cells
             hdr_cells[0].text = _('The name of the cartridge')
-            hdr_cells[1].text = _('Amount')
+            hdr_cells[1].text = _('Amount cartridges')
             for item in names_counts:
                 row_cells = table.add_row().cells
                 row_cells[0].text = str(item[0])
