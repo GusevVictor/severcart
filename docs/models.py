@@ -23,8 +23,23 @@ class SCDoc(models.Model):
     spent            = models.IntegerField(db_index=True, null=True)
     departament      = models.ForeignKey(OrganizationUnits)
     doc_type         = models.IntegerField(choices=DOC_TYPE)
-    parent_doc       = models.IntegerField(db_index=True, null=True)
     user             = models.CharField(max_length=256, null=True)
 
     def __str__(self):
         return ('%s %s') % (self.number, self.title,)
+
+class RefillingCart(models.Model):
+    """Списки передаваемых катриджей на заправку, с указанием документа основания
+       передачи и стоимости обслуживания.
+    """
+    number           = models.CharField(db_index=True, max_length=256)
+    date_created     = models.DateField(db_index=True, null=True) # дата передачи картриджей на заправку
+    firm             = models.CharField(max_length=256)
+    user             = models.CharField(max_length=256, null=True)
+    json_content     = models.TextField()
+    money            = models.IntegerField(db_index=True, null=True)
+    parent_doc       = models.ForeignKey(SCDoc, null=True)
+    departament      = models.ForeignKey(OrganizationUnits)
+
+    def __str__(self):
+        return ('%s') % (self.number,)
