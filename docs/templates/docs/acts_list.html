@@ -29,8 +29,8 @@
                 <tr>
                     <td><input type="radio" value={{ elem.pk }} name="name_id"></td>
                     <td>{{ elem.number }}</td>
-                    <td>{{ elem.spent| divide }}</td>
-                    <td doc_id="{{ elem.parent_doc }}"><a data-powertip=""><img src="{{ STATIC_URL }}img/info.png" /></a></td>
+                    <td>{{ elem.money| divide }}</td>
+                    <td doc_id="{{ elem.parent_doc.pk }}"><a data-powertip="{{ elem.parent_doc.title }} {{ elem.parent_doc.short_cont }}"><img src="{{ STATIC_URL }}img/info.png" /></a></td>
                     <td>{{ elem.date_created|date:"d.m.Y" }}</td>
                     <td>{{ elem.user }}</td>
                     <td>{{ elem.firm }}</td>

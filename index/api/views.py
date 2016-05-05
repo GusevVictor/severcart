@@ -306,7 +306,6 @@ def transfer_to_firm(request):
         # если форма содержит ошибки, то сообщаем о них пользователю.
         error_messages = dict([(key, [error for error in value]) for key, value in form.errors.items()])
         ansver['errors'] = error_messages
-        print('error_messages = ', error_messages)
     return JsonResponse(ansver)
 
 
