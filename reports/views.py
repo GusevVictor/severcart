@@ -131,7 +131,7 @@ def products(request):
                             """ % (org, start_date, end_date,)                
             cursor = connection.cursor()
             cursor.execute(SQL_QUERY)
-            print('Result execute script = ', cursor.fetchall())
+            context['all_items'] = cursor.fetchall()
         else:
             print('Form invalid')
         
