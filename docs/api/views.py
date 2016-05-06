@@ -403,5 +403,4 @@ def calculate_sum(request):
         result[doc_id] = sum 
 
     ansver['result'] = result
-    print('result = ', result)    
     return JsonResponse(ansver)
