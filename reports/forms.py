@@ -84,6 +84,8 @@ class UseProducts(forms.Form):
         """
         if not self.cleaned_data.get('org', ''):
             raise ValidationError(_('Required field.'))
+        org = self.cleaned_data.get('org')
+        org = org.pk
         try:
             org = int(org)
         except:
@@ -102,11 +104,11 @@ class UseProducts(forms.Form):
         if len(start_date) == 3:
             # если пользователь не смухлевал, то кол-во элементов = 3
             date_value  = start_date[0]
-            date_value  = del_leding_zero(date_value)
+            #date_value  = del_leding_zero(date_value)
             month_value = start_date[1]
-            month_value = del_leding_zero(month_value)
+            #month_value = del_leding_zero(month_value)
             year_value  = start_date[2]
-            gte_date    = '%s-%s-%s 00-00-00' % (year_value, month_value, date_value,)
+            gte_date    = '%s-%s-%s 00:00:00' % (year_value, month_value, date_value,)
         else:
             raise ValidationError(_('Error in start date.'))
         return gte_date
@@ -121,11 +123,11 @@ class UseProducts(forms.Form):
         if  end_date and len(end_date) == 3:
             # если пользователь не смухлевал, то кол-во элементов = 3
             date_value  = end_date[0]
-            date_value  = del_leding_zero(date_value)
+            #date_value  = del_leding_zero(date_value)
             month_value = end_date[1]
-            month_value = del_leding_zero(month_value)
+            #month_value = del_leding_zero(month_value)
             year_value  = end_date[2]
-            lte_date    = '%s-%s-%s 00-00-00' % (year_value, month_value, date_value,)
+            lte_date    = '%s-%s-%s 00:00:00' % (year_value, month_value, date_value,)
         else:
             return False
         return lte_date

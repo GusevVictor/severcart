@@ -93,30 +93,42 @@ def products(request):
             #
             if start_date and not(end_date):
                 # если определена дата начала анализа, дата окончания пропущена
-                SQL_QUERY = """SELECT cart_type, COUNT(cart_type) FROM events_events 
+                SQL_QUERY = """SELECT 
+                                    cart_type, COUNT(cart_type) 
+                                FROM 
+                                    events_events 
                                 WHERE
-                                events_events.event_type = 'TR' AND events_events.departament == %s AND 
-                                events_events.date_time >= '%s' 
-                                GROUP_BY cart_type;
+                                    event_type = 'TR' AND departament = %s AND 
+                                    date_time >= '%s'
+                                GROUP BY 
+                                    cart_type;
                             """ % (org, start_date,)
             if not(start_date) and end_date:               
                 # если проеделена крайняя дата просмотра, а дата начала 
                 # не определена
-                SQL_QUERY = """SELECT cart_type, COUNT(cart_type) FROM events_events 
+                SQL_QUERY = """SELECT 
+                                    cart_type, 
+                                    COUNT(cart_type) 
+                                FROM 
+                                    events_events 
                                 WHERE
-                                events_events.event_type = 'TR' AND events_events.departament == %s AND 
-                                events_events.date_time >= '%s' 
-                                GROUP_BY cart_type;
+                                    event_type = 'TR' AND departament = %s AND 
+                                date_time <= '%s'
+                                GROUP BY 
+                                    cart_type;
                             """ % (org, end_date,)
 
             if start_date and end_date:
-                SQL_QUERY = """SELECT cart_type, COUNT(cart_type) FROM events_events
+                SQL_QUERY = """SELECT 
+                                    cart_type, COUNT(cart_type) 
+                                FROM 
+                                    events_events
                                 WHERE 
-                                events_events.event_type = 'TR' AND events_events.departament == %s AND 
-                                events_events.date_time >= '%s' AND events_events.date_time <= '%s'
-                                GROUP_BY cart_type;
+                                    event_type = 'TR' AND departament = %s AND 
+                                    date_time >= '%s' AND date_time <= '%s'
+                                GROUP BY
+                                    cart_type;
                             """ % (org, start_date, end_date,)                
-            
             cursor = connection.cursor()
             cursor.execute(SQL_QUERY)
             print('Result execute script = ', cursor.fetchall())
