@@ -3,11 +3,14 @@
 from django.shortcuts import render
 import datetime
 from django.contrib.auth.decorators import login_required
+from django.contrib import messages
 from django.utils import timezone
+from django.db import connection
 from django.views.decorators.cache import never_cache
 from common.helpers import BreadcrumbsPath
-from .forms import NoUse, Amortizing, UsersCartridges
+from reports.forms import NoUse, Amortizing, UsersCartridges, UseProducts
 from index.models import CartridgeItem
+
 
 @login_required
 @never_cache
@@ -71,3 +74,55 @@ def users(request):
     else: 
         context['form'] = UsersCartridges(initial={'org': request.user.departament})
     return render(request, 'reports/users.html', context)
+
+@login_required
+@never_cache
+def products(request):
+    """Отчёт о используемых наименований РМ и их количестве за период.
+    """
+    context = dict()
+    if request.method == 'POST':
+        form = UseProducts(request.POST)
+        context['form'] = form
+        if form.is_valid():
+            data_in_post = form.cleaned_data
+            org          = data_in_post.get('org', '')
+            start_date   = data_in_post.get('start_date', '')
+            end_date     = data_in_post.get('end_date', '')
+            
+            #
+            if start_date and not(end_date):
+                # если определена дата начала анализа, дата окончания пропущена
+                SQL_QUERY = """SELECT cart_type, COUNT(cart_type) FROM events_events 
+                                WHERE
+                                events_events.event_type = 'TR' AND events_events.departament == %s AND 
+                                events_events.date_time >= '%s' 
+                                GROUP_BY cart_type;
+                            """ % (org, start_date,)
+            if not(start_date) and end_date:               
+                # если проеделена крайняя дата просмотра, а дата начала 
+                # не определена
+                SQL_QUERY = """SELECT cart_type, COUNT(cart_type) FROM events_events 
+                                WHERE
+                                events_events.event_type = 'TR' AND events_events.departament == %s AND 
+                                events_events.date_time >= '%s' 
+                                GROUP_BY cart_type;
+                            """ % (org, end_date,)
+
+            if start_date and end_date:
+                SQL_QUERY = """SELECT cart_type, COUNT(cart_type) FROM events_events
+                                WHERE 
+                                events_events.event_type = 'TR' AND events_events.departament == %s AND 
+                                events_events.date_time >= '%s' AND events_events.date_time <= '%s'
+                                GROUP_BY cart_type;
+                            """ % (org, start_date, end_date,)                
+            
+            cursor = connection.cursor()
+            cursor.execute(SQL_QUERY)
+            print('Result execute script = ', cursor.fetchall())
+        else:
+            print('Form invalid')
+        
+    else:
+        context['form'] = UseProducts()
+    return render(request, 'reports/products.html', context)

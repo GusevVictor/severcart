@@ -4,6 +4,7 @@ from django import forms
 from django.utils.translation import ugettext_lazy as _
 from index.models import OrganizationUnits
 from django.core.exceptions import ValidationError
+from common.helpers import del_leding_zero
 
 
 class NoUse(forms.Form):
@@ -68,3 +69,63 @@ class UsersCartridges(forms.Form):
     start_date = forms.CharField(required=True, widget=forms.TextInput(attrs={'class':'datepicker', 'readonly':'readonly'}), label=_('Start date'))
 
     required_css_class = 'required'
+
+class UseProducts(forms.Form):
+    org = forms.ModelChoiceField(queryset=OrganizationUnits.objects.root_nodes(), label=_('Organization unit'))
+
+    start_date = forms.CharField(widget=forms.TextInput(attrs={'class':'datepicker', 'readonly':'readonly'}), label=_('Start date'))
+
+    end_date = forms.CharField(required=False, widget=forms.TextInput(attrs={'class':'datepicker', 'readonly':'readonly'}), label=_('End date'))
+
+    required_css_class = 'required'
+
+    def clean_org(self):
+        """Проверят на пустоту введенные данные.
+        """
+        if not self.cleaned_data.get('org', ''):
+            raise ValidationError(_('Required field.'))
+        try:
+            org = int(org)
+        except:
+            org = 0
+        return org
+
+    def clean_start_date(self):
+        """Проверят на пустоту введенные данные.
+        """
+        if not self.cleaned_data.get('start_date', ''):
+            raise ValidationError(_('Required field.'))
+
+        start_date = self.cleaned_data.get('start_date', '').strip()
+        start_date = start_date.split(r'/')
+
+        if len(start_date) == 3:
+            # если пользователь не смухлевал, то кол-во элементов = 3
+            date_value  = start_date[0]
+            date_value  = del_leding_zero(date_value)
+            month_value = start_date[1]
+            month_value = del_leding_zero(month_value)
+            year_value  = start_date[2]
+            gte_date    = '%s-%s-%s 00-00-00' % (year_value, month_value, date_value,)
+        else:
+            raise ValidationError(_('Error in start date.'))
+        return gte_date
+
+    def clean_end_date(self):
+        """Проверят на пустоту введенные данные.
+        """
+        # проверяем на корректность дату окончания просмотра списка
+        end_date = self.cleaned_data.get('end_date', '').strip()
+        end_date = end_date.split(r'/')
+        
+        if  end_date and len(end_date) == 3:
+            # если пользователь не смухлевал, то кол-во элементов = 3
+            date_value  = end_date[0]
+            date_value  = del_leding_zero(date_value)
+            month_value = end_date[1]
+            month_value = del_leding_zero(month_value)
+            year_value  = end_date[2]
+            lte_date    = '%s-%s-%s 00-00-00' % (year_value, month_value, date_value,)
+        else:
+            return False
+        return lte_date

@@ -1,0 +1,54 @@
+{% extends "index/base.html" %}{% load staticfiles %}{% load filters %}{% load i18n %}
+{% block title %}{% trans "Consumption of consumables" %}{% endblock %}
+{% block breadcrumbs %}<a href="/"><img src="{{ STATIC_URL }}img/home.png" /></a> / <a href="{% url 'docs:handbook' %}">{% trans "References" %}</a> / {% trans "Consumption of consumables" %}{% endblock %}
+{% block jqueryui%}
+<link rel="stylesheet" href="{{ STATIC_URL }}css/jquery-ui.css" />
+<script src="{{ STATIC_URL }}js/jquery-ui.js"></script>
+<script src="{{ STATIC_URL }}js/datepicker.js"></script>
+<script src="{{ STATIC_URL }}js/datepicker-ru.js"></script>
+{% endblock %}
+{% block content %}
+<div class="row">
+    <div class="large-6 columns">
+        <div class="success_msg"></div>
+        <div class="error_msg"></div>
+    </div>
+</div>
+<div class="row">
+    <div class="large-8 columns">
+        <div class="row">
+            <div class="large-6 columns">
+                <form method="POST">{% csrf_token %}
+                <div class="marginTop">
+                    {{ form.org.label_tag }}
+                    {{ form.org }}
+                    {{ form.org.errors }}
+                </div>
+                <div class="marginTop">
+                    {{ form.start_date.label_tag }}
+                    <div class="calendar">{{ form.start_date }}</div>
+                    {{ form.start_date.errors }}
+                </div>
+                <div class="marginTop">
+                    {{ form.end_date.label_tag }}
+                    <div class="calendar">{{ form.end_date }}</div>
+                    {{ form.end_date.errors }}
+                </div>
+                <div class="marginTop">
+                    <input class="button" value="{% trans 'Generate' %}" type="submit" />
+                    <a class="button" href="{{ back }}">{% trans "Back" %}</a>
+                </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="large-4 columns">
+        {% include "reports/vertical_menu.html" %}
+    </div>
+</div>
+<div class="row">
+    <div class="large-8 columns">
+        <div class="users_result"></div>
+    </div>
+</div>
+{% endblock %}
