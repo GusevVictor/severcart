@@ -12,7 +12,7 @@ from docx import Document
 from docx.shared import Inches
 from index.models import CartridgeItemName, CartridgeType, CartridgeItem
 from index.helpers import check_ajax_auth
-from docs.models import RefillingCart
+from docs.models import RefillingCart, SCDoc
 from docs.helpers import group_names
 
 
@@ -375,3 +375,33 @@ def generate_pdf(request):
     pdf_doc.fin()
     resp_dict['url'] = settings.STATIC_URL + 'pdf/' + pdf_file_name
     return JsonResponse(resp_dict)
+
+@check_ajax_auth
+def calculate_sum(request):
+    """Подсчёт истраченных денег по заданному в списке контракту 
+       на обслуживание.
+    """
+    ansver = dict()
+    list_contracts =request.POST.getlist('service_contracts[]', [])
+    try:
+        list_contracts = [ int(i) for i in list_contracts ]
+    except:
+        list_contracts = []
+    #выполняем перебор всех актов передачи для заданного
+    #договра обслуживания 
+    result = dict()
+    for doc_id in list_contracts:
+        try:
+            doc = SCDoc.objects.get(pk=doc_id)
+        except SCDoc.DoesNotExist:
+            doc = None
+        list_acts = RefillingCart.objects.filter(parent_doc=doc)
+        sum = 0
+        for item in list_acts:
+            sum = sum + item.money
+
+        result[doc_id] = sum 
+
+    ansver['result'] = result
+    print('result = ', result)    
+    return JsonResponse(ansver)

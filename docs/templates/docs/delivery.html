@@ -85,7 +85,7 @@
 <div class="row">
     <div class="large-12 columns">{% if not_show_form %}<a class="button" href="{{ back }}">{% trans 'Back' %}</a>{% endif %}
         <div class="marginTop">
-            <table class="checkboxes">
+            <table class="checkboxes contacts">
                 <form>
                     <tr>
                         <th>&nbsp;&nbsp;&nbsp;</th>
@@ -110,8 +110,13 @@
                         <td>{{ doc.date_of_signing|date:"d.m.Y" }}</td>
                         <td>{{ doc.firm }}</td>
                         <td>{{ doc.money | divide}}</td>
-                        <td doc_id="{{ doc.pk }}">
-                            {% if doc.spent %} {{ doc.spent }} {% else %} 0 {% endif %}
+                        <td doc_id={{ doc.pk }} doc_type="{{ doc.doc_type }}" class="service_{{ doc.pk }}">
+                            {% if doc.doc_type == 1 %}
+                                {{ doc.money | divide }}
+                            {% endif %}
+                            {% if doc.doc_type == 2 %}
+                                <img src="{{ STATIC_URL }}img/loader.gif" />
+                            {% endif %}
                         </td>
                         <td title="{{ doc.short_cont }}">{{ doc.short_cont|truncatechars:30 }}</td>
                     </tr>
