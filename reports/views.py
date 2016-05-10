@@ -94,44 +94,48 @@ def products(request):
             if start_date and not(end_date):
                 # если определена дата начала анализа, дата окончания пропущена
                 SQL_QUERY = """SELECT 
-                                    cart_type, COUNT(cart_type) 
+                                    cart_type, COUNT(cart_type) as cart_count 
                                 FROM 
                                     events_events 
                                 WHERE
                                     event_type = 'TR' AND departament = %s AND 
                                     date_time >= '%s'
                                 GROUP BY 
-                                    cart_type;
+                                    cart_type
+                                ORDER BY cart_count DESC;
                             """ % (org, start_date,)
             if not(start_date) and end_date:               
                 # если проеделена крайняя дата просмотра, а дата начала 
                 # не определена
                 SQL_QUERY = """SELECT 
                                     cart_type, 
-                                    COUNT(cart_type) 
+                                    COUNT(cart_type) as cart_count
                                 FROM 
                                     events_events 
                                 WHERE
                                     event_type = 'TR' AND departament = %s AND 
                                 date_time <= '%s'
                                 GROUP BY 
-                                    cart_type;
+                                    cart_type
+                                ORDER BY cart_count DESC;
                             """ % (org, end_date,)
 
             if start_date and end_date:
                 SQL_QUERY = """SELECT 
-                                    cart_type, COUNT(cart_type) 
+                                    cart_type, COUNT(cart_type) as cart_count
                                 FROM 
                                     events_events
                                 WHERE 
                                     event_type = 'TR' AND departament = %s AND 
                                     date_time >= '%s' AND date_time <= '%s'
                                 GROUP BY
-                                    cart_type;
+                                    cart_type
+                                ORDER BY cart_count DESC;
                             """ % (org, start_date, end_date,)                
             cursor = connection.cursor()
             cursor.execute(SQL_QUERY)
             context['all_items'] = cursor.fetchall()
+            print('all_items = ', context['all_items'])
         else:
             print('Form invalid')
         
