@@ -135,7 +135,6 @@ def products(request):
             cursor = connection.cursor()
             cursor.execute(SQL_QUERY)
             context['all_items'] = cursor.fetchall()
-            print('all_items = ', context['all_items'])
         else:
             print('Form invalid')
         
