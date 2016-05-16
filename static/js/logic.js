@@ -1412,4 +1412,21 @@ $( function(){
         }
     });
 
+    $('.edit_storage_info').click( function() {
+        /*  Редактирование имеющейся информации о 
+           складских помещениях.  */
+        var selected = 0;
+        $('.checkboxes input:checked').each(function() {
+            if ($(this).attr('value')) {
+                selected = $(this).attr('value');
+            }
+        });
+        window.location.href = '/storages/edit/?select=' + selected;
+    });
+
+    $('.del_storage').click( function() {
+        /* Удаление склада */
+        
+    });
+
 });

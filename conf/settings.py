@@ -42,6 +42,7 @@ INSTALLED_APPS = (
     'reports',
     'service',
     'search',
+    'storages',
 )
 
 MIDDLEWARE_CLASSES = (

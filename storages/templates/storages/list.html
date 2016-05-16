@@ -1,0 +1,52 @@
+{% extends "index/base.html" %}{% load staticfiles %}{% load i18n %}
+{% load pagination  %}
+{% load docsf %}
+{% block title %}{% trans "List storages in organization" %}{% endblock %}
+{% block breadcrumbs %}<a href="/"><img src="{{ STATIC_URL }}img/home.png" /></a> / <a href="{% url 'docs:handbook' %}">{% trans "References" %}</a> / {% trans "List storages in organization" %}{% endblock %}
+{% block submenu %}
+<div class="row">
+    <div class="large-6 columns">
+        <div class="success_msg"></div>
+        <div class="error_msg"></div>
+    </div>
+</div>
+{% endblock %}
+{% block content %}
+<div class="row">
+    <div class="large-12 columns">
+        <a class="button success" href="{% url 'storages:add' %}">{% trans "Add" %}</a>
+        <a class="button edit_storage_info no_follow" href="{% url 'storages:edit' %}">{% trans "Edit" %}</a>
+        <a class="button del_storage alert no_follow" href="">{% trans "Delete" %}</a>
+        <img class="spinner" src="{{ STATIC_URL }}img/loader.gif" />
+    </div>
+</div>
+<div class="row marginTop">
+    <div class="large-12 columns">
+        <form method="GET" action="{% url 'storages:edit' %}">
+            <table class="checkboxes">
+                <tr>
+                    <th class="first_checkbox">&nbsp;&nbsp;&nbsp;</th>
+                    <th>{% trans "Use default?" %}</tn>
+                    <th>{% trans "Title" %}</th>
+                    <th>{% trans "Address" %}</th>
+                    <th>{% trans "Description" %}</th>
+                </tr>{% for elem in storages %}
+                <tr>
+                    <td><input type="radio" value={{ elem.pk }} name="name_id"></td>
+                    <td>
+                        {% if elem.default %}
+                            <img src="{{ STATIC_URL }}img/act_flag.png" />
+                        {% else %}
+                            <img src="{{ STATIC_URL }}img/dis_flag.png" />
+                        {% endif %}
+                    </td>
+                    <td>{{ elem.title }}</td>
+                    <td>{{ elem.address }}</td>
+                    <td>{{ elem.description }}</td>
+                </tr>{% endfor %}
+            </table>
+        </form>
+    </div>
+</div>
+{% found_pagination storages page_size %}
+{% endblock %}
