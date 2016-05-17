@@ -439,7 +439,7 @@ label {
     margin: 0px;
 }
 
-#id_doc {
+#id_doc, #id_storages {
     width:430px;
 }
 

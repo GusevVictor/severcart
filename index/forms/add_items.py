@@ -5,6 +5,8 @@ from django.core.exceptions import ValidationError
 from django.utils.translation import ugettext_lazy as _
 from index.models import CartridgeItemName
 from docs.models  import SCDoc
+from storages.models import Storages
+
 
 class AddItems(forms.Form):
     cartName = forms.ModelChoiceField(queryset=CartridgeItemName.objects.all(),
@@ -14,7 +16,7 @@ class AddItems(forms.Form):
                                       )
     
     doc = forms.ModelChoiceField(queryset=SCDoc.objects.filter(), required=False)
-
+    storages = forms.ModelChoiceField(queryset=Storages.objects.filter(), label=_('Storage'))
     cartCount = forms.CharField(max_length = 4,
                                 widget=forms.TextInput(attrs={'class': 'pm_counter', 'readonly': 'readonly'}),
                                 error_messages={'required': _('Required field.')},
