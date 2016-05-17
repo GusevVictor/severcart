@@ -77,28 +77,22 @@ def ajax_add_session_items(request):
     try:
         m1 = request.user.departament.pk
     except AttributeError:
-        
         tmp_dict['mes']  = _('User not assosiate with organization unit!<br/>Error code: 101.')
         tmp_dict['error'] = '1'
         return JsonResponse(tmp_dict)
+    
     tmp_dict['error'] = '0'
     form = AddItems(request.POST)
     if form.is_valid():
         data_in_post = form.cleaned_data
         cart_name_id = data_in_post.get('cartName').pk
         cart_name    = data_in_post.get('cartName').cart_itm_name
+        storages     = data_in_post.get('storages')
+        storages     = storages.pk
         cart_name    = str(cart_name)
         cart_type    = request.POST.get('cart_type')
-        if data_in_post.get('doc'):
-            cart_doc_id = data_in_post.get('doc')
-        else:
-            cart_doc_id = 0
+        cart_doc_id  = data_in_post.get('doc')
         cart_count   = int(data_in_post.get('cartCount'))
-        try:
-            root_ou   = request.user.departament
-            children  = root_ou.get_family()
-        except AttributeError:
-            children = ''
 
         # чтобы не плодить лишние сущности зделано одно вью для добавления разных картриджей
         if cart_type == 'full':
@@ -117,7 +111,8 @@ def ajax_add_session_items(request):
         # Добавляем картриджи в БД
         with transaction.atomic():
             for i in range(cart_count):
-                m1 = CartridgeItem(cart_number=cart_number,
+                m1 = CartridgeItem(sklad=storages,
+                                   cart_number=cart_number,
                                    cart_itm_name=data_in_post.get('cartName'),
                                    cart_date_added=timezone.now(),
                                    cart_date_change=timezone.now(),

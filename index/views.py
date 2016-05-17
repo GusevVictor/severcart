@@ -136,7 +136,7 @@ def add_cartridge_item(request):
     form_obj = AddItems()
     # отфильтровываем и показываем только договора поставки
     form_obj.fields['doc'].queryset = SCDoc.objects.filter(departament=request.user.departament).filter(doc_type=1)
-    form_obj.fields['storages'].queryset = Storages.objects.filter(departament = request.user.departament)
+    form_obj.fields['storages'].queryset = Storages.objects.filter(departament=request.user.departament)
     session_data = request.session.get('cumulative_list')
     if not session_data:
         # если в сессии нужные данные отсутствуют, то сразу рендерим форму

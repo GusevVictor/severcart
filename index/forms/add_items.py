@@ -53,8 +53,16 @@ class AddItems(forms.Form):
     def clean_doc(self):
         """
         """
-        if not self.cleaned_data.get('doc', ''):
-            return None
+        if not self.cleaned_data.get('doc', 0):
+            return 0
         
-        doc_id = self.cleaned_data.get('doc', '')
+        doc_id = self.cleaned_data.get('doc')
         return doc_id.pk
+
+    def clean_storages(self):
+        """
+        """
+        if not self.cleaned_data.get('storages', 0):
+            raise ValidationError(_('Required field.'))
+        
+        return self.cleaned_data.get('storages')

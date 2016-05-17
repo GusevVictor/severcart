@@ -322,10 +322,11 @@ $( function(){
 
     $('.add_items').click( function(e) {
         /* Выполняем проверку на принадлежность орг. юниту*/
-        var cart_name = $('#id_cartName option:selected').val();
-        var docum     = $('#id_doc option:selected').val();
-        var cont      = parseInt($('#id_cartCount').val());
-        var cart_type = $(this).attr('data'); 
+        var cart_name  = $('#id_cartName option:selected').val();
+        var cart_sklad = $('#id_storages option:selected').val(); 
+        var docum      = $('#id_doc option:selected').val();
+        var cont       = parseInt($('#id_cartCount').val());
+        var cart_type  = $(this).attr('data'); 
         if (!cart_name) {
             $('.cart_name_error').show();
         } else {
@@ -338,13 +339,19 @@ $( function(){
             $('.cart_count_error').hide();
         }  
 
-        if (cart_name && cont) {
+        if (!cart_sklad) {
+            $('.cart_sklad_error').show();
+        } else {
+            $('.cart_sklad_error').hide();
+        }
+
+        if (cart_name && cont && cart_sklad) {
             $.ajax({
                 method: 'POST',
                 url: '/api/ajax_add_session_items/',
-                data:  {'cartName': cart_name, 'doc': docum, 'cartCount': cont, 'cart_type': cart_type },
+                data:  {'cartName': cart_name, 'doc': docum, 'cartCount': cont, 'cart_type': cart_type, 'storages': cart_sklad },
                 beforeSend: function( xhr, settings ){
-                    $('.spinner').css('display', 'inline');
+                    $('.spinner').show();
                     csrftoken = getCookie('csrftoken');
                     if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
                         xhr.setRequestHeader('X-CSRFToken', csrftoken);

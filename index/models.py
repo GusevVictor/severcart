@@ -4,7 +4,6 @@ from django.db import models
 from mptt.models import MPTTModel, TreeForeignKey
 from django.utils.translation import ugettext_lazy as _
 
-
 class OrganizationUnits(MPTTModel):
     name = models.CharField(max_length=254)
     parent = TreeForeignKey('self', null=True, blank=True, related_name='children', db_index=True)
@@ -65,19 +64,20 @@ STATUS = (
 
 
 class CartridgeItem(models.Model):
-    cart_number = models.IntegerField(db_index=True, null=True)
-    cart_number_prefix  = models.CharField(max_length=256, null=True)
-    cart_number_postfix = models.CharField(max_length=256, null=True)
-    cart_itm_name = models.ForeignKey(CartridgeItemName, on_delete=models.PROTECT)
-    cart_date_added = models.DateField(db_index=True)
-    cart_date_change = models.DateField(db_index=True)
-    departament = models.ForeignKey(OrganizationUnits, blank=True, null=True, on_delete=models.PROTECT)
-    cart_status = models.IntegerField(choices=STATUS, default=1)
-    cart_number_refills = models.IntegerField(default=0, db_index=True)
-    filled_firm = models.ForeignKey(FirmTonerRefill, null=True, on_delete=models.PROTECT,)
-    comment = models.TextField(_('Comment'), blank=True)
-    delivery_doc = models.IntegerField(db_index=True, null=True, default=0)
-    node_order_by = ['pk']
+    sklad                = models.IntegerField(db_index=True)
+    cart_number          = models.IntegerField(db_index=True, null=True)
+    cart_number_prefix   = models.CharField(max_length=256, null=True)
+    cart_number_postfix  = models.CharField(max_length=256, null=True)
+    cart_itm_name        = models.ForeignKey(CartridgeItemName, on_delete=models.PROTECT)
+    cart_date_added      = models.DateField(db_index=True)
+    cart_date_change     = models.DateField(db_index=True)
+    departament          = models.ForeignKey(OrganizationUnits, blank=True, null=True, on_delete=models.PROTECT)
+    cart_status          = models.IntegerField(choices=STATUS, default=1)
+    cart_number_refills  = models.IntegerField(default=0, db_index=True)
+    filled_firm          = models.ForeignKey(FirmTonerRefill, null=True, on_delete=models.PROTECT,)
+    comment              = models.TextField(_('Comment'), blank=True)
+    delivery_doc         = models.IntegerField(db_index=True, null=True, default=0)
+    node_order_by        = ['pk']
 
 class Numerator(models.Model):
     departament = models.ForeignKey(OrganizationUnits, default=1)
