@@ -1489,38 +1489,40 @@ $( function(){
         /* мигание красным цветом */
         var freezy_f = pretty_del_table_row(tr);
 
-        $.ajax({
-            method: 'POST',
-            url: '/storages/api/del_s/',
-            data:  { 'select': select },
-            beforeSend: function( xhr, settings ){
-                csrftoken = getCookie('csrftoken');
-                $('.spinner').show();
-                if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
-                    xhr.setRequestHeader('X-CSRFToken', csrftoken);
-                }
-            },
-            success: function( msg ) {
-                $('.spinner').hide();
-                if ( msg.error == 1 ) {
-                    $('.error_msg').show();
-                    $('.success_msg').hide();
-                    $('.error_msg').text(msg.text);
-                }
-                if ( msg.error == 0 ) {
-                    $('.error_msg').hide();
-                    freezy_f(function() {
-                        $('.success_msg').show();
-                        $('.success_msg').html(msg.text);
-                    });                    
-                }
+        var ansver = window.confirm('Вы точно хотите удалить складское комещение?');
+        if ( ansver && select ) {
+            $.ajax({
+                method: 'POST',
+                url: '/storages/api/del_s/',
+                data:  { 'select': select },
+                beforeSend: function( xhr, settings ){
+                    csrftoken = getCookie('csrftoken');
+                    $('.spinner').show();
+                    if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
+                        xhr.setRequestHeader('X-CSRFToken', csrftoken);
+                    }
+                },
+                success: function( msg ) {
+                    $('.spinner').hide();
+                    if ( msg.error == 1 ) {
+                        $('.error_msg').show();
+                        $('.success_msg').hide();
+                        $('.error_msg').text(msg.text);
+                    }
+                    if ( msg.error == 0 ) {
+                        $('.error_msg').hide();
+                        freezy_f(function() {
+                            $('.success_msg').show();
+                            $('.success_msg').html(msg.text);
+                        });                    
+                    }
 
-            },
-            error: function( msg ) {
-                console.log(msg);
-            },
-        });
-
+                },
+                error: function( msg ) {
+                    console.log(msg);
+                },
+            });
+        }
     });
 
 });
