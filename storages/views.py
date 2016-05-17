@@ -34,6 +34,15 @@ def add_s(request):
     if request.method == 'POST':
         form =AddStorage(request.POST)
         if form.is_valid():
+            try:
+                m1 = request.user.departament.pk
+            except AttributeError:
+                # если пользователь не ассоциирован с организацией,
+                # то сообщаем об ошибке
+                messages.error(request, _('User not assosiate with organization unit!<br/>Error code: 101.'))
+                context['form'] = form
+                return render(request, 'storages/add_s.html', context);
+
             data        = form.cleaned_data
             title       = data.get('title')
             address     = data.get('address')
