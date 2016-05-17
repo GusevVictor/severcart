@@ -1458,8 +1458,7 @@ $( function(){
                 }
                 if ( msg.error == 0 ) {
                     $('.error_msg').hide();
-                    $('.success_msg').show();
-                    $('.success_msg').html(msg.text);
+                    $('.success_msg').hide();
                     window.location.href = '/storages/';                    
                 }
             },
