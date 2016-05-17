@@ -5,4 +5,5 @@ urlpatterns = [
     url(r'^$', ViewStorages.as_view(), name='all'),
     url(r'^add/', add_s, name='add'),
     url(r'^edit/', edit_s, name='edit'),
+    url(r'^api/', include('storages.api.urls')),
 ]

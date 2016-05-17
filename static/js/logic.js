@@ -1426,7 +1426,95 @@ $( function(){
 
     $('.del_storage').click( function() {
         /* Удаление склада */
-        
+
+    });
+
+    $('.set_default').click( function() {
+        /* Установка склада по умолчанию */
+        var select = 0;
+        $('.checkboxes input:checked').each(function() {
+            if ($(this).attr('value')) {
+                select = $(this).attr('value');
+            }
+        });
+
+        $.ajax({
+            method: 'POST',
+            url: '/storages/api/set_default/',
+            data:  { 'select': select },
+            beforeSend: function( xhr, settings ){
+                $('.spinner').show();
+                csrftoken = getCookie('csrftoken');
+                if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
+                    xhr.setRequestHeader('X-CSRFToken', csrftoken);
+                }
+            },
+            success: function( msg ) {
+                $('.spinner').hide();
+                if ( msg.error == 1 ) {
+                    $('.error_msg').show();
+                    $('.success_msg').hide();
+                    $('.error_msg').text(msg.text);
+                }
+                if ( msg.error == 0 ) {
+                    $('.error_msg').hide();
+                    $('.success_msg').show();
+                    $('.success_msg').html(msg.text);
+                    window.location.href = '/storages/';                    
+                }
+            },
+            error: function( msg ) {
+                console.log(msg);                
+            },
+        });
+
+    });
+
+    $('.del_storage').click( function() {
+        /* Установка склада по умолчанию */
+        var select = 0;
+        $('.checkboxes input:checked').each(function() {
+            if ($(this).attr('value')) {
+                select = $(this).attr('value');
+            }
+        });
+
+        var tr = $('.checkboxes input:checked').parent().parent().not('.table_header');
+        /* мигание красным цветом */
+        var freezy_f = pretty_del_table_row(tr);
+
+        $.ajax({
+            method: 'POST',
+            url: '/storages/api/del_s/',
+            data:  { 'select': select },
+            beforeSend: function( xhr, settings ){
+                csrftoken = getCookie('csrftoken');
+                $('.spinner').show();
+                if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
+                    xhr.setRequestHeader('X-CSRFToken', csrftoken);
+                }
+            },
+            success: function( msg ) {
+                $('.spinner').hide();
+                if ( msg.error == 1 ) {
+                    $('.error_msg').show();
+                    $('.success_msg').hide();
+                    $('.error_msg').text(msg.text);
+                }
+                if ( msg.error == 0 ) {
+                    $('.error_msg').hide();
+                    freezy_f(function() {
+                        $('.success_msg').show();
+                        $('.success_msg').html(msg.text);
+                    });                    
+                }
+
+            },
+            error: function( msg ) {
+                console.log(msg);
+            },
+        });
+
     });
 
 });
