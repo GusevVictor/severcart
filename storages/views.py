@@ -47,12 +47,18 @@ def add_s(request):
             title       = data.get('title')
             address     = data.get('address')
             description = data.get('description') 
+            # первый создаваемый объект устанавливается по умолчанию
+            flag = False
+            try:
+                m2 = Storages.objects.get(pk=1)
+            except Storages.DoesNotExist:
+                flag = True
             m1 = Storages(
                         title       = title,
                         address     = address,
                         departament = request.user.departament,
                         description = description,
-                        default     = False
+                        default     = flag
                         )
             m1.save()
             messages.success(request, _('Starage "%(starage_name)s" success added.') % {'starage_name': title})

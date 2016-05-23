@@ -137,6 +137,11 @@ def add_cartridge_item(request):
     # отфильтровываем и показываем только договора поставки
     form_obj.fields['doc'].queryset = SCDoc.objects.filter(departament=request.user.departament).filter(doc_type=1)
     form_obj.fields['storages'].queryset = Storages.objects.filter(departament=request.user.departament)
+    # выбор склада по умолчанию в выбранной организации
+    default_sklad = Storages.objects.filter(departament=request.user.departament).filter(default=True)
+    if default_sklad[0].pk:
+        form_obj.fields['storages'].initial = default_sklad[0].pk
+    
     session_data = request.session.get('cumulative_list')
     if not session_data:
         # если в сессии нужные данные отсутствуют, то сразу рендерим форму
@@ -173,6 +178,12 @@ def add_empty_cartridge(request):
     from docs.models import SCDoc
     # отфильтровываем и показываем только договора поставки
     form_obj.fields['doc'].queryset = SCDoc.objects.filter(departament=request.user.departament).filter(doc_type=1)
+    form_obj.fields['storages'].queryset = Storages.objects.filter(departament=request.user.departament)
+    # выбор склада по умолчанию в выбранной организации
+    default_sklad = Storages.objects.filter(departament=request.user.departament).filter(default=True)
+    if default_sklad[0].pk:
+        form_obj.fields['storages'].initial = default_sklad[0].pk
+
     context['form'] = form_obj
     session_data = request.session.get('empty_cart_list')
     if not session_data:

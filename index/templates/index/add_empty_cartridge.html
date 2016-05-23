@@ -33,6 +33,15 @@
                     <div class="form_error_text cart_name_error">{% trans "Required field" %}</div>
                 </div>
             </div>
+
+            <!-- Выбор склада -->                
+            <label class="required marginTop" for="{{ form.storages.id_for_label }}">{% trans "Storage" %}</label>
+            <div class="input_row">
+                {{ form.storages }} <a class="dj_button add" href="{% url 'storages:add_s' %}"></a>
+            </div>
+            <div class="form_error_text cart_sklad_error">{% trans "The field must be seleced" %}</div>
+            <!-- -->
+
             <label class="marginTop" for="{{ form.doc.id_for_label }}">{% trans "Delivery agreement" %}</label>
             <div class="input_row">
                 {{ form.doc }} <a class="dj_button add" href="{% url 'docs:delivery' %}"></a>

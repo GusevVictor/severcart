@@ -115,6 +115,21 @@ form input[type="password"] {
     display: none;
 }
 
+.info_ico {
+    width: 25px;
+    height: 25px;
+    display: inline-block;
+    background:url('../img/stor_info.png') no-repeat;
+}
+
+.info_ico:hover {
+    width: 25px;
+    height: 25px;
+    cursor: pointer;
+    display: inline-block;
+    background:url('../img/stor_info.png') no-repeat left bottom;
+}
+
 .error_msg,
 .error_msg_send,
 .error_msg_send_email {
