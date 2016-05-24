@@ -116,15 +116,15 @@ form input[type="password"] {
 }
 
 .info_ico {
-    width: 25px;
-    height: 25px;
+    width: 16px;
+    height: 16px;
     display: inline-block;
     background:url('../img/stor_info.png') no-repeat;
 }
 
 .info_ico:hover {
-    width: 25px;
-    height: 25px;
+    width: 16px;
+    height: 16px;
     cursor: pointer;
     display: inline-block;
     background:url('../img/stor_info.png') no-repeat left bottom;
