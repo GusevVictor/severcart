@@ -820,7 +820,9 @@ $( function(){
 
     $('.edit_user').click( function() {
         var uid = $('.checkboxes input:checked').attr('value');
-        window.location.href = '/manage_users/edit_user/?id=' + uid;
+        if (uid) {
+            window.location.href = '/manage_users/edit_user/?id=' + uid;
+        }
         return false;
     });
 
