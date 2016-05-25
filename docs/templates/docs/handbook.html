@@ -5,8 +5,8 @@
 <div class="row">
     <div class="small-4 columns">
         <p><a href="{% url 'auth:manage_users' %}">{% trans "Users" %}</a></p>
-        <p><a href="{% url 'tree_list' %}">{% trans "Organization units" %}</a></p>
-        <p><a href="{% url 'toner_refill' %}">{% trans "Firms" %}</a></p>
+        <p><a href="{% url 'index:tree_list' %}">{% trans "Organization units" %}</a></p>
+        <p><a href="{% url 'index:toner_refill' %}">{% trans "Firms" %}</a></p>
     </div>
     <div class="small-4 columns">
         <p><a href="{% url 'docs:delivery' %}">{% trans "Agreement for the supply" %}</a></p>

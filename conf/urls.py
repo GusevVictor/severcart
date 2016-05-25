@@ -4,9 +4,8 @@ from django.conf.urls import include, url
 from index.views import robots_txt, favicon_ico
 
 urlpatterns = [
-    url('', include('index.urls')),
-    url(r'^api/', include('index.api.urls')),
-    url(r'^events/', include('events.urls')),
+    url('', include('index.urls', namespace='index')),
+    url(r'^events/', include('events.urls', namespace='events')),
     url(r'^docs/', include('docs.urls', namespace='docs')),
     url(r'^reports/', include('reports.urls', namespace='reports')),
     url(r'^service/', include('service.urls', namespace='service')),

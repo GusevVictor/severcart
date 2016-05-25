@@ -506,7 +506,7 @@ def move_to_use(request):
         sign_tr_empty_cart_to_stock.send(sender=None, list_cplx=list_cplx, request=request)
    
     ansver['error'] = '0'
-    ansver['url']   = reverse('stock')
+    ansver['url']   = reverse('index:stock')
     
     return JsonResponse(ansver)
 

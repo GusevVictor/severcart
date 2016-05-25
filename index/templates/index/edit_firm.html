@@ -1,6 +1,6 @@
 {% extends "index/base.html" %}{% load i18n %}
 {% block title %}{% trans "Edit firm" %}{% endblock %}
-{% block breadcrumbs %}<a href="/"><img src="{{ STATIC_URL }}img/home.png" /></a> / <a href="{% url 'docs:handbook' %}">{% trans "References" %}</a> / <a href="{% url 'toner_refill' %}">{% trans "Firms" %}</a> / {% trans "Edit firm" %}{% endblock %}
+{% block breadcrumbs %}<a href="/"><img src="{{ STATIC_URL }}img/home.png" /></a> / <a href="{% url 'docs:handbook' %}">{% trans "References" %}</a> / <a href="{% url 'index:toner_refill' %}">{% trans "Firms" %}</a> / {% trans "Edit firm" %}{% endblock %}
 {% block content %}
 <div class="row">
     <div class="large-6 columns">

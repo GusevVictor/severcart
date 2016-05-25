@@ -12,7 +12,7 @@
 <div class="row">
     <div class="large-6 columns">
         <a class="tr_to_firm button" href="#">{% trans "Transfer to refuel" %}</a>
-        <a class="button" href="{% url 'add_empty_cartridge' %}">{% trans "Add_empty" %}</a>
+        <a class="button" href="{% url 'index:add_empty_cartridge' %}">{% trans "Add_empty" %}</a>
         <a class="tr_to_recycle_bin button alert no_follow" href="#" atype="6">{% trans "In basket" %}</a>
         <img class="spinner" src="{{ STATIC_URL }}img/loader.gif" />
     </div>

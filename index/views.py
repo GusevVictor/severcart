@@ -596,7 +596,7 @@ def transfer_to_firm(request):
         checked_cartr = checked_cartr[1:-1] # убираем угловые скобочки
     else:
         # если кто-то зашел на страницу не выбрав расходники
-        return HttpResponseRedirect(reverse('empty'))
+        return HttpResponseRedirect(reverse('index:empty'))
     form = TransfeToFirm(initial = {'numbers': checked_cartr})
     form.fields['doc'].queryset = SCDoc.objects.filter(departament=request.user.departament).filter(doc_type=2)
     context['form'] = form

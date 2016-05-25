@@ -4,7 +4,7 @@
 {% block content %}
 <div class="row">
     <div class="large-4 columns">
-        <p><a href="{% url 'show_events' %}">{% trans "Events" %}</a></p>
+        <p><a href="{% url 'events:show_events' %}">{% trans "Events" %}</a></p>
         <p><a href="{% url 'service:settings_mail' %}">{% trans "E-mail" %}</a></p>
         <p><a href="{% url 'service:stickers' %}">{% trans "Stickers" %}</a></p>
     </div>

@@ -69,7 +69,7 @@ $( function(){
         time_zone_offset = -1 * time_zone_offset; // меняем знак
         $.ajax({
             method: 'POST',
-            url: '/api/view_events/',
+            url: '{% url "index:view_events" %}',
             data:  {'time_zone_offset': time_zone_offset, 'detail': 0 },
             beforeSend: function( xhr, settings ){
                 csrftoken = getCookie('csrftoken');
@@ -95,7 +95,7 @@ $( function(){
         time_zone_offset = -1 * time_zone_offset; // меняем знак
         $.ajax({
             method: 'POST',
-            url: '/events/api/date_filter/',
+            url: '{% url "events:date_filter" %}',
             data:  {'time_zone_offset': time_zone_offset, 'detail': 1 },
             beforeSend: function( xhr, settings ){
                 csrftoken = getCookie('csrftoken');
@@ -123,7 +123,7 @@ $( function(){
         cart_id = getUrlParameter('id');
         $.ajax({
             method: 'POST',
-            url: '/events/api/view_cart_events/',
+            url: '{% url "events:view_cart_events" %}',
             data:  {'time_zone_offset': time_zone_offset, 'detail': 1, 'cart_id': cart_id },
             beforeSend: function( xhr, settings ){
                 csrftoken = getCookie('csrftoken');
@@ -157,7 +157,7 @@ $( function(){
 
         $.ajax({
             method: 'POST',
-            url: '/docs/api/calculate_sum/',
+            url: '{% url "docs:calculate_sum" %}',
             data:  { 'service_contracts': service_contracts },
             beforeSend: function( xhr, settings ){
                 csrftoken = getCookie('csrftoken');
@@ -201,7 +201,7 @@ $( function(){
         if (start_date || end_date) {
             $.ajax({
                 method: 'POST',
-                url: '/events/api/date_filter/',
+                url: '{% url "events:date_filter" %}',
                 data:  {'start_date': start_date, 'end_date': end_date, 'time_zone_offset': time_zone_offset },
                 beforeSend: function( xhr, settings ){
                     $('.spinner').show();
@@ -237,7 +237,7 @@ $( function(){
         var gtype = $('.export_type option:selected').val();
         $.ajax({
             method: 'POST',
-            url: '/docs/api/generate_csv/',
+            url: '{% url "docs:generate_csv" %}',
             data:  {'view': view, 'gtype': gtype },
             beforeSend: function( xhr, settings ){
                 $('.export_spinner').show();
@@ -267,7 +267,7 @@ $( function(){
         var arg_obj = { 'numbers': transfer_to_firm[1]['value'], 'firm': transfer_to_firm[2]['value'], 'price': transfer_to_firm[3]['value'], 'doc': transfer_to_firm[4]['value'] };
         $.ajax({
             method: 'POST',
-            url: '/api/transfer_to_firm/',
+            url: '{% url "index:transfer_to_firm" %}',
             data:  arg_obj,
             beforeSend: function( xhr, settings ){
                 $('.spinner').show();
@@ -349,7 +349,7 @@ $( function(){
         if (cart_name && cont && cart_sklad) {
             $.ajax({
                 method: 'POST',
-                url: '/api/ajax_add_session_items/',
+                url: '{% url "index:ajax_add_session_items" %}',
                 data:  {'cartName': cart_name, 'doc': docum, 'cartCount': cont, 'cart_type': cart_type, 'storages': cart_sklad },
                 beforeSend: function( xhr, settings ){
                     $('.spinner').show();
@@ -391,10 +391,9 @@ $( function(){
     $('.users_use_cartridges').click( function() {
         var org        = $('#id_org option:selected').val();
         var start_date = $('#id_start_date').val();
-        //console.log(org, diap);
         $.ajax({
             method: 'POST',
-            url: '/reports/api/ajax_reports_users/',
+            url: '{% url "reports:ajax_reports_users" %}',
             data:  {'org': org, 'start_date': start_date},
             beforeSend: function( xhr, settings ){
                 $('.spinner').show();
@@ -432,7 +431,7 @@ $( function(){
         var cart_type = $(this).attr('data'); 
         $.ajax({
             method: 'POST',
-            url: '/api/clear_session/',
+            url: '{% url "index:clear_session" %}',
             data:  {'cart_type': cart_type},
             beforeSend: function( xhr, settings ){
                 $('.spinner_pdf').show();
@@ -460,7 +459,7 @@ $( function(){
         var cart_type = $(this).attr('data'); 
         $.ajax({
             method: 'POST',
-            url: '/docs/api/generate_pdf/',
+            url: '{% url "docs:generate_pdf" %}',
             data:  {'cart_type': cart_type, 'cart_type': cart_type},
             beforeSend: function( xhr, settings ){
                 $('.spinner_pdf').show();
@@ -493,8 +492,8 @@ $( function(){
         });
 
         if ( selected.length !== 0 ) {
-            var get_path = selected.join('s')
-            var loc = '/transfe_for_use/?select=' + get_path;
+            var get_path = selected.join('s');
+            var loc = '{% url "index:transfe_for_use" %}' + '?select=' + get_path;
             window.location.href = loc;
         }
 
@@ -533,7 +532,7 @@ $( function(){
 
                 $.ajax({
                     method: 'POST',
-                    url: '/api/transfer_to_basket/',
+                    url: '{% url "index:transfer_to_basket" %}',
                     data:  {'selected': selected, 'atype': atype},
                     beforeSend: function( xhr, settings ){
                         csrftoken = getCookie('csrftoken');
@@ -588,10 +587,10 @@ $( function(){
             if (ansver) {
                 $.ajax({
                     method: 'POST',
-                    url: '/api/turf_cartridge/',
+                    url: '{% url "index:turf_cartridge" %}',
                     data:  {len: selected.length , 'selected[]': selected},
                     beforeSend: function( xhr, settings ){
-                        $('.spinner').css('display', 'inline');
+                        $('.spinner').show();
                         csrftoken = getCookie('csrftoken');
                         if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
                             xhr.setRequestHeader('X-CSRFToken', csrftoken);
@@ -623,7 +622,7 @@ $( function(){
                 // если пользователь ответил Да, то запускаем аякс запрос
                 $.ajax({
                     method: 'POST',
-                    url: '/api/transfer_to_stock/',
+                    url: '{% url "index:transfer_to_stock" %}',
                     data:  {'selected': selected},
                     beforeSend: function( xhr, settings ){
                         $('.spinner').show();
@@ -663,7 +662,7 @@ $( function(){
 
         if ( selected.length !== 0 ) {
             var get_path = selected.join('s')
-            var loc = '/from_firm_to_stock/?select=' + get_path;
+            var loc = '{% url "index:from_firm_to_stock" %}' +  '?select=' + get_path;
             window.location.href = loc;
         }
 
@@ -679,7 +678,7 @@ $( function(){
 
         if ( selected.length !== 0 ) {
             var get_path = selected.join('s')
-            var loc = '/from_basket_to_stock/?select=' + get_path;
+            var loc = '{% url "index:from_basket_to_stock" %}' + '?select=' + get_path;
             window.location.href = loc;
         }
 
@@ -695,7 +694,7 @@ $( function(){
 
         if ( selected.length !== 0 ) {
             var get_path = selected.join('s')
-            var loc = '/transfer_to_firm/?select=' + get_path;
+            var loc =  '{% url "index:transfer_to_firm" %}' + '?select=' + get_path;
             window.location.href = loc;
         }
 
@@ -716,7 +715,7 @@ $( function(){
 
         if ( selected.length !== 0 ) {
             var get_path = selected.join('s')
-            var loc = '/edit_firm/?select=' + get_path;
+            var loc = '{% url "index:edit_firm" %}' + '?select=' + get_path;
             window.location.href = loc;
         }
 
@@ -731,7 +730,7 @@ $( function(){
             if ( ansver ) {
                 $.ajax({
                     method: 'POST',
-                    url: '/api/del_firm/',
+                    url: '{% url "index:del_firm" %}',
                     data:  {'selected': selected},
                     beforeSend: function( xhr, settings ){
                         $('.spinner').show();
@@ -779,7 +778,7 @@ $( function(){
         if ( selected.length !== 0 ) {
             $.ajax({
                 method: 'POST',
-                url: '/api/del_node/',
+                url:'{% url "index:del_node" %}',
                 data:  {'selected[]': selected},
                 beforeSend: function( xhr, settings ){
                     $('.spinner').show();
@@ -822,7 +821,7 @@ $( function(){
     $('.edit_user').click( function() {
         var uid = $('.checkboxes input:checked').attr('value');
         if (uid) {
-            window.location.href = '/manage_users/edit_user/?id=' + uid;
+            window.location.href = '{% url "auth:edit_user" %}' + '?id=' + uid;
         }
         return false;
     });
@@ -838,9 +837,9 @@ $( function(){
         };
 
         if ($(this).val()) {
-            loc = '/toner_refill/?city=' + $(this).val() + page;
+            loc = '{% url "index:toner_refill" %}' + '?city=' + $(this).val() + page;
         } else {
-            loc = '/toner_refill/';
+            loc = '{% url "index:toner_refill" %}';
         }
         window.location.href = loc;
 
@@ -869,14 +868,14 @@ $( function(){
             var cart_action = mainSelect.children(':selected').attr('value');
             switch (cart_action) {
                 case 'view_events':
-                    window.location.href = '/events/view_cartridge_events/?id=' + cart_id;
+                    window.location.href =  '{% url "events:view_cartridge_events" %}' + '?id=' + cart_id;
                     break;
                 case 'edit':
-                    window.location.href = '/edit_cartridge_comment/?id=' + cart_id;
+                    window.location.href = '{% url "index:edit_cartridge_comment" %}' + '?id=' + cart_id;
                     break;
                 case 'view_delivery':
                     var doc_id =  mainSelect.find(":selected").attr('data');
-                    window.location.href = '/docs/delivery/?show=' + doc_id;
+                    window.location.href = '{% url "docs:delivery" %}' + '?show=' + doc_id;
                     break;
                 default:
 
@@ -894,7 +893,7 @@ $( function(){
             if (doc_action) {
                 $.ajax({
                     method: 'POST',
-                    url: '/docs/api/generate_act/',
+                    url: '{% url "docs:generate_act" %}',
                     data:  {'doc_id': doc_id, 'doc_action': doc_action },
                     beforeSend: function( xhr, settings ){
                         $('.spinner').show();
@@ -933,7 +932,7 @@ $( function(){
         time_zone_offset = -1 * time_zone_offset; // меняем знак
         $.ajax({
             method: 'POST',
-            url: '/events/api/show_event_page/',
+            url: '{% url "events:show_event_page" %}',
             data:  {'next_page': button_next.attr('next_page'), 'time_zone_offset': time_zone_offset},
             beforeSend: function( xhr, settings ){
                 $('.spinner').show();
@@ -991,7 +990,7 @@ $( function(){
             if ( ansver ) {
                 $.ajax({
                     method: 'POST',
-                    url: '/api/del_users/',
+                    url: '{% url "index:del_users" %}',
                     data:  {'selected': selected},
                     beforeSend: function( xhr, settings ){
                         $('.spinner').css('display', 'inline');
@@ -1126,10 +1125,10 @@ $( function(){
                 // если пользователь ответил Да, то запускаем аякс запрос
                 $.ajax({
                     method: 'POST',
-                    url: '/docs/api/del_cart_name/',
+                    url: '{% url "docs:del_cart_name" %}',
                     data:  {'cart_name_id': selected , 'atype': atype },
                     beforeSend: function( xhr, settings ){
-                        $('.spinner').css('display', 'inline');
+                        $('.spinner').show();
                         csrftoken = getCookie('csrftoken');
                         if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
                             xhr.setRequestHeader('X-CSRFToken', csrftoken);
@@ -1195,7 +1194,7 @@ $( function(){
             $('.filter_spinner').show();
             $.ajax({
                 method: 'POST',
-                url: '/api/names_suggests/',
+                url: '{% url "index:names_suggests" %}',
                 data: {'cart_name': cart_name},
                 beforeSend: function( xhr, settings ){
                     csrftoken = getCookie('csrftoken');
@@ -1209,7 +1208,7 @@ $( function(){
                     $('.dinamic_list').find('option').remove().end(); // очищаем весь  select 
                     for (var i = 0; i < msg.res.length; i++) {
                         // добавляем в селект новые опции
-                        $('.dinamic_list').append($('<option>', { value: msg.res[i][0], text : msg.res[i][1] }));;
+                        $('.dinamic_list').append($('<option>', { value: msg.res[i][0], text : msg.res[i][1] }));
                     }
 
                 },
@@ -1238,7 +1237,7 @@ $( function(){
         var use_tls    = $('#id_use_tls').is(':checked');
         $.ajax({
             method: 'POST',
-            url: '/service/api/settings_email/',
+            url: '{% url "service:settings_email" %}',
             data: {'smtp_server': smtp_server, 'smtp_port': smtp_port,
                    'email_sender': email_sender, 'smtp_login': smtp_login,
                    'smtp_password': smtp_password, 'use_ssl': use_ssl,
@@ -1282,7 +1281,7 @@ $( function(){
         var email   = $('#id_email').val();
         $.ajax({
             method: 'POST',
-            url: '/manage_users/api/send_repair_email/',
+            url: '{% url "auth:send_repair_email" %}',
             data: {'email': email},
             beforeSend: function( xhr, settings ){
                 $('.spinner_send').show();
@@ -1316,7 +1315,7 @@ $( function(){
         var email   = $('#id_email').val();
         $.ajax({
             method: 'POST',
-            url: '/service/api/send_test_email/',
+            url: '{% url "service:send_test_email" %}',
             data: {'text': text, 'email': email},
             beforeSend: function( xhr, settings ){
                 $('.spinner_send').show();
@@ -1363,7 +1362,7 @@ $( function(){
             var id_ou = select_ou.children(':selected').attr('value');
             $.ajax({
                 method: 'POST',
-                url: '/api/get_cart_ou/',
+                url: '{% url "index:get_cart_ou" %}',
                 data: {'id_ou': id_ou},
                 beforeSend: function( xhr, settings ){
                     $('.spinner').show();
@@ -1396,7 +1395,7 @@ $( function(){
         if (!$('.move_to_use').hasClass('block')) {
             $.ajax({
                 method: 'POST',
-                url: '/api/move_to_use/',
+                url: '{% url "index:move_to_use" %}',
                 data: {'moved[]': moved, 'id_ou': id_ou, 'installed[]': installed},
                 beforeSend: function( xhr, settings ){
                     $('.spinner').show();
@@ -1430,7 +1429,7 @@ $( function(){
                 selected = $(this).attr('value');
             }
         });
-        window.location.href = '/storages/edit/?select=' + selected;
+        window.location.href =  '{% url "storages:edit" %}' + '?select=' + selected;
     });
 
     $('.set_default').click( function() {
@@ -1444,7 +1443,7 @@ $( function(){
 
         $.ajax({
             method: 'POST',
-            url: '/storages/api/set_default/',
+            url: '{% url "storages:set_default" %}',
             data:  { 'select': select },
             beforeSend: function( xhr, settings ){
                 $('.spinner').show();
@@ -1463,7 +1462,7 @@ $( function(){
                 if ( msg.error == 0 ) {
                     $('.error_msg').hide();
                     $('.success_msg').hide();
-                    window.location.href = '/storages/';                    
+                    window.location.href = '{% url "storages:all" %}';                    
                 }
             },
             error: function( msg ) {
@@ -1490,7 +1489,7 @@ $( function(){
         if ( ansver && select ) {
             $.ajax({
                 method: 'POST',
-                url: '/storages/api/del_s/',
+                url: '{% url "storages:del_s" %}',
                 data:  { 'select': select },
                 beforeSend: function( xhr, settings ){
                     csrftoken = getCookie('csrftoken');

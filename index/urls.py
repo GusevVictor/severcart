@@ -1,6 +1,6 @@
 # -*- coding:utf-8 -*-
 
-from django.conf.urls import url
+from django.conf.urls import include, url
 from index.views import ( dashboard,
                         Stock,
                         add_cartridge_name,
@@ -25,6 +25,7 @@ from index.views import ( dashboard,
 
 urlpatterns = [
     url(r'^$', dashboard, name='dashboard'),
+    url(r'^api/', include('index.api.urls')),
     url(r'^stock/', Stock.as_view(), name='stock'),
     url(r'^add_name/', add_cartridge_name, name='add_name'),
     url(r'^add_items/', add_cartridge_item, name='add_items'),
