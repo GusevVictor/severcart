@@ -43,6 +43,7 @@ INSTALLED_APPS = (
     'service',
     'search',
     'storages',
+    'dhtml',
 )
 
 MIDDLEWARE_CLASSES = (

@@ -13,6 +13,7 @@ urlpatterns = [
     url(r'^manage_users/', include('accounts.urls', namespace='auth')),
     url(r'^search/', include('search.urls', namespace='find')),
     url(r'^storages/', include('storages.urls', namespace='storages')),
+    url(r'^dhtml/', include('dhtml.urls', namespace='dhtml')),
     url(r'^robots\.txt', robots_txt),
     url(r'^favicon\.ico', favicon_ico),
 ]
