@@ -36,17 +36,17 @@ def search(request):
 
         link = ''
         if elem.cart_status == 1:
-            link = reverse('stock')
+            link = reverse('index:stock')
         elif elem.cart_status == 2:
-            link = reverse('use')
+            link = reverse('index:use')
         elif elem.cart_status == 3:
-            link = reverse('empty')
+            link = reverse('index:empty')
         elif elem.cart_status == 4:
-            link = reverse('toner_refill')
+            link = reverse('index:toner_refill')
         elif elem.cart_status == 5:
-            link = reverse('basket')
+            link = reverse('index:basket')
         else:
-            link = reverse('basket')
+            link = reverse('index:basket')
 
         tmp_list.append({'cart_number': elem.cart_number,
                           'cart_itm_name': elem.cart_itm_name,
