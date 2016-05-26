@@ -14,6 +14,7 @@ https://docs.djangoproject.com/en/1.8/ref/settings/
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os, sys
+from django.utils.translation import ugettext_lazy as _
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -48,6 +49,7 @@ INSTALLED_APPS = (
 
 MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.middleware.locale.LocaleMiddleware', # автоматический выбор языка
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -56,6 +58,12 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django.middleware.security.SecurityMiddleware',
 )
+
+#список поддерживаемых языков
+LANGUAGES = [
+    ('ru', _('Russian')),
+    ('en', _('English')),
+]
 
 ROOT_URLCONF = 'conf.urls'
 
