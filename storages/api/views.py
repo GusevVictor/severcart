@@ -4,6 +4,7 @@ from django.http import JsonResponse
 from django.utils.translation import ugettext as _
 from django.db.models import Q
 from storages.models import Storages
+from index.models import CartridgeItem
 from index.helpers import check_ajax_auth
 from common.helpers import is_admin
 
@@ -75,9 +76,17 @@ def del_s(request):
     s_dept_id = m1.departament.pk
 
     if u_dept_id == s_dept_id:
-        m1.delete()
-        ansver['error'] = 0
-        ansver['text'] = _('Storage successfully deleted.')
+        # выполняем дополнительную проверку. Количество картриджей на складе 
+        # должно быть равно нулю, иначе ошибка
+        cart_count_in_stor = CartridgeItem.objects.filter(departament=u_dept_id).filter(sklad=m1.pk).count()
+        if cart_count_in_stor == 0:
+            m1.delete()
+            ansver['error'] = 0
+            ansver['text'] = _('Storage successfully deleted.')
+        else:
+            # если на складе есть расходники, выдаём сообщение об ошибке
+            ansver['error'] = 1
+            ansver['text'] = _('Storage can not be removed. It has a cartridges.')
     else:
         ansver['error'] = 1
         ansver['text'] = _('Security error.')
