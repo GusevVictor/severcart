@@ -139,9 +139,12 @@ def add_cartridge_item(request):
     form_obj.fields['storages'].queryset = Storages.objects.filter(departament=request.user.departament)
     # выбор склада по умолчанию в выбранной организации
     default_sklad = Storages.objects.filter(departament=request.user.departament).filter(default=True)
-    if default_sklad[0].pk:
-        form_obj.fields['storages'].initial = default_sklad[0].pk
-    
+    try:
+        if default_sklad[0].pk:
+            form_obj.fields['storages'].initial = default_sklad[0].pk
+    except IndexError:
+        # если склад по-умолчанию не выбран, то пропускаем выбор склада
+        pass
     session_data = request.session.get('cumulative_list')
     if not session_data:
         # если в сессии нужные данные отсутствуют, то сразу рендерим форму
