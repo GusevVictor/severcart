@@ -1521,4 +1521,36 @@ $( function(){
         }
     });
 
+    $('.generate_report').click( function() {
+        // генерация отчёта
+        var org = $('select#id_org option:selected').val();
+        var cont = $('.pm_counter').val();
+
+        if ( org && cont ) {
+            $.ajax({
+                method: 'POST',
+                url:  '{% url "reports:ajax_report" %}',
+                data:  {'type': 'amortizing', 'org': org, 'cont': cont },
+                beforeSend: function( xhr, settings ){
+                    $('.spinner').show();
+                    csrftoken = getCookie('csrftoken');
+                    if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
+                        xhr.setRequestHeader('X-CSRFToken', csrftoken);
+                    }
+                },
+                success: function( msg ) {
+                    $('.spinner').hide();
+                    // таймаут на 3 секунды
+                    setTimeout(function() {}, 3000); 
+                    $('div.ajax-content').html(msg.html);
+                    //window.location.href = '/basket/';
+                },
+                error: function() {
+                    $('div.ajax-content').html('{% trans "<p>Server error :(</p>" %}');
+                    $('.spinner').hide();
+                },
+            });    
+        }
+    });
+
 });
