@@ -11,8 +11,8 @@
 </div>
 <div class="row">
     <div class="large-12 columns">
-        <a class="button success" href="{% url 'add_type' %}">{% trans "Add" %}</a>
-        <a class="button no_follow edit_cart_type" href="{% url 'add_type' %}">{% trans "Edit" %}</a>
+        <a class="button success" href="{% url 'index:add_type' %}">{% trans "Add" %}</a>
+        <a class="button no_follow edit_cart_type" href="{% url 'index:add_type' %}">{% trans "Edit" %}</a>
         <a class="button no_follow alert del_cart_type" href="#">{% trans "Delete" %}</a>
         <img class="spinner" src="{{ STATIC_URL }}img/loader.gif" />
     </div>
