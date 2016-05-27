@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-05-26 16:33+0500\n"
-"PO-Revision-Date: 2016-05-26 16:55+0500\n"
+"PO-Revision-Date: 2016-05-27 12:27+0500\n"
 "Last-Translator: \n"
 "Language-Team: severcart.org <sfcl@mail.ru>\n"
 "Language: ru\n"
@@ -22,59 +22,59 @@ msgstr ""
 
 #: .\accounts\api\views.py:23
 msgid "Error in data processing"
-msgstr "Ошибка в обработке данных."
+msgstr ""
 
 #: .\accounts\api\views.py:28
 #, python-format
 msgid "User %(user_name)s can not be deleted"
-msgstr "Пользователя %(user_name)s удалить нельзя."
+msgstr ""
 
 #: .\accounts\api\views.py:35
 msgid "Object not found"
-msgstr "Объект не найден."
+msgstr ""
 
 #: .\accounts\api\views.py:40
 msgid "In DEMO users not delete!"
-msgstr "В режиме демонстрации пользователей удалять нельзя!"
+msgstr ""
 
 #: .\accounts\api\views.py:45
 #, python-format
 msgid "User %(user_name)s was successfully deleted"
-msgstr "Пользователь «%(user_name)s» успешно удалён."
+msgstr ""
 
 #: .\accounts\api\views.py:60
 msgid "Email was not found."
-msgstr "Почтовый ящик не найден."
+msgstr ""
 
 #: .\accounts\api\views.py:64
 msgid "Email should not be repeated for different users."
-msgstr "Почта должна быть уникальной."
+msgstr ""
 
 #: .\accounts\api\views.py:67
 msgid "Forgotten password recovery"
-msgstr "Восстановление забытого пароля"
+msgstr ""
 
 #: .\accounts\api\views.py:85 .\service\api\views.py:28
 msgid "Mail successfully sended!"
-msgstr "Письмо успешно отправленно!"
+msgstr ""
 
 #: .\accounts\forms\authenticate.py:9
 msgid "User name"
-msgstr "Имя пользователя"
+msgstr ""
 
 #: .\accounts\forms\authenticate.py:10 .\accounts\forms\chpswd.py:9
 #: .\accounts\forms\register.py:12 .\accounts\templates\accounts\login.html:8
 #: .\accounts\templates\accounts\login.html:14 .\index\forms\add_user.py:13
 msgid "Password"
-msgstr "Пароль"
+msgstr ""
 
 #: .\accounts\forms\chpswd.py:10 .\accounts\forms\register.py:13
 msgid "Password again"
-msgstr "Повтор пароля"
+msgstr ""
 
 #: .\accounts\forms\chpswd.py:20 .\accounts\forms\register.py:49
 msgid "Passwords do not match. Please enter them again"
-msgstr "Пароли не совпадают. Пожалуйста, повторите ввод."
+msgstr ""
 
 #: .\accounts\forms\edit.py:12 .\accounts\forms\register.py:11
 #: .\accounts\models.py:14 .\accounts\templates\accounts\login.html.py:8
@@ -82,64 +82,64 @@ msgstr "Пароли не совпадают. Пожалуйста, повтор
 #: .\accounts\templates\accounts\manage_users.html:28
 #: .\index\forms\add_user.py:12
 msgid "Login"
-msgstr "Логин"
+msgstr ""
 
 #: .\accounts\forms\edit.py:13 .\accounts\models.py:19
 msgid "Full name"
-msgstr "Фамилие, имя, отчество"
+msgstr ""
 
 #: .\accounts\forms\edit.py:18 .\accounts\forms\register.py:18
 #: .\docs\forms\edit_name.py:18 .\docs\forms\edit_name.py:25
 #: .\index\templates\index\add_empty_cartridge.html:33
 #: .\index\templates\index\add_items.html:33
 msgid "Required field"
-msgstr "Обязательное поле"
+msgstr ""
 
 #: .\accounts\forms\edit.py:21 .\accounts\forms\register.py:21
 #: .\accounts\templates\accounts\manage_users.html:30
 #: .\index\forms\add_user.py:14
 msgid "Organization"
-msgstr "Организация"
+msgstr ""
 
 #: .\accounts\forms\edit.py:24 .\accounts\forms\register.py:24
 msgid "Administrator?"
-msgstr "Администратор?"
+msgstr ""
 
 #: .\accounts\forms\edit.py:31
 msgid "Error in !"
-msgstr "Ошибка проверки!"
+msgstr ""
 
 #: .\accounts\forms\register.py:14
 msgid "Full Name"
-msgstr "Фамилие, имя, отчество"
+msgstr ""
 
 #: .\accounts\forms\register.py:35 .\storages\forms.py:21
 #: .\storages\forms.py:30
 msgid "Requared field."
-msgstr "Поле обязательно для заполнения."
+msgstr ""
 
 #: .\accounts\forms\register.py:38
 msgid "User alrady exist."
-msgstr "Пользователь с таким именем уже существует."
+msgstr ""
 
 #: .\accounts\forms\send_email.py:10 .\service\forms\send_test_mail.py:11
 msgid "Email recipient"
-msgstr "Почта получателя"
+msgstr ""
 
 #: .\accounts\models.py:15 .\reports\forms.py:67 .\reports\forms.py:74
 #: .\reports\templates\reports\amortizing.html:14
 #: .\reports\templates\reports\main_summary.html:15
 msgid "Organization unit"
-msgstr "Организационное подразделение"
+msgstr ""
 
 #: .\accounts\models.py:21
 msgid "Secret key"
-msgstr "Секретный ключ"
+msgstr ""
 
 #: .\accounts\templates\accounts\change_password.html:2
 #: .\accounts\templates\accounts\change_password.html:3
 msgid "Form change password"
-msgstr "Форма смены пароля"
+msgstr ""
 
 #: .\accounts\templates\accounts\change_password.html:3
 #: .\accounts\templates\accounts\edit_user.html:3
@@ -167,7 +167,7 @@ msgstr "Форма смены пароля"
 #: .\storages\templates\storages\edit_s.html:5
 #: .\storages\templates\storages\list.html:5
 msgid "References"
-msgstr "Справочники"
+msgstr ""
 
 #: .\accounts\templates\accounts\change_password.html:3
 #: .\accounts\templates\accounts\edit_user.html:3
@@ -175,17 +175,17 @@ msgstr "Справочники"
 #: .\accounts\templates\accounts\manage_users.html:4
 #: .\accounts\templates\accounts\register.html:3
 msgid "User management"
-msgstr "Управление пользователями"
+msgstr ""
 
 #: .\accounts\templates\accounts\change_password.html:7
 msgid "Change password for user:"
-msgstr "Сменить пароль для пользователя:"
+msgstr ""
 
 #: .\accounts\templates\accounts\change_password.html:23
 #: .\accounts\templates\accounts\manage_users.html:17
 #: .\accounts\templates\accounts\recover_password.html:19
 msgid "Change password"
-msgstr "Сменить пароль"
+msgstr ""
 
 #: .\accounts\templates\accounts\change_password.html:24
 #: .\accounts\templates\accounts\edit_user.html:13
@@ -209,45 +209,45 @@ msgstr "Сменить пароль"
 #: .\reports\templates\reports\spent_money.html:40
 #: .\reports\templates\reports\users.html:34
 msgid "Back"
-msgstr "Вернуться"
+msgstr ""
 
 #: .\accounts\templates\accounts\edit_user.html:2
 #: .\accounts\templates\accounts\edit_user.html:3
 msgid "Edit user"
-msgstr "Редактировать данные пользователя"
+msgstr ""
 
 #: .\accounts\templates\accounts\edit_user.html:12
 #: .\index\templates\index\add_type.html:27
 #: .\service\templates\service\settings_mail.html:47
 #: .\service\templates\service\stickers.html:20
 msgid "Save"
-msgstr "Сохранить"
+msgstr ""
 
 #: .\accounts\templates\accounts\is_not_admin.html:2
 #: .\accounts\templates\accounts\is_not_admin.html:3
 #: .\accounts\templates\accounts\is_not_admin.html:7
 msgid "User not admin."
-msgstr "Недостаточно привилегий для доступа к странице."
+msgstr ""
 
 #: .\accounts\templates\accounts\login.html:2
 msgid "Login page"
-msgstr "Логин"
+msgstr ""
 
 #: .\accounts\templates\accounts\login.html:5
 msgid "Please enter a valid username or password!"
-msgstr "Введите корректный логин или пароль! "
+msgstr ""
 
 #: .\accounts\templates\accounts\login.html:8
 msgid "Parametrs access to site"
-msgstr "Параметры доступа к сайту"
+msgstr ""
 
 #: .\accounts\templates\accounts\login.html:18
 msgid "Enter"
-msgstr "Вход"
+msgstr ""
 
 #: .\accounts\templates\accounts\login.html:19
 msgid "Forgot your password?"
-msgstr "Забыли пароль?"
+msgstr ""
 
 #: .\accounts\templates\accounts\manage_users.html:14
 #: .\docs\templates\docs\names_list.html:14
@@ -261,7 +261,7 @@ msgstr "Забыли пароль?"
 #: .\storages\templates\storages\add_s.html:31
 #: .\storages\templates\storages\list.html:17
 msgid "Add"
-msgstr "Добавить"
+msgstr ""
 
 #: .\accounts\templates\accounts\manage_users.html:15
 #: .\docs\templates\docs\delivery.html:64
@@ -271,7 +271,7 @@ msgstr "Добавить"
 #: .\storages\templates\storages\edit_s.html:31
 #: .\storages\templates\storages\list.html:18
 msgid "Edit"
-msgstr "Редактировать"
+msgstr ""
 
 #: .\accounts\templates\accounts\manage_users.html:16
 #: .\docs\templates\docs\delivery.html:65
@@ -281,67 +281,65 @@ msgstr "Редактировать"
 #: .\index\templates\index\tree_list.html:49
 #: .\storages\templates\storages\list.html:19
 msgid "Delete"
-msgstr "Удалить"
+msgstr ""
 
 #: .\accounts\templates\accounts\manage_users.html:27 .\docs\api\views.py:238
 #: .\index\templates\index\use.html.py:43
 #: .\search\templates\search\serp.html:11
 msgid "User"
-msgstr "Пользователь"
+msgstr ""
 
 #: .\accounts\templates\accounts\manage_users.html:29
 msgid "E-Mail"
-msgstr "E-Mail"
+msgstr ""
 
 #: .\accounts\templates\accounts\manage_users.html:31
 msgid "Admin?"
-msgstr "Администратор?"
+msgstr ""
 
 #: .\accounts\templates\accounts\manage_users.html:53
 msgid "Yes"
-msgstr "Да"
+msgstr ""
 
 #: .\accounts\templates\accounts\manage_users.html:55
 msgid "No"
-msgstr "Нет"
+msgstr ""
 
 #: .\accounts\templates\accounts\recover_password.html:2
 msgid "Recover password"
-msgstr "Восстановления пароля"
+msgstr ""
 
 #: .\accounts\templates\accounts\register.html:2
 #: .\accounts\templates\accounts\register.html:3
 msgid "Add new user"
-msgstr "Добавление нового пользователя"
+msgstr ""
 
 #: .\accounts\templates\accounts\register.html:16
 msgid "Registry user"
-msgstr "Зарегистрировать пользователя"
+msgstr ""
 
 #: .\accounts\templates\accounts\send_email.html:2
 msgid "Password reset"
-msgstr "Сброс пароля"
+msgstr ""
 
 #: .\accounts\templates\accounts\send_email.html:8
 msgid ""
 "Please enter your email address. On it will send the message to change the "
 "password."
 msgstr ""
-"Пожалуйста введите почтовый ящик. На него будет отправленна ссылка для "
-"восстановления пароля."
 
 #: .\accounts\templates\accounts\send_email.html:12
 #: .\service\templates\service\settings_mail.html:60
 msgid "Send"
-msgstr "Отправить"
+msgstr ""
 
 #: .\conf\settings.py:64
 msgid "Russian"
-msgstr "Русский"
+msgstr ""
 
 #: .\conf\settings.py:65
 msgid "English"
-msgstr "Английский"
+msgstr ""
 
 #: .\dhtml\templates\dhtml\logic.html:259
 #: .\dhtml\templates\dhtml\logic.html:306
@@ -354,50 +352,50 @@ msgstr "Английский"
 #: .\dhtml\templates\dhtml\logic.html:1159
 #: .\dhtml\templates\dhtml\logic.html:1218
 msgid "<p>Server not available.</p>"
-msgstr "<p>Сервер не доступен.</p>"
+msgstr ""
 
 #: .\dhtml\templates\dhtml\logic.html:383
 #: .\dhtml\templates\dhtml\logic.html:424
 #: .\dhtml\templates\dhtml\logic.html:452
 #: .\dhtml\templates\dhtml\logic.html:480
 msgid "Server error :("
-msgstr "Ошибка на стороне сервера :("
+msgstr ""
 
 #: .\dhtml\templates\dhtml\logic.html:526
 msgid "Are you sure you want to put the selected items to the Trash?"
-msgstr "Вы точно хотите переместить выбранные элементы в корзину?"
+msgstr ""
 
 #: .\dhtml\templates\dhtml\logic.html:584
 msgid "Are you sure you want to delete consumable (s)?"
-msgstr "Вы точно хотите удалить картридж(и)?"
+msgstr ""
 
 #: .\dhtml\templates\dhtml\logic.html:620
 msgid "You sure you want to return the selected items back to the store?"
-msgstr "Вы точно хотите вернуть выбранные картриджи обратно на склад?"
+msgstr ""
 
 #: .\dhtml\templates\dhtml\logic.html:727
 msgid "Are you sure you want to remove the counterparty?"
-msgstr "Вы точно хотите удалить контрагента?"
+msgstr ""
 
 #: .\dhtml\templates\dhtml\logic.html:977
 msgid "Are you sure you want to delete a document?"
-msgstr "Вы точно хоитие удалить документ?"
+msgstr ""
 
 #: .\dhtml\templates\dhtml\logic.html:989
 msgid "Are you sure you want to delete the user?"
-msgstr "Вы точно хотите удалить пользователя?"
+msgstr ""
 
 #: .\dhtml\templates\dhtml\logic.html:1116
 msgid "Are you sure you want to delete?"
-msgstr "Вы точно хотите удалить?"
+msgstr ""
 
 #: .\dhtml\templates\dhtml\logic.html:1488
 msgid "Are you sure you want to remove the storage room?"
-msgstr "Вы точно хотите удалить складское помещение?"
+msgstr ""
 
 #: .\dhtml\templates\dhtml\logic.html:1549
 msgid "<p>Server error :(</p>"
-msgstr "<p>Ошибка на стороне сервера :(</p>"
+msgstr ""
 
 #: .\docs\api\views.py:27 .\docs\api\views.py:75 .\docs\api\views.py:326
 #: .\index\api\views.py:42 .\index\api\views.py:73 .\index\api\views.py:214
@@ -405,40 +403,40 @@ msgstr "<p>Ошибка на стороне сервера :(</p>"
 #: .\index\api\views.py:448 .\index\api\views.py:463 .\reports\api\views.py:49
 #: .\storages\api\views.py:20 .\storages\api\views.py:59
 msgid "Only use POST requests!"
-msgstr "Поддерживаются только POST запросы!"
+msgstr ""
 
 #: .\docs\api\views.py:43 .\docs\api\views.py:57 .\docs\api\views.py:89
 msgid "The object with the ID is not found."
-msgstr "Объект с таким ID не найден."
+msgstr ""
 
 #: .\docs\api\views.py:48
 msgid "Name can not be removed, ie. other objects reference it."
-msgstr "Имя удалить невозможно, т. к. на него ссылаются другие объекты."
+msgstr ""
 
 #: .\docs\api\views.py:51 .\docs\api\views.py:65 .\index\api\views.py:356
 msgid "Name deleted successfully."
-msgstr "Имя успешно удалено."
+msgstr ""
 
 #: .\docs\api\views.py:62
 msgid "Type can not be deleted, ie the other sites link to it."
-msgstr "Тип удалить невозможно, т. к. на него ссылаются другие объекты."
+msgstr ""
 
 #: .\docs\api\views.py:117 .\docs\api\views.py:140
 msgid "The name of the cartridge"
-msgstr "Название картриджа"
+msgstr ""
 
 #: .\docs\api\views.py:118
 msgid "Amount cartridges"
-msgstr "Количество картриджей"
+msgstr ""
 
 #: .\docs\api\views.py:126
 #, python-format
 msgid "Document %(doc_number)s_%(user_id)s_1.docx generated"
-msgstr "Документ %(doc_number)s_%(user_id)s_1.docx успешно сформирован."
+msgstr ""
 
 #: .\docs\api\views.py:130
 msgid "Document form is impossible."
-msgstr "Документ сформировать невозможно."
+msgstr ""
 
 #: .\docs\api\views.py:139 .\docs\api\views.py:208 .\docs\api\views.py:234
 #: .\docs\api\views.py:257 .\docs\api\views.py:278 .\docs\api\views.py:301
@@ -457,16 +455,16 @@ msgstr "Документ сформировать невозможно."
 #: .\reports\templates\reports\main_summary.html:42
 #: .\search\templates\search\serp.html:9
 msgid "Number"
-msgstr "Номер"
+msgstr "ID"
 
 #: .\docs\api\views.py:148
 #, python-format
 msgid "Document %(doc_number)s_%(user_id)s_0.docx generated"
-msgstr "Документ %(doc_number)s_%(user_id)s_0.docx успешно сформирован."
+msgstr ""
 
 #: .\docs\api\views.py:152
 msgid "This action is not implemented."
-msgstr "Данное действие не реализовано."
+msgstr ""
 
 #: .\docs\api\views.py:177 .\docs\api\views.py:209 .\docs\api\views.py:235
 #: .\docs\api\views.py:258 .\docs\api\views.py:279 .\docs\api\views.py:302
@@ -492,14 +490,14 @@ msgstr "Данное действие не реализовано."
 #: .\reports\templates\reports\products.html:54
 #: .\search\templates\search\serp.html:10
 msgid "Name"
-msgstr "Название"
+msgstr ""
 
 #: .\docs\api\views.py:177 .\docs\templates\docs\delivery.html.py:97
 #: .\index\templates\index\add_empty_cartridge.html:49
 #: .\index\templates\index\add_items.html:48
 #: .\reports\templates\reports\users_ajax.html:5
 msgid "Amount"
-msgstr "Сумма"
+msgstr ""
 
 #: .\docs\api\views.py:210 .\docs\api\views.py:236 .\docs\api\views.py:259
 #: .\docs\api\views.py:280 .\docs\api\views.py:303
@@ -507,15 +505,15 @@ msgstr "Сумма"
 #: .\index\templates\index\basket.html:36 .\index\templates\index\empty.html:42
 #: .\index\templates\index\stock.html:41 .\index\templates\index\use.html:41
 msgid "Amount<br/>recovery"
-msgstr "Количество<br/> перезаправок"
+msgstr ""
 
 #: .\docs\api\views.py:211 .\index\templates\index\stock.html.py:42
 msgid "Date add"
-msgstr "Дата добавления"
+msgstr ""
 
 #: .\docs\api\views.py:211 .\index\templates\index\stock.html.py:42
 msgid "on stock"
-msgstr "на склад"
+msgstr ""
 
 #: .\docs\api\views.py:212 .\docs\api\views.py:239 .\docs\api\views.py:261
 #: .\docs\api\views.py:283 .\docs\api\views.py:305
@@ -523,27 +521,27 @@ msgstr "на склад"
 #: .\index\templates\index\at_work.html:36
 #: .\index\templates\index\basket.html:38 .\index\templates\index\stock.html:44
 msgid "comment"
-msgstr "Комментарий"
+msgstr "Comment"
 
 #: .\docs\api\views.py:237 .\index\templates\index\use.html.py:42
 msgid "Date transfe"
-msgstr "Дата передачи"
+msgstr ""
 
 #: .\docs\api\views.py:260 .\index\templates\index\empty.html.py:43
 msgid "Date return"
-msgstr "Дата возврата"
+msgstr ""
 
 #: .\docs\api\views.py:281 .\index\templates\index\at_work.html.py:34
 msgid "Date transfer on recovery"
-msgstr "Дата передачи<br/> на заправку"
+msgstr ""
 
 #: .\docs\api\views.py:282 .\index\templates\index\at_work.html.py:35
 msgid "Refueller"
-msgstr "Заправщик"
+msgstr ""
 
 #: .\docs\api\views.py:304 .\index\templates\index\basket.html.py:37
 msgid "Date return in basket"
-msgstr "Дата помещения в корзину"
+msgstr ""
 
 #: .\docs\forms\add_doc.py:14 .\docs\forms\add_doc.py:37
 #: .\docs\forms\add_doc.py:70 .\index\forms\add_empty_items.py:12
@@ -557,16 +555,16 @@ msgstr "Дата помещения в корзину"
 #: .\reports\forms.py:21 .\reports\forms.py:30 .\reports\forms.py:63
 #: .\reports\forms.py:86 .\reports\forms.py:99
 msgid "Required field."
-msgstr "Поле обязательно для заполнения."
+msgstr ""
 
 #: .\docs\forms\add_doc.py:15
 msgid "Firm supplier"
-msgstr "Фирма поставщик"
+msgstr ""
 
 #: .\docs\forms\add_doc.py:19 .\docs\templates\docs\delivery.html.py:43
 #: .\docs\templates\docs\delivery.html:99
 msgid "Summary"
-msgstr "Краткое содержание"
+msgstr ""
 
 #: .\docs\forms\add_doc.py:27 .\docs\models.py:11
 #: .\index\templates\index\add_empty_cartridge.html:45
@@ -574,55 +572,55 @@ msgstr "Краткое содержание"
 #: .\index\templates\index\basket.html:53 .\index\templates\index\empty.html:61
 #: .\index\templates\index\stock.html:60 .\index\templates\index\use.html:59
 msgid "Delivery agreement"
-msgstr "Договор поставки"
+msgstr ""
 
 #: .\docs\forms\add_doc.py:28 .\docs\models.py:12
 #: .\index\templates\index\transfer_to_firm.html:45
 msgid "Service agreement"
-msgstr "Договор обслуживания"
+msgstr ""
 
 #: .\docs\forms\add_doc.py:56 .\docs\forms\add_doc.py:64
 msgid "You have entered wrong amount"
-msgstr "Вы ввели ошибочную сумму."
+msgstr ""
 
 #: .\docs\forms\edit_name.py:8 .\docs\templates\docs\names_list.html.py:29
 #: .\index\templates\index\add_name.html:28
 msgid "Type"
-msgstr "Тип"
+msgstr ""
 
 #: .\docs\forms\edit_name.py:10 .\docs\templates\docs\names_list.html.py:30
 #: .\index\models.py:20 .\index\models.py:29 .\index\models.py:51
 #: .\index\models.py:78 .\index\templates\index\empty.html.py:45
 #: .\index\templates\index\use.html:44 .\search\templates\search\serp.html:14
 msgid "Comment"
-msgstr "Комментарий"
+msgstr ""
 
 #: .\docs\forms\edit_name.py:32 .\index\forms\add_type.py:40
 #: .\index\forms\comment.py:18
 msgid "You have exceeded the maximum number of characters. No more than 160."
-msgstr "Превышено максимальное количество символов. Допустимо не более 160."
+msgstr ""
 
 #: .\docs\models.py:13
 msgid "Deed of conveyance"
-msgstr "Акт передачи"
+msgstr ""
 
 #: .\docs\models.py:14
 msgid "Act of write-off"
-msgstr "Акт списания"
+msgstr ""
 
 #: .\docs\templates\docs\acts_list.html:4
 #: .\docs\templates\docs\acts_list.html:5
 msgid "Acts of transfer for restoration"
-msgstr "Акты передачи на заправку"
+msgstr ""
 
 #: .\docs\templates\docs\acts_list.html:21
 msgid "Extension number"
-msgstr "Внутренний<br/>номер"
+msgstr "Extension <br/>number"
 
 #: .\docs\templates\docs\acts_list.html:22
 #: .\docs\templates\docs\delivery.html:98
 msgid "Spent"
-msgstr "Потрачено"
+msgstr ""
 
 #: .\docs\templates\docs\acts_list.html:22
 #: .\docs\templates\docs\delivery.html:30
@@ -631,27 +629,27 @@ msgstr "Потрачено"
 #: .\index\templates\index\transfer_to_firm.html:40
 #: .\reports\templates\reports\spent_money.html:55
 msgid "Currency"
-msgstr "руб."
+msgstr "dollar"
 
 #: .\docs\templates\docs\acts_list.html:23
 msgid "Contract"
-msgstr "Контракты"
+msgstr ""
 
 #: .\docs\templates\docs\acts_list.html:24
 msgid "Date of transfer"
-msgstr "Дата передачи"
+msgstr ""
 
 #: .\docs\templates\docs\acts_list.html:25
 msgid "Who passed"
-msgstr "Кто передал"
+msgstr ""
 
 #: .\docs\templates\docs\acts_list.html:26
 msgid "Who gave"
-msgstr "Кому передал"
+msgstr ""
 
 #: .\docs\templates\docs\acts_list.html:27 .\index\templates\index\use.html:45
 msgid "Action"
-msgstr "Действие"
+msgstr ""
 
 #: .\docs\templates\docs\acts_list.html:27
 #: .\index\templates\index\add_empty_cartridge.html:63
@@ -660,19 +658,19 @@ msgstr "Действие"
 #: .\index\templates\index\basket.html:14 .\index\templates\index\empty.html:20
 #: .\index\templates\index\stock.html:19 .\index\templates\index\use.html:19
 msgid "Download"
-msgstr "Скачать"
+msgstr ""
 
 #: .\docs\templates\docs\acts_list.html:40
 msgid "Form a group with docx"
-msgstr "Сформировать docx с группировкой"
+msgstr "Create a group docx"
 
 #: .\docs\templates\docs\acts_list.html:41
 msgid "Form a group without docx"
-msgstr "Сформировать docx без группировки"
+msgstr "Create a without group docx"
 
 #: .\docs\templates\docs\delivery.html:2 .\docs\templates\docs\delivery.html:3
 msgid "delivery agreement"
-msgstr "Договора поставки"
+msgstr "Delivery agreement"
 
 #: .\docs\templates\docs\delivery.html:10
 #: .\events\templates\events\show_events.html:9
@@ -682,37 +680,37 @@ msgstr "Договора поставки"
 #: .\reports\templates\reports\spent_money.html:9
 #: .\reports\templates\reports\users.html:8
 msgid "lang"
-msgstr "ru"
+msgstr "en"
 
 #: .\docs\templates\docs\delivery.html:30
 msgid "Money"
-msgstr "Сумма"
+msgstr "Money"
 
 #: .\docs\templates\docs\delivery.html:35
 #: .\docs\templates\docs\delivery.html:93
 msgid "Doc type"
-msgstr "Тип документа"
+msgstr ""
 
 #: .\docs\templates\docs\delivery.html:48
 #: .\docs\templates\docs\delivery.html:96
 msgid "Firm"
-msgstr "Контрагент"
+msgstr ""
 
 #: .\docs\templates\docs\delivery.html:53
 msgid "Date"
-msgstr "Дата"
+msgstr ""
 
 #: .\docs\templates\docs\delivery.html:61
 msgid "Cancel"
-msgstr "Отменить"
+msgstr ""
 
 #: .\docs\templates\docs\delivery.html:95
 msgid "Document date"
-msgstr "Дата документа"
+msgstr ""
 
 #: .\docs\templates\docs\delivery.html:106
 msgid "Delivery"
-msgstr "Поставка"
+msgstr ""
 
 #: .\docs\templates\docs\delivery.html:107
 #: .\events\templates\events\show_events.html:3
@@ -722,33 +720,33 @@ msgstr "Поставка"
 #: .\service\templates\service\submenu.html:2
 #: .\service\templates\service\submenu.html:3
 msgid "Service"
-msgstr "Обслуживание"
+msgstr ""
 
 #: .\docs\templates\docs\edit_name.html:2
 #: .\docs\templates\docs\edit_name.html:3
 msgid "Change name"
-msgstr "Изменение имени"
+msgstr ""
 
 #: .\docs\templates\docs\edit_name.html:3
 #: .\docs\templates\docs\names_list.html:3
 #: .\docs\templates\docs\names_list.html:4
 #: .\index\templates\index\add_name.html:3
 msgid "References names cartidges"
-msgstr "Справочник имён картриджей"
+msgstr ""
 
 #: .\docs\templates\docs\edit_name.html:15
 #: .\index\templates\index\edit_cartridge_comment.html:11
 #: .\index\templates\index\edit_firm.html:17
 msgid "Save and close"
-msgstr "Сохранить и закрыть"
+msgstr ""
 
 #: .\docs\templates\docs\handbook.html:7
 msgid "Users"
-msgstr "Пользователи"
+msgstr ""
 
 #: .\docs\templates\docs\handbook.html:8
 msgid "Organization units"
-msgstr "Организационные подразделения"
+msgstr ""
 
 #: .\docs\templates\docs\handbook.html:9
 #: .\index\templates\index\add_city.html:3
@@ -757,86 +755,82 @@ msgstr "Организационные подразделения"
 #: .\index\templates\index\toner_refill.html:2
 #: .\index\templates\index\toner_refill.html:3
 msgid "Firms"
-msgstr "Контрагенты"
+msgstr ""
 
 #: .\docs\templates\docs\handbook.html:12
 msgid "Agreement for the supply"
-msgstr "Договора на поставку"
+msgstr ""
 
 #: .\docs\templates\docs\handbook.html:13
 msgid "Acts of transfer at the gas station"
-msgstr "Акты передачи на заправку"
+msgstr ""
 
 #: .\docs\templates\docs\handbook.html:16
 #: .\reports\templates\reports\amortizing.html:3
 msgid "Reports"
-msgstr "Отчёты"
+msgstr ""
 
 #: .\docs\templates\docs\handbook.html:17
 msgid "List the names of consumables"
-msgstr "Список названий расходников"
+msgstr ""
 
 #: .\docs\templates\docs\handbook.html:18
 msgid "List of consumables types"
-msgstr "Список типов расходников"
+msgstr "List of cartridges types"
 
 #: .\docs\templates\docs\handbook.html:19
 msgid "List of storages"
-msgstr "Складские помещения"
+msgstr ""
 
 #: .\docs\templates\docs\types_list.html:3
 #: .\docs\templates\docs\types_list.html:4
 #: .\index\templates\index\add_type.html:3
 msgid "Reference types consumables"
-msgstr "Справочник типов расходников"
+msgstr "Reference types cartridges"
 
 #: .\docs\templates\docs\types_list.html:28
 msgid "type"
-msgstr "Тип"
+msgstr "Type"
 
 #: .\docs\views.py:68
 #, python-format
 msgid "%(doc_num)s success saved."
-msgstr "Документ «%(doc_num)s» успешно сохранён."
+msgstr ""
 
 #: .\docs\views.py:82
 #, python-format
 msgid "New %(doc_num)s success created."
-msgstr "Новый «%(doc_num)s» успешно создан."
+msgstr ""
 
 #: .\events\api\views.py:242
 msgid "Not found"
-msgstr "Объект не найден."
+msgstr ""
 
 #: .\events\helpers.py:32
 #, python-format
 msgid "Added user %(user_name)s."
-msgstr "Добавлен пользователем %(user_name)s."
+msgstr ""
 
 #: .\events\helpers.py:34
 #, python-format
 msgid "№ %(cart_number)s (%(cart_type)s) added user %(user_name)s."
 msgstr ""
-"Новый картридж  под № %(cart_number)s (%(cart_type)s) добавлен пользователем "
-"%(user_name)s."
 
 #: .\events\helpers.py:45
 #, python-format
 msgid "Added empty cartridge user %(user_name)s."
-msgstr "Пользователь %(user_name)s добавил пустой картридж."
+msgstr ""
 
 #: .\events\helpers.py:47
 #, python-format
 msgid ""
 "Added empty cartridge № %(cart_number)s (%(cart_type)s) user %(user_name)s."
 msgstr ""
-"Пользователь %(user_name)s добавил пустой картридж № %(cart_number)s "
-"(%(cart_type)s)."
 
 #: .\events\helpers.py:58
 #, python-format
 msgid "Transfer to use %(event_org)s user %(event_user)s."
-msgstr "Передан в пользование «%(event_org)s» пользователем %(event_user)s."
+msgstr ""
 
 #: .\events\helpers.py:60
 #, python-format
@@ -844,13 +838,11 @@ msgid ""
 "№ %(cart_number)s (%(cart_type)s) transfer to use %(event_org)s user "
 "%(event_user)s."
 msgstr ""
-"№ %(cart_number)s (%(cart_type)s) передача в пользование «%(event_org)s» "
-"пользователем %(event_user)s."
 
 #: .\events\helpers.py:72
 #, python-format
 msgid "Transfer to restore \"%(event_firm)s\" user %(event_user)s."
-msgstr "Отправка на заправку в «%(event_firm)s» пользователем %(event_user)s."
+msgstr ""
 
 #: .\events\helpers.py:75
 #, python-format
@@ -858,36 +850,32 @@ msgid ""
 "№ %(cart_number)s (%(cart_type)s) transfer to restore \"%(event_firm)s\" "
 "user %(event_user)s."
 msgstr ""
-"№ %(cart_number)s (%(cart_type)s) отправлен на заправку в «%(event_firm)s» "
-"пользователем %(event_user)s."
 
 #: .\events\helpers.py:90
 msgid "filling and cleaning, "
-msgstr "заправка и очистка, "
+msgstr ""
 
 #: .\events\helpers.py:91
 msgid "Replacement fotoreceptor, "
-msgstr "замена фотобарабана, "
+msgstr ""
 
 #: .\events\helpers.py:92
 msgid "replacement of squeegee, "
-msgstr "замена ракеля, "
+msgstr ""
 
 #: .\events\helpers.py:93
 msgid "chip replacement, "
-msgstr "замена чипа, "
+msgstr ""
 
 #: .\events\helpers.py:94
 msgid "replacing the magnetic roller, "
-msgstr "замена магнитного барабана, "
+msgstr ""
 
 #: .\events\helpers.py:96
 #, python-format
 msgid ""
 "Return to the filling in the firm \"%(event_firm)s\" user %(event_user)s."
 msgstr ""
-"Возврат с обслуживания в фирме \"%(event_firm)s\" пользователем "
-"%(event_user)s."
 
 #: .\events\helpers.py:100
 #, python-format
@@ -895,40 +883,36 @@ msgid ""
 "№ %(cart_number)s (%(cart_type)s) return to the filling in the firm "
 "\"%(event_firm)s\" user %(event_user)s."
 msgstr ""
-"№ %(cart_number)s (%(cart_type)s) возвращен с заправки в фирме "
-"\"%(event_firm)s\" пользователем %(event_user)s."
 
 #: .\events\helpers.py:105
 msgid "<br/>The following work: "
-msgstr "<br/>Проводилась работа: "
+msgstr ""
 
 #: .\events\helpers.py:115
 #, python-format
 msgid "Moving in user to basket %(event_user)s."
-msgstr "Перемещен пользователем %(event_user)s в корзину."
+msgstr ""
 
 #: .\events\helpers.py:117
 #, python-format
 msgid ""
 "№ %(cart_number)s (%(cart_type)s) moving in user to basket %(event_user)s."
 msgstr ""
-"№ %(cart_number)s (%(cart_type)s) перемещён в корзину пользователем "
-"%(event_user)s."
 
 #: .\events\helpers.py:129
 #, python-format
 msgid "Deleted user %(event_user)s."
-msgstr "Удалён пользователь %(event_user)s."
+msgstr ""
 
 #: .\events\helpers.py:131
 #, python-format
 msgid "№ %(cart_number)s (%(cart_type)s) deleted user %(event_user)s."
-msgstr "№ %(cart_number)s (%(cart_type)s) удален пользователем %(event_user)s."
+msgstr ""
 
 #: .\events\helpers.py:143
 #, python-format
 msgid "Return to stock from %(event_org)s user %(event_user)s."
-msgstr "Возврат на склад от %(event_org)s пользователем %(event_user)s."
+msgstr ""
 
 #: .\events\helpers.py:146
 #, python-format
@@ -936,754 +920,750 @@ msgid ""
 "№ %(cart_number)s (%(cart_type)s) return to stock from %(event_org)s user "
 "%(event_user)s."
 msgstr ""
-"№ %(cart_number)s (%(cart_type)s) возвращение на склад от «%(event_org)s» "
-"пользователем %(event_user)s."
 
 #: .\events\models.py:11
 msgid "Adding a new consumables"
-msgstr "Добавление нового расходника"
+msgstr ""
 
 #: .\events\models.py:12
 msgid "Adding a new empty cartriges"
-msgstr " пустых картриджейДобавление"
+msgstr ""
 
 #: .\events\models.py:13
 msgid "Transfer consumables for use"
-msgstr "Передача расходника в пользование"
+msgstr ""
 
 #: .\events\models.py:14
 msgid "Transfer Consumables for refueling"
-msgstr "Передача расходника на заправку"
+msgstr ""
 
 #: .\events\models.py:15
 msgid "Return to the remanufactured cartridge on storage"
-msgstr "Возврат восстановленного картриджа на склад"
+msgstr ""
 
 #: .\events\models.py:16
 msgid "Move to basket"
-msgstr "Перемещение в корзину"
+msgstr ""
 
 #: .\events\models.py:17
 msgid "Delete cartridge"
-msgstr "Удаление картриджа"
+msgstr ""
 
 #: .\events\models.py:18
 msgid "Passing an empty consumables stock"
-msgstr "Перемещение пустого расходника на склад"
+msgstr ""
 
 #: .\events\models.py:19
 msgid "Creating a new user"
-msgstr "Создание нового пользователя"
+msgstr ""
 
 #: .\events\models.py:20
 msgid "Removing a user"
-msgstr "Удаление пользователя"
+msgstr ""
 
 #: .\events\templates\events\ajx_view_events_one_cartridge.html:4
 #: .\events\templates\events\show_all_events.html:5
 msgid "Date and time"
-msgstr "Дата и время"
+msgstr ""
 
 #: .\events\templates\events\ajx_view_events_one_cartridge.html:5
 #: .\storages\forms.py:12 .\storages\templates\storages\list.html.py:34
 msgid "Description"
-msgstr "Описание"
+msgstr ""
 
 #: .\events\templates\events\show_all_events.html:2
 msgid "Total Events:"
-msgstr "Всего событий: "
+msgstr ""
 
 #: .\events\templates\events\show_all_events.html:6
 msgid "Event text"
-msgstr "Текст события"
+msgstr ""
 
 #: .\events\templates\events\show_events.html:2
 #: .\events\templates\events\show_events.html:3
 msgid "Viewing of events"
-msgstr "Просмотр событий"
+msgstr ""
 
 #: .\events\templates\events\show_events.html:14
 msgid "Select a period viewed"
-msgstr "Выберите просматриваемый период"
+msgstr ""
 
 #: .\events\templates\events\show_events.html:17
 msgid "From"
-msgstr "С "
+msgstr ""
 
 #: .\events\templates\events\show_events.html:18
 msgid "By"
-msgstr "По "
+msgstr ""
 
 #: .\events\templates\events\show_events.html:19
 msgid "show"
-msgstr "Показать"
+msgstr ""
 
 #: .\events\templates\events\show_events.html:20
 msgid "Reset"
-msgstr "Сброс"
+msgstr ""
 
 #: .\events\templates\events\show_events.html:31
 msgid "Show more..."
-msgstr "Показать ещё..."
+msgstr ""
 
 #: .\events\templates\events\view_cartridge_events.html:3
 #: .\events\templates\events\view_cartridge_events.html:4
 msgid "Events accounting object"
-msgstr "События объекта учёта"
+msgstr ""
 
 #: .\events\templates\events\view_cartridge_events.html:4
 #: .\index\templates\index\dashboard.html:58
 #: .\service\templates\service\submenu.html:7
 msgid "Events"
-msgstr "События"
+msgstr ""
 
 #: .\index\api\views.py:57
 msgid "Firm not found"
-msgstr "Контрагент не найден"
+msgstr ""
 
 #: .\index\api\views.py:62
 msgid "Firm deleted!"
-msgstr "Контрагент удалён!"
+msgstr ""
 
 #: .\index\api\views.py:80 .\storages\views.py:42
 msgid "User not assosiate with organization unit!<br/>Error code: 101."
 msgstr ""
-"Пользователь не принадлежит ни одной из организаций!<br/> Код ошибки: 101"
 
 #: .\index\api\views.py:104
 msgid "Error in attrib \"data\" in input button add_item"
-msgstr "Фшибка в атрибуте \"data\" формы ввода add_item"
+msgstr ""
 
 #: .\index\api\views.py:131
 msgid "Cartridge successfully added."
-msgstr "Картридж успешно добавлен."
+msgstr ""
 
 #: .\index\api\views.py:133
 msgid "Cartridges successfully added."
-msgstr "Картриджи успешно добавлены."
+msgstr ""
 
 #: .\index\api\views.py:230
 msgid "Cartridges successfully moved."
-msgstr "Расходники успешно перемещены."
+msgstr ""
 
 #: .\index\api\views.py:299
 #, python-format
 msgid "Cartridges %(cart_nums)s successfully moved to firm."
-msgstr "Картриджи %(cart_nums)s успешно переданы фирме."
+msgstr ""
 
 #: .\index\api\views.py:319
 msgid "Session cleared"
-msgstr "Сессия очищена"
+msgstr ""
 
 #: .\index\api\views.py:344
 msgid "In demo remove nodes not allow."
-msgstr "В режиме демонтсрации удалять ноды нельзя."
+msgstr ""
 
 #: .\index\api\views.py:352
 msgid ""
 "But it can not be removed because other objects reference it.<br/>Error "
 "code: 102"
-msgstr "Удаление невозможно, т. к. на объект ссылаются.<br/>Код ошибки: 102."
+msgstr ""
 
 #: .\index\api\views.py:358
 msgid "Names deleted successfully."
-msgstr "Организационные подразделения успешно удалены."
+msgstr ""
 
 #: .\index\api\views.py:376
 msgid "Cartridjes deleted!"
-msgstr "Картриджи удалены!"
+msgstr ""
 
 #: .\index\api\views.py:393
 msgid "Error converting string numbers to int."
-msgstr "Ошибка конвертации строки в интеджер."
+msgstr ""
 
 #: .\index\api\views.py:404
 msgid "This action type not implemented."
-msgstr "Данный тип действия не реализован."
+msgstr ""
 
 #: .\index\api\views.py:418
 msgid "Cartridges successfully transferred to basket."
-msgstr "Картридж(и) успешно перемещен(ы) в корзину."
+msgstr ""
 
 #: .\index\forms\add_cartridge_name.py:18 .\index\forms\add_type.py:32
 msgid "This name already exists!"
-msgstr "Данное наменование уже существует!"
+msgstr ""
 
 #: .\index\forms\add_empty_items.py:18 .\index\forms\add_items.py:19
 #: .\index\templates\index\add_empty_cartridge.html:38
 #: .\index\templates\index\add_items.html:37
 #: .\index\templates\index\empty.html:44 .\index\templates\index\stock.html:43
 msgid "Storage"
-msgstr "Склад"
+msgstr ""
 
 #: .\index\forms\add_empty_items.py:42 .\index\forms\add_items.py:43
 msgid "You have entered the wrong data."
-msgstr "Вы ввели ошибочные данные."
+msgstr ""
 
 #: .\index\forms\add_empty_items.py:45 .\index\forms\add_items.py:46
 #: .\index\forms\tr_to_firm.py:62 .\reports\forms.py:54
 msgid "The value must be greater than zero."
-msgstr "Значение должно быть больше нуля."
+msgstr ""
 
 #: .\index\forms\add_firm.py:12 .\index\models.py:48
 msgid "Select city"
-msgstr "Выбрать город"
+msgstr ""
 
 #: .\index\forms\add_firm.py:13 .\index\models.py:49
 #: .\index\templates\index\del_firm.html:10
 #: .\index\templates\index\toner_refill.html:30
 msgid "Contacts"
-msgstr "Контакты"
+msgstr ""
 
 #: .\index\forms\add_firm.py:14 .\index\models.py:50
 #: .\index\templates\index\del_firm.html:11
 #: .\index\templates\index\toner_refill.html:31 .\storages\forms.py:11
 #: .\storages\templates\storages\list.html:33
 msgid "Address"
-msgstr "Адрес"
+msgstr ""
 
 #: .\index\forms\add_firm.py:15 .\index\templates\index\del_firm.html.py:12
 #: .\index\templates\index\toner_refill.html:32
 msgid "Comments"
-msgstr "Комментарии"
+msgstr ""
 
 #: .\index\forms\add_type.py:11
 msgid "Type consumables"
-msgstr "Тип расходного материала"
+msgstr ""
 
 #: .\index\forms\add_user.py:9
 msgid "Surname"
-msgstr "Фамилие"
+msgstr ""
 
 #: .\index\forms\add_user.py:11
 msgid "Middle name"
-msgstr "Отчество"
+msgstr ""
 
 #: .\index\forms\organization_unit.py:8
 msgid "name consumables"
-msgstr "Название расходника"
+msgstr "Names cartridges"
 
 #: .\index\helpers.py:23
 msgid "You are not authenticated."
-msgstr "Вы не аутентифицированы."
+msgstr ""
 
 #: .\index\models.py:19
 msgid "The name of the new type"
-msgstr "Название нового типа"
+msgstr ""
 
 #: .\index\models.py:36
 msgid "Enter the name of the city"
-msgstr "Введите название города"
+msgstr ""
 
 #: .\index\models.py:57
 msgid "Full and in stock"
-msgstr "Полон и на складе"
+msgstr ""
 
 #: .\index\models.py:58
 msgid "In use"
-msgstr "Задействован"
+msgstr ""
 
 #: .\index\models.py:59
 msgid "Empty and in stock"
-msgstr "Пуст и на складе"
+msgstr ""
 
 #: .\index\models.py:60 .\index\templates\index\base_menu.html.py:10
 msgid "On restoration"
-msgstr "Заправляются"
+msgstr ""
 
 #: .\index\models.py:61
 msgid "Full and in basket"
-msgstr "Заправленные и в корзине"
+msgstr ""
 
 #: .\index\models.py:62
 msgid "Empty and in basket"
-msgstr "Пустые и в корзине"
+msgstr ""
 
 #: .\index\templates\index\500.html:5 .\templates\500.html.py:3
 msgid "Internal server error."
-msgstr "Внутренняя ошибка сервера."
+msgstr ""
 
 #: .\index\templates\index\add_city.html:2
 #: .\index\templates\index\add_city.html:3
 #: .\index\templates\index\toner_refill.html:14
 msgid "Add city"
-msgstr "Добавить город"
+msgstr ""
 
 #: .\index\templates\index\add_empty_cartridge.html:2
 #: .\index\templates\index\add_empty_cartridge.html:3
 msgid "Adding empty cartridges to the stock"
-msgstr "Добавление пустых катриджей на склад"
+msgstr ""
 
 #: .\index\templates\index\add_empty_cartridge.html:3
 msgid "Empty cartridges"
-msgstr "Пустые картриджи"
+msgstr ""
 
 #: .\index\templates\index\add_empty_cartridge.html:21
 #: .\index\templates\index\add_items.html:21
 msgid "Filter"
-msgstr "Фильтр"
+msgstr ""
 
 #: .\index\templates\index\add_empty_cartridge.html:26
 #: .\index\templates\index\add_items.html:26
 msgid "Cartridge name"
-msgstr "Название катриджа"
+msgstr ""
 
 #: .\index\templates\index\add_empty_cartridge.html:42
 #: .\index\templates\index\add_items.html:41
 msgid "The field must be seleced"
-msgstr "Поле должно быть выбрано"
+msgstr ""
 
 #: .\index\templates\index\add_empty_cartridge.html:53
 #: .\index\templates\index\add_items.html:52
 msgid "The field must be greater than zero"
-msgstr "Поле должно быть более нуля"
+msgstr ""
 
 #: .\index\templates\index\add_empty_cartridge.html:55
 msgid "Add empty cartridges"
-msgstr "Добавить"
+msgstr ""
 
 #: .\index\templates\index\add_empty_cartridge.html:65
 #: .\index\templates\index\add_items.html:66
 msgid "Generate PDF"
-msgstr "Сформировать PDF"
+msgstr ""
 
 #: .\index\templates\index\add_empty_cartridge.html:66
 #: .\index\templates\index\add_items.html:67
 msgid "Clear session"
-msgstr "Очистить сессию"
+msgstr ""
 
 #: .\index\templates\index\add_firm.html:2
 #: .\index\templates\index\add_firm.html:3
 msgid "Add new firm"
-msgstr "Добавление нового контрагента"
+msgstr ""
 
 #: .\index\templates\index\add_items.html:2
 #: .\index\templates\index\add_items.html:3
 msgid "Adding objects to the stock"
-msgstr "Добавление новых на склад"
+msgstr ""
 
 #: .\index\templates\index\add_items.html:3
 #: .\index\templates\index\stock.html:2 .\index\templates\index\stock.html:3
 #: .\index\templates\index\transfe_for_use.html:4
 msgid "List of new or refilled cartridges"
-msgstr "Список новых или заправленных"
+msgstr ""
 
 #: .\index\templates\index\add_name.html:2
 #: .\index\templates\index\add_name.html:3
 msgid "Adding a new name"
-msgstr "Добавление нового названия"
+msgstr ""
 
 #: .\index\templates\index\add_name.html:20
 msgid "Name consumables"
-msgstr "Название расходника"
+msgstr ""
 
 #: .\index\templates\index\add_type.html:2
 #: .\index\templates\index\add_type.html:3
 msgid "Adding a new type"
-msgstr "Добавление нового типа"
+msgstr ""
 
 #: .\index\templates\index\at_work.html:3
 #: .\index\templates\index\at_work.html:4
 msgid "Cartridges on rebuilding"
-msgstr "Кариджи на заправке"
+msgstr ""
 
 #: .\index\templates\index\at_work.html:8 .\index\templates\index\basket.html:9
 #: .\index\templates\index\use.html:14
 msgid "Return to the stock"
-msgstr "Вернуть на склад"
+msgstr ""
 
 #: .\index\templates\index\at_work.html:14
 #: .\index\templates\index\basket.html:17 .\index\templates\index\empty.html:23
 #: .\index\templates\index\stock.html:22 .\index\templates\index\use.html:22
 msgid "Export to CSV with group"
-msgstr "Экспорт в CSV с группировкой"
+msgstr ""
 
 #: .\index\templates\index\at_work.html:15
 #: .\index\templates\index\basket.html:18 .\index\templates\index\empty.html:24
 #: .\index\templates\index\stock.html:23 .\index\templates\index\use.html:23
 msgid "Export to CSV without group"
-msgstr "Экспорт в CSV без группировки"
+msgstr ""
 
 #: .\index\templates\index\bad_browser.html:6
 msgid "Upgrade your browser!"
-msgstr "Обновите браузер!"
+msgstr ""
 
 #: .\index\templates\index\bad_browser.html:10
 msgid "Attention! You are using an outdated browser."
-msgstr "Внимание! Вы пользуетесь устаревшим браузером."
+msgstr ""
 
 #: .\index\templates\index\bad_browser.html:11
 msgid ""
 "We strongly recommend that you install the new version of one of the listed "
 "browsers."
 msgstr ""
-"Мы настоятельно рекомендуем Вам установить новую версию одиного из "
-"перечисленных браузеров."
 
 #: .\index\templates\index\base.html:29
 msgid "Exit"
-msgstr "Выход"
+msgstr ""
 
 #: .\index\templates\index\base.html:37
 msgid "Version"
-msgstr "Версия"
+msgstr ""
 
 #: .\index\templates\index\base_menu.html:6
 msgid "Main"
-msgstr "Главная"
+msgstr ""
 
 #: .\index\templates\index\base_menu.html:7
 msgid "Filled"
-msgstr "Заправленные"
+msgstr ""
 
 #: .\index\templates\index\base_menu.html:8
 msgid "Installed"
-msgstr "Установленные"
+msgstr ""
 
 #: .\index\templates\index\base_menu.html:9
 msgid "Empty"
-msgstr "Пустые"
+msgstr ""
 
 #: .\index\templates\index\base_menu.html:11
 #: .\index\templates\index\basket.html:4 .\index\templates\index\basket.html:5
 msgid "Basket"
-msgstr "Корзина"
+msgstr ""
 
 #: .\index\templates\index\base_menu.html:16
 msgid "Find by number"
-msgstr "Поиск по номеру"
+msgstr ""
 
 #: .\index\templates\index\basket.html:39 .\index\templates\index\empty.html:46
 #: .\index\templates\index\stock.html:45
 msgid "Actions"
-msgstr "Действие"
+msgstr ""
 
 #: .\index\templates\index\basket.html:51 .\index\templates\index\empty.html:59
 #: .\index\templates\index\stock.html:58 .\index\templates\index\use.html:57
 msgid "Edit a comment"
-msgstr "Редактировать комментарий"
+msgstr ""
 
 #: .\index\templates\index\basket.html:52 .\index\templates\index\empty.html:60
 #: .\index\templates\index\stock.html:59 .\index\templates\index\use.html:58
 msgid "Event viewer"
-msgstr "Просмотр событий"
+msgstr ""
 
 #: .\index\templates\index\dashboard.html:4
 msgid "Stocks of consumables"
-msgstr "Запасы расходных материалов"
+msgstr ""
 
 #: .\index\templates\index\dashboard.html:9
 msgid "Desktop"
-msgstr "Рабочий стол"
+msgstr ""
 
 #: .\index\templates\index\dashboard.html:14
 msgid "Quantity in stock (usable)"
-msgstr "Количество на складе(пригодных к использованию)"
+msgstr ""
 
 #: .\index\templates\index\dashboard.html:19
 msgid "The number of installed"
-msgstr "Количество задействованных"
+msgstr ""
 
 #: .\index\templates\index\dashboard.html:24
 msgid "Number of empty, ready to recharge"
-msgstr "Количество пустых, готовых к перезаправке"
+msgstr ""
 
 #: .\index\templates\index\dashboard.html:29
 msgid "Now dressed"
-msgstr "Сейчас заправляется"
+msgstr ""
 
 #: .\index\templates\index\dashboard.html:34
 msgid "In basket (count)"
-msgstr "В корзине"
+msgstr ""
 
 #: .\index\templates\index\dashboard.html:39
 msgid "Spending cartridges"
-msgstr "Расходавание картриджей"
+msgstr ""
 
 #: .\index\templates\index\dashboard.html:43
 msgid "For the current day"
-msgstr "За текущие сутки"
+msgstr ""
 
 #: .\index\templates\index\dashboard.html:47
 msgid "Since the beginning of the month"
-msgstr "С начала месяца"
+msgstr ""
 
 #: .\index\templates\index\dashboard.html:51
 msgid "Since the beginning of the year"
-msgstr "С начала года"
+msgstr ""
 
 #: .\index\templates\index\del_firm.html:2
 msgid "Removal company"
-msgstr "Удаление фирмы"
+msgstr ""
 
 #: .\index\templates\index\del_firm.html:3
 msgid "You sure you want to remove the service companies with the parameters:"
-msgstr "Вы точно хотите удалить обслуживающую фирму с параметрами:"
+msgstr ""
 
 #: .\index\templates\index\edit_cartridge_comment.html:2
 #: .\index\templates\index\edit_cartridge_comment.html:3
 msgid "Edit the comment text"
-msgstr "Редактирование текста комментария"
+msgstr ""
 
 #: .\index\templates\index\edit_firm.html:2
 #: .\index\templates\index\edit_firm.html:3
 msgid "Edit firm"
-msgstr "Редактировать фирму"
+msgstr ""
 
 #: .\index\templates\index\empty.html:3 .\index\templates\index\empty.html:4
 msgid "Blank consumables"
-msgstr "Пустые расходники"
+msgstr ""
 
 #: .\index\templates\index\empty.html:14
 msgid "Transfer to refuel"
-msgstr "Передать на заправку"
+msgstr ""
 
 #: .\index\templates\index\empty.html:15
 msgid "Add_empty"
-msgstr "Добавить пустые"
+msgstr ""
 
 #: .\index\templates\index\empty.html:16 .\index\templates\index\stock.html:15
 #: .\index\templates\index\transfe_empty_to_basket.html:12
 #: .\index\templates\index\use.html:15
 msgid "In basket"
-msgstr "В корзину"
+msgstr ""
 
 #: .\index\templates\index\empty.html:43
 msgid "in stock"
-msgstr "на склад"
+msgstr ""
 
 #: .\index\templates\index\events.html:15
 msgid "View all events"
-msgstr "Просмотр всех событий"
+msgstr ""
 
 #: .\index\templates\index\from_basket_to_stock.html:8
-msgid "What transe"
-msgstr "Что передаём"
+msgid "What transer"
+msgstr ""
 
 #: .\index\templates\index\from_basket_to_stock.html:10
 #: .\index\templates\index\from_firm_to_stock.html:44
 msgid "Return to stock"
-msgstr "Вернуть на склад"
+msgstr ""
 
 #: .\index\templates\index\from_firm_to_stock.html:3
 #: .\index\templates\index\from_firm_to_stock.html:4
 msgid "Return cartridge to the stock"
-msgstr "Возврат картриджей на склад"
+msgstr ""
 
 #: .\index\templates\index\from_firm_to_stock.html:27
 msgid "Filling<br/> and cleaning"
-msgstr "Заправка<br/> и очистка"
+msgstr ""
 
 #: .\index\templates\index\from_firm_to_stock.html:28
 msgid "Replacing <br/> fotovala"
-msgstr "Замена<br/> фоторецептора"
+msgstr ""
 
 #: .\index\templates\index\from_firm_to_stock.html:29
 msgid "Replacement<br/>squeegee"
-msgstr "Замена<br/>ракеля"
+msgstr ""
 
 #: .\index\templates\index\from_firm_to_stock.html:30
 msgid "Replacement<br/>chip"
-msgstr "Замена<br/>чипа"
+msgstr ""
 
 #: .\index\templates\index\from_firm_to_stock.html:31
 msgid "Replacing<br/>the magnetic roller"
-msgstr "Замена<br/>магнитного вала"
+msgstr ""
 
 #: .\index\templates\index\get_cart_ou.html:5
 msgid "Now installed"
-msgstr "Сейчас установленны"
+msgstr ""
 
 #: .\index\templates\index\get_cart_ou.html:9
 msgid "Take?"
-msgstr "Забрать?"
+msgstr ""
 
 #: .\index\templates\index\stock.html:13
 msgid "Add consumables"
-msgstr "Добавить расходники"
+msgstr ""
 
 #: .\index\templates\index\stock.html:14
 msgid "Transferred for use"
-msgstr "Передать в пользование"
+msgstr ""
 
 #: .\index\templates\index\toner_refill.html:13
 msgid "Add firm"
-msgstr "Добавить контрагента"
+msgstr ""
 
 #: .\index\templates\index\toner_refill.html:16
 msgid "Delete firm"
-msgstr "Удалить контрагента"
+msgstr ""
 
 #: .\index\templates\index\toner_refill.html:48
-msgid "Seelct city:"
-msgstr "Выбрать город:"
+msgid "Select city:"
+msgstr ""
 
 #: .\index\templates\index\transfe_empty_to_basket.html:3
 #: .\index\templates\index\transfe_empty_to_basket.html:4
 msgid "Moving empty consumables to cart"
-msgstr "Перемещение пустых расходников в корзину"
+msgstr ""
 
 #: .\index\templates\index\transfe_empty_to_basket.html:10
 msgid "What transfe?"
-msgstr "Что передаём?"
+msgstr ""
 
 #: .\index\templates\index\transfe_for_use.html:3
 #: .\index\templates\index\transfe_for_use.html:4
 msgid "Transfer of use"
-msgstr "Передача в пользование"
+msgstr ""
 
 #: .\index\templates\index\transfe_for_use.html:10
 #: .\index\templates\index\transfer_to_firm.html:18
 msgid "What transfe"
-msgstr "Что передаём"
+msgstr ""
 
 #: .\index\templates\index\transfe_for_use.html:15
 msgid "Count refill"
-msgstr "Количество перезаправок"
+msgstr ""
 
 #: .\index\templates\index\transfe_for_use.html:26
 msgid "To pass"
-msgstr "Кому передать"
+msgstr ""
 
 #: .\index\templates\index\transfe_for_use.html:39
 msgid "Transfer to"
-msgstr "Передать"
+msgstr ""
 
 #: .\index\templates\index\transfer_to_firm.html:2
 #: .\index\templates\index\transfer_to_firm.html:3
 #: .\index\templates\index\transfer_to_firm.html:5
 msgid "Transfer cartridges refills"
-msgstr "Передача картриджей на заправку"
+msgstr ""
 
 #: .\index\templates\index\transfer_to_firm.html:5
 #: .\index\templates\index\use.html:3 .\index\templates\index\use.html.py:4
 msgid "Consumables in use"
-msgstr "Расходники в пользовании"
+msgstr ""
 
 #: .\index\templates\index\transfer_to_firm.html:34
 msgid "Which company"
-msgstr "Кому передаём на<br/>заправку"
+msgstr ""
 
 #: .\index\templates\index\transfer_to_firm.html:40
 msgid "Service price"
-msgstr "Стоимость обслуживания"
+msgstr ""
 
 #: .\index\templates\index\transfer_to_firm.html:51
 msgid "Transfer to repair"
-msgstr "Передать"
+msgstr ""
 
 #: .\index\templates\index\transfer_to_firm.html:52
 msgid "Cansel"
-msgstr "Отмена"
+msgstr ""
 
 #: .\index\templates\index\tree_list.html:2
 #: .\index\templates\index\tree_list.html:3
 msgid "Manage org units"
-msgstr "Управление организационными подразделениями"
+msgstr ""
 
 #: .\index\templates\index\tree_list.html:22
 msgid "Addition of a new structural unit"
-msgstr "Добавить новое структурное подразделение"
+msgstr ""
 
 #: .\index\templates\index\tree_list.html:25
 msgid "Name structural unit"
-msgstr "Название структурного подразделения"
+msgstr ""
 
 #: .\index\templates\index\tree_list.html:33
 msgid "Compliant"
-msgstr "Подчиняется"
+msgstr ""
 
 #: .\index\templates\index\tree_list.html:47
 msgid "Structure of the organization"
-msgstr "Структура организации"
+msgstr ""
 
 #: .\index\views.py:117
 #, python-format
 msgid "%(cart_name)s already exists"
-msgstr "«%(cart_name)s» уже существует."
+msgstr ""
 
 #: .\index\views.py:121
 #, python-format
 msgid "%(cart_name)s success added"
-msgstr "«%(cart_name)s» успешно добавлен."
+msgstr ""
 
 #: .\index\views.py:235 .\index\views.py:250
 #, python-format
 msgid "Organization unit %(org_name)s exist"
-msgstr "Организационное подразделение %(org_name)s уже существует."
+msgstr ""
 
 #: .\index\views.py:240 .\index\views.py:246
 #, python-format
 msgid "Organization unit %(org_name)s create successfuly."
-msgstr "Организационное подразделение %(org_name)s успешно создано."
+msgstr ""
 
 #: .\index\views.py:295
 #, python-format
 msgid "%(cart_type)s success save"
-msgstr "%(cart_type)s успешно сохранён."
+msgstr ""
 
 #: .\index\views.py:299
 #, python-format
 msgid "New type %(cart_type)s success added"
-msgstr "Новый тип %(cart_type)s успешно добавлен."
+msgstr ""
 
 #: .\index\views.py:411
 msgid "Select all"
-msgstr "Выбрать все"
+msgstr ""
 
 #: .\index\views.py:462
 #, python-format
 msgid "Firm \"%(firm_name)s\" success added."
-msgstr "Контрагент \"%(firm_name)s\" успешно добавлен."
+msgstr ""
 
 #: .\reports\api\views.py:56
 msgid "Start date required field."
-msgstr "Дата начала - обязательное поле."
+msgstr ""
 
 #: .\reports\api\views.py:70
 msgid "Error in date data."
-msgstr "Ошибка в представлении даты."
+msgstr ""
 
 #: .\reports\api\views.py:81
 msgid "Organization unit not found."
-msgstr "Организационное подразделение не найдено."
+msgstr ""
 
 #: .\reports\forms.py:13
 msgid "All over the past year"
-msgstr "Все за прошлые года"
+msgstr ""
 
 #: .\reports\forms.py:34
 msgid "Transferred to invalid values."
-msgstr "Переданы недопустимые значения."
+msgstr ""
 
 #: .\reports\forms.py:52
 msgid "You have entered incorrect data."
-msgstr "Вы ввели некорректные данные."
+msgstr ""
 
 #: .\reports\forms.py:56
 msgid "Field cannot be empty."
-msgstr "Поле не может быть пустым."
+msgstr ""
 
 #: .\reports\forms.py:69 .\reports\forms.py:76
 msgid "Start date"
-msgstr "Дата начала"
+msgstr ""
 
 #: .\reports\forms.py:78
 msgid "End date"
-msgstr "Дата завершения"
+msgstr ""
 
 #: .\reports\forms.py:113
+#| msgid "Error in date data."
 msgid "Error in start date."
-msgstr "Ошибка в дате начала."
+msgstr ""
 
 #: .\reports\templates\reports\amortizing.html:2
 #: .\reports\templates\reports\amortizing.html:3
 msgid "Search of used consumables"
-msgstr "Поиск изношенных расходников"
+msgstr ""
 
 #: .\reports\templates\reports\amortizing.html:18
 msgid "The number of reloads (more or equal)"
-msgstr "Количество перезаправок (более или равно)"
+msgstr ""
 
 #: .\reports\templates\reports\amortizing.html:22
 #: .\reports\templates\reports\main_summary.html:28
@@ -1691,46 +1671,44 @@ msgstr "Количество перезаправок (более или рав�
 #: .\reports\templates\reports\spent_money.html:39
 #: .\reports\templates\reports\users.html:33
 msgid "Generate"
-msgstr "Сформировать"
+msgstr ""
 
 #: .\reports\templates\reports\amortizing_ajax.html:6
 msgid "Date of last<br/> cases"
-msgstr "Дата последнего<br/> обращения"
+msgstr ""
 
 #: .\reports\templates\reports\amortizing_ajax.html:7
 msgid "Number<br/>reloads"
-msgstr "Кол-во<br/>перезаправок"
+msgstr ""
 
 #: .\reports\templates\reports\amortizing_ajax.html:8
 #: .\reports\templates\reports\main_summary.html:46
 #: .\search\templates\search\serp.html:12
 msgid "Status"
-msgstr "Статус"
+msgstr ""
 
 #: .\reports\templates\reports\main_summary.html:7
 #: .\reports\templates\reports\main_summary.html:8
 msgid "Search of bargain consumables"
-msgstr "Поиск залежавшихся расходников"
+msgstr ""
 
 #: .\reports\templates\reports\main_summary.html:21
 msgid "Select"
-msgstr "Выбрать"
+msgstr ""
 
 #: .\reports\templates\reports\main_summary.html:24
 msgid ""
 "A list of 10 or cartridge 20, which was the most recent.<br/> Or the last "
 "message was last year."
 msgstr ""
-"Список из 10 или 20 картриджей, обращения к которым было самым позним.<br/> "
-"Либо последнее обращение было в прошлом году."
 
 #: .\reports\templates\reports\main_summary.html:44
 msgid "Date changes"
-msgstr "Дата изменения"
+msgstr ""
 
 #: .\reports\templates\reports\main_summary.html:45
 msgid "Number<br/> reloads"
-msgstr "Количество<br/> перезаправок"
+msgstr ""
 
 #: .\reports\templates\reports\products.html:2
 #: .\reports\templates\reports\products.html:3
@@ -1738,80 +1716,83 @@ msgstr "Количество<br/> перезаправок"
 #: .\reports\templates\reports\users.html:2
 #: .\reports\templates\reports\users.html:3
 msgid "Consumption of consumables"
-msgstr "Потребление пользователями расходных материалов"
+msgstr "Consumption of cartridges"
 
 #: .\reports\templates\reports\products.html:55
+#| msgid "Amount"
 msgid "Count"
-msgstr "Количество"
+msgstr ""
 
 #: .\reports\templates\reports\spent_money.html:3
 #: .\reports\templates\reports\vertical_menu.html:14
 msgid "The report by spent money month"
-msgstr "Отчёт по расходованию денег за период"
+msgstr ""
 
 #: .\reports\templates\reports\spent_money.html:55
+#| msgid "Spent"
 msgid "Spent money"
-msgstr "Потрачено денег"
+msgstr ""
 
 #: .\reports\templates\reports\users_ajax.html:4
 msgid "UserName"
-msgstr "Пользователь"
+msgstr ""
 
 #: .\reports\templates\reports\vertical_menu.html:3
+#| msgid "Reports"
 msgid "Report on stale "
-msgstr "Отчёт по залежавшимся"
+msgstr ""
 
 #: .\reports\templates\reports\vertical_menu.html:7
 msgid "Report on depreciation"
-msgstr "Отчёт по амортизации"
+msgstr ""
 
 #: .\reports\templates\reports\vertical_menu.html:10
 msgid "The report by users"
-msgstr "Отчёт по пользователям"
+msgstr ""
 
 #: .\reports\templates\reports\vertical_menu.html:13
 msgid "The report by products"
-msgstr "Отчёт по используемым наименованиям"
+msgstr ""
 
 #: .\search\templates\search\error.html:2
 msgid "Error search by number"
-msgstr "Ошибка поиска по номеру"
+msgstr ""
 
 #: .\search\templates\search\error.html:6
 msgid "Error on prepare request"
-msgstr "Ошибка в обработке запроса"
+msgstr ""
 
 #: .\search\templates\search\serp.html:2 .\search\templates\search\serp.html:3
 msgid "Search result"
-msgstr "Результаты поиска"
+msgstr ""
 
 #: .\search\templates\search\serp.html:13
 msgid "Date added"
-msgstr "Дата добавления"
+msgstr ""
 
 #: .\service\api\views.py:58
 msgid "Settings successfully saved."
-msgstr "Настройки успешно сохранены."
+msgstr ""
 
 #: .\service\forms\input_server_settings.py:9
 msgid "Sever address"
-msgstr "Адрес сервера"
+msgstr ""
 
 #: .\service\forms\input_server_settings.py:10
 msgid "Sever port"
-msgstr "Порт сервера"
+msgstr ""
 
 #: .\service\forms\input_server_settings.py:11
 msgid "Email sender"
-msgstr "Почта отправителя"
+msgstr ""
 
 #: .\service\forms\input_server_settings.py:12
 msgid "SMTP login"
-msgstr "SMTP логин"
+msgstr ""
 
 #: .\service\forms\input_server_settings.py:13
 msgid "SMTP password"
-msgstr "SMTP пароль"
+msgstr ""
 
 #: .\service\forms\input_server_settings.py:14
 msgid "Use SSL"
@@ -1823,167 +1804,137 @@ msgstr "TLS"
 
 #: .\service\forms\send_test_mail.py:10
 msgid "Text message"
-msgstr "Тестовое сообщение"
+msgstr ""
 
 #: .\service\forms\stickers.py:10
 msgid "Select format"
-msgstr "Выбрать формат"
+msgstr ""
 
 #: .\service\templates\service\settings_mail.html:2
 msgid "Email"
-msgstr "Почта"
+msgstr ""
 
 #: .\service\templates\service\settings_mail.html:3
 msgid "Settings Email"
-msgstr "Настройки почты"
+msgstr ""
 
 #: .\service\templates\service\settings_mail.html:10
 msgid "Settings mail server"
-msgstr "Настроки почтового сервера"
+msgstr ""
 
 #: .\service\templates\service\settings_mail.html:58
 msgid "Send check email"
-msgstr "Отправить тестовое письмо"
+msgstr ""
 
 #: .\service\templates\service\stickers.html:2
 #: .\service\templates\service\stickers.html:3
 msgid "Settings format stickers"
-msgstr "Настройка форматов наклеек"
+msgstr ""
 
 #: .\service\templates\service\submenu.html:8
 msgid "E-mail"
-msgstr "Почта"
+msgstr ""
 
 #: .\service\templates\service\submenu.html:9
 msgid "Stickers"
-msgstr "Наклейки"
+msgstr ""
 
 #: .\service\views.py:56
 msgid "Settings success saved."
-msgstr "Настройки успешно сохранены."
+msgstr ""
 
 #: .\storages\api\views.py:32 .\storages\api\views.py:71
 msgid "Storage does not exist."
-msgstr "Склад не найден."
+msgstr ""
 
 #: .\storages\api\views.py:47
+#| msgid "Name deleted successfully."
 msgid "Set default is successfully."
-msgstr "Установка по-умолчанию прошла успешно."
+msgstr ""
 
 #: .\storages\api\views.py:50 .\storages\api\views.py:92
 msgid "Security error."
-msgstr "Ошибка в безопасности."
+msgstr ""
 
 #: .\storages\api\views.py:85
+#| msgid "Cartridge successfully added."
 msgid "Storage successfully deleted."
-msgstr "Склад успешно удалён."
+msgstr ""
 
 #: .\storages\api\views.py:89
 msgid "Storage can not be removed. It has a cartridges."
-msgstr "Склад удалить нельзя, т. к. в нём есть картриджи."
+msgstr ""
 
 #: .\storages\forms.py:10 .\storages\templates\storages\list.html.py:32
 msgid "Title"
-msgstr "Заголовок"
+msgstr ""
 
 #: .\storages\templates\storages\add_s.html:4
 #: .\storages\templates\storages\add_s.html:5
 #: .\storages\templates\storages\edit_s.html:5
 #: .\storages\templates\storages\list.html:4
 #: .\storages\templates\storages\list.html:5
+#| msgid "Structure of the organization"
 msgid "List storages in organization"
-msgstr "Список складских помещений в организации"
+msgstr ""
 
 #: .\storages\templates\storages\add_s.html:5
+#| msgid "Add new user"
 msgid "Add new storage"
-msgstr "Добавить новый склад"
+msgstr ""
 
 #: .\storages\templates\storages\add_s.html:32
+#| msgid "Date add"
 msgid "Disable add"
-msgstr "Отменить добавление"
+msgstr ""
 
 #: .\storages\templates\storages\edit_s.html:4
 #: .\storages\templates\storages\edit_s.html:5
 msgid "Edit exist storage"
-msgstr "Редактировать выбранный склад"
+msgstr ""
 
 #: .\storages\templates\storages\edit_s.html:32
 msgid "Disable edit"
-msgstr "Отмена редактирования"
+msgstr ""
 
 #: .\storages\templates\storages\list.html:20
 msgid "Set default"
-msgstr "Установка по умолчанию"
+msgstr ""
 
 #: .\storages\templates\storages\list.html:30
 msgid "ID"
-msgstr "ID"
+msgstr ""
 
 #: .\storages\templates\storages\list.html:31
 msgid "Use default?"
-msgstr "Использовать по-умолчанию?"
+msgstr ""
 
 #: .\storages\views.py:64
 #, python-format
+#| msgid "Firm \"%(firm_name)s\" success added."
 msgid "Starage \"%(starage_name)s\" success added."
-msgstr "Склад   \"%(starage_name)s\" успешно добавлен."
+msgstr ""
 
 #: .\storages\views.py:68
 msgid "Starage not added."
-msgstr "Склад не добавленн."
+msgstr ""
 
 #: .\storages\views.py:90
+#| msgid "Page not found!"
 msgid "Storage by id not found."
-msgstr "Склад с таким id не найденн."
+msgstr ""
 
 #: .\storages\views.py:103
 #, python-format
-msgid "Starage \"%(starage_name)s\" success edited."
-msgstr "Склад \"%(starage_name)s\"  успешно изменён."
+#| msgid "Firm \"%(firm_name)s\" success added."
+msgid "Storage \"%(starage_name)s\" success edited."
+msgstr ""
 
 #: .\storages\views.py:107
+#| msgid "You are not authenticated."
 msgid "Starage not edited."
-msgstr "Склад не изменён."
+msgstr ""
 
 #: .\templates\404.html:5
 msgid "Page not found!"
-msgstr "Страница не найдена!"
-
-#~ msgid "Error! User %(user_name)s can not remove himself"
-#~ msgstr "Ошибка! Пользователь %(user_name)s не может удалить сам себя."
-
-#~ msgid "User(s) deleted!"
-#~ msgstr "Пользователь(ли) удален(ы)!"
-
-#~ msgid "Generate an act of transmission?"
-#~ msgstr "Сформироать акт передачи?"
-
-#~ msgid "You input not correct firm name"
-#~ msgstr "Вы ввели неправильное имя контрагента."
-
-#~ msgid "Data deleted!"
-#~ msgstr "Данные удалены!"
-
-#~ msgid "Transfer to basket"
-#~ msgstr "Переместить в корзину"
-
-#~ msgid "Required field!"
-#~ msgstr "Поле обязательно для заполнения!"
-
-#~ msgid "Home"
-#~ msgstr "Домашняя"
-
-#~ msgid "in basket"
-#~ msgstr "в корзину"
-
-#~ msgid "transfer"
-#~ msgstr "передача"
-
-#~ msgid "on recovery"
-#~ msgstr "на заправку"
-
-#~ msgid "in use"
-#~ msgstr "в пользование"
-
-#~ msgid "Users %(user_name)s was successfully deleted"
-#~ msgstr "Пользователи %(user_name)s успешно удалёны."
+msgstr ""
