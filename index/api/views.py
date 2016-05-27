@@ -58,10 +58,14 @@ def del_firm(request):
         resp_dict['error'] = '1'
         return JsonResponse(resp_dict)
     else:
-        firm.delete()
-        resp_dict['text']  = _('Firm deleted!')
-        resp_dict['error'] = '0'
-    
+        cart_in_firm = CartridgeItem.objects.filter(filled_firm=firm).count()
+        if cart_in_firm == 0:
+            firm.delete()
+            resp_dict['text']  = _('Firm deleted!')
+            resp_dict['error'] = '0'
+        else:
+            resp_dict['text']  = _('You can not delete, because have cartridges at a gas station.')
+            resp_dict['error'] = '1'
     return JsonResponse(resp_dict)
 
 

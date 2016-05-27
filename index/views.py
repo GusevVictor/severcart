@@ -498,7 +498,7 @@ def edit_firm(request):
                 'firm_address',
                 'firm_comments'])
 
-            return HttpResponseRedirect(reverse('index.views.toner_refill'))
+            return HttpResponseRedirect(reverse('index:toner_refill'))
 
     try:
         firm = FirmTonerRefill.objects.get(pk=firm_id)
