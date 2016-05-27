@@ -8,7 +8,7 @@
 {% for elem in list_events %}
 <tr>
     <!-- d.m.Y G:i -->
-    <td>{{ elem.data_env|date:"{% trans 'Date_time_format' %}" }}</td><td>{{ elem.text_com|safe }}</td>
+    <td>{{ elem.data_env|date:"d.m.Y G:i" }}</td><td>{{ elem.text_com|safe }}</td>
 </tr>
 {% endfor %}
 </table>
