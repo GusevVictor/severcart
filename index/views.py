@@ -437,7 +437,7 @@ def add_city(request):
             data_in_post = form_obj.cleaned_data
             m1 = CityM(city_name=data_in_post['city_name'])
             m1.save()
-            return HttpResponseRedirect(reverse('index.views.toner_refill'))
+            return HttpResponseRedirect(reverse('index:toner_refill'))
     else:
         form_obj = CityF()
     return render(request, 'index/add_city.html', {'form': form_obj, 'back': back})
