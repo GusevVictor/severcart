@@ -45,7 +45,7 @@ class FirmTonerRefill(models.Model):
     картриджей.
     """
     firm_name = models.CharField(_('Name'), max_length=256)
-    firm_city = models.ForeignKey(City, verbose_name=_('Select city'))
+    firm_city = models.ForeignKey(City, verbose_name=_('Select city'), on_delete=models.PROTECT)
     firm_contacts = models.TextField(_('Contacts'), null=True)
     firm_address = models.TextField(_('Address'), null=True)
     firm_comments = models.TextField(_('Comment'), null=True)
