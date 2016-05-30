@@ -4,11 +4,26 @@
 {% block content %}
 <div class="row">
     <div class="large-6 columns">
+        {% if messages %}
+            <ul class="messages">
+                {% for message in messages %}
+                    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    </div>
+</div>
+<div class="row">
+    <div class="large-6 columns">
         <form action="" method="post">
             {% csrf_token %}
-            {{ form.as_p }}
-            <input type="submit" value='{% trans "Save" %}' class="button success" />
-            <a class="button" href="{{ back }}">{% trans "Back" %}</a>
+            {{ form.city_name.label_tag }}
+            {{ form.city_name }}
+            {{ form.city_name.errors }}
+            <div class="marginTop">
+                <input type="submit" value='{% trans "Save" %}' class="button success" />
+                <a class="button" href="{{ back }}">{% trans "Back" %}</a>
+            </div>
         </form>
     </div>
 </div>

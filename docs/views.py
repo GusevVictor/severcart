@@ -230,7 +230,8 @@ def add_city(request):
             data_in_post = form_obj.cleaned_data
             m1 = City(city_name=data_in_post['city_name'])
             m1.save()
-            return redirect(reverse('docs:cities'))
+            messages.success(request, _('City "%(city)s" success added.') % {'city': data_in_post['city_name']})
+            return redirect(reverse('docs:add_city'))
         else:
             form_obj = CityF(request.POST)
     else:
@@ -255,7 +256,10 @@ def edit_city(request):
             data_in_post = form.cleaned_data
             m1.city_name = data_in_post['city_name']
             m1.save()
+            messages.success(request, _('City "%(city)s" success edited.') % {'city': data_in_post['city_name']})
             return redirect(reverse('docs:edit_city') + '?select=' + str(select))
+        else:
+            context['form'] = CityE(request.POST)
     else:
         context['form'] = CityE(initial={'city_name': m1.city_name,})
     return render(request, 'docs/edit_city.html', context)

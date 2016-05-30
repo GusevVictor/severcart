@@ -1,14 +1,29 @@
 {% extends "index/base.html" %}{% load i18n %}
 {% block title %}{% trans "Add city" %}{% endblock %}
-{% block breadcrumbs %}<a href="/"><img src="{{ STATIC_URL }}img/home.png" /></a> / <a href="{% url 'docs:handbook' %}">{% trans "References" %}</a> / <a href="{% url 'index:add_firm' %}">{% trans "Firms" %}</a> / {% trans "Add city" %}{% endblock %}
+{% block breadcrumbs %}<a href="/"><img src="{{ STATIC_URL }}img/home.png" /></a> / <a href="{% url 'docs:handbook' %}">{% trans "References" %}</a> / <a href="{% url 'docs:cities' %}">{% trans "Cities" %}</a> / {% trans "Add city" %}{% endblock %}
 {% block content %}
+<div class="row">
+    <div class="large-6 columns">
+        {% if messages %}
+            <ul class="messages">
+                {% for message in messages %}
+                    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    </div>
+</div>
 <div class="row">
     <div class="large-6 columns">
         <form action="" method="post">
             {% csrf_token %}
-            {{ form.as_p }}
+            {{ form.city_name.label_tag }}
+            {{ form.city_name }}
+            {{ form.city_name.errors }}
+            <div class="marginTop">
             <input type="submit" value='{% trans "Add" %}' class="button success" />
             <a class="button" href="{{ back }}">{% trans "Back" %}</a>
+            </div>
         </form>
     </div>
 </div>
