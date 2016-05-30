@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-05-26 16:33+0500\n"
-"PO-Revision-Date: 2016-05-26 16:55+0500\n"
+"PO-Revision-Date: 2016-05-30 08:41+0500\n"
 "Last-Translator: \n"
 "Language-Team: severcart.org <sfcl@mail.ru>\n"
 "Language: ru\n"
@@ -1378,15 +1378,15 @@ msgstr "Рабочий стол"
 
 #: .\index\templates\index\dashboard.html:14
 msgid "Quantity in stock (usable)"
-msgstr "Количество на складе(пригодных к использованию)"
+msgstr "Пригодные к использованию"
 
 #: .\index\templates\index\dashboard.html:19
 msgid "The number of installed"
-msgstr "Количество задействованных"
+msgstr "Задействованные"
 
 #: .\index\templates\index\dashboard.html:24
 msgid "Number of empty, ready to recharge"
-msgstr "Количество пустых, готовых к перезаправке"
+msgstr "Пустые"
 
 #: .\index\templates\index\dashboard.html:29
 msgid "Now dressed"
