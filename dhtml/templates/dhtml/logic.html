@@ -506,11 +506,21 @@ $( function(){
         var name_id = cbox.val();
         if (name_id) {
             var loc = $(this).attr('href');
-            loc = loc + '?id=' + name_id + '&back=' + window.location.pathname; 
+            loc = loc + '?id=' + name_id; 
             window.location.href = loc;
         }
     });
 
+
+    $('.edit_city').click(function() {
+        /* Редактируем название города. */
+        var cbox = $('.checkboxes input:checked');
+        var name_id = cbox.val();
+        if (name_id) {
+            loc = "{% url 'docs:edit_city' %}" + '?select=' + name_id;
+            window.location.href = loc;
+        }
+    });
 
     $('.tr_to_recycle_bin').click( function() {
         var selected = [];
@@ -1164,6 +1174,53 @@ $( function(){
         }
     });
 
+    $('.del_city').click( function() {
+        var selected = $('.checkboxes input:checked').attr('value');
+        var css_class = $(this).attr('class');
+        if ( selected ) {
+            var ansver = window.confirm('{% trans "Are you sure you want to delete city?" %}');
+            if ( ansver ) {
+                // если пользователь ответил Да, то запускаем аякс запрос
+                $.ajax({
+                    method: 'POST',
+                    url: '{% url "docs:del_city" %}',
+                    data:  {'select': selected },
+                    beforeSend: function( xhr, settings ){
+                        $('.spinner').show();
+                        csrftoken = getCookie('csrftoken');
+                        if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
+                            xhr.setRequestHeader('X-CSRFToken', csrftoken);
+                        }
+                    },
+                    success: function( msg ) {
+                        var tr = $('.checkboxes input:checked').parent().parent();
+                        if (msg.error == '1') {
+                            setTimeout(function() { }, 4000);
+                            $('.spinner').hide(); 
+                            $('.success_msg').hide();
+                            $('.error_msg').show();
+                            $('.error_msg').html(msg.text);
+                        }
+
+                        if (msg.error == '0') {
+                            setTimeout(function() { tr.remove(); }, 4000);
+                            $('.spinner').hide();
+                            $('.error_msg').hide();
+                            $('.success_msg').show();
+                            $('.success_msg').html(msg.text);
+                        }
+
+                    },
+                    error: function() {
+                        $('.spinner').hide();
+                        $('.error_msg').show();
+                        setTimeout(function() { $('.error_msg').html('{% trans "<p>Server not available.</p>" %}'); }, 12000);
+                    },
+                });
+
+            }
+        }
+    });
 
     $('.edit_cart_type').click( function() {
         var selected = $('.checkboxes input:checked').attr('value');

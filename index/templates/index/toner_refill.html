@@ -10,8 +10,7 @@
 </div>
 <div class="row">
     <div class="large-8 columns">
-        <a class="add_firm button success" href="/add_firm/">{% trans "Add firm" %}</a>
-        <a class="add_city button" href="/add_city/">{% trans "Add city" %}</a>
+        <a class="add_firm button success" href="{% url 'index:add_firm' %}">{% trans "Add firm" %}</a>
         <a class="edit_firm button" href="#">{% trans "Edit" %}</a>
         <a class="del_firm button alert" href="#">{% trans "Delete firm" %}</a>
         <img class="spinner" src="{{ STATIC_URL }}img/loader.gif" />

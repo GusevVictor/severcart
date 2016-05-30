@@ -18,7 +18,6 @@ from common.cbv import CartridgesView
 from common.helpers import BreadcrumbsPath
 from .forms.add_cartridge_name import AddCartridgeName
 from .forms.add_items import AddItems
-from .forms.add_city import CityF
 from .forms.add_type import AddCartridgeType
 from .forms.add_firm import FirmTonerRefillF
 from .forms.add_empty_items import AddEmptyItems
@@ -423,24 +422,6 @@ def toner_refill(request):
                                                        'select': city_id,
                                                        'city_url': city_url_parametr,
                                                        })
-
-
-@login_required
-@never_cache
-def add_city(request):
-    """
-    """
-    back = BreadcrumbsPath(request).before_page(request)
-    if request.method == 'POST':
-        form_obj = CityF(request.POST)
-        if form_obj.is_valid():
-            data_in_post = form_obj.cleaned_data
-            m1 = CityM(city_name=data_in_post['city_name'])
-            m1.save()
-            return HttpResponseRedirect(reverse('index:toner_refill'))
-    else:
-        form_obj = CityF()
-    return render(request, 'index/add_city.html', {'form': form_obj, 'back': back})
 
 
 @login_required

@@ -1,7 +1,7 @@
 # -*- coding:utf-8 -*-
 
 import datetime
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse, HttpResponseRedirect, Http404
 from django.core.urlresolvers import reverse
 from django.views.generic.base import TemplateView
@@ -13,9 +13,11 @@ from django.db.models import Q
 from django.views.decorators.cache import never_cache
 from django.utils.translation import ugettext as _
 from .models import SCDoc, RefillingCart
-from index.models import CartridgeItemName
+from index.models import CartridgeItemName, City
 from .forms.add_doc import AddDoc
 from .forms.edit_name import EditName
+from .forms.add_city import CityF
+from .forms.edit_city import CityE
 from common.cbv import GridListView
 from common.helpers import BreadcrumbsPath
 
@@ -215,3 +217,45 @@ class ViewSendActs(GridListView):
         self.context['page_size'] = page_size
         self.context['docs'] = self.pagination(all_acts, page_size)
         return render(request, 'docs/acts_list.html', self.context)
+
+@login_required
+@never_cache
+def add_city(request):
+    """Добавление города в справочник.
+    """
+    back = BreadcrumbsPath(request).before_page(request)
+    if request.method == 'POST':
+        form_obj = CityF(request.POST)
+        if form_obj.is_valid():
+            data_in_post = form_obj.cleaned_data
+            m1 = City(city_name=data_in_post['city_name'])
+            m1.save()
+            return redirect(reverse('docs:cities'))
+        else:
+            form_obj = CityF(request.POST)
+    else:
+        form_obj = CityF()
+    return render(request, 'docs/add_city.html', {'form': form_obj, 'back': back})
+
+@login_required
+@never_cache
+def edit_city(request):
+    """Редактирование названия города.
+    """
+    context = dict()
+    context['back'] = BreadcrumbsPath(request).before_page(request)
+    select = request.GET.get('select', 0)
+    try:
+        m1 = City.objects.get(pk=select)
+    except City.DoesNotExist:
+        return Http404
+    if request.method == 'POST':
+        form = CityE(request.POST)
+        if form.is_valid():
+            data_in_post = form.cleaned_data
+            m1.city_name = data_in_post['city_name']
+            m1.save()
+            return redirect(reverse('docs:edit_city') + '?select=' + str(select))
+    else:
+        context['form'] = CityE(initial={'city_name': m1.city_name,})
+    return render(request, 'docs/edit_city.html', context)

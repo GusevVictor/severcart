@@ -4,7 +4,7 @@ from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
 from django.shortcuts import render
 from common.cbv import GridListView
-from index.models import CartridgeItemName, CartridgeType
+from index.models import CartridgeItemName, CartridgeType, City
 from common.helpers import BreadcrumbsPath
 
 class NamesView(GridListView):
@@ -38,3 +38,18 @@ class TypesView(GridListView):
         self.context['items'] = self.pagination(all_names, page_size)
         return render(request, 'docs/types_list.html', self.context)
 
+
+class CitiesView(GridListView):
+    """Отображение списка городов.
+    """
+    @method_decorator(login_required)
+    def dispatch(self, *args, **kwargs):
+        return super(CitiesView, self).dispatch(*args, **kwargs)
+
+    def get(self, request,**kwargs):
+        self.context['back'] = BreadcrumbsPath(request).before_page(request)
+        all_c = City.objects.all().order_by('pk')
+        page_size = self.items_per_page()
+        self.context['page_size'] = page_size
+        self.context['items'] = self.pagination(all_c, page_size)
+        return render(request, 'docs/cities.html', self.context)

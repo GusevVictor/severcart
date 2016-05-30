@@ -1,0 +1,15 @@
+{% extends "index/base.html" %}{% load i18n %}
+{% block title %}{% trans "Add city" %}{% endblock %}
+{% block breadcrumbs %}<a href="/"><img src="{{ STATIC_URL }}img/home.png" /></a> / <a href="{% url 'docs:handbook' %}">{% trans "References" %}</a> / <a href="{% url 'docs:cities' %}">{% trans "Cities" %}</a> / {% trans "Edit city" %}{% endblock %}
+{% block content %}
+<div class="row">
+    <div class="large-6 columns">
+        <form action="" method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <input type="submit" value='{% trans "Save" %}' class="button success" />
+            <a class="button" href="{{ back }}">{% trans "Back" %}</a>
+        </form>
+    </div>
+</div>
+{% endblock %}

@@ -3,14 +3,14 @@
 import os, io, glob
 import time
 import json
-from django.http import JsonResponse, HttpResponse
+from django.http import JsonResponse, HttpResponse, Http404
 from django.db.models.deletion import ProtectedError
 from django.db.models import Q
 from django.conf import settings
 from django.utils.translation import ugettext as _
 from docx import Document
 from docx.shared import Inches
-from index.models import CartridgeItemName, CartridgeType, CartridgeItem
+from index.models import CartridgeItemName, CartridgeType, CartridgeItem, City
 from index.helpers import check_ajax_auth
 from docs.models import RefillingCart, SCDoc
 from docs.helpers import group_names
@@ -64,6 +64,38 @@ def del_cart_name(request):
             resp_dict['error'] = '0'
             resp_dict['text']  = _('Name deleted successfully.')
     return JsonResponse(resp_dict, safe=False)
+
+
+@check_ajax_auth
+def del_city(request):
+    """Удаление записи о городе.
+    """
+    ansver = dict()
+    if request.method != 'POST':
+        return HttpResponse('<h1>' + _('Only use POST requests!') + '</h1>')
+    
+    citi_id = request.POST.get('select', 0)
+
+    try:
+        citi_id = int(citi_id)
+    except ValueError:
+        citi_id = 0
+    try:
+        m1 = City.objects.get(pk=citi_id)
+    except City.DoesNotExist:
+        ansver['error'] = '1'
+        ansver['text']  = _('City object not found.')
+        return JsonResponse(ansver)
+
+    try:
+        m1.delete()
+    except ProtectedError:
+        ansver['error'] = '1'
+        ansver['text']  = _('City can not be deleted, ie the other firms link to it.')
+    else:
+        ansver['error'] = '0'
+        ansver['text']  = _('City deleted successfully.')
+    return JsonResponse(ansver)
 
 
 @check_ajax_auth
