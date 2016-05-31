@@ -95,6 +95,29 @@ class Stock(CartridgesView):
         super(Stock, self).get(*args, **kwargs)
         self.context['view'] = 'stock'
         self.all_items = self.all_items.filter(cart_status=1).filter(departament=self.request.user.departament)
+        # для минимизации количества обращений к базе данных воспользуемся 
+        # простиньким кэшом
+        simple_cache = dict()
+        i = 0 # итерируемая переменная для доступа по индексу
+        # Внимание! Поля sklad_title и sklad_address являются искуственно
+        # внедрёнными, в модели CartridgeItem их нет.
+        for item in self.all_items:
+            if simple_cache.get(item.sklad, 0):
+                self.all_items[i].sklad_title = simple_cache.get(item.sklad)['title']
+                self.all_items[i].sklad_address = simple_cache.get(item.sklad)['address']
+            else:
+                try:
+                    sklad = Storages.objects.get(pk=item.sklad)
+                except:
+                    simple_cache[item.sklad] = {'title': '', 'address': ''}
+                    self.all_items[i].sklad_title    = ''
+                    self.all_items[i].sklad_address  = ''
+                else:
+                    simple_cache[item.sklad] =  {'title': sklad.title, 'address': sklad.address}
+                    self.all_items[i].sklad_title    = sklad.title
+                    self.all_items[i].sklad_address  = sklad.address
+            i += 1
+
         page_size = self.items_per_page()
         self.context['size_perpage'] = page_size
         self.context['cartrjs'] = self.pagination(self.all_items, page_size)
@@ -375,6 +398,29 @@ class Empty(CartridgesView):
         self.context['view'] = 'empty'
         root_ou = self.request.user.departament
         self.all_items = self.all_items.filter( Q(departament=root_ou) & Q(cart_status=3) )
+        # для минимизации количества обращений к базе данных воспользуемся 
+        # простиньким кэшом
+        simple_cache = dict()
+        i = 0 # итерируемая переменная для доступа по индексу
+        # Внимание! Поля sklad_title и sklad_address являются искуственно
+        # внедрёнными, в модели CartridgeItem их нет.
+        for item in self.all_items:
+            if simple_cache.get(item.sklad, 0):
+                self.all_items[i].sklad_title = simple_cache.get(item.sklad)['title']
+                self.all_items[i].sklad_address = simple_cache.get(item.sklad)['address']
+            else:
+                try:
+                    sklad = Storages.objects.get(pk=item.sklad)
+                except:
+                    simple_cache[item.sklad] = {'title': '', 'address': ''}
+                    self.all_items[i].sklad_title    = ''
+                    self.all_items[i].sklad_address  = ''
+                else:
+                    simple_cache[item.sklad] =  {'title': sklad.title, 'address': sklad.address}
+                    self.all_items[i].sklad_title    = sklad.title
+                    self.all_items[i].sklad_address  = sklad.address
+            i += 1
+
         page_size = self.items_per_page()
         self.context['size_perpage'] = page_size
         self.context['cartrjs'] = self.pagination(self.all_items, page_size)
