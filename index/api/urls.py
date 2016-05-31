@@ -30,5 +30,5 @@ urlpatterns = [
     url('^get_cart_ou/', get_cart_ou, name='get_cart_ou'),
     url('^move_to_use/', move_to_use, name='move_to_use'),
     url('^view_events/', view_events, name='view_events'),
-    url('^transfer_to_firm/', transfer_to_firm, name='transfer_to_firm'),
+    url('^transfer_to_firm/', transfer_to_firm, name='api_transfer_to_firm'),
 ]

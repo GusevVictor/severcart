@@ -267,7 +267,7 @@ def transfer_to_firm(request):
         try:
             doc = SCDoc.objects.get(pk=doc_id)
         except SCDoc.DoesNotExist:
-            doc = Null
+            doc = None
         # генерируем номер акта передачи на основе даты и его порядкового номера
         sender_acts = RefillingCart.objects.filter(departament=request.user.departament).count()
         if sender_acts:
