@@ -741,7 +741,8 @@ ul.messages .error {
     overflow: hidden;
 }
 
-table.statistics {
+table.statistics,
+table.dashboard {
     width: 100%;
 }
 
