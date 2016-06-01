@@ -6,6 +6,28 @@ import os, sys
 #import pip
 import subprocess
 
+class ConsoleOut(object):
+    def __init__(self, stream):
+        self.stream = stream
+        self.switch = True
+
+    def write(self, data):
+        if self.switch:
+            self.stream.write(data)
+            self.stream.flush()
+        else:
+            pass
+
+    def off(self):
+        self.switch = False
+
+    def on(self):
+        self.switch = True
+
+    def __getattr__(self, attr):
+        return getattr(self.stream, attr)
+
+
 def install(package):
     #pip.main(['install', package])
     output = subprocess.check_output(['pip', 'install'] + package)
@@ -20,6 +42,7 @@ if __name__ == '__main__':
     # проверям версию Python, всё из-за mod_wsgi и lxml
     # версия интерпритатора только 3.4.4
     OS       = sys.platform
+    sys.stdout = ConsoleOut(sys.stdout)
     if OS == 'win32':
         if not( sys.version_info.major == 3 and
         sys.version_info.minor == 4 and
@@ -56,32 +79,63 @@ if __name__ == '__main__':
     try:
         if CPU_ARCH == '64bit' and OS == 'win32':
             print('Установка пакетов зависимостей для 64 битной Windows')
-            install(['Django==1.9.4'])
-            install(['Noarch/django-mptt-0.8.0.tar.gz'])
-            install(['Win64/lxml-3.4.4-cp34-none-win_amd64.whl', '--no-cache-dir'])
-            install(['Win64/Pillow-3.1.0-cp34-none-win_amd64.whl'])
-            install(['Win64/psycopg2-2.6.1-cp34-none-win_amd64.whl'])
-            install(['Noarch/python-docx-0.8.5.tar.gz', '--disable-pip-version-check'])
-            install(['reportlab'])
-            install(['django-debug-toolbar'])
+            packages_x64 = [
+                ['Django==1.9.4'],
+                ['Noarch/django-mptt-0.8.0.tar.gz'],
+                ['Win64/lxml-3.4.4-cp34-none-win_amd64.whl', '--no-cache-dir'],
+                ['Win64/Pillow-3.1.0-cp34-none-win_amd64.whl'],
+                ['Win64/psycopg2-2.6.1-cp34-none-win_amd64.whl'],
+                ['Noarch/python-docx-0.8.5.tar.gz', '--disable-pip-version-check'],
+                ['reportlab'],
+                ['django-debug-toolbar'],
+            ]
+            persent = 10
+            for pack in packages_x64:
+                sys.stdout.off()
+                install(pack)
+                sys.stdout.on()
+                print(str(persent) + "%")
+                persent += 10
+            print("100%")
+        
         elif CPU_ARCH == '32bit' and OS == 'win32':
             print('Установка пакетов зависимостей для 32 битной Windows')
-            install(['Django==1.9.4'])
-            install(['Noarch/django-mptt-0.8.0.tar.gz'])
-            install(['Win32/lxml-3.4.4-cp34-none-win32.whl', '--no-cache-dir'])
-            install(['Win32/Pillow-3.1.0-cp34-none-win32.whl'])
-            install(['Win32/psycopg2-2.6.1-cp34-none-win32.whl'])
-            install(['Noarch/python-docx-0.8.5.tar.gz', '--disable-pip-version-check'])
-            install(['reportlab'])
-            install(['django-debug-toolbar'])
+            packages_x86 = [
+                ['Django==1.9.4'],
+                ['Noarch/django-mptt-0.8.0.tar.gz'],
+                ['Win32/lxml-3.4.4-cp34-none-win32.whl', '--no-cache-dir'],
+                ['Win32/Pillow-3.1.0-cp34-none-win32.whl'],
+                ['Win32/psycopg2-2.6.1-cp34-none-win32.whl'],
+                ['Noarch/python-docx-0.8.5.tar.gz', '--disable-pip-version-check'],
+                ['reportlab'],
+                ['django-debug-toolbar'],
+            ]
+            persent = 10
+            for pack in packages_x86:
+                sys.stdout.off()
+                install(pack)
+                sys.stdout.on()
+                print(str(persent) + "%")
+                persent += 10
+            print("100%")
         elif 'linux' in OS:
             print('Установка пакетов зависимостей для Linux')
-            install(['Django'])
-            install(['django-mptt'])
-            install(['psycopg2'])
-            install(['python-docx'])
-            install(['reportlab'])
-            install(['django-debug-toolbar'])
+            packages_unix = [
+                ['Django'], 
+                ['django-mptt'],
+                ['psycopg2'],
+                ['python-docx'],
+                ['reportlab'],
+                ['django-debug-toolbar'],
+            ]
+            persent = 10
+            for pack in packages_unix:
+                sys.stdout.off()
+                install(pack)
+                sys.stdout.on()
+                print(str(persent) + "%")
+                persent += 10
+            print("100%")
         else:
             print('Поддержка данной архитиктуры не релизована.')
             prompt_exit()
