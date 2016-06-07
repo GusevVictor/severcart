@@ -924,7 +924,15 @@ $( function(){
                             $('.download_doc').attr('href', msg.url);
                             $('.download_doc').show();
                             setTimeout(function() { $('.success_msg').hide(); }, 12000);
-                        } 
+                        }
+
+                        if (msg.error == '1') {
+                            $('.spinner').hide(); 
+                            $('.error_msg').show();
+                            $('.success_msg').hide();
+                            $('.error_msg').html(msg.text);
+                            setTimeout(function() { $('.error_msg').hide(); }, 12000);
+                        }                         
 
                     },
                     error: function() {

@@ -213,8 +213,8 @@ MAX_EVENT_LIST = 16
 DASHBOARD_EVENT_LIST = 11
 
 # Настройки шаблона docx файла
-MAX_TABLE_ROWS_FIRST_PAGE = 14 # должен резервировать место для шапки акта
+MAX_TABLE_ROWS_FIRST_PAGE = 30 # должен резервировать место для шапки акта
 
-MAX_TABLE_ROWS = 20
+MAX_TABLE_ROWS = 40
 
 HISTORY_LENGTH = 5

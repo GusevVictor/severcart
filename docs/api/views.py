@@ -7,9 +7,12 @@ from django.http import JsonResponse, HttpResponse, Http404
 from django.db.models.deletion import ProtectedError
 from django.db.models import Q
 from django.conf import settings
+from django.utils import timezone
+from django.core.paginator import Paginator
 from django.utils.translation import ugettext as _
 from docx import Document
 from docx.shared import Inches
+from docx.enum.text import WD_ALIGN_PARAGRAPH
 from index.models import CartridgeItemName, CartridgeType, CartridgeItem, City
 from index.helpers import check_ajax_auth
 from docs.models import RefillingCart, SCDoc
@@ -124,6 +127,8 @@ def generate_act(request):
     jsontext = m1.json_content
     jsontext = json.loads(jsontext)
 
+    co = len(jsontext) # количество передаваемых картриджей на заправку
+
     if not os.path.exists(settings.STATIC_ROOT_DOCX):
         os.makedirs(settings.STATIC_ROOT_DOCX)
 
@@ -137,53 +142,102 @@ def generate_act(request):
     except:
         pass
 
+
+    # производим инициализацию некоторых переменных начальными значениями
+    sender_full_name    = request.user.fio
+    recipient_full_name = '                                  '
+
+    if not((doc_action == "docx_with_group") or (doc_action == "docx_without_group")):
+        # если действие указано не верное, сообщаем об это и прекращаем работу 
+        # скрипта
+        resp_dict['error'] = '1'
+        resp_dict['text']  = _('This action is not implemented.')
+        return JsonResponse(resp_dict)
+    
+
     if doc_action == 'docx_with_group':
         docx_file_name = m1.number + '_' + str(request.user.pk) +'_1.docx'
         file_full_name = os.path.join(settings.STATIC_ROOT_DOCX, docx_file_name)
-        names_counts = group_names(jsontext)
-        if names_counts:
-            # генерация печатной версии документа
-            document = Document()
-            table = document.add_table(rows=1, cols=2)
-            hdr_cells = table.rows[0].cells
-            hdr_cells[0].text = _('The name of the cartridge')
-            hdr_cells[1].text = _('Amount cartridges')
-            for item in names_counts:
-                row_cells = table.add_row().cells
-                row_cells[0].text = str(item[0])
-                row_cells[1].text = str(item[1])
-            document.add_page_break()
-            document.save(file_full_name)
-            resp_dict['error'] = '0'
-            resp_dict['text']  = _('Document %(doc_number)s_%(user_id)s_1.docx generated') % { 'doc_number': m1.number, 'user_id': request.user.pk}
-            resp_dict['url'] = request.META.get('HTTP_ORIGIN') + settings.STATIC_URL + 'docx/' + docx_file_name
-        else:
-            resp_dict['error'] = '1'
-            resp_dict['text']  = _('Document form is impossible.')        
-
-    elif doc_action == 'docx_without_group':
+        jsontext = group_names(jsontext)
+        header_cell_one = _('The name of the cartridge')
+        header_cell_two = _('Amount cartridges')
+        
+    if doc_action == 'docx_without_group':
         docx_file_name = m1.number + '_' + str(request.user.pk) +'_0.docx'
         file_full_name = os.path.join(settings.STATIC_ROOT_DOCX, docx_file_name)
-        # генерация печатной версии документа без группировки наименований
-        document = Document()
-        table = document.add_table(rows=1, cols=2)
-        hdr_cells = table.rows[0].cells
-        hdr_cells[0].text = _('Number')
-        hdr_cells[1].text = _('The name of the cartridge')
+        header_cell_one = _('Cartridge number')
+        header_cell_two = _('The name of the cartridge')
+
+    # генерация печатной версии документа без группировки наименований
+    document = Document()
+    
+    # добавляем шапку для документа
+    doc_number = str(m1.number) + '/' + str(request.user.pk)
+    hp1 = document.add_paragraph('Акт передачи картриджей № %s от %s' % (doc_number, str(m1.date_created), ))
+    hp1_format = hp1.paragraph_format
+    hp1_format.alignment = WD_ALIGN_PARAGRAPH.CENTER
+
+    hp2 = document.add_paragraph(str(request.user.departament))
+    hp2_format = hp2.paragraph_format
+    hp2_format.alignment = WD_ALIGN_PARAGRAPH.CENTER        
+
+    document.add_paragraph("") # добавляем оступ сверху
+    document.add_paragraph("")
+
+    # рисуем таблицу на первой странице
+    table = document.add_table(rows=1, cols=2, style='Table Grid')
+    hdr_cells = table.rows[0].cells
+    hdr_cells[0].text = header_cell_one
+    hdr_cells[1].text = header_cell_two
+    if (len(jsontext) <= settings.MAX_TABLE_ROWS_FIRST_PAGE):
         for item in jsontext:
             row_cells = table.add_row().cells
             row_cells[0].text = str(item[0])
             row_cells[1].text = str(item[1])
+
+    if (len(jsontext) > settings.MAX_TABLE_ROWS_FIRST_PAGE):
+        first_part  = jsontext[0:settings.MAX_TABLE_ROWS_FIRST_PAGE-1]
+        second_part = jsontext[settings.MAX_TABLE_ROWS_FIRST_PAGE:]
+        for item in first_part:
+            row_cells = table.add_row().cells
+            row_cells[0].text = str(item[0])
+            row_cells[1].text = str(item[1])
         document.add_page_break()
-        document.save(file_full_name)
-        resp_dict['error'] = '0'
-        resp_dict['text']  = _('Document %(doc_number)s_%(user_id)s_0.docx generated') % { 'doc_number': m1.number, 'user_id': request.user.pk}
-        resp_dict['url'] = request.META.get('HTTP_ORIGIN') + settings.STATIC_URL + 'docx/' + docx_file_name
-    else:
-        resp_dict['error'] = '1'
-        resp_dict['text']  = _('This action is not implemented.')
+        # далее с каждой новой страницы рисуем новую таблицу с 
+        # продолжением печати данных
+        p = Paginator(second_part, settings.MAX_TABLE_ROWS)
+        for pg in range(p.num_pages):
+            stranica = p.page(pg + 1)
+            # на каждой новой странице печатаем заново новый заголовок
+            table = document.add_table(rows=1, cols=2, style='Table Grid')
+            hdr_cells = table.rows[0].cells
+            hdr_cells[0].text = header_cell_one
+            hdr_cells[1].text = header_cell_two
+            for item in stranica:
+                row_cells = table.add_row().cells
+                row_cells[0].text = str(item[0])
+                row_cells[1].text = str(item[1])
+
+            # если страница последняя то разрыв страницы не добавляем
+            if  pg != (p.num_pages - 1):
+                document.add_page_break()
+
+
+    # добавляем место для подписей принимающих и передающих
+    document.add_paragraph("") # добавляем оступ сверху
+    document.add_paragraph(_('Total count - %(co)s') % {'co': co})
+    document.add_paragraph("")
+    document.add_paragraph("%s        %s           ______________" % (_('Sender'), sender_full_name,))
+    document.add_paragraph("")
+    document.add_paragraph("%s        %s           ______________" % (_('Resipient'), recipient_full_name,))
+
+    document.save(file_full_name)
     
-    return JsonResponse(resp_dict, safe=False)
+    resp_dict['error'] = '0'
+    resp_dict['text']  = _('Document %(doc_number)s_%(user_id)s_0.docx generated') % { 'doc_number': m1.number, 'user_id': request.user.pk}
+    resp_dict['url'] = request.META.get('HTTP_ORIGIN') + settings.STATIC_URL + 'docx/' + docx_file_name
+    
+    return JsonResponse(resp_dict)
 
 
 @check_ajax_auth
