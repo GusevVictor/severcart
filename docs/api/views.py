@@ -11,7 +11,7 @@ from django.utils import timezone
 from django.core.paginator import Paginator
 from django.utils.translation import ugettext as _
 from docx import Document
-from docx.shared import Inches
+from docx.shared import Inches, RGBColor, Pt
 from docx.enum.text import WD_ALIGN_PARAGRAPH
 from index.models import CartridgeItemName, CartridgeType, CartridgeItem, City
 from index.helpers import check_ajax_auth
@@ -108,10 +108,21 @@ def generate_act(request):
     resp_dict = dict()
     if request.method != 'POST':
         return HttpResponse('<h1>' + _('Only use POST requests!') + '</h1>')
-    
+    # использование глобальных переменных не очень хороший приём
+    # но он позволяет упростить программный код
+    total_pages_count = 0
+
+    def add_footer(page_num=1):
+        # форматирование нижнего колонтитула копирайтом и количеством страниц
+        for i in range(4):
+            document.add_paragraph("")
+
+        page_number_string = _('Page %(num)s from %(total)s') % {'num': page_num, 'total': total_pages_count}
+        document.add_paragraph('severcart.org' + ' '*125 + page_number_string )
+        
     doc_id = request.POST.get('doc_id', '')
     doc_action = request.POST.get('doc_action', '')
-
+    pages_count = 0
     try:
         doc_id = int(doc_id)
     except ValueError:
@@ -141,11 +152,9 @@ def generate_act(request):
             os.remove(files[0])
     except:
         pass
-
-
     # производим инициализацию некоторых переменных начальными значениями
     sender_full_name    = request.user.fio
-    recipient_full_name = '                                  '
+    recipient_full_name = ' '*50
 
     if not((doc_action == "docx_with_group") or (doc_action == "docx_without_group")):
         # если действие указано не верное, сообщаем об это и прекращаем работу 
@@ -194,18 +203,25 @@ def generate_act(request):
             row_cells = table.add_row().cells
             row_cells[0].text = str(item[0])
             row_cells[1].text = str(item[1])
+        total_pages_count = 1
 
     if (len(jsontext) > settings.MAX_TABLE_ROWS_FIRST_PAGE):
         first_part  = jsontext[0:settings.MAX_TABLE_ROWS_FIRST_PAGE-1]
         second_part = jsontext[settings.MAX_TABLE_ROWS_FIRST_PAGE:]
+        
+        p = Paginator(second_part, settings.MAX_TABLE_ROWS)
+        total_pages_count = 1 + p.num_pages
+
         for item in first_part:
             row_cells = table.add_row().cells
             row_cells[0].text = str(item[0])
             row_cells[1].text = str(item[1])
+
+        pages_count += 1    
+        add_footer(pages_count)
         document.add_page_break()
         # далее с каждой новой страницы рисуем новую таблицу с 
         # продолжением печати данных
-        p = Paginator(second_part, settings.MAX_TABLE_ROWS)
         for pg in range(p.num_pages):
             stranica = p.page(pg + 1)
             # на каждой новой странице печатаем заново новый заголовок
@@ -220,8 +236,9 @@ def generate_act(request):
 
             # если страница последняя то разрыв страницы не добавляем
             if  pg != (p.num_pages - 1):
+                pages_count += 1
                 document.add_page_break()
-
+                add_footer(pages_count)
 
     # добавляем место для подписей принимающих и передающих
     document.add_paragraph("") # добавляем оступ сверху
@@ -230,6 +247,9 @@ def generate_act(request):
     document.add_paragraph("%s        %s           ______________" % (_('Sender'), sender_full_name,))
     document.add_paragraph("")
     document.add_paragraph("%s        %s           ______________" % (_('Resipient'), recipient_full_name,))
+
+    pages_count += 1
+    add_footer(pages_count)
 
     document.save(file_full_name)
     
