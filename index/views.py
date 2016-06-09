@@ -656,7 +656,7 @@ def from_firm_to_stock(request):
         checked_cartr = checked_cartr[1:-1]
     else:
         # если кто-то зашел на страницу не выбрав расходники
-        return HttpResponseRedirect(reverse('at_work'))        
+        return HttpResponseRedirect(reverse('index:at_work'))        
 
     if request.method == 'POST':
         list_cplx = []
@@ -672,7 +672,7 @@ def from_firm_to_stock(request):
             list_cplx.append((m1.id, str(m1.cart_itm_name), filled_firm, repair_actions, m1.cart_number))
 
         sign_tr_filled_cart_to_stock.send(sender=None, list_cplx=list_cplx, request=request)
-        return HttpResponseRedirect(reverse('at_work'))
+        return HttpResponseRedirect(reverse('index:at_work'))
     return render(request, 'index/from_firm_to_stock.html', {'checked_cartr': checked_cartr, 
                                                             'list_cart': list_cart, 
                                                             'list_length': list_length, 
