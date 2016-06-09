@@ -212,7 +212,7 @@ class ViewSendActs(GridListView):
         return super(ViewSendActs, self).dispatch(*args, **kwargs)
 
     def get(self, request, **kwargs):
-        all_acts = RefillingCart.objects.filter(departament=request.user.departament).order_by('pk')
+        all_acts = RefillingCart.objects.filter(departament=request.user.departament).order_by('-pk')
         page_size = self.items_per_page()
         self.context['page_size'] = page_size
         self.context['docs'] = self.pagination(all_acts, page_size)
