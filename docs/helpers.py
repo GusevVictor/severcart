@@ -2,6 +2,7 @@
 
 import operator
 import logging
+from events.helpers import date_to_str
 from django.conf import settings
 
 def group_names(any_list=None):
@@ -31,6 +32,15 @@ def group_names(any_list=None):
     result = sorted(result.items(), key=operator.itemgetter(1))
     return result
 
+def localize_date(date_obj):
+    """
+    """
+    print(dir(date_obj), type(date_obj))
+    date_obj = date_to_str({'date_value': date_obj.day, 
+                            'month_value': date_obj.month, 
+                            'year_value': date_obj.year})
+    
+    return date_obj
 
 if __name__ == '__main__':
     """Simple unit test ;)

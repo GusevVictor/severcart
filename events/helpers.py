@@ -16,7 +16,12 @@ def date_to_str(date_dict):
     day   = '0' + str(day) if day < 10 else str(day)
     month = '0' + str(month) if month < 10 else str(month)
     year  = str(year)
-    return '/'.join([ day, month, year ])
+
+    if _('lang') == 'ru':
+        return '/'.join([ day, month, year ])
+    else:
+        return '/'.join([ month, day, year ])
+
 
 def events_decoder(qso, time_zone_offset, simple=True):
     """Функция докодер симолических мнемоник в человекочитаемый формат. 

@@ -16,7 +16,7 @@ from docx.enum.text import WD_ALIGN_PARAGRAPH
 from index.models import CartridgeItemName, CartridgeType, CartridgeItem, City
 from index.helpers import check_ajax_auth
 from docs.models import RefillingCart, SCDoc
-from docs.helpers import group_names
+from docs.helpers import group_names, localize_date
 
 
 import logging
@@ -118,7 +118,7 @@ def generate_act(request):
             document.add_paragraph("")
 
         page_number_string = _('Page %(num)s from %(total)s') % {'num': page_num, 'total': total_pages_count}
-        document.add_paragraph('severcart.org' + ' '*125 + page_number_string )
+        p = document.add_paragraph('severcart.org' + ' '*120 + page_number_string)
         
     doc_id = request.POST.get('doc_id', '')
     doc_action = request.POST.get('doc_action', '')
@@ -182,14 +182,10 @@ def generate_act(request):
     
     # добавляем шапку для документа
     doc_number = str(m1.number) + '/' + str(request.user.pk)
-    hp1 = document.add_paragraph('Акт передачи картриджей № %s от %s' % (doc_number, str(m1.date_created), ))
-    hp1_format = hp1.paragraph_format
-    hp1_format.alignment = WD_ALIGN_PARAGRAPH.CENTER
-
-    hp2 = document.add_paragraph(str(request.user.departament))
-    hp2_format = hp2.paragraph_format
-    hp2_format.alignment = WD_ALIGN_PARAGRAPH.CENTER        
-
+    hh1 = document.add_heading('The act of transferring cartridges # %(doc_number)s from  %(date_created)s' % {'doc_number': doc_number, 'date_created': localize_date(m1.date_created)}, level=2)
+    
+    hh2 = document.add_heading(str(request.user.departament), level=2)
+    
     document.add_paragraph("") # добавляем оступ сверху
     document.add_paragraph("")
 
