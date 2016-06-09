@@ -646,13 +646,11 @@ $( function(){
                     },
                     success: function( msg ) {
                         if (msg.error == '0') {
-                            setTimeout(function() { 
-                                $('.spinner').hide(); 
-                                $('.error_msg').hide();
-                                $('.success_msg').show();
-                                $('.success_msg').html(msg.text);
-                                tr.hide();
-                            }, 4000);
+                            $('.spinner').hide(); 
+                            $('.error_msg').hide();
+                            $('.success_msg').show();
+                            $('.success_msg').html(msg.text);
+                            tr.hide();
                         }
                     },
                     error: function() {
