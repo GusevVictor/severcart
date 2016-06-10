@@ -182,7 +182,8 @@ def generate_act(request):
     
     # добавляем шапку для документа
     doc_number = str(m1.number) + '/' + str(request.user.pk)
-    hh1 = document.add_heading('The act of transferring cartridges # %(doc_number)s from  %(date_created)s' % {'doc_number': doc_number, 'date_created': localize_date(m1.date_created)}, level=2)
+    act_number_string = _('The act of transferring cartridges # %(doc_number)s from  %(date_created)s') % {'doc_number': doc_number, 'date_created': localize_date(m1.date_created)}
+    hh1 = document.add_heading(act_number_string, level=2)
     
     hh2 = document.add_heading(str(request.user.departament), level=2)
     

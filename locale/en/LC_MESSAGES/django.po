@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-06-09 15:36+0500\n"
+"POT-Creation-Date: 2016-06-10 11:13+0500\n"
 "PO-Revision-Date: 2016-05-27 12:27+0500\n"
 "Last-Translator: \n"
 "Language-Team: severcart.org <sfcl@mail.ru>\n"
@@ -287,7 +287,7 @@ msgstr ""
 msgid "Delete"
 msgstr ""
 
-#: .\accounts\templates\accounts\manage_users.html:27 .\docs\api\views.py:340
+#: .\accounts\templates\accounts\manage_users.html:27 .\docs\api\views.py:341
 #: .\index\templates\index\use.html.py:43
 #: .\search\templates\search\serp.html:11
 msgid "User"
@@ -348,14 +348,14 @@ msgstr ""
 #: .\dhtml\templates\dhtml\logic.html:259
 #: .\dhtml\templates\dhtml\logic.html:309
 #: .\dhtml\templates\dhtml\logic.html:579
-#: .\dhtml\templates\dhtml\logic.html:661
-#: .\dhtml\templates\dhtml\logic.html:778
-#: .\dhtml\templates\dhtml\logic.html:826
-#: .\dhtml\templates\dhtml\logic.html:941
-#: .\dhtml\templates\dhtml\logic.html:1046
-#: .\dhtml\templates\dhtml\logic.html:1180
-#: .\dhtml\templates\dhtml\logic.html:1228
-#: .\dhtml\templates\dhtml\logic.html:1286
+#: .\dhtml\templates\dhtml\logic.html:659
+#: .\dhtml\templates\dhtml\logic.html:776
+#: .\dhtml\templates\dhtml\logic.html:824
+#: .\dhtml\templates\dhtml\logic.html:939
+#: .\dhtml\templates\dhtml\logic.html:1044
+#: .\dhtml\templates\dhtml\logic.html:1178
+#: .\dhtml\templates\dhtml\logic.html:1226
+#: .\dhtml\templates\dhtml\logic.html:1284
 msgid "<p>Server not available.</p>"
 msgstr ""
 
@@ -378,36 +378,36 @@ msgstr ""
 msgid "You sure you want to return the selected items back to the store?"
 msgstr ""
 
-#: .\dhtml\templates\dhtml\logic.html:740
+#: .\dhtml\templates\dhtml\logic.html:738
 msgid "Are you sure you want to remove the counterparty?"
 msgstr ""
 
-#: .\dhtml\templates\dhtml\logic.html:998
+#: .\dhtml\templates\dhtml\logic.html:996
 msgid "Are you sure you want to delete a document?"
 msgstr ""
 
-#: .\dhtml\templates\dhtml\logic.html:1010
+#: .\dhtml\templates\dhtml\logic.html:1008
 msgid "Are you sure you want to delete the user?"
 msgstr ""
 
-#: .\dhtml\templates\dhtml\logic.html:1137
+#: .\dhtml\templates\dhtml\logic.html:1135
 msgid "Are you sure you want to delete?"
 msgstr ""
 
-#: .\dhtml\templates\dhtml\logic.html:1192
+#: .\dhtml\templates\dhtml\logic.html:1190
 msgid "Are you sure you want to delete city?"
 msgstr ""
 
-#: .\dhtml\templates\dhtml\logic.html:1556
+#: .\dhtml\templates\dhtml\logic.html:1554
 msgid "Are you sure you want to remove the storage room?"
 msgstr ""
 
-#: .\dhtml\templates\dhtml\logic.html:1617
+#: .\dhtml\templates\dhtml\logic.html:1615
 msgid "<p>Server error :(</p>"
 msgstr ""
 
 #: .\docs\api\views.py:30 .\docs\api\views.py:78 .\docs\api\views.py:110
-#: .\docs\api\views.py:428 .\index\api\views.py:42 .\index\api\views.py:77
+#: .\docs\api\views.py:429 .\index\api\views.py:42 .\index\api\views.py:77
 #: .\index\api\views.py:218 .\index\api\views.py:244 .\index\api\views.py:388
 #: .\index\api\views.py:431 .\index\api\views.py:452 .\index\api\views.py:467
 #: .\reports\api\views.py:49 .\storages\api\views.py:20
@@ -464,26 +464,32 @@ msgstr ""
 msgid "Cartridge number"
 msgstr ""
 
-#: .\docs\api\views.py:241
+#: .\docs\api\views.py:185
+#, python-format
+msgid ""
+"The act of transferring cartridges # %(doc_number)s from  %(date_created)s"
+msgstr ""
+
+#: .\docs\api\views.py:242
 #, python-format
 msgid "Total count - %(co)s"
 msgstr ""
 
-#: .\docs\api\views.py:243
+#: .\docs\api\views.py:244
 msgid "Sender"
 msgstr ""
 
-#: .\docs\api\views.py:245
+#: .\docs\api\views.py:246
 msgid "Resipient"
 msgstr ""
 
-#: .\docs\api\views.py:253
+#: .\docs\api\views.py:254
 #, python-format
 msgid "Document %(doc_number)s_%(user_id)s_0.docx generated"
 msgstr ""
 
-#: .\docs\api\views.py:279 .\docs\api\views.py:311 .\docs\api\views.py:337
-#: .\docs\api\views.py:360 .\docs\api\views.py:381 .\docs\api\views.py:404
+#: .\docs\api\views.py:280 .\docs\api\views.py:312 .\docs\api\views.py:338
+#: .\docs\api\views.py:361 .\docs\api\views.py:382 .\docs\api\views.py:405
 #: .\docs\forms\add_doc.py:11 .\docs\forms\edit_name.py:6
 #: .\docs\templates\docs\delivery.html:25
 #: .\docs\templates\docs\delivery.html:94
@@ -508,15 +514,15 @@ msgstr ""
 msgid "Name"
 msgstr ""
 
-#: .\docs\api\views.py:279 .\docs\templates\docs\delivery.html.py:97
+#: .\docs\api\views.py:280 .\docs\templates\docs\delivery.html.py:97
 #: .\index\templates\index\add_empty_cartridge.html:49
 #: .\index\templates\index\add_items.html:48
 #: .\reports\templates\reports\users_ajax.html:5
 msgid "Amount"
 msgstr ""
 
-#: .\docs\api\views.py:310 .\docs\api\views.py:336 .\docs\api\views.py:359
-#: .\docs\api\views.py:380 .\docs\api\views.py:403 .\docs\forms\add_doc.py:9
+#: .\docs\api\views.py:311 .\docs\api\views.py:337 .\docs\api\views.py:360
+#: .\docs\api\views.py:381 .\docs\api\views.py:404 .\docs\forms\add_doc.py:9
 #: .\docs\templates\docs\delivery.html:20
 #: .\docs\templates\docs\delivery.html:92
 #: .\index\templates\index\at_work.html:31
@@ -535,8 +541,8 @@ msgstr ""
 msgid "Number"
 msgstr "ID"
 
-#: .\docs\api\views.py:312 .\docs\api\views.py:338 .\docs\api\views.py:361
-#: .\docs\api\views.py:382 .\docs\api\views.py:405
+#: .\docs\api\views.py:313 .\docs\api\views.py:339 .\docs\api\views.py:362
+#: .\docs\api\views.py:383 .\docs\api\views.py:406
 #: .\index\templates\index\at_work.html:33
 #: .\index\templates\index\basket.html:36
 #: .\index\templates\index\empty.html:42 .\index\templates\index\stock.html:41
@@ -544,16 +550,16 @@ msgstr "ID"
 msgid "Amount<br/>recovery"
 msgstr ""
 
-#: .\docs\api\views.py:313 .\index\templates\index\stock.html.py:42
+#: .\docs\api\views.py:314 .\index\templates\index\stock.html.py:42
 msgid "Date add"
 msgstr ""
 
-#: .\docs\api\views.py:313 .\index\templates\index\stock.html.py:42
+#: .\docs\api\views.py:314 .\index\templates\index\stock.html.py:42
 msgid "on stock"
 msgstr ""
 
-#: .\docs\api\views.py:314 .\docs\api\views.py:341 .\docs\api\views.py:363
-#: .\docs\api\views.py:385 .\docs\api\views.py:407
+#: .\docs\api\views.py:315 .\docs\api\views.py:342 .\docs\api\views.py:364
+#: .\docs\api\views.py:386 .\docs\api\views.py:408
 #: .\docs\templates\docs\types_list.html:29 .\index\forms\comment.py:11
 #: .\index\templates\index\at_work.html:36
 #: .\index\templates\index\basket.html:38
@@ -561,23 +567,23 @@ msgstr ""
 msgid "comment"
 msgstr "Comment"
 
-#: .\docs\api\views.py:339 .\index\templates\index\use.html.py:42
+#: .\docs\api\views.py:340 .\index\templates\index\use.html.py:42
 msgid "Date transfe"
 msgstr ""
 
-#: .\docs\api\views.py:362 .\index\templates\index\empty.html.py:43
+#: .\docs\api\views.py:363 .\index\templates\index\empty.html.py:43
 msgid "Date return"
 msgstr ""
 
-#: .\docs\api\views.py:383 .\index\templates\index\at_work.html.py:34
+#: .\docs\api\views.py:384 .\index\templates\index\at_work.html.py:34
 msgid "Date transfer on recovery"
 msgstr ""
 
-#: .\docs\api\views.py:384 .\index\templates\index\at_work.html.py:35
+#: .\docs\api\views.py:385 .\index\templates\index\at_work.html.py:35
 msgid "Refueller"
 msgstr ""
 
-#: .\docs\api\views.py:406 .\index\templates\index\basket.html.py:37
+#: .\docs\api\views.py:407 .\index\templates\index\basket.html.py:37
 msgid "Date return in basket"
 msgstr ""
 

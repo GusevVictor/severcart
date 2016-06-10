@@ -35,7 +35,6 @@ def group_names(any_list=None):
 def localize_date(date_obj):
     """
     """
-    print(dir(date_obj), type(date_obj))
     date_obj = date_to_str({'date_value': date_obj.day, 
                             'month_value': date_obj.month, 
                             'year_value': date_obj.year})
