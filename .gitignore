@@ -21,3 +21,6 @@ static/docx/*
 insert_strings.py
 
 cache/*.djcache
+
+conf/secrets.json
+

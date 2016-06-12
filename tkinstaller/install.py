@@ -71,7 +71,17 @@ if __name__ == '__main__':
         code = compile(f.read(), activate_env, 'exec')
         exec(code, dict(__file__=activate_env))
 
-    
+    print('-------------------------------------------------')
+    print('--Генерация ключа подписи сессионной переменной--')
+    print('-------------------------------------------------')
+    from django.utils.crypto import get_random_string
+    import json
+    chars = 'abcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*(-_=+)'
+    secret_key = get_random_string(50, chars)
+    SECRETS = dict()
+    SECRETS['secret_key'] = secret_key
+    with open(os.path.join(PROJ_DIR, 'conf', 'secrets.json'), 'w') as j:
+        json.dump(SECRETS, j)
     CPU_ARCH = platform.architecture()[0]
     print('-------------------------------------------------')
     print('--------Установка пакетов зависимостей-----------')
@@ -130,6 +140,7 @@ if __name__ == '__main__':
             ]
             persent = 10
             for pack in packages_unix:
+                break
                 sys.stdout.off()
                 install(pack)
                 sys.stdout.on()
@@ -194,18 +205,7 @@ if __name__ == '__main__':
                 # возвращаемся к началу цикла
                 flag = True
 
-        print('-------------------------------------------------')
-        print('--Генерация ключа подписи сессионной переменной--')
-        print('-------------------------------------------------')
-        from django.utils.crypto import get_random_string
-        import json
-        chars = 'abcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*(-_=+)'
-        secret_key = get_random_string(50, chars)
-        SECRETS = dict()
-        SECRETS['secret_key'] = secret_key
-        with open(os.path.join(PROJ_DIR, 'conf', 'secrets.json'), 'w') as j:
-            json.dump(SECRETS, j)
-        print('-------------------------------------------------')
+                print('-------------------------------------------------')
         print('----------Установка успешно завершена------------')
         print('-------------------------------------------------')
         prompt_exit()
