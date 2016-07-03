@@ -10,8 +10,8 @@ class Settings(models.Model):
     email_sender  = models.EmailField(max_length=254, null=True, blank=True)
     smtp_login    = models.CharField(max_length=256, null=True)
     smtp_password = models.CharField(max_length=256, null=True)
-    use_ssl       = models.NullBooleanField(null=True)
-    use_tls       = models.NullBooleanField(null=True)
+    use_ssl       = models.BooleanField(default=False)
+    use_tls       = models.BooleanField(default=False)
 
     # настройки формата печатаемых наклеек
     # принимает значения A4, A5, ...
