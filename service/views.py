@@ -48,8 +48,9 @@ def stickers(request):
     conf = SevercartConfigs()
     if request.method == 'POST':
         form = StickFormat(request.POST)
-        if form.is_valid:
-            choice = request.POST.get('choice', '')
+        if form.is_valid():
+            data_in_post = form.cleaned_data
+            choice = data_in_post.get('choice','A4')
             conf.page_format = choice
             conf.commit()
             context['form'] = form
