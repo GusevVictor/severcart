@@ -45,13 +45,13 @@ def dashboard(request):
     """
     try:
         root_ou   = request.user.departament
-        children  = root_ou.get_children()
+        des       = root_ou.get_descendants()
     except AttributeError:
         children = ''
     filter_itms = lambda qy: CartridgeItem.objects.filter(qy)
     context = {}
     context['full_on_stock']  = filter_itms(Q(departament=root_ou) & Q(cart_status=1)).count()
-    context['uses']           = filter_itms(Q(departament__in=children) & Q(cart_status=2)).count()
+    context['uses']           = filter_itms(Q(departament__in=des) & Q(cart_status=2)).count()
     context['empty_on_stock'] = filter_itms(Q(departament=root_ou) & Q(cart_status=3)).count()
     context['filled']         = filter_itms(Q(departament=root_ou) & Q(cart_status=4)).count()
     context['recycler_bin']   = filter_itms(Q(departament=root_ou) & (Q(cart_status=5) | Q(cart_status=6))).count()
