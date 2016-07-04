@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-06-10 11:13+0500\n"
-"PO-Revision-Date: 2016-06-10 11:17+0500\n"
+"POT-Creation-Date: 2016-07-04 11:44+0500\n"
+"PO-Revision-Date: 2016-07-04 11:45+0500\n"
 "Last-Translator: \n"
 "Language-Team: severcart.org <sfcl@mail.ru>\n"
 "Language: ru\n"
@@ -516,8 +516,6 @@ msgid "Name"
 msgstr "Название"
 
 #: .\docs\api\views.py:280 .\docs\templates\docs\delivery.html.py:97
-#: .\index\templates\index\add_empty_cartridge.html:49
-#: .\index\templates\index\add_items.html:48
 #: .\reports\templates\reports\users_ajax.html:5
 msgid "Amount"
 msgstr "Сумма"
@@ -1306,6 +1304,11 @@ msgstr "Название катриджа"
 msgid "The field must be seleced"
 msgstr "Поле должно быть выбрано"
 
+#: .\index\templates\index\add_empty_cartridge.html:49
+#: .\index\templates\index\add_items.html:48
+msgid "Amount items"
+msgstr "Количество"
+
 #: .\index\templates\index\add_empty_cartridge.html:53
 #: .\index\templates\index\add_items.html:52
 msgid "The field must be greater than zero"
@@ -1680,31 +1683,31 @@ msgstr "«%(cart_name)s» уже существует."
 msgid "%(cart_name)s success added"
 msgstr "«%(cart_name)s» успешно добавлен."
 
-#: .\index\views.py:257 .\index\views.py:272
+#: .\index\views.py:261 .\index\views.py:276
 #, python-format
 msgid "Organization unit %(org_name)s exist"
 msgstr "Организационное подразделение %(org_name)s уже существует."
 
-#: .\index\views.py:262 .\index\views.py:268
+#: .\index\views.py:266 .\index\views.py:272
 #, python-format
 msgid "Organization unit %(org_name)s create successfuly."
 msgstr "Организационное подразделение %(org_name)s успешно создано."
 
-#: .\index\views.py:317
+#: .\index\views.py:321
 #, python-format
 msgid "%(cart_type)s success save"
 msgstr "%(cart_type)s успешно сохранён."
 
-#: .\index\views.py:321
+#: .\index\views.py:325
 #, python-format
 msgid "New type %(cart_type)s success added"
 msgstr "Новый тип %(cart_type)s успешно добавлен."
 
-#: .\index\views.py:456
+#: .\index\views.py:460
 msgid "Select all"
 msgstr "Выбрать все"
 
-#: .\index\views.py:489
+#: .\index\views.py:493
 #, python-format
 msgid "Firm \"%(firm_name)s\" success added."
 msgstr "Контрагент \"%(firm_name)s\" успешно добавлен."
