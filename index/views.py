@@ -206,9 +206,13 @@ def add_empty_cartridge(request):
     form_obj.fields['storages'].queryset = Storages.objects.filter(departament=request.user.departament)
     # выбор склада по умолчанию в выбранной организации
     default_sklad = Storages.objects.filter(departament=request.user.departament).filter(default=True)
-    if default_sklad[0].pk:
-        form_obj.fields['storages'].initial = default_sklad[0].pk
-
+    try:
+        if default_sklad[0].pk:
+            form_obj.fields['storages'].initial = default_sklad[0].pk
+    except IndexError:
+        # если склад по-умолчанию не выбран, то пропускаем выбор склада
+        pass
+    
     context['form'] = form_obj
     session_data = request.session.get('empty_cart_list')
     if not session_data:
