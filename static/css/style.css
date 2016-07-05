@@ -1003,19 +1003,35 @@ div.calendar .ui-datepicker-trigger {
 /* end date input form */
 
 /* Search service */
+li.search {
+    padding-left: 12px;
+}
+
+li.search form {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
 .search .search_query {
     display: inline-block;
-    width: 115px;
+    width: 100px;
     height: 20px;
     font-size: 12px;
     border: 0px solid #000;
+    margin: 0;
+    padding: 0 0 0 2px;
+    vertical-align: middle; 
 }
 
 .search .search_button {
     display: inline-block;
     width: 20px;
     height: 20px;
-    border: 0px solid #000;
+    border: 0 solid #000;
+    background: url('../img/search.png') no-repeat;
+    background-color: buttonface;
+    vertical-align: middle;
 }
 
 /* End search service */

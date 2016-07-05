@@ -1288,9 +1288,15 @@ $( function(){
           
     });
 
-    $('.search_query').focus( function () {
-        /*  При установке курсора в поле ввода очищаем текст */
-        $(this).attr('value', '');
+
+    $('.search_button1').click( function(event) {
+        /* Пустые запросы не обрабатываем */
+        var search_phase = $('.search_query').val();
+        var search_phase = $.trim(search_phase);
+        if ((search_phase === '') || (search_phase === '{%  trans "Find by number" %}')) {
+            event.preventDefault();
+            event.stopPropagation();
+        }
     });
 
     $('.settings_email').click( function() {

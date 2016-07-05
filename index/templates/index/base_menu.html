@@ -11,10 +11,10 @@
                 <li class="{% navactive request 'index:basket' %}"><a href="{% url 'index:basket' %}">{% trans "Basket" %}</a></li>
                 <li class="{% navactive request 'service:submenu' %}"><a href="{% url 'service:submenu' %}">{% trans "Service" %}</a></li>
                 <li class="{% navactive request 'auth:manage_users' %} {% navactive request 'index:tree_list' %} {% navactive request 'index:toner_refill' %} {% navactive request 'docs:handbook' %}"><a href="{% url 'docs:handbook' %}">{% trans "References" %}</a></li>
-                <li class="search right">
+                <li class="search">
                     <form action="{% url 'find:search' %}" method="GET">
-                        <input class="search_query" type="text" name="query" value="{% trans 'Find by number' %}" />
-                        <input type="submit" class="search_button" value="?" />
+                        <input class="search_query" type="text" name="query" onfocus="if(this.value == '{% trans "Find by number" %}') { this.value = ''; }" onfocusout="if(this.value == '') { this.value = '{% trans "Find by number" %}'; }" value="{% trans 'Find by number' %}" /><!--
+                       --><input type="submit" class="search_button" value="" />
                     </form>
                 </li>
 
