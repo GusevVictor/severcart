@@ -13,12 +13,12 @@ class SevercartConfigs(object):
             self.m1 = Settings.objects.get(pk=1)
         except Settings.DoesNotExist:
             self.smtp_server    = ''
-            self.smtp_port      = ''
+            self.smtp_port      = 0
             self.email_sender   = ''
             self.smtp_login     = ''
             self.smtp_password  = ''
-            self.use_ssl        = ''
-            self.use_tls        = ''
+            self.use_ssl        = False
+            self.use_tls        = False
             self.page_format    = 'A4'
         else:
             # если таблица уже содержит данные, то инициализируем внутренние переменные
@@ -34,8 +34,22 @@ class SevercartConfigs(object):
     def commit(self):
         """Сохранение значений настроечных переменных в СУБД.
         """
-        self.m1 = Settings.objects.all()
-        if self.m1:
+        try:
+            self.m1 = Settings.objects.get(pk=1)
+        except Settings.DoesNotExist:
+            # если в таблица пустая, то создаём первую строку           
+            m1 = Settings(
+                            smtp_server    = self.smtp_server,
+                            smtp_port      = self.smtp_port,
+                            email_sender   = self.email_sender,
+                            smtp_login     = self.smtp_login,
+                            smtp_password  = self.smtp_password,
+                            use_ssl        = self.use_ssl,
+                            use_tls        = self.use_tls,
+                            page_format    = self.page_format
+                            )
+            m1.save()
+        else:
             # если данные уже есть, то перезаписываем
             self.m1 = Settings.objects.get(pk=1)
             self.m1.smtp_server    = self.smtp_server
@@ -47,18 +61,6 @@ class SevercartConfigs(object):
             self.m1.use_tls        = self.use_tls
             self.m1.page_format    = self.page_format
             self.m1.save()
-        else:
-            # если в таблица пустая, то создаём первую строку           
-            Settings.objects.create(
-                            smtp_server    = self.smtp_server,
-                            smtp_port      = self.smtp_port,
-                            email_sender   = self.email_sender,
-                            smtp_login     = self.smtp_login,
-                            smtp_password  = self.smtp_password,
-                            use_ssl        = self.use_ssl,
-                            use_tls        = self.use_tls,
-                            page_format    = self.page_format
-                            )
 
 def send_email(reciver=None, title=None, text=None):
     """Своя обёртка вокруг django send_email.
