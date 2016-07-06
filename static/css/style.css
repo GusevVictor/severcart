@@ -934,6 +934,10 @@ select.action {
     width: auto;
 }
 
+select.cartridge_action {
+    height:20px;
+}
+
 .cartridge_action option, select.action option {
     padding: 5px;
 }

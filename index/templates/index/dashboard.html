@@ -10,27 +10,27 @@
         <table class="dashboard">
             <tbody>
             <tr>
-                <td class="pic"><img src="{{ STATIC_URL }}img/dashboard/stock.png" /></td>
+                <td class="pic"><img src="{{ STATIC_URL }}img/dashboard/stock.png?1" /></td>
                 <td>{% trans "Quantity in stock (usable)" %}</td>
                 <td class="quad">{{ full_on_stock }}</td>
             </tr>
             <tr>
-                <td class="pic"><img src="{{ STATIC_URL }}img/dashboard/uses.png" /></td>
+                <td class="pic"><img src="{{ STATIC_URL }}img/dashboard/uses.png?1" /></td>
                 <td>{% trans "The number of installed" %}</td>
                 <td class="quad">{{ uses }}</td>
             </tr>
             <tr>
-                <td class="pic"><img src="{{ STATIC_URL }}img/dashboard/empty.png" /></td>
+                <td class="pic"><img src="{{ STATIC_URL }}img/dashboard/empty.png?1" /></td>
                 <td>{% trans "Number of empty, ready to recharge" %}</td>
                 <td class="quad">{{ empty_on_stock }}</td>
             </tr>
             <tr>
-                <td class="pic"><img src="{{ STATIC_URL }}img/dashboard/filled.png" /></td>
+                <td class="pic"><img src="{{ STATIC_URL }}img/dashboard/filled.png?1" /></td>
                 <td>{% trans "Now dressed" %}</td>
                 <td class="quad">{{ filled }}</td>
             </tr>
             <tr>
-                <td class="pic"><img src="{{ STATIC_URL }}img/dashboard/rbin.png" /></td>
+                <td class="pic"><img src="{{ STATIC_URL }}img/dashboard/rbin.png?1" /></td>
                 <td>{% trans "In basket (count)" %}</td>
                 <td class="quad">{{ recycler_bin }}</td>
             </tr>
