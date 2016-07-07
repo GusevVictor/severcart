@@ -253,7 +253,6 @@ def tree_list(request):
             uid = int(uid)
         except ValueError:
             uid = 0
-
         # проверям, есть ли такая корневая нода уже в базе
         if uid == 0: # добавление корневой ноды
             for node in OrganizationUnits.objects.root_nodes():
@@ -267,17 +266,18 @@ def tree_list(request):
 
         if uid != 0:
             temp_name = OrganizationUnits.objects.get(pk=uid)
-            if temp_name.is_root_node():
+            for node in temp_name.get_descendants(include_self=True):
+                # производим поиск ноды среди потомков поддерева
+                if node.name == org_name:
+                    context['error1']= _('Organization unit %(org_name)s exist') % {'org_name': org_name}
+                    break
+            else:
+                # блок элсе выполняется если внутри цикла фор не было прерыание через брейк
                 OrganizationUnits.objects.create(name=org_name, parent=temp_name)
                 context['msg'] = _('Organization unit %(org_name)s create successfuly.') % {'org_name': org_name}
-            else:    
-                for node in temp_name.get_children():
-                    if node == org_name:
-                        context['error1']=  _('Organization unit %(org_name)s exist') % {'org_name': org_name}
-                        break
-                else:
-                    rn = OrganizationUnits.objects.get(pk=uid)
-                    OrganizationUnits.objects.create(name=org_name, parent=rn)        
+    else:
+        pass
+                    
     context['bulk'] = OrganizationUnits.objects.all()
     return render(request, 'index/tree_list.html', context)
 
