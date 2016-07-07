@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-07-04 11:44+0500\n"
-"PO-Revision-Date: 2016-07-04 11:45+0500\n"
+"PO-Revision-Date: 2016-07-07 16:33+0500\n"
 "Last-Translator: \n"
 "Language-Team: severcart.org <sfcl@mail.ru>\n"
 "Language: ru\n"
@@ -27,7 +27,7 @@ msgstr "Ошибка в обработке данных."
 #: .\accounts\api\views.py:28
 #, python-format
 msgid "User %(user_name)s can not be deleted"
-msgstr "Пользователя %(user_name)s удалить нельзя."
+msgstr "Пользователя «%(user_name)s» удалить нельзя."
 
 #: .\accounts\api\views.py:35
 msgid "Object not found"
@@ -487,7 +487,7 @@ msgstr "Принял"
 #: .\docs\api\views.py:254
 #, python-format
 msgid "Document %(doc_number)s_%(user_id)s_0.docx generated"
-msgstr "Документ %(doc_number)s_%(user_id)s_0.docx успешно сформирован."
+msgstr "Документ «%(doc_number)s_%(user_id)s_0.docx» успешно сформирован."
 
 #: .\docs\api\views.py:280 .\docs\api\views.py:312 .\docs\api\views.py:338
 #: .\docs\api\views.py:361 .\docs\api\views.py:382 .\docs\api\views.py:405
@@ -884,19 +884,19 @@ msgstr "Объект не найден."
 #: .\events\helpers.py:37
 #, python-format
 msgid "Added user %(user_name)s."
-msgstr "Добавлен пользователем %(user_name)s."
+msgstr "Добавлен пользователем «%(user_name)s»."
 
 #: .\events\helpers.py:39
 #, python-format
 msgid "№ %(cart_number)s (%(cart_type)s) added user %(user_name)s."
 msgstr ""
-"Новый картридж  под № %(cart_number)s (%(cart_type)s) добавлен пользователем "
+"Новый картридж № %(cart_number)s (%(cart_type)s) добавлен пользователем "
 "%(user_name)s."
 
 #: .\events\helpers.py:50
 #, python-format
 msgid "Added empty cartridge user %(user_name)s."
-msgstr "Пользователь %(user_name)s добавил пустой картридж."
+msgstr "%(user_name)s добавил пустой картридж."
 
 #: .\events\helpers.py:52
 #, python-format
@@ -1686,22 +1686,22 @@ msgstr "«%(cart_name)s» успешно добавлен."
 #: .\index\views.py:261 .\index\views.py:276
 #, python-format
 msgid "Organization unit %(org_name)s exist"
-msgstr "Организационное подразделение %(org_name)s уже существует."
+msgstr "Организационное подразделение «%(org_name)s» уже существует."
 
 #: .\index\views.py:266 .\index\views.py:272
 #, python-format
 msgid "Organization unit %(org_name)s create successfuly."
-msgstr "Организационное подразделение %(org_name)s успешно создано."
+msgstr "Организационное подразделение «%(org_name)s» успешно создано."
 
 #: .\index\views.py:321
 #, python-format
 msgid "%(cart_type)s success save"
-msgstr "%(cart_type)s успешно сохранён."
+msgstr "«%(cart_type)s» успешно сохранён."
 
 #: .\index\views.py:325
 #, python-format
 msgid "New type %(cart_type)s success added"
-msgstr "Новый тип %(cart_type)s успешно добавлен."
+msgstr "Новый тип «%(cart_type)s» успешно добавлен."
 
 #: .\index\views.py:460
 msgid "Select all"
@@ -1710,7 +1710,7 @@ msgstr "Выбрать все"
 #: .\index\views.py:493
 #, python-format
 msgid "Firm \"%(firm_name)s\" success added."
-msgstr "Контрагент \"%(firm_name)s\" успешно добавлен."
+msgstr "Контрагент «%(firm_name)s» успешно добавлен."
 
 #: .\reports\api\views.py:56
 msgid "Start date required field."
@@ -2002,7 +2002,7 @@ msgstr "Использовать по-умолчанию?"
 #: .\storages\views.py:64
 #, python-format
 msgid "Starage \"%(starage_name)s\" success added."
-msgstr "Склад   \"%(starage_name)s\" успешно добавлен."
+msgstr "Склад  «%(starage_name)s» успешно добавлен."
 
 #: .\storages\views.py:68
 msgid "Starage not added."
@@ -2015,7 +2015,7 @@ msgstr "Склад с таким id не найденн."
 #: .\storages\views.py:103
 #, python-format
 msgid "Starage \"%(starage_name)s\" success edited."
-msgstr "Склад \"%(starage_name)s\"  успешно изменён."
+msgstr "Склад «%(starage_name)s»  успешно изменён."
 
 #: .\storages\views.py:107
 msgid "Starage not edited."
