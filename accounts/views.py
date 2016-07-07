@@ -176,7 +176,12 @@ def send_email(request):
     """Отправка письма для восстановления пароля.
     """
     context = {}
-    context['form'] = SendMail()
+    show_form = False
+    # если демо режим включен, то форму отправки не показываем
+    if not settings.DEMO:
+        context['form'] = SendMail()
+        show_form = True
+        context['show_form'] = show_form
     return render(request, 'accounts/send_email.html', context)
 
 def recover_password(request, secret_key):

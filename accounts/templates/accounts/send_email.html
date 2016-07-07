@@ -2,7 +2,7 @@
 {% block title %}{% trans "Password reset" %}{% endblock %}
 {% block content %}
 <div class="row">
-    <div class="large-6 columns">
+    <div class="large-6 columns">{% if show_form %}
         <div class="error_msg_send_email" style="display:none"></div>
         <div class="success_msg_send_email" style="display:none"></div>
         <p>{% trans 'Please enter your email address. On it will send the message to change the password.' %}</p>
@@ -15,7 +15,7 @@
         </form>
         <script>
             document.getElementById('id_email').focus()
-        </script>
+        </script>{% endif %}
     </div>
 </div>
 {% endblock %}

@@ -51,6 +51,11 @@ def send_repair_email(request):
     """
     resp_dict = dict()
     resp_dict['errors'] = ''
+    # в демо режиме запрос не обрабытываем
+    if settings.DEMO:
+        resp_dict['errors'] = 'In demo mode repair pass not work!'
+        return JsonResponse(resp_dict)
+
     form = SendMail(request.POST)
     if form.is_valid():
         data_in_post = form.cleaned_data

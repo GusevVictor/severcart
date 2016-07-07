@@ -15,8 +15,8 @@
             {{ form.password }}</p>
             <input type="hidden" name="next" value="{{ next }}"/>
             <br/>
-            <input class="button login" type="submit" value="{% trans 'Enter' %}"/>
-            <a class="forgot_password" href="{% url 'auth:send_email' %}">{% trans 'Forgot your password?' %}</a>
+            <input class="button login" type="submit" value="{% trans 'Enter' %}"/>{% if demo == False %}
+            <a class="forgot_password" href="{% url 'auth:send_email' %}">{% trans 'Forgot your password?' %}</a>{% endif %}
         </form>
         <script>
             document.getElementById('id_username').focus()
