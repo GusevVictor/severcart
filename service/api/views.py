@@ -61,3 +61,10 @@ def settings_email(request):
         resp_dict['errors'] = error_message
     
     return JsonResponse(resp_dict)
+
+@check_ajax_auth
+def set_lang(request):
+    resp_dict = dict()
+    lang_code = request.POST.get('lang_code')
+    request.session['lang_code'] = lang_code
+    return JsonResponse(resp_dict)
