@@ -555,6 +555,7 @@ form select {
     height: 33px;
     background: url('../img/add_button.png') no-repeat center center;
     border: 1px solid green;
+    border-radius: 4px;
 }
 
 
