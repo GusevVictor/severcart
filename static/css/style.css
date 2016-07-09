@@ -855,7 +855,11 @@ table.checkboxes th.cart_name {
 }
 
 table.checkboxes th.fio {
-    width:250px;
+    width:100px;
+}
+
+table.checkboxes th.who_give {
+    width:100px;
 }
 
 table.checkboxes th.cart_count {
