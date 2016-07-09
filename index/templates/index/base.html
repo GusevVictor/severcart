@@ -18,16 +18,18 @@
 </head>
 <body class="all">
     <div class="main_content">
+        <div class="row">
+            <div class="large-12 columns marginTop">
+                <div class="left logo"><a href="/"><img src="{{ STATIC_URL }}img/logo.png" /></a></div>
+                <div class="right submenu">
+                <span class="user_ou" title="{{request.user.departament}}">{% if request.user.departament %}{{request.user.departament|truncatechars:100}}{% endif %}</span>&nbsp;&nbsp;<select class="language_selector" name="languge"><option>Русский</option><option>English</option></select>&nbsp;&nbsp;{{request.user.get_username}}&nbsp;&nbsp;<a href="{% url 'auth:logout' %}">{% trans "Exit" %}</a>
+                </div>
+            </div>
+        </div>
         {% include "index/base_menu.html" %}
         <div class="row">
-            <div class="large-12 columns marginTop"></div>
-        </div>
-        <div class="row">
-            <div class="large-8 columns">
+            <div class="large-12 columns marginTop">
                 <div class="breads">{% block breadcrumbs %}{% endblock %}</div>
-            </div>
-            <div class="large-4 columns text-right">
-                <span class="user_ou" title="{{request.user.departament}}">{% if request.user.departament %}{{request.user.departament|truncatechars:30}}{% endif %}</span>&nbsp;&nbsp;{{request.user.get_username}}&nbsp;&nbsp;<a href="{% url 'auth:logout' %}">{% trans "Exit" %}</a>
             </div>
         </div>
         <div class="marginTop"></div>
@@ -35,7 +37,7 @@
         {% block content %}{% endblock %}
     </div>
     <div class="footer">
-        <div class="text_in_footer">{% trans "Version" %}: 0.2.0&nbsp;&nbsp;&nbsp;&copy;&nbsp;&nbsp;&nbsp;<a href="http://severcart.org">severcart.org</a>&nbsp;&nbsp;&nbsp;2016</div>
+        <div class="text_in_footer">{% trans "Version" %}: 0.2.1&nbsp;&nbsp;&nbsp;&copy;&nbsp;&nbsp;&nbsp;<a href="http://severcart.org">severcart.org</a>&nbsp;&nbsp;&nbsp;2016</div>
     </div>
 </body>
 </html>

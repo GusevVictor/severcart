@@ -215,13 +215,19 @@ input[type='text'] {
 form.stickers_format ul {
     list-style-type: none;
 }
-span.user_ou {
+
+div.main_content span.user_ou {
     font-size:12px;
 }
 
 table.checkboxes tr.red_bg {
     background-color: #ff6464;
 }
+
+div.submenu {
+    line-height: 25px;
+}
+
 
 /*  end global tables */
 
@@ -411,6 +417,12 @@ ul.menu > li.select > a:after {
 
 ul.menu > li.select:hover:after {
     background-color:#848484;   
+}
+
+select.language_selector {
+    height: 23px;
+    font-size: 16px;
+    width: 85px;
 }
 
 /*   --------end style menu-----------   */
