@@ -287,6 +287,7 @@ def transfer_to_firm(request):
                                )
         act_doc.save()
         list_cplx = list()
+        show_numbers = list()
         for inx in numbers:
             m1 = CartridgeItem.objects.get(pk=inx)
             m1.cart_status = 4 # находится на заправке
@@ -294,13 +295,14 @@ def transfer_to_firm(request):
             m1.cart_date_change = timezone.now()
             m1.save()
             list_cplx.append((m1.pk, str(m1.cart_itm_name), m1.cart_number))
+            show_numbers.append(m1.cart_number)
             
         sign_tr_empty_cart_to_firm.send(sender=None, 
                                         list_cplx=list_cplx, 
                                         request=request, 
                                         firm=str(firm)
                                         )
-        ansver['success'] = _('Cartridges %(cart_nums)s successfully moved to firm.') % {'cart_nums': str(numbers)}
+        ansver['success'] = _('Cartridges %(cart_nums)s successfully moved to firm.') % {'cart_nums': str(show_numbers)}
     else:
         # если форма содержит ошибки, то сообщаем о них пользователю.
         error_messages = dict([(key, [error for error in value]) for key, value in form.errors.items()])
