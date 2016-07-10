@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-07-04 11:44+0500\n"
-"PO-Revision-Date: 2016-07-07 16:33+0500\n"
+"POT-Creation-Date: 2016-07-10 10:08+0500\n"
+"PO-Revision-Date: 2016-07-10 10:09+0500\n"
 "Last-Translator: \n"
 "Language-Team: severcart.org <sfcl@mail.ru>\n"
 "Language: ru\n"
@@ -42,19 +42,19 @@ msgstr "В режиме демонстрации пользователей уд
 msgid "User %(user_name)s was successfully deleted"
 msgstr "Пользователь «%(user_name)s» успешно удалён."
 
-#: .\accounts\api\views.py:60
+#: .\accounts\api\views.py:65
 msgid "Email was not found."
 msgstr "Почтовый ящик не найден."
 
-#: .\accounts\api\views.py:64
+#: .\accounts\api\views.py:69
 msgid "Email should not be repeated for different users."
 msgstr "Почта должна быть уникальной."
 
-#: .\accounts\api\views.py:67
+#: .\accounts\api\views.py:72
 msgid "Forgotten password recovery"
 msgstr "Восстановление забытого пароля"
 
-#: .\accounts\api\views.py:85 .\service\api\views.py:28
+#: .\accounts\api\views.py:90 .\service\api\views.py:28
 msgid "Mail successfully sended!"
 msgstr "Письмо успешно отправленно!"
 
@@ -338,11 +338,11 @@ msgstr ""
 msgid "Send"
 msgstr "Отправить"
 
-#: .\conf\settings.py:64
+#: .\conf\settings.py:66
 msgid "Russian"
 msgstr "Русский"
 
-#: .\conf\settings.py:65
+#: .\conf\settings.py:67
 msgid "English"
 msgstr "Английский"
 
@@ -399,18 +399,23 @@ msgstr "Вы точно хотите удалить?"
 msgid "Are you sure you want to delete city?"
 msgstr "Вы точно хотите удалить название города?"
 
-#: .\dhtml\templates\dhtml\logic.html:1554
+#: .\dhtml\templates\dhtml\logic.html:1296
+#: .\index\templates\index\base_menu.html:16
+msgid "Find by number"
+msgstr "Поиск по номеру"
+
+#: .\dhtml\templates\dhtml\logic.html:1560
 msgid "Are you sure you want to remove the storage room?"
 msgstr "Вы точно хотите удалить складское помещение?"
 
-#: .\dhtml\templates\dhtml\logic.html:1615
+#: .\dhtml\templates\dhtml\logic.html:1621
 msgid "<p>Server error :(</p>"
 msgstr "<p>Ошибка на стороне сервера :(</p>"
 
 #: .\docs\api\views.py:30 .\docs\api\views.py:78 .\docs\api\views.py:110
 #: .\docs\api\views.py:429 .\index\api\views.py:42 .\index\api\views.py:77
-#: .\index\api\views.py:218 .\index\api\views.py:244 .\index\api\views.py:388
-#: .\index\api\views.py:431 .\index\api\views.py:452 .\index\api\views.py:467
+#: .\index\api\views.py:218 .\index\api\views.py:244 .\index\api\views.py:390
+#: .\index\api\views.py:433 .\index\api\views.py:454 .\index\api\views.py:469
 #: .\reports\api\views.py:49 .\storages\api\views.py:20
 #: .\storages\api\views.py:59
 msgid "Only use POST requests!"
@@ -424,7 +429,7 @@ msgstr "Объект с таким ID не найден."
 msgid "Name can not be removed, ie. other objects reference it."
 msgstr "Имя удалить невозможно, т. к. на него ссылаются другие объекты."
 
-#: .\docs\api\views.py:54 .\docs\api\views.py:68 .\index\api\views.py:360
+#: .\docs\api\views.py:54 .\docs\api\views.py:68 .\index\api\views.py:362
 msgid "Name deleted successfully."
 msgstr "Имя успешно удалено."
 
@@ -1143,42 +1148,42 @@ msgstr "Картриджи успешно добавлены."
 msgid "Cartridges successfully moved."
 msgstr "Расходники успешно перемещены."
 
-#: .\index\api\views.py:303
+#: .\index\api\views.py:305
 #, python-format
 msgid "Cartridges %(cart_nums)s successfully moved to firm."
 msgstr "Картриджи %(cart_nums)s успешно переданы фирме."
 
-#: .\index\api\views.py:323
+#: .\index\api\views.py:325
 msgid "Session cleared"
 msgstr "Сессия очищена"
 
-#: .\index\api\views.py:348
+#: .\index\api\views.py:350
 msgid "In demo remove nodes not allow."
 msgstr "В режиме демонтсрации удалять ноды нельзя."
 
-#: .\index\api\views.py:356
+#: .\index\api\views.py:358
 msgid ""
 "But it can not be removed because other objects reference it.<br/>Error "
 "code: 102"
 msgstr "Удаление невозможно, т. к. на объект ссылаются.<br/>Код ошибки: 102."
 
-#: .\index\api\views.py:362
+#: .\index\api\views.py:364
 msgid "Names deleted successfully."
 msgstr "Организационные подразделения успешно удалены."
 
-#: .\index\api\views.py:380
+#: .\index\api\views.py:382
 msgid "Cartridjes deleted!"
 msgstr "Картриджи удалены!"
 
-#: .\index\api\views.py:397
+#: .\index\api\views.py:399
 msgid "Error converting string numbers to int."
 msgstr "Ошибка конвертации строки в интеджер."
 
-#: .\index\api\views.py:408
+#: .\index\api\views.py:410
 msgid "This action type not implemented."
 msgstr "Данный тип действия не реализован."
 
-#: .\index\api\views.py:422
+#: .\index\api\views.py:424
 msgid "Cartridges successfully transferred to basket."
 msgstr "Картридж(и) успешно перемещен(ы) в корзину."
 
@@ -1396,11 +1401,11 @@ msgstr ""
 "Мы настоятельно рекомендуем Вам установить новую версию одиного из "
 "перечисленных браузеров."
 
-#: .\index\templates\index\base.html:29
+#: .\index\templates\index\base.html:25
 msgid "Exit"
 msgstr "Выход"
 
-#: .\index\templates\index\base.html:37
+#: .\index\templates\index\base.html:40
 msgid "Version"
 msgstr "Версия"
 
@@ -1424,10 +1429,6 @@ msgstr "Пустые"
 #: .\index\templates\index\basket.html:4 .\index\templates\index\basket.html:5
 msgid "Basket"
 msgstr "Корзина"
-
-#: .\index\templates\index\base_menu.html:16
-msgid "Find by number"
-msgstr "Поиск по номеру"
 
 #: .\index\templates\index\basket.html:39 .\index\templates\index\empty.html:46
 #: .\index\templates\index\stock.html:45
@@ -1531,6 +1532,10 @@ msgstr "на склад"
 #: .\index\templates\index\events.html:15
 msgid "View all events"
 msgstr "Просмотр всех событий"
+
+#: .\index\templates\index\found_pagination.html:31
+msgid "All"
+msgstr "Все"
 
 #: .\index\templates\index\from_basket_to_stock.html:8
 msgid "What transer"
@@ -1683,12 +1688,12 @@ msgstr "«%(cart_name)s» уже существует."
 msgid "%(cart_name)s success added"
 msgstr "«%(cart_name)s» успешно добавлен."
 
-#: .\index\views.py:261 .\index\views.py:276
+#: .\index\views.py:260 .\index\views.py:272
 #, python-format
 msgid "Organization unit %(org_name)s exist"
 msgstr "Организационное подразделение «%(org_name)s» уже существует."
 
-#: .\index\views.py:266 .\index\views.py:272
+#: .\index\views.py:265 .\index\views.py:277
 #, python-format
 msgid "Organization unit %(org_name)s create successfuly."
 msgstr "Организационное подразделение «%(org_name)s» успешно создано."
@@ -1934,7 +1939,7 @@ msgstr "Почта"
 msgid "Stickers"
 msgstr "Наклейки"
 
-#: .\service\views.py:56
+#: .\service\views.py:57
 msgid "Settings success saved."
 msgstr "Настройки успешно сохранены."
 

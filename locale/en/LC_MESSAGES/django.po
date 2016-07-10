@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-07-04 11:44+0500\n"
+"POT-Creation-Date: 2016-07-10 10:08+0500\n"
 "PO-Revision-Date: 2016-05-27 12:27+0500\n"
 "Last-Translator: \n"
 "Language-Team: severcart.org <sfcl@mail.ru>\n"
@@ -42,19 +42,19 @@ msgstr ""
 msgid "User %(user_name)s was successfully deleted"
 msgstr ""
 
-#: .\accounts\api\views.py:60
+#: .\accounts\api\views.py:65
 msgid "Email was not found."
 msgstr ""
 
-#: .\accounts\api\views.py:64
+#: .\accounts\api\views.py:69
 msgid "Email should not be repeated for different users."
 msgstr ""
 
-#: .\accounts\api\views.py:67
+#: .\accounts\api\views.py:72
 msgid "Forgotten password recovery"
 msgstr ""
 
-#: .\accounts\api\views.py:85 .\service\api\views.py:28
+#: .\accounts\api\views.py:90 .\service\api\views.py:28
 msgid "Mail successfully sended!"
 msgstr ""
 
@@ -336,11 +336,11 @@ msgstr ""
 msgid "Send"
 msgstr ""
 
-#: .\conf\settings.py:64
+#: .\conf\settings.py:66
 msgid "Russian"
 msgstr ""
 
-#: .\conf\settings.py:65
+#: .\conf\settings.py:67
 msgid "English"
 msgstr ""
 
@@ -397,18 +397,23 @@ msgstr ""
 msgid "Are you sure you want to delete city?"
 msgstr ""
 
-#: .\dhtml\templates\dhtml\logic.html:1554
+#: .\dhtml\templates\dhtml\logic.html:1296
+#: .\index\templates\index\base_menu.html:16
+msgid "Find by number"
+msgstr ""
+
+#: .\dhtml\templates\dhtml\logic.html:1560
 msgid "Are you sure you want to remove the storage room?"
 msgstr ""
 
-#: .\dhtml\templates\dhtml\logic.html:1615
+#: .\dhtml\templates\dhtml\logic.html:1621
 msgid "<p>Server error :(</p>"
 msgstr ""
 
 #: .\docs\api\views.py:30 .\docs\api\views.py:78 .\docs\api\views.py:110
 #: .\docs\api\views.py:429 .\index\api\views.py:42 .\index\api\views.py:77
-#: .\index\api\views.py:218 .\index\api\views.py:244 .\index\api\views.py:388
-#: .\index\api\views.py:431 .\index\api\views.py:452 .\index\api\views.py:467
+#: .\index\api\views.py:218 .\index\api\views.py:244 .\index\api\views.py:390
+#: .\index\api\views.py:433 .\index\api\views.py:454 .\index\api\views.py:469
 #: .\reports\api\views.py:49 .\storages\api\views.py:20
 #: .\storages\api\views.py:59
 msgid "Only use POST requests!"
@@ -422,7 +427,7 @@ msgstr ""
 msgid "Name can not be removed, ie. other objects reference it."
 msgstr ""
 
-#: .\docs\api\views.py:54 .\docs\api\views.py:68 .\index\api\views.py:360
+#: .\docs\api\views.py:54 .\docs\api\views.py:68 .\index\api\views.py:362
 msgid "Name deleted successfully."
 msgstr ""
 
@@ -1126,42 +1131,42 @@ msgstr ""
 msgid "Cartridges successfully moved."
 msgstr ""
 
-#: .\index\api\views.py:303
+#: .\index\api\views.py:305
 #, python-format
 msgid "Cartridges %(cart_nums)s successfully moved to firm."
 msgstr ""
 
-#: .\index\api\views.py:323
+#: .\index\api\views.py:325
 msgid "Session cleared"
 msgstr ""
 
-#: .\index\api\views.py:348
+#: .\index\api\views.py:350
 msgid "In demo remove nodes not allow."
 msgstr ""
 
-#: .\index\api\views.py:356
+#: .\index\api\views.py:358
 msgid ""
 "But it can not be removed because other objects reference it.<br/>Error "
 "code: 102"
 msgstr ""
 
-#: .\index\api\views.py:362
+#: .\index\api\views.py:364
 msgid "Names deleted successfully."
 msgstr ""
 
-#: .\index\api\views.py:380
+#: .\index\api\views.py:382
 msgid "Cartridjes deleted!"
 msgstr ""
 
-#: .\index\api\views.py:397
+#: .\index\api\views.py:399
 msgid "Error converting string numbers to int."
 msgstr ""
 
-#: .\index\api\views.py:408
+#: .\index\api\views.py:410
 msgid "This action type not implemented."
 msgstr ""
 
-#: .\index\api\views.py:422
+#: .\index\api\views.py:424
 msgid "Cartridges successfully transferred to basket."
 msgstr ""
 
@@ -1377,11 +1382,11 @@ msgid ""
 "browsers."
 msgstr ""
 
-#: .\index\templates\index\base.html:29
+#: .\index\templates\index\base.html:25
 msgid "Exit"
 msgstr ""
 
-#: .\index\templates\index\base.html:37
+#: .\index\templates\index\base.html:40
 msgid "Version"
 msgstr ""
 
@@ -1404,10 +1409,6 @@ msgstr ""
 #: .\index\templates\index\base_menu.html:11
 #: .\index\templates\index\basket.html:4 .\index\templates\index\basket.html:5
 msgid "Basket"
-msgstr ""
-
-#: .\index\templates\index\base_menu.html:16
-msgid "Find by number"
 msgstr ""
 
 #: .\index\templates\index\basket.html:39 .\index\templates\index\empty.html:46
@@ -1511,6 +1512,10 @@ msgstr ""
 
 #: .\index\templates\index\events.html:15
 msgid "View all events"
+msgstr ""
+
+#: .\index\templates\index\found_pagination.html:31
+msgid "All"
 msgstr ""
 
 #: .\index\templates\index\from_basket_to_stock.html:8
@@ -1664,12 +1669,12 @@ msgstr ""
 msgid "%(cart_name)s success added"
 msgstr ""
 
-#: .\index\views.py:261 .\index\views.py:276
+#: .\index\views.py:260 .\index\views.py:272
 #, python-format
 msgid "Organization unit %(org_name)s exist"
 msgstr ""
 
-#: .\index\views.py:266 .\index\views.py:272
+#: .\index\views.py:265 .\index\views.py:277
 #, python-format
 msgid "Organization unit %(org_name)s create successfuly."
 msgstr ""
@@ -1913,7 +1918,7 @@ msgstr ""
 msgid "Stickers"
 msgstr ""
 
-#: .\service\views.py:56
+#: .\service\views.py:57
 msgid "Settings success saved."
 msgstr ""
 
