@@ -57,6 +57,8 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django.middleware.security.SecurityMiddleware',
+    # установка языка интерфейса на основе сессии
+    'plugins.middleware.ChangeUserLang',
 )
 
 #список поддерживаемых языков

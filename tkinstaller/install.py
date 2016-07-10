@@ -220,4 +220,20 @@ if __name__ == '__main__':
         print('-------------------------------------------------')
         print('----------Установка успешно завершена------------')
         print('-------------------------------------------------')
+        
+        from multiprocessing import Process
+        import http.client
+
+        def send_request():
+            conn = http.client.HTTPConnection('severcart.org')
+            try:
+                conn.request('GET', '/api/report/')
+            except:
+                pass
+            finally:
+                conn.close()
+
+        p = Process(target=send_request)
+        p.start()
+        
         prompt_exit()
