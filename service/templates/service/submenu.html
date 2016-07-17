@@ -3,10 +3,20 @@
 {% block breadcrumbs %}<a href="/"><img src="{{ STATIC_URL }}img/home.png" /></a> / {% trans "Service" %}{% endblock %}
 {% block content %}
 <div class="row">
-    <div class="large-4 columns">
+    <div class="large-6 columns"></div>
+    <div class="large-6 columns">
+        <div class="success_msg"></div>
+        <div class="error_msg"></div>
+    </div>
+</div>
+<div class="row">
+    <div class="large-6 columns">
         <p><a href="{% url 'events:show_events' %}">{% trans "Events" %}</a></p>
         <p><a href="{% url 'service:settings_mail' %}">{% trans "E-mail" %}</a></p>
         <p><a href="{% url 'service:stickers' %}">{% trans "Stickers" %}</a></p>
+    </div>
+    <div class="large-6 columns">
+        <p><a href="#" class="no_follow complete_types_names" >{% trans "Auto complete directory types and names" %}</a> <img class="spinner" src="{{ STATIC_URL }}img/loader.gif" /></p>
     </div>
 </div>
 {% endblock %}

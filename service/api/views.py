@@ -1,5 +1,6 @@
 # -*- coding:utf-8 -*-
 
+import os, sys
 from django.utils.translation import ugettext as _
 from django.http import JsonResponse
 from index.helpers import check_ajax_auth
@@ -7,6 +8,7 @@ from service.forms.input_server_settings import SMTPsettings
 from service.forms.send_test_mail import SendTestMail
 from service.helpers import SevercartConfigs, send_email
 from common.helpers import is_admin
+
 
 @check_ajax_auth
 @is_admin
@@ -67,4 +69,21 @@ def set_lang(request):
     resp_dict = dict()
     lang_code = request.POST.get('lang_code')
     request.session['lang_code'] = lang_code
+    return JsonResponse(resp_dict)
+
+
+@check_ajax_auth
+@is_admin
+def complete_types_names(request):
+    # заполнение справочника типов и наменований расходных матералов
+    resp_dict     = dict()
+    try:
+        # похамски запускаем соседний файл
+        from service.api import insert_strings
+    except Exception as e:
+        resp_dict['error'] = 1
+        resp_dict['text'] = str(e)
+    else:
+        resp_dict['error'] = 0
+        resp_dict['text'] = _('References have been updated successfully')
     return JsonResponse(resp_dict)

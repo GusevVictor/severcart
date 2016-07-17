@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-07-10 10:08+0500\n"
-"PO-Revision-Date: 2016-07-10 10:09+0500\n"
+"POT-Creation-Date: 2016-07-17 17:07+0500\n"
+"PO-Revision-Date: 2016-07-17 17:10+0500\n"
 "Last-Translator: \n"
 "Language-Team: severcart.org <sfcl@mail.ru>\n"
 "Language: ru\n"
@@ -338,11 +338,11 @@ msgstr ""
 msgid "Send"
 msgstr "Отправить"
 
-#: .\conf\settings.py:66
+#: .\conf\settings.py:72
 msgid "Russian"
 msgstr "Русский"
 
-#: .\conf\settings.py:67
+#: .\conf\settings.py:73
 msgid "English"
 msgstr "Английский"
 
@@ -1111,7 +1111,7 @@ msgstr "События объекта учёта"
 
 #: .\events\templates\events\view_cartridge_events.html:4
 #: .\index\templates\index\dashboard.html:58
-#: .\service\templates\service\submenu.html:7
+#: .\service\templates\service\submenu.html:14
 msgid "Events"
 msgstr "События"
 
@@ -1127,7 +1127,8 @@ msgstr "Контрагент удалён!"
 msgid "You can not delete, because have cartridges at a gas station."
 msgstr "Вы не можете удалить, т. к. имеются картриджи на заправке."
 
-#: .\index\api\views.py:84 .\storages\views.py:42
+#: .\index\api\views.py:84 .\index\templates\index\ou_not_set.html.py:9
+#: .\storages\views.py:42
 msgid "User not assosiate with organization unit!<br/>Error code: 101."
 msgstr ""
 "Пользователь не принадлежит ни одной из организаций!<br/> Код ошибки: 101"
@@ -1579,6 +1580,10 @@ msgstr "Сейчас установленны"
 msgid "Take?"
 msgstr "Забрать?"
 
+#: .\index\templates\index\ou_not_set.html:4
+msgid "Error code: 101"
+msgstr "Код ошибки: 101"
+
 #: .\index\templates\index\stock.html:13
 msgid "Add consumables"
 msgstr "Добавить расходники"
@@ -1678,41 +1683,41 @@ msgstr "Подчиняется"
 msgid "Structure of the organization"
 msgstr "Структура организации"
 
-#: .\index\views.py:139
+#: .\index\views.py:144
 #, python-format
 msgid "%(cart_name)s already exists"
 msgstr "«%(cart_name)s» уже существует."
 
-#: .\index\views.py:143
+#: .\index\views.py:148
 #, python-format
 msgid "%(cart_name)s success added"
 msgstr "«%(cart_name)s» успешно добавлен."
 
-#: .\index\views.py:260 .\index\views.py:272
+#: .\index\views.py:271 .\index\views.py:283
 #, python-format
 msgid "Organization unit %(org_name)s exist"
 msgstr "Организационное подразделение «%(org_name)s» уже существует."
 
-#: .\index\views.py:265 .\index\views.py:277
+#: .\index\views.py:276 .\index\views.py:288
 #, python-format
 msgid "Organization unit %(org_name)s create successfuly."
 msgstr "Организационное подразделение «%(org_name)s» успешно создано."
 
-#: .\index\views.py:321
+#: .\index\views.py:332
 #, python-format
 msgid "%(cart_type)s success save"
 msgstr "«%(cart_type)s» успешно сохранён."
 
-#: .\index\views.py:325
+#: .\index\views.py:336
 #, python-format
 msgid "New type %(cart_type)s success added"
 msgstr "Новый тип «%(cart_type)s» успешно добавлен."
 
-#: .\index\views.py:460
+#: .\index\views.py:471
 msgid "Select all"
 msgstr "Выбрать все"
 
-#: .\index\views.py:493
+#: .\index\views.py:504
 #, python-format
 msgid "Firm \"%(firm_name)s\" success added."
 msgstr "Контрагент «%(firm_name)s» успешно добавлен."
@@ -1870,9 +1875,25 @@ msgstr "Результаты поиска"
 msgid "Date added"
 msgstr "Дата добавления"
 
+#: .\service\api\insert_strings.py:10 .\service\api\insert_strings_bag.py:9
+#: .\service\api\insert_strings_bag.py:11
+#: .\service\api\insert_strings_bag.py:14
+msgid "Cartridge"
+msgstr "Катридж"
+
+#: .\service\api\insert_strings_bag.py:1127
+#: .\service\api\insert_strings_bag.py:1129
+#: .\service\api\insert_strings_bag.py:1132
+msgid "Tonertuba"
+msgstr "Тонертуба"
+
 #: .\service\api\views.py:58
 msgid "Settings successfully saved."
 msgstr "Настройки успешно сохранены."
+
+#: .\service\api\views.py:86
+msgid "References have been updated successfully"
+msgstr "Справочники успешно обновлены."
 
 #: .\service\forms\input_server_settings.py:9
 msgid "Sever address"
@@ -1931,13 +1952,17 @@ msgstr "Отправить тестовое письмо"
 msgid "Settings format stickers"
 msgstr "Настройка форматов наклеек"
 
-#: .\service\templates\service\submenu.html:8
+#: .\service\templates\service\submenu.html:15
 msgid "E-mail"
 msgstr "Почта"
 
-#: .\service\templates\service\submenu.html:9
+#: .\service\templates\service\submenu.html:16
 msgid "Stickers"
 msgstr "Наклейки"
+
+#: .\service\templates\service\submenu.html:19
+msgid "Auto complete directory types and names"
+msgstr "Автозаполнение справочников типов и имён РМ"
 
 #: .\service\views.py:57
 msgid "Settings success saved."
