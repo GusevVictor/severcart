@@ -1,0 +1,12 @@
+{% extends "index/base.html" %}
+{% load i18n %}
+{% load staticfiles %}
+{% block title %}{% trans "Error code: 101" %}{% endblock %}
+{% block breadcrumbs %}<a href="/"><img src="{{ STATIC_URL }}img/home.png" /></a> /{% endblock %}
+{% block content %}
+<div class="row">
+    <div class="large-12 columns">
+        <h1>{% trans 'User not assosiate with organization unit!<br/>Error code: 101.' %}</h1>
+    </div>        
+</div>
+{% endblock %}

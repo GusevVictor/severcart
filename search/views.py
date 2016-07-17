@@ -29,10 +29,10 @@ def search(request):
     try:
         root_ou   = request.user.departament
         des       = root_ou.get_descendants(include_self=True)
-    except AttributeError:
-        children = ''
-    
-    cart_items = cart_items.filter(departament__in=des)
+    except:
+        cart_items = []
+    else:
+        cart_items = cart_items.filter(departament__in=des)
     
     tmp_list = list()
     for elem in cart_items:

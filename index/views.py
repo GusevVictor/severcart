@@ -43,18 +43,23 @@ logger = logging.getLogger('simp')
 def dashboard(request):
     """Морда сайта. Отображает текущее состояние всего, что считаем.
     """
+    context = {}
     try:
         root_ou   = request.user.departament
         des       = root_ou.get_descendants()
-    except AttributeError:
-        children = ''
-    filter_itms = lambda qy: CartridgeItem.objects.filter(qy)
-    context = {}
-    context['full_on_stock']  = filter_itms(Q(departament=root_ou) & Q(cart_status=1)).count()
-    context['uses']           = filter_itms(Q(departament__in=des) & Q(cart_status=2)).count()
-    context['empty_on_stock'] = filter_itms(Q(departament=root_ou) & Q(cart_status=3)).count()
-    context['filled']         = filter_itms(Q(departament=root_ou) & Q(cart_status=4)).count()
-    context['recycler_bin']   = filter_itms(Q(departament=root_ou) & (Q(cart_status=5) | Q(cart_status=6))).count()
+    except:
+        context['full_on_stock']  = 0
+        context['uses']           = 0
+        context['empty_on_stock'] = 0
+        context['filled']         = 0
+        context['recycler_bin']   = 0
+    else:
+        filter_itms = lambda qy: CartridgeItem.objects.filter(qy)
+        context['full_on_stock']  = filter_itms(Q(departament=root_ou) & Q(cart_status=1)).count()
+        context['uses']           = filter_itms(Q(departament__in=des) & Q(cart_status=2)).count()
+        context['empty_on_stock'] = filter_itms(Q(departament=root_ou) & Q(cart_status=3)).count()
+        context['filled']         = filter_itms(Q(departament=root_ou) & Q(cart_status=4)).count()
+        context['recycler_bin']   = filter_itms(Q(departament=root_ou) & (Q(cart_status=5) | Q(cart_status=6))).count()
     # формирование контекста топовых событий
     try:
         dept_id = request.user.departament.pk
@@ -153,6 +158,9 @@ def add_cartridge_item(request):
     """Обработку данных формы производим в ajax_add_session_items. Здесь 
        отображаем заполненную форму.
     """
+    if not request.user.departament:
+        return render(request, 'index/ou_not_set.html', dict())
+
     back = BreadcrumbsPath(request).before_page(request)
     from docs.models import SCDoc
     form_obj = AddItems()
@@ -196,6 +204,9 @@ def add_cartridge_item(request):
 def add_empty_cartridge(request):
     """Добавление пустых картриджей.
     """
+    if not request.user.departament:
+        return render(request, 'index/ou_not_set.html', dict())
+
     context         = {}
     back            = BreadcrumbsPath(request).before_page(request)
     context['back'] = back

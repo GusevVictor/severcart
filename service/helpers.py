@@ -11,7 +11,7 @@ class SevercartConfigs(object):
     def __init__(self):        
         try:
             self.m1 = Settings.objects.get(pk=1)
-        except Settings.DoesNotExist:
+        except:
             self.smtp_server    = ''
             self.smtp_port      = 0
             self.email_sender   = ''
@@ -36,7 +36,7 @@ class SevercartConfigs(object):
         """
         try:
             self.m1 = Settings.objects.get(pk=1)
-        except Settings.DoesNotExist:
+        except:
             # если в таблица пустая, то создаём первую строку           
             m1 = Settings(
                             smtp_server    = self.smtp_server,

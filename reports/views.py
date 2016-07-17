@@ -18,7 +18,10 @@ def main_summary(request):
     """
     """
     context = {}
-    dept_id = request.user.departament.pk
+    try:
+        dept_id = request.user.departament.pk
+    except:
+        dept_id = 0
     if request.method == 'POST':
         form = NoUse(request.POST)
         if form.is_valid():
@@ -57,7 +60,10 @@ def amortizing(request):
     """Отчёт по амортизации. Выбрать списки картриджей с заданным количеством перезаправок.
     """
     context = {}
-    dept_id = request.user.departament.pk
+    try:
+        dept_id = request.user.departament.pk
+    except:
+        dept_id = 0
     context['form'] = Amortizing(initial={'org': dept_id, 'cont': 1 })
 
     return render(request, 'reports/amortizing.html', context)
