@@ -90,7 +90,6 @@ def send_repair_email(request):
             resp_dict['text'] = _('Mail successfully sended!')
     else:
         # если форма содержит ошибки, то сообщаем о них пользователю.
-        error_message = dict([(key, [error for error in value]) for key, value in form.errors.items()])
-        resp_dict['errors'] = error_message
-    
+        resp_dict['errors'] = form.errors.as_text()
+
     return JsonResponse(resp_dict)

@@ -1,9 +1,9 @@
-Django==1.9.2
-django-debug-toolbar==1.4
-django-mptt==0.8.0
-lxml==3.5.0
-Pillow==3.1.1
-psycopg2==2.6.1
-python-docx==0.8.5
-sqlparse==0.1.18
+Django
+django-debug-toolbar
+django-mptt
+lxml==3.4.4
+Pillow
+psycopg2
+python-docx
+sqlparse
 reportlab

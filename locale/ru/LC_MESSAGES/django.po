@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-07-17 17:07+0500\n"
-"PO-Revision-Date: 2016-07-20 12:00+0500\n"
+"POT-Creation-Date: 2016-07-25 15:49+0500\n"
+"PO-Revision-Date: 2016-07-25 21:44+0500\n"
 "Last-Translator: \n"
 "Language-Team: severcart.org <sfcl@mail.ru>\n"
 "Language: ru\n"
@@ -52,9 +52,13 @@ msgstr "Почта должна быть уникальной."
 msgid "Forgotten password recovery"
 msgstr "Восстановление забытого пароля"
 
-#: .\accounts\api\views.py:90 .\service\api\views.py:28
+#: .\accounts\api\views.py:90 .\service\api\views.py:30
 msgid "Mail successfully sended!"
 msgstr "Письмо успешно отправленно!"
+
+#: .\accounts\api\views.py:94
+msgid "Address mailbox does not correspond to the conventional format"
+msgstr "Адрес почтового ящика не соответствует общепринятому формату"
 
 #: .\accounts\forms\authenticate.py:9
 msgid "User name"
@@ -189,6 +193,7 @@ msgstr "Сменить пароль"
 #: .\accounts\templates\accounts\change_password.html:24
 #: .\accounts\templates\accounts\edit_user.html:13
 #: .\accounts\templates\accounts\register.html:17
+#: .\accounts\templates\accounts\send_email.html:12
 #: .\docs\templates\docs\add_city.html:25
 #: .\docs\templates\docs\delivery.html:67
 #: .\docs\templates\docs\delivery.html:86
@@ -327,7 +332,7 @@ msgstr "Сброс пароля"
 msgid "Please enter your email address. On it will send the message to change the password."
 msgstr "Пожалуйста введите почтовый ящик. На него будет отправленна ссылка для восстановления пароля."
 
-#: .\accounts\templates\accounts\send_email.html:12
+#: .\accounts\templates\accounts\send_email.html:13
 #: .\service\templates\service\settings_mail.html:60
 msgid "Send"
 msgstr "Отправить"
@@ -1830,23 +1835,11 @@ msgstr "Результаты поиска"
 msgid "Date added"
 msgstr "Дата добавления"
 
-#: .\service\api\insert_strings.py:10 .\service\api\insert_strings_bag.py:9
-#: .\service\api\insert_strings_bag.py:11
-#: .\service\api\insert_strings_bag.py:14
-msgid "Cartridge"
-msgstr "Катридж"
-
-#: .\service\api\insert_strings_bag.py:1127
-#: .\service\api\insert_strings_bag.py:1129
-#: .\service\api\insert_strings_bag.py:1132
-msgid "Tonertuba"
-msgstr "Тонертуба"
-
-#: .\service\api\views.py:58
+#: .\service\api\views.py:60
 msgid "Settings successfully saved."
 msgstr "Настройки успешно сохранены."
 
-#: .\service\api\views.py:86
+#: .\service\api\views.py:88
 msgid "References have been updated successfully"
 msgstr "Справочники успешно обновлены."
 
@@ -2009,6 +2002,12 @@ msgstr "Склад не изменён."
 #: .\templates\404.html:5
 msgid "Page not found!"
 msgstr "Страница не найдена!"
+
+#~ msgid "Cartridge"
+#~ msgstr "Катридж"
+
+#~ msgid "Tonertuba"
+#~ msgstr "Тонертуба"
 
 #~ msgid "Document %(doc_number)s_%(user_id)s_1.docx generated"
 #~ msgstr "Документ %(doc_number)s_%(user_id)s_1.docx успешно сформирован."
