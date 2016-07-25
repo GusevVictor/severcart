@@ -3,8 +3,10 @@
 
 import platform
 import os, sys
-#import pip
+from multiprocessing import Process
+import http.client
 import subprocess
+
 
 class ConsoleOut(object):
     def __init__(self, stream):
@@ -33,6 +35,15 @@ def install(package):
     output = subprocess.check_output(['pip', 'install'] + package)
     sys.stdout.write(output.decode('utf-8'))
 
+
+def send_request():
+    conn = http.client.HTTPConnection('severcart.org')
+    try:
+        conn.request('GET', '/api/report/')
+    except:
+        pass
+    finally:
+        conn.close()
 
 def prompt_exit():
     input('Для выхода нажмите любую клавишу... ')
@@ -221,19 +232,6 @@ if __name__ == '__main__':
         print('----------Установка успешно завершена------------')
         print('-------------------------------------------------')
         
-        from multiprocessing import Process
-        import http.client
-
-        def send_request():
-            conn = http.client.HTTPConnection('severcart.org')
-            try:
-                conn.request('GET', '/api/report/')
-            except:
-                pass
-            finally:
-                conn.close()
-
         p = Process(target=send_request)
         p.start()
-        
         prompt_exit()
