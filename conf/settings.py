@@ -21,12 +21,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.append(os.path.join(BASE_DIR, 'conf'))
 
 # автоматический переключатель продакшена и девелопмента
-if os.path.exists(os.path.join(BASE_DIR, 'conf', 'prod.txt')):
-    from settings_prod import *
-elif os.path.exists(os.path.join(BASE_DIR, 'conf', 'shift.txt')):
-    from settings_shift import *
-else:
-    from settings_dev import *
+from settings_dev import *
+
+ALLOWED_HOSTS = ['*']
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.8/howto/deployment/checklist/

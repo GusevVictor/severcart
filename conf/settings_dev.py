@@ -9,8 +9,6 @@ DEBUG = True
 
 DEMO = False
 
-ALLOWED_HOSTS = ['*']
-
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = '^g$4c6-__#353*u_t9iovxd5g#)i$0o=bv5-ku+v=7#3ku*m%#'
