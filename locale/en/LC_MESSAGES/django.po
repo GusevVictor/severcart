@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-07-17 17:07+0500\n"
+"POT-Creation-Date: 2016-07-25 15:49+0500\n"
 "PO-Revision-Date: 2016-05-27 12:27+0500\n"
 "Last-Translator: \n"
 "Language-Team: severcart.org <sfcl@mail.ru>\n"
@@ -54,8 +54,12 @@ msgstr ""
 msgid "Forgotten password recovery"
 msgstr ""
 
-#: .\accounts\api\views.py:90 .\service\api\views.py:28
+#: .\accounts\api\views.py:90 .\service\api\views.py:30
 msgid "Mail successfully sended!"
+msgstr ""
+
+#: .\accounts\api\views.py:94
+msgid "Address mailbox does not correspond to the conventional format"
 msgstr ""
 
 #: .\accounts\forms\authenticate.py:9
@@ -145,11 +149,12 @@ msgstr ""
 #: .\accounts\templates\accounts\edit_user.html:3
 #: .\accounts\templates\accounts\manage_users.html:4
 #: .\accounts\templates\accounts\register.html:3
-#: .\docs\templates\docs\acts_list.html:5 .\docs\templates\docs\add_city.html:3
-#: .\docs\templates\docs\cities.html:4 .\docs\templates\docs\delivery.html:3
+#: .\docs\templates\docs\acts_list.html:5
+#: .\docs\templates\docs\add_city.html:3 .\docs\templates\docs\cities.html:4
+#: .\docs\templates\docs\delivery.html:3
 #: .\docs\templates\docs\edit_city.html:3
-#: .\docs\templates\docs\edit_name.html:3 .\docs\templates\docs\handbook.html:2
-#: .\docs\templates\docs\handbook.html:3
+#: .\docs\templates\docs\edit_name.html:3
+#: .\docs\templates\docs\handbook.html:2 .\docs\templates\docs\handbook.html:3
 #: .\docs\templates\docs\names_list.html:4
 #: .\docs\templates\docs\types_list.html:4
 #: .\index\templates\index\add_firm.html:3
@@ -191,6 +196,7 @@ msgstr ""
 #: .\accounts\templates\accounts\change_password.html:24
 #: .\accounts\templates\accounts\edit_user.html:13
 #: .\accounts\templates\accounts\register.html:17
+#: .\accounts\templates\accounts\send_email.html:12
 #: .\docs\templates\docs\add_city.html:25
 #: .\docs\templates\docs\delivery.html:67
 #: .\docs\templates\docs\delivery.html:86
@@ -331,7 +337,7 @@ msgid ""
 "password."
 msgstr ""
 
-#: .\accounts\templates\accounts\send_email.html:12
+#: .\accounts\templates\accounts\send_email.html:13
 #: .\service\templates\service\settings_mail.html:60
 msgid "Send"
 msgstr ""
@@ -528,7 +534,8 @@ msgstr ""
 #: .\docs\templates\docs\delivery.html:20
 #: .\docs\templates\docs\delivery.html:92
 #: .\index\templates\index\at_work.html:31
-#: .\index\templates\index\basket.html:34 .\index\templates\index\empty.html:40
+#: .\index\templates\index\basket.html:34
+#: .\index\templates\index\empty.html:40
 #: .\index\templates\index\from_firm_to_stock.html:25
 #: .\index\templates\index\get_cart_ou.html:7
 #: .\index\templates\index\stock.html:39
@@ -545,8 +552,9 @@ msgstr "ID"
 #: .\docs\api\views.py:313 .\docs\api\views.py:339 .\docs\api\views.py:362
 #: .\docs\api\views.py:383 .\docs\api\views.py:406
 #: .\index\templates\index\at_work.html:33
-#: .\index\templates\index\basket.html:36 .\index\templates\index\empty.html:42
-#: .\index\templates\index\stock.html:41 .\index\templates\index\use.html:41
+#: .\index\templates\index\basket.html:36
+#: .\index\templates\index\empty.html:42 .\index\templates\index\stock.html:41
+#: .\index\templates\index\use.html:41
 msgid "Amount<br/>recovery"
 msgstr ""
 
@@ -562,7 +570,8 @@ msgstr ""
 #: .\docs\api\views.py:386 .\docs\api\views.py:408
 #: .\docs\templates\docs\types_list.html:29 .\index\forms\comment.py:11
 #: .\index\templates\index\at_work.html:36
-#: .\index\templates\index\basket.html:38 .\index\templates\index\stock.html:44
+#: .\index\templates\index\basket.html:38
+#: .\index\templates\index\stock.html:44
 msgid "comment"
 msgstr "Comment"
 
@@ -616,8 +625,9 @@ msgstr ""
 #: .\docs\forms\add_doc.py:27 .\docs\models.py:11
 #: .\index\templates\index\add_empty_cartridge.html:45
 #: .\index\templates\index\add_items.html:43
-#: .\index\templates\index\basket.html:53 .\index\templates\index\empty.html:61
-#: .\index\templates\index\stock.html:60 .\index\templates\index\use.html:59
+#: .\index\templates\index\basket.html:53
+#: .\index\templates\index\empty.html:61 .\index\templates\index\stock.html:60
+#: .\index\templates\index\use.html:59
 msgid "Delivery agreement"
 msgstr ""
 
@@ -702,8 +712,9 @@ msgstr ""
 #: .\index\templates\index\add_empty_cartridge.html:63
 #: .\index\templates\index\add_items.html:64
 #: .\index\templates\index\at_work.html:11
-#: .\index\templates\index\basket.html:14 .\index\templates\index\empty.html:20
-#: .\index\templates\index\stock.html:19 .\index\templates\index\use.html:19
+#: .\index\templates\index\basket.html:14
+#: .\index\templates\index\empty.html:20 .\index\templates\index\stock.html:19
+#: .\index\templates\index\use.html:19
 msgid "Download"
 msgstr ""
 
@@ -720,7 +731,8 @@ msgstr "Create a without group docx"
 msgid "Add city"
 msgstr ""
 
-#: .\docs\templates\docs\add_city.html:3 .\docs\templates\docs\edit_city.html:3
+#: .\docs\templates\docs\add_city.html:3
+#: .\docs\templates\docs\edit_city.html:3
 #: .\docs\templates\docs\handbook.html:20
 msgid "Cities"
 msgstr ""
@@ -1352,20 +1364,22 @@ msgstr ""
 msgid "Cartridges on rebuilding"
 msgstr ""
 
-#: .\index\templates\index\at_work.html:8 .\index\templates\index\basket.html:9
-#: .\index\templates\index\use.html:14
+#: .\index\templates\index\at_work.html:8
+#: .\index\templates\index\basket.html:9 .\index\templates\index\use.html:14
 msgid "Return to the stock"
 msgstr ""
 
 #: .\index\templates\index\at_work.html:14
-#: .\index\templates\index\basket.html:17 .\index\templates\index\empty.html:23
-#: .\index\templates\index\stock.html:22 .\index\templates\index\use.html:22
+#: .\index\templates\index\basket.html:17
+#: .\index\templates\index\empty.html:23 .\index\templates\index\stock.html:22
+#: .\index\templates\index\use.html:22
 msgid "Export to CSV with group"
 msgstr ""
 
 #: .\index\templates\index\at_work.html:15
-#: .\index\templates\index\basket.html:18 .\index\templates\index\empty.html:24
-#: .\index\templates\index\stock.html:23 .\index\templates\index\use.html:23
+#: .\index\templates\index\basket.html:18
+#: .\index\templates\index\empty.html:24 .\index\templates\index\stock.html:23
+#: .\index\templates\index\use.html:23
 msgid "Export to CSV without group"
 msgstr ""
 
@@ -1412,18 +1426,20 @@ msgstr ""
 msgid "Basket"
 msgstr ""
 
-#: .\index\templates\index\basket.html:39 .\index\templates\index\empty.html:46
-#: .\index\templates\index\stock.html:45
+#: .\index\templates\index\basket.html:39
+#: .\index\templates\index\empty.html:46 .\index\templates\index\stock.html:45
 msgid "Actions"
 msgstr ""
 
-#: .\index\templates\index\basket.html:51 .\index\templates\index\empty.html:59
-#: .\index\templates\index\stock.html:58 .\index\templates\index\use.html:57
+#: .\index\templates\index\basket.html:51
+#: .\index\templates\index\empty.html:59 .\index\templates\index\stock.html:58
+#: .\index\templates\index\use.html:57
 msgid "Edit a comment"
 msgstr ""
 
-#: .\index\templates\index\basket.html:52 .\index\templates\index\empty.html:60
-#: .\index\templates\index\stock.html:59 .\index\templates\index\use.html:58
+#: .\index\templates\index\basket.html:52
+#: .\index\templates\index\empty.html:60 .\index\templates\index\stock.html:59
+#: .\index\templates\index\use.html:58
 msgid "Event viewer"
 msgstr ""
 
@@ -1854,23 +1870,11 @@ msgstr ""
 msgid "Date added"
 msgstr ""
 
-#: .\service\api\insert_strings.py:10 .\service\api\insert_strings_bag.py:9
-#: .\service\api\insert_strings_bag.py:11
-#: .\service\api\insert_strings_bag.py:14
-msgid "Cartridge"
-msgstr ""
-
-#: .\service\api\insert_strings_bag.py:1127
-#: .\service\api\insert_strings_bag.py:1129
-#: .\service\api\insert_strings_bag.py:1132
-msgid "Tonertuba"
-msgstr ""
-
-#: .\service\api\views.py:58
+#: .\service\api\views.py:60
 msgid "Settings successfully saved."
 msgstr ""
 
-#: .\service\api\views.py:86
+#: .\service\api\views.py:88
 msgid "References have been updated successfully"
 msgstr ""
 
