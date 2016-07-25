@@ -277,7 +277,7 @@ def generate_csv(request):
         with open(csv_full_name, 'w', newline='', encoding=encoding) as csvfile:
             fieldnames = ['name', 'amount']
             writer = csv.DictWriter(csvfile, fieldnames, delimiter=';')
-            writer.writerow({'name': _('Name'), 'amount': _('Amount')})
+            writer.writerow({'name': _('Name'), 'amount': _('Amount items')})
             for name in names_list:
                 key   = list(name.keys())[0]
                 value = list(name.values())[0]
