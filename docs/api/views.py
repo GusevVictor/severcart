@@ -1,6 +1,6 @@
 # -*- coding:utf-8 -*-
 
-import os, io, glob
+import os, io, glob, re
 import time
 import json
 from django.http import JsonResponse, HttpResponse, Http404
@@ -470,10 +470,12 @@ def generate_pdf(request):
     for elem in session_data:
         for stik in elem[2]:
             cartridge_name = simple_cache.get(elem[0])
-            cartridge_name = cartridge_name.split(' ')
-            cartridge_name = cartridge_name[1]
+            cartridge_name = re.split('\s+', cartridge_name)
+            if len(cartridge_name) == 1:
+                cartridge_name = cartridge_name[0]
+            else:
+                cartridge_name = cartridge_name[-1]
             pdf_doc.add(ou_number=request.user.departament.pk, cartridge_name=cartridge_name, cartridge_number=stik)
-    
 
     pdf_doc.fin()
     resp_dict['url'] = settings.STATIC_URL + 'pdf/' + pdf_file_name
