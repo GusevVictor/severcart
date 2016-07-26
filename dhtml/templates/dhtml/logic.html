@@ -1349,7 +1349,9 @@ $( function(){
 
     });
 
+
     $('.send_repair_email').click( function() {
+        /* Функция отправки письма для восстановления пароля */
         var email   = $('#id_email').val();
         $.ajax({
             method: 'POST',
