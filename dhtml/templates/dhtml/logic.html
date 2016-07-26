@@ -1397,6 +1397,8 @@ $( function(){
                 }
             },
             success: function( msg ) {
+                $('.success_msg_send').hide();
+                $('.error_msg_send').hide();
                 $('.spinner_send').hide();
                 $('.send_email_form').find('.form_error_text').remove();
                 for (var key in msg.errors) {
