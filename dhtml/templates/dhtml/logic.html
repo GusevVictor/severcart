@@ -1349,7 +1349,9 @@ $( function(){
 
     });
 
+
     $('.send_repair_email').click( function() {
+        /* Функция отправки письма для восстановления пароля */
         var email   = $('#id_email').val();
         $.ajax({
             method: 'POST',
@@ -1397,6 +1399,8 @@ $( function(){
                 }
             },
             success: function( msg ) {
+                $('.success_msg_send').hide();
+                $('.error_msg_send').hide();
                 $('.spinner_send').hide();
                 $('.send_email_form').find('.form_error_text').remove();
                 for (var key in msg.errors) {
@@ -1409,12 +1413,13 @@ $( function(){
                         field.after('<div class="form_error_text" style="display: block;">' + error + '</div>');
                     }
                 }
-                if (msg.errors)  {
+                if (msg.errors && (typeof(msg.errors) == 'string'))  {
                     $('.success_msg_send').hide();
                     $('.error_msg_send').show();
                     $('.error_msg_send').text(msg.errors);
                     setTimeout(function() { $('.error_msg_send').hide(); }, 20000);
-                } else  {
+                }
+                if (!(msg.errors) && (typeof(msg.errors) == 'string'))  {
                     $('.success_msg_send').show();
                     $('.success_msg_send').text(msg.text);
                     $('.error_msg_send').hide();
