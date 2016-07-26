@@ -5,7 +5,6 @@ __pycache__/
 
 issue_tracker.txt
 
-
 demo.py
 
 media/
@@ -18,7 +17,6 @@ static/pdf/
 
 static/docx/*
 
-insert_strings.py
 
 cache/*.djcache
 
