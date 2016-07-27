@@ -5,6 +5,9 @@
     <link rel="stylesheet" href="{{ STATIC_URL }}css/pm_widget.css" />
     <script src="{{ STATIC_URL }}js/pm_widget.js"></script>
 {% endblock %}
+{% block help_url %}
+{{ request.HOME_SITE }}/help/{{ request.LANGUAGE_CODE }}/add_empty_cartriges/
+{% endblock %}
 {% block content %}
 <div class="row">
     <div class="large-6 columns">

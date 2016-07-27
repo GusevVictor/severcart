@@ -1,6 +1,9 @@
 {% extends "index/base.html" %}{% load i18n %}
 {% block title %}{% trans "Settings format stickers" %}{% endblock %}
 {% block breadcrumbs %}<a href="/"><img src="{{ STATIC_URL }}img/home.png" /></a>/ <a href="{% url 'service:submenu' %}">{% trans "Service" %} </a> / {% trans "Settings format stickers" %}{% endblock %}
+{% block help_url %}
+{{ request.HOME_SITE }}/help/{{ request.LANGUAGE_CODE }}/stickers/
+{% endblock %}
 {% block content %}
 <div class="row">
     <div class="large-6 columns">

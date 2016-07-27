@@ -3,6 +3,9 @@
 {% block breadcrumbs %}<a href="/"><img src="{{ STATIC_URL }}img/home.png" /></a> / <a href="{% url 'docs:handbook' %}">{% trans "References" %}</a> / {% trans "delivery agreement" %}{% endblock %}
 {% load staticfiles %}
 {% load docsf %}
+{% block help_url %}
+{{ request.HOME_SITE }}/help/{{ request.LANGUAGE_CODE }}/delivery/
+{% endblock %}
 {% block jqueryui%}
 <link rel="stylesheet" href="{{ STATIC_URL }}css/jquery-ui.css" />
 <script src="{{ STATIC_URL }}js/jquery-ui.js"></script>

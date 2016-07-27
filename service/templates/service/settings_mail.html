@@ -1,6 +1,9 @@
 {% extends "index/base.html" %}{% load i18n %}
 {% block title %}{% trans "Email" %}{% endblock %}
 {% block breadcrumbs %}<a href="/"><img src="{{ STATIC_URL }}img/home.png" /></a>/ <a href="{% url 'service:submenu' %}">{% trans "Service" %}</a> / {% trans "Settings Email" %}{% endblock %}
+{% block help_url %}
+{{ request.HOME_SITE }}/help/{{ request.LANGUAGE_CODE }}/settings_mail/
+{% endblock %}
 {% block content %}
 <div class="row">
     <div class="large-6 columns">

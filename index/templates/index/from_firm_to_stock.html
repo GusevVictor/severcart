@@ -2,6 +2,9 @@
 {% load filters %}
 {% block title %}{% trans "Return cartridge to the stock" %}{% endblock %}
 {% block h3 %}{% trans "Return cartridge to the stock" %}{% endblock %}
+{% block help_url %}
+{{ request.HOME_SITE }}/help/{{ request.LANGUAGE_CODE }}/from_firm_to_stock/
+{% endblock %}
 {% block content %}
 <div class="row">
     <div class="large-6 columns">

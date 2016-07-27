@@ -1,9 +1,10 @@
 # -*- coding:utf-8 -*-
 
 from django.utils import translation
+from django.conf import settings
 
-class ChangeUserLang(object):
-    """
+class InsertVarToRequest(object):
+    """Встраивание переменных в объект request
     """
 
     def process_request(self, request):
@@ -12,5 +13,7 @@ class ChangeUserLang(object):
         if lang_code:
             translation.activate(lang_code)   
             request.LANGUAGE_CODE = translation.get_language()
-        
         # иначе оставляем всё как есть
+        
+        request.HOME_SITE = settings.HOME_SITE
+        

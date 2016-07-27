@@ -7,6 +7,9 @@
 <script src="{{ STATIC_URL }}js/datepicker.js"></script>
 <script src="{{ STATIC_URL }}js/datepicker-{% trans 'lang' %}.js"></script>
 {% endblock %}
+{% block help_url %}
+{{ request.HOME_SITE }}/help/{{ request.LANGUAGE_CODE }}/reports_products/
+{% endblock %}
 {% block content %}
 <div class="row">
     <div class="large-6 columns">

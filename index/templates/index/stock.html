@@ -1,6 +1,9 @@
 {% extends "index/base.html" %}{% load i18n %}{% load pagination  %}
 {% block title %}{% trans "List of new or refilled cartridges" %}{% endblock %}
 {% block breadcrumbs %}<a href="/"><img src="{{ STATIC_URL }}img/home.png" /></a> / {% trans "List of new or refilled cartridges" %}{% endblock %}
+{% block help_url %}
+{{ request.HOME_SITE }}/help/{{ request.LANGUAGE_CODE }}/stock/
+{% endblock %}
 {% block submenu %}
 <div class="row">
     <div class="large-6 columns">

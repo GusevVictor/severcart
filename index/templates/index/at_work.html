@@ -2,6 +2,9 @@
 {% load pagination  %}
 {% block title %}{% trans "Cartridges on rebuilding" %}{% endblock %}
 {% block breadcrumbs %}<a href="/"><img src="{{ STATIC_URL }}img/home.png" /></a> / {% trans "Cartridges on rebuilding" %}{% endblock %}
+{% block help_url %}
+{{ request.HOME_SITE }}/help/{{ request.LANGUAGE_CODE }}/at_work/
+{% endblock %}
 {% block submenu %}
 <div class="row">
     <div class="large-6 columns">

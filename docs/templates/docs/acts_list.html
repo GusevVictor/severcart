@@ -11,6 +11,9 @@
     </div>
 </div>
 {% endblock %}
+{% block help_url %}
+{{ request.HOME_SITE }}/help/{{ request.LANGUAGE_CODE }}/view_send_acts/
+{% endblock %}
 {% block content %}
 <div class="row marginTop">
     <div class="large-12 columns">

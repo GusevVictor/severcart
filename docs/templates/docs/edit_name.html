@@ -1,6 +1,9 @@
 {% extends "index/base.html" %}{% load i18n %}
 {% block title %}{% trans "Change name" %}{% endblock %}
 {% block breadcrumbs %}<a href="/"><img src="{{ STATIC_URL }}img/home.png" /></a> / <a href="{% url 'docs:handbook' %}">{% trans "References" %}</a> / <a href="{% url 'docs:view_names' %}">{% trans "References names cartidges" %}</a> / {% trans "Change name" %}{% endblock %}
+{% block help_url %}
+{{ request.HOME_SITE }}/help/{{ request.LANGUAGE_CODE }}/edit_name/
+{% endblock %}
 {% block content %}
 <div class="row">
     <div class="small-6 columns">

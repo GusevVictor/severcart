@@ -1,5 +1,8 @@
 {% extends "index/base.html" %}{% load i18n %}
 {% block title %}{% trans "Error search by number" %}{% endblock %}
+{% block help_url %}
+{{ request.HOME_SITE }}/help/{{ request.LANGUAGE_CODE }}/serp_error/
+{% endblock %}
 {% block content %}
 <div class="row">
     <div class="large-12 columns">

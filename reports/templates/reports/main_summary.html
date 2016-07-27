@@ -6,6 +6,9 @@
 {% endblock %}
 {% block title %}{% trans "Search of bargain consumables" %}{% endblock %}
 {% block breadcrumbs %}<a href="/"><img src="{{ STATIC_URL }}img/home.png" /></a> / <a href="{% url 'docs:handbook' %}">{% trans "References" %}</a> / {% trans "Search of bargain consumables" %}{% endblock %}
+{% block help_url %}
+{{ request.HOME_SITE }}/help/{{ request.LANGUAGE_CODE }}/main_summary/
+{% endblock %}
 {% block content %}
 <div class="row">
     <div class="large-8 columns">

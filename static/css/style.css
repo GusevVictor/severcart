@@ -686,6 +686,10 @@ a.export_to_csv:active {
     background: #3A945C url('../img/excel.png') no-repeat;
 }
 
+a.margin-zero {
+    margin:0;
+}
+
 a.export_to_csv{
     margin: 0;
     padding:10px;

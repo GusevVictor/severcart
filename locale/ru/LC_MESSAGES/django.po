@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-07-27 09:06+0500\n"
-"PO-Revision-Date: 2016-07-25 21:44+0500\n"
+"POT-Creation-Date: 2016-07-27 09:36+0500\n"
+"PO-Revision-Date: 2016-07-27 09:36+0500\n"
 "Last-Translator: \n"
 "Language-Team: severcart.org <sfcl@mail.ru>\n"
 "Language: ru\n"
@@ -1123,7 +1123,7 @@ msgid "Events accounting object"
 msgstr "События объекта учёта"
 
 #: .\events\templates\events\view_cartridge_events.html:4
-#: .\index\templates\index\dashboard.html:58
+#: .\index\templates\index\dashboard.html:59
 #: .\service\templates\service\submenu.html:14
 msgid "Events"
 msgstr "События"
@@ -1416,7 +1416,7 @@ msgstr ""
 msgid "Exit"
 msgstr "Выход"
 
-#: .\index\templates\index\base.html:40
+#: .\index\templates\index\base.html:43
 msgid "Version"
 msgstr "Версия"
 
@@ -1462,43 +1462,47 @@ msgstr "Просмотр событий"
 msgid "Stocks of consumables"
 msgstr "Запасы расходных материалов"
 
-#: .\index\templates\index\dashboard.html:9
+#: .\index\templates\index\dashboard.html:6
+msgid "Help"
+msgstr "Справка"
+
+#: .\index\templates\index\dashboard.html:10
 msgid "Desktop"
 msgstr "Рабочий стол"
 
-#: .\index\templates\index\dashboard.html:14
+#: .\index\templates\index\dashboard.html:15
 msgid "Quantity in stock (usable)"
 msgstr "Пригодные к использованию"
 
-#: .\index\templates\index\dashboard.html:19
+#: .\index\templates\index\dashboard.html:20
 msgid "The number of installed"
 msgstr "Задействованные"
 
-#: .\index\templates\index\dashboard.html:24
+#: .\index\templates\index\dashboard.html:25
 msgid "Number of empty, ready to recharge"
 msgstr "Пустые"
 
-#: .\index\templates\index\dashboard.html:29
+#: .\index\templates\index\dashboard.html:30
 msgid "Now dressed"
 msgstr "Сейчас заправляется"
 
-#: .\index\templates\index\dashboard.html:34
+#: .\index\templates\index\dashboard.html:35
 msgid "In basket (count)"
 msgstr "В корзине"
 
-#: .\index\templates\index\dashboard.html:39
+#: .\index\templates\index\dashboard.html:40
 msgid "Spending cartridges"
 msgstr "Расходование"
 
-#: .\index\templates\index\dashboard.html:43
+#: .\index\templates\index\dashboard.html:44
 msgid "For the current day"
 msgstr "За текущие сутки"
 
-#: .\index\templates\index\dashboard.html:47
+#: .\index\templates\index\dashboard.html:48
 msgid "Since the beginning of the month"
 msgstr "С начала месяца"
 
-#: .\index\templates\index\dashboard.html:51
+#: .\index\templates\index\dashboard.html:52
 msgid "Since the beginning of the year"
 msgstr "С начала года"
 

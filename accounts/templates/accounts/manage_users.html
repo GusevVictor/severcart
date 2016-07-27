@@ -2,6 +2,9 @@
 {% load staticfiles %}
 {% block title %}{% trans "User management" %}{% endblock %}
 {% block breadcrumbs %}<a href="/"><img src="{{ STATIC_URL }}img/home.png" /></a> / <a href="{% url 'docs:handbook' %}">{% trans "References" %}</a> / {% trans "User management" %}{% endblock %}
+{% block help_url %}
+{{ request.HOME_SITE }}/help/{{ request.LANGUAGE_CODE }}/manage_users/
+{% endblock %}
 {% block content %}
 <div class="row">
     <div class="large-6 columns">

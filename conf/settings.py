@@ -61,7 +61,7 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     # установка языка интерфейса на основе сессии
-    'plugins.middleware.ChangeUserLang',
+    'plugins.middleware.InsertVarToRequest',
 )
 
 #список поддерживаемых языков
@@ -221,3 +221,5 @@ MAX_TABLE_ROWS_FIRST_PAGE = 30 # должен резервировать мес�
 MAX_TABLE_ROWS = 40
 
 HISTORY_LENGTH = 5
+
+HOME_SITE = 'http://www.severcart.org'

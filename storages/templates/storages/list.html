@@ -11,6 +11,9 @@
     </div>
 </div>
 {% endblock %}
+{% block help_url %}
+{{ request.HOME_SITE }}/help/{{ request.LANGUAGE_CODE }}/storages_list/
+{% endblock %}
 {% block content %}
 <div class="row">
     <div class="large-12 columns">

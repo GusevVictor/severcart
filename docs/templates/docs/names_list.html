@@ -2,6 +2,9 @@
 {% load pagination  %}
 {% block title %}{% trans "References names cartidges" %}{% endblock %}
 {% block breadcrumbs %}<a href="/"><img src="{{ STATIC_URL }}img/home.png" /></a> / <a href="{% url 'docs:handbook' %}">{% trans "References" %}</a> / {% trans "References names cartidges" %}{% endblock %}
+{% block help_url %}
+{{ request.HOME_SITE }}/help/{{ request.LANGUAGE_CODE }}/names_list/
+{% endblock %}
 {% block submenu %}
 <div class="row">
     <div class="large-6 columns">

@@ -1,6 +1,9 @@
 {% extends "index/base.html" %}{% load i18n %}
 {% block title %}{% trans "Adding a new type" %}{% endblock %}
 {% block breadcrumbs %}<a href="/"><img src="{{ STATIC_URL }}img/home.png" /></a> / <a href="{% url 'docs:handbook' %}">{% trans "References" %}</a> / <a href="{% url 'docs:view_types' %}">{% trans "Reference types consumables" %}</a> / {% trans "Adding a new type" %}{% endblock %}
+{% block help_url %}
+{{ request.HOME_SITE }}/help/{{ request.LANGUAGE_CODE }}/add_type/
+{% endblock %}
 {% block content %}
 <div class="row">
     <div class="large-6 columns">

@@ -1,6 +1,9 @@
 {% extends "index/base.html" %}{% load i18n %}
 {% block title %}{% trans "Add city" %}{% endblock %}
 {% block breadcrumbs %}<a href="/"><img src="{{ STATIC_URL }}img/home.png" /></a> / <a href="{% url 'docs:handbook' %}">{% trans "References" %}</a> / <a href="{% url 'docs:cities' %}">{% trans "Cities" %}</a> / {% trans "Add city" %}{% endblock %}
+{% block help_url %}
+{{ request.HOME_SITE }}/help/{{ request.LANGUAGE_CODE }}/add_city/
+{% endblock %}
 {% block content %}
 <div class="row">
     <div class="large-6 columns">

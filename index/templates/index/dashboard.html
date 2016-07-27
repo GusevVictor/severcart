@@ -3,6 +3,9 @@
 {% load staticfiles %}
 {% block title %}{% trans "Stocks of consumables" %}{% endblock %}
 {% block breadcrumbs %}<a href="/"><img src="{{ STATIC_URL }}img/home.png" /></a> /{% endblock %}
+{% block help_url %}
+{{ request.HOME_SITE }}/help/{{ request.LANGUAGE_CODE }}/dashboard/
+{% endblock %}
 {% block content %}
 <div class="row">
     <div class="large-6 columns">

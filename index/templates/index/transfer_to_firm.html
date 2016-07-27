@@ -4,6 +4,9 @@
 
 {% block breadcrumbs %}<a href="/"><img src="{{ STATIC_URL }}img/home.png" /></a> / <a href="{% url 'index:use' %}">{% trans "Consumables in use" %}</a> / {% trans "Transfer cartridges refills" %}{% endblock %}
 {% load filters %}
+{% block help_url %}
+{{ request.HOME_SITE }}/help/{{ request.LANGUAGE_CODE }}/transfer_to_firm/
+{% endblock %}
 {% block content %}
     <div class="row">
         <div class="large-6 columns">
