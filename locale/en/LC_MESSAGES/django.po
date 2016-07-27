@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-07-25 15:49+0500\n"
+"POT-Creation-Date: 2016-07-27 09:06+0500\n"
 "PO-Revision-Date: 2016-05-27 12:27+0500\n"
 "Last-Translator: \n"
 "Language-Team: severcart.org <sfcl@mail.ru>\n"
@@ -56,10 +56,6 @@ msgstr ""
 
 #: .\accounts\api\views.py:90 .\service\api\views.py:30
 msgid "Mail successfully sended!"
-msgstr ""
-
-#: .\accounts\api\views.py:94
-msgid "Address mailbox does not correspond to the conventional format"
 msgstr ""
 
 #: .\accounts\forms\authenticate.py:9
@@ -342,11 +338,11 @@ msgstr ""
 msgid "Send"
 msgstr ""
 
-#: .\conf\settings.py:72
+#: .\conf\settings.py:69
 msgid "Russian"
 msgstr ""
 
-#: .\conf\settings.py:73
+#: .\conf\settings.py:70
 msgid "English"
 msgstr ""
 
@@ -408,11 +404,11 @@ msgstr ""
 msgid "Find by number"
 msgstr ""
 
-#: .\dhtml\templates\dhtml\logic.html:1560
+#: .\dhtml\templates\dhtml\logic.html:1565
 msgid "Are you sure you want to remove the storage room?"
 msgstr ""
 
-#: .\dhtml\templates\dhtml\logic.html:1621
+#: .\dhtml\templates\dhtml\logic.html:1626
 msgid "<p>Server error :(</p>"
 msgstr ""
 
@@ -524,9 +520,9 @@ msgstr ""
 msgid "Name"
 msgstr ""
 
-#: .\docs\api\views.py:280 .\docs\templates\docs\delivery.html.py:97
-#: .\reports\templates\reports\users_ajax.html:5
-msgid "Amount"
+#: .\docs\api\views.py:280 .\index\templates\index\add_empty_cartridge.html:49
+#: .\index\templates\index\add_items.html:48
+msgid "Amount items"
 msgstr ""
 
 #: .\docs\api\views.py:311 .\docs\api\views.py:337 .\docs\api\views.py:360
@@ -791,6 +787,11 @@ msgstr ""
 
 #: .\docs\templates\docs\delivery.html:95
 msgid "Document date"
+msgstr ""
+
+#: .\docs\templates\docs\delivery.html:97
+#: .\reports\templates\reports\users_ajax.html:5
+msgid "Amount"
 msgstr ""
 
 #: .\docs\templates\docs\delivery.html:106
@@ -1303,11 +1304,6 @@ msgstr ""
 #: .\index\templates\index\add_empty_cartridge.html:42
 #: .\index\templates\index\add_items.html:41
 msgid "The field must be seleced"
-msgstr ""
-
-#: .\index\templates\index\add_empty_cartridge.html:49
-#: .\index\templates\index\add_items.html:48
-msgid "Amount items"
 msgstr ""
 
 #: .\index\templates\index\add_empty_cartridge.html:53
@@ -1868,6 +1864,14 @@ msgstr ""
 
 #: .\search\templates\search\serp.html:13
 msgid "Date added"
+msgstr ""
+
+#: .\service\api\insert_strings.py:9
+msgid "Cartridge"
+msgstr ""
+
+#: .\service\api\insert_strings.py:1122
+msgid "Tonertuba"
 msgstr ""
 
 #: .\service\api\views.py:60

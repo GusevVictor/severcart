@@ -6,7 +6,7 @@ import os, sys
 from multiprocessing import Process
 import http.client
 import subprocess
-from helpers import _
+from helpers import tr
 
 
 class ConsoleOut(object):
@@ -47,7 +47,7 @@ def send_request():
         conn.close()
 
 def prompt_exit():
-    input(_('Press any key to exit ...', lang=lang))
+    input(tr('Press any key to exit ...', lang=lang))
     sys.exit(1)
 
 if __name__ == '__main__':
@@ -69,7 +69,7 @@ if __name__ == '__main__':
         if not( sys.version_info.major == 3 and
         sys.version_info.minor == 4 and
         sys.version_info.micro == 4 ):
-             print(_('Further continuation impossible, Python version 3.4.4 is not equal.', lang=lang))
+             print(tr('Further continuation impossible, Python version 3.4.4 is not equal.', lang=lang))
              prompt_exit()
 
 
@@ -86,7 +86,7 @@ if __name__ == '__main__':
     elif  'linux' in OS:
         ACTIVATE_SCRIPT = os.path.join(BASE_DIR, 'bin', 'activate_this.py')
     else:
-        print(_('Installing Severcart are not available for the platform.', lang=lang))
+        print(tr('Installing Severcart are not available for the platform.', lang=lang))
         prompt_exit()
     activate_env=os.path.expanduser(ACTIVATE_SCRIPT)
     with open(activate_env) as f:
@@ -95,11 +95,11 @@ if __name__ == '__main__':
 
     CPU_ARCH = platform.architecture()[0]
     print('-------------------------------------------------')
-    print(_('-------Installation package dependencies---------', lang=lang))
+    print(tr('-------Installation package dependencies---------', lang=lang))
     print('-------------------------------------------------')
     try:
         if CPU_ARCH == '64bit' and OS == 'win32':
-            print(_('Installation package dependencies for 64-bit Windows',lang=lang))
+            print(tr('Installation package dependencies for 64-bit Windows',lang=lang))
             packages_x64 = [
                 ['Django==1.9.4'],
                 ['Noarch/django-mptt-0.8.0.tar.gz'],
@@ -120,7 +120,7 @@ if __name__ == '__main__':
             print("100%")
         
         elif CPU_ARCH == '32bit' and OS == 'win32':
-            print(_('Installation package dependencies for 32-bit Windows', lang=lang))
+            print(tr('Installation package dependencies for 32-bit Windows', lang=lang))
             packages_x86 = [
                 ['Django==1.9.4'],
                 ['Noarch/django-mptt-0.8.0.tar.gz'],
@@ -140,7 +140,7 @@ if __name__ == '__main__':
                 persent += 10
             print("100%")
         elif 'linux' in OS:
-            print(_('Installation package dependencies for Linux', lang=lang))
+            print(tr('Installation package dependencies for Linux', lang=lang))
             packages_unix = [
                 ['Django'], 
                 ['lxml==3.4.4']
@@ -160,15 +160,15 @@ if __name__ == '__main__':
                 persent += 10
             print("100%")
         else:
-            print(_('Support for this architecture is not implemented.', lang=lang))
+            print(tr('Support for this architecture is not implemented.', lang=lang))
             prompt_exit()
     except Exception as e:
         print(str(e))
-        print(_('Further continuation of the installation is not possible!',lang=lang))
+        print(tr('Further continuation of the installation is not possible!',lang=lang))
         prompt_exit()
     else:
         print('-------------------------------------------------')
-        print(_('--Generation of signature key session variable---', lang=lang))
+        print(tr('--Generation of signature key session variable---', lang=lang))
         print('-------------------------------------------------')
         from django.utils.crypto import get_random_string
         import json
@@ -178,7 +178,7 @@ if __name__ == '__main__':
         SECRETS['secret_key'] = secret_key
         with open(os.path.join(PROJ_DIR, 'conf', 'secrets.json'), 'w') as j:
             json.dump(SECRETS, j)
-        print(_('Done', lang=lang))
+        print(tr('Done', lang=lang))
         # производим запуск миграции схемы Severcart и Django        
         os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'conf.settings')
 
@@ -188,50 +188,50 @@ if __name__ == '__main__':
         django.setup()
 
         print('-------------------------------------------------')
-        print(_('--------------The migration scheme---------------', lang=lang))
+        print(tr('--------------The migration scheme---------------', lang=lang))
         print('-------------------------------------------------')
         try:
             execute_from_command_line(['manage.py', 'migrate'])
         except:
-            print(_('During migration, an error occurred.', lang=lang))
+            print(tr('During migration, an error occurred.', lang=lang))
             prompt_exit()
         else:
-            print(_('The scheme was successfully migrated.', lang=lang))
+            print(tr('The scheme was successfully migrated.', lang=lang))
         
         # создаём суперпользователя admin
         from accounts.models import AnconUser
         print('-------------------------------------------------')
-        print(_('-----------------Creating a user-----------------', lang=lang))
+        print(tr('-----------------Creating a user-----------------', lang=lang))
         print('-------------------------------------------------')
         flag = True
         while flag:
-            u = input(_('Enter your username: ', lang=lang))
+            u = input(tr('Enter your username: ', lang=lang))
             u = u.strip()
             user = AnconUser(username=u, is_admin = True)
             m1 = AnconUser.objects.filter(username=u)
             if m1:
-                print(_('This user name already exists. Re-enter. ', lang=lang))
+                print(tr('This user name already exists. Re-enter. ', lang=lang))
             else:
                 flag = False
 
         flag = True
         while flag:
-            p1 = input(_('Enter password:   ', lang=lang))
-            p2 = input(_('Confirm password: ', lang=lang))
+            p1 = input(tr('Enter password:   ', lang=lang))
+            p2 = input(tr('Confirm password: ', lang=lang))
 
             if p1 == p2:
                 user.set_password(p1)
                 user.save()
-                print(_('The user was created successfully.', lang=lang))
+                print(tr('The user was created successfully.', lang=lang))
                 flag = False
             else:
-                print(_('Passwords do not match. Re-enter. ', lang=lang))
+                print(tr('Passwords do not match. Re-enter. ', lang=lang))
                 # возвращаемся к началу цикла
         
                 flag = True
 
         print('-------------------------------------------------')
-        print(_('------------Installation successful--------------', lang=lang))
+        print(tr('------------Installation successful--------------', lang=lang))
         print('-------------------------------------------------')
         
         p = Process(target=send_request)

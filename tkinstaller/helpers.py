@@ -2,7 +2,7 @@
 # -*- coding:utf-8 -*-
 
 
-def _(msgid, lang='en'):
+def tr(msgid, lang='en'):
     """Простейшая функция по локализации текстовых строк
     """
     ru_lang_dict = {

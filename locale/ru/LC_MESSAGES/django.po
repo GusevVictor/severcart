@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-07-25 15:49+0500\n"
+"POT-Creation-Date: 2016-07-27 09:06+0500\n"
 "PO-Revision-Date: 2016-07-25 21:44+0500\n"
 "Last-Translator: \n"
 "Language-Team: severcart.org <sfcl@mail.ru>\n"
@@ -15,7 +15,9 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n%100>=11 && n%100<=14)? 2 : 3);\n"
+"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n"
+"%100>=11 && n%100<=14)? 2 : 3);\n"
 "X-Generator: Poedit 1.8.7\n"
 
 #: .\accounts\api\views.py:23
@@ -55,10 +57,6 @@ msgstr "Восстановление забытого пароля"
 #: .\accounts\api\views.py:90 .\service\api\views.py:30
 msgid "Mail successfully sended!"
 msgstr "Письмо успешно отправленно!"
-
-#: .\accounts\api\views.py:94
-msgid "Address mailbox does not correspond to the conventional format"
-msgstr "Адрес почтового ящика не соответствует общепринятому формату"
 
 #: .\accounts\forms\authenticate.py:9
 msgid "User name"
@@ -147,11 +145,12 @@ msgstr "Форма смены пароля"
 #: .\accounts\templates\accounts\edit_user.html:3
 #: .\accounts\templates\accounts\manage_users.html:4
 #: .\accounts\templates\accounts\register.html:3
-#: .\docs\templates\docs\acts_list.html:5 .\docs\templates\docs\add_city.html:3
-#: .\docs\templates\docs\cities.html:4 .\docs\templates\docs\delivery.html:3
+#: .\docs\templates\docs\acts_list.html:5
+#: .\docs\templates\docs\add_city.html:3 .\docs\templates\docs\cities.html:4
+#: .\docs\templates\docs\delivery.html:3
 #: .\docs\templates\docs\edit_city.html:3
-#: .\docs\templates\docs\edit_name.html:3 .\docs\templates\docs\handbook.html:2
-#: .\docs\templates\docs\handbook.html:3
+#: .\docs\templates\docs\edit_name.html:3
+#: .\docs\templates\docs\handbook.html:2 .\docs\templates\docs\handbook.html:3
 #: .\docs\templates\docs\names_list.html:4
 #: .\docs\templates\docs\types_list.html:4
 #: .\index\templates\index\add_firm.html:3
@@ -329,19 +328,23 @@ msgid "Password reset"
 msgstr "Сброс пароля"
 
 #: .\accounts\templates\accounts\send_email.html:8
-msgid "Please enter your email address. On it will send the message to change the password."
-msgstr "Пожалуйста введите почтовый ящик. На него будет отправленна ссылка для восстановления пароля."
+msgid ""
+"Please enter your email address. On it will send the message to change the "
+"password."
+msgstr ""
+"Пожалуйста введите почтовый ящик. На него будет отправленна ссылка для "
+"восстановления пароля."
 
 #: .\accounts\templates\accounts\send_email.html:13
 #: .\service\templates\service\settings_mail.html:60
 msgid "Send"
 msgstr "Отправить"
 
-#: .\conf\settings.py:72
+#: .\conf\settings.py:69
 msgid "Russian"
 msgstr "Русский"
 
-#: .\conf\settings.py:73
+#: .\conf\settings.py:70
 msgid "English"
 msgstr "Английский"
 
@@ -403,11 +406,11 @@ msgstr "Вы точно хотите удалить название город�
 msgid "Find by number"
 msgstr "Поиск по номеру"
 
-#: .\dhtml\templates\dhtml\logic.html:1560
+#: .\dhtml\templates\dhtml\logic.html:1565
 msgid "Are you sure you want to remove the storage room?"
 msgstr "Вы точно хотите удалить складское помещение?"
 
-#: .\dhtml\templates\dhtml\logic.html:1621
+#: .\dhtml\templates\dhtml\logic.html:1626
 msgid "<p>Server error :(</p>"
 msgstr "<p>Ошибка на стороне сервера :(</p>"
 
@@ -471,7 +474,8 @@ msgstr "Номер катриджа"
 
 #: .\docs\api\views.py:185
 #, python-format
-msgid "The act of transferring cartridges # %(doc_number)s from  %(date_created)s"
+msgid ""
+"The act of transferring cartridges # %(doc_number)s from  %(date_created)s"
 msgstr "Акт передачи картриджей № %(doc_number)s от %(date_created)s"
 
 #: .\docs\api\views.py:242
@@ -518,17 +522,18 @@ msgstr "Документ «%(doc_number)s_%(user_id)s_0.docx» успешно с
 msgid "Name"
 msgstr "Название"
 
-#: .\docs\api\views.py:280 .\docs\templates\docs\delivery.html.py:97
-#: .\reports\templates\reports\users_ajax.html:5
-msgid "Amount"
-msgstr "Сумма"
+#: .\docs\api\views.py:280 .\index\templates\index\add_empty_cartridge.html:49
+#: .\index\templates\index\add_items.html:48
+msgid "Amount items"
+msgstr "Количество"
 
 #: .\docs\api\views.py:311 .\docs\api\views.py:337 .\docs\api\views.py:360
 #: .\docs\api\views.py:381 .\docs\api\views.py:404 .\docs\forms\add_doc.py:9
 #: .\docs\templates\docs\delivery.html:20
 #: .\docs\templates\docs\delivery.html:92
 #: .\index\templates\index\at_work.html:31
-#: .\index\templates\index\basket.html:34 .\index\templates\index\empty.html:40
+#: .\index\templates\index\basket.html:34
+#: .\index\templates\index\empty.html:40
 #: .\index\templates\index\from_firm_to_stock.html:25
 #: .\index\templates\index\get_cart_ou.html:7
 #: .\index\templates\index\stock.html:39
@@ -545,8 +550,9 @@ msgstr "Номер"
 #: .\docs\api\views.py:313 .\docs\api\views.py:339 .\docs\api\views.py:362
 #: .\docs\api\views.py:383 .\docs\api\views.py:406
 #: .\index\templates\index\at_work.html:33
-#: .\index\templates\index\basket.html:36 .\index\templates\index\empty.html:42
-#: .\index\templates\index\stock.html:41 .\index\templates\index\use.html:41
+#: .\index\templates\index\basket.html:36
+#: .\index\templates\index\empty.html:42 .\index\templates\index\stock.html:41
+#: .\index\templates\index\use.html:41
 msgid "Amount<br/>recovery"
 msgstr "Количество<br/> перезаправок"
 
@@ -562,7 +568,8 @@ msgstr "на склад"
 #: .\docs\api\views.py:386 .\docs\api\views.py:408
 #: .\docs\templates\docs\types_list.html:29 .\index\forms\comment.py:11
 #: .\index\templates\index\at_work.html:36
-#: .\index\templates\index\basket.html:38 .\index\templates\index\stock.html:44
+#: .\index\templates\index\basket.html:38
+#: .\index\templates\index\stock.html:44
 msgid "comment"
 msgstr "Комментарий"
 
@@ -616,8 +623,9 @@ msgstr "Краткое содержание"
 #: .\docs\forms\add_doc.py:27 .\docs\models.py:11
 #: .\index\templates\index\add_empty_cartridge.html:45
 #: .\index\templates\index\add_items.html:43
-#: .\index\templates\index\basket.html:53 .\index\templates\index\empty.html:61
-#: .\index\templates\index\stock.html:60 .\index\templates\index\use.html:59
+#: .\index\templates\index\basket.html:53
+#: .\index\templates\index\empty.html:61 .\index\templates\index\stock.html:60
+#: .\index\templates\index\use.html:59
 msgid "Delivery agreement"
 msgstr "Договор поставки"
 
@@ -702,8 +710,9 @@ msgstr "Действие"
 #: .\index\templates\index\add_empty_cartridge.html:63
 #: .\index\templates\index\add_items.html:64
 #: .\index\templates\index\at_work.html:11
-#: .\index\templates\index\basket.html:14 .\index\templates\index\empty.html:20
-#: .\index\templates\index\stock.html:19 .\index\templates\index\use.html:19
+#: .\index\templates\index\basket.html:14
+#: .\index\templates\index\empty.html:20 .\index\templates\index\stock.html:19
+#: .\index\templates\index\use.html:19
 msgid "Download"
 msgstr "Скачать"
 
@@ -720,7 +729,8 @@ msgstr "Сформировать docx без группировки"
 msgid "Add city"
 msgstr "Добавить город"
 
-#: .\docs\templates\docs\add_city.html:3 .\docs\templates\docs\edit_city.html:3
+#: .\docs\templates\docs\add_city.html:3
+#: .\docs\templates\docs\edit_city.html:3
 #: .\docs\templates\docs\handbook.html:20
 msgid "Cities"
 msgstr "Города"
@@ -778,6 +788,11 @@ msgstr "Отменить"
 #: .\docs\templates\docs\delivery.html:95
 msgid "Document date"
 msgstr "Дата документа"
+
+#: .\docs\templates\docs\delivery.html:97
+#: .\reports\templates\reports\users_ajax.html:5
+msgid "Amount"
+msgstr "Сумма"
 
 #: .\docs\templates\docs\delivery.html:106
 msgid "Delivery"
@@ -892,7 +907,9 @@ msgstr "Добавлен пользователем «%(user_name)s»."
 #: .\events\helpers.py:39
 #, python-format
 msgid "№ %(cart_number)s (%(cart_type)s) added user %(user_name)s."
-msgstr "Новый картридж № %(cart_number)s (%(cart_type)s) добавлен пользователем %(user_name)s."
+msgstr ""
+"Новый картридж № %(cart_number)s (%(cart_type)s) добавлен пользователем "
+"%(user_name)s."
 
 #: .\events\helpers.py:50
 #, python-format
@@ -901,8 +918,11 @@ msgstr "%(user_name)s добавил пустой картридж."
 
 #: .\events\helpers.py:52
 #, python-format
-msgid "Added empty cartridge № %(cart_number)s (%(cart_type)s) user %(user_name)s."
-msgstr "Пользователь %(user_name)s добавил пустой картридж № %(cart_number)s (%(cart_type)s)."
+msgid ""
+"Added empty cartridge № %(cart_number)s (%(cart_type)s) user %(user_name)s."
+msgstr ""
+"Пользователь %(user_name)s добавил пустой картридж № %(cart_number)s "
+"(%(cart_type)s)."
 
 #: .\events\helpers.py:63
 #, python-format
@@ -911,8 +931,12 @@ msgstr "Передан в пользование «%(event_org)s» пользо�
 
 #: .\events\helpers.py:65
 #, python-format
-msgid "№ %(cart_number)s (%(cart_type)s) transfer to use %(event_org)s user %(event_user)s."
-msgstr "№ %(cart_number)s (%(cart_type)s) передача в пользование «%(event_org)s» пользователем %(event_user)s."
+msgid ""
+"№ %(cart_number)s (%(cart_type)s) transfer to use %(event_org)s user "
+"%(event_user)s."
+msgstr ""
+"№ %(cart_number)s (%(cart_type)s) передача в пользование «%(event_org)s» "
+"пользователем %(event_user)s."
 
 #: .\events\helpers.py:77
 #, python-format
@@ -921,8 +945,12 @@ msgstr "Отправка на заправку в «%(event_firm)s» польз�
 
 #: .\events\helpers.py:80
 #, python-format
-msgid "№ %(cart_number)s (%(cart_type)s) transfer to restore \"%(event_firm)s\" user %(event_user)s."
-msgstr "№ %(cart_number)s (%(cart_type)s) отправлен на заправку в «%(event_firm)s» пользователем %(event_user)s."
+msgid ""
+"№ %(cart_number)s (%(cart_type)s) transfer to restore \"%(event_firm)s\" "
+"user %(event_user)s."
+msgstr ""
+"№ %(cart_number)s (%(cart_type)s) отправлен на заправку в «%(event_firm)s» "
+"пользователем %(event_user)s."
 
 #: .\events\helpers.py:95
 msgid "filling and cleaning, "
@@ -946,13 +974,20 @@ msgstr "замена магнитного барабана, "
 
 #: .\events\helpers.py:101
 #, python-format
-msgid "Return to the filling in the firm \"%(event_firm)s\" user %(event_user)s."
-msgstr "Возврат с обслуживания в фирме \"%(event_firm)s\" пользователем %(event_user)s."
+msgid ""
+"Return to the filling in the firm \"%(event_firm)s\" user %(event_user)s."
+msgstr ""
+"Возврат с обслуживания в фирме \"%(event_firm)s\" пользователем "
+"%(event_user)s."
 
 #: .\events\helpers.py:105
 #, python-format
-msgid "№ %(cart_number)s (%(cart_type)s) return to the filling in the firm \"%(event_firm)s\" user %(event_user)s."
-msgstr "№ %(cart_number)s (%(cart_type)s) возвращен с заправки в фирме \"%(event_firm)s\" пользователем %(event_user)s."
+msgid ""
+"№ %(cart_number)s (%(cart_type)s) return to the filling in the firm "
+"\"%(event_firm)s\" user %(event_user)s."
+msgstr ""
+"№ %(cart_number)s (%(cart_type)s) возвращен с заправки в фирме "
+"\"%(event_firm)s\" пользователем %(event_user)s."
 
 #: .\events\helpers.py:110
 msgid "<br/>The following work: "
@@ -965,8 +1000,11 @@ msgstr "Перемещен пользователем %(event_user)s в корз
 
 #: .\events\helpers.py:122
 #, python-format
-msgid "№ %(cart_number)s (%(cart_type)s) moving in user to basket %(event_user)s."
-msgstr "№ %(cart_number)s (%(cart_type)s) перемещён в корзину пользователем %(event_user)s."
+msgid ""
+"№ %(cart_number)s (%(cart_type)s) moving in user to basket %(event_user)s."
+msgstr ""
+"№ %(cart_number)s (%(cart_type)s) перемещён в корзину пользователем "
+"%(event_user)s."
 
 #: .\events\helpers.py:134
 #, python-format
@@ -985,8 +1023,12 @@ msgstr "Возврат на склад от %(event_org)s пользовател
 
 #: .\events\helpers.py:151
 #, python-format
-msgid "№ %(cart_number)s (%(cart_type)s) return to stock from %(event_org)s user %(event_user)s."
-msgstr "№ %(cart_number)s (%(cart_type)s) возвращение на склад от «%(event_org)s» пользователем %(event_user)s."
+msgid ""
+"№ %(cart_number)s (%(cart_type)s) return to stock from %(event_org)s user "
+"%(event_user)s."
+msgstr ""
+"№ %(cart_number)s (%(cart_type)s) возвращение на склад от «%(event_org)s» "
+"пользователем %(event_user)s."
 
 #: .\events\models.py:11
 msgid "Adding a new consumables"
@@ -1101,7 +1143,8 @@ msgstr "Вы не можете удалить, т. к. имеются картр
 #: .\index\api\views.py:84 .\index\templates\index\ou_not_set.html.py:9
 #: .\storages\views.py:42
 msgid "User not assosiate with organization unit!<br/>Error code: 101."
-msgstr "Пользователь не принадлежит ни одной из организаций!<br/> Код ошибки: 101"
+msgstr ""
+"Пользователь не принадлежит ни одной из организаций!<br/> Код ошибки: 101"
 
 #: .\index\api\views.py:108
 msgid "Error in attrib \"data\" in input button add_item"
@@ -1133,7 +1176,9 @@ msgid "In demo remove nodes not allow."
 msgstr "В режиме демонтсрации удалять ноды нельзя."
 
 #: .\index\api\views.py:358
-msgid "But it can not be removed because other objects reference it.<br/>Error code: 102"
+msgid ""
+"But it can not be removed because other objects reference it.<br/>Error "
+"code: 102"
 msgstr "Удаление невозможно, т. к. на объект ссылаются.<br/>Код ошибки: 102."
 
 #: .\index\api\views.py:364
@@ -1278,11 +1323,6 @@ msgstr "Название катриджа"
 msgid "The field must be seleced"
 msgstr "Поле должно быть выбрано"
 
-#: .\index\templates\index\add_empty_cartridge.html:49
-#: .\index\templates\index\add_items.html:48
-msgid "Amount items"
-msgstr "Количество"
-
 #: .\index\templates\index\add_empty_cartridge.html:53
 #: .\index\templates\index\add_items.html:52
 msgid "The field must be greater than zero"
@@ -1337,20 +1377,22 @@ msgstr "Добавление нового типа"
 msgid "Cartridges on rebuilding"
 msgstr "Кариджи на заправке"
 
-#: .\index\templates\index\at_work.html:8 .\index\templates\index\basket.html:9
-#: .\index\templates\index\use.html:14
+#: .\index\templates\index\at_work.html:8
+#: .\index\templates\index\basket.html:9 .\index\templates\index\use.html:14
 msgid "Return to the stock"
 msgstr "Вернуть на склад"
 
 #: .\index\templates\index\at_work.html:14
-#: .\index\templates\index\basket.html:17 .\index\templates\index\empty.html:23
-#: .\index\templates\index\stock.html:22 .\index\templates\index\use.html:22
+#: .\index\templates\index\basket.html:17
+#: .\index\templates\index\empty.html:23 .\index\templates\index\stock.html:22
+#: .\index\templates\index\use.html:22
 msgid "Export to CSV with group"
 msgstr "Экспорт в CSV с группировкой"
 
 #: .\index\templates\index\at_work.html:15
-#: .\index\templates\index\basket.html:18 .\index\templates\index\empty.html:24
-#: .\index\templates\index\stock.html:23 .\index\templates\index\use.html:23
+#: .\index\templates\index\basket.html:18
+#: .\index\templates\index\empty.html:24 .\index\templates\index\stock.html:23
+#: .\index\templates\index\use.html:23
 msgid "Export to CSV without group"
 msgstr "Экспорт в CSV без группировки"
 
@@ -1363,8 +1405,12 @@ msgid "Attention! You are using an outdated browser."
 msgstr "Внимание! Вы пользуетесь устаревшим браузером."
 
 #: .\index\templates\index\bad_browser.html:11
-msgid "We strongly recommend that you install the new version of one of the listed browsers."
-msgstr "Мы настоятельно рекомендуем Вам установить новую версию одиного из перечисленных браузеров."
+msgid ""
+"We strongly recommend that you install the new version of one of the listed "
+"browsers."
+msgstr ""
+"Мы настоятельно рекомендуем Вам установить новую версию одиного из "
+"перечисленных браузеров."
 
 #: .\index\templates\index\base.html:25
 msgid "Exit"
@@ -1395,18 +1441,20 @@ msgstr "Пустые"
 msgid "Basket"
 msgstr "Корзина"
 
-#: .\index\templates\index\basket.html:39 .\index\templates\index\empty.html:46
-#: .\index\templates\index\stock.html:45
+#: .\index\templates\index\basket.html:39
+#: .\index\templates\index\empty.html:46 .\index\templates\index\stock.html:45
 msgid "Actions"
 msgstr "Действие"
 
-#: .\index\templates\index\basket.html:51 .\index\templates\index\empty.html:59
-#: .\index\templates\index\stock.html:58 .\index\templates\index\use.html:57
+#: .\index\templates\index\basket.html:51
+#: .\index\templates\index\empty.html:59 .\index\templates\index\stock.html:58
+#: .\index\templates\index\use.html:57
 msgid "Edit a comment"
 msgstr "Редактировать комментарий"
 
-#: .\index\templates\index\basket.html:52 .\index\templates\index\empty.html:60
-#: .\index\templates\index\stock.html:59 .\index\templates\index\use.html:58
+#: .\index\templates\index\basket.html:52
+#: .\index\templates\index\empty.html:60 .\index\templates\index\stock.html:59
+#: .\index\templates\index\use.html:58
 msgid "Event viewer"
 msgstr "Просмотр событий"
 
@@ -1767,8 +1815,12 @@ msgid "Select"
 msgstr "Выбрать"
 
 #: .\reports\templates\reports\main_summary.html:24
-msgid "A list of 10 or cartridge 20, which was the most recent.<br/> Or the last message was last year."
-msgstr "Список из 10 или 20 картриджей, обращения к которым было самым позним.<br/> Либо последнее обращение было в прошлом году."
+msgid ""
+"A list of 10 or cartridge 20, which was the most recent.<br/> Or the last "
+"message was last year."
+msgstr ""
+"Список из 10 или 20 картриджей, обращения к которым было самым позним.<br/> "
+"Либо последнее обращение было в прошлом году."
 
 #: .\reports\templates\reports\main_summary.html:44
 msgid "Date changes"
@@ -1834,6 +1886,14 @@ msgstr "Результаты поиска"
 #: .\search\templates\search\serp.html:13
 msgid "Date added"
 msgstr "Дата добавления"
+
+#: .\service\api\insert_strings.py:9
+msgid "Cartridge"
+msgstr "Катридж"
+
+#: .\service\api\insert_strings.py:1122
+msgid "Tonertuba"
+msgstr "Тонертуба"
 
 #: .\service\api\views.py:60
 msgid "Settings successfully saved."
@@ -2003,11 +2063,43 @@ msgstr "Склад не изменён."
 msgid "Page not found!"
 msgstr "Страница не найдена!"
 
-#~ msgid "Cartridge"
-#~ msgstr "Катридж"
+#, fuzzy
+#~| msgid "This action is not implemented."
+#~ msgid "Support for this architecture is not implemented."
+#~ msgstr "Данное действие не реализовано."
 
-#~ msgid "Tonertuba"
-#~ msgstr "Тонертуба"
+#, fuzzy
+#~| msgid "User %(user_name)s was successfully deleted"
+#~ msgid "The scheme was successfully migrated."
+#~ msgstr "Пользователь «%(user_name)s» успешно удалён."
+
+#, fuzzy
+#~| msgid "This name already exists!"
+#~ msgid "This user name already exists. Re-enter. "
+#~ msgstr "Данное наменование уже существует!"
+
+#, fuzzy
+#~| msgid "Change password"
+#~ msgid "Enter password:   "
+#~ msgstr "Сменить пароль"
+
+#, fuzzy
+#~| msgid "Change password"
+#~ msgid "Confirm password: "
+#~ msgstr "Сменить пароль"
+
+#, fuzzy
+#~| msgid "Name deleted successfully."
+#~ msgid "The user was created successfully."
+#~ msgstr "Имя успешно удалено."
+
+#, fuzzy
+#~| msgid "Passwords do not match. Please enter them again"
+#~ msgid "Passwords do not match. Re-enter. "
+#~ msgstr "Пароли не совпадают. Пожалуйста, повторите ввод."
+
+#~ msgid "Address mailbox does not correspond to the conventional format"
+#~ msgstr "Адрес почтового ящика не соответствует общепринятому формату"
 
 #~ msgid "Document %(doc_number)s_%(user_id)s_1.docx generated"
 #~ msgstr "Документ %(doc_number)s_%(user_id)s_1.docx успешно сформирован."
