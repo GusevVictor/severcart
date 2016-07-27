@@ -3,7 +3,7 @@
 
 import os
 from index.models import CartridgeType, CartridgeItemName
-from django.utils.translation import ugettext_lazy as _
+from django.utils.translation import ugettext as _
 
 
 cart_type, created = CartridgeType.objects.get_or_create(cart_type=_('Cartridge'))
