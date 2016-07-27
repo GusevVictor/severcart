@@ -210,7 +210,7 @@ LOGGING = {
     },
 }
 
-LOGIN_URL = '/manage_users/login/'
+LOGIN_URL = '/auth/login/'
 
 MAX_EVENT_LIST = 16
 DASHBOARD_EVENT_LIST = 11
