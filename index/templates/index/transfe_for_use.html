@@ -11,7 +11,7 @@
             <form action="" method="POST">
                 {% csrf_token %}
                 <label>{% trans "What transfe" %}</label>
-                <table>
+                <table class="width100">
                     <tr>
                         <th>{% trans 'Number' %}</th>
                         <th>{% trans 'Name' %}</th>
@@ -37,7 +37,7 @@
                         {% endif %}
                     {% endfor %}
                 </select>
-                <div class="check_use_cartridge marginTop"></div>
+                <div class="check_use_cartridge marginTop width100"></div>
                 <div class="marginTop">
                     <input type="submit" value="{% trans 'Transfer to' %}" class="move_to_use button no_follow block"/>
                     <a href={% url 'index:stock' %} class="button">{% trans 'Back' %}</a>

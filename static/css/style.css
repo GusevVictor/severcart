@@ -20,6 +20,11 @@ fieldset legend{
     background: none;   
 }
 
+.width100 {
+    display: block;
+
+}
+
 hr {
     display: block;
     height: 1px;
