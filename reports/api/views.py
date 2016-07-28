@@ -4,6 +4,7 @@ import datetime
 from django.http import JsonResponse, HttpResponse
 from django.template.loader import render_to_string
 from django.utils.translation import ugettext as _
+from django.db.models import Q
 from index.helpers import check_ajax_auth
 from index.models import CartridgeItem, OrganizationUnits
 from events.models import Events
@@ -27,12 +28,18 @@ def ajax_report(request):
         except ValueError:
             cont = 1
         try:
+            root_ou   = request.user.departament
+            des       = root_ou.get_descendants()
+        except:
+            des = ''
+
+        try:
             departament = OrganizationUnits.objects.get(pk=org)
         except OrganizationUnits.DoesNotExist:
             result['error'] = 'Organization unit not found.'
         else:
-            list_cart = CartridgeItem.objects.filter(departament=departament)
-            list_cart = list_cart.filter(cart_number_refills__gte=cont).order_by('cart_number')
+            list_cart = CartridgeItem.objects.filter(Q(departament__in=des) | Q(departament=root_ou))
+            list_cart = list_cart.filter(cart_number_refills__gte=cont).order_by('-cart_number_refills')
             html = render_to_string('reports/amortizing_ajax.html', context={'list_cart': list_cart})
             result['html'] = html
     return JsonResponse(result, safe=False)
