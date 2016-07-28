@@ -18,7 +18,7 @@
             </tr>
             {% for elem in cart_items %}
                 <tr>
-                    <td><a href="{{ elem.link }}">{{ elem.cart_number }}</a></td>
+                    <td><a href="{{ elem.link }}?search_number={{ elem.cart_number }}">{{ elem.cart_number }}</a></td>
                     <td>{{ elem.cart_itm_name }}</td>
                     <td>{{ elem.departament }}</td>
                     <td>{{ elem.cart_status }}</td>
