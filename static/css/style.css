@@ -72,7 +72,7 @@ form input[type="password"] {
     vertical-align: baseline;
 }
 
-.marginTop {
+.marginTop, form input[type="submit"].marginTop {
     margin-top:15px;
     overflow: hidden; /* disable margin collapse */
 }
@@ -222,6 +222,14 @@ div.main_content span.user_ou {
 
 table.checkboxes tr.red_bg {
     background-color: #ff6464;
+}
+
+table.checkboxes tr.green_bg {
+    background-color: #7BCC9A;
+}
+
+table.checkboxes tr.gray_bg {
+    background-color: #ececec;
 }
 
 div.submenu {

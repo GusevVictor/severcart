@@ -560,3 +560,29 @@ def view_events(request):
     
     ansver['html'] = html
     return JsonResponse(ansver)
+
+@check_ajax_auth
+def from_basket_to_stock(request):
+    """Возврат обратно картриджей на склад из корзины
+    """
+    ansver  = dict()
+    ar = request.POST.getlist('selected[]')
+    try:
+        ar = [int(i) for i in ar ]
+    except:
+        # если пользователь сфальсифицировал запрос то
+        # ничего не делаем и возвращаем пустой ответ
+        raise Http404
+
+    for inx in ar:
+        m1 = CartridgeItem.objects.get(pk=inx)
+        if m1.cart_status == 5:
+            m1.cart_status = 1  # возвращаем обратно на склад заполненным
+        elif m1.cart_status == 6:
+            m1.cart_status = 3  # возвращаем обратно на склад пустым    
+        else:
+            raise Http404
+        m1.cart_date_change = timezone.now()
+        m1.save()
+
+    return JsonResponse(ansver)

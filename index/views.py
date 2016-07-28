@@ -594,35 +594,6 @@ class Basket(CartridgesView):
 
 @login_required
 @never_cache
-def from_basket_to_stock(request):
-    """Возвращаем обратно картридж из корзины на склад. Ну вдруг пользователь передумал.
-    """
-    checked_cartr = request.GET.get('select', '')
-    tmp = ''
-    if checked_cartr:
-        checked_cartr = checked_cartr.split('s')
-        checked_cartr = [int(i) for i in checked_cartr]
-        tmp = checked_cartr
-        checked_cartr = str(checked_cartr)
-        checked_cartr = checked_cartr[1:-1]
-    
-    if request.method == 'POST':
-        for inx in tmp:
-            m1 = CartridgeItem.objects.get(pk=inx)
-            if m1.cart_status == 5:
-                m1.cart_status = 1  # возвращаем обратно на склад заполненным    
-            elif m1.cart_status == 6:
-                m1.cart_status = 3  # возвращаем обратно на склад пустым    
-            else:
-                raise Http404
-            m1.cart_date_change = timezone.now()
-            m1.save(update_fields=['cart_status', 'cart_date_change'])
-        return HttpResponseRedirect(reverse('basket'))
-    return render(request, 'index/from_basket_to_stock.html', {'checked_cartr': checked_cartr})
-
-
-@login_required
-@never_cache
 def transfer_to_firm(request):
     """Передача расходных материалов на заправку.
     """
