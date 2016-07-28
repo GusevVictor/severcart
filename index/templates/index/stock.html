@@ -55,7 +55,7 @@
                         <td>{{ i.cart_number_refills }}</td>
                         <td>{{ i.cart_date_change|date:"d.m.Y" }}</td>
                         <td>{{ i.sklad }} <span class="info_ico" title="{{ i.sklad_title }} {{ i.sklad_address }}"></span></td>
-                        <td><div class="comment_in_cell" title="{{ i.comment }}">{{ i.comment|truncatechars:40 }}</div></td>
+                        <td><div class="comment_in_cell" title="{{ i.comment }}">{{ i.comment|truncatechars:34 }}</div></td>
                         <td><select class="cartridge_action" data="{{ i.pk }}">
                             <option selected></option>
                             <option value="edit">{% trans "Edit a comment" %}</option>
