@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-07-27 09:36+0500\n"
-"PO-Revision-Date: 2016-07-27 09:36+0500\n"
+"PO-Revision-Date: 2016-07-28 11:34+0500\n"
 "Last-Translator: \n"
 "Language-Team: severcart.org <sfcl@mail.ru>\n"
 "Language: ru\n"
@@ -145,12 +145,11 @@ msgstr "Форма смены пароля"
 #: .\accounts\templates\accounts\edit_user.html:3
 #: .\accounts\templates\accounts\manage_users.html:4
 #: .\accounts\templates\accounts\register.html:3
-#: .\docs\templates\docs\acts_list.html:5
-#: .\docs\templates\docs\add_city.html:3 .\docs\templates\docs\cities.html:4
-#: .\docs\templates\docs\delivery.html:3
+#: .\docs\templates\docs\acts_list.html:5 .\docs\templates\docs\add_city.html:3
+#: .\docs\templates\docs\cities.html:4 .\docs\templates\docs\delivery.html:3
 #: .\docs\templates\docs\edit_city.html:3
-#: .\docs\templates\docs\edit_name.html:3
-#: .\docs\templates\docs\handbook.html:2 .\docs\templates\docs\handbook.html:3
+#: .\docs\templates\docs\edit_name.html:3 .\docs\templates\docs\handbook.html:2
+#: .\docs\templates\docs\handbook.html:3
 #: .\docs\templates\docs\names_list.html:4
 #: .\docs\templates\docs\types_list.html:4
 #: .\index\templates\index\add_firm.html:3
@@ -532,8 +531,7 @@ msgstr "Количество"
 #: .\docs\templates\docs\delivery.html:20
 #: .\docs\templates\docs\delivery.html:92
 #: .\index\templates\index\at_work.html:31
-#: .\index\templates\index\basket.html:34
-#: .\index\templates\index\empty.html:40
+#: .\index\templates\index\basket.html:34 .\index\templates\index\empty.html:40
 #: .\index\templates\index\from_firm_to_stock.html:25
 #: .\index\templates\index\get_cart_ou.html:7
 #: .\index\templates\index\stock.html:39
@@ -550,26 +548,24 @@ msgstr "Номер"
 #: .\docs\api\views.py:313 .\docs\api\views.py:339 .\docs\api\views.py:362
 #: .\docs\api\views.py:383 .\docs\api\views.py:406
 #: .\index\templates\index\at_work.html:33
-#: .\index\templates\index\basket.html:36
-#: .\index\templates\index\empty.html:42 .\index\templates\index\stock.html:41
-#: .\index\templates\index\use.html:41
+#: .\index\templates\index\basket.html:36 .\index\templates\index\empty.html:42
+#: .\index\templates\index\stock.html:41 .\index\templates\index\use.html:41
 msgid "Amount<br/>recovery"
 msgstr "Количество<br/> перезаправок"
 
 #: .\docs\api\views.py:314 .\index\templates\index\stock.html.py:42
 msgid "Date add"
-msgstr "Дата добавления"
+msgstr "Дата "
 
 #: .\docs\api\views.py:314 .\index\templates\index\stock.html.py:42
 msgid "on stock"
-msgstr "на склад"
+msgstr "добавления на склад"
 
 #: .\docs\api\views.py:315 .\docs\api\views.py:342 .\docs\api\views.py:364
 #: .\docs\api\views.py:386 .\docs\api\views.py:408
 #: .\docs\templates\docs\types_list.html:29 .\index\forms\comment.py:11
 #: .\index\templates\index\at_work.html:36
-#: .\index\templates\index\basket.html:38
-#: .\index\templates\index\stock.html:44
+#: .\index\templates\index\basket.html:38 .\index\templates\index\stock.html:44
 msgid "comment"
 msgstr "Комментарий"
 
@@ -623,9 +619,8 @@ msgstr "Краткое содержание"
 #: .\docs\forms\add_doc.py:27 .\docs\models.py:11
 #: .\index\templates\index\add_empty_cartridge.html:45
 #: .\index\templates\index\add_items.html:43
-#: .\index\templates\index\basket.html:53
-#: .\index\templates\index\empty.html:61 .\index\templates\index\stock.html:60
-#: .\index\templates\index\use.html:59
+#: .\index\templates\index\basket.html:53 .\index\templates\index\empty.html:61
+#: .\index\templates\index\stock.html:60 .\index\templates\index\use.html:59
 msgid "Delivery agreement"
 msgstr "Договор поставки"
 
@@ -710,9 +705,8 @@ msgstr "Действие"
 #: .\index\templates\index\add_empty_cartridge.html:63
 #: .\index\templates\index\add_items.html:64
 #: .\index\templates\index\at_work.html:11
-#: .\index\templates\index\basket.html:14
-#: .\index\templates\index\empty.html:20 .\index\templates\index\stock.html:19
-#: .\index\templates\index\use.html:19
+#: .\index\templates\index\basket.html:14 .\index\templates\index\empty.html:20
+#: .\index\templates\index\stock.html:19 .\index\templates\index\use.html:19
 msgid "Download"
 msgstr "Скачать"
 
@@ -729,8 +723,7 @@ msgstr "Сформировать docx без группировки"
 msgid "Add city"
 msgstr "Добавить город"
 
-#: .\docs\templates\docs\add_city.html:3
-#: .\docs\templates\docs\edit_city.html:3
+#: .\docs\templates\docs\add_city.html:3 .\docs\templates\docs\edit_city.html:3
 #: .\docs\templates\docs\handbook.html:20
 msgid "Cities"
 msgstr "Города"
@@ -1377,22 +1370,20 @@ msgstr "Добавление нового типа"
 msgid "Cartridges on rebuilding"
 msgstr "Кариджи на заправке"
 
-#: .\index\templates\index\at_work.html:8
-#: .\index\templates\index\basket.html:9 .\index\templates\index\use.html:14
+#: .\index\templates\index\at_work.html:8 .\index\templates\index\basket.html:9
+#: .\index\templates\index\use.html:14
 msgid "Return to the stock"
 msgstr "Вернуть на склад"
 
 #: .\index\templates\index\at_work.html:14
-#: .\index\templates\index\basket.html:17
-#: .\index\templates\index\empty.html:23 .\index\templates\index\stock.html:22
-#: .\index\templates\index\use.html:22
+#: .\index\templates\index\basket.html:17 .\index\templates\index\empty.html:23
+#: .\index\templates\index\stock.html:22 .\index\templates\index\use.html:22
 msgid "Export to CSV with group"
 msgstr "Экспорт в CSV с группировкой"
 
 #: .\index\templates\index\at_work.html:15
-#: .\index\templates\index\basket.html:18
-#: .\index\templates\index\empty.html:24 .\index\templates\index\stock.html:23
-#: .\index\templates\index\use.html:23
+#: .\index\templates\index\basket.html:18 .\index\templates\index\empty.html:24
+#: .\index\templates\index\stock.html:23 .\index\templates\index\use.html:23
 msgid "Export to CSV without group"
 msgstr "Экспорт в CSV без группировки"
 
@@ -1441,20 +1432,18 @@ msgstr "Пустые"
 msgid "Basket"
 msgstr "Корзина"
 
-#: .\index\templates\index\basket.html:39
-#: .\index\templates\index\empty.html:46 .\index\templates\index\stock.html:45
+#: .\index\templates\index\basket.html:39 .\index\templates\index\empty.html:46
+#: .\index\templates\index\stock.html:45
 msgid "Actions"
 msgstr "Действие"
 
-#: .\index\templates\index\basket.html:51
-#: .\index\templates\index\empty.html:59 .\index\templates\index\stock.html:58
-#: .\index\templates\index\use.html:57
+#: .\index\templates\index\basket.html:51 .\index\templates\index\empty.html:59
+#: .\index\templates\index\stock.html:58 .\index\templates\index\use.html:57
 msgid "Edit a comment"
 msgstr "Редактировать комментарий"
 
-#: .\index\templates\index\basket.html:52
-#: .\index\templates\index\empty.html:60 .\index\templates\index\stock.html:59
-#: .\index\templates\index\use.html:58
+#: .\index\templates\index\basket.html:52 .\index\templates\index\empty.html:60
+#: .\index\templates\index\stock.html:59 .\index\templates\index\use.html:58
 msgid "Event viewer"
 msgstr "Просмотр событий"
 
