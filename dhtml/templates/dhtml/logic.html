@@ -1683,4 +1683,21 @@ $( function(){
         }
     });
 
+
+    $('.from_firm_to_stock').click( function() {
+        var selected = [];
+        $('.checkboxes input:checked').each(function() {
+            if ($(this).attr('value')) {
+                selected.push( $(this).attr('value') );    
+            }
+        });
+
+        if ( selected.length !== 0 ) {
+            var get_path = selected.join('s')
+            var loc = '{% url "index:from_firm_to_stock" %}' +  '?select=' + get_path;
+            window.location.href = loc;
+        }
+
+    });
+
 });

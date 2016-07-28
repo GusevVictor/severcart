@@ -19,7 +19,8 @@ from index.views import ( dashboard,
                         At_work,
                         bad_browser,
                         Basket,
-                        edit_cartridge_comment, )
+                        edit_cartridge_comment,
+                        from_firm_to_stock, )
 
 urlpatterns = [
     url(r'^$', dashboard, name='dashboard'),
@@ -41,4 +42,5 @@ urlpatterns = [
     url(r'^bad_browser/', bad_browser, name='bad_browser'),
     url(r'^basket/', Basket.as_view(), name='basket'),
     url(r'^edit_cartridge_comment/', edit_cartridge_comment, name='edit_cartridge_comment'),
+    url(r'^from_firm_to_stock/', from_firm_to_stock, name='from_firm_to_stock'),
 ]
