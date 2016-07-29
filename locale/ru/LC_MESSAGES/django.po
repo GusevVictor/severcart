@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-07-29 09:14+0500\n"
-"PO-Revision-Date: 2016-07-29 09:15+0500\n"
+"PO-Revision-Date: 2016-07-29 09:24+0500\n"
 "Last-Translator: \n"
 "Language-Team: severcart.org <sfcl@mail.ru>\n"
 "Language: ru\n"
@@ -1833,7 +1833,7 @@ msgstr "Количество"
 #: .\reports\templates\reports\spent_money.html:3
 #: .\reports\templates\reports\vertical_menu.html:14
 msgid "The report by spent money month"
-msgstr "Отчёт по расходованию денег за период"
+msgstr "Расходование денег за период"
 
 #: .\reports\templates\reports\spent_money.html:58
 msgid "Spent money"
@@ -1845,19 +1845,19 @@ msgstr "Пользователь"
 
 #: .\reports\templates\reports\vertical_menu.html:3
 msgid "Report on stale "
-msgstr "Отчёт по залежавшимся"
+msgstr "Залежавшиеся"
 
 #: .\reports\templates\reports\vertical_menu.html:7
 msgid "Report on depreciation"
-msgstr "Отчёт по амортизации"
+msgstr "Амортизация"
 
 #: .\reports\templates\reports\vertical_menu.html:10
 msgid "The report by users"
-msgstr "Отчёт по пользователям"
+msgstr "Пользователи"
 
 #: .\reports\templates\reports\vertical_menu.html:13
 msgid "The report by products"
-msgstr "Отчёт по используемым наименованиям"
+msgstr "Используемые наименования"
 
 #: .\search\templates\search\error.html:2
 msgid "Error search by number"

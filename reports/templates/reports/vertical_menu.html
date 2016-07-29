@@ -1,4 +1,5 @@
 {% load filters %}{% load i18n %}
+<span>{% trans 'Reports' %}</span>
 <ul class="vert-menu">
     <li class="{% navactive request 'reports:main_summary' %}"><a href="{% url 'reports:main_summary' %}">{% trans 'Report on stale ' %} <!-- Отчёт по залежавшимся -->
     </a>
