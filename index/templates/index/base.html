@@ -40,7 +40,7 @@
         {% block content %}{% endblock %}
     </div>
     <div class="footer">
-        <div class="text_in_footer">{% trans "Version" %}: 0.2.1&nbsp;&nbsp;&nbsp;&copy;&nbsp;&nbsp;&nbsp;<a href="http://severcart.org">severcart.org</a>&nbsp;&nbsp;&nbsp;2016</div>
+        <div class="text_in_footer">{% trans "Version" %}: {{ request.VERSION }}&nbsp;&nbsp;&nbsp;&copy;&nbsp;&nbsp;&nbsp;<a href="{{ request.HOME_SITE }}">www.severcart.org</a>&nbsp;&nbsp;&nbsp;{{ request.YEAR }}</div>
     </div>
 </body>
 </html>

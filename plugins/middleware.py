@@ -1,5 +1,6 @@
 # -*- coding:utf-8 -*-
 
+import datetime
 from django.utils import translation
 from django.conf import settings
 
@@ -16,4 +17,5 @@ class InsertVarToRequest(object):
         # иначе оставляем всё как есть
         
         request.HOME_SITE = settings.HOME_SITE
-        
+        request.VERSION   = settings.VERSION
+        request.YEAR      = datetime.date.today().year
