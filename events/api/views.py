@@ -23,7 +23,7 @@ logger = logging.getLogger(__name__)
 def show_event_page(request):
     """Передача списка событий исходя из номера пагинации.
     """
-    tmp_dict = {}
+    tmp_dict = dict()
     if not(request.user.is_authenticated()):
         # если пользователь не аутентифицирован, то ничего не возвращаем
         jsonr = json.dumps({ 'authenticated': False })
@@ -52,6 +52,7 @@ def show_event_page(request):
     start_date  = request.session['start_date']
     end_date    = request.session['end_date']
 
+    tmp_dict['has_next'] = 0
     if start_date:
         st_year  = int(start_date.get('year_value'))
         st_month = int(start_date.get('month_value'))
@@ -110,6 +111,12 @@ def show_event_page(request):
     tmp_dict['html_content'] = html_content
     tmp_dict['stop_pagination'] = '0'
     tmp_dict['next_page'] = next_page
+
+
+    # если страница имеет следующую, то добавляем кнопку просмотреть ещё, иначе не добавляем
+    if content.has_next():
+        tmp_dict['has_next'] = 1
+
     return JsonResponse(tmp_dict, safe=False)
 
 
@@ -118,8 +125,9 @@ def show_event_page(request):
 def date_filter(request):
     """Загрузка списка событий в соответствии с диапазонами.
     """
-    ansver  = dict()
-    context = dict()
+    ansver  = dict() # для ajax ответа на запрос
+    context = dict() # для рендеринга списка событий
+    ansver['has_next'] = 0
     try:
         dept_id = request.user.departament.pk
     except AttributeError:
@@ -194,7 +202,7 @@ def date_filter(request):
         except EmptyPage:
             # If page is out of range (e.g. 9999), deliver last page of results.
             #content = paginator.page(paginator.num_pages)
-            ansver['stop_pagination'] = '1'
+            ansver['has_next'] = content.has_next()
             return JsonResponse(ansver, safe=False)
 
         #
@@ -204,6 +212,11 @@ def date_filter(request):
         context['list_events'] = events_decoder(content, time_zone_offset, simple=False)
         html = render_to_string('events/show_all_events.html', context)
         ansver['html'] = html
+
+        # если страница имеет следующую, то добавляем кнопку просмотреть ещё, иначе не добавляем
+        if content.has_next():
+            ansver['has_next'] = 1
+
         return JsonResponse(ansver)
 
 

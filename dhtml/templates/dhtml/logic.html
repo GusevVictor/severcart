@@ -204,6 +204,7 @@ $( function(){
                 data:  {'start_date': start_date, 'end_date': end_date, 'time_zone_offset': time_zone_offset },
                 beforeSend: function( xhr, settings ){
                     $('.spinner').show();
+                    $('.events_see_more').hide(); // прячем кнопку "Показать ещё"
                     csrftoken = getCookie('csrftoken');
                     if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
                         xhr.setRequestHeader('X-CSRFToken', csrftoken);
@@ -213,9 +214,12 @@ $( function(){
                     $('.spinner').hide();
                     $('.show_all_events').css('background', 'none');
                     $('.show_all_events').html(msg.html);
-                    if (msg.stop_pagination === '1') {
+                    if (msg.has_next === 1) {
+                        $('.events_see_more').show();
+                    } else {
                         $('.events_see_more').remove();
                     }
+                    
                 },
                 error: function( msg ) {
                     $('.show_all_events').css('background', 'none');
