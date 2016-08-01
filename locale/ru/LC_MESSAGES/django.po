@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-07-29 09:14+0500\n"
-"PO-Revision-Date: 2016-07-29 09:24+0500\n"
+"POT-Creation-Date: 2016-08-01 15:33+0500\n"
+"PO-Revision-Date: 2016-08-01 15:35+0500\n"
 "Last-Translator: \n"
 "Language-Team: severcart.org <sfcl@mail.ru>\n"
 "Language: ru\n"
@@ -211,6 +211,7 @@ msgstr "Сменить пароль"
 #: .\reports\templates\reports\products.html:42
 #: .\reports\templates\reports\spent_money.html:43
 #: .\reports\templates\reports\users.html:37
+#: .\storages\templates\storages\edit_s.html:32
 msgid "Back"
 msgstr "Вернуться"
 
@@ -224,6 +225,7 @@ msgstr "Редактировать данные пользователя"
 #: .\index\templates\index\add_type.html:30
 #: .\service\templates\service\settings_mail.html:50
 #: .\service\templates\service\stickers.html:23
+#: .\storages\templates\storages\edit_s.html:31
 msgid "Save"
 msgstr "Сохранить"
 
@@ -272,7 +274,6 @@ msgstr "Добавить"
 #: .\docs\templates\docs\names_list.html:18
 #: .\docs\templates\docs\types_list.html:18
 #: .\index\templates\index\toner_refill.html:17
-#: .\storages\templates\storages\edit_s.html:31
 #: .\storages\templates\storages\list.html:21
 msgid "Edit"
 msgstr "Редактировать"
@@ -339,77 +340,77 @@ msgstr ""
 msgid "Send"
 msgstr "Отправить"
 
-#: .\conf\settings.py:69
+#: .\conf\settings.py:59
 msgid "Russian"
 msgstr "Русский"
 
-#: .\conf\settings.py:70
+#: .\conf\settings.py:60
 msgid "English"
 msgstr "Английский"
 
-#: .\dhtml\templates\dhtml\logic.html:258
-#: .\dhtml\templates\dhtml\logic.html:308
-#: .\dhtml\templates\dhtml\logic.html:578
-#: .\dhtml\templates\dhtml\logic.html:658
-#: .\dhtml\templates\dhtml\logic.html:743
-#: .\dhtml\templates\dhtml\logic.html:791
-#: .\dhtml\templates\dhtml\logic.html:906
-#: .\dhtml\templates\dhtml\logic.html:1011
-#: .\dhtml\templates\dhtml\logic.html:1145
-#: .\dhtml\templates\dhtml\logic.html:1193
-#: .\dhtml\templates\dhtml\logic.html:1251
+#: .\dhtml\templates\dhtml\logic.html:262
+#: .\dhtml\templates\dhtml\logic.html:312
+#: .\dhtml\templates\dhtml\logic.html:582
+#: .\dhtml\templates\dhtml\logic.html:662
+#: .\dhtml\templates\dhtml\logic.html:747
+#: .\dhtml\templates\dhtml\logic.html:795
+#: .\dhtml\templates\dhtml\logic.html:910
+#: .\dhtml\templates\dhtml\logic.html:1015
+#: .\dhtml\templates\dhtml\logic.html:1149
+#: .\dhtml\templates\dhtml\logic.html:1197
+#: .\dhtml\templates\dhtml\logic.html:1255
 msgid "<p>Server not available.</p>"
 msgstr "<p>Сервер не доступен.</p>"
 
-#: .\dhtml\templates\dhtml\logic.html:385
-#: .\dhtml\templates\dhtml\logic.html:426
-#: .\dhtml\templates\dhtml\logic.html:454
-#: .\dhtml\templates\dhtml\logic.html:482
+#: .\dhtml\templates\dhtml\logic.html:389
+#: .\dhtml\templates\dhtml\logic.html:430
+#: .\dhtml\templates\dhtml\logic.html:458
+#: .\dhtml\templates\dhtml\logic.html:486
 msgid "Server error :("
 msgstr "Ошибка на стороне сервера :("
 
-#: .\dhtml\templates\dhtml\logic.html:538
+#: .\dhtml\templates\dhtml\logic.html:542
 msgid "Are you sure you want to put the selected items to the Trash?"
 msgstr "Вы точно хотите переместить выбранные элементы в корзину?"
 
-#: .\dhtml\templates\dhtml\logic.html:596
+#: .\dhtml\templates\dhtml\logic.html:600
 msgid "Are you sure you want to delete consumable (s)?"
 msgstr "Вы точно хотите удалить картридж(и)?"
 
-#: .\dhtml\templates\dhtml\logic.html:632
+#: .\dhtml\templates\dhtml\logic.html:636
 msgid "You sure you want to return the selected items back to the store?"
 msgstr "Вы точно хотите вернуть выбранные картриджи обратно на склад?"
 
-#: .\dhtml\templates\dhtml\logic.html:705
+#: .\dhtml\templates\dhtml\logic.html:709
 msgid "Are you sure you want to remove the counterparty?"
 msgstr "Вы точно хотите удалить контрагента?"
 
-#: .\dhtml\templates\dhtml\logic.html:963
+#: .\dhtml\templates\dhtml\logic.html:967
 msgid "Are you sure you want to delete a document?"
 msgstr "Вы точно хоитие удалить документ?"
 
-#: .\dhtml\templates\dhtml\logic.html:975
+#: .\dhtml\templates\dhtml\logic.html:979
 msgid "Are you sure you want to delete the user?"
 msgstr "Вы точно хотите удалить пользователя?"
 
-#: .\dhtml\templates\dhtml\logic.html:1102
+#: .\dhtml\templates\dhtml\logic.html:1106
 msgid "Are you sure you want to delete?"
 msgstr "Вы точно хотите удалить?"
 
-#: .\dhtml\templates\dhtml\logic.html:1157
+#: .\dhtml\templates\dhtml\logic.html:1161
 msgid "Are you sure you want to delete city?"
 msgstr "Вы точно хотите удалить название города?"
 
-#: .\dhtml\templates\dhtml\logic.html:1263
+#: .\dhtml\templates\dhtml\logic.html:1267
 #: .\index\templates\index\base_menu.html:16
 msgid "Find by number"
 msgstr "Поиск по номеру"
 
-#: .\dhtml\templates\dhtml\logic.html:1532
+#: .\dhtml\templates\dhtml\logic.html:1536
 msgid "Are you sure you want to remove the storage room?"
 msgstr "Вы точно хотите удалить складское помещение?"
 
-#: .\dhtml\templates\dhtml\logic.html:1593
+#: .\dhtml\templates\dhtml\logic.html:1597
 msgid "<p>Server error :(</p>"
 msgstr "<p>Ошибка на стороне сервера :(</p>"
 
@@ -849,6 +850,7 @@ msgstr "Акты передачи на заправку"
 
 #: .\docs\templates\docs\handbook.html:19
 #: .\reports\templates\reports\amortizing.html:3
+#: .\reports\templates\reports\vertical_menu.html:2
 msgid "Reports"
 msgstr "Отчёты"
 
@@ -888,7 +890,7 @@ msgstr "Город \"%(city)s\" успешно добавлен."
 msgid "City \"%(city)s\" success edited."
 msgstr "Город \"%(city)s\"  успешно изменён."
 
-#: .\events\api\views.py:242
+#: .\events\api\views.py:255
 msgid "Not found"
 msgstr "Объект не найден."
 
@@ -1415,6 +1417,10 @@ msgstr "Справка"
 msgid "Version"
 msgstr "Версия"
 
+#: .\index\templates\index\base.html:43
+msgid "Request tech support"
+msgstr "Запрос в техподдержку"
+
 #: .\index\templates\index\base_menu.html:6
 msgid "Main"
 msgstr "Главная"
@@ -1831,7 +1837,7 @@ msgid "Count"
 msgstr "Количество"
 
 #: .\reports\templates\reports\spent_money.html:3
-#: .\reports\templates\reports\vertical_menu.html:14
+#: .\reports\templates\reports\vertical_menu.html:15
 msgid "The report by spent money month"
 msgstr "Расходование денег за период"
 
@@ -1843,19 +1849,19 @@ msgstr "Потрачено денег"
 msgid "UserName"
 msgstr "Пользователь"
 
-#: .\reports\templates\reports\vertical_menu.html:3
+#: .\reports\templates\reports\vertical_menu.html:4
 msgid "Report on stale "
 msgstr "Залежавшиеся"
 
-#: .\reports\templates\reports\vertical_menu.html:7
+#: .\reports\templates\reports\vertical_menu.html:8
 msgid "Report on depreciation"
 msgstr "Амортизация"
 
-#: .\reports\templates\reports\vertical_menu.html:10
+#: .\reports\templates\reports\vertical_menu.html:11
 msgid "The report by users"
 msgstr "Пользователи"
 
-#: .\reports\templates\reports\vertical_menu.html:13
+#: .\reports\templates\reports\vertical_menu.html:14
 msgid "The report by products"
 msgstr "Используемые наименования"
 
@@ -2009,10 +2015,6 @@ msgstr "Отменить добавление"
 msgid "Edit exist storage"
 msgstr "Редактировать выбранный склад"
 
-#: .\storages\templates\storages\edit_s.html:32
-msgid "Disable edit"
-msgstr "Отмена редактирования"
-
 #: .\storages\templates\storages\list.html:23
 msgid "Set default"
 msgstr "Установка по умолчанию"
@@ -2050,6 +2052,9 @@ msgstr "Склад не изменён."
 #: .\templates\404.html:5
 msgid "Page not found!"
 msgstr "Страница не найдена!"
+
+#~ msgid "Disable edit"
+#~ msgstr "Отмена редактирования"
 
 #~ msgid "Agreement for the supply"
 #~ msgstr "Договора на поставку"

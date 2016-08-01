@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-07-29 09:14+0500\n"
+"POT-Creation-Date: 2016-08-01 15:33+0500\n"
 "PO-Revision-Date: 2016-05-27 12:27+0500\n"
 "Last-Translator: \n"
 "Language-Team: severcart.org <sfcl@mail.ru>\n"
@@ -212,6 +212,7 @@ msgstr ""
 #: .\reports\templates\reports\products.html:42
 #: .\reports\templates\reports\spent_money.html:43
 #: .\reports\templates\reports\users.html:37
+#: .\storages\templates\storages\edit_s.html:32
 msgid "Back"
 msgstr ""
 
@@ -225,6 +226,7 @@ msgstr ""
 #: .\index\templates\index\add_type.html:30
 #: .\service\templates\service\settings_mail.html:50
 #: .\service\templates\service\stickers.html:23
+#: .\storages\templates\storages\edit_s.html:31
 msgid "Save"
 msgstr ""
 
@@ -273,7 +275,6 @@ msgstr ""
 #: .\docs\templates\docs\names_list.html:18
 #: .\docs\templates\docs\types_list.html:18
 #: .\index\templates\index\toner_refill.html:17
-#: .\storages\templates\storages\edit_s.html:31
 #: .\storages\templates\storages\list.html:21
 msgid "Edit"
 msgstr ""
@@ -338,77 +339,77 @@ msgstr ""
 msgid "Send"
 msgstr ""
 
-#: .\conf\settings.py:69
+#: .\conf\settings.py:59
 msgid "Russian"
 msgstr ""
 
-#: .\conf\settings.py:70
+#: .\conf\settings.py:60
 msgid "English"
 msgstr ""
 
-#: .\dhtml\templates\dhtml\logic.html:258
-#: .\dhtml\templates\dhtml\logic.html:308
-#: .\dhtml\templates\dhtml\logic.html:578
-#: .\dhtml\templates\dhtml\logic.html:658
-#: .\dhtml\templates\dhtml\logic.html:743
-#: .\dhtml\templates\dhtml\logic.html:791
-#: .\dhtml\templates\dhtml\logic.html:906
-#: .\dhtml\templates\dhtml\logic.html:1011
-#: .\dhtml\templates\dhtml\logic.html:1145
-#: .\dhtml\templates\dhtml\logic.html:1193
-#: .\dhtml\templates\dhtml\logic.html:1251
+#: .\dhtml\templates\dhtml\logic.html:262
+#: .\dhtml\templates\dhtml\logic.html:312
+#: .\dhtml\templates\dhtml\logic.html:582
+#: .\dhtml\templates\dhtml\logic.html:662
+#: .\dhtml\templates\dhtml\logic.html:747
+#: .\dhtml\templates\dhtml\logic.html:795
+#: .\dhtml\templates\dhtml\logic.html:910
+#: .\dhtml\templates\dhtml\logic.html:1015
+#: .\dhtml\templates\dhtml\logic.html:1149
+#: .\dhtml\templates\dhtml\logic.html:1197
+#: .\dhtml\templates\dhtml\logic.html:1255
 msgid "<p>Server not available.</p>"
 msgstr ""
 
-#: .\dhtml\templates\dhtml\logic.html:385
-#: .\dhtml\templates\dhtml\logic.html:426
-#: .\dhtml\templates\dhtml\logic.html:454
-#: .\dhtml\templates\dhtml\logic.html:482
+#: .\dhtml\templates\dhtml\logic.html:389
+#: .\dhtml\templates\dhtml\logic.html:430
+#: .\dhtml\templates\dhtml\logic.html:458
+#: .\dhtml\templates\dhtml\logic.html:486
 msgid "Server error :("
 msgstr ""
 
-#: .\dhtml\templates\dhtml\logic.html:538
+#: .\dhtml\templates\dhtml\logic.html:542
 msgid "Are you sure you want to put the selected items to the Trash?"
 msgstr ""
 
-#: .\dhtml\templates\dhtml\logic.html:596
+#: .\dhtml\templates\dhtml\logic.html:600
 msgid "Are you sure you want to delete consumable (s)?"
 msgstr ""
 
-#: .\dhtml\templates\dhtml\logic.html:632
+#: .\dhtml\templates\dhtml\logic.html:636
 msgid "You sure you want to return the selected items back to the store?"
 msgstr ""
 
-#: .\dhtml\templates\dhtml\logic.html:705
+#: .\dhtml\templates\dhtml\logic.html:709
 msgid "Are you sure you want to remove the counterparty?"
 msgstr ""
 
-#: .\dhtml\templates\dhtml\logic.html:963
+#: .\dhtml\templates\dhtml\logic.html:967
 msgid "Are you sure you want to delete a document?"
 msgstr ""
 
-#: .\dhtml\templates\dhtml\logic.html:975
+#: .\dhtml\templates\dhtml\logic.html:979
 msgid "Are you sure you want to delete the user?"
 msgstr ""
 
-#: .\dhtml\templates\dhtml\logic.html:1102
+#: .\dhtml\templates\dhtml\logic.html:1106
 msgid "Are you sure you want to delete?"
 msgstr ""
 
-#: .\dhtml\templates\dhtml\logic.html:1157
+#: .\dhtml\templates\dhtml\logic.html:1161
 msgid "Are you sure you want to delete city?"
 msgstr ""
 
-#: .\dhtml\templates\dhtml\logic.html:1263
+#: .\dhtml\templates\dhtml\logic.html:1267
 #: .\index\templates\index\base_menu.html:16
 msgid "Find by number"
 msgstr ""
 
-#: .\dhtml\templates\dhtml\logic.html:1532
+#: .\dhtml\templates\dhtml\logic.html:1536
 msgid "Are you sure you want to remove the storage room?"
 msgstr ""
 
-#: .\dhtml\templates\dhtml\logic.html:1593
+#: .\dhtml\templates\dhtml\logic.html:1597
 msgid "<p>Server error :(</p>"
 msgstr ""
 
@@ -857,6 +858,7 @@ msgstr ""
 
 #: .\docs\templates\docs\handbook.html:19
 #: .\reports\templates\reports\amortizing.html:3
+#: .\reports\templates\reports\vertical_menu.html:2
 msgid "Reports"
 msgstr ""
 
@@ -896,7 +898,7 @@ msgstr ""
 msgid "City \"%(city)s\" success edited."
 msgstr ""
 
-#: .\events\api\views.py:242
+#: .\events\api\views.py:255
 msgid "Not found"
 msgstr ""
 
@@ -1406,6 +1408,10 @@ msgstr ""
 msgid "Version"
 msgstr ""
 
+#: .\index\templates\index\base.html:43
+msgid "Request tech support"
+msgstr ""
+
 #: .\index\templates\index\base_menu.html:6
 msgid "Main"
 msgstr ""
@@ -1822,7 +1828,7 @@ msgid "Count"
 msgstr ""
 
 #: .\reports\templates\reports\spent_money.html:3
-#: .\reports\templates\reports\vertical_menu.html:14
+#: .\reports\templates\reports\vertical_menu.html:15
 msgid "The report by spent money month"
 msgstr ""
 
@@ -1834,19 +1840,19 @@ msgstr ""
 msgid "UserName"
 msgstr ""
 
-#: .\reports\templates\reports\vertical_menu.html:3
+#: .\reports\templates\reports\vertical_menu.html:4
 msgid "Report on stale "
 msgstr ""
 
-#: .\reports\templates\reports\vertical_menu.html:7
+#: .\reports\templates\reports\vertical_menu.html:8
 msgid "Report on depreciation"
 msgstr ""
 
-#: .\reports\templates\reports\vertical_menu.html:10
+#: .\reports\templates\reports\vertical_menu.html:11
 msgid "The report by users"
 msgstr ""
 
-#: .\reports\templates\reports\vertical_menu.html:13
+#: .\reports\templates\reports\vertical_menu.html:14
 msgid "The report by products"
 msgstr ""
 
@@ -1998,10 +2004,6 @@ msgstr ""
 #: .\storages\templates\storages\edit_s.html:4
 #: .\storages\templates\storages\edit_s.html:5
 msgid "Edit exist storage"
-msgstr ""
-
-#: .\storages\templates\storages\edit_s.html:32
-msgid "Disable edit"
 msgstr ""
 
 #: .\storages\templates\storages\list.html:23

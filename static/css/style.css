@@ -54,6 +54,7 @@ div.text_in_footer {
     height: 100%;
     line-height: 80px;
     text-align: center;
+    position: relative;
 }
 
 form label {
@@ -1071,5 +1072,11 @@ li.search form {
     background-color: buttonface;
     vertical-align: middle;
 }
-
 /* End search service */
+
+span.support_request {
+    display: inline-block;
+    position: absolute;
+    right:12px;
+    font-size: 14px;
+}
