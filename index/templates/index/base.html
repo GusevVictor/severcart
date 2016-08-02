@@ -40,7 +40,7 @@
         {% block content %}{% endblock %}
     </div>
     <div class="footer">
-        <div class="text_in_footer">{% trans "Version" %}: {{ request.VERSION }}&nbsp;&nbsp;&nbsp;&copy;&nbsp;&nbsp;&nbsp;<a href="{{ request.HOME_SITE }}">www.severcart.org</a>&nbsp;&nbsp;&nbsp;{{ request.YEAR }} <span class="right support_request"><a href="http://www.severcart.org/support/">{% trans 'Request tech support' %}</a></span></div>
+        <div class="text_in_footer">{% trans "Version" %}: {{ request.VERSION }}&nbsp;&nbsp;&nbsp;&copy;&nbsp;&nbsp;&nbsp;<a href="{{ request.HOME_SITE }}">www.severcart.org</a>&nbsp;&nbsp;&nbsp;{{ request.YEAR }} <span class="right support_request"><a href="http://www.severcart.org/support/{{ request.LANGUAGE_CODE }}/">{% trans 'Request tech support' %}</a></span></div>
     </div>
 </body>
 </html>
