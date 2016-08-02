@@ -1,5 +1,9 @@
 {% extends "index/base.html" %}{% load i18n %}
 {% block title %}{% trans "Manage org units" %}{% endblock %}
+{% block jqueryui %}
+<script src="{{ STATIC_URL }}js/foundation/foundation.js"></script>
+<script src="{{ STATIC_URL }}js/foundation/foundation.reveal.js"></script>
+{% endblock %}
 {% block breadcrumbs %}<a href="/"><img src="{{ STATIC_URL }}img/home.png" /></a> / <a href="{% url 'docs:handbook' %}">{% trans "References" %}</a> / {% trans "Manage org units" %}{% endblock %}
 {% load staticfiles %}
 {% load filters %}
@@ -49,7 +53,9 @@
     <div class="large-6 columns">
         <h4>{% trans "Structure of the organization" %}</h4>
         <div>
-            <a class="del_node button alert">{% trans "Delete" %}</a><img class="spinner" src="{{ STATIC_URL }}img/loader.gif" />
+            <a class="del_node button alert">{% trans "Delete" %}</a>
+            <a class="button show_modal" href="#">{% trans "Edit" %}</a>
+            <img class="spinner" src="{{ STATIC_URL }}img/loader.gif" />
         </div>
         <div class="marginTop"></div>
         <table class="checkboxes">
@@ -61,11 +67,78 @@
             {% for node,structure in bulk|tree_info:"ancestors" %}
                 <tr>
                     <td><input type="checkbox" name="node_id" value={{ node.pk }} /></td>
-                    <td><span class="gi">{{ node.level | dash }}</span>{{ node.name }}</td> 
+                    <td><span class="gi">{{ node.level | dash }}</span><span class="ou_{{ node.pk }}">{{ node.name }}</span></td> 
                     <td>{{ node.pk }}</td>       
                 </tr>
             {% endfor %}
         </table>
     </div>
 </div>
+
+<div id="myModal" class="reveal-modal small" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog">
+  <h2 id="modalTitle">{% trans 'The name change' %}</h2>
+  <div>
+    <form class="change_ou_name">{% csrf_token %}
+        <input type="hidden" value="99" name="ouid" />
+        <input type="text" class="ou_value" value="Изменяемый текст"  name="ou_name"/>
+    </form>
+  </div>
+  <a class="close-reveal-modal" aria-label="Close">&#215;</a>
+  <div class="right">
+    <img class="spinner_ou" src="{{ STATIC_URL }}img/loader.gif" />
+    <a class="close_modal_win button" aria-label="Close">{% trans 'Close' %}</a>
+<a class="save_and_close button">{% trans 'Save and close' %}</a>
+  </div>
+</div>
+<script>
+    $(document).foundation();
+    var ouid = 0;
+    $('a.close_modal_win').on('click', function() {
+        $('#myModal').foundation('reveal', 'close');
+    });
+    
+    $('a.show_modal').click( function() {
+        var selected = [];
+        $('.checkboxes input:checked').each(function() {
+            if ($(this).attr('value')) {
+                selected.push( $(this).attr('value') );
+            }
+        });
+        if (selected.length === 1) {
+            ouid = selected[0];
+            var ou_class =  '.ou_' + ouid;
+            var uo_name = $(ou_class).text();
+            $('input.ou_value').attr('value', uo_name);
+            $('#myModal').foundation('reveal', 'open');
+        }
+        
+    });
+
+    $('.save_and_close').click( function() {
+       // изменение имени организационного подразделения через якс 
+       // запрос
+        $.ajax({
+            method: 'POST',
+            url:  '{% url "index:change_ou_name" %}',
+            data:  {'ouid': ouid, 'ou_name': $('input.ou_value').val()},
+            beforeSend: function( xhr, settings ){
+                csrftoken = getCookie('csrftoken');
+                $('.spinner_ou').show();
+                if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
+                    xhr.setRequestHeader('X-CSRFToken', csrftoken);
+                }
+            },
+            success: function( msg ) {
+                $('.spinner_ou').hide();
+                $('#myModal').foundation('reveal', 'close');
+                window.location.href = {% url 'index:tree_list' %};
+            },
+            error: function( msg ) {
+                $('.spinner_ou').hide();
+                сonsole.log(msg);
+            },
+        }); 
+    });
+
+</script>
 {% endblock %}

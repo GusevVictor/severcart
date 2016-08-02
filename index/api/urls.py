@@ -14,6 +14,7 @@ from index.api.views import (   ajax_add_session_items,
                                 view_events,
                                 transfer_to_firm,
                                 from_basket_to_stock,
+                                change_ou_name,
                             )
 from accounts.api.views import del_users
 
@@ -33,4 +34,5 @@ urlpatterns = [
     url('^view_events/', view_events, name='view_events'),
     url('^transfer_to_firm/', transfer_to_firm, name='api_transfer_to_firm'),
     url('^from_basket_to_stock/', from_basket_to_stock, name='from_basket_to_stock'),
+    url('^change_ou_name/', change_ou_name, name='change_ou_name'),
 ]

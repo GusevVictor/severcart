@@ -4,7 +4,7 @@ import json
 from django.db import transaction
 from django.db import models
 from django.utils import timezone
-from django.http import JsonResponse, HttpResponse
+from django.http import JsonResponse, Http404, HttpResponse
 from django.conf import settings
 from django.core.urlresolvers import reverse
 from django.template.loader import render_to_string
@@ -585,4 +585,36 @@ def from_basket_to_stock(request):
         m1.cart_date_change = timezone.now()
         m1.save()
 
+    return JsonResponse(ansver)
+
+
+@check_ajax_auth
+@is_admin
+def change_ou_name(request):
+    """Изменение имени организационного подразделения.
+    """
+    if request.method != 'POST':
+        return HttpResponse('<h1>' + _('Only use POST requests!') + '</h1>')
+
+    ansver = dict()
+    ansver['error'] = 1
+    ouid = request.POST.getlist('ouid', [])
+    ou_name = request.POST.getlist('ou_name', [])
+    try:
+        ouid = ouid[0]
+        ou_name = ou_name[0]
+    except:
+        raise Http404
+    try:
+        ouid = int(ouid)
+    except:
+        ouid = 0
+    try:
+        ou = OrganizationUnits.objects.get(pk=ouid)
+    except:
+        raise Http404
+        
+    ou.name = ou_name
+    ou.save()
+    ansver['error'] = 0
     return JsonResponse(ansver)

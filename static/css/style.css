@@ -193,7 +193,8 @@ span.gi {
 .filter_spinner,
 .spinner_pdf,
 .spinner_sett,
-.spinner_send {
+.spinner_send,
+.spinner_ou {
     margin-left: 10px;
     display: none;
 }
