@@ -2,6 +2,9 @@
 {% load pagination  %}
 {% block title %}{% trans "Blank consumables" %}{% endblock %}
 {% block breadcrumbs %}<a href="/"><img src="{{ STATIC_URL }}img/home.png" /></a> / {% trans "Blank consumables" %}{% endblock %}
+{% block jqueryui%}<link rel="stylesheet" href="{{ STATIC_URL }}css/jquery.powertip-dark.min.css" />
+<script src="{{ STATIC_URL }}js/jquery.powertip.min.js"></script>
+<script src="{{ STATIC_URL }}js/activate.powertip.js"></script>{% endblock %}
 {% block help_url %}
 {{ request.HOME_SITE }}/help/{{ request.LANGUAGE_CODE }}/empty/
 {% endblock %}
@@ -55,7 +58,7 @@
                         <td>{{ i.cart_itm_name }}</td>
                         <td>{{ i.cart_number_refills }}</td>
                         <td>{{ i.cart_date_change|date:"d.m.Y" }}</td>
-                        <td>{{ i.sklad }} <span class="info_ico" title="{{ i.sklad_title }} {{ i.sklad_address }}"></span></td>
+                        <td>{{ i.sklad }} <span data-powertip="{{ i.sklad_title }} {{ i.sklad_address }}" class="info_ico"></span></td>
                         <td><div class="comment_in_cell" title="{{ i.comment }}">{{ i.comment|truncatechars:35 }}</div></td>
                         <td><select class="cartridge_action" data="{{ i.id }}">
                             <option selected></option>
