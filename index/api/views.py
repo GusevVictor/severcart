@@ -222,14 +222,18 @@ def transfer_to_stock(request):
     ansver = dict()
     for inx in checked_cartr:
         m1 = CartridgeItem.objects.get(pk=inx)
-        m1.cart_status = 3     # пустой объект на складе
-        tmp_dept = m1.departament
-        m1.departament = request.user.departament
-        m1.cart_date_change = timezone.now()
-        m1.save()
-        list_cplx.append((m1.id, str(m1.cart_itm_name), str(tmp_dept), m1.cart_number))
+        # проверяем принадлежность перемещаемого РМ департаменту 
+        # пользователя.
+        if m1.departament in request.user.departament.get_descendants():
+            m1.cart_status = 3     # пустой объект на складе
+            tmp_dept = m1.departament
+            m1.departament = request.user.departament
+            m1.cart_date_change = timezone.now()
+            m1.save()
+            list_cplx.append((m1.id, str(m1.cart_itm_name), str(tmp_dept), m1.cart_number))
 
-    sign_tr_empty_cart_to_stock.send(sender=None, list_cplx=list_cplx, request=request)
+        if list_cplx:
+            sign_tr_empty_cart_to_stock.send(sender=None, list_cplx=list_cplx, request=request)
     ansver['error'] = '0'
     ansver['text']   = _('Cartridges successfully moved.')
     return JsonResponse(ansver, safe=False)
@@ -276,6 +280,7 @@ def transfer_to_firm(request):
         else:
             act_number   = str(timezone.now().year) + '_1'
 
+        # сохраняем в БД акт передачи РМ на заправку
         act_doc = RefillingCart(number       = act_number,
                                 date_created = timezone.now(),
                                 firm         = firm,
@@ -290,19 +295,26 @@ def transfer_to_firm(request):
         show_numbers = list()
         for inx in numbers:
             m1 = CartridgeItem.objects.get(pk=inx)
-            m1.cart_status = 4 # находится на заправке
-            m1.filled_firm = firm
-            m1.cart_date_change = timezone.now()
-            m1.save()
-            list_cplx.append((m1.pk, str(m1.cart_itm_name), m1.cart_number))
-            show_numbers.append(m1.cart_number)
-            
-        sign_tr_empty_cart_to_firm.send(sender=None, 
-                                        list_cplx=list_cplx, 
-                                        request=request, 
-                                        firm=str(firm)
-                                        )
-        ansver['success'] = _('Cartridges %(cart_nums)s successfully moved to firm.') % {'cart_nums': str(show_numbers)}
+            # проверяем принадлежность перемещаемого РМ департаменту 
+            # пользователя.
+            if m1.departament == request.user.departament:
+                m1.cart_status = 4 # находится на заправке
+                m1.filled_firm = firm
+                m1.cart_date_change = timezone.now()
+                m1.save()
+                list_cplx.append((m1.pk, str(m1.cart_itm_name), m1.cart_number))
+                show_numbers.append(m1.cart_number)
+        
+        if list_cplx:
+            sign_tr_empty_cart_to_firm.send(sender=None, 
+                                            list_cplx=list_cplx, 
+                                            request=request, 
+                                            firm=str(firm)
+                                            )
+        if len(show_numbers):
+            ansver['success'] = _('Cartridges %(cart_nums)s successfully moved to firm.') % {'cart_nums': str(show_numbers)}
+        else:
+            ansver['success'] = _('No transmission facilities')
     else:
         # если форма содержит ошибки, то сообщаем о них пользователю.
         error_messages = dict([(key, [error for error in value]) for key, value in form.errors.items()])
@@ -374,10 +386,14 @@ def turf_cartridge(request):
     list_cplx = []
     for ind in ar:
         node = CartridgeItem.objects.get(pk=ind)
-        list_cplx.append((node.id, str(node.cart_itm_name), node.cart_number))
-        node.delete()
-
-    sign_turf_cart.send(sender=None, list_cplx=list_cplx, request=request)
+        # проверяем принадлежность перемещаемого РМ департаменту 
+        # пользователя.
+        if node.departament == request.user.departament:
+            list_cplx.append((node.id, str(node.cart_itm_name), node.cart_number))
+            node.delete()
+    
+    if list_cplx:
+        sign_turf_cart.send(sender=None, list_cplx=list_cplx, request=request)
 
     return HttpResponse(_('Cartridjes deleted!'))
 
@@ -413,13 +429,17 @@ def transfer_to_basket(request):
     list_cplx = []
     for inx in checked_cartr:
         m1 = CartridgeItem.objects.get(pk=inx)
-        m1.cart_status = cart_status  # в корзинку картриджи  
-        m1.departament = request.user.departament
-        m1.cart_date_change = timezone.now()
-        m1.save()
-        list_cplx.append((m1.id, str(m1.cart_itm_name), m1.cart_number))
+        # проверяем принадлежность перемещаемого РМ департаменту 
+        # пользователя.
+        if m1.departament == request.user.departament:
+            m1.cart_status = cart_status
+            m1.departament = request.user.departament
+            m1.cart_date_change = timezone.now()
+            m1.save()
+            list_cplx.append((m1.id, str(m1.cart_itm_name), m1.cart_number))
     
-    sign_tr_cart_to_basket.send(sender=None, list_cplx=list_cplx, request=request)
+        if list_cplx:
+            sign_tr_cart_to_basket.send(sender=None, list_cplx=list_cplx, request=request)
     ansver['error'] = '0'
     ansver['text']   = _('Cartridges successfully transferred to basket.')
     return JsonResponse(ansver)
@@ -463,7 +483,7 @@ def get_cart_ou(request):
 
 @check_ajax_auth
 def move_to_use(request):
-    """
+    """Передача РМ в пользование.
     """
     if request.method != 'POST':
         return HttpResponse('<h1>' + _('Only use POST requests!') + '</h1>')
@@ -487,29 +507,34 @@ def move_to_use(request):
     list_cplx = []
     for inx in moved:
         m1 = CartridgeItem.objects.get(pk=inx)
-        m1.cart_status = 2 # объект находится в пользовании
-        m1.departament = get(id_ou)
-        m1.cart_date_change = timezone.now()
-        m1.save()
+        # проверяем принадлежность перемещаемого РМ департаменту 
+        # пользователя.
+        if m1.departament == request.user.departament:
+            m1.cart_status = 2 # объект находится в пользовании
+            m1.departament = get(id_ou)
+            m1.cart_date_change = timezone.now()
+            m1.save()
+            list_cplx.append((m1.id, str(m1.cart_itm_name), m1.cart_number))
         
-        list_cplx.append((m1.id, str(m1.cart_itm_name), m1.cart_number))
-    sign_tr_cart_to_uses.send(sender=None, 
-                                        list_cplx=list_cplx,
-                                        request=request,
-                                        org=str(get(id_ou)))
+        if list_cplx:
+            sign_tr_cart_to_uses.send(sender=None, list_cplx=list_cplx, request=request, org=str(get(id_ou)))
 
     list_cplx = [] 
     if  installed:
         for inx in installed:
-            m1 = CartridgeItem.objects.get(pk=inx)
-            m1.cart_status = 3     # пустой объект на складе
-            tmp_dept = m1.departament
-            m1.departament = request.user.departament
-            m1.cart_date_change = timezone.now()
-            m1.save()
-            list_cplx.append((m1.id, str(m1.cart_itm_name), str(tmp_dept), m1.cart_number))
+            # проверяем принадлежность перемещаемого РМ департаменту 
+            # пользователя.
+            if m1.departament == request.user.departament:
+                m1 = CartridgeItem.objects.get(pk=inx)
+                m1.cart_status = 3     # пустой объект на складе
+                tmp_dept = m1.departament
+                m1.departament = request.user.departament
+                m1.cart_date_change = timezone.now()
+                m1.save()
+                list_cplx.append((m1.id, str(m1.cart_itm_name), str(tmp_dept), m1.cart_number))
 
-        sign_tr_empty_cart_to_stock.send(sender=None, list_cplx=list_cplx, request=request)
+            if list_cplx:
+                sign_tr_empty_cart_to_stock.send(sender=None, list_cplx=list_cplx, request=request)
    
     ansver['error'] = '0'
     ansver['url']   = reverse('index:stock')
@@ -576,15 +601,17 @@ def from_basket_to_stock(request):
 
     for inx in ar:
         m1 = CartridgeItem.objects.get(pk=inx)
-        if m1.cart_status == 5:
-            m1.cart_status = 1  # возвращаем обратно на склад заполненным
-        elif m1.cart_status == 6:
-            m1.cart_status = 3  # возвращаем обратно на склад пустым    
-        else:
-            raise Http404
-        m1.cart_date_change = timezone.now()
-        m1.save()
-
+        # проверяем принадлежность перемещаемого РМ департаменту 
+        # пользователя.
+        if m1.departament == request.user.departament:
+            if m1.cart_status == 5:
+                m1.cart_status = 1  # возвращаем обратно на склад заполненным
+            elif m1.cart_status == 6:
+                m1.cart_status = 3  # возвращаем обратно на склад пустым    
+            else:
+                raise Http404
+            m1.cart_date_change = timezone.now()
+            m1.save()
     return JsonResponse(ansver)
 
 

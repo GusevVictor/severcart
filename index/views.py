@@ -361,9 +361,14 @@ def transfe_for_use(request):
         tmp2 = []
         cartr_objs = list()
         # преобразовываем айдишники в условные номера
+        # данная информация исключительно информативная
         for cart_id in checked_cartr:
-            tmp2.append(CartridgeItem.objects.get(pk=cart_id).cart_number)
-            cartr_objs.append(CartridgeItem.objects.get(pk=cart_id))
+            m1 = CartridgeItem.objects.get(pk=cart_id)
+            # проверяем принадлежность перемещаемого РМ департаменту 
+            # пользователя.
+            if m1.departament == request.user.departament:
+                tmp2.append(m1.cart_number)
+                cartr_objs.append(m1)
         checked_cartr = str(tmp2)
         checked_cartr = checked_cartr[1:-1]
         context['checked_cartr'] = checked_cartr
@@ -606,7 +611,11 @@ def transfer_to_firm(request):
         # преобразовываем айдишники в условные номера
         transfe_objs = list()
         for cart_id in checked_cartr:
-            transfe_objs.append(CartridgeItem.objects.get(pk=cart_id))
+            m1 = CartridgeItem.objects.get(pk=cart_id)
+            # проверяем принадлежность перемещаемого РМ департаменту 
+            # пользователя.
+            if m1.departament == request.user.departament:
+                transfe_objs.append(m1)
         
         checked_cartr = str(checked_cartr)  # преобразуем список в строку
         checked_cartr = checked_cartr[1:-1] # убираем угловые скобочки
@@ -648,16 +657,20 @@ def from_firm_to_stock(request):
         list_cplx = []
         for inx in tmp:
             m1 = CartridgeItem.objects.get(pk=inx)
-            filled_firm = str(m1.filled_firm)
-            m1.filled_firm = None
-            m1.cart_status = 1
-            m1.cart_date_change = timezone.now()
-            m1.cart_number_refills = int(m1.cart_number_refills) + 1
-            m1.save(update_fields=['filled_firm', 'cart_status', 'cart_number_refills', 'cart_date_change'])
-            repair_actions = request.POST.getlist('cart_'+str(inx))
-            list_cplx.append((m1.id, str(m1.cart_itm_name), filled_firm, repair_actions, m1.cart_number))
-
-        sign_tr_filled_cart_to_stock.send(sender=None, list_cplx=list_cplx, request=request)
+            # проверяем принадлежность перемещаемого РМ департаменту 
+            # пользователя.
+            if m1.departament == request.user.departament:
+                filled_firm = str(m1.filled_firm)
+                m1.filled_firm = None
+                m1.cart_status = 1
+                m1.cart_date_change = timezone.now()
+                m1.cart_number_refills = int(m1.cart_number_refills) + 1
+                m1.save(update_fields=['filled_firm', 'cart_status', 'cart_number_refills', 'cart_date_change'])
+                repair_actions = request.POST.getlist('cart_'+str(inx))
+                list_cplx.append((m1.id, str(m1.cart_itm_name), filled_firm, repair_actions, m1.cart_number))
+            
+            if list_cplx:
+                sign_tr_filled_cart_to_stock.send(sender=None, list_cplx=list_cplx, request=request)
         return HttpResponseRedirect(reverse('index:at_work'))
     return render(request, 'index/from_firm_to_stock.html', {'checked_cartr': checked_cartr, 
                                                             'list_cart': list_cart, 
