@@ -11,6 +11,7 @@ from common.helpers import is_admin
 import logging
 logger = logging.getLogger(__name__)
 
+
 @is_admin
 @check_ajax_auth
 def set_default(request):
@@ -35,7 +36,6 @@ def set_default(request):
     # должен быть равен департаменту склада.
     u_dept_id = request.user.departament.pk
     s_dept_id = m1.departament.pk
-
     if u_dept_id == s_dept_id:
         m2 = Storages.objects.filter(Q(default=True) & Q(departament=request.user.departament))
         for elem in m2:

@@ -6,13 +6,15 @@ from django.utils.decorators import method_decorator
 from django.views.decorators.cache import never_cache
 from django.utils.translation import ugettext_lazy as _
 from common.cbv import GridListView
+from common.helpers import is_admin
 from storages.models import Storages
 from storages.forms import AddStorage
 
 class ViewStorages(GridListView):
     """Вывод списка складских помещений организации.
     """
-    @method_decorator(login_required)
+    @method_decorator(is_admin)
+    #@method_decorator(login_required)
     @method_decorator(never_cache)
     def dispatch(self, *args, **kwargs):
         return super(ViewStorages, self).dispatch(*args, **kwargs)
@@ -25,7 +27,8 @@ class ViewStorages(GridListView):
         return render(request, 'storages/list.html', self.context)
 
 
-@login_required
+@is_admin
+#@login_required
 @never_cache
 def add_s(request):
     """Добавление нового складского помещения.
@@ -72,8 +75,8 @@ def add_s(request):
     return render(request, 'storages/add_s.html', context);
 
 
-
-@login_required
+@is_admin
+#@login_required
 @never_cache
 def edit_s(request):
     """Редактирование информации о складском помещении.
