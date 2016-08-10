@@ -16,13 +16,13 @@
     </div>
 </div>
 <div class="row">
-    <div class="large-6 columns">
+    <div class="large-7 columns">
         <a class="tr_to_firm button" href="#">{% trans "Transfer to refuel" %}</a>
         <a class="button" href="{% url 'index:add_empty_cartridge' %}">{% trans "Add_empty" %}</a>
         <a class="tr_to_recycle_bin button alert no_follow" href="#" atype="6">{% trans "In basket" %}</a>
         <img class="spinner" src="{{ STATIC_URL }}img/loader.gif" />
     </div>
-    <div class="large-6 columns text-right">
+    <div class="large-5 columns text-right">
         <a class="download_doc" href="#">{% trans 'Download' %}</a>
         <img class="export_spinner" src="{{ STATIC_URL }}img/loader.gif" />
         <select class="export_type">
