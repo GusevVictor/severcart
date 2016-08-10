@@ -1,0 +1,13 @@
+{% extends "index/base.html" %}{% load i18n %}
+{% block title %}{% trans "Error 404" %}{% endblock %}
+{% block breadcrumbs %}<a href="/"><img src="{{ STATIC_URL }}img/home.png" /></a> / {% trans "Error 404" %}{% endblock %}
+{% block help_url %}
+{{ request.HOME_SITE }}/help/{{ request.LANGUAGE_CODE }}/error404/
+{% endblock %}
+{% block content %}
+<div class="row">
+    <dic class="large-12 columns">
+        <h1>{% trans "Error 404" %}</h1>
+    </div>
+</div>
+{% endblock %}
