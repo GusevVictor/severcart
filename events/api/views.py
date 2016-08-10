@@ -206,7 +206,7 @@ def date_filter(request):
             return JsonResponse(ansver, safe=False)
 
         #
-        context['count_events'] = int(list_events.count())
+        context['count_events'] = len(list_events)
         context['next_page'] = next_page + 1;
         context['max_count_events'] = MAX_EVENT_LIST
         context['list_events'] = events_decoder(content, time_zone_offset, simple=False)
