@@ -9,6 +9,7 @@ from django.conf import settings
 from django.core.urlresolvers import reverse
 from django.template.loader import render_to_string
 from django.utils.translation import ugettext as _
+from django.contrib import messages
 from common.helpers import is_admin
 from events.models import Events
 from events.helpers import events_decoder
@@ -504,7 +505,8 @@ def move_to_use(request):
         return JsonResponse(ansver)
     
     get = lambda node_id: OrganizationUnits.objects.get(pk=node_id)
-    list_cplx = []
+    list_cplx = list()
+    show_numbers = list() # используется для информационных сообщений
     for inx in moved:
         m1 = CartridgeItem.objects.get(pk=inx)
         # проверяем принадлежность перемещаемого РМ департаменту 
@@ -513,6 +515,7 @@ def move_to_use(request):
             m1.cart_status = 2 # объект находится в пользовании
             m1.departament = get(id_ou)
             m1.cart_date_change = timezone.now()
+            show_numbers.append(m1.cart_number)
             m1.save()
             list_cplx.append((m1.id, str(m1.cart_itm_name), m1.cart_number))
         
@@ -521,6 +524,7 @@ def move_to_use(request):
 
     list_cplx = [] 
     if  installed:
+        # если выбрано возврат РМ от пользователя обратно на склад
         for inx in installed:
             # проверяем принадлежность перемещаемого РМ департаменту 
             # пользователя.
@@ -538,7 +542,8 @@ def move_to_use(request):
    
     ansver['error'] = '0'
     ansver['url']   = reverse('index:stock')
-    
+    msg = _('Cartridges %(cart_list)s successfully transferred for use') % {'cart_list': show_numbers}
+    messages.success(request, msg)
     return JsonResponse(ansver)
 
 @check_ajax_auth

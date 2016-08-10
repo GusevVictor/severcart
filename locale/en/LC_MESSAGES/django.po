@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-08-09 11:17+0500\n"
+"POT-Creation-Date: 2016-08-10 11:07+0500\n"
 "PO-Revision-Date: 2016-05-27 12:27+0500\n"
 "Last-Translator: \n"
 "Language-Team: severcart.org <sfcl@mail.ru>\n"
@@ -207,7 +207,7 @@ msgstr ""
 #: .\index\templates\index\del_firm.html:28
 #: .\index\templates\index\edit_cartridge_comment.html:15
 #: .\index\templates\index\edit_firm.html:21
-#: .\index\templates\index\from_firm_to_stock.html:48
+#: .\index\templates\index\from_firm_to_stock.html:49
 #: .\index\templates\index\transfe_for_use.html:43
 #: .\reports\templates\reports\products.html:42
 #: .\reports\templates\reports\spent_money.html:43
@@ -415,11 +415,11 @@ msgid "<p>Server error :(</p>"
 msgstr ""
 
 #: .\docs\api\views.py:30 .\docs\api\views.py:78 .\docs\api\views.py:110
-#: .\docs\api\views.py:429 .\index\api\views.py:42 .\index\api\views.py:77
-#: .\index\api\views.py:218 .\index\api\views.py:248 .\index\api\views.py:406
-#: .\index\api\views.py:453 .\index\api\views.py:474 .\index\api\views.py:489
-#: .\index\api\views.py:624 .\reports\api\views.py:56
-#: .\storages\api\views.py:20 .\storages\api\views.py:59
+#: .\docs\api\views.py:429 .\index\api\views.py:43 .\index\api\views.py:78
+#: .\index\api\views.py:219 .\index\api\views.py:249 .\index\api\views.py:407
+#: .\index\api\views.py:454 .\index\api\views.py:475 .\index\api\views.py:490
+#: .\index\api\views.py:629 .\reports\api\views.py:56
+#: .\storages\api\views.py:21 .\storages\api\views.py:59
 msgid "Only use POST requests!"
 msgstr ""
 
@@ -431,7 +431,7 @@ msgstr ""
 msgid "Name can not be removed, ie. other objects reference it."
 msgstr ""
 
-#: .\docs\api\views.py:54 .\docs\api\views.py:68 .\index\api\views.py:374
+#: .\docs\api\views.py:54 .\docs\api\views.py:68 .\index\api\views.py:375
 msgid "Name deleted successfully."
 msgstr ""
 
@@ -506,10 +506,10 @@ msgstr ""
 #: .\index\templates\index\at_work.html:35
 #: .\index\templates\index\basket.html:38
 #: .\index\templates\index\del_firm.html:9
-#: .\index\templates\index\empty.html:44
-#: .\index\templates\index\from_firm_to_stock.html:29
+#: .\index\templates\index\empty.html:47
+#: .\index\templates\index\from_firm_to_stock.html:30
 #: .\index\templates\index\get_cart_ou.html:8
-#: .\index\templates\index\stock.html:43
+#: .\index\templates\index\stock.html:55
 #: .\index\templates\index\toner_refill.html:31
 #: .\index\templates\index\transfe_for_use.html:17
 #: .\index\templates\index\transfer_to_firm.html:26
@@ -533,10 +533,10 @@ msgstr ""
 #: .\docs\templates\docs\delivery.html:95
 #: .\index\templates\index\at_work.html:34
 #: .\index\templates\index\basket.html:37
-#: .\index\templates\index\empty.html:43
-#: .\index\templates\index\from_firm_to_stock.html:28
+#: .\index\templates\index\empty.html:46
+#: .\index\templates\index\from_firm_to_stock.html:29
 #: .\index\templates\index\get_cart_ou.html:7
-#: .\index\templates\index\stock.html:42
+#: .\index\templates\index\stock.html:54
 #: .\index\templates\index\transfe_for_use.html:16
 #: .\index\templates\index\transfer_to_firm.html:25
 #: .\index\templates\index\tree_list.html:65
@@ -551,16 +551,16 @@ msgstr "ID"
 #: .\docs\api\views.py:383 .\docs\api\views.py:406
 #: .\index\templates\index\at_work.html:36
 #: .\index\templates\index\basket.html:39
-#: .\index\templates\index\empty.html:45 .\index\templates\index\stock.html:44
+#: .\index\templates\index\empty.html:48 .\index\templates\index\stock.html:56
 #: .\index\templates\index\use.html:44
 msgid "Amount<br/>recovery"
 msgstr ""
 
-#: .\docs\api\views.py:314 .\index\templates\index\stock.html.py:45
+#: .\docs\api\views.py:314 .\index\templates\index\stock.html.py:57
 msgid "Date add"
 msgstr ""
 
-#: .\docs\api\views.py:314 .\index\templates\index\stock.html.py:45
+#: .\docs\api\views.py:314 .\index\templates\index\stock.html.py:57
 msgid "on stock"
 msgstr ""
 
@@ -569,7 +569,7 @@ msgstr ""
 #: .\docs\templates\docs\types_list.html:32 .\index\forms\comment.py:11
 #: .\index\templates\index\at_work.html:39
 #: .\index\templates\index\basket.html:41
-#: .\index\templates\index\stock.html:47
+#: .\index\templates\index\stock.html:59
 msgid "comment"
 msgstr "Comment"
 
@@ -577,7 +577,7 @@ msgstr "Comment"
 msgid "Date transfe"
 msgstr ""
 
-#: .\docs\api\views.py:363 .\index\templates\index\empty.html.py:46
+#: .\docs\api\views.py:363 .\index\templates\index\empty.html.py:49
 msgid "Date return"
 msgstr ""
 
@@ -624,7 +624,7 @@ msgstr ""
 #: .\index\templates\index\add_empty_cartridge.html:48
 #: .\index\templates\index\add_items.html:46
 #: .\index\templates\index\basket.html:56
-#: .\index\templates\index\empty.html:64 .\index\templates\index\stock.html:63
+#: .\index\templates\index\empty.html:67 .\index\templates\index\stock.html:75
 #: .\index\templates\index\use.html:62
 msgid "Delivery agreement"
 msgstr ""
@@ -645,7 +645,7 @@ msgstr ""
 
 #: .\docs\forms\edit_name.py:10 .\docs\templates\docs\names_list.html.py:33
 #: .\index\models.py:20 .\index\models.py:29 .\index\models.py:51
-#: .\index\models.py:78 .\index\templates\index\empty.html.py:48
+#: .\index\models.py:78 .\index\templates\index\empty.html.py:51
 #: .\index\templates\index\use.html:47 .\search\templates\search\serp.html:17
 msgid "Comment"
 msgstr ""
@@ -711,7 +711,7 @@ msgstr ""
 #: .\index\templates\index\add_items.html:67
 #: .\index\templates\index\at_work.html:14
 #: .\index\templates\index\basket.html:17
-#: .\index\templates\index\empty.html:23 .\index\templates\index\stock.html:22
+#: .\index\templates\index\empty.html:26 .\index\templates\index\stock.html:34
 #: .\index\templates\index\use.html:22
 msgid "Download"
 msgstr ""
@@ -1117,80 +1117,85 @@ msgstr ""
 msgid "Events"
 msgstr ""
 
-#: .\index\api\views.py:57
+#: .\index\api\views.py:58
 msgid "Firm not found"
 msgstr ""
 
-#: .\index\api\views.py:64
+#: .\index\api\views.py:65
 msgid "Firm deleted!"
 msgstr ""
 
-#: .\index\api\views.py:67
+#: .\index\api\views.py:68
 msgid "You can not delete, because have cartridges at a gas station."
 msgstr ""
 
-#: .\index\api\views.py:84 .\index\templates\index\ou_not_set.html.py:9
-#: .\storages\views.py:42
+#: .\index\api\views.py:85 .\index\templates\index\ou_not_set.html.py:9
+#: .\storages\views.py:45
 msgid "User not assosiate with organization unit!<br/>Error code: 101."
 msgstr ""
 
-#: .\index\api\views.py:108
+#: .\index\api\views.py:109
 msgid "Error in attrib \"data\" in input button add_item"
 msgstr ""
 
-#: .\index\api\views.py:135
+#: .\index\api\views.py:136
 msgid "Cartridge successfully added."
 msgstr ""
 
-#: .\index\api\views.py:137
+#: .\index\api\views.py:138
 msgid "Cartridges successfully added."
 msgstr ""
 
-#: .\index\api\views.py:238
+#: .\index\api\views.py:239
 msgid "Cartridges successfully moved."
 msgstr ""
 
-#: .\index\api\views.py:315
+#: .\index\api\views.py:316
 #, python-format
 msgid "Cartridges %(cart_nums)s successfully moved to firm."
 msgstr ""
 
-#: .\index\api\views.py:317
+#: .\index\api\views.py:318
 msgid "No transmission facilities"
 msgstr ""
 
-#: .\index\api\views.py:337
+#: .\index\api\views.py:338
 msgid "Session cleared"
 msgstr ""
 
-#: .\index\api\views.py:362
+#: .\index\api\views.py:363
 msgid "In demo remove nodes not allow."
 msgstr ""
 
-#: .\index\api\views.py:370
+#: .\index\api\views.py:371
 msgid ""
 "But it can not be removed because other objects reference it.<br/>Error "
 "code: 102"
 msgstr ""
 
-#: .\index\api\views.py:376
+#: .\index\api\views.py:377
 msgid "Names deleted successfully."
 msgstr ""
 
-#: .\index\api\views.py:398
+#: .\index\api\views.py:399
 msgid "Cartridjes deleted!"
 msgstr ""
 
-#: .\index\api\views.py:415
+#: .\index\api\views.py:416
 msgid "Error converting string numbers to int."
 msgstr ""
 
-#: .\index\api\views.py:426
+#: .\index\api\views.py:427
 msgid "This action type not implemented."
 msgstr ""
 
-#: .\index\api\views.py:444
+#: .\index\api\views.py:445
 msgid "Cartridges successfully transferred to basket."
+msgstr ""
+
+#: .\index\api\views.py:545
+#, python-format
+msgid "Cartridges %(cart_list)s successfully transferred for use"
 msgstr ""
 
 #: .\index\forms\add_cartridge_name.py:18 .\index\forms\add_type.py:32
@@ -1200,7 +1205,7 @@ msgstr ""
 #: .\index\forms\add_empty_items.py:18 .\index\forms\add_items.py:19
 #: .\index\templates\index\add_empty_cartridge.html:41
 #: .\index\templates\index\add_items.html:40
-#: .\index\templates\index\empty.html:47 .\index\templates\index\stock.html:46
+#: .\index\templates\index\empty.html:50 .\index\templates\index\stock.html:58
 msgid "Storage"
 msgstr ""
 
@@ -1366,6 +1371,7 @@ msgstr ""
 
 #: .\index\templates\index\at_work.html:3
 #: .\index\templates\index\at_work.html:4
+#: .\index\templates\index\from_firm_to_stock.html:5
 msgid "Cartridges on rebuilding"
 msgstr ""
 
@@ -1376,14 +1382,14 @@ msgstr ""
 
 #: .\index\templates\index\at_work.html:17
 #: .\index\templates\index\basket.html:20
-#: .\index\templates\index\empty.html:26 .\index\templates\index\stock.html:25
+#: .\index\templates\index\empty.html:29 .\index\templates\index\stock.html:37
 #: .\index\templates\index\use.html:25
 msgid "Export to CSV with group"
 msgstr ""
 
 #: .\index\templates\index\at_work.html:18
 #: .\index\templates\index\basket.html:21
-#: .\index\templates\index\empty.html:27 .\index\templates\index\stock.html:26
+#: .\index\templates\index\empty.html:30 .\index\templates\index\stock.html:38
 #: .\index\templates\index\use.html:26
 msgid "Export to CSV without group"
 msgstr ""
@@ -1440,18 +1446,18 @@ msgid "Basket"
 msgstr ""
 
 #: .\index\templates\index\basket.html:42
-#: .\index\templates\index\empty.html:49 .\index\templates\index\stock.html:48
+#: .\index\templates\index\empty.html:52 .\index\templates\index\stock.html:60
 msgid "Actions"
 msgstr ""
 
 #: .\index\templates\index\basket.html:54
-#: .\index\templates\index\empty.html:62 .\index\templates\index\stock.html:61
+#: .\index\templates\index\empty.html:65 .\index\templates\index\stock.html:73
 #: .\index\templates\index\use.html:60
 msgid "Edit a comment"
 msgstr ""
 
 #: .\index\templates\index\basket.html:55
-#: .\index\templates\index\empty.html:63 .\index\templates\index\stock.html:62
+#: .\index\templates\index\empty.html:66 .\index\templates\index\stock.html:74
 #: .\index\templates\index\use.html:61
 msgid "Event viewer"
 msgstr ""
@@ -1522,21 +1528,21 @@ msgstr ""
 msgid "Blank consumables"
 msgstr ""
 
-#: .\index\templates\index\empty.html:17
+#: .\index\templates\index\empty.html:20
 msgid "Transfer to refuel"
 msgstr ""
 
-#: .\index\templates\index\empty.html:18
+#: .\index\templates\index\empty.html:21
 msgid "Add_empty"
 msgstr ""
 
-#: .\index\templates\index\empty.html:19 .\index\templates\index\stock.html:18
+#: .\index\templates\index\empty.html:22 .\index\templates\index\stock.html:30
 #: .\index\templates\index\transfe_empty_to_basket.html:12
 #: .\index\templates\index\use.html:18
 msgid "In basket"
 msgstr ""
 
-#: .\index\templates\index\empty.html:46
+#: .\index\templates\index\empty.html:49
 msgid "in stock"
 msgstr ""
 
@@ -1550,30 +1556,31 @@ msgstr ""
 
 #: .\index\templates\index\from_firm_to_stock.html:3
 #: .\index\templates\index\from_firm_to_stock.html:4
+#: .\index\templates\index\from_firm_to_stock.html:5
 msgid "Return cartridge to the stock"
 msgstr ""
 
-#: .\index\templates\index\from_firm_to_stock.html:30
+#: .\index\templates\index\from_firm_to_stock.html:31
 msgid "Filling<br/> and cleaning"
 msgstr ""
 
-#: .\index\templates\index\from_firm_to_stock.html:31
+#: .\index\templates\index\from_firm_to_stock.html:32
 msgid "Replacing <br/> fotovala"
 msgstr ""
 
-#: .\index\templates\index\from_firm_to_stock.html:32
+#: .\index\templates\index\from_firm_to_stock.html:33
 msgid "Replacement<br/>squeegee"
 msgstr ""
 
-#: .\index\templates\index\from_firm_to_stock.html:33
+#: .\index\templates\index\from_firm_to_stock.html:34
 msgid "Replacement<br/>chip"
 msgstr ""
 
-#: .\index\templates\index\from_firm_to_stock.html:34
+#: .\index\templates\index\from_firm_to_stock.html:35
 msgid "Replacing<br/>the magnetic roller"
 msgstr ""
 
-#: .\index\templates\index\from_firm_to_stock.html:47
+#: .\index\templates\index\from_firm_to_stock.html:48
 msgid "Return to stock"
 msgstr ""
 
@@ -1589,11 +1596,11 @@ msgstr ""
 msgid "Error code: 101"
 msgstr ""
 
-#: .\index\templates\index\stock.html:16
+#: .\index\templates\index\stock.html:28
 msgid "Add consumables"
 msgstr ""
 
-#: .\index\templates\index\stock.html:17
+#: .\index\templates\index\stock.html:29
 msgid "Transferred for use"
 msgstr ""
 
@@ -1975,7 +1982,7 @@ msgstr ""
 msgid "Settings success saved."
 msgstr ""
 
-#: .\storages\api\views.py:32 .\storages\api\views.py:71
+#: .\storages\api\views.py:33 .\storages\api\views.py:71
 msgid "Storage does not exist."
 msgstr ""
 
@@ -2032,25 +2039,25 @@ msgstr ""
 msgid "Use default?"
 msgstr ""
 
-#: .\storages\views.py:64
+#: .\storages\views.py:67
 #, python-format
 msgid "Starage \"%(starage_name)s\" success added."
 msgstr ""
 
-#: .\storages\views.py:68
+#: .\storages\views.py:71
 msgid "Starage not added."
 msgstr ""
 
-#: .\storages\views.py:90
+#: .\storages\views.py:93
 msgid "Storage by id not found."
 msgstr ""
 
-#: .\storages\views.py:103
+#: .\storages\views.py:106
 #, python-format
 msgid "Starage \"%(starage_name)s\" success edited."
 msgstr ""
 
-#: .\storages\views.py:107
+#: .\storages\views.py:110
 msgid "Starage not edited."
 msgstr ""
 
