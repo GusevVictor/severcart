@@ -3,6 +3,7 @@
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
+from django.views.decorators.cache import never_cache
 from common.helpers import is_admin
 from django.utils.translation import ugettext_lazy as _
 from service.forms.input_server_settings import SMTPsettings
@@ -11,6 +12,7 @@ from service.forms.stickers import StickFormat
 from service.helpers import SevercartConfigs
 
 
+@never_cache
 @login_required
 @is_admin
 def submenu(request):
@@ -19,6 +21,7 @@ def submenu(request):
     return render(request, 'service/submenu.html', context={})
 
 
+@never_cache
 @login_required
 @is_admin
 def settings_mail(request):
@@ -39,6 +42,7 @@ def settings_mail(request):
     return render(request, 'service/settings_mail.html', context)
 
 
+@never_cache
 @login_required
 @is_admin
 def stickers(request):
