@@ -432,7 +432,8 @@ def transfer_to_basket(request):
         m1 = CartridgeItem.objects.get(pk=inx)
         # проверяем принадлежность перемещаемого РМ департаменту 
         # пользователя.
-        if m1.departament == request.user.departament:
+        if (m1.departament in request.user.departament.get_descendants()) or \
+           (m1.departament == request.user.departament):
             m1.cart_status = cart_status
             m1.departament = request.user.departament
             m1.cart_date_change = timezone.now()
