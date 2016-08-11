@@ -19,13 +19,13 @@
 
 # Скриншоты
 
-<p align="center"><img src="http://www.severcart.org/img/shots_ru/1.png?1"/></p>
-<p align="center"><img src="http://www.severcart.org/img/shots_ru/2.png?1"/></p>
-<p align="center"><img src="http://www.severcart.org/img/shots_ru/3.png?1"/></p>
-<p align="center"><img src="http://www.severcart.org/img/shots_ru/4.png?1"/></p>
-<p align="center"><img src="http://www.severcart.org/img/shots_ru/5.png?1"/></p>
-<p align="center"><img src="http://www.severcart.org/img/shots_ru/6.png?1"/></p>
-<p align="center"><img src="http://www.severcart.org/img/shots_ru/7.png?1"/></p>
+<p align="center"><img src="http://www.severcart.org/static/img/shots_ru/1.png?1"/></p>
+<p align="center"><img src="http://www.severcart.org/static/img/shots_ru/2.png?1"/></p>
+<p align="center"><img src="http://www.severcart.org/static/img/shots_ru/3.png?1"/></p>
+<p align="center"><img src="http://www.severcart.org/static/img/shots_ru/4.png?1"/></p>
+<p align="center"><img src="http://www.severcart.org/static/img/shots_ru/5.png?1"/></p>
+<p align="center"><img src="http://www.severcart.org/static/img/shots_ru/6.png?1"/></p>
+<p align="center"><img src="http://www.severcart.org/static/img/shots_ru/7.png?1"/></p>
 
 # Для кого будет полезна?
 
