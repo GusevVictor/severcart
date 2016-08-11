@@ -19,13 +19,13 @@
 
 # Скриншоты
 
-<p align="center"><img src="http://severcart.org/img/shots/1.png"/></p>
-<p align="center"><img src="http://severcart.org/img/shots/2.png"/></p>
-<p align="center"><img src="http://severcart.org/img/shots/3.png"/></p>
-<p align="center"><img src="http://severcart.org/img/shots/4.png"/></p>
-<p align="center"><img src="http://severcart.org/img/shots/5.png"/></p>
-<p align="center"><img src="http://severcart.org/img/shots/6.png"/></p>
-<p align="center"><img src="http://severcart.org/img/shots/7.png"/></p>
+<p align="center"><img src="http://www.severcart.org/img/shots_ru/1.png?1"/></p>
+<p align="center"><img src="http://www.severcart.org/img/shots_ru/2.png?1"/></p>
+<p align="center"><img src="http://www.severcart.org/img/shots_ru/3.png?1"/></p>
+<p align="center"><img src="http://www.severcart.org/img/shots_ru/4.png?1"/></p>
+<p align="center"><img src="http://www.severcart.org/img/shots_ru/5.png?1"/></p>
+<p align="center"><img src="http://www.severcart.org/img/shots_ru/6.png?1"/></p>
+<p align="center"><img src="http://www.severcart.org/img/shots_ru/7.png?1"/></p>
 
 # Для кого будет полезна?
 
@@ -42,6 +42,6 @@
 # Лицензия
 Программа абсолютно бесплатна и лицензирована **[GPLv2]**.
 
-[severcart.org]: http://severcart.org
+[severcart.org]: http://www.severcart.org
 [GPLv2]: https://raw.githubusercontent.com/sfcl/ancon/master/LICENSE
-[здесь]: http://demo.severcart.org
+[здесь]: http://www.demo.severcart.org
