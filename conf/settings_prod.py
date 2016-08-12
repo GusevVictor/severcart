@@ -29,7 +29,7 @@ SECRET_KEY = SECRETS['secret_key']
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-DEMO = True 
+DEMO = False
 
 ALLOWED_HOSTS = ['*']
 
@@ -110,7 +110,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'severcart',
         'USER': 'scuser',
-        'PASSWORD': 'xkcWQdfE4d',
+        'PASSWORD': '1234567890',
         'HOST': '127.0.0.1',
         'PORT': '5432',
     }
