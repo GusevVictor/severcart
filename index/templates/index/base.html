@@ -3,14 +3,14 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="{{ STATIC_URL }}img/favicon.ico" rel="shortcut icon" />
+    <link href="{{ STATIC_URL }}img/favicon.ico?1" rel="shortcut icon" />
     <link rel="stylesheet" href="{{ STATIC_URL }}css/normalize.css" />
     <link rel="stylesheet" href="{{ STATIC_URL }}css/foundation.css" />
-    <link rel="stylesheet" href="{{ STATIC_URL }}css/style.css?40" />
-    <script src="{{ STATIC_URL }}js/detect.js?6"></script>
+    <link rel="stylesheet" href="{{ STATIC_URL }}css/style.css?41" />
+    <script src="{{ STATIC_URL }}js/detect.js?7"></script>
     <script src="{{ STATIC_URL }}js/vendor/jquery.js"></script>
     {% block jqueryui %}{% endblock %}
-    <script src="/dhtml/logic.js?8"></script>
+    <script src="/dhtml/logic.js?9"></script>
     <title>{% block title %}{% endblock %}</title>
     <noscript>
         <meta http-equiv="refresh" content="3; url={% url 'index:bad_browser' %}"/>
@@ -20,7 +20,7 @@
     <div class="main_content">
         <div class="row">
             <div class="large-12 columns marginTop">
-                <div class="left logo"><a href="/"><img src="{{ STATIC_URL }}img/logo.png?1d" /></a></div>
+                <div class="left logo"><a href="/"><img src="{{ STATIC_URL }}img/logo.png?2d" /></a></div>
                 <div class="right submenu">
                 <span class="user_ou" title="{{request.user.departament}}">{% if request.user.departament %}{{request.user.departament|truncatechars:100}}{% endif %}</span>&nbsp;&nbsp;<select class="language_selector" name="languge"><option {% if request.LANGUAGE_CODE == 'ru' %}selected{% endif %} value="ru">Русский</option><option {% if request.LANGUAGE_CODE == 'en' %}selected{% endif %} value="en">English</option></select>&nbsp;&nbsp;{{request.user.get_username}}&nbsp;&nbsp;<a href="{% url 'auth:logout' %}">{% trans "Exit" %}</a>
                 </div>

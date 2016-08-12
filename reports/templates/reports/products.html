@@ -3,9 +3,9 @@
 {% block breadcrumbs %}<a href="/"><img src="{{ STATIC_URL }}img/home.png" /></a> / <a href="{% url 'docs:handbook' %}">{% trans "References" %}</a> / {% trans "Consumption of consumables" %}{% endblock %}
 {% block jqueryui%}
 <link rel="stylesheet" href="{{ STATIC_URL }}css/jquery-ui.css" />
-<script src="{{ STATIC_URL }}js/jquery-ui.js"></script>
-<script src="{{ STATIC_URL }}js/datepicker.js"></script>
-<script src="{{ STATIC_URL }}js/datepicker-{% trans 'lang' %}.js"></script>
+<script src="{{ STATIC_URL }}js/jquery-ui.js?1"></script>
+<script src="{{ STATIC_URL }}js/datepicker.js?1"></script>
+<script src="{{ STATIC_URL }}js/datepicker-{% trans 'lang' %}.js?1"></script>
 {% endblock %}
 {% block help_url %}
 {{ request.HOME_SITE }}/help/{{ request.LANGUAGE_CODE }}/reports_products/
