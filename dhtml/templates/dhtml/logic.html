@@ -39,12 +39,13 @@ var getUrlParameter = function getUrlParameter(sParam) {
     }
 };
 
-function pretty_del_table_row(jqrow, bg='red_bg') {
+function pretty_del_table_row(jqrow, bg) {
+    bg = bg || 'red_bg';
     return function(show_mes) {
         var i = 0;
         var counter = 0;
         counter = setInterval(function(){ 
-            /* Реализум мигание строки в процессе удаления. */
+            /* Р РµР°Р»РёР·СѓРј РјРёРіР°РЅРёРµ СЃС‚СЂРѕРєРё РІ РїСЂРѕС†РµСЃСЃРµ СѓРґР°Р»РµРЅРёСЏ. */
             jqrow.toggleClass(bg);
             
             if (i >= 5) {
