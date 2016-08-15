@@ -142,17 +142,17 @@ if __name__ == '__main__':
         elif 'linux' in OS:
             print(tr('Installation package dependencies for Linux', lang=lang))
             packages_unix = [
-                ['Django'], 
-                ['lxml==3.4.4']
+                ['Django==1.9'], 
+                ['lxml==%s.%s.%s' % (sys.version_info.major, sys.version_info.minor, sys.version_info.micro)],
                 ['django-mptt'],
                 ['psycopg2'],
                 ['python-docx'],
+                ['pillow==2.9.0'],
                 ['reportlab'],
                 ['django-debug-toolbar'],
             ]
             persent = 10
             for pack in packages_unix:
-                break
                 sys.stdout.off()
                 install(pack)
                 sys.stdout.on()
