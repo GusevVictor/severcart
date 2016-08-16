@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-08-16 09:29+0500\n"
+"POT-Creation-Date: 2016-08-16 16:24+0500\n"
 "PO-Revision-Date: 2016-05-27 12:27+0500\n"
 "Last-Translator: \n"
 "Language-Team: severcart.org <sfcl@mail.ru>\n"
@@ -290,7 +290,7 @@ msgstr ""
 msgid "Delete"
 msgstr ""
 
-#: .\accounts\templates\accounts\manage_users.html:30 .\docs\api\views.py:341
+#: .\accounts\templates\accounts\manage_users.html:30 .\docs\api\views.py:342
 #: .\index\templates\index\use.html.py:46
 #: .\search\templates\search\serp.html:14
 msgid "User"
@@ -415,7 +415,7 @@ msgid "<p>Server error :(</p>"
 msgstr ""
 
 #: .\docs\api\views.py:30 .\docs\api\views.py:78 .\docs\api\views.py:110
-#: .\docs\api\views.py:429 .\index\api\views.py:43 .\index\api\views.py:78
+#: .\docs\api\views.py:430 .\index\api\views.py:43 .\index\api\views.py:78
 #: .\index\api\views.py:219 .\index\api\views.py:249 .\index\api\views.py:407
 #: .\index\api\views.py:455 .\index\api\views.py:476 .\index\api\views.py:491
 #: .\index\api\views.py:630 .\reports\api\views.py:56
@@ -496,8 +496,8 @@ msgstr ""
 msgid "Document %(doc_number)s_%(user_id)s_0.docx generated"
 msgstr ""
 
-#: .\docs\api\views.py:280 .\docs\api\views.py:312 .\docs\api\views.py:338
-#: .\docs\api\views.py:361 .\docs\api\views.py:382 .\docs\api\views.py:405
+#: .\docs\api\views.py:281 .\docs\api\views.py:313 .\docs\api\views.py:339
+#: .\docs\api\views.py:362 .\docs\api\views.py:383 .\docs\api\views.py:406
 #: .\docs\forms\add_doc.py:11 .\docs\forms\edit_name.py:6
 #: .\docs\templates\docs\delivery.html:28
 #: .\docs\templates\docs\delivery.html:97
@@ -522,13 +522,13 @@ msgstr ""
 msgid "Name"
 msgstr ""
 
-#: .\docs\api\views.py:280 .\index\templates\index\add_empty_cartridge.html:52
+#: .\docs\api\views.py:281 .\index\templates\index\add_empty_cartridge.html:52
 #: .\index\templates\index\add_items.html:51
 msgid "Amount items"
 msgstr ""
 
-#: .\docs\api\views.py:311 .\docs\api\views.py:337 .\docs\api\views.py:360
-#: .\docs\api\views.py:381 .\docs\api\views.py:404 .\docs\forms\add_doc.py:9
+#: .\docs\api\views.py:312 .\docs\api\views.py:338 .\docs\api\views.py:361
+#: .\docs\api\views.py:382 .\docs\api\views.py:405 .\docs\forms\add_doc.py:9
 #: .\docs\templates\docs\delivery.html:23
 #: .\docs\templates\docs\delivery.html:95
 #: .\index\templates\index\at_work.html:34
@@ -547,8 +547,8 @@ msgstr ""
 msgid "Number"
 msgstr "ID"
 
-#: .\docs\api\views.py:313 .\docs\api\views.py:339 .\docs\api\views.py:362
-#: .\docs\api\views.py:383 .\docs\api\views.py:406
+#: .\docs\api\views.py:314 .\docs\api\views.py:340 .\docs\api\views.py:363
+#: .\docs\api\views.py:384 .\docs\api\views.py:407
 #: .\index\templates\index\at_work.html:36
 #: .\index\templates\index\basket.html:39
 #: .\index\templates\index\empty.html:48 .\index\templates\index\stock.html:56
@@ -556,16 +556,16 @@ msgstr "ID"
 msgid "Amount<br/>recovery"
 msgstr ""
 
-#: .\docs\api\views.py:314 .\index\templates\index\stock.html.py:57
+#: .\docs\api\views.py:315 .\index\templates\index\stock.html.py:57
 msgid "Date add"
 msgstr ""
 
-#: .\docs\api\views.py:314 .\index\templates\index\stock.html.py:57
+#: .\docs\api\views.py:315 .\index\templates\index\stock.html.py:57
 msgid "on stock"
 msgstr ""
 
-#: .\docs\api\views.py:315 .\docs\api\views.py:342 .\docs\api\views.py:364
-#: .\docs\api\views.py:386 .\docs\api\views.py:408
+#: .\docs\api\views.py:316 .\docs\api\views.py:343 .\docs\api\views.py:365
+#: .\docs\api\views.py:387 .\docs\api\views.py:409
 #: .\docs\templates\docs\types_list.html:32 .\index\forms\comment.py:11
 #: .\index\templates\index\at_work.html:39
 #: .\index\templates\index\basket.html:41
@@ -573,23 +573,23 @@ msgstr ""
 msgid "comment"
 msgstr "Comment"
 
-#: .\docs\api\views.py:340 .\index\templates\index\use.html.py:45
+#: .\docs\api\views.py:341 .\index\templates\index\use.html.py:45
 msgid "Date transfe"
 msgstr ""
 
-#: .\docs\api\views.py:363 .\index\templates\index\empty.html.py:49
+#: .\docs\api\views.py:364 .\index\templates\index\empty.html.py:49
 msgid "Date return"
 msgstr ""
 
-#: .\docs\api\views.py:384 .\index\templates\index\at_work.html.py:37
+#: .\docs\api\views.py:385 .\index\templates\index\at_work.html.py:37
 msgid "Date transfer on recovery"
 msgstr ""
 
-#: .\docs\api\views.py:385 .\index\templates\index\at_work.html.py:38
+#: .\docs\api\views.py:386 .\index\templates\index\at_work.html.py:38
 msgid "Refueller"
 msgstr ""
 
-#: .\docs\api\views.py:407 .\index\templates\index\basket.html.py:40
+#: .\docs\api\views.py:408 .\index\templates\index\basket.html.py:40
 msgid "Date return in basket"
 msgstr ""
 
@@ -1945,6 +1945,10 @@ msgstr "SSL"
 #: .\service\forms\input_server_settings.py:15
 msgid "Use TLS"
 msgstr "TLS"
+
+#: .\service\forms\input_server_settings.py:26
+msgid "This port number is invalid"
+msgstr ""
 
 #: .\service\forms\send_test_mail.py:10
 msgid "Text message"

@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-08-16 09:29+0500\n"
-"PO-Revision-Date: 2016-08-16 09:31+0500\n"
+"POT-Creation-Date: 2016-08-16 16:24+0500\n"
+"PO-Revision-Date: 2016-08-16 16:46+0500\n"
 "Last-Translator: \n"
 "Language-Team: severcart.org <sfcl@mail.ru>\n"
 "Language: ru\n"
@@ -289,7 +289,7 @@ msgstr "Редактировать"
 msgid "Delete"
 msgstr "Удалить"
 
-#: .\accounts\templates\accounts\manage_users.html:30 .\docs\api\views.py:341
+#: .\accounts\templates\accounts\manage_users.html:30 .\docs\api\views.py:342
 #: .\index\templates\index\use.html.py:46
 #: .\search\templates\search\serp.html:14
 msgid "User"
@@ -416,7 +416,7 @@ msgid "<p>Server error :(</p>"
 msgstr "<p>Ошибка на стороне сервера :(</p>"
 
 #: .\docs\api\views.py:30 .\docs\api\views.py:78 .\docs\api\views.py:110
-#: .\docs\api\views.py:429 .\index\api\views.py:43 .\index\api\views.py:78
+#: .\docs\api\views.py:430 .\index\api\views.py:43 .\index\api\views.py:78
 #: .\index\api\views.py:219 .\index\api\views.py:249 .\index\api\views.py:407
 #: .\index\api\views.py:455 .\index\api\views.py:476 .\index\api\views.py:491
 #: .\index\api\views.py:630 .\reports\api\views.py:56
@@ -497,8 +497,8 @@ msgstr "Принял"
 msgid "Document %(doc_number)s_%(user_id)s_0.docx generated"
 msgstr "Документ «%(doc_number)s_%(user_id)s_0.docx» успешно сформирован."
 
-#: .\docs\api\views.py:280 .\docs\api\views.py:312 .\docs\api\views.py:338
-#: .\docs\api\views.py:361 .\docs\api\views.py:382 .\docs\api\views.py:405
+#: .\docs\api\views.py:281 .\docs\api\views.py:313 .\docs\api\views.py:339
+#: .\docs\api\views.py:362 .\docs\api\views.py:383 .\docs\api\views.py:406
 #: .\docs\forms\add_doc.py:11 .\docs\forms\edit_name.py:6
 #: .\docs\templates\docs\delivery.html:28
 #: .\docs\templates\docs\delivery.html:97
@@ -523,13 +523,13 @@ msgstr "Документ «%(doc_number)s_%(user_id)s_0.docx» успешно с
 msgid "Name"
 msgstr "Название"
 
-#: .\docs\api\views.py:280 .\index\templates\index\add_empty_cartridge.html:52
+#: .\docs\api\views.py:281 .\index\templates\index\add_empty_cartridge.html:52
 #: .\index\templates\index\add_items.html:51
 msgid "Amount items"
 msgstr "Количество"
 
-#: .\docs\api\views.py:311 .\docs\api\views.py:337 .\docs\api\views.py:360
-#: .\docs\api\views.py:381 .\docs\api\views.py:404 .\docs\forms\add_doc.py:9
+#: .\docs\api\views.py:312 .\docs\api\views.py:338 .\docs\api\views.py:361
+#: .\docs\api\views.py:382 .\docs\api\views.py:405 .\docs\forms\add_doc.py:9
 #: .\docs\templates\docs\delivery.html:23
 #: .\docs\templates\docs\delivery.html:95
 #: .\index\templates\index\at_work.html:34
@@ -547,47 +547,47 @@ msgstr "Количество"
 msgid "Number"
 msgstr "Номер"
 
-#: .\docs\api\views.py:313 .\docs\api\views.py:339 .\docs\api\views.py:362
-#: .\docs\api\views.py:383 .\docs\api\views.py:406
+#: .\docs\api\views.py:314 .\docs\api\views.py:340 .\docs\api\views.py:363
+#: .\docs\api\views.py:384 .\docs\api\views.py:407
 #: .\index\templates\index\at_work.html:36
 #: .\index\templates\index\basket.html:39 .\index\templates\index\empty.html:48
 #: .\index\templates\index\stock.html:56 .\index\templates\index\use.html:44
 msgid "Amount<br/>recovery"
 msgstr "Количество<br/> перезаправок"
 
-#: .\docs\api\views.py:314 .\index\templates\index\stock.html.py:57
+#: .\docs\api\views.py:315 .\index\templates\index\stock.html.py:57
 msgid "Date add"
 msgstr "Дата "
 
-#: .\docs\api\views.py:314 .\index\templates\index\stock.html.py:57
+#: .\docs\api\views.py:315 .\index\templates\index\stock.html.py:57
 msgid "on stock"
 msgstr "добавления на склад"
 
-#: .\docs\api\views.py:315 .\docs\api\views.py:342 .\docs\api\views.py:364
-#: .\docs\api\views.py:386 .\docs\api\views.py:408
+#: .\docs\api\views.py:316 .\docs\api\views.py:343 .\docs\api\views.py:365
+#: .\docs\api\views.py:387 .\docs\api\views.py:409
 #: .\docs\templates\docs\types_list.html:32 .\index\forms\comment.py:11
 #: .\index\templates\index\at_work.html:39
 #: .\index\templates\index\basket.html:41 .\index\templates\index\stock.html:59
 msgid "comment"
 msgstr "Комментарий"
 
-#: .\docs\api\views.py:340 .\index\templates\index\use.html.py:45
+#: .\docs\api\views.py:341 .\index\templates\index\use.html.py:45
 msgid "Date transfe"
 msgstr "Дата передачи"
 
-#: .\docs\api\views.py:363 .\index\templates\index\empty.html.py:49
+#: .\docs\api\views.py:364 .\index\templates\index\empty.html.py:49
 msgid "Date return"
 msgstr "Дата возврата"
 
-#: .\docs\api\views.py:384 .\index\templates\index\at_work.html.py:37
+#: .\docs\api\views.py:385 .\index\templates\index\at_work.html.py:37
 msgid "Date transfer on recovery"
 msgstr "Дата передачи<br/> на заправку"
 
-#: .\docs\api\views.py:385 .\index\templates\index\at_work.html.py:38
+#: .\docs\api\views.py:386 .\index\templates\index\at_work.html.py:38
 msgid "Refueller"
 msgstr "Заправщик"
 
-#: .\docs\api\views.py:407 .\index\templates\index\basket.html.py:40
+#: .\docs\api\views.py:408 .\index\templates\index\basket.html.py:40
 msgid "Date return in basket"
 msgstr "Дата помещения в корзину"
 
@@ -1954,6 +1954,10 @@ msgstr "SSL"
 #: .\service\forms\input_server_settings.py:15
 msgid "Use TLS"
 msgstr "TLS"
+
+#: .\service\forms\input_server_settings.py:26
+msgid "This port number is invalid"
+msgstr "Данный номер порта недопустим"
 
 #: .\service\forms\send_test_mail.py:10
 msgid "Text message"
