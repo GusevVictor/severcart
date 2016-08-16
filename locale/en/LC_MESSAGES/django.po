@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-08-10 11:07+0500\n"
+"POT-Creation-Date: 2016-08-16 09:29+0500\n"
 "PO-Revision-Date: 2016-05-27 12:27+0500\n"
 "Last-Translator: \n"
 "Language-Team: severcart.org <sfcl@mail.ru>\n"
@@ -348,77 +348,77 @@ msgstr ""
 msgid "English"
 msgstr ""
 
-#: .\dhtml\templates\dhtml\logic.html:262
-#: .\dhtml\templates\dhtml\logic.html:312
-#: .\dhtml\templates\dhtml\logic.html:582
-#: .\dhtml\templates\dhtml\logic.html:662
-#: .\dhtml\templates\dhtml\logic.html:747
-#: .\dhtml\templates\dhtml\logic.html:795
-#: .\dhtml\templates\dhtml\logic.html:910
-#: .\dhtml\templates\dhtml\logic.html:1015
-#: .\dhtml\templates\dhtml\logic.html:1149
-#: .\dhtml\templates\dhtml\logic.html:1197
-#: .\dhtml\templates\dhtml\logic.html:1255
+#: .\dhtml\templates\dhtml\logic.html:263
+#: .\dhtml\templates\dhtml\logic.html:313
+#: .\dhtml\templates\dhtml\logic.html:583
+#: .\dhtml\templates\dhtml\logic.html:663
+#: .\dhtml\templates\dhtml\logic.html:748
+#: .\dhtml\templates\dhtml\logic.html:796
+#: .\dhtml\templates\dhtml\logic.html:911
+#: .\dhtml\templates\dhtml\logic.html:1016
+#: .\dhtml\templates\dhtml\logic.html:1150
+#: .\dhtml\templates\dhtml\logic.html:1198
+#: .\dhtml\templates\dhtml\logic.html:1256
 msgid "<p>Server not available.</p>"
 msgstr ""
 
-#: .\dhtml\templates\dhtml\logic.html:389
-#: .\dhtml\templates\dhtml\logic.html:430
-#: .\dhtml\templates\dhtml\logic.html:458
-#: .\dhtml\templates\dhtml\logic.html:486
+#: .\dhtml\templates\dhtml\logic.html:390
+#: .\dhtml\templates\dhtml\logic.html:431
+#: .\dhtml\templates\dhtml\logic.html:459
+#: .\dhtml\templates\dhtml\logic.html:487
 msgid "Server error :("
 msgstr ""
 
-#: .\dhtml\templates\dhtml\logic.html:542
+#: .\dhtml\templates\dhtml\logic.html:543
 msgid "Are you sure you want to put the selected items to the Trash?"
 msgstr ""
 
-#: .\dhtml\templates\dhtml\logic.html:600
+#: .\dhtml\templates\dhtml\logic.html:601
 msgid "Are you sure you want to delete consumable (s)?"
 msgstr ""
 
-#: .\dhtml\templates\dhtml\logic.html:636
+#: .\dhtml\templates\dhtml\logic.html:637
 msgid "You sure you want to return the selected items back to the store?"
 msgstr ""
 
-#: .\dhtml\templates\dhtml\logic.html:709
+#: .\dhtml\templates\dhtml\logic.html:710
 msgid "Are you sure you want to remove the counterparty?"
 msgstr ""
 
-#: .\dhtml\templates\dhtml\logic.html:967
+#: .\dhtml\templates\dhtml\logic.html:968
 msgid "Are you sure you want to delete a document?"
 msgstr ""
 
-#: .\dhtml\templates\dhtml\logic.html:979
+#: .\dhtml\templates\dhtml\logic.html:980
 msgid "Are you sure you want to delete the user?"
 msgstr ""
 
-#: .\dhtml\templates\dhtml\logic.html:1106
+#: .\dhtml\templates\dhtml\logic.html:1107
 msgid "Are you sure you want to delete?"
 msgstr ""
 
-#: .\dhtml\templates\dhtml\logic.html:1161
+#: .\dhtml\templates\dhtml\logic.html:1162
 msgid "Are you sure you want to delete city?"
 msgstr ""
 
-#: .\dhtml\templates\dhtml\logic.html:1267
+#: .\dhtml\templates\dhtml\logic.html:1268
 #: .\index\templates\index\base_menu.html:16
 msgid "Find by number"
 msgstr ""
 
-#: .\dhtml\templates\dhtml\logic.html:1536
+#: .\dhtml\templates\dhtml\logic.html:1537
 msgid "Are you sure you want to remove the storage room?"
 msgstr ""
 
-#: .\dhtml\templates\dhtml\logic.html:1597
+#: .\dhtml\templates\dhtml\logic.html:1598
 msgid "<p>Server error :(</p>"
 msgstr ""
 
 #: .\docs\api\views.py:30 .\docs\api\views.py:78 .\docs\api\views.py:110
 #: .\docs\api\views.py:429 .\index\api\views.py:43 .\index\api\views.py:78
 #: .\index\api\views.py:219 .\index\api\views.py:249 .\index\api\views.py:407
-#: .\index\api\views.py:454 .\index\api\views.py:475 .\index\api\views.py:490
-#: .\index\api\views.py:629 .\reports\api\views.py:56
+#: .\index\api\views.py:455 .\index\api\views.py:476 .\index\api\views.py:491
+#: .\index\api\views.py:630 .\reports\api\views.py:56
 #: .\storages\api\views.py:21 .\storages\api\views.py:59
 msgid "Only use POST requests!"
 msgstr ""
@@ -1112,7 +1112,7 @@ msgid "Events accounting object"
 msgstr ""
 
 #: .\events\templates\events\view_cartridge_events.html:4
-#: .\index\templates\index\dashboard.html:61
+#: .\index\templates\index\dashboard.html:66
 #: .\service\templates\service\submenu.html:17
 msgid "Events"
 msgstr ""
@@ -1189,11 +1189,11 @@ msgstr ""
 msgid "This action type not implemented."
 msgstr ""
 
-#: .\index\api\views.py:445
+#: .\index\api\views.py:446
 msgid "Cartridges successfully transferred to basket."
 msgstr ""
 
-#: .\index\api\views.py:545
+#: .\index\api\views.py:546
 #, python-format
 msgid "Cartridges %(cart_list)s successfully transferred for use"
 msgstr ""
@@ -1292,8 +1292,13 @@ msgstr ""
 msgid "Empty and in basket"
 msgstr ""
 
-#: .\index\templates\index\500.html:5 .\templates\500.html.py:3
-msgid "Internal server error."
+#: .\index\templates\index\404.html:2 .\index\templates\index\404.html.py:3
+#: .\index\templates\index\404.html:10 .\index\templates\index\500.html:3
+msgid "Error 404"
+msgstr ""
+
+#: .\index\templates\index\500.html:2 .\index\templates\index\500.html:10
+msgid "Error 500"
 msgstr ""
 
 #: .\index\templates\index\add_empty_cartridge.html:2
@@ -1462,47 +1467,51 @@ msgstr ""
 msgid "Event viewer"
 msgstr ""
 
-#: .\index\templates\index\dashboard.html:4
+#: .\index\templates\index\dashboard.html:2
 msgid "Stocks of consumables"
 msgstr ""
 
-#: .\index\templates\index\dashboard.html:12
-msgid "Desktop"
+#: .\index\templates\index\dashboard.html:11
+msgid "For security purposes, change the password to access the database!"
 msgstr ""
 
 #: .\index\templates\index\dashboard.html:17
-msgid "Quantity in stock (usable)"
+msgid "Desktop"
 msgstr ""
 
 #: .\index\templates\index\dashboard.html:22
-msgid "The number of installed"
+msgid "Quantity in stock (usable)"
 msgstr ""
 
 #: .\index\templates\index\dashboard.html:27
-msgid "Number of empty, ready to recharge"
+msgid "The number of installed"
 msgstr ""
 
 #: .\index\templates\index\dashboard.html:32
-msgid "Now dressed"
+msgid "Number of empty, ready to recharge"
 msgstr ""
 
 #: .\index\templates\index\dashboard.html:37
-msgid "In basket (count)"
+msgid "Now dressed"
 msgstr ""
 
 #: .\index\templates\index\dashboard.html:42
+msgid "In basket (count)"
+msgstr ""
+
+#: .\index\templates\index\dashboard.html:47
 msgid "Spending cartridges"
 msgstr ""
 
-#: .\index\templates\index\dashboard.html:46
+#: .\index\templates\index\dashboard.html:51
 msgid "For the current day"
 msgstr ""
 
-#: .\index\templates\index\dashboard.html:50
+#: .\index\templates\index\dashboard.html:55
 msgid "Since the beginning of the month"
 msgstr ""
 
-#: .\index\templates\index\dashboard.html:54
+#: .\index\templates\index\dashboard.html:59
 msgid "Since the beginning of the year"
 msgstr ""
 
@@ -1703,41 +1712,41 @@ msgstr ""
 msgid "Close"
 msgstr ""
 
-#: .\index\views.py:144
+#: .\index\views.py:151
 #, python-format
 msgid "%(cart_name)s already exists"
 msgstr ""
 
-#: .\index\views.py:148
+#: .\index\views.py:155
 #, python-format
 msgid "%(cart_name)s success added"
 msgstr ""
 
-#: .\index\views.py:271 .\index\views.py:283
+#: .\index\views.py:278 .\index\views.py:290
 #, python-format
 msgid "Organization unit %(org_name)s exist"
 msgstr ""
 
-#: .\index\views.py:276 .\index\views.py:288
+#: .\index\views.py:283 .\index\views.py:295
 #, python-format
 msgid "Organization unit %(org_name)s create successfuly."
 msgstr ""
 
-#: .\index\views.py:332
+#: .\index\views.py:339
 #, python-format
 msgid "%(cart_type)s success save"
 msgstr ""
 
-#: .\index\views.py:336
+#: .\index\views.py:343
 #, python-format
 msgid "New type %(cart_type)s success added"
 msgstr ""
 
-#: .\index\views.py:476
+#: .\index\views.py:483
 msgid "Select all"
 msgstr ""
 
-#: .\index\views.py:509
+#: .\index\views.py:516
 #, python-format
 msgid "Firm \"%(firm_name)s\" success added."
 msgstr ""
@@ -1978,7 +1987,7 @@ msgstr ""
 msgid "Auto complete directory types and names"
 msgstr ""
 
-#: .\service\views.py:57
+#: .\service\views.py:61
 msgid "Settings success saved."
 msgstr ""
 
@@ -2059,8 +2068,4 @@ msgstr ""
 
 #: .\storages\views.py:110
 msgid "Starage not edited."
-msgstr ""
-
-#: .\templates\404.html:5
-msgid "Page not found!"
 msgstr ""

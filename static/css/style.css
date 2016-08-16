@@ -144,6 +144,16 @@ form input[type="password"] {
     border: 2px solid #ff6464;
 }
 
+.error_msg a {
+    color: #ff6464;
+    border-bottom: 1px solid #ff6464;
+}
+
+.error_msg a:hover {
+    color: #ff1122;
+    border-bottom: 1px solid #ff1122;
+}
+
 .error_msg_send_email,
 .success_msg_send_email {
     width:400px;

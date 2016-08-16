@@ -13,6 +13,7 @@ from django.db.models import Q
 from django.template.loader import render_to_string
 from django.utils.translation import ugettext_lazy as _
 from django.views.decorators.cache import never_cache
+from django.conf import settings
 from common.helpers import is_admin
 from common.cbv import CartridgesView
 from common.helpers import BreadcrumbsPath
@@ -85,6 +86,12 @@ def dashboard(request):
     context['use_day']   = use_day
     context['use_month'] = use_month
     context['use_year']  = use_year
+
+    # выполняем проверки безопасности используемого пароля,
+    # если он не безопасен, то сообщаем об этом
+    db_passwd = settings.DATABASES['default']['PASSWORD']
+    if db_passwd == '123456':
+        context['none_secure'] = True
     return render(request, 'index/dashboard.html', context)
 
 
@@ -723,8 +730,6 @@ def favicon_ico(request):
     """Возвращает содержимое favicon.ico
     """
     import os
-    from django.conf import settings
-
     icof = os.path.join(settings.BASE_DIR, 'static', 'img', 'favicon.ico')
     
     if os.path.isfile(icof):

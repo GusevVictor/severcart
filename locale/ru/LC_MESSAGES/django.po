@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-08-10 11:07+0500\n"
-"PO-Revision-Date: 2016-08-10 11:08+0500\n"
+"POT-Creation-Date: 2016-08-16 09:29+0500\n"
+"PO-Revision-Date: 2016-08-16 09:31+0500\n"
 "Last-Translator: \n"
 "Language-Team: severcart.org <sfcl@mail.ru>\n"
 "Language: ru\n"
@@ -86,7 +86,7 @@ msgstr "Логин"
 
 #: .\accounts\forms\edit.py:13 .\accounts\models.py:19
 msgid "Full name"
-msgstr "Фамилие, имя, отчество"
+msgstr "Фамилия, имя, отчество"
 
 #: .\accounts\forms\edit.py:18 .\accounts\forms\register.py:18
 #: .\docs\forms\edit_name.py:18 .\docs\forms\edit_name.py:25
@@ -111,7 +111,7 @@ msgstr "Ошибка проверки!"
 
 #: .\accounts\forms\register.py:14
 msgid "Full Name"
-msgstr "Фамилие, имя, отчество"
+msgstr "Фамилия, имя, отчество"
 
 #: .\accounts\forms\register.py:35 .\storages\forms.py:21
 #: .\storages\forms.py:30
@@ -349,77 +349,77 @@ msgstr "Русский"
 msgid "English"
 msgstr "Английский"
 
-#: .\dhtml\templates\dhtml\logic.html:262
-#: .\dhtml\templates\dhtml\logic.html:312
-#: .\dhtml\templates\dhtml\logic.html:582
-#: .\dhtml\templates\dhtml\logic.html:662
-#: .\dhtml\templates\dhtml\logic.html:747
-#: .\dhtml\templates\dhtml\logic.html:795
-#: .\dhtml\templates\dhtml\logic.html:910
-#: .\dhtml\templates\dhtml\logic.html:1015
-#: .\dhtml\templates\dhtml\logic.html:1149
-#: .\dhtml\templates\dhtml\logic.html:1197
-#: .\dhtml\templates\dhtml\logic.html:1255
+#: .\dhtml\templates\dhtml\logic.html:263
+#: .\dhtml\templates\dhtml\logic.html:313
+#: .\dhtml\templates\dhtml\logic.html:583
+#: .\dhtml\templates\dhtml\logic.html:663
+#: .\dhtml\templates\dhtml\logic.html:748
+#: .\dhtml\templates\dhtml\logic.html:796
+#: .\dhtml\templates\dhtml\logic.html:911
+#: .\dhtml\templates\dhtml\logic.html:1016
+#: .\dhtml\templates\dhtml\logic.html:1150
+#: .\dhtml\templates\dhtml\logic.html:1198
+#: .\dhtml\templates\dhtml\logic.html:1256
 msgid "<p>Server not available.</p>"
 msgstr "<p>Сервер не доступен.</p>"
 
-#: .\dhtml\templates\dhtml\logic.html:389
-#: .\dhtml\templates\dhtml\logic.html:430
-#: .\dhtml\templates\dhtml\logic.html:458
-#: .\dhtml\templates\dhtml\logic.html:486
+#: .\dhtml\templates\dhtml\logic.html:390
+#: .\dhtml\templates\dhtml\logic.html:431
+#: .\dhtml\templates\dhtml\logic.html:459
+#: .\dhtml\templates\dhtml\logic.html:487
 msgid "Server error :("
 msgstr "Ошибка на стороне сервера :("
 
-#: .\dhtml\templates\dhtml\logic.html:542
+#: .\dhtml\templates\dhtml\logic.html:543
 msgid "Are you sure you want to put the selected items to the Trash?"
 msgstr "Вы точно хотите переместить выбранные элементы в корзину?"
 
-#: .\dhtml\templates\dhtml\logic.html:600
+#: .\dhtml\templates\dhtml\logic.html:601
 msgid "Are you sure you want to delete consumable (s)?"
 msgstr "Вы точно хотите удалить картридж(и)?"
 
-#: .\dhtml\templates\dhtml\logic.html:636
+#: .\dhtml\templates\dhtml\logic.html:637
 msgid "You sure you want to return the selected items back to the store?"
 msgstr "Вы точно хотите вернуть выбранные картриджи обратно на склад?"
 
-#: .\dhtml\templates\dhtml\logic.html:709
+#: .\dhtml\templates\dhtml\logic.html:710
 msgid "Are you sure you want to remove the counterparty?"
 msgstr "Вы точно хотите удалить контрагента?"
 
-#: .\dhtml\templates\dhtml\logic.html:967
+#: .\dhtml\templates\dhtml\logic.html:968
 msgid "Are you sure you want to delete a document?"
 msgstr "Вы точно хоитие удалить документ?"
 
-#: .\dhtml\templates\dhtml\logic.html:979
+#: .\dhtml\templates\dhtml\logic.html:980
 msgid "Are you sure you want to delete the user?"
 msgstr "Вы точно хотите удалить пользователя?"
 
-#: .\dhtml\templates\dhtml\logic.html:1106
+#: .\dhtml\templates\dhtml\logic.html:1107
 msgid "Are you sure you want to delete?"
 msgstr "Вы точно хотите удалить?"
 
-#: .\dhtml\templates\dhtml\logic.html:1161
+#: .\dhtml\templates\dhtml\logic.html:1162
 msgid "Are you sure you want to delete city?"
 msgstr "Вы точно хотите удалить название города?"
 
-#: .\dhtml\templates\dhtml\logic.html:1267
+#: .\dhtml\templates\dhtml\logic.html:1268
 #: .\index\templates\index\base_menu.html:16
 msgid "Find by number"
 msgstr "Поиск по номеру"
 
-#: .\dhtml\templates\dhtml\logic.html:1536
+#: .\dhtml\templates\dhtml\logic.html:1537
 msgid "Are you sure you want to remove the storage room?"
 msgstr "Вы точно хотите удалить складское помещение?"
 
-#: .\dhtml\templates\dhtml\logic.html:1597
+#: .\dhtml\templates\dhtml\logic.html:1598
 msgid "<p>Server error :(</p>"
 msgstr "<p>Ошибка на стороне сервера :(</p>"
 
 #: .\docs\api\views.py:30 .\docs\api\views.py:78 .\docs\api\views.py:110
 #: .\docs\api\views.py:429 .\index\api\views.py:43 .\index\api\views.py:78
 #: .\index\api\views.py:219 .\index\api\views.py:249 .\index\api\views.py:407
-#: .\index\api\views.py:454 .\index\api\views.py:475 .\index\api\views.py:490
-#: .\index\api\views.py:629 .\reports\api\views.py:56
+#: .\index\api\views.py:455 .\index\api\views.py:476 .\index\api\views.py:491
+#: .\index\api\views.py:630 .\reports\api\views.py:56
 #: .\storages\api\views.py:21 .\storages\api\views.py:59
 msgid "Only use POST requests!"
 msgstr "Поддерживаются только POST запросы!"
@@ -1120,7 +1120,7 @@ msgid "Events accounting object"
 msgstr "События объекта учёта"
 
 #: .\events\templates\events\view_cartridge_events.html:4
-#: .\index\templates\index\dashboard.html:61
+#: .\index\templates\index\dashboard.html:66
 #: .\service\templates\service\submenu.html:17
 msgid "Events"
 msgstr "События"
@@ -1198,11 +1198,11 @@ msgstr "Ошибка конвертации строки в интеджер."
 msgid "This action type not implemented."
 msgstr "Данный тип действия не реализован."
 
-#: .\index\api\views.py:445
+#: .\index\api\views.py:446
 msgid "Cartridges successfully transferred to basket."
 msgstr "Картридж(и) успешно перемещен(ы) в корзину."
 
-#: .\index\api\views.py:545
+#: .\index\api\views.py:546
 #, python-format
 msgid "Cartridges %(cart_list)s successfully transferred for use"
 msgstr "Картридж(и) %(cart_list)s успешно передан(ы) пользователю."
@@ -1255,7 +1255,7 @@ msgstr "Тип расходного материала"
 
 #: .\index\forms\add_user.py:9
 msgid "Surname"
-msgstr "Фамилие"
+msgstr "Фамилия"
 
 #: .\index\forms\add_user.py:11
 msgid "Middle name"
@@ -1301,9 +1301,14 @@ msgstr "Заправленные и в корзине"
 msgid "Empty and in basket"
 msgstr "Пустые и в корзине"
 
-#: .\index\templates\index\500.html:5 .\templates\500.html.py:3
-msgid "Internal server error."
-msgstr "Внутренняя ошибка сервера."
+#: .\index\templates\index\404.html:2 .\index\templates\index\404.html.py:3
+#: .\index\templates\index\404.html:10 .\index\templates\index\500.html:3
+msgid "Error 404"
+msgstr "Ошибка 404! Страница не найдена."
+
+#: .\index\templates\index\500.html:2 .\index\templates\index\500.html:10
+msgid "Error 500"
+msgstr "Ошибка на стороне сервера!"
 
 #: .\index\templates\index\add_empty_cartridge.html:2
 #: .\index\templates\index\add_empty_cartridge.html:3
@@ -1469,47 +1474,51 @@ msgstr "Редактировать комментарий"
 msgid "Event viewer"
 msgstr "Просмотр событий"
 
-#: .\index\templates\index\dashboard.html:4
+#: .\index\templates\index\dashboard.html:2
 msgid "Stocks of consumables"
 msgstr "Запасы расходных материалов"
 
-#: .\index\templates\index\dashboard.html:12
+#: .\index\templates\index\dashboard.html:11
+msgid "For security purposes, change the password to access the database!"
+msgstr "В целях безопасности поменяйте пароль доступа к базе данных!"
+
+#: .\index\templates\index\dashboard.html:17
 msgid "Desktop"
 msgstr "Рабочий стол"
 
-#: .\index\templates\index\dashboard.html:17
+#: .\index\templates\index\dashboard.html:22
 msgid "Quantity in stock (usable)"
 msgstr "Пригодные к использованию"
 
-#: .\index\templates\index\dashboard.html:22
+#: .\index\templates\index\dashboard.html:27
 msgid "The number of installed"
 msgstr "Задействованные"
 
-#: .\index\templates\index\dashboard.html:27
+#: .\index\templates\index\dashboard.html:32
 msgid "Number of empty, ready to recharge"
 msgstr "Пустые"
 
-#: .\index\templates\index\dashboard.html:32
+#: .\index\templates\index\dashboard.html:37
 msgid "Now dressed"
 msgstr "Сейчас заправляется"
 
-#: .\index\templates\index\dashboard.html:37
+#: .\index\templates\index\dashboard.html:42
 msgid "In basket (count)"
 msgstr "В корзине"
 
-#: .\index\templates\index\dashboard.html:42
+#: .\index\templates\index\dashboard.html:47
 msgid "Spending cartridges"
 msgstr "Расходование"
 
-#: .\index\templates\index\dashboard.html:46
+#: .\index\templates\index\dashboard.html:51
 msgid "For the current day"
 msgstr "За текущие сутки"
 
-#: .\index\templates\index\dashboard.html:50
+#: .\index\templates\index\dashboard.html:55
 msgid "Since the beginning of the month"
 msgstr "С начала месяца"
 
-#: .\index\templates\index\dashboard.html:54
+#: .\index\templates\index\dashboard.html:59
 msgid "Since the beginning of the year"
 msgstr "С начала года"
 
@@ -1710,41 +1719,41 @@ msgstr "Изменение имени"
 msgid "Close"
 msgstr "Закрыть"
 
-#: .\index\views.py:144
+#: .\index\views.py:151
 #, python-format
 msgid "%(cart_name)s already exists"
 msgstr "«%(cart_name)s» уже существует."
 
-#: .\index\views.py:148
+#: .\index\views.py:155
 #, python-format
 msgid "%(cart_name)s success added"
 msgstr "«%(cart_name)s» успешно добавлен."
 
-#: .\index\views.py:271 .\index\views.py:283
+#: .\index\views.py:278 .\index\views.py:290
 #, python-format
 msgid "Organization unit %(org_name)s exist"
 msgstr "Организационное подразделение «%(org_name)s» уже существует."
 
-#: .\index\views.py:276 .\index\views.py:288
+#: .\index\views.py:283 .\index\views.py:295
 #, python-format
 msgid "Organization unit %(org_name)s create successfuly."
 msgstr "Организационное подразделение «%(org_name)s» успешно создано."
 
-#: .\index\views.py:332
+#: .\index\views.py:339
 #, python-format
 msgid "%(cart_type)s success save"
 msgstr "«%(cart_type)s» успешно сохранён."
 
-#: .\index\views.py:336
+#: .\index\views.py:343
 #, python-format
 msgid "New type %(cart_type)s success added"
 msgstr "Новый тип «%(cart_type)s» успешно добавлен."
 
-#: .\index\views.py:476
+#: .\index\views.py:483
 msgid "Select all"
 msgstr "Выбрать все"
 
-#: .\index\views.py:509
+#: .\index\views.py:516
 #, python-format
 msgid "Firm \"%(firm_name)s\" success added."
 msgstr "Контрагент «%(firm_name)s» успешно добавлен."
@@ -1987,7 +1996,7 @@ msgstr "Наклейки"
 msgid "Auto complete directory types and names"
 msgstr "Автозаполнение справочников типов и имён РМ"
 
-#: .\service\views.py:57
+#: .\service\views.py:61
 msgid "Settings success saved."
 msgstr "Настройки успешно сохранены."
 
@@ -2070,9 +2079,11 @@ msgstr "Склад «%(starage_name)s»  успешно изменён."
 msgid "Starage not edited."
 msgstr "Склад не изменён."
 
-#: .\templates\404.html:5
-msgid "Page not found!"
-msgstr "Страница не найдена!"
+#~ msgid "Internal server error."
+#~ msgstr "Внутренняя ошибка сервера."
+
+#~ msgid "Page not found!"
+#~ msgstr "Страница не найдена!"
 
 #~ msgid "Disable edit"
 #~ msgstr "Отмена редактирования"
