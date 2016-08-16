@@ -252,7 +252,8 @@ def generate_act(request):
     
     resp_dict['error'] = '0'
     resp_dict['text']  = _('Document %(doc_number)s_%(user_id)s_0.docx generated') % { 'doc_number': m1.number, 'user_id': request.user.pk}
-    resp_dict['url'] = request.META.get('HTTP_ORIGIN') + settings.STATIC_URL + 'docx/' + docx_file_name
+    #resp_dict['url'] = request.META.get('HTTP_ORIGIN') + settings.STATIC_URL + 'docx/' + docx_file_name
+    resp_dict['url'] = settings.STATIC_URL + 'docx/' + docx_file_name
     
     return JsonResponse(resp_dict)
 
