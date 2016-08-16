@@ -445,9 +445,9 @@ ul.menu > li.select:hover:after {
 }
 
 select.language_selector {
-    height: 23px;
+    height: 26px;
     font-size: 16px;
-    width: 85px;
+    width: 90px;
 }
 
 /*   --------end style menu-----------   */
