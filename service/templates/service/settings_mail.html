@@ -26,11 +26,11 @@
                     {{ settings_form.email_sender }}
                 </div>
                 <div class="marginTop25">
-                    <label class="required">{{ settings_form.smtp_login.label }}</label>
+                    <label>{{ settings_form.smtp_login.label }}</label>
                     {{ settings_form.smtp_login }}
                 </div>
                 <div class="marginTop25">
-                    <label class="required">{{ settings_form.smtp_password.label }}</label>
+                    <label>{{ settings_form.smtp_password.label }}</label>
                     <!-- {{ settings_form.smtp_password }} -->
                     <input id="id_smtp_password" maxlength="32" name="smtp_password" type="password" value={{ settings_form.smtp_password.value }}>
                 </div>
