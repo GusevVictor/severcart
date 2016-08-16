@@ -722,9 +722,8 @@ a.export_to_csv{
     background-position: left center;
 }
 
-select.export_type, select.export_type option {
-    display: inline-block;
-    width: 260px;
+select.export_type {
+    width: 260px; 
 }
 
 .download_doc {
