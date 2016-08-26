@@ -1,6 +1,6 @@
 # -*- coding:utf-8 -*-
 
-VERSION = '0.2.7'
+VERSION = '0.2.9'
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os, sys
@@ -11,7 +11,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.append(os.path.join(BASE_DIR, 'conf'))
 
 # автоматический переключатель продакшена и девелопмента
-from settings_prod import *
+from settings_dev import *
 
 ALLOWED_HOSTS = ['*']
 
