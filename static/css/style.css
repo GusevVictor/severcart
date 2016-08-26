@@ -1090,3 +1090,27 @@ span.support_request {
     right:12px;
     font-size: 14px;
 }
+
+a.add_from_keyboard{
+    background: #7BCC9A url('../img/keyboard.png') no-repeat top right;
+    padding-right: 33px;
+    padding-bottom: 30px;
+    line-height: 33px;
+    border:1px solid #2D7347;
+}
+
+a.add_items.add_from_keyboard:active {
+    background: #7BCCAA url('../img/keyboard.png') no-repeat top right;
+}
+
+a.add_from_barcode_scanner {
+    background: #7BCC9A url('../img/barcode.png') no-repeat top right;
+    padding-right: 33px;
+    padding-bottom: 30px;
+    line-height: 33px;
+    border:1px solid #2D7347;
+}
+
+a.add_items.add_from_barcode_scanner:active {
+    background: #7BCCAA url('../img/barcode.png') no-repeat top right;   
+}

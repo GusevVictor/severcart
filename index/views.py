@@ -19,6 +19,7 @@ from common.cbv import CartridgesView
 from common.helpers import BreadcrumbsPath
 from .forms.add_cartridge_name import AddCartridgeName
 from .forms.add_items import AddItems
+from .forms.add_items_from_barcode import AddItemsFromBarCodeScanner
 from .forms.add_type import AddCartridgeType
 from .forms.add_firm import FirmTonerRefillF
 from .forms.add_empty_items import AddEmptyItems
@@ -204,6 +205,32 @@ def add_cartridge_item(request):
 
     html = render_to_string('index/add_over_ajax.html', context={'list_items': list_items})
     return render(request, 'index/add_items.html', {'form': form_obj, 'session': html, 'back': back})
+
+
+@login_required
+@never_cache
+def add_cartridge_from_barcode_scanner(request):
+    """Добавление РМ с сканера штрих кодов.
+    """
+    if not request.user.departament:
+        return render(request, 'index/ou_not_set.html', dict())
+
+    back = BreadcrumbsPath(request).before_page(request)
+    from docs.models import SCDoc
+    form = AddItemsFromBarCodeScanner()
+    # отфильтровываем и показываем только договора поставки
+    form.fields['doc'].queryset = SCDoc.objects.filter(departament=request.user.departament).filter(doc_type=1)
+    form.fields['storages'].queryset = Storages.objects.filter(departament=request.user.departament)
+    # выбор склада по умолчанию в выбранной организации
+    default_sklad = Storages.objects.filter(departament=request.user.departament).filter(default=True)
+    try:
+        if default_sklad[0].pk:
+            form.fields['storages'].initial = default_sklad[0].pk
+    except IndexError:
+        # если склад по-умолчанию не выбран, то пропускаем выбор склада
+        pass
+    
+    return render(request, 'index/add_cartridge_from_barcode_scanner.html', {'form': form, 'back': back})
 
 
 @login_required
