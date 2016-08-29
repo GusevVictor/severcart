@@ -395,6 +395,103 @@ $( function(){
         }
     });
 
+    $('input.add_items_from_barcode').click( function(e) {
+        /*  Добавление едениц расходных материалов с сканера
+        штрихкода  */
+        var cart_number = $('#id_cartNumber').val();
+        var cart_name  = $('#id_cartName option:selected').val();
+        var cart_sklad = $('#id_storages option:selected').val(); 
+        var docum      = $('#id_doc option:selected').val();
+        var cart_type  = $(this).attr('data'); 
+        if (!cart_number) {
+            $('.cart_number_error').show();
+        } else {
+            $('.cart_number_error').hide();
+        }
+
+        if (!cart_name) {
+            $('.cart_name_error').show();
+        } else {
+            $('.cart_name_error').hide();
+        }
+
+        if (!cart_sklad) {
+            $('.cart_sklad_error').show();
+        } else {
+            $('.cart_sklad_error').hide();
+        }
+
+        if (cart_name && cart_sklad && cart_number) {
+            $.ajax({
+                method: 'POST',
+                url: '{% url "index:ajax_add_session_items_from_barcode" %}',
+                data:  {'cartNumber': cart_number, 'cartName': cart_name, 'doc': docum, 'cart_type': cart_type, 'storages': cart_sklad },
+                beforeSend: function( xhr, settings ){
+                    $('.spinner').show();
+                    csrftoken = getCookie('csrftoken');
+                    if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
+                        xhr.setRequestHeader('X-CSRFToken', csrftoken);
+                    }
+                },
+                success: function( msg ) {
+                    // Прячем ссылку закачки pdf файлов
+                    $('.download_pdf').hide();
+                    $( "#id_cartNumber" ).focus();
+                    if (msg.error == '1') {
+                        $('.spinner').hide(); 
+                        $('.success_msg').hide();
+                        $('.error_msg').show();
+                        $('.error_msg').html(msg.mes);
+                    }
+
+                    if (msg.error == '0') {
+                        $('.spinner').hide();
+                        $('.error_msg').hide();
+                        $('.session_data').html(msg.html);
+                        $('.success_msg').show();
+                        $('.success_msg').html(msg.mes);
+                        setTimeout(function() { $('.success_msg').hide(); }, 12000);
+                    }
+                },
+                error: function() {
+                    $( "#id_cartNumber" ).focus();
+                    $('.error_msg').show();
+                    $('.error_msg').html('{% trans "Server error :(" %}');
+                    $('.spinner').hide();
+                    setTimeout(function() { $('.error_msg').hide(); }, 12000);
+                },
+            });            
+        }
+    });
+
+    var add_new_cart_from_barcode = $('.add_new_cart_from_barcode');
+    // Если происходит добавления новых картриджей с помощью 
+    // сканера штрихкодов.
+    if (add_new_cart_from_barcode.length) {
+        $( "#id_cartNumber" ).focus();
+        var pressed = false; 
+        var chars = []; 
+        $('#id_cartNumber').keypress(function(e) {
+            if (e.which >= 48 && e.which <= 57) {
+                chars.push(String.fromCharCode(e.which));
+            }
+            //console.log(e.which + ":" + chars.join("|"));
+            if (pressed == false) {
+                setTimeout(function(){
+                    // check we have a long length e.g. it is a barcode
+                    if (chars.length >= 1) {
+                        var barcode = chars.join("");
+                        //console.log("Barcode Scanned: " + barcode);
+                        $("#id_cartNumber").val(barcode);
+                    }
+                    chars = [];
+                    pressed = false;
+                }, 500);
+            }
+            pressed = true;
+        });
+    }
+
     $('.users_use_cartridges').click( function() {
         var org        = $('#id_org option:selected').val();
         var start_date = $('#id_start_date').val();

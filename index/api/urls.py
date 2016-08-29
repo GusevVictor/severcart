@@ -1,6 +1,7 @@
 
 from django.conf.urls import include, url
 from index.api.views import (   ajax_add_session_items, 
+                                ajax_add_session_items_from_barcode,
                                 city_list,
                                 del_node,
                                 names_suggests, 
@@ -24,6 +25,7 @@ urlpatterns = [
     url('^turf_cartridge/', turf_cartridge, name='turf_cartridge'),
     url('^del_users/', del_users, name='del_users'),
     url('^ajax_add_session_items/', ajax_add_session_items, name='ajax_add_session_items'),
+    url('^ajax_add_session_items_from_barcode/', ajax_add_session_items_from_barcode, name='ajax_add_session_items_from_barcode'),
     url('^clear_session/', clear_session, name='clear_session'),
     url('^transfer_to_stock/', transfer_to_stock, name='transfer_to_stock'),
     url('^transfer_to_basket/', transfer_to_basket, name='transfer_to_basket'),

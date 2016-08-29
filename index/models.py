@@ -65,9 +65,8 @@ STATUS = (
 
 class CartridgeItem(models.Model):
     sklad                = models.IntegerField(db_index=True)
-    cart_number          = models.IntegerField(db_index=True, null=True)
+    cart_number          = models.CharField(max_length=256, db_index=True, null=True)
     cart_number_prefix   = models.CharField(max_length=256, null=True)
-    cart_number_postfix  = models.CharField(max_length=256, null=True)
     cart_itm_name        = models.ForeignKey(CartridgeItemName, on_delete=models.PROTECT)
     cart_date_added      = models.DateField(db_index=True)
     cart_date_change     = models.DateField(db_index=True)

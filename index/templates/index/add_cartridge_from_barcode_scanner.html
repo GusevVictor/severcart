@@ -16,7 +16,8 @@
             <form action="" method="post">
                 {% csrf_token %}
                 <label>{% trans 'Scanning number' %}</label>
-                {{ form.cartNumber }}
+                <input class="barcode" id="id_cartNumber" maxlength="256" name="cartNumber" type="text" readonly="">
+                <div class="form_error_text cart_number_error">{% trans "Required field" %}</div>
                 <div class="marginTop"></div>
                 <div class="row">
                     <div class="large-6 medium-6 columns">
@@ -57,6 +58,7 @@
         </div>
         <div class="large-6 column">
             <!-- Прежнее место сессионных переменных -->
+            <div class="add_new_cart_from_barcode"></div>
         </div>
     </div>
 {% endblock %}

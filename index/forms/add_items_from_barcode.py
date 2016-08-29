@@ -3,13 +3,13 @@
 from django import forms
 from django.core.exceptions import ValidationError
 from django.utils.translation import ugettext_lazy as _
-from index.models import CartridgeItemName
+from index.models import CartridgeItemName, CartridgeItem
 from docs.models  import SCDoc
 from storages.models import Storages
 
 
 class AddItemsFromBarCodeScanner(forms.Form):
-    cartNumber = forms.CharField(max_length=256, widget=forms.TextInput(attrs={'readonly': True, 'class': 'loc'}), required=True)
+    cartNumber = forms.CharField(max_length=256, widget=forms.TextInput(attrs={'readonly': True, 'class': 'barcode'}), required=True)
 
     cartName = forms.ModelChoiceField(queryset=CartridgeItemName.objects.all(),
                                       error_messages={'required': _('Required field.')},
@@ -22,6 +22,19 @@ class AddItemsFromBarCodeScanner(forms.Form):
 
 
     required_css_class = 'required'
+
+    def clean_cartNumber(self):
+        """Провем на дубли номера РМ.
+        """
+        cart_number = self.cleaned_data.get('cartNumber', '')
+        cart_number = cart_number.strip()
+        find_count = CartridgeItem.objects.filter(cart_number=cart_number)
+        if len(find_count):
+            raise ValidationError(_('The object with number %(cart_number)s is already registered.') % {'cart_number': cart_number})
+        else:
+            return cart_number
+
+
 
     def clean_cartName(self):
         """Проверят на пустоту введенные данные.

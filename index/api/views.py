@@ -27,6 +27,7 @@ from index.signals import ( sign_turf_cart,
                             sign_tr_cart_to_uses, 
                             sign_tr_empty_cart_to_firm, ) 
 from index.forms.add_items import AddItems
+from index.forms.add_items_from_barcode import AddItemsFromBarCodeScanner
 from index.forms.tr_to_firm import TransfeToFirm
 from docs.models import SCDoc, RefillingCart
 from common.helpers import is_admin
@@ -210,6 +211,79 @@ def ajax_add_session_items(request):
         pass
     return JsonResponse(tmp_dict, safe=False)
 
+
+@check_ajax_auth
+def ajax_add_session_items_from_barcode(request):
+    """Добавляем картриджи на склад с помощью сканера штрих кодов.
+    """
+    if request.method != 'POST':
+        return HttpResponse('<h1>' + _('Only use POST requests!') + '</h1>')
+    # если пришёл запрос то пополняем сессионную переменную
+    # результаты отображаем на странице
+    context = dict()
+    try:
+        m1 = request.user.departament.pk
+    except AttributeError:
+        context['mes']  = _('User not assosiate with organization unit!<br/>Error code: 101.')
+        context['error'] = '1'
+        return JsonResponse(context)
+    
+    context['error'] = '0'
+    form = AddItemsFromBarCodeScanner(request.POST)
+    if not(form.is_valid()):
+        # если в БД уже есть РМ дубль с аналогичным номером, то
+        # прекращаем выполнение программы и сообщаем об ошибке
+        context['mes'] = form.errors.as_text()
+        context['error'] = '1'
+        return JsonResponse(context)
+
+    if form.is_valid():
+        data_in_post = form.cleaned_data
+        cart_number  = data_in_post.get('cartNumber')
+        cart_name_id = data_in_post.get('cartName').pk
+        cart_name    = data_in_post.get('cartName').cart_itm_name
+        storages     = data_in_post.get('storages')
+        storages     = storages.pk
+        cart_name    = str(cart_name)
+        cart_type    = request.POST.get('cart_type')
+        cart_doc_id  = data_in_post.get('doc')
+
+        # чтобы не плодить лишние сущности зделано одно вью для добавления разных картриджей
+        if cart_type == 'full':
+            cart_status = 1
+        elif cart_type == 'empty':
+            cart_status = 3
+        else:
+            context['error'] ='1'
+            context['mes']   = _('Error in attrib "data" in input button add_item')
+            return JsonResponse(context)
+
+        list_cplx = list()
+        # Добавляем отсканированный картридж в БД
+        with transaction.atomic():
+            m1 = CartridgeItem(sklad=storages,
+                               cart_number=cart_number,
+                               cart_itm_name=data_in_post.get('cartName'),
+                               cart_date_added=timezone.now(),
+                               cart_date_change=timezone.now(),
+                               cart_number_refills=0,
+                               departament=request.user.departament,
+                               cart_status=cart_status,
+                               delivery_doc=cart_doc_id,
+                               )
+            m1.save()
+            list_cplx.append((m1.id, cart_number, cart_name))
+        
+        context['mes'] = _('Cartridge %(cart_number)s successfully added.') % {'cart_number': cart_number}
+        # запускаем сигнал добавления событий
+        if cart_status == 1:
+            sign_add_full_to_stock.send(sender=None, list_cplx=list_cplx, request=request)
+        elif cart_status == 3:
+            sign_add_empty_to_stock.send(sender=None, list_cplx=list_cplx, request=request)
+        else:
+            pass
+
+    return JsonResponse(context)    
 
 @check_ajax_auth
 def transfer_to_stock(request):
