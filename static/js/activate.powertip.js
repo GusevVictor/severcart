@@ -16,4 +16,15 @@ $( function() {
         });
     });
 
+    $('.cart_number_for_tip').each(function() {
+        $(this).powerTip({
+            placement: 'n',
+            smartPlacement: true,
+        });
+
+        $(this).click( function(){
+            $(this).powerTip('show');
+        });
+    });
+
 });

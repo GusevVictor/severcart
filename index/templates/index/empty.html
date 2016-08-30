@@ -54,7 +54,7 @@
                 {% for i in cartrjs %}
                     <tr>
                         <td><input type="checkbox" class="checkbox" value="{{ i.pk }}"></td>
-                        <td>{{ i.cart_number }}</td>
+                        <td class="cart_number_for_tip" data-powertip="{{ i.cart_number }}">{{ i.cart_number|truncatechars:9 }}</td>
                         <td>{{ i.cart_itm_name }}</td>
                         <td>{{ i.cart_number_refills }}</td>
                         <td>{{ i.cart_date_change|date:"d.m.Y" }}</td>
