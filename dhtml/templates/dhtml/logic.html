@@ -435,6 +435,7 @@ $( function(){
                 },
                 success: function( msg ) {
                     // Прячем ссылку закачки pdf файлов
+                    $('#id_cartNumber').val('');
                     $('.download_pdf').hide();
                     $( "#id_cartNumber" ).focus();
                     if (msg.error == '1') {
