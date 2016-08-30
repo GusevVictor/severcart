@@ -210,7 +210,7 @@ def add_cartridge_item(request):
 @login_required
 @never_cache
 def add_cartridge_from_barcode_scanner(request):
-    """Добавление РМ с сканера штрих кодов.
+    """Добавление новых РМ с сканера штрих кодов.
     """
     if not request.user.departament:
         return render(request, 'index/ou_not_set.html', dict())
@@ -232,6 +232,31 @@ def add_cartridge_from_barcode_scanner(request):
     
     return render(request, 'index/add_cartridge_from_barcode_scanner.html', {'form': form, 'back': back})
 
+
+@login_required
+@never_cache
+def add_empty_cartridge_from_barcode_scanner(request):
+    """Добавление пустых/использоыванных РМ с сканера штрих кодов.
+    """
+    if not request.user.departament:
+        return render(request, 'index/ou_not_set.html', dict())
+
+    back = BreadcrumbsPath(request).before_page(request)
+    from docs.models import SCDoc
+    form = AddItemsFromBarCodeScanner()
+    # отфильтровываем и показываем только договора поставки
+    form.fields['doc'].queryset = SCDoc.objects.filter(departament=request.user.departament).filter(doc_type=1)
+    form.fields['storages'].queryset = Storages.objects.filter(departament=request.user.departament)
+    # выбор склада по умолчанию в выбранной организации
+    default_sklad = Storages.objects.filter(departament=request.user.departament).filter(default=True)
+    try:
+        if default_sklad[0].pk:
+            form.fields['storages'].initial = default_sklad[0].pk
+    except IndexError:
+        # если склад по-умолчанию не выбран, то пропускаем выбор склада
+        pass
+    
+    return render(request, 'index/add_empty_cartridge_from_barcode_scanner.html', {'form': form, 'back': back})
 
 @login_required
 @never_cache

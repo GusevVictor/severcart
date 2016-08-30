@@ -118,7 +118,7 @@ def ajax_add_session_items(request):
         with transaction.atomic():
             for i in range(cart_count):
                 m1 = CartridgeItem(sklad=storages,
-                                   cart_number=cart_number,
+                                   cart_number=str(cart_number),
                                    cart_itm_name=data_in_post.get('cartName'),
                                    cart_date_added=timezone.now(),
                                    cart_date_change=timezone.now(),
@@ -262,7 +262,7 @@ def ajax_add_session_items_from_barcode(request):
         # Добавляем отсканированный картридж в БД
         with transaction.atomic():
             m1 = CartridgeItem(sklad=storages,
-                               cart_number=cart_number,
+                               cart_number=str(cart_number),
                                cart_itm_name=data_in_post.get('cartName'),
                                cart_date_added=timezone.now(),
                                cart_date_change=timezone.now(),

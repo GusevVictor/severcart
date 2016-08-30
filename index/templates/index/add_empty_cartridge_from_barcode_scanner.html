@@ -1,0 +1,64 @@
+{% extends "index/base.html" %}{% load staticfiles %}{% load i18n %}
+{% block title %}{% trans "Adding empty objects to the stock with barcode scanner" %}{% endblock %}
+{% block breadcrumbs %}<a href="/"><img src="{{ STATIC_URL }}img/home.png" /></a> / <a href="{% url 'index:stock' %}">{% trans "List of new or refilled cartridges" %}</a> / {% trans "Adding empty objects to the stock with barcode scanner" %}{% endblock %}
+{% block help_url %}
+{{ request.HOME_SITE }}/help/{{ request.LANGUAGE_CODE }}/add_empty_cartridge_from_barcode_scanner/
+{% endblock %}
+{% block content %}
+    <div class="row">
+        <div class="large-6 columns">
+            <div class="success_msg"></div>
+            <div class="error_msg"></div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="large-6 columns">
+            <form action="" method="post">
+                {% csrf_token %}
+                <label>{% trans 'Scanning number' %}</label>
+                <input class="barcode" id="id_cartNumber" maxlength="256" name="cartNumber" type="text" readonly="">
+                <div class="form_error_text cart_number_error">{% trans "Required field" %}</div>
+                <div class="marginTop"></div>
+                <div class="row">
+                    <div class="large-6 medium-6 columns">
+                        <label for="id_filter_ca">{% trans "Filter" %}</label>
+                        <input class="inline left" id="id_filter_ca" name="filter_ca" type="text">
+                        <img class="inline right filter_spinner" src="{{ STATIC_URL }}img/loader.gif" />
+                    </div>
+                    <div class="large-6 medium-6 columns">
+                        <label class="required" for="id_cartName">{% trans "Cartridge name" %}</label>
+                        <div class="input_row">
+                            <select class="dinamic_list" id="id_cartName">
+                                <option></option>
+                            </select>
+                            <a class="dj_button add" href="{% url 'index:add_name' %}"></a>
+                        </div>
+                        <div class="form_error_text cart_name_error">{% trans "Required field" %}</div>
+                    </div>
+                </div>
+                
+                <label class="required marginTop" for="{{ form.storages.id_for_label }}">{% trans "Storage" %}</label>
+                <div class="input_row">
+                    {{ form.storages }} <a class="dj_button add" href="{% url 'storages:add_s' %}"></a>
+                </div>
+                <div class="form_error_text cart_sklad_error">{% trans "The field must be seleced" %}</div>
+
+                <label class="marginTop" for="{{ form.doc.id_for_label }}">{% trans "Delivery agreement" %}</label>
+                <div class="input_row">
+                    {{ form.doc }} <a class="dj_button add" href="{% url 'docs:delivery' %}"></a>
+                </div>
+
+                <div class="marginTop">
+                    <input type="submit" value='{% trans "Add" %}' class="button success add_items_from_barcode no_follow" data="empty" />
+                    &nbsp;&nbsp;&nbsp;
+                    <a href="{{ back }}" class="button"/>{% trans "Back" %}</a>&nbsp;&nbsp;&nbsp;
+                    <img class="spinner" src="{{ STATIC_URL }}img/loader.gif" />
+                </div>
+            </form>
+        </div>
+        <div class="large-6 column">
+            <!-- Прежнее место сессионных переменных -->
+            <div class="add_new_cart_from_barcode"></div>
+        </div>
+    </div>
+{% endblock %}
