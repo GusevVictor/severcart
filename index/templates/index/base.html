@@ -3,14 +3,14 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="{{ STATIC_URL }}img/favicon.ico?1" rel="shortcut icon" />
+    <link href="{{ STATIC_URL }}img/favicon.ico?{{request.CACHEVERSION}}" rel="shortcut icon" />
     <link rel="stylesheet" href="{{ STATIC_URL }}css/normalize.css" />
     <link rel="stylesheet" href="{{ STATIC_URL }}css/foundation.css" />
-    <link rel="stylesheet" href="{{ STATIC_URL }}css/style.css?44" />
-    <script src="{{ STATIC_URL }}js/detect.js?7"></script>
+    <link rel="stylesheet" href="{{ STATIC_URL }}css/style.css?{{request.CACHEVERSION}}" />
+    <script src="{{ STATIC_URL }}js/detect.js?{{request.CACHEVERSION}}"></script>
     <script src="{{ STATIC_URL }}js/vendor/jquery.js"></script>
     {% block jqueryui %}{% endblock %}
-    <script src="/dhtml/logic.js?10"></script>
+    <script src="/dhtml/logic.js?{{request.CACHEVERSION}}"></script>
     <title>{% block title %}{% endblock %}</title>
     <noscript>
         <meta http-equiv="refresh" content="3; url={% url 'index:bad_browser' %}"/>

@@ -7,7 +7,7 @@
 {% endblock %}
 {% block jqueryui%}<link rel="stylesheet" href="{{ STATIC_URL }}css/jquery.powertip-dark.min.css" />
 <script src="{{ STATIC_URL }}js/jquery.powertip.min.js"></script>
-<script src="{{ STATIC_URL }}js/activate.powertip.js?1"></script>{% endblock %}
+<script src="{{ STATIC_URL }}js/activate.powertip.js?{{request.CACHEVERSION}}"></script>{% endblock %}
 {% block submenu %}
 <div class="row">
     <div class="large-6 columns">
@@ -52,7 +52,7 @@
                 </tr>{% for i in cartrjs %}
                     <tr>
                         <td><input type="checkbox" class="checkbox" value="{{ i.pk }}"></td>
-                        <td class="cart_number_for_tip" data-powertip="{{ i.cart_number }}">{{ i.cart_number|truncatechars:9 }}</td>
+                        <td class="cart_number_for_tip" data-powertip="{{ i.cart_number }}">{{ i.cart_number|truncatechars:request.TRLEN }}</td>
                         <td>{{ i.cart_itm_name }}</td>
                         <td>{{ i.cart_number_refills }}</td>
                         <td>{{ i.cart_date_change|date:"d.m.Y" }}</td>
