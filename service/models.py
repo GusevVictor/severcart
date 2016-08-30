@@ -17,4 +17,5 @@ class Settings(models.Model):
     # принимает значения A4, A5, ...
     page_format    =  models.CharField(max_length=2, null=True, default='A4')
     print_bar_code = models.BooleanField(default=False)
-    print_name_obj = models.CharField(max_length=256, null=True)
+    print_name_obj = models.BooleanField(default=True)
+    print_name_ou  = models.BooleanField(default=True)

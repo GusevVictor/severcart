@@ -20,6 +20,9 @@ class SevercartConfigs(object):
             self.use_ssl        = False
             self.use_tls        = False
             self.page_format    = 'A4'
+            self.print_bar_code = False
+            self.print_name_obj = True
+            self.print_name_ou  = True
         else:
             # если таблица уже содержит данные, то инициализируем внутренние переменные
             self.smtp_server    = self.m1.smtp_server
@@ -30,6 +33,9 @@ class SevercartConfigs(object):
             self.use_ssl        = self.m1.use_ssl
             self.use_tls        = self.m1.use_tls
             self.page_format    = self.m1.page_format
+            self.print_bar_code = self.m1.print_bar_code
+            self.print_name_obj = self.m1.print_name_obj
+            self.print_name_ou  = self.m1.print_name_ou
 
     def commit(self):
         """Сохранение значений настроечных переменных в СУБД.
@@ -46,7 +52,10 @@ class SevercartConfigs(object):
                             smtp_password  = self.smtp_password,
                             use_ssl        = self.use_ssl,
                             use_tls        = self.use_tls,
-                            page_format    = self.page_format
+                            page_format    = self.page_format,
+                            print_bar_code = self.print_bar_code,
+                            print_name_obj = self.print_name_obj,
+                            print_name_ou  = self.print_name_ou
                             )
             m1.save()
         else:
@@ -60,6 +69,9 @@ class SevercartConfigs(object):
             self.m1.use_ssl        = self.use_ssl
             self.m1.use_tls        = self.use_tls
             self.m1.page_format    = self.page_format
+            self.m1.print_bar_code = self.print_bar_code
+            self.m1.print_name_obj = self.print_name_obj
+            self.m1.print_name_ou  = self.print_name_ou
             self.m1.save()
 
 def send_email(reciver=None, title=None, text=None):

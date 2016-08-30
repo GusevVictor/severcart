@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-08-30 11:10+0500\n"
-"PO-Revision-Date: 2016-08-30 11:15+0500\n"
+"POT-Creation-Date: 2016-08-30 15:47+0500\n"
+"PO-Revision-Date: 2016-08-30 15:50+0500\n"
 "Last-Translator: \n"
 "Language-Team: severcart.org <sfcl@mail.ru>\n"
 "Language: ru\n"
@@ -312,10 +312,12 @@ msgid "Admin?"
 msgstr "Администратор?"
 
 #: .\accounts\templates\accounts\manage_users.html:56
+#: .\service\forms\stickers.py:10
 msgid "Yes"
 msgstr "Да"
 
 #: .\accounts\templates\accounts\manage_users.html:58
+#: .\service\forms\stickers.py:10
 msgid "No"
 msgstr "Нет"
 
@@ -2013,9 +2015,31 @@ msgstr "Данный номер порта недопустим"
 msgid "Text message"
 msgstr "Тестовое сообщение"
 
-#: .\service\forms\stickers.py:10
-msgid "Select format"
-msgstr "Выбрать формат"
+#: .\service\forms\stickers.py:11
+msgid "Select paper format"
+msgstr "Выбрать формат бумаги"
+
+#: .\service\forms\stickers.py:12
+msgid "Print bar code?"
+msgstr "Печатать штрихкод?"
+
+#: .\service\forms\stickers.py:13
+msgid "Print name?"
+msgstr "Печатать имя?"
+
+#: .\service\forms\stickers.py:14
+msgid "Print organizational unit name?"
+msgstr "Печатать номер организации?"
+
+#: .\service\forms\stickers.py:20 .\service\forms\stickers.py:34
+#: .\service\forms\stickers.py:45 .\service\forms\stickers.py:56
+msgid "Value must be set"
+msgstr "Значение должно быть установлено"
+
+#: .\service\forms\stickers.py:41 .\service\forms\stickers.py:52
+#: .\service\forms\stickers.py:63
+msgid "Invalid value"
+msgstr "Ошибочное значение"
 
 #: .\service\templates\service\settings_mail.html:2
 msgid "Email"
@@ -2050,7 +2074,7 @@ msgstr "Наклейки"
 msgid "Auto complete directory types and names"
 msgstr "Автозаполнение справочников типов и имён РМ"
 
-#: .\service\views.py:61
+#: .\service\views.py:67
 msgid "Settings success saved."
 msgstr "Настройки успешно сохранены."
 
