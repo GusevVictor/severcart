@@ -16,6 +16,12 @@ class InsertVarToRequest(object):
             request.LANGUAGE_CODE = translation.get_language()
         # иначе оставляем всё как есть
         
-        request.HOME_SITE = settings.HOME_SITE
-        request.VERSION   = settings.VERSION
-        request.YEAR      = datetime.date.today().year
+        request.HOME_SITE    = settings.HOME_SITE
+        request.VERSION      = settings.VERSION
+        request.YEAR         = datetime.date.today().year
+        # оиспользуется для обновления браузерного кэша статических 
+        # файлов при выпуске нового релиза
+        request.CACHEVERSION = settings.VERSION.replace('.', '')
+        # длина номера РМ после которого будет производиться усечение
+        request.TRLEN        = settings.TRLEN
+        
