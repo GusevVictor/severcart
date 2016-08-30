@@ -214,3 +214,7 @@ MAX_TABLE_ROWS = 40
 HISTORY_LENGTH = 5
 
 HOME_SITE = 'http://www.severcart.org'
+
+# длина символов в номере РМ, после которых будет производиться 
+# усечение 
+TRLEN = 9
