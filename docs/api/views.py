@@ -424,7 +424,7 @@ def generate_csv(request):
 
 @check_ajax_auth
 def generate_pdf(request):
-    """
+    """Генерация pdf файла с наклейками для печати.
     """
     if request.method != 'POST':
         return HttpResponse('<h1>' + _('Only use POST requests!') + '</h1>')
@@ -467,11 +467,19 @@ def generate_pdf(request):
 
     conf = SevercartConfigs()
     pagesize = conf.page_format
-    pdf_doc = Sticker(file_name=pdf_full_name, pagesize=pagesize)
+    print_bar_code = conf.print_bar_code
+    pdf_doc = Sticker(file_name=pdf_full_name, pagesize=pagesize, print_bar_code=print_bar_code)
+    # формируем текст для наклейки
     for elem in session_data:
         for stik in elem[2]:
-            cartridge_name = simple_cache.get(elem[0])
+            #cartridge_name = simple_cache.get(elem[0])
+            cartridge_name = CartridgeItemName.objects.get(pk=elem[0])
+            cartridge_name = str(cartridge_name)
+            cartridge_name = cartridge_name.strip()
             cartridge_name = re.split('\s+', cartridge_name)
+            # формат названия картриджа "HP RT565A"
+            # если не соответсвует, то используем имя целиком.
+            # если количество элементов в имени >=2 на наклейку попадёт другое имя
             if len(cartridge_name) == 1:
                 cartridge_name = cartridge_name[0]
             else:

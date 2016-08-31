@@ -2,6 +2,7 @@
 
 from django.conf import settings
 from django.shortcuts import render
+from reportlab.graphics.barcode import code128
 from reportlab.pdfgen import canvas
 from reportlab.lib.pagesizes import A4, A5
 from reportlab.lib.units import mm
@@ -94,7 +95,7 @@ class Sticker(object):
     """Ресует наклейки на странице А4.
     """
     
-    def __init__(self, file_name='hello3.pdf', pagesize='A4'):
+    def __init__(self, file_name='hello3.pdf', pagesize='A4', print_bar_code=False):
         """
         """
         self.count  = 0
@@ -102,6 +103,7 @@ class Sticker(object):
         self.row    = 0
         self.column = 0
         self.pagesize = pagesize
+        self.print_bar_code = print_bar_code
         if pagesize == 'A4':
             pagesize = A4
         elif pagesize == 'A5':
@@ -117,25 +119,50 @@ class Sticker(object):
     def add(self, ou_number='5', cartridge_name='Q2612A', cartridge_number='1245'):
         """Рисует одну наклейку. 
         """
-        if self.pagesize == 'A4':
-            x = 10 + (self.column * 19.5)
-            y = 283 - (self.row * 14.7)
-        elif self.pagesize == 'A5':
-            x = 7 + (self.column * 19.5)
-            y = 198 - (self.row * 14.7)
+        if self.print_bar_code:
+            if self.pagesize == 'A4':
+                x = 10 + (self.column * 19.5)
+                y = 275 - (self.row * 21.5)
+            elif self.pagesize == 'A5':
+                x = 7 + (self.column * 19.5)
+                y = 198 - (self.row * 17.7)
+            else:
+                x = 10 + (self.column * 19.5)
+                y = 283 - (self.row * 14.7)
+
+            #cartridge_number = "99999" максимально вмещаемый номер
+            # рисуем штрихкод и рамочку к нему
+            #self.canv.rect(x*mm, y*mm, 16.5*mm, 7.5*mm, fill=0)
+            barcode128 = code128.Code128(cartridge_number)
+            barcode128.drawOn(self.canv, (x-5.5)*mm, (y+0.6)*mm)
+            # отрисовываем прямоугольник с номером организации
+            #self.canv.rect(x*mm, y*mm, 16.5*mm, 4*mm, fill=0)
+            #self.canv.drawString(x*mm, (y+1)*mm, self.center(ou_number))
+            self.canv.rect((x-0)*mm, (y-4)*mm, 16.5*mm, 4*mm, fill=0)
+            self.canv.drawString((x-0)*mm, (y-3)*mm, self.center(str(cartridge_name)))
+
+            self.canv.rect((x-0)*mm, (y-8)*mm, 16.5*mm, 4*mm, fill=0)
+            self.canv.drawString((x-0)*mm, (y-7)*mm, self.center(cartridge_number))
         else:
-            x = 10 + (self.column * 19.5)
-            y = 283 - (self.row * 14.7)
+            # печатаем наклейку если не выбрана опция "Печатать штрихкод"
+            if self.pagesize == 'A4':
+                x = 10 + (self.column * 19.5)
+                y = 283 - (self.row * 14.7)
+            elif self.pagesize == 'A5':
+                x = 7 + (self.column * 19.5)
+                y = 198 - (self.row * 14.7)
+            else:
+                x = 10 + (self.column * 19.5)
+                y = 283 - (self.row * 14.7)
 
-        self.canv.rect(x*mm, y*mm, 16.5*mm, 4*mm, fill=0)
-        self.canv.drawString(x*mm, (y+1)*mm, self.center(ou_number))
+            self.canv.rect(x*mm, y*mm, 16.5*mm, 4*mm, fill=0)
+            self.canv.drawString(x*mm, (y+1)*mm, self.center(ou_number))
 
-        self.canv.rect((x-0)*mm, (y-4)*mm, 16.5*mm, 4*mm, fill=0)
-        self.canv.drawString((x-0)*mm, (y-3)*mm, self.center(cartridge_name))
+            self.canv.rect((x-0)*mm, (y-4)*mm, 16.5*mm, 4*mm, fill=0)
+            self.canv.drawString((x-0)*mm, (y-3)*mm, self.center(cartridge_name))
 
-        self.canv.rect((x-0)*mm, (y-8)*mm, 16.5*mm, 4*mm, fill=0)
-        self.canv.drawString((x-0)*mm, (y-7)*mm, self.center(cartridge_number))
-
+            self.canv.rect((x-0)*mm, (y-8)*mm, 16.5*mm, 4*mm, fill=0)
+            self.canv.drawString((x-0)*mm, (y-7)*mm, self.center(cartridge_number))
         self.column += 1
         # Если количество наклеек превышает 10, то обнуляем счётчик колонок и
         # инкрементируем счётчик строк.
