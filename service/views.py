@@ -55,18 +55,18 @@ def stickers(request):
         if form.is_valid():
             data_in_post = form.cleaned_data
             choice = data_in_post.get('choice','A4')
-            print_bar_code = data_in_post.get('print_bar_code')
+            print_qr_code = data_in_post.get('print_qr_code')
             conf.page_format = choice
-            conf.print_bar_code = print_bar_code
+            conf.print_bar_code = print_qr_code
             conf.commit()
             context['form'] = form
             messages.success(request, _('Settings success saved.'))
         else:
             context['form'] = form    
     else:
-        print_bar_code = 1 if conf.print_bar_code else 2
+        print_qr_code = 1 if conf.print_bar_code else 2
         form = StickFormat(initial={'choice': conf.page_format,
-                                    'print_bar_code': print_bar_code,
+                                    'print_qr_code': print_qr_code,
                                     })
         context['form'] = form
     return render(request, 'service/stickers.html', context)

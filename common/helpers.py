@@ -2,7 +2,7 @@
 
 from django.conf import settings
 from django.shortcuts import render
-from reportlab.graphics.barcode import code128
+from reportlab.graphics.barcode import code128, code39, qr
 from reportlab.pdfgen import canvas
 from reportlab.lib.pagesizes import A4, A5
 from reportlab.lib.units import mm
@@ -122,10 +122,10 @@ class Sticker(object):
         if self.print_bar_code:
             if self.pagesize == 'A4':
                 x = 10 + (self.column * 19.5)
-                y = 275 - (self.row * 21.5)
+                y = 275 - (self.row * 22.0)
             elif self.pagesize == 'A5':
                 x = 7 + (self.column * 19.5)
-                y = 198 - (self.row * 17.7)
+                y = 185 - (self.row * 24)
             else:
                 x = 10 + (self.column * 19.5)
                 y = 283 - (self.row * 14.7)
@@ -133,8 +133,20 @@ class Sticker(object):
             #cartridge_number = "99999" максимально вмещаемый номер
             # рисуем штрихкод и рамочку к нему
             #self.canv.rect(x*mm, y*mm, 16.5*mm, 7.5*mm, fill=0)
-            barcode128 = code128.Code128(cartridge_number)
-            barcode128.drawOn(self.canv, (x-5.5)*mm, (y+0.6)*mm)
+
+            #barcode128 = code128.Code128(cartridge_number, barHeight= 1*mm, barWidth = 1*mm)
+            #barcode128.drawOn(self.canv, (x-5.5)*mm, (y+0.6)*mm)
+            from reportlab.graphics.shapes import Drawing 
+            from reportlab.graphics import renderPDF
+            # draw a QR code
+            qr_code = qr.QrCodeWidget(str(cartridge_number))
+            bounds = qr_code.getBounds()
+            width = bounds[2] - bounds[0]
+            height = bounds[3] - bounds[1]
+            d = Drawing(10, 10, transform=[45./width,0,0,45./height,0,0])
+            d.add(qr_code)
+            renderPDF.draw(d, self.canv, (x+0.9)*mm, (y-1.6)*mm)
+
             # отрисовываем прямоугольник с номером организации
             #self.canv.rect(x*mm, y*mm, 16.5*mm, 4*mm, fill=0)
             #self.canv.drawString(x*mm, (y+1)*mm, self.center(ou_number))
@@ -150,7 +162,7 @@ class Sticker(object):
                 y = 283 - (self.row * 14.7)
             elif self.pagesize == 'A5':
                 x = 7 + (self.column * 19.5)
-                y = 198 - (self.row * 14.7)
+                y = 198 - (self.row * 14)
             else:
                 x = 10 + (self.column * 19.5)
                 y = 283 - (self.row * 14.7)
