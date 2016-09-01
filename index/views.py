@@ -691,6 +691,16 @@ def transfer_to_firm(request):
 
 @login_required
 @never_cache
+def transfer_to_firm_with_scanner(request):
+    """Составление списка перемещаемых картриджей на заправку с 
+       помощью сканера ШК
+    """
+    context = dict()
+    return render(request, 'index/transfer_to_firm_with_scanner.html', context)
+
+
+@login_required
+@never_cache
 def from_firm_to_stock(request):
     """Возврашаем заправленные расходники обратно на базу.
     """

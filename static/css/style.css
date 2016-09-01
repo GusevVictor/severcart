@@ -1131,5 +1131,35 @@ a.add_from_barcode_scanner {
 }
 
 a.add_items.add_from_barcode_scanner:active {
-    background: #7BCCAA url('../img/barcodescanner.png') no-repeat top right;   
+    background: #7BCCAA url('../img/barcodescanner.png') no-repeat top right;
+}
+
+
+a.button.scanner_ico {
+    background: url('../img/barcodescanner.png') no-repeat top right;
+    padding-right: 33px;
+    padding-bottom: 33px;
+    line-height: 34px;
+}
+
+a.button.scanner_ico:active, a.button.scanner_ico:hover  {
+    background: #d1d1d1 url('../img/barcodescanner.png') no-repeat top right;
+}
+
+a.button.mouse_ico {
+    background: url('../img/mouse.png') no-repeat top right;
+    padding-right: 33px;
+    padding-bottom: 33px;
+    line-height: 34px;
+}
+
+a.button.mouse_ico:active, a.button.mouse_ico:hover  {
+    background: #d1d1d1 url('../img/mouse.png') no-repeat top right;
+}
+
+table.no-style, table tr.no-style, table.no-style td  {
+    background: none;
+    margin:0;
+    border: none;
+    padding:5px;
 }

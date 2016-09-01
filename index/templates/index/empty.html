@@ -17,11 +17,20 @@
 </div>
 <div class="row">
     <div class="large-7 columns">
-        <a class="tr_to_firm button" href="#">{% trans "Transfer to refuel" %}</a>
+        <table class="no-style">
+            <tr class="no-style">
+                <td><a class="tr_to_firm button mouse_ico" href="#">{% trans "Send company with" %}</a></td>
+
+                <td><a class="add_items add_from_mouse button" href="{% url 'index:add_empty_cartridge' %}">{% trans "Add with" %}</a></td>
+                <td><a class="tr_to_recycle_bin button alert no_follow" href="#" atype="6">{% trans "In basket" %}</a></td>
+            </tr>
+            <tr class="no-style">
+                <td><a class="button scanner_ico" href="{% url 'index:transfer_to_firm_with_scanner' %}">{% trans "Send company with" %}</a></td>
+                <td><a class="add_items add_from_barcode_scanner button" href="{% url 'index:add_empty_cartridge_from_barcode_scanner' %}">{%  trans "Add with" %}</a></td>
+                <td></td>
+            <tr>
+    </table>
         <!-- <a class="button" href="{% url 'index:add_empty_cartridge' %}">{% trans "Add_empty" %}</a> -->
-        <a class="add_items add_from_mouse button" href="{% url 'index:add_empty_cartridge' %}">{% trans "Add with" %}</a>
-        <a class="add_items add_from_barcode_scanner button" href="{% url 'index:add_empty_cartridge_from_barcode_scanner' %}">{%  trans "Add with" %}</a>
-        <a class="tr_to_recycle_bin button alert no_follow" href="#" atype="6">{% trans "In basket" %}</a>
         <img class="spinner" src="{{ STATIC_URL }}img/loader.gif" />
     </div>
     <div class="large-5 columns text-right">
