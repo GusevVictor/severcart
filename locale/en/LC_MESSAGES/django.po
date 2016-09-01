@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-08-31 17:50+0500\n"
+"POT-Creation-Date: 2016-09-01 09:23+0500\n"
 "PO-Revision-Date: 2016-05-27 12:27+0500\n"
 "Last-Translator: \n"
 "Language-Team: severcart.org <sfcl@mail.ru>\n"
@@ -90,12 +90,12 @@ msgstr ""
 
 #: .\accounts\forms\edit.py:18 .\accounts\forms\register.py:18
 #: .\docs\forms\edit_name.py:18 .\docs\forms\edit_name.py:25
-#: .\index\templates\index\add_cartridge_from_barcode_scanner.html:20
-#: .\index\templates\index\add_cartridge_from_barcode_scanner.html:36
-#: .\index\templates\index\add_empty_cartridge.html:36
-#: .\index\templates\index\add_empty_cartridge_from_barcode_scanner.html:20
-#: .\index\templates\index\add_empty_cartridge_from_barcode_scanner.html:36
-#: .\index\templates\index\add_items.html:36
+#: .\index\templates\index\add_cartridge_from_barcode_scanner.html:24
+#: .\index\templates\index\add_cartridge_from_barcode_scanner.html:40
+#: .\index\templates\index\add_empty_cartridge.html:38
+#: .\index\templates\index\add_empty_cartridge_from_barcode_scanner.html:24
+#: .\index\templates\index\add_empty_cartridge_from_barcode_scanner.html:40
+#: .\index\templates\index\add_items.html:38
 msgid "Required field"
 msgstr ""
 
@@ -203,11 +203,11 @@ msgstr ""
 #: .\docs\templates\docs\edit_city.html:28
 #: .\docs\templates\docs\edit_name.html:19
 #: .\events\templates\events\view_cartridge_events.html:11
-#: .\index\templates\index\add_cartridge_from_barcode_scanner.html:54
-#: .\index\templates\index\add_empty_cartridge.html:59
-#: .\index\templates\index\add_empty_cartridge_from_barcode_scanner.html:54
+#: .\index\templates\index\add_cartridge_from_barcode_scanner.html:58
+#: .\index\templates\index\add_empty_cartridge.html:61
+#: .\index\templates\index\add_empty_cartridge_from_barcode_scanner.html:58
 #: .\index\templates\index\add_firm.html:48
-#: .\index\templates\index\add_items.html:60
+#: .\index\templates\index\add_items.html:62
 #: .\index\templates\index\add_name.html:42
 #: .\index\templates\index\add_type.html:35
 #: .\index\templates\index\del_firm.html:28
@@ -266,10 +266,7 @@ msgstr ""
 #: .\docs\templates\docs\add_city.html:27 .\docs\templates\docs\cities.html:17
 #: .\docs\templates\docs\names_list.html:17
 #: .\docs\templates\docs\types_list.html:17
-#: .\index\templates\index\add_cartridge_from_barcode_scanner.html:52
-#: .\index\templates\index\add_empty_cartridge_from_barcode_scanner.html:52
 #: .\index\templates\index\add_firm.html:47
-#: .\index\templates\index\add_items.html:58
 #: .\index\templates\index\add_name.html:41
 #: .\index\templates\index\add_type.html:32
 #: .\index\templates\index\tree_list.html:48
@@ -533,8 +530,8 @@ msgstr ""
 msgid "Name"
 msgstr ""
 
-#: .\docs\api\views.py:281 .\index\templates\index\add_empty_cartridge.html:52
-#: .\index\templates\index\add_items.html:51
+#: .\docs\api\views.py:281 .\index\templates\index\add_empty_cartridge.html:54
+#: .\index\templates\index\add_items.html:53
 msgid "Amount items"
 msgstr ""
 
@@ -634,10 +631,10 @@ msgid "Summary"
 msgstr ""
 
 #: .\docs\forms\add_doc.py:27 .\docs\models.py:11
-#: .\index\templates\index\add_cartridge_from_barcode_scanner.html:46
-#: .\index\templates\index\add_empty_cartridge.html:48
-#: .\index\templates\index\add_empty_cartridge_from_barcode_scanner.html:46
-#: .\index\templates\index\add_items.html:46
+#: .\index\templates\index\add_cartridge_from_barcode_scanner.html:50
+#: .\index\templates\index\add_empty_cartridge.html:50
+#: .\index\templates\index\add_empty_cartridge_from_barcode_scanner.html:50
+#: .\index\templates\index\add_items.html:48
 #: .\index\templates\index\basket.html:59
 #: .\index\templates\index\empty.html:69 .\index\templates\index\stock.html:77
 #: .\index\templates\index\use.html:65
@@ -722,8 +719,8 @@ msgid "Action"
 msgstr ""
 
 #: .\docs\templates\docs\acts_list.html:30
-#: .\index\templates\index\add_empty_cartridge.html:66
-#: .\index\templates\index\add_items.html:67
+#: .\index\templates\index\add_empty_cartridge.html:68
+#: .\index\templates\index\add_items.html:69
 #: .\index\templates\index\at_work.html:17
 #: .\index\templates\index\basket.html:20
 #: .\index\templates\index\empty.html:28 .\index\templates\index\stock.html:36
@@ -1224,10 +1221,10 @@ msgstr ""
 
 #: .\index\forms\add_empty_items.py:18 .\index\forms\add_items.py:19
 #: .\index\forms\add_items_from_barcode.py:21
-#: .\index\templates\index\add_cartridge_from_barcode_scanner.html:40
-#: .\index\templates\index\add_empty_cartridge.html:41
-#: .\index\templates\index\add_empty_cartridge_from_barcode_scanner.html:40
-#: .\index\templates\index\add_items.html:40
+#: .\index\templates\index\add_cartridge_from_barcode_scanner.html:44
+#: .\index\templates\index\add_empty_cartridge.html:43
+#: .\index\templates\index\add_empty_cartridge_from_barcode_scanner.html:44
+#: .\index\templates\index\add_items.html:42
 #: .\index\templates\index\empty.html:52 .\index\templates\index\stock.html:60
 msgid "Storage"
 msgstr ""
@@ -1342,32 +1339,38 @@ msgstr ""
 msgid "List of new or refilled cartridges"
 msgstr ""
 
-#: .\index\templates\index\add_cartridge_from_barcode_scanner.html:18
-#: .\index\templates\index\add_empty_cartridge_from_barcode_scanner.html:18
+#: .\index\templates\index\add_cartridge_from_barcode_scanner.html:22
+#: .\index\templates\index\add_empty_cartridge_from_barcode_scanner.html:22
 #, fuzzy
 #| msgid "Extension number"
 msgid "Scanning number"
 msgstr "Extension <br/>number"
 
-#: .\index\templates\index\add_cartridge_from_barcode_scanner.html:24
-#: .\index\templates\index\add_empty_cartridge.html:24
-#: .\index\templates\index\add_empty_cartridge_from_barcode_scanner.html:24
-#: .\index\templates\index\add_items.html:24
+#: .\index\templates\index\add_cartridge_from_barcode_scanner.html:28
+#: .\index\templates\index\add_empty_cartridge.html:26
+#: .\index\templates\index\add_empty_cartridge_from_barcode_scanner.html:28
+#: .\index\templates\index\add_items.html:26
 msgid "Filter"
 msgstr ""
 
-#: .\index\templates\index\add_cartridge_from_barcode_scanner.html:29
-#: .\index\templates\index\add_empty_cartridge.html:29
-#: .\index\templates\index\add_empty_cartridge_from_barcode_scanner.html:29
-#: .\index\templates\index\add_items.html:29
+#: .\index\templates\index\add_cartridge_from_barcode_scanner.html:33
+#: .\index\templates\index\add_empty_cartridge.html:31
+#: .\index\templates\index\add_empty_cartridge_from_barcode_scanner.html:33
+#: .\index\templates\index\add_items.html:31
 msgid "Cartridge name"
 msgstr ""
 
-#: .\index\templates\index\add_cartridge_from_barcode_scanner.html:44
-#: .\index\templates\index\add_empty_cartridge.html:45
-#: .\index\templates\index\add_empty_cartridge_from_barcode_scanner.html:44
-#: .\index\templates\index\add_items.html:44
+#: .\index\templates\index\add_cartridge_from_barcode_scanner.html:48
+#: .\index\templates\index\add_empty_cartridge.html:47
+#: .\index\templates\index\add_empty_cartridge_from_barcode_scanner.html:48
+#: .\index\templates\index\add_items.html:46
 msgid "The field must be seleced"
+msgstr ""
+
+#: .\index\templates\index\add_cartridge_from_barcode_scanner.html:56
+#: .\index\templates\index\add_empty_cartridge_from_barcode_scanner.html:56
+#: .\index\templates\index\add_items.html:60
+msgid "Add (Enter)"
 msgstr ""
 
 #: .\index\templates\index\add_empty_cartridge.html:2
@@ -1379,22 +1382,22 @@ msgstr ""
 msgid "Empty cartridges"
 msgstr ""
 
-#: .\index\templates\index\add_empty_cartridge.html:56
-#: .\index\templates\index\add_items.html:55
+#: .\index\templates\index\add_empty_cartridge.html:58
+#: .\index\templates\index\add_items.html:57
 msgid "The field must be greater than zero"
 msgstr ""
 
-#: .\index\templates\index\add_empty_cartridge.html:58
-msgid "Add empty cartridges"
+#: .\index\templates\index\add_empty_cartridge.html:60
+msgid "Add empty cartridges (Enter)"
 msgstr ""
 
-#: .\index\templates\index\add_empty_cartridge.html:68
-#: .\index\templates\index\add_items.html:69
+#: .\index\templates\index\add_empty_cartridge.html:70
+#: .\index\templates\index\add_items.html:71
 msgid "Generate PDF"
 msgstr ""
 
-#: .\index\templates\index\add_empty_cartridge.html:69
-#: .\index\templates\index\add_items.html:70
+#: .\index\templates\index\add_empty_cartridge.html:71
+#: .\index\templates\index\add_items.html:72
 msgid "Clear session"
 msgstr ""
 
