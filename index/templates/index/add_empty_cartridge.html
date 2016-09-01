@@ -2,8 +2,10 @@
 {% block title %}{% trans "Adding empty cartridges to the stock" %}{% endblock %}
 {% block breadcrumbs %}<a href="/"><img src="{{ STATIC_URL }}img/home.png" /></a> / <a href="{% url 'index:empty' %}">{% trans "Empty cartridges" %}</a> / {% trans "Adding empty cartridges to the stock" %}{% endblock %}
 {% block jqueryui %}
-    <link rel="stylesheet" href="{{ STATIC_URL }}css/pm_widget.css" />
-    <script src="{{ STATIC_URL }}js/pm_widget.js"></script>
+<link rel="stylesheet" href="{{ STATIC_URL }}css/pm_widget.css" />
+<script src="{{ STATIC_URL }}js/pm_widget.js"></script>
+<script src="{{ STATIC_URL }}js/jquery.hotkeys.js"></script>
+<script src="{{ STATIC_URL }}js/hotkeys_bind.js?{{request.CACHEVERSION}}"></script>
 {% endblock %}
 {% block help_url %}
 {{ request.HOME_SITE }}/help/{{ request.LANGUAGE_CODE }}/add_empty_cartriges/
@@ -55,7 +57,7 @@
             </div>
             <div class="form_error_text cart_count_error">{% trans "The field must be greater than zero" %}</div>
             <div class="marginTop">
-                <input type="submit" value="{% trans 'Add empty cartridges' %}" class="button success add_items no_follow" data="empty" />
+                <input type="submit" value="{% trans 'Add empty cartridges (Enter)' %}" class="button success add_items no_follow" data="empty" />
                 <a href="{{ back }}" class="button"/>{% trans "Back" %}</a>
                 <img class="spinner" src="{{ STATIC_URL }}img/loader.gif" />
             </div>
