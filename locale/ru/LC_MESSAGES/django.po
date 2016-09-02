@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-09-01 11:06+0500\n"
-"PO-Revision-Date: 2016-09-01 11:07+0500\n"
+"POT-Creation-Date: 2016-09-01 17:56+0500\n"
+"PO-Revision-Date: 2016-09-01 17:58+0500\n"
 "Last-Translator: \n"
 "Language-Team: severcart.org <sfcl@mail.ru>\n"
 "Language: ru\n"
@@ -309,11 +309,13 @@ msgid "Admin?"
 msgstr "Администратор?"
 
 #: .\accounts\templates\accounts\manage_users.html:56
+#: .\index\templates\index\transfer_to_firm_with_scanner.html:79
 #: .\service\forms\stickers.py:10
 msgid "Yes"
 msgstr "Да"
 
 #: .\accounts\templates\accounts\manage_users.html:58
+#: .\index\templates\index\transfer_to_firm_with_scanner.html:80
 #: .\service\forms\stickers.py:10
 msgid "No"
 msgstr "Нет"
@@ -424,11 +426,12 @@ msgid "<p>Server error :(</p>"
 msgstr "<p>Ошибка на стороне сервера :(</p>"
 
 #: .\docs\api\views.py:30 .\docs\api\views.py:78 .\docs\api\views.py:110
-#: .\docs\api\views.py:430 .\index\api\views.py:44 .\index\api\views.py:79
-#: .\index\api\views.py:220 .\index\api\views.py:293 .\index\api\views.py:323
-#: .\index\api\views.py:481 .\index\api\views.py:529 .\index\api\views.py:550
-#: .\index\api\views.py:565 .\index\api\views.py:704 .\reports\api\views.py:56
-#: .\storages\api\views.py:21 .\storages\api\views.py:59
+#: .\docs\api\views.py:430 .\index\api\views.py:46 .\index\api\views.py:81
+#: .\index\api\views.py:222 .\index\api\views.py:295 .\index\api\views.py:325
+#: .\index\api\views.py:483 .\index\api\views.py:531 .\index\api\views.py:552
+#: .\index\api\views.py:567 .\index\api\views.py:706 .\index\api\views.py:736
+#: .\reports\api\views.py:56 .\storages\api\views.py:21
+#: .\storages\api\views.py:59
 msgid "Only use POST requests!"
 msgstr "Поддерживаются только POST запросы!"
 
@@ -440,7 +443,7 @@ msgstr "Объект с таким ID не найден."
 msgid "Name can not be removed, ie. other objects reference it."
 msgstr "Имя удалить невозможно, т. к. на него ссылаются другие объекты."
 
-#: .\docs\api\views.py:54 .\docs\api\views.py:68 .\index\api\views.py:449
+#: .\docs\api\views.py:54 .\docs\api\views.py:68 .\index\api\views.py:451
 msgid "Name deleted successfully."
 msgstr "Имя успешно удалено."
 
@@ -522,7 +525,7 @@ msgstr "Документ «%(doc_number)s_%(user_id)s_0.docx» успешно с
 #: .\index\templates\index\toner_refill.html:31
 #: .\index\templates\index\transfe_for_use.html:17
 #: .\index\templates\index\transfer_to_firm.html:26
-#: .\index\templates\index\transfer_to_firm_with_scanner.html:26
+#: .\index\templates\index\transfer_to_firm_with_scanner.html:35
 #: .\index\templates\index\tree_list.html:64
 #: .\index\templates\index\use.html:46
 #: .\reports\templates\reports\amortizing_ajax.html:5
@@ -548,7 +551,7 @@ msgstr "Количество"
 #: .\index\templates\index\stock.html:56
 #: .\index\templates\index\transfe_for_use.html:16
 #: .\index\templates\index\transfer_to_firm.html:25
-#: .\index\templates\index\transfer_to_firm_with_scanner.html:25
+#: .\index\templates\index\transfer_to_firm_with_scanner.html:34
 #: .\index\templates\index\tree_list.html:65
 #: .\index\templates\index\use.html:45
 #: .\reports\templates\reports\amortizing_ajax.html:4
@@ -616,8 +619,10 @@ msgstr "Город с таким названием уже существует!
 #: .\index\forms\add_items_from_barcode.py:43
 #: .\index\forms\add_items_from_barcode.py:59 .\index\forms\add_type.py:11
 #: .\index\forms\tr_to_firm.py:14 .\index\forms\tr_to_firm.py:28
-#: .\index\forms\tr_to_firm.py:78 .\reports\forms.py:21 .\reports\forms.py:30
-#: .\reports\forms.py:63 .\reports\forms.py:86 .\reports\forms.py:99
+#: .\index\forms\tr_to_firm.py:78 .\index\forms\tr_to_firm.py:93
+#: .\index\forms\tr_to_firm.py:107 .\index\forms\tr_to_firm.py:157
+#: .\reports\forms.py:21 .\reports\forms.py:30 .\reports\forms.py:63
+#: .\reports\forms.py:86 .\reports\forms.py:99
 msgid "Required field."
 msgstr "Поле обязательно для заполнения."
 
@@ -642,7 +647,7 @@ msgstr "Договор поставки"
 
 #: .\docs\forms\add_doc.py:28 .\docs\models.py:12
 #: .\index\templates\index\transfer_to_firm.html:48
-#: .\index\templates\index\transfer_to_firm_with_scanner.html:48
+#: .\index\templates\index\transfer_to_firm_with_scanner.html:58
 msgid "Service agreement"
 msgstr "Договор обслуживания"
 
@@ -694,7 +699,7 @@ msgstr "Потрачено"
 #: .\docs\templates\docs\delivery.html:100
 #: .\docs\templates\docs\delivery.html:101
 #: .\index\templates\index\transfer_to_firm.html:43
-#: .\index\templates\index\transfer_to_firm_with_scanner.html:43
+#: .\index\templates\index\transfer_to_firm_with_scanner.html:53
 #: .\reports\templates\reports\spent_money.html:58
 msgid "Currency"
 msgstr "руб."
@@ -1141,92 +1146,110 @@ msgstr "События объекта учёта"
 msgid "Events"
 msgstr "События"
 
-#: .\index\api\views.py:59
+#: .\index\api\views.py:61
 msgid "Firm not found"
 msgstr "Контрагент не найден"
 
-#: .\index\api\views.py:66
+#: .\index\api\views.py:68
 msgid "Firm deleted!"
 msgstr "Контрагент удалён!"
 
-#: .\index\api\views.py:69
+#: .\index\api\views.py:71
 msgid "You can not delete, because have cartridges at a gas station."
 msgstr "Вы не можете удалить, т. к. имеются картриджи на заправке."
 
-#: .\index\api\views.py:86 .\index\api\views.py:227
+#: .\index\api\views.py:88 .\index\api\views.py:229
 #: .\index\templates\index\ou_not_set.html:9 .\storages\views.py:45
 msgid "User not assosiate with organization unit!<br/>Error code: 101."
 msgstr ""
 "Пользователь не принадлежит ни одной из организаций!<br/> Код ошибки: 101"
 
-#: .\index\api\views.py:110 .\index\api\views.py:258
+#: .\index\api\views.py:112 .\index\api\views.py:260
 msgid "Error in attrib \"data\" in input button add_item"
 msgstr "Фшибка в атрибуте \"data\" формы ввода add_item"
 
-#: .\index\api\views.py:137
+#: .\index\api\views.py:139
 msgid "Cartridge successfully added."
 msgstr "Картридж успешно добавлен."
 
-#: .\index\api\views.py:139
+#: .\index\api\views.py:141
 msgid "Cartridges successfully added."
 msgstr "Картриджи успешно добавлены."
 
-#: .\index\api\views.py:277
+#: .\index\api\views.py:279
 #, python-format
 msgid "Cartridge %(cart_number)s successfully added."
 msgstr "Картридж %(cart_number)s успешно добавлен"
 
-#: .\index\api\views.py:313
+#: .\index\api\views.py:315
 msgid "Cartridges successfully moved."
 msgstr "Расходники успешно перемещены."
 
-#: .\index\api\views.py:390
+#: .\index\api\views.py:392
 #, python-format
 msgid "Cartridges %(cart_nums)s successfully moved to firm."
 msgstr "Картриджи %(cart_nums)s успешно переданы фирме."
 
-#: .\index\api\views.py:392
+#: .\index\api\views.py:394
 msgid "No transmission facilities"
 msgstr "Нет объектов для передачи"
 
-#: .\index\api\views.py:412
+#: .\index\api\views.py:414
 msgid "Session cleared"
 msgstr "Сессия очищена"
 
-#: .\index\api\views.py:437
+#: .\index\api\views.py:439
 msgid "In demo remove nodes not allow."
 msgstr "В режиме демонтсрации удалять ноды нельзя."
 
-#: .\index\api\views.py:445
+#: .\index\api\views.py:447
 msgid ""
 "But it can not be removed because other objects reference it.<br/>Error "
 "code: 102"
 msgstr "Удаление невозможно, т. к. на объект ссылаются.<br/>Код ошибки: 102."
 
-#: .\index\api\views.py:451
+#: .\index\api\views.py:453
 msgid "Names deleted successfully."
 msgstr "Организационные подразделения успешно удалены."
 
-#: .\index\api\views.py:473
+#: .\index\api\views.py:475
 msgid "Cartridjes deleted!"
 msgstr "Картриджи удалены!"
 
-#: .\index\api\views.py:490
+#: .\index\api\views.py:492
 msgid "Error converting string numbers to int."
 msgstr "Ошибка конвертации строки в интеджер."
 
-#: .\index\api\views.py:501
+#: .\index\api\views.py:503
 msgid "This action type not implemented."
 msgstr "Данный тип действия не реализован."
 
-#: .\index\api\views.py:520
+#: .\index\api\views.py:522
 msgid "Cartridges successfully transferred to basket."
 msgstr "Картридж(и) успешно перемещен(ы) в корзину."
 
-#: .\index\api\views.py:620
+#: .\index\api\views.py:622
 #, python-format
 msgid "Cartridges %(cart_list)s successfully transferred for use"
 msgstr "Картридж(и) %(cart_list)s успешно передан(ы) пользователю."
+
+#: .\index\api\views.py:749
+#, python-format
+msgid "Consumables with the number %(cart_barcode)s was not found."
+msgstr "Расходник с номером %(cart_barcode)s не найден."
+
+#: .\index\api\views.py:765
+msgid "Consumable material is successfully prepared for transfer"
+msgstr "Расходник готов к передаче"
+
+#: .\index\api\views.py:772
+#, python-format
+msgid ""
+"This consumable is in the state \"%(cart_status)s\". Are you sure you want "
+"to place in the lists transmitted?"
+msgstr ""
+"Расходник обладает статусом - \"%(cart_status)s\". Вы точно хотите добавить "
+"его в список перемещаемых?"
 
 #: .\index\forms\add_cartridge_name.py:18 .\index\forms\add_type.py:32
 msgid "This name already exists!"
@@ -1247,7 +1270,8 @@ msgid "You have entered the wrong data."
 msgstr "Вы ввели ошибочные данные."
 
 #: .\index\forms\add_empty_items.py:45 .\index\forms\add_items.py:46
-#: .\index\forms\tr_to_firm.py:62 .\reports\forms.py:54
+#: .\index\forms\tr_to_firm.py:62 .\index\forms\tr_to_firm.py:141
+#: .\reports\forms.py:54
 msgid "The value must be greater than zero."
 msgstr "Значение должно быть больше нуля."
 
@@ -1354,6 +1378,7 @@ msgstr "Список новых или заправленных"
 
 #: .\index\templates\index\add_cartridge_from_barcode_scanner.html:22
 #: .\index\templates\index\add_empty_cartridge_from_barcode_scanner.html:22
+#: .\index\templates\index\transfer_to_firm_with_scanner.html:26
 msgid "Scanning number"
 msgstr "Отсканированный номер"
 
@@ -1599,6 +1624,7 @@ msgid "Edit firm"
 msgstr "Редактировать фирму"
 
 #: .\index\templates\index\empty.html:3 .\index\templates\index\empty.html:4
+#: .\index\templates\index\transfer_to_firm_with_scanner.html:5
 msgid "Blank consumables"
 msgstr "Пустые расходники"
 
@@ -1707,7 +1733,7 @@ msgstr "Передача в пользование"
 
 #: .\index\templates\index\transfe_for_use.html:13
 #: .\index\templates\index\transfer_to_firm.html:21
-#: .\index\templates\index\transfer_to_firm_with_scanner.html:21
+#: .\index\templates\index\transfer_to_firm_with_scanner.html:30
 msgid "What transfe"
 msgstr "Что передаём"
 
@@ -1728,35 +1754,41 @@ msgstr "Передать"
 #: .\index\templates\index\transfer_to_firm.html:5
 #: .\index\templates\index\transfer_to_firm_with_scanner.html:2
 #: .\index\templates\index\transfer_to_firm_with_scanner.html:3
-#: .\index\templates\index\transfer_to_firm_with_scanner.html:5
 msgid "Transfer cartridges refills"
 msgstr "Передача картриджей на заправку"
 
 #: .\index\templates\index\transfer_to_firm.html:5
-#: .\index\templates\index\transfer_to_firm_with_scanner.html:5
 #: .\index\templates\index\use.html:3 .\index\templates\index\use.html.py:4
 msgid "Consumables in use"
 msgstr "Расходники в пользовании"
 
 #: .\index\templates\index\transfer_to_firm.html:37
-#: .\index\templates\index\transfer_to_firm_with_scanner.html:37
+#: .\index\templates\index\transfer_to_firm_with_scanner.html:47
 msgid "Which company"
 msgstr "Кому передаём на<br/>заправку"
 
 #: .\index\templates\index\transfer_to_firm.html:43
-#: .\index\templates\index\transfer_to_firm_with_scanner.html:43
+#: .\index\templates\index\transfer_to_firm_with_scanner.html:53
 msgid "Service price"
 msgstr "Стоимость обслуживания"
 
 #: .\index\templates\index\transfer_to_firm.html:54
-#: .\index\templates\index\transfer_to_firm_with_scanner.html:54
+#: .\index\templates\index\transfer_to_firm_with_scanner.html:64
 msgid "Transfer to repair"
 msgstr "Передать"
 
 #: .\index\templates\index\transfer_to_firm.html:55
-#: .\index\templates\index\transfer_to_firm_with_scanner.html:55
+#: .\index\templates\index\transfer_to_firm_with_scanner.html:65
 msgid "Cansel"
 msgstr "Отмена"
+
+#: .\index\templates\index\transfer_to_firm_with_scanner.html:5
+msgid "Transfer cartridges refills with barcode scanner"
+msgstr "Передача картриджей на заправку с сканером штрих-кодов"
+
+#: .\index\templates\index\transfer_to_firm_with_scanner.html:74
+msgid "Need confirmation"
+msgstr "Необходмо подтверждение"
 
 #: .\index\templates\index\tree_list.html:2
 #: .\index\templates\index\tree_list.html:7

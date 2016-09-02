@@ -1803,4 +1803,111 @@ $( function(){
 
     });
 
+    if ($('.transfe_to_firm_scanner').length) {
+        /* Если мы передаём картриджи фирме на заправку с
+        помошью сканера ШК */
+        $("#id_scan_number").focus();
+        var pressed = false; 
+        var chars = []; 
+        /*
+        $('#id_scan_number').keypress(function(e) {
+            if (e.which >= 48 && e.which <= 57) {
+                chars.push(String.fromCharCode(e.which));
+            }
+            if (pressed == false) {
+                setTimeout(function(){
+                    if (chars.length >= 1) {
+                        var barcode = chars.join('');
+                        $('#id_scan_number').val(barcode);
+                        // отправляем аякс запрос после того как 
+                        // получим отсканированный номер
+                        $.ajax({
+                            method: 'POST',
+                            url:  '{% url "index:add_object_to_basket_for_firm" %}',
+                            data:  {'barcode': barcode },
+                            beforeSend: function( xhr, settings ){
+                                csrftoken = getCookie('csrftoken');
+                                $('.spinner').show();
+                                if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
+                                    xhr.setRequestHeader('X-CSRFToken', csrftoken);
+                                }
+                            },
+                            success: function( msg ) {
+                                $('.spinner').hide();
+                                if ( msg.error == '1' ) {
+                                    $('.error_msg').show();
+                                    $('.success_msg').hide();
+                                    $('.error_msg').text(msg.text);
+                                }
+                                if ( msg.error == '2' ) {
+                                    $('.error_msg').show();
+                                    $('.success_msg').hide();
+                                    $('.error_msg').text(msg.text);
+                                }
+                                if ( msg.error == '0' ) {
+                                    $("#id_scan_number").focus();
+                                    $('.error_msg').hide();
+                                    $('.success_msg').show();
+                                    $('.success_msg').html(msg.text);
+                                    $('table.transfer_list_to_firm tr:last').append('<tr><td>' + msg.cart_num + '</td><td>' + msg.cart_name + '</td></tr>');
+                                }
+                            },
+                            error: function( msg ) {
+                                сonsole.log(msg);
+                            },
+                        });
+                    }
+                    chars = [];
+                    pressed = false;
+                }, 500);
+            }
+            pressed = true;
+        }); */
+
+        $('.send_test_barcode').click(function () {
+            /* Обработчик событий представленн исключительно 
+            для отладочных целей */
+            var barcode = $('#id_scan_number').val();
+            $.ajax({
+                method: 'POST',
+                url:  '{% url "index:add_object_to_basket_for_firm" %}',
+                data:  {'barcode': barcode },
+                beforeSend: function( xhr, settings ){
+                    csrftoken = getCookie('csrftoken');
+                    $('.spinner').show();
+                    if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
+                        xhr.setRequestHeader('X-CSRFToken', csrftoken);
+                    }
+                },
+                success: function( msg ) {
+                    $('.spinner').hide();
+                    if ( msg.error == '1' ) {
+                        $('.error_msg').show();
+                        $('.success_msg').hide();
+                        $('.error_msg').text(msg.mes);
+                    }
+                    if ( msg.error == '2' ) {
+                        // ошибка не соответствия статуса, показываем диалоговое окно
+                        $('.success_msg').hide();
+                        $('.error_msg').hide();
+                        $(document).foundation();
+                        $('p.ajax_error_message').html(msg.mes);
+                        $('#myModal').foundation('reveal', 'open');
+
+                    }
+                    if ( msg.error == '0' ) {
+                        $("#id_scan_number").focus();
+                        $('.error_msg').hide();
+                        $('.success_msg').show();
+                        $('.success_msg').html(msg.mes);
+                        $('table.transfer_list_to_firm  tr:last').after('<tr><td>' + msg.cart_num + '</td><td>' + msg.cart_name + '</td></tr>');
+                    }
+                },
+                error: function( msg ) {
+                    сonsole.log(msg);
+                },
+            });
+
+        });
+    }
 });

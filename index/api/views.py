@@ -10,6 +10,7 @@ from django.core.urlresolvers import reverse
 from django.template.loader import render_to_string
 from django.utils.translation import ugettext as _
 from django.contrib import messages
+from django.db.models import Q
 from common.helpers import is_admin
 from events.models import Events
 from events.helpers import events_decoder
@@ -17,7 +18,8 @@ from index.models import ( City,
                            CartridgeItem, 
                            OrganizationUnits, 
                            CartridgeItemName, 
-                           FirmTonerRefill )
+                           FirmTonerRefill,
+                           STATUS )
 from index.helpers import check_ajax_auth, LastNumber
 from index.signals import ( sign_turf_cart, 
                             sign_add_full_to_stock, 
@@ -724,4 +726,49 @@ def change_ou_name(request):
     ou.name = ou_name
     ou.save()
     ansver['error'] = 0
+    return JsonResponse(ansver)
+
+@check_ajax_auth
+def add_object_to_basket_for_firm(request):
+    """Подготавливаем списки РМ, передаваемых контрагентам на обслуживание.
+    """
+    if request.method != 'POST':
+        return HttpResponse('<h1>' + _('Only use POST requests!') + '</h1>' + '<p>add_object_to_basket_for_firm</p>')
+
+    ansver = dict()
+    cart_barcode = request.POST.get('barcode', '')
+    cart_barcode = cart_barcode.strip()
+    root_ou = request.user.departament
+    m1 = CartridgeItem.objects.filter(Q(cart_number=cart_barcode) & Q(departament=root_ou))
+    if len(m1) >= 1:
+        cartridge = m1[0]
+        m1 = None
+    else:
+        # если картридж с данным неомером не найденн
+        ansver['error'] ='1'
+        ansver['mes']   = _('Consumables with the number %(cart_barcode)s was not found.') % {'cart_barcode' : cart_barcode}
+        return JsonResponse(ansver)
+
+    if cartridge.cart_status == 3:
+        # если картридж с нужным номером найденн и у него код статуса "Пустой и на складе"
+        # добавляем информауию в сессионную переменную пользователя
+        if request.session.get('basket_to_transfer_firm', False):
+            # если в сессионной переменной уже что-то есть
+            session_data = request.session.get('basket_to_transfer_firm')
+            session_data.append(cart_barcode)
+            request.session['basket_to_transfer_firm'] = session_data
+        else:
+            # если сессионная basket_to_transfer_firm пуста или её нет вообще
+            session_data = [ cart_barcode ]
+            request.session['basket_to_transfer_firm'] = session_data
+        ansver['error'] ='0'
+        ansver['mes'] = _('Consumable material is successfully prepared for transfer')
+        ansver['cart_name'] = str(cartridge.cart_itm_name)
+        ansver['cart_num'] = str(cartridge.pk)
+        return JsonResponse(ansver)
+    else:
+        cart_status = STATUS[cartridge.cart_status-1][1]
+        ansver['error'] ='2'
+        ansver['mes'] = _('This consumable is in the state \"%(cart_status)s\". Are you sure you want to place in the lists transmitted?') % {'cart_status': cart_status}
+        return JsonResponse(ansver)
     return JsonResponse(ansver)

@@ -23,7 +23,7 @@ from .forms.add_items_from_barcode import AddItemsFromBarCodeScanner
 from .forms.add_type import AddCartridgeType
 from .forms.add_firm import FirmTonerRefillF
 from .forms.add_empty_items import AddEmptyItems
-from .forms.tr_to_firm import TransfeToFirm
+from .forms.tr_to_firm import TransfeToFirm, TransfeToFirmScanner
 from .forms.comment import EditCommentForm
 from .models import CartridgeType
 from .models import CartridgeItem
@@ -661,7 +661,6 @@ class Basket(CartridgesView):
 def transfer_to_firm(request):
     """Передача расходных материалов на заправку.
     """
-    BreadcrumbsPath(request)
     context = dict()
     checked_cartr = request.GET.get('select', '')
     if checked_cartr:
@@ -696,6 +695,10 @@ def transfer_to_firm_with_scanner(request):
        помощью сканера ШК
     """
     context = dict()
+    form = TransfeToFirmScanner()
+    form.fields['doc'].queryset = SCDoc.objects.filter(departament=request.user.departament).filter(doc_type=2)
+    context['form'] = form
+    context['mydebug'] = True
     return render(request, 'index/transfer_to_firm_with_scanner.html', context)
 
 

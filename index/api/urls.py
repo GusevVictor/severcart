@@ -16,6 +16,7 @@ from index.api.views import (   ajax_add_session_items,
                                 transfer_to_firm,
                                 from_basket_to_stock,
                                 change_ou_name,
+                                add_object_to_basket_for_firm,
                             )
 from accounts.api.views import del_users
 
@@ -37,4 +38,5 @@ urlpatterns = [
     url('^transfer_to_firm/', transfer_to_firm, name='api_transfer_to_firm'),
     url('^from_basket_to_stock/', from_basket_to_stock, name='from_basket_to_stock'),
     url('^change_ou_name/', change_ou_name, name='change_ou_name'),
+    url('^add_object_to_basket_for_firm/', add_object_to_basket_for_firm, name='add_object_to_basket_for_firm'),
 ]
