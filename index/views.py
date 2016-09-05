@@ -697,6 +697,31 @@ def transfer_to_firm_with_scanner(request):
     context = dict()
     form = TransfeToFirmScanner()
     form.fields['doc'].queryset = SCDoc.objects.filter(departament=request.user.departament).filter(doc_type=2)
+    
+    if request.session.get('basket_to_transfer_firm', False):
+        # если в сессионной переменной уже что-то есть
+        session_data = request.session.get('basket_to_transfer_firm')
+    else:
+        # если сессионная basket_to_transfer_firm пуста или её нет вообще
+        session_data = [ ]
+    try:
+        root_ou   = request.user.departament
+        des       = root_ou.get_descendants()
+    except:
+        pass
+
+    sessions_objects = list()
+    if session_data:
+        for item_number in session_data:
+            m1 = CartridgeItem.objects.filter(
+                                                Q(cart_number=item_number) & 
+                                                (Q(departament__in=des)
+                                                | Q(departament=root_ou))
+                                            )
+            cartridge = m1[0]
+            sessions_objects.append({'pk': cartridge.pk, 'name': str(cartridge.cart_itm_name), 'number':cartridge.cart_number})
+
+    context['sessions_objects'] = sessions_objects        
     context['form'] = form
     context['mydebug'] = True
     return render(request, 'index/transfer_to_firm_with_scanner.html', context)

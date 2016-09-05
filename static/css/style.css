@@ -204,7 +204,8 @@ span.gi {
 .spinner_pdf,
 .spinner_sett,
 .spinner_send,
-.spinner_ou {
+.spinner_ou,
+.spinner_force_move_to_transfer {
     margin-left: 10px;
     display: none;
 }

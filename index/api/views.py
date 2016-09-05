@@ -12,6 +12,7 @@ from django.utils.translation import ugettext as _
 from django.contrib import messages
 from django.db.models import Q
 from common.helpers import is_admin
+from django.views.decorators.http import require_POST
 from events.models import Events
 from events.helpers import events_decoder
 from index.models import ( City, 
@@ -728,18 +729,31 @@ def change_ou_name(request):
     ansver['error'] = 0
     return JsonResponse(ansver)
 
+
+@require_POST
 @check_ajax_auth
 def add_object_to_basket_for_firm(request):
     """Подготавливаем списки РМ, передаваемых контрагентам на обслуживание.
     """
-    if request.method != 'POST':
-        return HttpResponse('<h1>' + _('Only use POST requests!') + '</h1>' + '<p>add_object_to_basket_for_firm</p>')
-
     ansver = dict()
     cart_barcode = request.POST.get('barcode', '')
     cart_barcode = cart_barcode.strip()
-    root_ou = request.user.departament
-    m1 = CartridgeItem.objects.filter(Q(cart_number=cart_barcode) & Q(departament=root_ou))
+    try:
+        root_ou   = request.user.departament
+        des       = root_ou.get_descendants()
+    except:
+        ansver['error'] ='1'
+        ansver['mes']   = _('Error: 101. Not set organization utint.')
+        return JsonResponse(ansver)
+    else:
+        # выполняем поиск РМ обладающие разными статусами
+        # например, пуст и на складе, задействованн, ...
+        m1 = CartridgeItem.objects.filter(
+                                            Q(cart_number=cart_barcode) & 
+                                            (Q(departament__in=des)
+                                            | Q(departament=root_ou))
+                                         )
+
     if len(m1) >= 1:
         cartridge = m1[0]
         m1 = None
@@ -755,8 +769,16 @@ def add_object_to_basket_for_firm(request):
         if request.session.get('basket_to_transfer_firm', False):
             # если в сессионной переменной уже что-то есть
             session_data = request.session.get('basket_to_transfer_firm')
-            session_data.append(cart_barcode)
-            request.session['basket_to_transfer_firm'] = session_data
+            # если в сессионной переменной данные уже есть то РМ в список не добавляем
+            try:
+                session_data.index(cart_barcode)
+            except ValueError: 
+                session_data.append(cart_barcode)
+                request.session['basket_to_transfer_firm'] = session_data
+            else:
+                ansver['error'] ='1'
+                ansver['mes'] = _('The object number %(cart_barcode)s is already present in the lists on the move.') % {'cart_barcode': cart_barcode}
+                return JsonResponse(ansver)                
         else:
             # если сессионная basket_to_transfer_firm пуста или её нет вообще
             session_data = [ cart_barcode ]
@@ -764,11 +786,73 @@ def add_object_to_basket_for_firm(request):
         ansver['error'] ='0'
         ansver['mes'] = _('Consumable material is successfully prepared for transfer')
         ansver['cart_name'] = str(cartridge.cart_itm_name)
-        ansver['cart_num'] = str(cartridge.pk)
+        ansver['cart_num'] = str(cartridge.cart_number)
         return JsonResponse(ansver)
     else:
         cart_status = STATUS[cartridge.cart_status-1][1]
         ansver['error'] ='2'
         ansver['mes'] = _('This consumable is in the state \"%(cart_status)s\". Are you sure you want to place in the lists transmitted?') % {'cart_status': cart_status}
         return JsonResponse(ansver)
+    return JsonResponse(ansver)
+
+@require_POST
+@check_ajax_auth
+def force_move_to_transfer(request):
+    """Усиленная попытка перемещения РМ в "списки пустых и на скдале"
+    """
+    ansver = dict()
+    cart_barcode = request.POST.get('barcode', '')
+    cart_barcode = cart_barcode.strip()
+    try:
+        root_ou   = request.user.departament
+        des       = root_ou.get_descendants()
+    except:
+        ansver['error'] ='1'
+        ansver['mes']   = _('Error: 101. Not set organization utint.')
+        return JsonResponse(ansver)
+    
+    # выполняем поиск РМ обладающие разными статусами
+    # например, пуст и на складе, задействованн, ...
+    m1 = CartridgeItem.objects.filter(
+                                        Q(cart_number=cart_barcode) & 
+                                        (Q(departament__in=des)
+                                        | Q(departament=root_ou))
+                                     )
+    if len(m1) >= 1:
+        cartridge = m1[0]
+        m1 = None
+    else:
+        # если картридж с данным неомером не найденн
+        ansver['error'] ='1'
+        ansver['mes']   = _('Consumables with the number %(cart_barcode)s was not found.') % {'cart_barcode' : cart_barcode}
+        return JsonResponse(ansver)
+
+    list_cplx = list()
+    # проверяем принадлежность перемещаемого РМ департаменту 
+    # пользователя.
+    if cartridge.departament in request.user.departament.get_descendants():
+        cartridge.cart_status = 3     # пустой объект на складе
+        tmp_dept = cartridge.departament
+        cartridge.departament = request.user.departament
+        cartridge.cart_date_change = timezone.now()
+        cartridge.save()
+        list_cplx.append((cartridge.id, str(cartridge.cart_itm_name), str(tmp_dept), cartridge.cart_number))
+
+    if list_cplx:
+        sign_tr_empty_cart_to_stock.send(sender=None, list_cplx=list_cplx, request=request)
+
+    if request.session.get('basket_to_transfer_firm', False):
+        # если в сессионной переменной уже что-то есть
+        session_data = request.session.get('basket_to_transfer_firm')
+        session_data.append(cart_barcode)
+        request.session['basket_to_transfer_firm'] = session_data
+    else:
+        # если сессионная basket_to_transfer_firm пуста или её нет вообще
+        session_data = [ cart_barcode ]
+        request.session['basket_to_transfer_firm'] = session_data
+    
+    ansver['error'] ='0'
+    ansver['mes']   = _('Consumable material is successfully prepared for transfer')
+    ansver['cart_name'] = str(cartridge.cart_itm_name)
+    ansver['cart_num'] = str(cartridge.cart_number)
     return JsonResponse(ansver)

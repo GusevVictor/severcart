@@ -29,18 +29,22 @@
                 <div class="marginTop">
                 <label class="required">{% trans "What transfe" %}</label>
                 {{ form.numbers }}
+                {% if sessions_objects %}
                 <table class="width100 transfer_list_to_firm">
                 <tr>
+                    <td>&nbsp;</td>
                     <th>{% trans 'Number' %}</th>
                     <th>{% trans 'Name' %}</th>
                 </tr>
-                {% for item in transfe_objs %}
+                {% for item in sessions_objects %}
                 <tr>
-                    <td>{{ item.cart_number }}</td>
-                    <td>{{ item.cart_itm_name }}</td>
+                    <td><input type="checkbox" value="{{ item.pk}}" ></td>
+                    <td>{{ item.number }}</td>
+                    <td>{{ item.name }}</td>
                 </tr>
                 {% endfor %}
                 </table>
+                {% endif %}
                 </div>
                 <div class="row">
                     <div class="large-7 medium-7 columns">
@@ -75,8 +79,8 @@
   <p class="ajax_error_message"></p>
   <a class="close-reveal-modal" aria-label="Close">&#215;</a>
   <div class="right">
-    <img class="spinner_ou" src="{{ STATIC_URL }}img/loader.gif" />
-    <a class="button" aria-label="Close">{% trans 'Yes' %}</a>
+    <img class="spinner_force_move_to_transfer" src="{{ STATIC_URL }}img/loader.gif" />
+    <a class="button force_move_to_transfer">{% trans 'Yes' %}</a>
     <a class="button close_modal_win">{% trans 'No' %}</a>
   </div>
 </div>

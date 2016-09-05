@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-09-01 17:56+0500\n"
+"POT-Creation-Date: 2016-09-05 11:43+0500\n"
 "PO-Revision-Date: 2016-05-27 12:27+0500\n"
 "Last-Translator: \n"
 "Language-Team: severcart.org <sfcl@mail.ru>\n"
@@ -425,12 +425,11 @@ msgid "<p>Server error :(</p>"
 msgstr ""
 
 #: .\docs\api\views.py:30 .\docs\api\views.py:78 .\docs\api\views.py:110
-#: .\docs\api\views.py:430 .\index\api\views.py:46 .\index\api\views.py:81
-#: .\index\api\views.py:222 .\index\api\views.py:295 .\index\api\views.py:325
-#: .\index\api\views.py:483 .\index\api\views.py:531 .\index\api\views.py:552
-#: .\index\api\views.py:567 .\index\api\views.py:706 .\index\api\views.py:736
-#: .\reports\api\views.py:56 .\storages\api\views.py:21
-#: .\storages\api\views.py:59
+#: .\docs\api\views.py:430 .\index\api\views.py:47 .\index\api\views.py:82
+#: .\index\api\views.py:223 .\index\api\views.py:296 .\index\api\views.py:326
+#: .\index\api\views.py:484 .\index\api\views.py:532 .\index\api\views.py:553
+#: .\index\api\views.py:568 .\index\api\views.py:707 .\reports\api\views.py:56
+#: .\storages\api\views.py:21 .\storages\api\views.py:59
 msgid "Only use POST requests!"
 msgstr ""
 
@@ -442,7 +441,7 @@ msgstr ""
 msgid "Name can not be removed, ie. other objects reference it."
 msgstr ""
 
-#: .\docs\api\views.py:54 .\docs\api\views.py:68 .\index\api\views.py:451
+#: .\docs\api\views.py:54 .\docs\api\views.py:68 .\index\api\views.py:452
 msgid "Name deleted successfully."
 msgstr ""
 
@@ -1138,102 +1137,113 @@ msgstr ""
 msgid "Events"
 msgstr ""
 
-#: .\index\api\views.py:61
+#: .\index\api\views.py:62
 msgid "Firm not found"
 msgstr ""
 
-#: .\index\api\views.py:68
+#: .\index\api\views.py:69
 msgid "Firm deleted!"
 msgstr ""
 
-#: .\index\api\views.py:71
+#: .\index\api\views.py:72
 msgid "You can not delete, because have cartridges at a gas station."
 msgstr ""
 
-#: .\index\api\views.py:88 .\index\api\views.py:229
+#: .\index\api\views.py:89 .\index\api\views.py:230
 #: .\index\templates\index\ou_not_set.html:9 .\storages\views.py:45
 msgid "User not assosiate with organization unit!<br/>Error code: 101."
 msgstr ""
 
-#: .\index\api\views.py:112 .\index\api\views.py:260
+#: .\index\api\views.py:113 .\index\api\views.py:261
 msgid "Error in attrib \"data\" in input button add_item"
 msgstr ""
 
-#: .\index\api\views.py:139
+#: .\index\api\views.py:140
 msgid "Cartridge successfully added."
 msgstr ""
 
-#: .\index\api\views.py:141
+#: .\index\api\views.py:142
 msgid "Cartridges successfully added."
 msgstr ""
 
-#: .\index\api\views.py:279
+#: .\index\api\views.py:280
 #, python-format
 msgid "Cartridge %(cart_number)s successfully added."
 msgstr ""
 
-#: .\index\api\views.py:315
+#: .\index\api\views.py:316
 msgid "Cartridges successfully moved."
 msgstr ""
 
-#: .\index\api\views.py:392
+#: .\index\api\views.py:393
 #, python-format
 msgid "Cartridges %(cart_nums)s successfully moved to firm."
 msgstr ""
 
-#: .\index\api\views.py:394
+#: .\index\api\views.py:395
 msgid "No transmission facilities"
 msgstr ""
 
-#: .\index\api\views.py:414
+#: .\index\api\views.py:415
 msgid "Session cleared"
 msgstr ""
 
-#: .\index\api\views.py:439
+#: .\index\api\views.py:440
 msgid "In demo remove nodes not allow."
 msgstr ""
 
-#: .\index\api\views.py:447
+#: .\index\api\views.py:448
 msgid ""
 "But it can not be removed because other objects reference it.<br/>Error "
 "code: 102"
 msgstr ""
 
-#: .\index\api\views.py:453
+#: .\index\api\views.py:454
 msgid "Names deleted successfully."
 msgstr ""
 
-#: .\index\api\views.py:475
+#: .\index\api\views.py:476
 msgid "Cartridjes deleted!"
 msgstr ""
 
-#: .\index\api\views.py:492
+#: .\index\api\views.py:493
 msgid "Error converting string numbers to int."
 msgstr ""
 
-#: .\index\api\views.py:503
+#: .\index\api\views.py:504
 msgid "This action type not implemented."
 msgstr ""
 
-#: .\index\api\views.py:522
+#: .\index\api\views.py:523
 msgid "Cartridges successfully transferred to basket."
 msgstr ""
 
-#: .\index\api\views.py:622
+#: .\index\api\views.py:623
 #, python-format
 msgid "Cartridges %(cart_list)s successfully transferred for use"
 msgstr ""
 
-#: .\index\api\views.py:749
+#: .\index\api\views.py:746 .\index\api\views.py:811
+msgid "Error: 101. Not set organization utint."
+msgstr ""
+
+#: .\index\api\views.py:763 .\index\api\views.py:827
 #, python-format
 msgid "Consumables with the number %(cart_barcode)s was not found."
 msgstr ""
 
-#: .\index\api\views.py:765
+#: .\index\api\views.py:780
+#, python-format
+msgid ""
+"The object number %(cart_barcode)s is already present in the lists on the "
+"move."
+msgstr ""
+
+#: .\index\api\views.py:787 .\index\api\views.py:855
 msgid "Consumable material is successfully prepared for transfer"
 msgstr ""
 
-#: .\index\api\views.py:772
+#: .\index\api\views.py:794
 #, python-format
 msgid ""
 "This consumable is in the state \"%(cart_status)s\". Are you sure you want "
