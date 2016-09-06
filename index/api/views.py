@@ -763,6 +763,12 @@ def add_object_to_basket_for_firm(request):
         ansver['mes']   = _('Consumables with the number %(cart_barcode)s was not found.') % {'cart_barcode' : cart_barcode}
         return JsonResponse(ansver)
 
+    session_data = request.session.get('basket_to_transfer_firm', False)
+    if str(cartridge.pk) in session_data:
+        ansver['error'] ='1'
+        ansver['mes']   = _('The object is already in the lists on the move.')
+        return JsonResponse(ansver)
+
     if cartridge.cart_status == 3:
         # если картридж с нужным номером найденн и у него код статуса "Пустой и на складе"
         # добавляем информауию в сессионную переменную пользователя

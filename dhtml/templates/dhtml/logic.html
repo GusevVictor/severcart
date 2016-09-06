@@ -1961,6 +1961,7 @@ $( function(){
                     $('.error_msg').hide();
                     $('.success_msg').show();
                     $('.success_msg').html(msg.mes);
+                    console.log('msg.cart_num=', msg.cart_num);
                     $('table.transfer_list_to_firm  tr:last').after('<tr><td>' + msg.cart_num + '</td><td>' + msg.cart_name + '</td></tr>');
                 }
             },
