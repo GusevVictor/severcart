@@ -22,8 +22,20 @@ fieldset legend{
 
 .width100 {
     display: block;
-
 }
+
+.width100px {
+    width:100px;
+}
+
+table.width100 tr, table.width100 tbody {
+    display: block;
+}
+
+table.width100 th {
+    padding-left:15px;
+}
+
 
 hr {
     display: block;
@@ -1166,5 +1178,9 @@ table.no-style, table tr.no-style, table.no-style td  {
 }
 
 div.transfe_to_firm_scanner {
+    display: none;
+}
+
+a.remove_session_item {
     display: none;
 }

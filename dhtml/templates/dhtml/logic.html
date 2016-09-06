@@ -328,6 +328,19 @@ $( function(){
 
     });
 
+    $('table.transfer_list_to_firm tr:not(:first)').click(function(event) {
+    // улучшитель юзабилити таблиц, при клике по строке выбирается чекбокс    
+        if (event.target.type !== 'checkbox') {
+            $(':checkbox', this).trigger('click');
+        }
+
+        if (event.target.type !== 'radio') {
+            $(':radio', this).trigger('click');
+        }
+
+    });
+
+
     $('.add_items').click( function(e) {
         /* Выполняем проверку на принадлежность орг. юниту*/
         var cart_name  = $('#id_cartName option:selected').val();
@@ -1897,10 +1910,17 @@ $( function(){
                     }
                     if ( msg.error == '0' ) {
                         $("#id_scan_number").focus();
+                        $('#id_scan_number').val('');
                         $('.error_msg').hide();
                         $('.success_msg').show();
                         $('.success_msg').html(msg.mes);
-                        $('table.transfer_list_to_firm  tr:last').after('<tr><td>' + msg.cart_num + '</td><td>' + msg.cart_name + '</td></tr>');
+                        if (msg.cart_num.length > {{ request.TRLEN }}) {
+                            var cart_num = msg.cart_num.substring(0, {{ request.TRLEN }}) + '...';
+                        } else {
+                            var cart_num = msg.cart_num;
+                        }
+                        $('table.transfer_list_to_firm  tr:last').after('<tr class="remove' + msg.pk + '"><td><input type="checkbox" value="'+ msg.pk +'"/></td><td>' + cart_num + '</td><td>' + msg.cart_name + '</td></tr>');
+                        
                     }
                 },
                 error: function( msg ) {
@@ -1948,6 +1968,50 @@ $( function(){
                 сonsole.log(msg);
             },
         });
+
+    });
+
+
+    $('.remove_session_item').click( function() {
+        var selected = [];
+        $('.transfer_list_to_firm input:checked').each(function() {
+            if ($(this).attr('value')) {
+                selected.push( $(this).attr('value') );
+            }
+        });
+
+        if ( selected.length !== 0 ) {
+            $.ajax({
+                method: 'POST',
+                url:  '{% url "index:remove_session_item" %}',
+                data:  {'selected': selected },
+                beforeSend: function( xhr, settings ){
+                    csrftoken = getCookie('csrftoken');
+                    $('.spinner_force_move_to_transfer').show();
+                    if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
+                        xhr.setRequestHeader('X-CSRFToken', csrftoken);
+                    }
+                },
+                success: function( msg ) {
+                    $('.spinner_force_move_to_transfer').hide();
+                    if ( msg.error == '1' ) {
+                        $('.error_msg').show();
+                        $('.success_msg').hide();
+                        $('.error_msg').text(msg.mes);
+                    }
+                    if ( msg.error == '0' ) {
+                        for(var i=0; i < selected.length; i++) {
+                            var html_class_name = 'table.transfer_list_to_firm tr.remove' + selected[i];
+                            $(html_class_name).remove();
+                            console.log(i, '=', selected[i]);
+                        }
+                    }
+                },
+                error: function( msg ) {
+                    сonsole.log(msg);
+                },
+            });            
+        }
 
     });
 

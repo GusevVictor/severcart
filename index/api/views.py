@@ -771,7 +771,7 @@ def add_object_to_basket_for_firm(request):
             session_data = request.session.get('basket_to_transfer_firm')
             # если в сессионной переменной данные уже есть то РМ в список не добавляем
             try:
-                session_data.index(cart_barcode)
+                session_data.index(cartridge.pk)
             except ValueError: 
                 session_data.append(cart_barcode)
                 request.session['basket_to_transfer_firm'] = session_data
@@ -781,12 +781,13 @@ def add_object_to_basket_for_firm(request):
                 return JsonResponse(ansver)                
         else:
             # если сессионная basket_to_transfer_firm пуста или её нет вообще
-            session_data = [ cart_barcode ]
+            session_data = [ cartridge.pk ]
             request.session['basket_to_transfer_firm'] = session_data
         ansver['error'] ='0'
         ansver['mes'] = _('Consumable material is successfully prepared for transfer')
         ansver['cart_name'] = str(cartridge.cart_itm_name)
         ansver['cart_num'] = str(cartridge.cart_number)
+        ansver['pk'] = str(cartridge.pk)
         return JsonResponse(ansver)
     else:
         cart_status = STATUS[cartridge.cart_status-1][1]
@@ -794,6 +795,7 @@ def add_object_to_basket_for_firm(request):
         ansver['mes'] = _('This consumable is in the state \"%(cart_status)s\". Are you sure you want to place in the lists transmitted?') % {'cart_status': cart_status}
         return JsonResponse(ansver)
     return JsonResponse(ansver)
+
 
 @require_POST
 @check_ajax_auth
@@ -844,15 +846,36 @@ def force_move_to_transfer(request):
     if request.session.get('basket_to_transfer_firm', False):
         # если в сессионной переменной уже что-то есть
         session_data = request.session.get('basket_to_transfer_firm')
-        session_data.append(cart_barcode)
+        session_data.append(cartridge.pk)
         request.session['basket_to_transfer_firm'] = session_data
     else:
         # если сессионная basket_to_transfer_firm пуста или её нет вообще
-        session_data = [ cart_barcode ]
+        session_data = [ cartridge.pk, ]
         request.session['basket_to_transfer_firm'] = session_data
     
     ansver['error'] ='0'
     ansver['mes']   = _('Consumable material is successfully prepared for transfer')
     ansver['cart_name'] = str(cartridge.cart_itm_name)
     ansver['cart_num'] = str(cartridge.cart_number)
+    return JsonResponse(ansver)
+
+
+@require_POST
+@check_ajax_auth
+def remove_session_item(request):
+    """Удаление элемента из сессионной переменной перемещения РМ на обслуживание.
+    """
+    ansver = dict()
+    selected = request.POST.getlist('selected[]')
+    print('selected=', selected)
+    if request.session.get('basket_to_transfer_firm', []):
+        session_data = request.session.get('basket_to_transfer_firm')
+    if session_data:
+        for select in selected:
+            # http://stackoverflow.com/questions/1157106/remove-all-occurrences-of-a-value-from-a-python-list
+            session_data = list(item for item in session_data if select != item)
+            #session_data = list(filter((item).__ne__, session_data))
+            print('session_data=', session_data)
+        request.session['basket_to_transfer_firm'] = session_data
+        ansver['error'] = '0'
     return JsonResponse(ansver)

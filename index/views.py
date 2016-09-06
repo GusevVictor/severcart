@@ -719,8 +719,14 @@ def transfer_to_firm_with_scanner(request):
                                                 | Q(departament=root_ou))
                                             )
             cartridge = m1[0]
-            sessions_objects.append({'pk': cartridge.pk, 'name': str(cartridge.cart_itm_name), 'number':cartridge.cart_number})
+            tmp_str = str(cartridge.cart_number)
+            if len(tmp_str) >= settings.TRLEN:
+                tmp_str = tmp_str[0:settings.TRLEN] + '...'
+            sessions_objects.append({'pk': cartridge.pk, 'name': str(cartridge.cart_itm_name), 'number':tmp_str, 'title': cartridge.cart_number})
 
+    context['show_remove_session_button'] = False
+    if len(sessions_objects) >= 1:
+        context['show_remove_session_button'] = True
     context['sessions_objects'] = sessions_objects        
     context['form'] = form
     context['mydebug'] = True
