@@ -764,7 +764,7 @@ def add_object_to_basket_for_firm(request):
         return JsonResponse(ansver)
 
     session_data = request.session.get('basket_to_transfer_firm', False)
-    if str(cartridge.pk) in session_data:
+    if session_data and (str(cartridge.pk) in session_data):
         ansver['error'] ='1'
         ansver['mes']   = _('The object is already in the lists on the move.')
         return JsonResponse(ansver)
@@ -779,7 +779,7 @@ def add_object_to_basket_for_firm(request):
             try:
                 session_data.index(cartridge.pk)
             except ValueError: 
-                session_data.append(cart_barcode)
+                session_data.append(cartridge.pk)
                 request.session['basket_to_transfer_firm'] = session_data
             else:
                 ansver['error'] ='1'

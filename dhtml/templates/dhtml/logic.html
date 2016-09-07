@@ -1911,6 +1911,7 @@ $( function(){
                     if ( msg.error == '0' ) {
                         $("#id_scan_number").focus();
                         $('#id_scan_number').val('');
+                        $('table.transfer_list_to_firm').show();
                         $('.error_msg').hide();
                         $('.success_msg').show();
                         $('.success_msg').html(msg.mes);
@@ -1919,7 +1920,7 @@ $( function(){
                         } else {
                             var cart_num = msg.cart_num;
                         }
-                        $('table.transfer_list_to_firm  tr:last').after('<tr class="remove' + msg.pk + '"><td><input type="checkbox" value="'+ msg.pk +'"/></td><td>' + cart_num + '</td><td>' + msg.cart_name + '</td></tr>');
+                        $('table.transfer_list_to_firm tr:last').after('<tr class="remove' + msg.pk + '"><td><input type="checkbox" value="'+ msg.pk +'"/></td><td>' + cart_num + '</td><td>' + msg.cart_name + '</td></tr>');
                         
                     }
                 },
@@ -1980,7 +1981,6 @@ $( function(){
                 selected.push( $(this).attr('value') );
             }
         });
-
         if ( selected.length !== 0 ) {
             $.ajax({
                 method: 'POST',
@@ -2004,7 +2004,6 @@ $( function(){
                         for(var i=0; i < selected.length; i++) {
                             var html_class_name = 'table.transfer_list_to_firm tr.remove' + selected[i];
                             $(html_class_name).remove();
-                            console.log(i, '=', selected[i]);
                         }
                     }
                 },

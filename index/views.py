@@ -712,13 +712,12 @@ def transfer_to_firm_with_scanner(request):
 
     sessions_objects = list()
     if session_data:
-        for item_number in session_data:
-            m1 = CartridgeItem.objects.filter(
-                                                Q(cart_number=item_number) & 
-                                                (Q(departament__in=des)
-                                                | Q(departament=root_ou))
-                                            )
-            cartridge = m1[0]
+        for item_pk in session_data:
+            try:   
+                item_pk = int(item_pk)
+            except ValueError:
+                item_pk = 1
+            cartridge= CartridgeItem.objects.get(pk=item_pk)
             tmp_str = str(cartridge.cart_number)
             if len(tmp_str) >= settings.TRLEN:
                 tmp_str = tmp_str[0:settings.TRLEN] + '...'

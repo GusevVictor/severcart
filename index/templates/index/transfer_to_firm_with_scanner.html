@@ -30,9 +30,8 @@
                 </div>
                 <div class="marginTop">
                 {{ form.numbers }}
-                {% if sessions_objects %}
-                <label class="required" >{% trans "What transfe" %}</label>
-                <table class="width100 transfer_list_to_firm">
+                <label class="required" {% if sessions_objects %}style="display:block"{% else %}style="display:none"{% endif %}  >{% trans "What transfe" %}</label>
+                <table class="width100 transfer_list_to_firm" {% if sessions_objects %}style="display:block"{% else %}style="display:none"{% endif %} >
                 <tr>
                     <td>&nbsp;</td>
                     <th class="width100px">{% trans 'Number' %}</th>
@@ -46,7 +45,6 @@
                 </tr>
                 {% endfor %}
                 </table>
-                {% endif %}
                 </div>
                 <div class="row">
                     <div class="large-7 medium-7 columns">
