@@ -1920,7 +1920,7 @@ $( function(){
                         } else {
                             var cart_num = msg.cart_num;
                         }
-                        $('table.transfer_list_to_firm tr:last').after('<tr class="remove' + msg.pk + '"><td><input type="checkbox" value="'+ msg.pk +'"/></td><td>' + cart_num + '</td><td>' + msg.cart_name + '</td></tr>');
+                        $('table.transfer_list_to_firm tr:last').after('<tr class="remove' + msg.pk + '"><td><input type="checkbox" value="'+ msg.pk +'"/></td><td title="' + msg.cart_num + '">' + cart_num + '</td><td>' + msg.cart_name + '</td></tr>');
                         
                     }
                 },

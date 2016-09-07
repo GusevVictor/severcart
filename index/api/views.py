@@ -873,15 +873,15 @@ def remove_session_item(request):
     """
     ansver = dict()
     selected = request.POST.getlist('selected[]')
-    print('selected=', selected)
     if request.session.get('basket_to_transfer_firm', []):
         session_data = request.session.get('basket_to_transfer_firm')
     if session_data:
         for select in selected:
-            # http://stackoverflow.com/questions/1157106/remove-all-occurrences-of-a-value-from-a-python-list
+            try:
+                select = int(select)
+            except ValueError:
+                select = 0
             session_data = list(item for item in session_data if select != item)
-            #session_data = list(filter((item).__ne__, session_data))
-            print('session_data=', session_data)
         request.session['basket_to_transfer_firm'] = session_data
         ansver['error'] = '0'
     return JsonResponse(ansver)
