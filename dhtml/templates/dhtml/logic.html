@@ -1913,6 +1913,7 @@ $( function(){
                         $('#id_scan_number').val('');
                         $('.wrapper_for_transfer_table').show();
                         $('.show_remove_session_div').show();
+                        $('#id_numbers').attr('value', msg.moved_list);
                         $('.error_msg').hide();
                         //$('.success_msg').show();
                         //$('.success_msg').html(msg.mes);
@@ -2010,6 +2011,8 @@ $( function(){
                             $('.wrapper_for_transfer_table').hide();
                         }
                     }
+
+                    $('#id_numbers').attr('value', msg.moved_list);
                 },
                 error: function( msg ) {
                     сonsole.log(msg);

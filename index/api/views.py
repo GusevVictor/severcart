@@ -794,6 +794,7 @@ def add_object_to_basket_for_firm(request):
         ansver['cart_name'] = str(cartridge.cart_itm_name)
         ansver['cart_num'] = str(cartridge.cart_number)
         ansver['pk'] = str(cartridge.pk)
+        ansver['moved_list'] = str(session_data)[1:-1]
         return JsonResponse(ansver)
     else:
         cart_status = STATUS[cartridge.cart_status-1][1]
@@ -888,4 +889,5 @@ def remove_session_item(request):
     if session_data:
         ansver['show_remove_session_button'] = False
 
+    ansver['moved_list'] = str(session_data)[1:-1]
     return JsonResponse(ansver)
