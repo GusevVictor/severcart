@@ -1911,16 +1911,17 @@ $( function(){
                     if ( msg.error == '0' ) {
                         $("#id_scan_number").focus();
                         $('#id_scan_number').val('');
-                        $('table.transfer_list_to_firm').show();
+                        $('.wrapper_for_transfer_table').show();
+                        $('.show_remove_session_div').show();
                         $('.error_msg').hide();
-                        $('.success_msg').show();
-                        $('.success_msg').html(msg.mes);
+                        //$('.success_msg').show();
+                        //$('.success_msg').html(msg.mes);
                         if (msg.cart_num.length > {{ request.TRLEN }}) {
                             var cart_num = msg.cart_num.substring(0, {{ request.TRLEN }}) + '...';
                         } else {
                             var cart_num = msg.cart_num;
                         }
-                        $('table.transfer_list_to_firm tr:last').after('<tr class="remove' + msg.pk + '"><td><input type="checkbox" value="'+ msg.pk +'"/></td><td title="' + msg.cart_num + '">' + cart_num + '</td><td>' + msg.cart_name + '</td></tr>');
+                        $('.transfer_list_to_firm tr:last').after('<tr class="remove' + msg.pk + '"><td><input type="checkbox" value="'+ msg.pk +'"/></td><td title="' + msg.cart_num + '">' + cart_num + '</td><td>' + msg.cart_name + '</td></tr>');
                         
                     }
                 },
@@ -1962,7 +1963,6 @@ $( function(){
                     $('.error_msg').hide();
                     $('.success_msg').show();
                     $('.success_msg').html(msg.mes);
-                    console.log('msg.cart_num=', msg.cart_num);
                     $('table.transfer_list_to_firm  tr:last').after('<tr><td>' + msg.cart_num + '</td><td>' + msg.cart_name + '</td></tr>');
                 }
             },
@@ -2004,6 +2004,10 @@ $( function(){
                         for(var i=0; i < selected.length; i++) {
                             var html_class_name = 'table.transfer_list_to_firm tr.remove' + selected[i];
                             $(html_class_name).remove();
+                        }
+                        if ( msg.show_remove_session_button ) {
+                            $('.show_remove_session_div').hide();
+                            $('.wrapper_for_transfer_table').hide();
                         }
                     }
                 },

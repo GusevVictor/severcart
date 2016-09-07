@@ -884,4 +884,8 @@ def remove_session_item(request):
             session_data = list(item for item in session_data if select != item)
         request.session['basket_to_transfer_firm'] = session_data
         ansver['error'] = '0'
+    ansver['show_remove_session_button'] = True
+    if session_data:
+        ansver['show_remove_session_button'] = False
+
     return JsonResponse(ansver)

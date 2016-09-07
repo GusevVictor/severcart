@@ -726,6 +726,7 @@ def transfer_to_firm_with_scanner(request):
     context['show_remove_session_button'] = False
     if len(sessions_objects) >= 1:
         context['show_remove_session_button'] = True
+    
     context['sessions_objects'] = sessions_objects        
     context['form'] = form
     context['mydebug'] = True

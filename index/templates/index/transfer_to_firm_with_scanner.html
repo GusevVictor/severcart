@@ -21,30 +21,32 @@
     <div class="row">
         <div class="large-6 columns">
             <form action="" method="POST" class="transfer_to_firm">{% csrf_token %}
-                <div>
-                    <a class="button alert no_follow remove_session_item" {% if show_remove_session_button %}style="display:inline"{% endif %}>{% trans 'Remove session element' %}</a>
+                <div class="show_remove_session_div">
+                    <a class="button alert no_follow remove_session_item" {% if show_remove_session_button == False %}style="display:none !important"{% endif %}>{% trans 'Remove session element' %}</a>
                 </div>
                 <div class="marginTop">
                     <label class="required barcode">{% trans 'Scanning number' %}</label>
                     {{ form.scan_number }}
                 </div>
                 <div class="marginTop">
-                {{ form.numbers }}
-                <label class="required" {% if sessions_objects %}style="display:block"{% else %}style="display:none"{% endif %}  >{% trans "What transfe" %}</label>
-                <table class="width100 transfer_list_to_firm" {% if sessions_objects %}style="display:block"{% else %}style="display:none"{% endif %} >
-                <tr>
-                    <td>&nbsp;</td>
-                    <th class="width100px">{% trans 'Number' %}</th>
-                    <th>{% trans 'Name' %}</th>
-                </tr>
-                {% for item in sessions_objects %}
-                <tr class="remove{{item.pk}}">
-                    <td><input type="checkbox" value="{{item.pk}}"></td>
-                    <td class="width100px" title={{ item.title }}>{{ item.number }}</td>
-                    <td>{{ item.name }}</td>
-                </tr>
-                {% endfor %}
-                </table>
+                    {{ form.numbers }}
+                    <div class="wrapper_for_transfer_table">
+                        <label class="required" {% if sessions_objects %}style="display:block"{% else %}style="display:none"{% endif %}  >{% trans "What transfe" %}</label>
+                        <table class="width100 transfer_list_to_firm" {% if sessions_objects %}style="display:block"{% else %}style="display:none"{% endif %} >
+                        <tr>
+                            <td>&nbsp;</td>
+                            <th class="width100px">{% trans 'Number' %}</th>
+                            <th>{% trans 'Name' %}</th>
+                        </tr>
+                        {% for item in sessions_objects %}
+                        <tr class="remove{{item.pk}}">
+                            <td><input type="checkbox" value="{{item.pk}}"></td>
+                            <td class="width100px" title={{ item.title }}>{{ item.number }}</td>
+                            <td>{{ item.name }}</td>
+                        </tr>
+                        {% endfor %}
+                        </table>
+                    </div>
                 </div>
                 <div class="row">
                     <div class="large-7 medium-7 columns">
