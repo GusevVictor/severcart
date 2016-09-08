@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-09-06 10:24+0500\n"
-"PO-Revision-Date: 2016-09-06 10:25+0500\n"
+"POT-Creation-Date: 2016-09-08 14:18+0500\n"
+"PO-Revision-Date: 2016-09-08 14:21+0500\n"
 "Last-Translator: \n"
 "Language-Team: severcart.org <sfcl@mail.ru>\n"
 "Language: ru\n"
@@ -96,6 +96,7 @@ msgstr "Фамилия, имя, отчество"
 #: .\index\templates\index\add_empty_cartridge_from_barcode_scanner.html:24
 #: .\index\templates\index\add_empty_cartridge_from_barcode_scanner.html:40
 #: .\index\templates\index\add_items.html:38
+#: .\index\templates\index\transfer_to_firm_with_scanner.html:57
 msgid "Required field"
 msgstr "Обязательное поле"
 
@@ -309,13 +310,13 @@ msgid "Admin?"
 msgstr "Администратор?"
 
 #: .\accounts\templates\accounts\manage_users.html:56
-#: .\index\templates\index\transfer_to_firm_with_scanner.html:85
+#: .\index\templates\index\transfer_to_firm_with_scanner.html:86
 #: .\service\forms\stickers.py:10
 msgid "Yes"
 msgstr "Да"
 
 #: .\accounts\templates\accounts\manage_users.html:58
-#: .\index\templates\index\transfer_to_firm_with_scanner.html:86
+#: .\index\templates\index\transfer_to_firm_with_scanner.html:87
 #: .\service\forms\stickers.py:10
 msgid "No"
 msgstr "Нет"
@@ -424,6 +425,10 @@ msgstr "Вы точно хотите удалить складское поме�
 #: .\dhtml\templates\dhtml\logic.html:1709
 msgid "<p>Server error :(</p>"
 msgstr "<p>Ошибка на стороне сервера :(</p>"
+
+#: .\dhtml\templates\dhtml\logic.html:2060
+msgid "List move empty."
+msgstr "Пустой список для перемещения."
 
 #: .\docs\api\views.py:30 .\docs\api\views.py:78 .\docs\api\views.py:110
 #: .\docs\api\views.py:430 .\index\api\views.py:47 .\index\api\views.py:82
@@ -646,7 +651,7 @@ msgstr "Договор поставки"
 
 #: .\docs\forms\add_doc.py:28 .\docs\models.py:12
 #: .\index\templates\index\transfer_to_firm.html:48
-#: .\index\templates\index\transfer_to_firm_with_scanner.html:64
+#: .\index\templates\index\transfer_to_firm_with_scanner.html:65
 msgid "Service agreement"
 msgstr "Договор обслуживания"
 
@@ -698,7 +703,7 @@ msgstr "Потрачено"
 #: .\docs\templates\docs\delivery.html:100
 #: .\docs\templates\docs\delivery.html:101
 #: .\index\templates\index\transfer_to_firm.html:43
-#: .\index\templates\index\transfer_to_firm_with_scanner.html:59
+#: .\index\templates\index\transfer_to_firm_with_scanner.html:60
 #: .\reports\templates\reports\spent_money.html:58
 msgid "Currency"
 msgstr "руб."
@@ -1232,16 +1237,20 @@ msgstr "Картридж(и) успешно перемещен(ы) в корзи
 msgid "Cartridges %(cart_list)s successfully transferred for use"
 msgstr "Картридж(и) %(cart_list)s успешно передан(ы) пользователю."
 
-#: .\index\api\views.py:746 .\index\api\views.py:811
+#: .\index\api\views.py:746 .\index\api\views.py:820
 msgid "Error: 101. Not set organization utint."
 msgstr "Ошибка 101. Не установлено организационное подразделение."
 
-#: .\index\api\views.py:763 .\index\api\views.py:827
+#: .\index\api\views.py:763 .\index\api\views.py:836
 #, python-format
 msgid "Consumables with the number %(cart_barcode)s was not found."
 msgstr "Расходник с номером %(cart_barcode)s не найден."
 
-#: .\index\api\views.py:780
+#: .\index\api\views.py:769
+msgid "The object is already in the lists on the move."
+msgstr "Объект уже находится в списках на перемещение."
+
+#: .\index\api\views.py:786
 #, python-format
 msgid ""
 "The object number %(cart_barcode)s is already present in the lists on the "
@@ -1249,11 +1258,11 @@ msgid ""
 msgstr ""
 "Объект с номером %(cart_barcode)s уже присутствует в списках на перемещение."
 
-#: .\index\api\views.py:787 .\index\api\views.py:855
+#: .\index\api\views.py:793 .\index\api\views.py:864
 msgid "Consumable material is successfully prepared for transfer"
 msgstr "Расходник готов к передаче"
 
-#: .\index\api\views.py:794
+#: .\index\api\views.py:802
 #, python-format
 msgid ""
 "This consumable is in the state \"%(cart_status)s\". Are you sure you want "
@@ -1744,7 +1753,7 @@ msgstr "Передача в пользование"
 
 #: .\index\templates\index\transfe_for_use.html:13
 #: .\index\templates\index\transfer_to_firm.html:21
-#: .\index\templates\index\transfer_to_firm_with_scanner.html:32
+#: .\index\templates\index\transfer_to_firm_with_scanner.html:34
 msgid "What transfe"
 msgstr "Что передаём"
 
@@ -1779,17 +1788,17 @@ msgid "Which company"
 msgstr "Кому передаём на<br/>заправку"
 
 #: .\index\templates\index\transfer_to_firm.html:43
-#: .\index\templates\index\transfer_to_firm_with_scanner.html:59
+#: .\index\templates\index\transfer_to_firm_with_scanner.html:60
 msgid "Service price"
 msgstr "Стоимость обслуживания"
 
 #: .\index\templates\index\transfer_to_firm.html:54
-#: .\index\templates\index\transfer_to_firm_with_scanner.html:70
+#: .\index\templates\index\transfer_to_firm_with_scanner.html:71
 msgid "Transfer to repair"
 msgstr "Передать"
 
 #: .\index\templates\index\transfer_to_firm.html:55
-#: .\index\templates\index\transfer_to_firm_with_scanner.html:71
+#: .\index\templates\index\transfer_to_firm_with_scanner.html:72
 msgid "Cansel"
 msgstr "Отмена"
 
@@ -1801,7 +1810,7 @@ msgstr "Передача картриджей на заправку с скан�
 msgid "Remove session element"
 msgstr "Удалить сессионный элемент"
 
-#: .\index\templates\index\transfer_to_firm_with_scanner.html:80
+#: .\index\templates\index\transfer_to_firm_with_scanner.html:81
 msgid "Need confirmation"
 msgstr "Необходмо подтверждение"
 

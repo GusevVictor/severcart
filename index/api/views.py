@@ -11,9 +11,11 @@ from django.template.loader import render_to_string
 from django.utils.translation import ugettext as _
 from django.contrib import messages
 from django.db.models import Q
+from django.core.urlresolvers import reverse
 from common.helpers import is_admin
 from django.views.decorators.http import require_POST
 from events.models import Events
+from index.forms.tr_to_firm import TransfeToFirmScanner
 from events.helpers import events_decoder
 from index.models import ( City, 
                            CartridgeItem, 
@@ -864,6 +866,7 @@ def force_move_to_transfer(request):
     ansver['mes']   = _('Consumable material is successfully prepared for transfer')
     ansver['cart_name'] = str(cartridge.cart_itm_name)
     ansver['cart_num'] = str(cartridge.cart_number)
+    ansver['pk'] = str(cartridge.pk)
     return JsonResponse(ansver)
 
 
@@ -890,4 +893,95 @@ def remove_session_item(request):
         ansver['show_remove_session_button'] = False
 
     ansver['moved_list'] = str(session_data)[1:-1]
+    return JsonResponse(ansver)
+
+
+@require_POST
+@check_ajax_auth
+def move_objects_to_firm_with_barcode(request):
+    """Аякс обработчик перемещения РМ на обслуживание контрагенту на основе подготовленных
+       списков с сканером штрих кодов.
+    """
+    ansver = dict()
+    form = TransfeToFirmScanner(request.POST)
+    if form.is_valid():
+        data_in_post = form.cleaned_data
+        numbers      = data_in_post.get('numbers')
+        firm         = data_in_post.get('firm')
+        doc_id       = data_in_post.get('doc')
+        price        = data_in_post.get('price')
+        try:
+            firm = FirmTonerRefill.objects.get(pk=firm) 
+        except:
+            firm = None
+        # меняем статусы РМ в БД на основании запросов
+        # генерируем запись о заправке
+        jsoning_list = []
+        for inx in numbers:
+            cart_number = CartridgeItem.objects.get(pk=inx).cart_number
+            cart_name   = CartridgeItem.objects.get(pk=inx).cart_itm_name
+            jsoning_list.append([cart_number, str(cart_name)])
+        jsoning_list = json.dumps(jsoning_list)
+        
+        try:
+            doc = int(doc)
+        except:
+            doc = 0
+
+        try:
+            doc = SCDoc.objects.get(pk=doc)
+        except SCDoc.DoesNotExist:
+            doc = None
+        # генерируем номер акта передачи на основе даты и его порядкового номера
+        sender_acts = RefillingCart.objects.filter(departament=request.user.departament).count()
+        if sender_acts:
+            act_number   = sender_acts + 1
+            act_number   = str(timezone.now().year) + '_' + str(sender_acts)
+        else:
+            act_number   = str(timezone.now().year) + '_1'
+
+        # сохраняем в БД акт передачи РМ на заправку
+        act_doc = RefillingCart(number       = act_number,
+                                date_created = timezone.now(),
+                                firm         = firm,
+                                user         = str(request.user),
+                                json_content = jsoning_list,
+                                money        = price,
+                                parent_doc   = doc,
+                                departament  = request.user.departament
+                               )
+        act_doc.save()
+        list_cplx = list()
+        show_numbers = list()
+        with transaction.atomic():
+            for inx in numbers:
+                m1 = CartridgeItem.objects.get(pk=inx)
+                # проверяем принадлежность перемещаемого РМ департаменту 
+                # пользователя.
+                if m1.departament == request.user.departament:
+                    m1.cart_status = 4 # находится на заправке
+                    m1.filled_firm = firm
+                    m1.cart_date_change = timezone.now()
+                    m1.save()
+                    list_cplx.append((m1.pk, str(m1.cart_itm_name), m1.cart_number))
+                    show_numbers.append(m1.cart_number)
+            
+        if list_cplx:
+            sign_tr_empty_cart_to_firm.send(sender=None, 
+                                            list_cplx=list_cplx, 
+                                            request=request, 
+                                            firm=str(firm)
+                                            )
+        
+
+
+        ansver['error'] = '0'
+        ansver['url'] = reverse('index:empty')
+        msg = _('Objects %(numbers)s moved successfully.') % {'numbers': numbers}
+        messages.success(request, msg)
+        # очищаем сессионную переменную basket_to_transfer_firm
+        request.session['basket_to_transfer_firm'] = []
+    else:
+        ansver['error'] = '1'
+        ansver['text'] = form.errors.as_text
     return JsonResponse(ansver)

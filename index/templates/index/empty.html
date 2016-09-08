@@ -15,6 +15,15 @@
         <div class="success_msg"></div>
     </div>
 </div>
+{% if messages %}
+    <div class="row">
+        <div class="large-6 columns">
+            {% for message in messages %}
+                <div class="success_msg" style="display:block">{{ message }}</div>
+            {% endfor %}
+        </div>
+    </div>
+{% endif %}
 <div class="row">
     <div class="large-7 columns">
         <table class="no-style">

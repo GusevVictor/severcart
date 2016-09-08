@@ -697,7 +697,7 @@ def transfer_to_firm_with_scanner(request):
     context = dict()
     form = TransfeToFirmScanner()
     form.fields['doc'].queryset = SCDoc.objects.filter(departament=request.user.departament).filter(doc_type=2)
-    
+        
     if request.session.get('basket_to_transfer_firm', False):
         # если в сессионной переменной уже что-то есть
         session_data = request.session.get('basket_to_transfer_firm')
@@ -727,6 +727,9 @@ def transfer_to_firm_with_scanner(request):
     if len(sessions_objects) >= 1:
         context['show_remove_session_button'] = True
     
+    # инициализируем поле numbers значениями сессионной переменной, 
+    # если пользователь произвёл перезагрузку страницы. 
+    form.fields['numbers'].initial = str(session_data)[1:-1] 
     context['sessions_objects'] = sessions_objects        
     context['form'] = form
     context['mydebug'] = True

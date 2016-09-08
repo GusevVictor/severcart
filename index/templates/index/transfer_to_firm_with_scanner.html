@@ -22,10 +22,10 @@
         <div class="large-6 columns">
             <form action="" method="POST" class="transfer_to_firm">{% csrf_token %}
                 <div class="show_remove_session_div" {% if show_remove_session_button %}style="display:block"{% else %}style="display:none"{% endif %}>
-                    <a class="button alert no_follow remove_session_item">{% trans 'Remove session element' %}</a>
+                    <a class="button alert no_follow remove_session_item">{% trans 'Remove' %}</a>
                 </div>
                 <div class="marginTop">
-                    <label class="required barcode">{% trans 'Scanning number' %}</label>
+                    <label class="barcode">{% trans 'Scanning number' %}</label>
                     {{ form.scan_number }}
                 </div>
                 <div class="marginTop">
@@ -54,6 +54,7 @@
                         <div class="input_row">
                             {{ form.firm }} <a class="add" href="{% url 'index:add_firm' %}"></a>
                         </div>
+                        <div class="form_error_text required_error_firm">{% trans "Required field" %}</div>
                     </div>
                     <div class="large-5 medium-5 columns">
                         <label for="{{ form.price.id_for_label }}">{% trans 'Service price' %}, {% trans "Currency" %}</label>
@@ -67,7 +68,7 @@
                     </div>
                 </div>
                 <div class="marginTop">
-                    <input type="submit" value="{% trans 'Transfer to repair' %}" class="button no_follow"/>
+                    <input type="submit" value="{% trans 'Transfer to repair' %}" class="button move_objects_to_firm_with_barcode no_follow"/>
                     <a class="button back" href="{% url 'index:empty' %}">{% trans "Cansel" %}</a>
                     {% if mydebug %}<a class="button send_test_barcode">Debug</a>{% endif %}
                     <img class="spinner" src="{{ STATIC_URL }}img/loader.gif" />
