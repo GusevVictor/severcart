@@ -1822,7 +1822,6 @@ $( function(){
         $("#id_scan_number").focus();
         var pressed = false; 
         var chars = []; 
-        /*
         $('#id_scan_number').keypress(function(e) {
             if (e.which >= 48 && e.which <= 57) {
                 chars.push(String.fromCharCode(e.which));
@@ -1850,19 +1849,35 @@ $( function(){
                                 if ( msg.error == '1' ) {
                                     $('.error_msg').show();
                                     $('.success_msg').hide();
-                                    $('.error_msg').text(msg.text);
+                                    $('.error_msg').text(msg.mes);
                                 }
                                 if ( msg.error == '2' ) {
-                                    $('.error_msg').show();
+                                    // ошибка не соответствия статуса, показываем диалоговое окно
                                     $('.success_msg').hide();
-                                    $('.error_msg').text(msg.text);
+                                    $('.error_msg').hide();
+                                    $(document).foundation();
+                                    $('p.ajax_error_message').html(msg.mes);
+                                    $('#myModal').foundation('reveal', 'open');
+
                                 }
                                 if ( msg.error == '0' ) {
-                                    $("#id_scan_number").focus();
-                                    $('.error_msg').hide();
-                                    $('.success_msg').show();
-                                    $('.success_msg').html(msg.text);
-                                    $('table.transfer_list_to_firm tr:last').append('<tr><td>' + msg.cart_num + '</td><td>' + msg.cart_name + '</td></tr>');
+                                    // если ошибок нет, то
+                                    $("#id_scan_number").focus(); // устанавливаем фокус на поле ввода для сканера ШК
+                                    $('#id_scan_number').val(''); // очищаем его значение для новых данных
+                                    $('.wrapper_for_transfer_table').show(); // показываем таблицу с сессионными (перемещаемыми) объектами
+                                    $('.show_remove_session_div').show();  // показываем кнопку для удаления сессионных объектов
+                                    $('#id_numbers').attr('value', msg.moved_list); // заполняем скрытое поле numbers данными из аякс ответа
+                                    $('.error_msg').hide();   // прячем поле с ошибками
+                                    /* Если длина символов в поле msg.cart_num превышает заданные константые значения, то */
+                                    if (msg.cart_num.length > {{ request.TRLEN }}) {
+                                        // производим усечение его до длины request.TRLEN
+                                        var cart_num = msg.cart_num.substring(0, {{ request.TRLEN }}) + '...';
+                                    } else {
+                                        // если меньше константного значения, то оставляем поле как есть
+                                        var cart_num = msg.cart_num;
+                                    }
+                                    $('.transfer_list_to_firm tr:last').after('<tr class="remove' + msg.pk + '"><td><input type="checkbox" value="'+ msg.pk +'"/></td><td title="' + msg.cart_num + '">' + cart_num + '</td><td>' + msg.cart_name + '</td></tr>');
+                                    
                                 }
                             },
                             error: function( msg ) {
@@ -1875,7 +1890,7 @@ $( function(){
                 }, 500);
             }
             pressed = true;
-        }); */
+        }); 
 
         $('.send_test_barcode').click(function () {
             /* Обработчик событий представленн исключительно 

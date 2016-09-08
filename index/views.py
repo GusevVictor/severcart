@@ -732,7 +732,7 @@ def transfer_to_firm_with_scanner(request):
     form.fields['numbers'].initial = str(session_data)[1:-1] 
     context['sessions_objects'] = sessions_objects        
     context['form'] = form
-    context['mydebug'] = True
+    context['mydebug'] = False
     return render(request, 'index/transfer_to_firm_with_scanner.html', context)
 
 

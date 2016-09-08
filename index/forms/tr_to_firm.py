@@ -86,7 +86,7 @@ class TransfeToFirmScanner(forms.Form):
        Формируемый список РМ задаётся сканером штрих кодов.
     """
     #scan_number = forms.CharField(max_length=256, widget=forms.TextInput(attrs={'readonly': True, 'class': 'barcode'}), required=True)
-    scan_number = forms.CharField(max_length=256, widget=forms.TextInput(attrs={'readonly': False, 'class': 'barcode'}), required=False)
+    scan_number = forms.CharField(max_length=256, widget=forms.TextInput(attrs={'readonly': True, 'class': 'barcode'}), required=False)
     numbers = forms.CharField(widget=forms.HiddenInput(), required=True)
     
     firm = forms.ModelChoiceField(queryset=FirmTonerRefill.objects.all(),
