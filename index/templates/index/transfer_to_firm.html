@@ -27,7 +27,7 @@
                 </tr>
                 {% for item in transfe_objs %}
                 <tr>
-                    <td>{{ item.cart_number }}</td>
+                    <td title="{{ item.cart_number }}">{{ item.cart_number|truncatechars:request.TRLEN }}</td>
                     <td>{{ item.cart_itm_name }}</td>
                 </tr>
                 {% endfor %}
