@@ -3,7 +3,6 @@
 from django.shortcuts import render
 import datetime
 from django.contrib.auth.decorators import login_required
-from django.contrib import messages
 from django.utils import timezone
 from django.db import connection
 from django.views.decorators.cache import never_cache

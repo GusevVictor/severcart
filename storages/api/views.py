@@ -1,6 +1,6 @@
 # -*- coding:utf-8 -*-
 
-from django.http import JsonResponse
+from django.http import JsonResponse, HttpResponse
 from django.utils.translation import ugettext as _
 from django.db.models import Q
 from storages.models import Storages

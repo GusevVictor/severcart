@@ -5,7 +5,6 @@ from django.shortcuts import render
 from django.http import HttpResponseRedirect, HttpResponse, Http404
 from django.utils import timezone
 from django.core.urlresolvers import reverse
-from django.core.exceptions import ObjectDoesNotExist
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
@@ -34,7 +33,6 @@ from .models import CartridgeItemName
 from events.models import Events
 from docs.models import SCDoc
 from storages.models import Storages
-from .helpers import check_ajax_auth
 from .signals import sign_tr_filled_cart_to_stock
 
 import logging
@@ -170,7 +168,6 @@ def add_cartridge_item(request):
         return render(request, 'index/ou_not_set.html', dict())
 
     back = BreadcrumbsPath(request).before_page(request)
-    from docs.models import SCDoc
     form_obj = AddItems()
     # отфильтровываем и показываем только договора поставки
     form_obj.fields['doc'].queryset = SCDoc.objects.filter(departament=request.user.departament).filter(doc_type=1)
@@ -216,7 +213,6 @@ def add_cartridge_from_barcode_scanner(request):
         return render(request, 'index/ou_not_set.html', dict())
 
     back = BreadcrumbsPath(request).before_page(request)
-    from docs.models import SCDoc
     form = AddItemsFromBarCodeScanner()
     # отфильтровываем и показываем только договора поставки
     form.fields['doc'].queryset = SCDoc.objects.filter(departament=request.user.departament).filter(doc_type=1)
@@ -270,7 +266,6 @@ def add_empty_cartridge(request):
     back            = BreadcrumbsPath(request).before_page(request)
     context['back'] = back
     form_obj = AddEmptyItems()
-    from docs.models import SCDoc
     # отфильтровываем и показываем только договора поставки
     form_obj.fields['doc'].queryset = SCDoc.objects.filter(departament=request.user.departament).filter(doc_type=1)
     form_obj.fields['storages'].queryset = Storages.objects.filter(departament=request.user.departament)
@@ -395,7 +390,7 @@ def add_type(request):
                 messages.success(request, _('New type %(cart_type)s success added') % {'cart_type': cart_type})
             return HttpResponseRedirect(request.path)
         else:
-            form = form_obj
+            pass
     else:
         if cart_type_id:
             form_obj = AddCartridgeType(initial={'cart_type': m1.cart_type, 'comment': m1.comment}, update=form_update)
@@ -704,11 +699,6 @@ def transfer_to_firm_with_scanner(request):
     else:
         # если сессионная basket_to_transfer_firm пуста или её нет вообще
         session_data = [ ]
-    try:
-        root_ou   = request.user.departament
-        des       = root_ou.get_descendants()
-    except:
-        pass
 
     sessions_objects = list()
     if session_data:

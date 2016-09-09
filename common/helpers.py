@@ -2,7 +2,7 @@
 
 from django.conf import settings
 from django.shortcuts import render
-from reportlab.graphics.barcode import code128, code39, qr
+from reportlab.graphics.barcode import code39, qr
 from reportlab.pdfgen import canvas
 from reportlab.lib.pagesizes import A4, A5
 from reportlab.lib.units import mm

@@ -1,5 +1,5 @@
 
-from django.conf.urls import include, url
+from django.conf.urls import url
 from service.api.views import send_test_email, settings_email, set_lang, complete_types_names
 
 urlpatterns = [

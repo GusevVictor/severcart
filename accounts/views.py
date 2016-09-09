@@ -3,7 +3,6 @@
 from django.shortcuts import redirect
 from django.shortcuts import render
 from django.http import Http404, HttpResponseRedirect
-from django.template import RequestContext
 from django.views.decorators.cache import never_cache
 from django.conf import settings
 from django.core.urlresolvers import reverse
@@ -86,7 +85,7 @@ def edit_user(request):
         if form.is_valid():
             if not settings.DEMO:
                 # если активирован режим ДЕМО, то изменения параметров не производим
-                user = form.save()
+                form.save()
             return redirect(reverse('auth:manage_users'))
     else:
         uid = request.GET.get('id', '')

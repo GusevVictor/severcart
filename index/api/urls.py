@@ -1,5 +1,5 @@
 
-from django.conf.urls import include, url
+from django.conf.urls import url
 from index.api.views import (   ajax_add_session_items, 
                                 ajax_add_session_items_from_barcode,
                                 city_list,

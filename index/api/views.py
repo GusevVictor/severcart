@@ -11,7 +11,6 @@ from django.template.loader import render_to_string
 from django.utils.translation import ugettext as _
 from django.contrib import messages
 from django.db.models import Q
-from django.core.urlresolvers import reverse
 from common.helpers import is_admin
 from django.views.decorators.http import require_POST
 from events.models import Events
@@ -35,7 +34,7 @@ from index.forms.add_items import AddItems
 from index.forms.add_items_from_barcode import AddItemsFromBarCodeScanner
 from index.forms.tr_to_firm import TransfeToFirm
 from docs.models import SCDoc, RefillingCart
-from common.helpers import is_admin
+
 
 import logging
 logger = logging.getLogger(__name__)
@@ -201,7 +200,7 @@ def ajax_add_session_items(request):
         list_items = list()
         for elem in use2var:
             try:
-               title = str(SCDoc.objects.get(pk=elem[1]))
+                title = str(SCDoc.objects.get(pk=elem[1]))
             except SCDoc.DoesNotExist:
                 title = ''
             list_items.append({'name': simple_cache.get(elem[0]), 
@@ -245,7 +244,6 @@ def ajax_add_session_items_from_barcode(request):
     if form.is_valid():
         data_in_post = form.cleaned_data
         cart_number  = data_in_post.get('cartNumber')
-        cart_name_id = data_in_post.get('cartName').pk
         cart_name    = data_in_post.get('cartName').cart_itm_name
         storages     = data_in_post.get('storages')
         storages     = storages.pk
@@ -345,7 +343,7 @@ def transfer_to_firm(request):
         
         try:
             doc_id = int(doc_id)
-        except:
+        except ValueError:
             doc_id = 0
 
         try:
@@ -719,7 +717,7 @@ def change_ou_name(request):
         raise Http404
     try:
         ouid = int(ouid)
-    except:
+    except ValueError:
         ouid = 0
     try:
         ou = OrganizationUnits.objects.get(pk=ouid)
@@ -908,11 +906,11 @@ def move_objects_to_firm_with_barcode(request):
         data_in_post = form.cleaned_data
         numbers      = data_in_post.get('numbers')
         firm         = data_in_post.get('firm')
-        doc_id       = data_in_post.get('doc')
+        doc          = data_in_post.get('doc')
         price        = data_in_post.get('price')
         try:
             firm = FirmTonerRefill.objects.get(pk=firm) 
-        except:
+        except FirmTonerRefill.DoesNotExist:
             firm = None
         # меняем статусы РМ в БД на основании запросов
         # генерируем запись о заправке
@@ -925,7 +923,7 @@ def move_objects_to_firm_with_barcode(request):
         
         try:
             doc = int(doc)
-        except:
+        except ValueError:
             doc = 0
 
         try:

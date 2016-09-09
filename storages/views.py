@@ -1,6 +1,6 @@
+# -*- coding:utf-8 -*-
+
 from django.shortcuts import render
-from django.http import HttpResponse
-from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.utils.decorators import method_decorator
 from django.views.decorators.cache import never_cache
@@ -14,12 +14,11 @@ class ViewStorages(GridListView):
     """Вывод списка складских помещений организации.
     """
     @method_decorator(is_admin)
-    #@method_decorator(login_required)
     @method_decorator(never_cache)
     def dispatch(self, *args, **kwargs):
         return super(ViewStorages, self).dispatch(*args, **kwargs)
 
-    def get(self, request, **kwargs):
+    def get(self, request):
         all_stor = Storages.objects.filter(departament=request.user.departament).order_by('pk')
         page_size = self.items_per_page()
         self.context['page_size'] = page_size
@@ -28,7 +27,6 @@ class ViewStorages(GridListView):
 
 
 @is_admin
-#@login_required
 @never_cache
 def add_s(request):
     """Добавление нового складского помещения.
@@ -53,7 +51,7 @@ def add_s(request):
             # первый создаваемый объект устанавливается по умолчанию
             flag = False
             try:
-                m2 = Storages.objects.get(pk=1)
+                Storages.objects.get(pk=1)
             except Storages.DoesNotExist:
                 flag = True
             m1 = Storages(
@@ -76,7 +74,6 @@ def add_s(request):
 
 
 @is_admin
-#@login_required
 @never_cache
 def edit_s(request):
     """Редактирование информации о складском помещении.

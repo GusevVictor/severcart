@@ -4,7 +4,6 @@ from django import forms
 from django.utils.translation import ugettext_lazy as _
 from index.models import OrganizationUnits
 from django.core.exceptions import ValidationError
-from common.helpers import del_leding_zero
 
 
 class NoUse(forms.Form):
@@ -88,7 +87,7 @@ class UseProducts(forms.Form):
         org = org.pk
         try:
             org = int(org)
-        except:
+        except ValueError:
             org = 0
         return org
 
@@ -104,9 +103,7 @@ class UseProducts(forms.Form):
         if len(start_date) == 3:
             # если пользователь не смухлевал, то кол-во элементов = 3
             date_value  = start_date[0]
-            #date_value  = del_leding_zero(date_value)
             month_value = start_date[1]
-            #month_value = del_leding_zero(month_value)
             year_value  = start_date[2]
             gte_date    = '%s-%s-%s 00:00:00' % (year_value, month_value, date_value,)
         else:

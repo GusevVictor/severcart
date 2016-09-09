@@ -1,4 +1,4 @@
-from django.conf.urls import url, include
+from django.conf.urls import url
 from .views import ajax_report, ajax_reports_users
 
 urlpatterns = [

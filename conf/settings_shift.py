@@ -1,7 +1,7 @@
 # -*- coding:utf-8 -*-
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
-import os, json
+import os
 DJ_PROJECT_DIR = os.path.dirname(__file__)
 BASE_DIR = os.path.dirname(DJ_PROJECT_DIR)
 WSGI_DIR = os.path.dirname(BASE_DIR)

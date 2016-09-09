@@ -35,9 +35,3 @@ def tr(msgid, lang='en'):
         return  ru_lang_dict.get(msgid)
     else:
         return msgid 
-
-"""
--------------------------------------------------
-
-
-"""

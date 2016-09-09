@@ -1,6 +1,6 @@
 # -*- coding:utf-8 -*-
 
-import os, sys
+import os
 from django.utils.translation import ugettext as _
 from django.http import JsonResponse
 from index.helpers import check_ajax_auth
@@ -43,7 +43,6 @@ def settings_email(request):
     """
     """
     resp_dict     = dict()
-    errors        = list()
     form = SMTPsettings(request.POST)
     if form.is_valid():
         data_in_post = form.cleaned_data
@@ -78,7 +77,7 @@ def complete_types_names(request):
     # заполнение справочника типов и наменований расходных матералов
     resp_dict     = dict()
     try:
-        # похамски запускаем соседний файл
+        # запускаем соседний файл
         from service.api import insert_strings
     except Exception as e:
         resp_dict['error'] = 1

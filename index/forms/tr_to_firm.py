@@ -3,9 +3,9 @@ import re
 from django import forms
 from django.core.exceptions import ValidationError
 from django.utils.translation import ugettext_lazy as _
-from index.models import CartridgeItemName, FirmTonerRefill
+from index.models import FirmTonerRefill
 from docs.models  import SCDoc
-from django.db.models import Q
+
 
 class TransfeToFirm(forms.Form):
     numbers = forms.CharField(widget=forms.HiddenInput(), required=True)
@@ -34,7 +34,7 @@ class TransfeToFirm(forms.Form):
         for i in ret_list:
             try:
                 i = int(i)
-            except:
+            except ValueError:
                 i = 0
             
             tmp.append(i)
@@ -49,7 +49,7 @@ class TransfeToFirm(forms.Form):
         price = re.split('[\,\.]', price)
         try:
             price = [int(i) for i in price]
-        except:
+        except ValueError:
             price = 0
 
         if isinstance(price, list) and len(price) == 2:
@@ -113,7 +113,7 @@ class TransfeToFirmScanner(forms.Form):
         for i in ret_list:
             try:
                 i = int(i)
-            except:
+            except ValueError:
                 i = 0
             
             tmp.append(i)
@@ -128,7 +128,7 @@ class TransfeToFirmScanner(forms.Form):
         price = re.split('[\,\.]', price)
         try:
             price = [int(i) for i in price]
-        except:
+        except ValueError:
             price = 0
 
         if isinstance(price, list) and len(price) == 2:

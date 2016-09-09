@@ -33,7 +33,7 @@ class GridListView(View):
     def items_per_page(self):
         # работаем с выводом количеством элементов на страницу
         page_size = self.request.GET.get('page_size', '')
-        if not(page_size == None or page_size==''):
+        if not(page_size is None or page_size==''):
             try:
                 page_size = int(page_size)
             except ValueError:
@@ -145,7 +145,7 @@ class CartridgesView(GridListView):
         search_number  = self.request.GET.get('search_number')
         self.all_items = CartridgeItem.objects.all()
         self.all_items = self.all_items.order_by(self.request.session['sort'])
-        if not(search_number == None or search_number == ''):
+        if not(search_number is None or search_number == ''):
             try:
                 search_number = int(search_number)
             except ValueError:

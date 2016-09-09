@@ -1,5 +1,5 @@
 
-from django.conf.urls import include, url
+from django.conf.urls import url
 from events.api.views import (
 								show_event_page, 
 								date_filter,

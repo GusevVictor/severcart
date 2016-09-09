@@ -17,15 +17,14 @@ def search(request):
     cnum = cnum.strip()
     try:
         cnum = int(cnum)
-    except:
+    except ValueError:
         # если пользователь ввел некорректный запрос
         # то отказываем в дальнейшей обработке
         context['cart_items'] = []
         return render(request, 'search/serp.html', context)
 
-    try:
-        cart_items = CartridgeItem.objects.filter(cart_number=cnum)
-    except:
+    cart_items = CartridgeItem.objects.filter(cart_number=cnum)
+    if not cart_items:
         context['cart_items'] = []
         return render(request, 'search/serp.html', context)
     

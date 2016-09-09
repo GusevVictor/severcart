@@ -63,14 +63,14 @@ if __name__ == '__main__':
 
     # проверям версию Python, всё из-за mod_wsgi и lxml
     # версия интерпритатора только 3.4.4
-    OS       = sys.platform
+    OS = sys.platform
     sys.stdout = ConsoleOut(sys.stdout)
     if OS == 'win32':
         if not( sys.version_info.major == 3 and
         sys.version_info.minor == 4 and
         sys.version_info.micro == 4 ):
-             print(tr('Further continuation impossible, Python version 3.4.4 is not equal.', lang=lang))
-             prompt_exit()
+            print(tr('Further continuation impossible, Python version 3.4.4 is not equal.', lang=lang))
+            prompt_exit()
 
 
     # Производим активацию virtualenv

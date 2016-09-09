@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
-import os
 from index.models import CartridgeType, CartridgeItemName
 from django.utils.translation import ugettext as _
 

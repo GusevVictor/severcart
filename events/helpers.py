@@ -1,7 +1,7 @@
 # -*- coding:utf-8 -*-
 
 from django.utils.translation import ugettext as _
-from datetime import datetime, timedelta
+from datetime import timedelta
 
 def date_to_str(date_dict):
     """Преобразует словарь содержащий компоненты дат в строку.

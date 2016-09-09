@@ -34,7 +34,7 @@ def ajax_report(request):
             des = ''
 
         try:
-            departament = OrganizationUnits.objects.get(pk=org)
+            OrganizationUnits.objects.get(pk=org)
         except OrganizationUnits.DoesNotExist:
             result['error'] = 'Organization unit not found.'
         else:

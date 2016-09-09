@@ -4,6 +4,7 @@ import json
 import datetime
 from django.http import JsonResponse
 from django.template import Template, Context
+from django.http import Http404
 from events.models import Events
 from django.conf import settings
 from django.db.models import Q
