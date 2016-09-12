@@ -144,7 +144,7 @@ def products(request):
             print('Form invalid')
         
     else:
-        context['form'] = UseProducts()
+        context['form'] = UseProducts(initial={'org': request.user.departament})
     return render(request, 'reports/products.html', context)
 
 @login_required
@@ -206,5 +206,5 @@ def spent_money(request):
             print('Form invalid')
         
     else:
-        context['form'] = UseProducts()
+        context['form'] = UseProducts(initial={'org': request.user.departament})
     return render(request, 'reports/spent_money.html', context)
