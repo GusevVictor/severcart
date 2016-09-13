@@ -1,6 +1,6 @@
 # -*- coding:utf-8 -*-
 
-VERSION = '0.3.0'
+VERSION = '0.3.1'
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os, sys
