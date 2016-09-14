@@ -9,6 +9,7 @@ from storages.models import Storages
 
 
 class AddItems(forms.Form):
+    manualNumber = forms.CharField(max_length = 256, required=False)
     cartName = forms.ModelChoiceField(queryset=CartridgeItemName.objects.all(),
                                       error_messages={'required': _('Required field.')},
                                       empty_label=' ',
@@ -20,7 +21,7 @@ class AddItems(forms.Form):
     cartCount = forms.CharField(max_length = 4,
                                 widget=forms.TextInput(attrs={'class': 'pm_counter', 'readonly': 'readonly'}),
                                 error_messages={'required': _('Required field.')},
-                                required=True,
+                                required=False
                                 )
 
 

@@ -1242,3 +1242,12 @@ input.cmn-toggle-round:checked + label:after {
 }
 
 /* завершение виджета Тумблер */
+
+.wrapper-manual-number {
+    display: none;
+}
+
+.wrapper-counter-items {
+    padding: 0;
+    margin: 0;
+}

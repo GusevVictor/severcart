@@ -343,11 +343,22 @@ $( function(){
 
     $('.add_items').click( function(e) {
         /* Выполняем проверку на принадлежность орг. юниту*/
-        var cart_name  = $('#id_cartName option:selected').val();
-        var cart_sklad = $('#id_storages option:selected').val(); 
-        var docum      = $('#id_doc option:selected').val();
-        var cont       = parseInt($('#id_cartCount').val());
-        var cart_type  = $(this).attr('data'); 
+        var cart_name   = $('#id_cartName option:selected').val();
+        var cart_sklad  = $('#id_storages option:selected').val(); 
+        var docum       = $('#id_doc option:selected').val();
+        var cont        = parseInt($('#id_cartCount').val());
+        var cart_type   = $(this).attr('data'); 
+        var cart_number = $('#id_manualNumber').val();
+
+        var tumbler = $('.cmn-toggle').is(':checked');
+
+
+        if (tumbler && !cart_number) {
+            $('.cart_number_error').show();
+        } else {
+            $('.cart_number_error').hide();
+        }
+
         if (!cart_name) {
             $('.cart_name_error').show();
         } else {
@@ -2106,6 +2117,21 @@ $( function(){
         }
 
 
+    });
+
+    $('.cmn-toggle').click( function() {
+        /* переключатель для ручного ввода номеров РМ */
+        if($('.cmn-toggle').is(':checked')) {
+            $('.wrapper-manual-number').show('slow');
+            $('.wrapper-counter-items').hide('slow');
+            // On
+
+        } else {
+            // Off
+            $('.wrapper-manual-number').hide('slow');
+            $('.wrapper-counter-items').show('slow');
+
+        }
     });
 
 });

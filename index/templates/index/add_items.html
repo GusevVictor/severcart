@@ -21,6 +21,12 @@
         <div class="large-6 columns">
             <form action="" method="post">
                 {% csrf_token %}
+                <div  class="marginTop wrapper-manual-number">
+                    <label class="required" for="id_manualNumber">{% trans "Number" %}</label>
+                    {{ form.manualNumber }}
+                    <div class="form_error_text cart_number_error">{% trans "Required field" %}</div>
+                    <div class="marginTop">&nbsp;</div>
+                </div>
                 <div class="row">
                     <div class="large-6 medium-6 columns">
                         <label for="id_filter_ca">{% trans "Filter" %}</label>
@@ -52,11 +58,13 @@
 
                 <div class="row">
                     <div class="small-6 columns">
-                        <label class='required marginTop' for="{{ form.cartCount.id_for_label }}">{% trans "Amount items" %}</label>
-                        <div class="input_row">
-                            {{ form.cartCount }}
+                        <div class="wrapper-counter-items">
+                            <label class='required marginTop' for="{{ form.cartCount.id_for_label }}">{% trans "Amount items" %}</label>
+                            <div class="input_row">
+                                {{ form.cartCount }}
+                            </div>
+                            <div class="form_error_text cart_count_error">{% trans "The field must be greater than zero" %}</div>
                         </div>
-                        <div class="form_error_text cart_count_error">{% trans "The field must be greater than zero" %}</div>
                     </div>
                     <div class="small-6 columns">
                         <label class='marginTop'>{% trans "Manual entry numbers" %}</label>
