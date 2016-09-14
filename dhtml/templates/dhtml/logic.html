@@ -377,7 +377,15 @@ $( function(){
             $('.cart_sklad_error').hide();
         }
 
-        if (cart_name && cont && cart_sklad) {
+        // далее идёт сложная логическая функция описанная в файле /static/other/table.xls
+        var flag = cart_name && cart_sklad && ((!tumbler && !cart_number && cont) || (!tumbler && cart_number && cont) || (tumbler && cart_number && !cont) || (tumbler && cart_number && cont))
+        // старое значение cart_name && cont && cart_sklad
+        if (flag) {
+            console.log('True');
+        } else {
+            console.log('False');
+        }
+        if (flag) {
             $.ajax({
                 method: 'POST',
                 url: '{% url "index:ajax_add_session_items" %}',
@@ -2124,12 +2132,14 @@ $( function(){
         if($('.cmn-toggle').is(':checked')) {
             $('.wrapper-manual-number').show('slow');
             $('.wrapper-counter-items').hide('slow');
+            $('#id_manualNumber').focus();
             // On
 
         } else {
             // Off
             $('.wrapper-manual-number').hide('slow');
             $('.wrapper-counter-items').show('slow');
+            $('#id_filter_ca').focus();
 
         }
     });
