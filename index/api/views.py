@@ -120,12 +120,9 @@ def ajax_add_session_items(request):
             tmp_dict['mes']   = _('Error in attrib "data" in input button add_item')
             return JsonResponse(tmp_dict)
 
-        list_cplx    = list()
-        if tumbler:
-            # если переключатель ручного ввода номера включен
-            cart_number = request.POST.get('cart_number')
-            cart_number = cart_number.strip()
-            # далее выполняем проверку на дубли, только внутри своего представительства
+        def search_number(cart_number):
+            """Функция для поиска дублей номеров внутри представительства.
+            """
             cart_items = CartridgeItem.objects.filter(cart_number=cart_number)
             try:
                 root_ou   = request.user.departament
@@ -134,6 +131,15 @@ def ajax_add_session_items(request):
                 cart_items = []
             else:
                 cart_items = cart_items.filter(departament__in=des)
+            return cart_items
+
+        list_cplx    = list()
+        if tumbler:
+            # если переключатель ручного ввода номера включен
+            cart_number = request.POST.get('cart_number')
+            cart_number = cart_number.strip()
+            # далее выполняем проверку на дубли, только внутри своего представительства
+            cart_items = search_number(cart_number)
             
             if len(cart_items):
                 tmp_dict['error'] = '1'
@@ -161,10 +167,16 @@ def ajax_add_session_items(request):
                 list_cplx.append((m1.id, str(cart_number), cart_name))
                 if not(tumbler):
                     try:
+                        # перестрахуемся
                         cart_number = int(cart_number)
                     except ValueError:
                         cart_number = 0    
                     cart_number += 1
+                    # перед тем как выполняется сохранение, производим поиск дубля
+                    # выполняем генерацию новых номеров пока не найдём свободный
+                    while len(search_number(cart_number)):
+                        cart_number += 1
+
                     num_obj.last_number = str(cart_number)
                     num_obj.commit()
         
