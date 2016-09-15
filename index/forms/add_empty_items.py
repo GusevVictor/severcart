@@ -8,6 +8,8 @@ from docs.models  import SCDoc
 from storages.models import Storages
 
 class AddEmptyItems(forms.Form):
+    manualNumber = forms.CharField(max_length = 256, required=False)
+    
     cartName = forms.ModelChoiceField(queryset=CartridgeItemName.objects.all(),
                                       error_messages={'required': _('Required field.')},
                                       empty_label=' ',
