@@ -21,7 +21,7 @@ class AddItems(forms.Form):
     cartCount = forms.CharField(max_length = 4,
                                 widget=forms.TextInput(attrs={'class': 'pm_counter', 'readonly': 'readonly'}),
                                 error_messages={'required': _('Required field.')},
-                                required=False
+                                required=True
                                 )
 
 

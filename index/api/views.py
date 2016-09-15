@@ -103,6 +103,12 @@ def ajax_add_session_items(request):
         cart_type    = request.POST.get('cart_type')
         cart_doc_id  = data_in_post.get('doc')
         cart_count   = int(data_in_post.get('cartCount'))
+        # фича добавленна после обращения пользователя из Новосибирска
+        tumbler = request.POST.get('tumbler', 0)
+        try:
+            tumbler = int(tumbler)
+        except ValueError:
+            tumbler = 0
 
         # чтобы не плодить лишние сущности зделано одно вью для добавления разных картриджей
         if cart_type == 'full':
@@ -114,10 +120,30 @@ def ajax_add_session_items(request):
             tmp_dict['mes']   = _('Error in attrib "data" in input button add_item')
             return JsonResponse(tmp_dict)
 
-        # находим нужный номер для отсчёта добавления новых картриджей
-        num_obj      = LastNumber(request)
-        cart_number  = num_obj.get_num()
-        list_cplx    = []
+        list_cplx    = list()
+        if tumbler:
+            # если переключатель ручного ввода номера включен
+            cart_number = request.POST.get('cart_number')
+            cart_number = cart_number.strip()
+            # далее выполняем проверку на дубли, только внутри своего представительства
+            cart_items = CartridgeItem.objects.filter(cart_number=cart_number)
+            try:
+                root_ou   = request.user.departament
+                des       = root_ou.get_descendants(include_self=True)
+            except:
+                cart_items = []
+            else:
+                cart_items = cart_items.filter(departament__in=des)
+            
+            if len(cart_items):
+                tmp_dict['error'] = '1'
+                tmp_dict['mes'] = _('An object with this number has already been registered.')
+                return JsonResponse(tmp_dict)        
+        else:    
+            # если тумблер ручного ввода номера РМ НЕ установлен, то генерируем новый свободный номер
+            # находим нужный номер для отсчёта добавления новых картриджей
+            num_obj      = LastNumber(request)
+            cart_number  = num_obj.get_num()
         # Добавляем картриджи в БД
         with transaction.atomic():
             for i in range(cart_count):
@@ -132,10 +158,15 @@ def ajax_add_session_items(request):
                                    delivery_doc=cart_doc_id,
                                    )
                 m1.save()
-                list_cplx.append((m1.id, cart_number, cart_name))
-                cart_number += 1
-            num_obj.last_number = cart_number
-            num_obj.commit()
+                list_cplx.append((m1.id, str(cart_number), cart_name))
+                if not(tumbler):
+                    try:
+                        cart_number = int(cart_number)
+                    except ValueError:
+                        cart_number = 0    
+                    cart_number += 1
+                    num_obj.last_number = str(cart_number)
+                    num_obj.commit()
         
         if cart_count == 1:
             tmpl_message = _('Cartridge successfully added.')

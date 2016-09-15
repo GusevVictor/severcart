@@ -352,7 +352,6 @@ $( function(){
 
         var tumbler = $('.cmn-toggle').is(':checked');
 
-
         if (tumbler && !cart_number) {
             $('.cart_number_error').show();
         } else {
@@ -378,18 +377,20 @@ $( function(){
         }
 
         // далее идёт сложная логическая функция описанная в файле /static/other/table.xls
-        var flag = cart_name && cart_sklad && ((!tumbler && !cart_number && cont) || (!tumbler && cart_number && cont) || (tumbler && cart_number && !cont) || (tumbler && cart_number && cont))
+        var flag = cart_name && cart_sklad && cont && ((!tumbler && !cart_number) || (!tumbler && cart_number) || (tumbler && cart_number && !cont) || (tumbler && cart_number))
         // старое значение cart_name && cont && cart_sklad
+        // flag - отправляем данные на сервер, если значение булевой функции Истина
         if (flag) {
-            console.log('True');
-        } else {
-            console.log('False');
-        }
-        if (flag) {
+            if (tumbler) { 
+                tumbler = 1;
+            } else {
+                tumbler = 0;
+            }
+
             $.ajax({
                 method: 'POST',
                 url: '{% url "index:ajax_add_session_items" %}',
-                data:  {'cartName': cart_name, 'doc': docum, 'cartCount': cont, 'cart_type': cart_type, 'storages': cart_sklad },
+                data:  {'cartName': cart_name, 'doc': docum, 'cartCount': cont, 'cart_type': cart_type, 'storages': cart_sklad, 'cart_number': cart_number, 'tumbler': tumbler },
                 beforeSend: function( xhr, settings ){
                     $('.spinner').show();
                     csrftoken = getCookie('csrftoken');
@@ -2133,6 +2134,8 @@ $( function(){
             $('.wrapper-manual-number').show('slow');
             $('.wrapper-counter-items').hide('slow');
             $('#id_manualNumber').focus();
+            $('#id_cartCount').val(1);
+
             // On
 
         } else {
@@ -2140,8 +2143,14 @@ $( function(){
             $('.wrapper-manual-number').hide('slow');
             $('.wrapper-counter-items').show('slow');
             $('#id_filter_ca').focus();
-
+            $('#id_cartCount').val(0);
         }
+        // очищаем и прячем диагностические сообщения
+        $('.success_msg').html('');
+        $('.error_msg').html('');
+        $('.success_msg').hide();
+        $('.error_msg').hide();
+
     });
 
 });
