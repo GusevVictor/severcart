@@ -21,19 +21,13 @@ fieldset legend{
 }
 
 .width100 {
-    display: block;
+    /* hack from http://stackoverflow.com/questions/6601148/100-width-table-overflowing-div-container */
+    table-layout:fixed;
+    width: 100%;
 }
 
 .width100px {
     width:100px;
-}
-
-table.width100 tr, table.width100 tbody {
-    display: block;
-}
-
-table.width100 th {
-    padding-left:15px;
 }
 
 

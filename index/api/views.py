@@ -670,6 +670,8 @@ def move_to_use(request):
    
     ansver['error'] = '0'
     ansver['url']   = reverse('index:stock')
+    show_numbers = str(show_numbers)
+    show_numbers = show_numbers.replace('\'', '')
     msg = _('Cartridges %(cart_list)s successfully transferred for use') % {'cart_list': show_numbers}
     messages.success(request, msg)
     return JsonResponse(ansver)
