@@ -386,7 +386,7 @@ def transfer_to_firm(request):
         
         try:
             doc_id = int(doc_id)
-        except ValueError:
+        except:
             doc_id = 0
 
         try:
@@ -432,10 +432,17 @@ def transfer_to_firm(request):
                                             request=request, 
                                             firm=str(firm)
                                             )
+        show_numbers = str(show_numbers)
+        # Убираем лишние авпострофы из списка с номерами
+        show_numbers = show_numbers.replace('\'', '')
         if len(show_numbers):
-            ansver['success'] = _('Cartridges %(cart_nums)s successfully moved to firm.') % {'cart_nums': str(show_numbers)}
+            msg = _('Cartridges %(cart_nums)s successfully moved to firm.') % {'cart_nums': show_numbers}
         else:
-            ansver['success'] = _('No transmission facilities')
+            msg = _('No transmission facilities')
+        
+        ansver['success'] = '1'
+        ansver['url']   = reverse('index:empty')
+        messages.success(request, msg)
     else:
         # если форма содержит ошибки, то сообщаем о них пользователю.
         error_messages = dict([(key, [error for error in value]) for key, value in form.errors.items()])

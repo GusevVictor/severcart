@@ -284,11 +284,8 @@ $( function(){
                 $('.spinner').hide();
                 if ( msg.success ) {
                     $('.error_msg').hide();
-                    $('.success_msg').show().html(msg.success);
-                    setTimeout(function() { 
-                        $('.success_msg').hide();
-                        window.location.href = "{% url 'index:empty' %}";
-                    }, 12000);
+                    window.location.href = "{% url 'index:empty' %}";
+                    console.log('Редирект');
                 }
 
                 if ( msg.errors ) {
