@@ -247,7 +247,7 @@ def ajax_add_session_items(request):
             except SCDoc.DoesNotExist:
                 title = ''
             list_items.append({'name': simple_cache.get(elem[0]), 
-                               'numbers': str(elem[2])[1:-1], 
+                               'numbers': str(elem[2])[1:-1].replace('\'',''), 
                                'title': title})
         
         html = render_to_string('index/add_over_ajax.html', context={'list_items': list_items})
