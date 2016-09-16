@@ -505,7 +505,7 @@ label {
 }
 
 #id_doc, #id_storages {
-    width:430px;
+    width:425px;
 }
 
 .filter_spinner {
@@ -596,6 +596,13 @@ form select {
     border-radius: 4px;
 }
 
+.float-right {
+    float: right;
+}
+
+.float-left {
+    float: left;
+}
 
 a.button, input[type="submit"].button, button.button {   
 	outline:0;
