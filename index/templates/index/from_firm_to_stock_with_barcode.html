@@ -1,0 +1,56 @@
+{% extends "index/base.html" %}{% load staticfiles %}{% load i18n %}
+{% block title %}{% trans "Adding objects to the stock with barcode scanner" %}{% endblock %}
+{% block breadcrumbs %}<a href="/"><img src="{{ STATIC_URL }}img/home.png" /></a> / <a href="{% url 'index:at_work' %}">{% trans "Cartridges on rebuilding" %}</a> / {% trans "Return cartridge to the warehouse with a bar code scanner" %}{% endblock %}
+{% block jqueryui %}
+<script src="{{ STATIC_URL }}js/jquery.hotkeys.js"></script>
+<script src="{{ STATIC_URL }}js/hotkeys_bind.js?{{request.CACHEVERSION}}"></script>
+{% endblock %}
+{% block help_url %}
+{{ request.HOME_SITE }}/help/{{ request.LANGUAGE_CODE }}/from_firm_to_stock_with_barcode/
+{% endblock %}
+{% block content %}
+    <div class="row">
+        <div class="large-6 columns">
+            <div class="success_msg"></div>
+            <div class="error_msg"></div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="large-6 columns">
+            <form action="" method="post">
+                {% csrf_token %}
+                {{ form.numbers }}
+                <div class="wrapper_for_transfer_table" style="display:none">
+                    <label class="required">{% trans 'That pass' %}</label>
+                    <table class="width100 transfer_to_stock" >
+                    <tr>
+                        <td>&nbsp;</td>
+                        <th class="width100px">{% trans 'Number' %}</th>
+                        <th>{% trans 'Name' %}</th>
+                    </tr>
+                    </table>
+                </div>
+                <label>{% trans 'Scanning number' %}</label>
+                <input class="barcode" id="id_cartNumber" maxlength="256" name="cartNumber" type="text" readonly="">
+                <div class="form_error_text cart_number_error">{% trans "Required field" %}</div>
+                <div class="marginTop"></div>
+                
+                <label class="required marginTop" for="{{ form.storages.id_for_label }}">{% trans "Storage" %}</label>
+                <div class="input_row">
+                    {{ form.storages }} <a class="dj_button add" href="{% url 'storages:add_s' %}"></a>
+                </div>
+                <div class="form_error_text cart_sklad_error">{% trans "The field must be seleced" %}</div>
+
+                <div class="marginTop">
+                    <input type="submit" value='{% trans "Move (Enter)" %}' class="button success no_follow" data="full" />
+                    &nbsp;&nbsp;&nbsp;
+                    <a href="{{ back }}" class="button"/>{% trans "Back" %}</a>&nbsp;&nbsp;&nbsp;
+                    <img class="spinner" src="{{ STATIC_URL }}img/loader.gif" />
+                </div>
+            </form>
+        </div>
+        <div class="large-6 column">
+            <div class="from_firm_to_stock_with_barcode"></div>
+        </div>
+    </div>
+{% endblock %}

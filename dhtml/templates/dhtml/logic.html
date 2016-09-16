@@ -2150,4 +2150,34 @@ $( function(){
 
     });
 
+    var tr_to_stock_firm = $('.from_firm_to_stock_with_barcode');
+    // обработка кодов с сканера штрихкодов при перемещении РМ из
+    // фирмы на склад
+    
+    if (tr_to_stock_firm.length) {
+        $('#id_cartNumber').focus();
+        
+        var pressed = false; 
+        var chars = []; 
+        $(window).keypress(function(e) {
+            if (e.which >= 48 && e.which <= 57) {
+                chars.push(String.fromCharCode(e.which));
+            }
+            if (pressed == false) {
+                setTimeout(function(){
+                    if (chars.length >= 1) {
+                        var barcode = chars.join('');
+                        $('#id_cartNumber').val(barcode);
+                        // после того как номер РМ считан отправляем запрос на бэкенд
+                        
+                    }
+                    chars = [];
+                    pressed = false;
+                },500);
+            }
+            pressed = true;
+        });
+
+    }
+
 });

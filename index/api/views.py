@@ -1035,3 +1035,14 @@ def move_objects_to_firm_with_barcode(request):
         ansver['error'] = '1'
         ansver['text'] = form.errors.as_text
     return JsonResponse(ansver)
+
+
+@require_POST
+@check_ajax_auth
+def add_object_to_basket_from_firm_to_stock(request):
+    """Перемещение объектов в сессию для реализации передачи РМ из обслуживания
+       обратно на склад.
+    """
+    ansver = dict()
+        
+    return JsonResponse(ansver)

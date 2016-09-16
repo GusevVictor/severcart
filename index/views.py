@@ -23,6 +23,7 @@ from .forms.add_type import AddCartridgeType
 from .forms.add_firm import FirmTonerRefillF
 from .forms.add_empty_items import AddEmptyItems
 from .forms.tr_to_firm import TransfeToFirm, TransfeToFirmScanner
+from .forms.tr_to_stock import MoveItemsToStockWithBarCodeScanner
 from .forms.comment import EditCommentForm
 from .models import CartridgeType
 from .models import CartridgeItem
@@ -631,6 +632,26 @@ class At_work(CartridgesView):
         self.context['size_perpage'] = page_size
         self.context['cartrjs'] = self.pagination(self.all_items, page_size)
         return render(request, 'index/at_work.html', self.context)
+
+
+def from_firm_to_stock_with_barcode(request):
+    """Возврат РМ из обслуживающей фирмы обратно на склад.
+    """
+    context = dict()
+    back = BreadcrumbsPath(request).before_page(request)
+    form = MoveItemsToStockWithBarCodeScanner()
+    form.fields['storages'].queryset = Storages.objects.filter(departament=request.user.departament)
+    # выбор склада по умолчанию в выбранной организации
+    default_sklad = Storages.objects.filter(departament=request.user.departament).filter(default=True)
+    try:
+        if default_sklad[0].pk:
+            form.fields['storages'].initial = default_sklad[0].pk
+    except IndexError:
+        # если склад по-умолчанию не выбран, то пропускаем выбор склада
+        pass
+    context['back'] = back
+    context['form'] = form
+    return render(request, 'index/from_firm_to_stock_with_barcode.html', context)
 
 
 class Basket(CartridgesView):

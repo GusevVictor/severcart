@@ -1124,7 +1124,7 @@ a.add_items.add_from_keyboard:active {
 }
 
 
-a.add_from_mouse {
+a.add_from_mouse, a.mouse_move {
     background: #7BCC9A url('../img/mouse.png') no-repeat top right;
     padding-right: 33px;
     padding-bottom: 33px;
@@ -1132,11 +1132,11 @@ a.add_from_mouse {
     border:1px solid #2D7347;   
 }
 
-a.add_items.add_from_mouse:active {
+a.add_items.add_from_mouse:active, a.mouse_move:active {
     background: #7BCCAA url('../img/mouse.png') no-repeat top right;
 }
 
-a.add_from_barcode_scanner {
+a.add_from_barcode_scanner, a.barcode_move {
     background: #7BCC9A url('../img/barcodescanner.png') no-repeat top right;
     padding-right: 33px;
     padding-bottom: 33px;
@@ -1144,7 +1144,8 @@ a.add_from_barcode_scanner {
     border:1px solid #2D7347;
 }
 
-a.add_items.add_from_barcode_scanner:active {
+a.add_items.add_from_barcode_scanner:active,
+a.barcode_move:active {
     background: #7BCCAA url('../img/barcodescanner.png') no-repeat top right;
 }
 

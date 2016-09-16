@@ -11,7 +11,8 @@
 {% block submenu %}
 <div class="row">
     <div class="large-6 columns">
-        <a class="from_firm_to_stock button" href="#">{% trans "Return to the stock" %}</a>
+        <a class="from_firm_to_stock button mouse_move" href="#">{% trans "Return to the stock" %}</a>
+        <a class="from_firm_to_stock_barcode button barcode_move" href="{% url 'index:from_firm_to_stock_with_barcode' %}">{% trans "Return to the stock" %}</a>
     </div>
     <div class="large-6 columns text-right">
         <a class="download_doc" href="#">{% trans 'Download' %}</a>
