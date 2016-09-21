@@ -140,16 +140,22 @@ def ajax_add_session_items(request):
             cart_number = cart_number.strip()
             # далее выполняем проверку на дубли, только внутри своего представительства
             cart_items = search_number(cart_number)
-            
+
             if len(cart_items):
                 tmp_dict['error'] = '1'
                 tmp_dict['mes'] = _('An object with this number has already been registered.')
-                return JsonResponse(tmp_dict)        
+                return JsonResponse(tmp_dict)
         else:    
             # если тумблер ручного ввода номера РМ НЕ установлен, то генерируем новый свободный номер
             # находим нужный номер для отсчёта добавления новых картриджей
             num_obj      = LastNumber(request)
             cart_number  = num_obj.get_num()
+
+            # перед тем как выполняется сохранение, производим поиск дубля
+            # выполняем генерацию новых номеров пока не найдём свободный
+            while len(search_number(cart_number)):
+                cart_number += 1
+
         # Добавляем картриджи в БД
         with transaction.atomic():
             for i in range(cart_count):
