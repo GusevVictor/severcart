@@ -15,14 +15,7 @@ def search(request):
     cnum = request.GET.get('query', '')
     context = {}
     cnum = cnum.strip()
-    try:
-        cnum = int(cnum)
-    except ValueError:
-        # если пользователь ввел некорректный запрос
-        # то отказываем в дальнейшей обработке
-        context['cart_items'] = []
-        return render(request, 'search/serp.html', context)
-
+    
     cart_items = CartridgeItem.objects.filter(cart_number=cnum)
     if not cart_items:
         context['cart_items'] = []
