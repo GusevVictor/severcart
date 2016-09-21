@@ -197,8 +197,14 @@ def add_cartridge_item(request):
            title = str(SCDoc.objects.get(pk=elem[1]))
         except SCDoc.DoesNotExist:
             title = ''
+        
+        acumulyator = str()
+        # избвавляемся от лишних апострофов при конвертрировании массива чисел
+        # в строку
+        for items in elem[2]:
+            acumulyator += str(items) + ', '
         list_items.append({'name': simple_cache.get(elem[0]), 
-                           'numbers': str(elem[2])[1:-1], 
+                           'numbers': acumulyator, 
                            'title': title})
 
     html = render_to_string('index/add_over_ajax.html', context={'list_items': list_items})
@@ -296,8 +302,15 @@ def add_empty_cartridge(request):
            title = str(SCDoc.objects.get(pk=elem[1]))
         except SCDoc.DoesNotExist:
             title = ''
+        
+        # избвавляемся от лишних апострофов при конвертрировании массива чисел
+        # в строку
+        acumulyator = str()
+        for items in elem[2]:
+            acumulyator += str(items) + ', '
+
         list_items.append({'name': simple_cache.get(elem[0]), 
-                           'numbers': str(elem[2])[1:-1], 
+                           'numbers': acumulyator, 
                            'title': title})
 
     context['session'] = render_to_string('index/add_over_ajax.html', context={'list_items': list_items})
