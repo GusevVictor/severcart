@@ -24,4 +24,6 @@ class InsertVarToRequest(object):
         request.CACHEVERSION = settings.VERSION.replace('.', '')
         # длина номера РМ после которого будет производиться усечение
         request.TRLEN        = settings.TRLEN
-        
+
+        # отключаем показ копирайтов
+        request.SHOW_COPYRIGHT       = settings.SHOW_COPYRIGHT

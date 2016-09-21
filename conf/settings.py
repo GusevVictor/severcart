@@ -2,6 +2,10 @@
 
 VERSION = '0.3.1'
 
+
+# отключаем показ ссылок на домашнюю страницу, техподдержку, логотип
+SHOW_COPYRIGHT = False
+
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os, sys
 from django.utils.translation import ugettext_lazy as _
