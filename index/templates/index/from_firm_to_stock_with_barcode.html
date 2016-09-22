@@ -41,18 +41,19 @@
                     {% endfor %}
                     </table>
                 </div>
-                <label class="required">{% trans 'Scanning number' %}</label>
+                <label>{% trans 'Scanning number' %}</label>
                 <!-- <input class="barcode" id="id_cartNumber" maxlength="256" name="cartNumber" type="text"  readonly=""> -->
                 {{ form.number }}
                 <div class="form_error_text cart_number_error">{% trans "Required field" %}</div>
                 <div class="marginTop"></div>
                 
+                <!--
                 <label class="required marginTop" for="{{ form.storages.id_for_label }}">{% trans "Storage" %}</label>
                 <div class="input_row">
                     {{ form.storages }} <a class="dj_button add" href="{% url 'storages:add_s' %}"></a>
                 </div>
                 <div class="form_error_text cart_sklad_error">{% trans "The field must be seleced" %}</div>
-
+                -->
                 <div class="marginTop">
                     <input type="submit" value='{% trans "Move (Enter)" %}' class="button success no_follow move_from_firm_to_stock" />
                     &nbsp;&nbsp;&nbsp;

@@ -16,7 +16,7 @@ class MoveItemsToStockWithBarCodeScanner(forms.Form):
         widget = forms.TextInput(attrs={'class': 'barcode', 'readonly': 'readonly'})
         number = forms.CharField(max_length = 256, required=False, widget=widget)
 
-    storages = forms.ModelChoiceField(queryset=Storages.objects.filter(), label=_('Storage'))
+    #storages = forms.ModelChoiceField(queryset=Storages.objects.filter(), label=_('Storage'))
 
     def clean_numbers(self):
         """Производим проверку строки на соответствие вида 4,5,6,7.

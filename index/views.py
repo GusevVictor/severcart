@@ -655,15 +655,15 @@ def from_firm_to_stock_with_barcode(request):
     context['mydebug'] = MYDEBUG
     back = BreadcrumbsPath(request).before_page(request)
     form = MoveItemsToStockWithBarCodeScanner()
-    form.fields['storages'].queryset = Storages.objects.filter(departament=request.user.departament)
+    #form.fields['storages'].queryset = Storages.objects.filter(departament=request.user.departament)
     # выбор склада по умолчанию в выбранной организации
-    default_sklad = Storages.objects.filter(departament=request.user.departament).filter(default=True)
-    try:
-        if default_sklad[0].pk:
-            form.fields['storages'].initial = default_sklad[0].pk
-    except IndexError:
+    #default_sklad = Storages.objects.filter(departament=request.user.departament).filter(default=True)
+    #try:
+    #    if default_sklad[0].pk:
+    #        form.fields['storages'].initial = default_sklad[0].pk
+    #except IndexError:
         # если склад по-умолчанию не выбран, то пропускаем выбор склада
-        pass
+    #    pass
 
     # заполняем таблицу перемещаемых РМ значениями из сессии
     # это пригодится на случай случайной перезагрузки страницы пользователем
@@ -821,6 +821,15 @@ def from_firm_to_stock(request):
             
             if list_cplx:
                 sign_tr_filled_cart_to_stock.send(sender=None, list_cplx=list_cplx, request=request)
+
+            # очищаем сессионную переменную 'basket_to_transfer_stock'
+            try:
+                request.session.get('basket_to_transfer_stock', False)
+            except:
+                request.session['basket_to_transfer_stock'] = None
+            else:
+                request.session['basket_to_transfer_stock'] = None
+
         return HttpResponseRedirect(reverse('index:at_work'))
     return render(request, 'index/from_firm_to_stock.html', {'checked_cartr': checked_cartr, 
                                                             'list_cart': list_cart, 
