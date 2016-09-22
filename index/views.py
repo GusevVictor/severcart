@@ -651,6 +651,8 @@ def from_firm_to_stock_with_barcode(request):
     """Возврат РМ из обслуживающей фирмы обратно на склад.
     """
     context = dict()
+    MYDEBUG = True
+    context['mydebug'] = MYDEBUG
     back = BreadcrumbsPath(request).before_page(request)
     form = MoveItemsToStockWithBarCodeScanner()
     form.fields['storages'].queryset = Storages.objects.filter(departament=request.user.departament)
@@ -662,6 +664,24 @@ def from_firm_to_stock_with_barcode(request):
     except IndexError:
         # если склад по-умолчанию не выбран, то пропускаем выбор склада
         pass
+
+    # заполняем таблицу перемещаемых РМ значениями из сессии
+    # это пригодится на случай случайной перезагрузки страницы пользователем
+    session_data = request.session.get('basket_to_transfer_stock', False)
+    show_list = list()
+    initial_numbers = str()
+    for cart_pk in session_data:
+        initial_numbers += str(cart_pk) + ', '
+        try:
+            cart_obj = CartridgeItem.objects.get(pk=cart_pk)
+        except CartridgeItem.DoesNotExist:
+            cart_obj = dict()
+        else:
+            cart_obj = {'pk': cart_obj.pk, 'cart_number': cart_obj.cart_number, 'cart_name': str(cart_obj.cart_itm_name)}
+            show_list.append(cart_obj)
+
+    form.fields['numbers'].initial = initial_numbers
+    context['show_list'] = show_list
     context['back'] = back
     context['form'] = form
     return render(request, 'index/from_firm_to_stock_with_barcode.html', context)

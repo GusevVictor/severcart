@@ -75,12 +75,11 @@ def del_firm(request):
     return JsonResponse(resp_dict)
 
 
+@require_POST
 @check_ajax_auth
 def ajax_add_session_items(request):
     """Довляем новые картриджи на склад через Аякс
     """
-    if request.method != 'POST':
-        return HttpResponse('<h1>' + _('Only use POST requests!') + '</h1>')
     # если пришёл запрос то пополняем сессионную переменную
     # результаты отображаем на странице
     tmp_dict = dict()
@@ -933,8 +932,21 @@ def remove_session_item(request):
     """
     ansver = dict()
     selected = request.POST.getlist('selected[]')
-    if request.session.get('basket_to_transfer_firm', []):
-        session_data = request.session.get('basket_to_transfer_firm')
+    session_key = request.POST.get('session_key' ,'')
+    
+    if session_key == 'basket_to_transfer_firm':
+        session_key = 'basket_to_transfer_firm'
+
+    elif session_key == 'basket_to_transfer_stock':
+        session_key = 'basket_to_transfer_stock'
+
+    else:
+        ansver['error'] = '1'
+        ansver['mes'] = _('The session key is not recognized.')
+        return JsonResponse(ansver)    
+
+    if request.session.get(session_key, []):
+        session_data = request.session.get(session_key)
     if session_data:
         for select in selected:
             try:
@@ -942,7 +954,7 @@ def remove_session_item(request):
             except ValueError:
                 select = 0
             session_data = list(item for item in session_data if select != item)
-        request.session['basket_to_transfer_firm'] = session_data
+        request.session[session_key] = session_data
         ansver['error'] = '0'
     ansver['show_remove_session_button'] = True
     if session_data:
@@ -1043,12 +1055,75 @@ def move_objects_to_firm_with_barcode(request):
     return JsonResponse(ansver)
 
 
-@require_POST
-@check_ajax_auth
 def add_object_to_basket_from_firm_to_stock(request):
     """Перемещение объектов в сессию для реализации передачи РМ из обслуживания
        обратно на склад.
     """
     ansver = dict()
-        
+    cart_barcode = request.POST.get('barcode', '')
+    cart_barcode = cart_barcode.strip()
+
+    try:
+        root_ou   = request.user.departament
+        des       = root_ou.get_descendants()
+    except:
+        ansver['error'] ='1'
+        ansver['mes']   = _('Error: 101. Not set organization utint.')
+        return JsonResponse(ansver)
+    else:
+        # выполняем поиск РМ обладающие разными статусами
+        # например, пуст и на складе, задействованн, ...
+        m1 = CartridgeItem.objects.filter(
+                                            Q(cart_number=cart_barcode) & 
+                                            (Q(departament__in=des)
+                                            | Q(departament=root_ou))
+                                         )
+    if len(m1) >= 1:
+        cartridge = m1[0]
+        m1 = None
+    else:
+        # если картридж с данным неомером не найденн
+        ansver['error'] ='1'
+        ansver['mes']   = _('Consumables with the number %(cart_barcode)s was not found.') % {'cart_barcode' : cart_barcode}
+        return JsonResponse(ansver)
+
+    session_data = request.session.get('basket_to_transfer_stock', False)
+    if session_data and (str(cartridge.pk) in session_data):
+        ansver['error'] ='1'
+        ansver['mes']   = _('The object is already in the lists on the move.')
+        return JsonResponse(ansver)
+
+    if cartridge.cart_status == 4:
+        # если картридж с нужным номером найденн и у него код статуса "На обслуживании"
+        # добавляем информауию в сессионную переменную пользователя
+        if request.session.get('basket_to_transfer_stock', False):
+            # если в сессионной переменной уже что-то есть
+            session_data = request.session.get('basket_to_transfer_stock')
+            # если в сессионной переменной данные уже есть то РМ в список не добавляем
+            try:
+                session_data.index(cartridge.pk)
+            except ValueError: 
+                session_data.append(cartridge.pk)
+                request.session['basket_to_transfer_stock'] = session_data
+            else:
+                ansver['error'] ='1'
+                ansver['mes'] = _('The object number %(cart_barcode)s is already present in the lists on the move.') % {'cart_barcode': cart_barcode}
+                return JsonResponse(ansver)                
+        else:
+            # если сессионная basket_to_transfer_stock пуста или её нет вообще
+            session_data = [ cartridge.pk ]
+            request.session['basket_to_transfer_stock'] = session_data
+        ansver['error'] ='0'
+        ansver['mes'] = _('Consumable material is successfully prepared for transfer')
+        ansver['cart_name'] = str(cartridge.cart_itm_name)
+        ansver['cart_num'] = str(cartridge.cart_number)
+        ansver['pk'] = str(cartridge.pk)
+        ansver['moved_list'] = str(session_data)[1:-1]
+        return JsonResponse(ansver)
+    else:
+        cart_status = STATUS[cartridge.cart_status-1][1]
+        ansver['error'] ='2'
+        ansver['mes'] = _('This consumable is in the state \"%(cart_status)s\". Return to the warehouse is impossible.') % {'cart_status': cart_status}
+        return JsonResponse(ansver)
     return JsonResponse(ansver)
+

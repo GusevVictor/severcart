@@ -32,7 +32,7 @@
                     {{ form.numbers }}
                     <div class="wrapper_for_transfer_table" {% if sessions_objects %}style="display:block"{% else %}style="display:none"{% endif %}>
                         <label class="required">{% trans "What transfe" %}</label>
-                        <table class="width100 transfer_list_to_firm" >
+                        <table class="width100 transfer_list" session_key="basket_to_transfer_firm">
                         <tr>
                             <td>&nbsp;</td>
                             <th class="width100px">{% trans 'Number' %}</th>

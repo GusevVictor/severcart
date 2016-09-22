@@ -19,19 +19,31 @@
         <div class="large-6 columns">
             <form action="" method="post">
                 {% csrf_token %}
+                <div class="show_remove_session_div" {% if show_list %}style="display:block"{% else %}style="display:none"{% endif %}>
+                    <a class="button alert no_follow remove_session_item" session_key="basket_to_transfer_stock">Удалить</a>
+                </div>
+                <div class="marginTop"></div>
                 {{ form.numbers }}
-                <div class="wrapper_for_transfer_table" style="display:none">
+                <div class="wrapper_for_transfer_table"{% if show_list %} style="display:block" {% else %}style="display:none"{% endif %}>
                     <label class="required">{% trans 'That pass' %}</label>
-                    <table class="width100 transfer_to_stock" >
+                    <table class="width100 transfer_list" >
                     <tr>
                         <td>&nbsp;</td>
                         <th class="width100px">{% trans 'Number' %}</th>
                         <th>{% trans 'Name' %}</th>
                     </tr>
+                    {% for item in show_list %}
+                    <tr class="remove{{ item.pk }}">
+                        <td><input name="pk" type="checkbox" value="{{ item.pk }}" /></td>
+                        <td class="width100px">{{ item.cart_number }}</td>
+                        <td>{{ item.cart_name }}</td>
+                    </tr>
+                    {% endfor %}
                     </table>
                 </div>
-                <label>{% trans 'Scanning number' %}</label>
-                <input class="barcode" id="id_cartNumber" maxlength="256" name="cartNumber" type="text" readonly="">
+                <label class="required">{% trans 'Scanning number' %}</label>
+                <!-- <input class="barcode" id="id_cartNumber" maxlength="256" name="cartNumber" type="text"  readonly=""> -->
+                {{ form.number }}
                 <div class="form_error_text cart_number_error">{% trans "Required field" %}</div>
                 <div class="marginTop"></div>
                 
@@ -42,9 +54,10 @@
                 <div class="form_error_text cart_sklad_error">{% trans "The field must be seleced" %}</div>
 
                 <div class="marginTop">
-                    <input type="submit" value='{% trans "Move (Enter)" %}' class="button success no_follow" data="full" />
+                    <input type="submit" value='{% trans "Move (Enter)" %}' class="button success no_follow move_from_firm_to_stock" />
                     &nbsp;&nbsp;&nbsp;
                     <a href="{{ back }}" class="button"/>{% trans "Back" %}</a>&nbsp;&nbsp;&nbsp;
+                    {% if mydebug %}<a href="" class="button no_follow dbg_firm_to_stock"/>{% trans "Debug" %}</a>&nbsp;&nbsp;&nbsp;{% endif %}
                     <img class="spinner" src="{{ STATIC_URL }}img/loader.gif" />
                 </div>
             </form>

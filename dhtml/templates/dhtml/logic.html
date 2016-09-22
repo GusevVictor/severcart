@@ -1893,7 +1893,7 @@ $( function(){
                                         // если меньше константного значения, то оставляем поле как есть
                                         var cart_num = msg.cart_num;
                                     }
-                                    $('.transfer_list_to_firm tr:last').after('<tr class="remove' + msg.pk + '"><td><input type="checkbox" value="'+ msg.pk +'"/></td><td title="' + msg.cart_num + '">' + cart_num + '</td><td>' + msg.cart_name + '</td></tr>');
+                                    $('.transfer_list tr:last').after('<tr class="remove' + msg.pk + '"><td><input type="checkbox" value="'+ msg.pk +'"/></td><td title="' + msg.cart_num + '">' + cart_num + '</td><td>' + msg.cart_name + '</td></tr>');
                                     
                                 }
                             },
@@ -1907,7 +1907,8 @@ $( function(){
                 }, 500);
             }
             pressed = true;
-        }); 
+        });
+
 
         $('.send_test_barcode').click(function () {
             /* Обработчик событий представленн исключительно 
@@ -1969,6 +1970,29 @@ $( function(){
         });
     }
 
+
+    $('.move_from_firm_to_stock').click( function () {
+        /* Перемещение расходников обратно на склад с заправки.
+        */
+        var selected = [];
+        var numbers = $('#id_numbers').val();
+        var tmp_list = [];
+        // конвертируем строку вида "12, 34, 34, "
+        // в список чисел [12, 34, 34] 
+        numbers = numbers.split(',');
+        for(var i=0; i < numbers.length; i++) {
+            if (parseInt(numbers[i])) {
+                tmp_list.push(parseInt(numbers[i]));
+            }
+        }
+                
+        if ( numbers.length !== 0 ) {
+            var numbers = tmp_list.join('s');
+            var loc = "{% url 'index:from_firm_to_stock' %}";
+            window.location.href = loc + '?select=' + numbers;
+        }            
+    });
+
     $('.force_move_to_transfer').click(function(){
         /* принудительное перемещение РМ в списке пустых, для подготовки к передаче
         на заправку если они ещё находятся в пользовании или в спиках на списание */
@@ -2023,16 +2047,18 @@ $( function(){
     $('.remove_session_item').click( function() {
         /* Удаляем объекты РМ из сессионной переменной */
         var selected = [];
-        $('.transfer_list_to_firm input:checked').each(function() {
+        $('.transfer_list input:checked').each(function() {
             if ($(this).attr('value')) {
                 selected.push( $(this).attr('value') );
             }
-        });
+        }); // transfer_to_stock
+
         if ( selected.length !== 0 ) {
+            var session_key = $(this).attr('session_key');
             $.ajax({
                 method: 'POST',
                 url:  '{% url "index:remove_session_item" %}',
-                data:  {'selected': selected },
+                data:  {'selected': selected, 'session_key': session_key },
                 beforeSend: function( xhr, settings ){
                     csrftoken = getCookie('csrftoken');
                     $('.spinner_force_move_to_transfer').show();
@@ -2050,7 +2076,7 @@ $( function(){
                     if ( msg.error == '0' ) {
                         /* удаляем все строки содержащиеся в массиве selected */
                         for(var i=0; i < selected.length; i++) {
-                            var html_class_name = 'table.transfer_list_to_firm tr.remove' + selected[i];
+                            var html_class_name = 'table.transfer_list tr.remove' + selected[i];
                             $(html_class_name).remove();
                         }
 
@@ -2156,9 +2182,74 @@ $( function(){
     
     if (tr_to_stock_firm.length) {
         $('#id_cartNumber').focus();
-        
+
+        var MYDEBUG = true;
         var pressed = false; 
-        var chars = []; 
+        var chars = [];
+        var barcode = '';
+        // словарь для подготовки отправки данных через аякс
+        // считываем инофрмацию с сканера ШК и отправляем сразу запрос на сервер
+        if (MYDEBUG) {
+            $('.dbg_firm_to_stock').click( function () {
+                barcode = $('.barcode').val();
+                $.ajax({
+                        method: 'POST',
+                        url: '{% url "index:add_object_to_basket_from_firm_to_stock" %}',
+                        data: { 'barcode': barcode },
+                        beforeSend: function( xhr, settings ){
+                            $('.spinner').show();
+                            csrftoken = getCookie('csrftoken');
+                            if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
+                                xhr.setRequestHeader('X-CSRFToken', csrftoken);
+                            }
+                        },
+                        success: function( msg ) {
+                            $('.spinner').hide();
+                            if ( msg.error == '1' ) {
+                                $('.error_msg').show();
+                                $('.success_msg').hide();
+                                $('.error_msg').text(msg.mes);
+                            }
+                            if ( msg.error == '2' ) {
+                                // ошибка не соответствия статуса, показываем диалоговое окно
+                                $('.success_msg').hide();
+                                $('.error_msg').show();
+                                $('.error_msg').html(msg.mes);
+                                //$(document).foundation();
+                                //$('p.ajax_error_message').html(msg.mes);
+                                //$('#myModal').foundation('reveal', 'open');
+
+                            }
+                            if ( msg.error == '0' ) {
+                                // если ошибок нет, то
+                                $('.barcode').focus(); // устанавливаем фокус на поле ввода для сканера ШК
+                                $('.barcode').val(''); // очищаем его значение для новых данных
+                                $('.wrapper_for_transfer_table').show(); // показываем таблицу с сессионными (перемещаемыми) объектами
+                                $('.show_remove_session_div').show();  // показываем кнопку для удаления сессионных объектов
+                                $('#id_numbers').attr('value', msg.moved_list); // заполняем скрытое поле numbers данными из аякс ответа
+                                $('.error_msg').hide();   // прячем поле с ошибками
+                                /* Если длина символов в поле msg.cart_num превышает заданные константые значения, то */
+                                if (msg.cart_num.length > {{ request.TRLEN }}) {
+                                    // производим усечение его до длины request.TRLEN
+                                    var cart_num = msg.cart_num.substring(0, {{ request.TRLEN }}) + '...';
+                                } else {
+                                    // если меньше константного значения, то оставляем поле как есть
+                                    var cart_num = msg.cart_num;
+                                }
+                                $('.transfer_list tr:last').after('<tr class="remove' + msg.pk + '"><td><input type="checkbox" value="'+ msg.pk +'"/></td><td title="' + msg.cart_num + '">' + cart_num + '</td><td>' + msg.cart_name + '</td></tr>');
+                                
+                            }                                
+                            
+                        },
+                        error: function( msg ) {
+                            console.log(msg);
+                        },
+
+                });
+
+            }); // завершение функции обработчика click
+        }
+        return false;
         $(window).keypress(function(e) {
             if (e.which >= 48 && e.which <= 57) {
                 chars.push(String.fromCharCode(e.which));
@@ -2167,8 +2258,10 @@ $( function(){
                 setTimeout(function(){
                     if (chars.length >= 1) {
                         var barcode = chars.join('');
-                        $('#id_cartNumber').val(barcode);
+                        $('.barcode').val(barcode);
                         // после того как номер РМ считан отправляем запрос на бэкенд
+                        
+                        //$.ajax();
                         
                     }
                     chars = [];
