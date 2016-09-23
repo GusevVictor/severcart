@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-09-16 10:23+0500\n"
-"PO-Revision-Date: 2016-09-13 23:16+0500\n"
+"POT-Creation-Date: 2016-09-23 16:31+0500\n"
+"PO-Revision-Date: 2016-09-23 16:50+0500\n"
 "Last-Translator: \n"
 "Language-Team: severcart.org <sfcl@mail.ru>\n"
 "Language: ru\n"
@@ -98,7 +98,7 @@ msgstr "Фамилия, имя, отчество"
 #: .\index\templates\index\add_empty_cartridge_from_barcode_scanner.html:40
 #: .\index\templates\index\add_items.html:27
 #: .\index\templates\index\add_items.html:44
-#: .\index\templates\index\from_firm_to_stock_with_barcode.html:24
+#: .\index\templates\index\from_firm_to_stock_with_barcode.html:47
 #: .\index\templates\index\transfer_to_firm_with_scanner.html:57
 msgid "Required field"
 msgstr "Обязательное поле"
@@ -153,12 +153,11 @@ msgstr "Форма смены пароля"
 #: .\accounts\templates\accounts\edit_user.html:3
 #: .\accounts\templates\accounts\manage_users.html:4
 #: .\accounts\templates\accounts\register.html:3
-#: .\docs\templates\docs\acts_list.html:5
-#: .\docs\templates\docs\add_city.html:3 .\docs\templates\docs\cities.html:4
-#: .\docs\templates\docs\delivery.html:3
+#: .\docs\templates\docs\acts_list.html:5 .\docs\templates\docs\add_city.html:3
+#: .\docs\templates\docs\cities.html:4 .\docs\templates\docs\delivery.html:3
 #: .\docs\templates\docs\edit_city.html:3
-#: .\docs\templates\docs\edit_name.html:3
-#: .\docs\templates\docs\handbook.html:2 .\docs\templates\docs\handbook.html:3
+#: .\docs\templates\docs\edit_name.html:3 .\docs\templates\docs\handbook.html:2
+#: .\docs\templates\docs\handbook.html:3
 #: .\docs\templates\docs\names_list.html:4
 #: .\docs\templates\docs\types_list.html:4
 #: .\index\templates\index\add_firm.html:3
@@ -218,7 +217,7 @@ msgstr "Сменить пароль"
 #: .\index\templates\index\edit_cartridge_comment.html:15
 #: .\index\templates\index\edit_firm.html:21
 #: .\index\templates\index\from_firm_to_stock.html:49
-#: .\index\templates\index\from_firm_to_stock_with_barcode.html:36
+#: .\index\templates\index\from_firm_to_stock_with_barcode.html:60
 #: .\index\templates\index\transfe_for_use.html:43
 #: .\reports\templates\reports\products.html:42
 #: .\reports\templates\reports\spent_money.html:43
@@ -356,11 +355,11 @@ msgstr ""
 msgid "Send"
 msgstr "Отправить"
 
-#: .\conf\settings.py:59
+#: .\conf\settings.py:63
 msgid "Russian"
 msgstr "Русский"
 
-#: .\conf\settings.py:60
+#: .\conf\settings.py:64
 msgid "English"
 msgstr "Английский"
 
@@ -431,15 +430,15 @@ msgstr "Вы точно хотите удалить складское поме�
 msgid "<p>Server error :(</p>"
 msgstr "<p>Ошибка на стороне сервера :(</p>"
 
-#: .\dhtml\templates\dhtml\logic.html:2091
+#: .\dhtml\templates\dhtml\logic.html:2117
 msgid "List move empty."
 msgstr "Пустой список для перемещения."
 
 #: .\docs\api\views.py:30 .\docs\api\views.py:78 .\docs\api\views.py:110
-#: .\docs\api\views.py:430 .\index\api\views.py:48 .\index\api\views.py:83
-#: .\index\api\views.py:267 .\index\api\views.py:339 .\index\api\views.py:369
-#: .\index\api\views.py:534 .\index\api\views.py:582 .\index\api\views.py:603
-#: .\index\api\views.py:618 .\index\api\views.py:759 .\reports\api\views.py:56
+#: .\docs\api\views.py:430 .\index\api\views.py:48 .\index\api\views.py:272
+#: .\index\api\views.py:344 .\index\api\views.py:374 .\index\api\views.py:539
+#: .\index\api\views.py:587 .\index\api\views.py:608 .\index\api\views.py:623
+#: .\index\api\views.py:764 .\reports\api\views.py:56
 #: .\storages\api\views.py:21 .\storages\api\views.py:59
 msgid "Only use POST requests!"
 msgstr "Поддерживаются только POST запросы!"
@@ -452,7 +451,7 @@ msgstr "Объект с таким ID не найден."
 msgid "Name can not be removed, ie. other objects reference it."
 msgstr "Имя удалить невозможно, т. к. на него ссылаются другие объекты."
 
-#: .\docs\api\views.py:54 .\docs\api\views.py:68 .\index\api\views.py:502
+#: .\docs\api\views.py:54 .\docs\api\views.py:68 .\index\api\views.py:507
 msgid "Name deleted successfully."
 msgstr "Имя успешно удалено."
 
@@ -529,6 +528,7 @@ msgstr "Документ «%(doc_number)s_%(user_id)s_0.docx» успешно с
 #: .\index\templates\index\del_firm.html:9
 #: .\index\templates\index\empty.html:67
 #: .\index\templates\index\from_firm_to_stock.html:30
+#: .\index\templates\index\from_firm_to_stock_with_barcode.html:33
 #: .\index\templates\index\get_cart_ou.html:8
 #: .\index\templates\index\stock.html:57
 #: .\index\templates\index\toner_refill.html:31
@@ -556,9 +556,9 @@ msgstr "Количество"
 #: .\index\templates\index\add_empty_cartridge.html:25
 #: .\index\templates\index\add_items.html:25
 #: .\index\templates\index\at_work.html:38
-#: .\index\templates\index\basket.html:40
-#: .\index\templates\index\empty.html:66
+#: .\index\templates\index\basket.html:40 .\index\templates\index\empty.html:66
 #: .\index\templates\index\from_firm_to_stock.html:29
+#: .\index\templates\index\from_firm_to_stock_with_barcode.html:32
 #: .\index\templates\index\get_cart_ou.html:7
 #: .\index\templates\index\stock.html:56
 #: .\index\templates\index\transfe_for_use.html:16
@@ -575,9 +575,8 @@ msgstr "Номер"
 #: .\docs\api\views.py:314 .\docs\api\views.py:340 .\docs\api\views.py:363
 #: .\docs\api\views.py:384 .\docs\api\views.py:407
 #: .\index\templates\index\at_work.html:40
-#: .\index\templates\index\basket.html:42
-#: .\index\templates\index\empty.html:68 .\index\templates\index\stock.html:58
-#: .\index\templates\index\use.html:47
+#: .\index\templates\index\basket.html:42 .\index\templates\index\empty.html:68
+#: .\index\templates\index\stock.html:58 .\index\templates\index\use.html:47
 msgid "Amount<br/>recovery"
 msgstr "Количество<br/> перезаправок"
 
@@ -593,8 +592,7 @@ msgstr "добавления на склад"
 #: .\docs\api\views.py:387 .\docs\api\views.py:409
 #: .\docs\templates\docs\types_list.html:32 .\index\forms\comment.py:11
 #: .\index\templates\index\at_work.html:43
-#: .\index\templates\index\basket.html:44
-#: .\index\templates\index\stock.html:61
+#: .\index\templates\index\basket.html:44 .\index\templates\index\stock.html:61
 msgid "comment"
 msgstr "Комментарий"
 
@@ -635,7 +633,7 @@ msgstr "Город с таким названием уже существует!
 #: .\index\forms\tr_to_firm.py:14 .\index\forms\tr_to_firm.py:28
 #: .\index\forms\tr_to_firm.py:78 .\index\forms\tr_to_firm.py:93
 #: .\index\forms\tr_to_firm.py:107 .\index\forms\tr_to_firm.py:157
-#: .\index\forms\tr_to_stock.py:19 .\reports\forms.py:20 .\reports\forms.py:29
+#: .\index\forms\tr_to_stock.py:26 .\reports\forms.py:20 .\reports\forms.py:29
 #: .\reports\forms.py:62 .\reports\forms.py:85 .\reports\forms.py:98
 msgid "Required field."
 msgstr "Поле обязательно для заполнения."
@@ -654,9 +652,8 @@ msgstr "Краткое содержание"
 #: .\index\templates\index\add_empty_cartridge.html:56
 #: .\index\templates\index\add_empty_cartridge_from_barcode_scanner.html:50
 #: .\index\templates\index\add_items.html:54
-#: .\index\templates\index\basket.html:59
-#: .\index\templates\index\empty.html:87 .\index\templates\index\stock.html:77
-#: .\index\templates\index\use.html:65
+#: .\index\templates\index\basket.html:59 .\index\templates\index\empty.html:87
+#: .\index\templates\index\stock.html:77 .\index\templates\index\use.html:65
 msgid "Delivery agreement"
 msgstr "Договор поставки"
 
@@ -743,9 +740,8 @@ msgstr "Действие"
 #: .\index\templates\index\add_empty_cartridge.html:91
 #: .\index\templates\index\add_items.html:91
 #: .\index\templates\index\at_work.html:18
-#: .\index\templates\index\basket.html:20
-#: .\index\templates\index\empty.html:46 .\index\templates\index\stock.html:36
-#: .\index\templates\index\use.html:25
+#: .\index\templates\index\basket.html:20 .\index\templates\index\empty.html:46
+#: .\index\templates\index\stock.html:36 .\index\templates\index\use.html:25
 msgid "Download"
 msgstr "Скачать"
 
@@ -762,8 +758,7 @@ msgstr "Сформировать docx без группировки"
 msgid "Add city"
 msgstr "Добавить город"
 
-#: .\docs\templates\docs\add_city.html:3
-#: .\docs\templates\docs\edit_city.html:3
+#: .\docs\templates\docs\add_city.html:3 .\docs\templates\docs\edit_city.html:3
 #: .\docs\templates\docs\handbook.html:23
 msgid "Cities"
 msgstr "Города"
@@ -786,8 +781,7 @@ msgstr "Город"
 msgid "delivery agreement"
 msgstr "Договора поставки"
 
-#: .\docs\templates\docs\delivery.html:3
-#: .\docs\templates\docs\handbook.html:15
+#: .\docs\templates\docs\delivery.html:3 .\docs\templates\docs\handbook.html:15
 msgid "Agreement"
 msgstr "Договора"
 
@@ -1176,101 +1170,99 @@ msgstr "Контрагент удалён!"
 msgid "You can not delete, because have cartridges at a gas station."
 msgstr "Вы не можете удалить, т. к. имеются картриджи на заправке."
 
-#: .\index\api\views.py:90 .\index\api\views.py:274
+#: .\index\api\views.py:89 .\index\api\views.py:279
 #: .\index\templates\index\ou_not_set.html:9 .\storages\views.py:43
 msgid "User not assosiate with organization unit!<br/>Error code: 101."
 msgstr ""
 "Пользователь не принадлежит ни одной из организаций!<br/> Код ошибки: 101"
 
-#: .\index\api\views.py:120 .\index\api\views.py:304
+#: .\index\api\views.py:119 .\index\api\views.py:309
 msgid "Error in attrib \"data\" in input button add_item"
 msgstr "Фшибка в атрибуте \"data\" формы ввода add_item"
 
-#: .\index\api\views.py:146
-#, fuzzy
-#| msgid "The object with number %(cart_number)s is already registered."
+#: .\index\api\views.py:145
 msgid "An object with this number has already been registered."
-msgstr "Объект с номером %(cart_number)s уже зарегистрирован в системе."
+msgstr "Объект с таким номером уже зарегистрирован."
 
-#: .\index\api\views.py:184
+#: .\index\api\views.py:189
 msgid "Cartridge successfully added."
 msgstr "Картридж успешно добавлен."
 
-#: .\index\api\views.py:186
+#: .\index\api\views.py:191
 msgid "Cartridges successfully added."
 msgstr "Картриджи успешно добавлены."
 
-#: .\index\api\views.py:323
+#: .\index\api\views.py:328
 #, python-format
 msgid "Cartridge %(cart_number)s successfully added."
 msgstr "Картридж %(cart_number)s успешно добавлен"
 
-#: .\index\api\views.py:359
+#: .\index\api\views.py:364
 msgid "Cartridges successfully moved."
 msgstr "Расходники успешно перемещены."
 
-#: .\index\api\views.py:439
+#: .\index\api\views.py:444
 #, python-format
 msgid "Cartridges %(cart_nums)s successfully moved to firm."
 msgstr "Картриджи %(cart_nums)s успешно переданы фирме."
 
-#: .\index\api\views.py:441
+#: .\index\api\views.py:446
 msgid "No transmission facilities"
 msgstr "Нет объектов для передачи"
 
-#: .\index\api\views.py:465
+#: .\index\api\views.py:470
 msgid "Session cleared"
 msgstr "Сессия очищена"
 
-#: .\index\api\views.py:490
+#: .\index\api\views.py:495
 msgid "In demo remove nodes not allow."
 msgstr "В режиме демонтсрации удалять ноды нельзя."
 
-#: .\index\api\views.py:498
+#: .\index\api\views.py:503
 msgid ""
 "But it can not be removed because other objects reference it.<br/>Error "
 "code: 102"
 msgstr "Удаление невозможно, т. к. на объект ссылаются.<br/>Код ошибки: 102."
 
-#: .\index\api\views.py:504
+#: .\index\api\views.py:509
 msgid "Names deleted successfully."
 msgstr "Организационные подразделения успешно удалены."
 
-#: .\index\api\views.py:526
+#: .\index\api\views.py:531
 msgid "Cartridjes deleted!"
 msgstr "Картриджи удалены!"
 
-#: .\index\api\views.py:543
+#: .\index\api\views.py:548
 msgid "Error converting string numbers to int."
 msgstr "Ошибка конвертации строки в интеджер."
 
-#: .\index\api\views.py:554
+#: .\index\api\views.py:559
 msgid "This action type not implemented."
 msgstr "Данный тип действия не реализован."
 
-#: .\index\api\views.py:573
+#: .\index\api\views.py:578
 msgid "Cartridges successfully transferred to basket."
 msgstr "Картридж(и) успешно перемещен(ы) в корзину."
 
-#: .\index\api\views.py:675
+#: .\index\api\views.py:680
 #, python-format
 msgid "Cartridges %(cart_list)s successfully transferred for use"
 msgstr "Картридж(и) %(cart_list)s успешно передан(ы) пользователю."
 
-#: .\index\api\views.py:798 .\index\api\views.py:872
+#: .\index\api\views.py:803 .\index\api\views.py:877 .\index\api\views.py:1071
 msgid "Error: 101. Not set organization utint."
 msgstr "Ошибка 101. Не установлено организационное подразделение."
 
-#: .\index\api\views.py:815 .\index\api\views.py:888
+#: .\index\api\views.py:820 .\index\api\views.py:893 .\index\api\views.py:1087
 #, python-format
 msgid "Consumables with the number %(cart_barcode)s was not found."
 msgstr "Расходник с номером %(cart_barcode)s не найден."
 
-#: .\index\api\views.py:821
+#: .\index\api\views.py:826 .\index\api\views.py:1093
 msgid "The object is already in the lists on the move."
 msgstr "Объект уже находится в списках на перемещение."
 
-#: .\index\api\views.py:838
+#: .\index\api\views.py:843 .\index\api\views.py:1110
 #, python-format
 msgid ""
 "The object number %(cart_barcode)s is already present in the lists on the "
@@ -1278,11 +1270,11 @@ msgid ""
 msgstr ""
 "Объект с номером %(cart_barcode)s уже присутствует в списках на перемещение."
 
-#: .\index\api\views.py:845 .\index\api\views.py:916
+#: .\index\api\views.py:850 .\index\api\views.py:921 .\index\api\views.py:1117
 msgid "Consumable material is successfully prepared for transfer"
 msgstr "Расходник готов к передаче"
 
-#: .\index\api\views.py:854
+#: .\index\api\views.py:859
 #, python-format
 msgid ""
 "This consumable is in the state \"%(cart_status)s\". Are you sure you want "
@@ -1291,23 +1283,36 @@ msgstr ""
 "Расходник обладает статусом - \"%(cart_status)s\". Вы точно хотите добавить "
 "его в список перемещаемых?"
 
-#: .\index\api\views.py:1030
+#: .\index\api\views.py:945
+msgid "The session key is not recognized."
+msgstr "Сессионнный ключ не опознан."
+
+#: .\index\api\views.py:1048
 #, python-format
 msgid "Objects %(numbers)s moved successfully."
 msgstr "Объекты с номерами %(numbers)s успешно перемещены."
+
+#: .\index\api\views.py:1126
+#, python-format
+msgid ""
+"This consumable is in the state \"%(cart_status)s\". Return to the warehouse "
+"is impossible."
+msgstr ""
+"Расходный материал обладает статусом – \"%(cart_status)s\". Возврат на склад "
+"невозможен."
 
 #: .\index\forms\add_cartridge_name.py:18 .\index\forms\add_type.py:32
 msgid "This name already exists!"
 msgstr "Данное наменование уже существует!"
 
 #: .\index\forms\add_empty_items.py:20 .\index\forms\add_items.py:20
-#: .\index\forms\add_items_from_barcode.py:21 .\index\forms\tr_to_stock.py:12
+#: .\index\forms\add_items_from_barcode.py:21
 #: .\index\templates\index\add_cartridge_from_barcode_scanner.html:44
 #: .\index\templates\index\add_empty_cartridge.html:49
 #: .\index\templates\index\add_empty_cartridge_from_barcode_scanner.html:44
 #: .\index\templates\index\add_items.html:48
 #: .\index\templates\index\empty.html:70
-#: .\index\templates\index\from_firm_to_stock_with_barcode.html:27
+#: .\index\templates\index\from_firm_to_stock_with_barcode.html:51
 #: .\index\templates\index\stock.html:60
 msgid "Storage"
 msgstr "Склад"
@@ -1430,7 +1435,7 @@ msgstr "Список новых или заправленных"
 
 #: .\index\templates\index\add_cartridge_from_barcode_scanner.html:22
 #: .\index\templates\index\add_empty_cartridge_from_barcode_scanner.html:22
-#: .\index\templates\index\from_firm_to_stock_with_barcode.html:22
+#: .\index\templates\index\from_firm_to_stock_with_barcode.html:44
 #: .\index\templates\index\transfer_to_firm_with_scanner.html:28
 msgid "Scanning number"
 msgstr "Отсканированный номер"
@@ -1453,7 +1458,7 @@ msgstr "Название катриджа"
 #: .\index\templates\index\add_empty_cartridge.html:53
 #: .\index\templates\index\add_empty_cartridge_from_barcode_scanner.html:48
 #: .\index\templates\index\add_items.html:52
-#: .\index\templates\index\from_firm_to_stock_with_barcode.html:31
+#: .\index\templates\index\from_firm_to_stock_with_barcode.html:55
 msgid "The field must be seleced"
 msgstr "Поле должно быть выбрано"
 
@@ -1539,16 +1544,14 @@ msgid "Return to the stock"
 msgstr "Вернуть на склад"
 
 #: .\index\templates\index\at_work.html:21
-#: .\index\templates\index\basket.html:23
-#: .\index\templates\index\empty.html:49 .\index\templates\index\stock.html:39
-#: .\index\templates\index\use.html:28
+#: .\index\templates\index\basket.html:23 .\index\templates\index\empty.html:49
+#: .\index\templates\index\stock.html:39 .\index\templates\index\use.html:28
 msgid "Export to CSV with group"
 msgstr "Экспорт в CSV с группировкой"
 
 #: .\index\templates\index\at_work.html:22
-#: .\index\templates\index\basket.html:24
-#: .\index\templates\index\empty.html:50 .\index\templates\index\stock.html:40
-#: .\index\templates\index\use.html:29
+#: .\index\templates\index\basket.html:24 .\index\templates\index\empty.html:50
+#: .\index\templates\index\stock.html:40 .\index\templates\index\use.html:29
 msgid "Export to CSV without group"
 msgstr "Экспорт в CSV без группировки"
 
@@ -1605,20 +1608,18 @@ msgstr "Пустые"
 msgid "Basket"
 msgstr "Корзина"
 
-#: .\index\templates\index\basket.html:45
-#: .\index\templates\index\empty.html:72 .\index\templates\index\stock.html:62
+#: .\index\templates\index\basket.html:45 .\index\templates\index\empty.html:72
+#: .\index\templates\index\stock.html:62
 msgid "Actions"
 msgstr "Действие"
 
-#: .\index\templates\index\basket.html:57
-#: .\index\templates\index\empty.html:85 .\index\templates\index\stock.html:75
-#: .\index\templates\index\use.html:63
+#: .\index\templates\index\basket.html:57 .\index\templates\index\empty.html:85
+#: .\index\templates\index\stock.html:75 .\index\templates\index\use.html:63
 msgid "Edit a comment"
 msgstr "Редактировать комментарий"
 
-#: .\index\templates\index\basket.html:58
-#: .\index\templates\index\empty.html:86 .\index\templates\index\stock.html:76
-#: .\index\templates\index\use.html:64
+#: .\index\templates\index\basket.html:58 .\index\templates\index\empty.html:86
+#: .\index\templates\index\stock.html:76 .\index\templates\index\use.html:64
 msgid "Event viewer"
 msgstr "Просмотр событий"
 
@@ -1755,16 +1756,20 @@ msgid "Return to stock"
 msgstr "Вернуть на склад"
 
 #: .\index\templates\index\from_firm_to_stock_with_barcode.html:3
-#, fuzzy
-#| msgid "Transfer cartridges refills with barcode scanner"
 msgid "Return cartridge to the warehouse with a bar code scanner"
-msgstr "Передача картриджей на заправку с сканером штрих-кодов"
+msgstr "Возврат картриджа на склад с сканером штрих-кодов"
 
-#: .\index\templates\index\from_firm_to_stock_with_barcode.html:34
-#, fuzzy
-#| msgid "Add (Enter)"
+#: .\index\templates\index\from_firm_to_stock_with_barcode.html:28
+msgid "That pass"
+msgstr "Кому передаём"
+
+#: .\index\templates\index\from_firm_to_stock_with_barcode.html:58
 msgid "Move (Enter)"
-msgstr "Добавить (Enter)"
+msgstr "Переместить (Enter)"
+
+#: .\index\templates\index\from_firm_to_stock_with_barcode.html:61
+msgid "Debug"
+msgstr "Отладка"
 
 #: .\index\templates\index\get_cart_ou.html:4
 msgid "Now installed"
@@ -1910,31 +1915,31 @@ msgstr "«%(cart_name)s» уже существует."
 msgid "%(cart_name)s success added"
 msgstr "«%(cart_name)s» успешно добавлен."
 
-#: .\index\views.py:326 .\index\views.py:338
+#: .\index\views.py:339 .\index\views.py:351
 #, python-format
 msgid "Organization unit %(org_name)s exist"
 msgstr "Организационное подразделение «%(org_name)s» уже существует."
 
-#: .\index\views.py:331 .\index\views.py:343
+#: .\index\views.py:344 .\index\views.py:356
 #, python-format
 msgid "Organization unit %(org_name)s create successfuly."
 msgstr "Организационное подразделение «%(org_name)s» успешно создано."
 
-#: .\index\views.py:387
+#: .\index\views.py:400
 #, python-format
 msgid "%(cart_type)s success save"
 msgstr "«%(cart_type)s» успешно сохранён."
 
-#: .\index\views.py:391
+#: .\index\views.py:404
 #, python-format
 msgid "New type %(cart_type)s success added"
 msgstr "Новый тип «%(cart_type)s» успешно добавлен."
 
-#: .\index\views.py:531
+#: .\index\views.py:544
 msgid "Select all"
 msgstr "Выбрать все"
 
-#: .\index\views.py:564
+#: .\index\views.py:577
 #, python-format
 msgid "Firm \"%(firm_name)s\" success added."
 msgstr "Контрагент «%(firm_name)s» успешно добавлен."
