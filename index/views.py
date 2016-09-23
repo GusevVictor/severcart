@@ -669,6 +669,8 @@ def from_firm_to_stock_with_barcode(request):
     # это пригодится на случай случайной перезагрузки страницы пользователем
     session_data = request.session.get('basket_to_transfer_stock', False)
     show_list = list()
+    if not session_data:
+        session_data = []
     initial_numbers = str()
     for cart_pk in session_data:
         initial_numbers += str(cart_pk) + ', '
