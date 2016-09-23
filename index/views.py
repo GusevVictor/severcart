@@ -651,7 +651,7 @@ def from_firm_to_stock_with_barcode(request):
     """Возврат РМ из обслуживающей фирмы обратно на склад.
     """
     context = dict()
-    MYDEBUG = True
+    MYDEBUG = False
     context['mydebug'] = MYDEBUG
     back = BreadcrumbsPath(request).before_page(request)
     form = MoveItemsToStockWithBarCodeScanner()

@@ -5,7 +5,7 @@ from django.utils.translation import ugettext_lazy as _
 
 from storages.models import Storages
 
-MYDEBUG = True
+MYDEBUG = False
 
 class MoveItemsToStockWithBarCodeScanner(forms.Form):
     numbers = forms.CharField(widget=forms.HiddenInput())

@@ -2179,19 +2179,17 @@ $( function(){
     var tr_to_stock_firm = $('.from_firm_to_stock_with_barcode');
     // обработка кодов с сканера штрихкодов при перемещении РМ из
     // фирмы на склад
-    
     if (tr_to_stock_firm.length) {
-        $('#id_cartNumber').focus();
-
-        var MYDEBUG = true;
+        $('#id_number').focus();
+        var MYDEBUG = false;
         var pressed = false; 
         var chars = [];
         var barcode = '';
+        barcode = $('.barcode').val();
         // словарь для подготовки отправки данных через аякс
         // считываем инофрмацию с сканера ШК и отправляем сразу запрос на сервер
         if (MYDEBUG) {
             $('.dbg_firm_to_stock').click( function () {
-                barcode = $('.barcode').val();
                 $.ajax({
                         method: 'POST',
                         url: '{% url "index:add_object_to_basket_from_firm_to_stock" %}',
@@ -2249,7 +2247,7 @@ $( function(){
 
             }); // завершение функции обработчика click
         }
-        return false;
+        //return false;
         $(window).keypress(function(e) {
             if (e.which >= 48 && e.which <= 57) {
                 chars.push(String.fromCharCode(e.which));
@@ -2260,8 +2258,60 @@ $( function(){
                         var barcode = chars.join('');
                         $('.barcode').val(barcode);
                         // после того как номер РМ считан отправляем запрос на бэкенд
-                        
-                        //$.ajax();
+                        $.ajax({
+                            method: 'POST',
+                            url: '{% url "index:add_object_to_basket_from_firm_to_stock" %}',
+                            data: { 'barcode': barcode },
+                            beforeSend: function( xhr, settings ){
+                                $('.spinner').show();
+                                csrftoken = getCookie('csrftoken');
+                                if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
+                                    xhr.setRequestHeader('X-CSRFToken', csrftoken);
+                                }
+                            },
+                            success: function( msg ) {
+                                $('.spinner').hide();
+                                if ( msg.error == '1' ) {
+                                    $('.error_msg').show();
+                                    $('.success_msg').hide();
+                                    $('.error_msg').text(msg.mes);
+                                }
+                                if ( msg.error == '2' ) {
+                                    // ошибка не соответствия статуса, показываем диалоговое окно
+                                    $('.success_msg').hide();
+                                    $('.error_msg').show();
+                                    $('.error_msg').html(msg.mes);
+                                    //$(document).foundation();
+                                    //$('p.ajax_error_message').html(msg.mes);
+                                    //$('#myModal').foundation('reveal', 'open');
+
+                                }
+                                if ( msg.error == '0' ) {
+                                    // если ошибок нет, то
+                                    $('.barcode').focus(); // устанавливаем фокус на поле ввода для сканера ШК
+                                    $('.barcode').val(''); // очищаем его значение для новых данных
+                                    $('.wrapper_for_transfer_table').show(); // показываем таблицу с сессионными (перемещаемыми) объектами
+                                    $('.show_remove_session_div').show();  // показываем кнопку для удаления сессионных объектов
+                                    $('#id_numbers').attr('value', msg.moved_list); // заполняем скрытое поле numbers данными из аякс ответа
+                                    $('.error_msg').hide();   // прячем поле с ошибками
+                                    /* Если длина символов в поле msg.cart_num превышает заданные константые значения, то */
+                                    if (msg.cart_num.length > {{ request.TRLEN }}) {
+                                        // производим усечение его до длины request.TRLEN
+                                        var cart_num = msg.cart_num.substring(0, {{ request.TRLEN }}) + '...';
+                                    } else {
+                                        // если меньше константного значения, то оставляем поле как есть
+                                        var cart_num = msg.cart_num;
+                                    }
+                                    $('.transfer_list tr:last').after('<tr class="remove' + msg.pk + '"><td><input type="checkbox" value="'+ msg.pk +'"/></td><td title="' + msg.cart_num + '">' + cart_num + '</td><td>' + msg.cart_name + '</td></tr>');
+                                    
+                                }                                
+                                
+                            },
+                            error: function( msg ) {
+                                console.log(msg);
+                            },
+
+                        });
                         
                     }
                     chars = [];
