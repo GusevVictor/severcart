@@ -33,7 +33,8 @@
                 <div class="breads">{% block breadcrumbs %}{% endblock %}</div>
             </div>
             <div class="large-2 columns marginTop text-right">
-                <a class="button info margin-zero" href="{% block help_url %}{% endblock %}" target="_blank">{% trans 'Help' %}</a>
+                {% if request.SHOW_COPYRIGHT %}
+                <a class="button info margin-zero" href="{% block help_url %}{% endblock %}" target="_blank">{% trans 'Help' %}</a>{% endif %}
             </div>
         </div>
         <div class="marginTop"></div>
