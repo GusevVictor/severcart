@@ -993,7 +993,7 @@ def move_objects_to_firm_with_barcode(request):
         
         try:
             doc = int(doc)
-        except ValueError:
+        except:
             doc = 0
 
         try:
