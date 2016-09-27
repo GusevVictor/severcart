@@ -1,10 +1,10 @@
 # -*- coding:utf-8 -*-
 
-VERSION = '0.3.1'
+VERSION = '0.4.0'
 
 
 # отключаем показ ссылок на домашнюю страницу, техподдержку, логотип
-SHOW_COPYRIGHT = False
+SHOW_COPYRIGHT = True
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os, sys
