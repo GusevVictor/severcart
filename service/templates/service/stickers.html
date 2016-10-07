@@ -16,12 +16,32 @@
         {% endif %}
     </div>
 </div>
+<form method="POST" action="" class="stickers_format">{% csrf_token %}
 <div class="row">
     <div class="large-6 columns">
-        <form method="POST" action="" class="stickers_format">{% csrf_token %}
-            {{ form.as_p }}
-            <input type="submit" class="button" value="{% trans 'Save' %}" >
-        </form>
+        <fieldset>
+            <legend>{% trans 'Stickers' %}</legend>
+            
+                <label class="required">{% trans 'Select paper format' %}</label>
+                {{ form.choice }}
+                <label class="required">{% trans 'Print QR code?' %}</label>
+                {{ form.print_qr_code }}
+            </form>
+        </fieldset>
+    </div>
+    <div class="large-6 columns">
+        <fieldset>
+            <legend>{% trans 'Time' %}</legend>
+                <label class="required">{% trans "Set time zone" %}</label>
+                {{ form.time_zone }}
+                <label class="required marginTop">{% trans "Show time" %}</label>
+                {{ form.show_time }}
+            </form>
+        </fieldset>
     </div>
 </div>
+<div class="row">
+    <div class="large-6 columns"><input type="submit" class="button" value="{% trans 'Save' %}" ></div>
+</div>
+</form>
 {% endblock %}

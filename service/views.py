@@ -50,6 +50,7 @@ def stickers(request):
     """
     context = {}
     conf = SevercartConfigs()
+
     if request.method == 'POST':
         form = StickFormat(request.POST)
         if form.is_valid():
@@ -62,7 +63,7 @@ def stickers(request):
             context['form'] = form
             messages.success(request, _('Settings success saved.'))
         else:
-            context['form'] = form    
+            context['form'] = form
     else:
         print_qr_code = 1 if conf.print_bar_code else 2
         form = StickFormat(initial={'choice': conf.page_format,

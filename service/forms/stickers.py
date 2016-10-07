@@ -2,6 +2,7 @@
 
 from django import forms
 from django.utils.translation import ugettext_lazy as _
+from service.tz import TZS
 
 class StickFormat(forms.Form):
     """Настройка формата печатаемых наклеек.
@@ -11,6 +12,9 @@ class StickFormat(forms.Form):
     choice = forms.ChoiceField(choices=CHOICES, widget=forms.RadioSelect(), label=_('Select paper format'))
     print_qr_code = forms.ChoiceField(choices=YES_NO, widget=forms.RadioSelect(), label=_('Print QR code?'))
     required_css_class = 'required'
+
+    time_zone = forms.ChoiceField(choices=TZS)
+    show_time = forms.ChoiceField(choices=YES_NO, widget=forms.RadioSelect(), label=_('Show time'))
 
     def clean_choice(self):
         if not self.cleaned_data.get('choice', ''):

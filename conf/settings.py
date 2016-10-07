@@ -1,6 +1,6 @@
 # -*- coding:utf-8 -*-
 
-VERSION = '0.4.0'
+VERSION = '0.5.0'
 
 
 # отключаем показ ссылок на домашнюю страницу, техподдержку, логотип
@@ -15,7 +15,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.append(os.path.join(BASE_DIR, 'conf'))
 
 # автоматический переключатель продакшена и девелопмента
-from settings_prod import *
+from settings_dev import *
 
 ALLOWED_HOSTS = ['*']
 

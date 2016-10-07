@@ -132,7 +132,8 @@ def delivery(request):
             
             doc_number = doc.number
             doc.delete()
-            messages.error(request, 'Документ %s удалён!' % (doc_number,))
+
+            messages.error(request, _('Document %(doc_number)s deleted!') % {'doc_number': doc_number})
             return HttpResponseRedirect(reverse('docs:delivery'))
 
         elif request.GET.get('show', ''):

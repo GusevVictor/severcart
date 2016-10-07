@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-09-23 16:31+0500\n"
+"POT-Creation-Date: 2016-10-07 14:22+0500\n"
 "PO-Revision-Date: 2016-05-27 12:27+0500\n"
 "Last-Translator: \n"
 "Language-Team: severcart.org <sfcl@mail.ru>\n"
@@ -236,7 +236,7 @@ msgstr ""
 #: .\docs\templates\docs\edit_city.html:27
 #: .\index\templates\index\add_type.html:30
 #: .\service\templates\service\settings_mail.html:50
-#: .\service\templates\service\stickers.html:23
+#: .\service\templates\service\stickers.html:44
 #: .\storages\templates\storages\edit_s.html:31
 msgid "Save"
 msgstr ""
@@ -316,13 +316,13 @@ msgstr ""
 
 #: .\accounts\templates\accounts\manage_users.html:56
 #: .\index\templates\index\transfer_to_firm_with_scanner.html:86
-#: .\service\forms\stickers.py:10
+#: .\service\forms\stickers.py:11
 msgid "Yes"
 msgstr ""
 
 #: .\accounts\templates\accounts\manage_users.html:58
 #: .\index\templates\index\transfer_to_firm_with_scanner.html:87
-#: .\service\forms\stickers.py:10
+#: .\service\forms\stickers.py:11
 msgid "No"
 msgstr ""
 
@@ -923,12 +923,17 @@ msgstr ""
 msgid "New %(doc_num)s success created."
 msgstr ""
 
-#: .\docs\views.py:233
+#: .\docs\views.py:136
+#, python-format
+msgid "Document %(doc_number)s deleted!"
+msgstr ""
+
+#: .\docs\views.py:234
 #, python-format
 msgid "City \"%(city)s\" success added."
 msgstr ""
 
-#: .\docs\views.py:259
+#: .\docs\views.py:260
 #, python-format
 msgid "City \"%(city)s\" success edited."
 msgstr ""
@@ -1563,15 +1568,15 @@ msgstr ""
 msgid "Exit"
 msgstr ""
 
-#: .\index\templates\index\base.html:36
+#: .\index\templates\index\base.html:37
 msgid "Help"
 msgstr ""
 
-#: .\index\templates\index\base.html:44
+#: .\index\templates\index\base.html:45
 msgid "Version"
 msgstr ""
 
-#: .\index\templates\index\base.html:44
+#: .\index\templates\index\base.html:45
 msgid "Request tech support"
 msgstr ""
 
@@ -2137,19 +2142,23 @@ msgstr ""
 msgid "Text message"
 msgstr ""
 
-#: .\service\forms\stickers.py:11
+#: .\service\forms\stickers.py:12 .\service\templates\service\stickers.html:25
 msgid "Select paper format"
 msgstr ""
 
-#: .\service\forms\stickers.py:12
+#: .\service\forms\stickers.py:13 .\service\templates\service\stickers.html:27
 msgid "Print QR code?"
 msgstr ""
 
-#: .\service\forms\stickers.py:17 .\service\forms\stickers.py:31
+#: .\service\forms\stickers.py:17 .\service\templates\service\stickers.html:37
+msgid "Show time"
+msgstr ""
+
+#: .\service\forms\stickers.py:21 .\service\forms\stickers.py:35
 msgid "Value must be set"
 msgstr ""
 
-#: .\service\forms\stickers.py:38
+#: .\service\forms\stickers.py:42
 msgid "Invalid value"
 msgstr ""
 
@@ -2174,19 +2183,352 @@ msgstr ""
 msgid "Settings format stickers"
 msgstr ""
 
-#: .\service\templates\service\submenu.html:18
-msgid "E-mail"
-msgstr ""
-
+#: .\service\templates\service\stickers.html:23
 #: .\service\templates\service\submenu.html:19
 msgid "Stickers"
+msgstr ""
+
+#: .\service\templates\service\stickers.html:34
+msgid "Time"
+msgstr ""
+
+#: .\service\templates\service\stickers.html:35
+msgid "Set time zone"
+msgstr ""
+
+#: .\service\templates\service\submenu.html:18
+msgid "E-mail"
 msgstr ""
 
 #: .\service\templates\service\submenu.html:22
 msgid "Auto complete directory types and names"
 msgstr ""
 
-#: .\service\views.py:63
+#: .\service\tz.py:6
+msgid "(GMT-10:00) Honolulu"
+msgstr ""
+
+#: .\service\tz.py:8
+msgid "(GMT-09:00) Anchorage"
+msgstr ""
+
+#: .\service\tz.py:10
+msgid "(GMT-08:00) Los_Angeles"
+msgstr ""
+
+#: .\service\tz.py:12
+msgid "(GMT-07:00) Phoenix"
+msgstr ""
+
+#: .\service\tz.py:14
+msgid "(GMT-07:00) Denver"
+msgstr ""
+
+#: .\service\tz.py:16
+msgid "(GMT-07:00) Chihuahua"
+msgstr ""
+
+#: .\service\tz.py:18
+msgid "(GMT-06:00) Managua"
+msgstr ""
+
+#: .\service\tz.py:20
+msgid "(GMT-06:00) Regina"
+msgstr ""
+
+#: .\service\tz.py:22
+msgid "(GMT-06:00) Mexico_City"
+msgstr ""
+
+#: .\service\tz.py:24
+msgid "(GMT-06:00) Chicago"
+msgstr ""
+
+#: .\service\tz.py:26
+msgid "(GMT-05:00) Indianapolis"
+msgstr ""
+
+#: .\service\tz.py:28
+msgid "(GMT-05:00) Bogota"
+msgstr ""
+
+#: .\service\tz.py:30
+msgid "(GMT-05:00) New York"
+msgstr ""
+
+#: .\service\tz.py:32
+msgid "(GMT-04:00) Caracas"
+msgstr ""
+
+#: .\service\tz.py:34
+msgid "(GMT-04:00) Santiago"
+msgstr ""
+
+#: .\service\tz.py:36
+msgid "(GMT-04:00) Halifax"
+msgstr ""
+
+#: .\service\tz.py:38
+msgid "(GMT-03:30) St Johns"
+msgstr ""
+
+#: .\service\tz.py:40
+msgid "(GMT-03:00) Buenos Aires"
+msgstr ""
+
+#: .\service\tz.py:42
+msgid "(GMT-03:00) Godthab"
+msgstr ""
+
+#: .\service\tz.py:44
+msgid "(GMT-03:00) Sao Paulo"
+msgstr ""
+
+#: .\service\tz.py:46
+msgid "(GMT-02:00) Noronha"
+msgstr ""
+
+#: .\service\tz.py:48
+msgid "(GMT-01:00) Cape Verde"
+msgstr ""
+
+#: .\service\tz.py:50
+msgid "(GMT-01:00) Azores"
+msgstr ""
+
+#: .\service\tz.py:52
+msgid "(GMT) Casablanca"
+msgstr ""
+
+#: .\service\tz.py:54
+msgid "(GMT) London"
+msgstr ""
+
+#: .\service\tz.py:56
+msgid "(GMT+01:00) Lagos"
+msgstr ""
+
+#: .\service\tz.py:58
+msgid "(GMT+01:00) Berlin"
+msgstr ""
+
+#: .\service\tz.py:60
+msgid "(GMT+01:00) Paris"
+msgstr ""
+
+#: .\service\tz.py:62
+msgid "(GMT+01:00) Sarajevo"
+msgstr ""
+
+#: .\service\tz.py:64
+msgid "(GMT+01:00) Belgrade"
+msgstr ""
+
+#: .\service\tz.py:66
+msgid "(GMT+02:00) Johannesburg"
+msgstr ""
+
+#: .\service\tz.py:68
+msgid "(GMT+02:00) Jerusalem"
+msgstr ""
+
+#: .\service\tz.py:70
+msgid "(GMT+02:00) Istanbul"
+msgstr ""
+
+#: .\service\tz.py:72
+msgid "(GMT+02:00) Cairo"
+msgstr ""
+
+#: .\service\tz.py:74
+msgid "(GMT+02:00) Bucharest"
+msgstr ""
+
+#: .\service\tz.py:76
+msgid "(GMT+02:00) Kiev"
+msgstr ""
+
+#: .\service\tz.py:78
+msgid "(GMT+02:00) Kaliningrad"
+msgstr ""
+
+#: .\service\tz.py:80
+msgid "(GMT+03:00) Helsinki"
+msgstr ""
+
+#: .\service\tz.py:82
+msgid "(GMT+03:00) Minsk"
+msgstr ""
+
+#: .\service\tz.py:84
+msgid "(GMT+03:00) Nairobi"
+msgstr ""
+
+#: .\service\tz.py:86
+msgid "(GMT+03:00) Riyadh"
+msgstr ""
+
+#: .\service\tz.py:88
+msgid "(GMT+03:00) Baghdad"
+msgstr ""
+
+#: .\service\tz.py:90
+msgid "(GMT+03:00) Moscow"
+msgstr ""
+
+#: .\service\tz.py:92
+msgid "(GMT+03:30) Tehran"
+msgstr ""
+
+#: .\service\tz.py:94
+msgid "(GMT+04:00) Samara"
+msgstr ""
+
+#: .\service\tz.py:96
+msgid "(GMT+04:00) Muscat"
+msgstr ""
+
+#: .\service\tz.py:98
+msgid "(GMT+04:00) Tbilisi"
+msgstr ""
+
+#: .\service\tz.py:100
+msgid "(GMT+04:30) Kabul"
+msgstr ""
+
+#: .\service\tz.py:102
+msgid "(GMT+05:00) Karachi"
+msgstr ""
+
+#: .\service\tz.py:104
+msgid "(GMT+05:00) Aqtobe"
+msgstr ""
+
+#: .\service\tz.py:106
+msgid "(GMT+05:00) Yekaterinburg"
+msgstr ""
+
+#: .\service\tz.py:108
+msgid "(GMT+05:30) Calcutta"
+msgstr ""
+
+#: .\service\tz.py:110
+msgid "(GMT+05:30) Colombo"
+msgstr ""
+
+#: .\service\tz.py:112
+msgid "(GMT+05:45) Katmandu"
+msgstr ""
+
+#: .\service\tz.py:114
+msgid "(GMT+06:00) Dhaka"
+msgstr ""
+
+#: .\service\tz.py:116
+msgid "(GMT+06:00) Almaty"
+msgstr ""
+
+#: .\service\tz.py:118
+msgid "(GMT+06:30) Rangoon"
+msgstr ""
+
+#: .\service\tz.py:120
+msgid "(GMT+07:00) Bangkok"
+msgstr ""
+
+#: .\service\tz.py:122
+msgid "(GMT+07:00) Krasnoyarsk"
+msgstr ""
+
+#: .\service\tz.py:124
+msgid "(GMT+07:00) Novosibirsk"
+msgstr ""
+
+#: .\service\tz.py:126
+msgid "(GMT+08:00) Perth"
+msgstr ""
+
+#: .\service\tz.py:128
+msgid "(GMT+08:00) Taipei"
+msgstr ""
+
+#: .\service\tz.py:130
+msgid "(GMT+08:00) Singapore"
+msgstr ""
+
+#: .\service\tz.py:132
+msgid "(GMT+08:00) Hong Kong"
+msgstr ""
+
+#: .\service\tz.py:134
+msgid "(GMT+08:00) Irkutsk"
+msgstr ""
+
+#: .\service\tz.py:136
+msgid "(GMT+09:00) Tokyo"
+msgstr ""
+
+#: .\service\tz.py:138
+msgid "(GMT+09:00) Seoul"
+msgstr ""
+
+#: .\service\tz.py:140
+msgid "(GMT+09:00) Yakutsk"
+msgstr ""
+
+#: .\service\tz.py:142
+msgid "(GMT+09:30) Darwin"
+msgstr ""
+
+#: .\service\tz.py:144
+msgid "(GMT+09:30) Adelaide"
+msgstr ""
+
+#: .\service\tz.py:146
+msgid "(GMT+10:00) Guam"
+msgstr ""
+
+#: .\service\tz.py:148
+msgid "(GMT+10:00) Brisbane"
+msgstr ""
+
+#: .\service\tz.py:150
+msgid "(GMT+10:00) Hobart"
+msgstr ""
+
+#: .\service\tz.py:152
+msgid "(GMT+10:00) Sydney"
+msgstr ""
+
+#: .\service\tz.py:154
+msgid "(GMT+10:00) Vladivostok"
+msgstr ""
+
+#: .\service\tz.py:156
+msgid "(GMT+11:00) Srednekolymsk"
+msgstr ""
+
+#: .\service\tz.py:158
+msgid "(GMT+12:00) Kamchatka"
+msgstr ""
+
+#: .\service\tz.py:160
+msgid "(GMT+12:00) Fiji"
+msgstr ""
+
+#: .\service\tz.py:162
+msgid "(GMT+12:00) Auckland"
+msgstr ""
+
+#: .\service\tz.py:164
+msgid "(GMT+13:00) Tongatapu"
+msgstr ""
+
+#: .\service\tz.py:166
+msgid "(GMT+13:00) Apia"
+msgstr ""
+
+#: .\service\views.py:64
 msgid "Settings success saved."
 msgstr ""
 
