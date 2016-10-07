@@ -20,6 +20,6 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='settings',
             name='print_name_obj',
-            field=models.CharField(max_length=256, null=True),
+            field=models.BooleanField(default=False),
         ),
     ]
