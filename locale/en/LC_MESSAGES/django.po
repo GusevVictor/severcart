@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-10-08 15:09+0500\n"
+"POT-Creation-Date: 2016-10-08 20:51+0500\n"
 "PO-Revision-Date: 2016-05-27 12:27+0500\n"
 "Last-Translator: \n"
 "Language-Team: severcart.org <sfcl@mail.ru>\n"
@@ -234,7 +234,7 @@ msgstr ""
 #: .\accounts\templates\accounts\edit_user.html:15
 #: .\docs\templates\docs\edit_city.html:27
 #: .\index\templates\index\add_type.html:30
-#: .\service\templates\service\general_settings.html:44
+#: .\service\templates\service\general_settings.html:42
 #: .\service\templates\service\settings_mail.html:50
 #: .\storages\templates\storages\edit_s.html:31
 msgid "Save"
@@ -2141,15 +2141,15 @@ msgid "Print QR code?"
 msgstr ""
 
 #: .\service\forms\stickers.py:17
-#: .\service\templates\service\general_settings.html:37
 msgid "Show time"
 msgstr ""
 
 #: .\service\forms\stickers.py:21 .\service\forms\stickers.py:35
+#: .\service\forms\stickers.py:46 .\service\forms\stickers.py:57
 msgid "Value must be set"
 msgstr ""
 
-#: .\service\forms\stickers.py:42
+#: .\service\forms\stickers.py:42 .\service\forms\stickers.py:53
 msgid "Invalid value"
 msgstr ""
 
@@ -2163,12 +2163,16 @@ msgstr ""
 msgid "Stickers"
 msgstr ""
 
-#: .\service\templates\service\general_settings.html:34
+#: .\service\templates\service\general_settings.html:33
 msgid "Time"
 msgstr ""
 
-#: .\service\templates\service\general_settings.html:35
+#: .\service\templates\service\general_settings.html:34
 msgid "Set time zone"
+msgstr ""
+
+#: .\service\templates\service\general_settings.html:36
+msgid "Show time in the object list"
 msgstr ""
 
 #: .\service\templates\service\settings_mail.html:2
@@ -2519,7 +2523,7 @@ msgstr ""
 msgid "(GMT+13:00) Apia"
 msgstr ""
 
-#: .\service\views.py:64
+#: .\service\views.py:68
 msgid "Settings success saved."
 msgstr ""
 

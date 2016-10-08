@@ -26,7 +26,6 @@
                 {{ form.choice }}
                 <label class="required">{% trans 'Print QR code?' %}</label>
                 {{ form.print_qr_code }}
-            </form>
         </fieldset>
     </div>
     <div class="large-6 columns">
@@ -34,9 +33,8 @@
             <legend>{% trans 'Time' %}</legend>
                 <label class="required">{% trans "Set time zone" %}</label>
                 {{ form.time_zone }}
-                <label class="required marginTop">{% trans "Show time" %}</label>
+                <label class="required marginTop">{% trans "Show time in the object list" %}</label>
                 <div class="marginTop">{{ form.show_time }}</div>
-            </form>
         </fieldset>
     </div>
 </div>

@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-10-08 15:09+0500\n"
-"PO-Revision-Date: 2016-10-08 15:10+0500\n"
+"POT-Creation-Date: 2016-10-08 20:51+0500\n"
+"PO-Revision-Date: 2016-10-08 20:51+0500\n"
 "Last-Translator: \n"
 "Language-Team: severcart.org <sfcl@mail.ru>\n"
 "Language: ru\n"
@@ -234,7 +234,7 @@ msgstr "Редактировать данные пользователя"
 #: .\accounts\templates\accounts\edit_user.html:15
 #: .\docs\templates\docs\edit_city.html:27
 #: .\index\templates\index\add_type.html:30
-#: .\service\templates\service\general_settings.html:44
+#: .\service\templates\service\general_settings.html:42
 #: .\service\templates\service\settings_mail.html:50
 #: .\storages\templates\storages\edit_s.html:31
 msgid "Save"
@@ -578,7 +578,7 @@ msgstr "Номер"
 #: .\index\templates\index\basket.html:42 .\index\templates\index\empty.html:68
 #: .\index\templates\index\stock.html:58 .\index\templates\index\use.html:47
 msgid "Amount<br/>recovery"
-msgstr "Количество<br/> перезаправок"
+msgstr "Количество перезаправок"
 
 #: .\docs\api\views.py:315 .\index\templates\index\stock.html.py:59
 msgid "Date add"
@@ -2165,15 +2165,15 @@ msgid "Print QR code?"
 msgstr "Печатать QR код?"
 
 #: .\service\forms\stickers.py:17
-#: .\service\templates\service\general_settings.html:37
 msgid "Show time"
 msgstr "Показывать время"
 
 #: .\service\forms\stickers.py:21 .\service\forms\stickers.py:35
+#: .\service\forms\stickers.py:46 .\service\forms\stickers.py:57
 msgid "Value must be set"
 msgstr "Значение должно быть установлено"
 
-#: .\service\forms\stickers.py:42
+#: .\service\forms\stickers.py:42 .\service\forms\stickers.py:53
 msgid "Invalid value"
 msgstr "Ошибочное значение"
 
@@ -2187,13 +2187,17 @@ msgstr "Настройки"
 msgid "Stickers"
 msgstr "Наклейки"
 
-#: .\service\templates\service\general_settings.html:34
+#: .\service\templates\service\general_settings.html:33
 msgid "Time"
 msgstr "Время"
 
-#: .\service\templates\service\general_settings.html:35
+#: .\service\templates\service\general_settings.html:34
 msgid "Set time zone"
 msgstr "Установка часового пояса"
+
+#: .\service\templates\service\general_settings.html:36
+msgid "Show time in the object list"
+msgstr "Показывать время в списке объектов"
 
 #: .\service\templates\service\settings_mail.html:2
 msgid "Email"
@@ -2493,7 +2497,7 @@ msgstr "(GMT+09:00) Якутск"
 
 #: .\service\tz.py:142
 msgid "(GMT+09:30) Darwin"
-msgstr "'(GMT+09:30) Дарвин"
+msgstr "(GMT+09:30) Дарвин"
 
 #: .\service\tz.py:144
 msgid "(GMT+09:30) Adelaide"
@@ -2543,7 +2547,7 @@ msgstr "(GMT+13:00) Нукуалофа"
 msgid "(GMT+13:00) Apia"
 msgstr "(GMT+13:00) о. Мидуэй, Самоа"
 
-#: .\service\views.py:64
+#: .\service\views.py:68
 msgid "Settings success saved."
 msgstr "Настройки успешно сохранены."
 

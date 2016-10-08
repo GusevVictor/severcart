@@ -40,3 +40,30 @@ class StickFormat(forms.Form):
             return False
         else:
             raise forms.ValidationError(_('Invalid value'))
+
+    def clean_show_time(self):
+        if not self.cleaned_data.get('show_time', 0):
+            raise forms.ValidationError(_('Value must be set'))
+        set_var = self.cleaned_data.get('show_time')
+        if set_var == '1':
+            return True
+        elif set_var == '2':
+            return False
+        else:
+            raise forms.ValidationError(_('Invalid value'))
+
+    def clean_time_zone(self):
+        if not self.cleaned_data.get('time_zone', 0):
+            raise forms.ValidationError(_('Value must be set'))
+        set_var = self.cleaned_data.get('time_zone')
+        set_var = set_var.strip()
+        searched = False
+        for tz in TZS:
+            if set_var == tz[0]:
+                searched = True
+                break
+
+        if searched:
+            return set_var
+        else:
+            raise 'Asia/Yekaterinburg'
