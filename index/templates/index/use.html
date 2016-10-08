@@ -1,4 +1,4 @@
-{% extends "index/base.html" %}{% load i18n %}
+{% extends "index/base.html" %}{% load i18n %}{% load tz %}
 {% load pagination  %}
 {% block title %}{% trans "Consumables in use" %}{% endblock %}
 {% block breadcrumbs %}<a href="/"><img src="{{ STATIC_URL }}img/home.png" /></a> / {% trans "Consumables in use" %}{% endblock %}
@@ -45,7 +45,7 @@
                     <th class="cart_number {% if select_number %}active_cell{% endif %}"><a href="?action=number">{% trans "Number" %} {{number_triangle}}</a><br/><input class="search_number" name="search_number" value="{{search_number}}"  /></th>
                     <th class="cart_name{% if select_type %} active_cell{% endif %}"><a href="?action=name">{% trans "Name" %} {{type_triangle}}</a></th>
                     <th class="cart_count{% if select_count %} active_cell{% endif %}"><a href="?action=recovery">{% trans "Amount<br/>recovery" %} {{count_triangle}}</a></th>
-                    <th class="cart_date{% if select_date %} active_cell{% endif %}"><a href="?action=change_date">{% trans "Date transfe" %} {{datec_triangle}}</a></th>
+                    <th class="cart_date{% if select_date %} active_cell{% endif %} {% if request.SHOW_TIME %}big{% else %}small{% endif %}"><a href="?action=change_date">{% trans "Date transfe" %} {{datec_triangle}}</a></th>
                     <th class="org_user">{% trans "User" %}</th>
                     <th>{% trans "Comment" %}</th>
                     <th class="actions">{% trans "Action" %}</th>
@@ -55,7 +55,7 @@
                         <td class="cart_number_for_tip" data-powertip="{{ i.cart_number }}">{{ i.cart_number|truncatechars:request.TRLEN }}</td>
                         <td>{{ i.cart_itm_name }}</td>
                         <td>{{ i.cart_number_refills }}</td>
-                        <td>{{ i.cart_date_change|date:"d.m.Y" }}</td>
+                        {% if request.SHOW_TIME %}<td>{{ i.cart_date_change | timezone:request.TZ | date:"d.m.Y  H:i"}}</td>{% else %}<td>{{ i.cart_date_change | date:"d.m.Y"}}</td>{% endif %}
                         <td>{{ i.departament }}</td>
                         <td><div class="comment_in_cell" title="{{ i.comment }}">{{ i.comment|truncatechars:22 }}</div></td>
                         <td><select class="cartridge_action" data="{{ i.pk }}">
