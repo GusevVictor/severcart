@@ -32,6 +32,7 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     #'debug_toolbar',
+    'pytz',
     'index',
     'mptt',
     'accounts',
@@ -127,13 +128,13 @@ else:
 
 LANGUAGE_CODE = 'ru-RU'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Europe/London'
 
 USE_I18N = True
 
 USE_L10N = True
 
-USE_TZ = False
+USE_TZ = True
 
 LOCALE_PATHS = (os.path.join(BASE_DIR, 'locale'), )
 

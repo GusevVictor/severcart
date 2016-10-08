@@ -7,3 +7,4 @@ psycopg2
 python-docx
 sqlparse
 reportlab
+pytz
