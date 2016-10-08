@@ -1,8 +1,8 @@
 {% extends "index/base.html" %}{% load i18n %}
-{% block title %}{% trans "Settings format stickers" %}{% endblock %}
-{% block breadcrumbs %}<a href="/"><img src="{{ STATIC_URL }}img/home.png" /></a>/ <a href="{% url 'service:submenu' %}">{% trans "Service" %} </a> / {% trans "Settings format stickers" %}{% endblock %}
+{% block title %}{% trans "Settings" %}{% endblock %}
+{% block breadcrumbs %}<a href="/"><img src="{{ STATIC_URL }}img/home.png" /></a>/ <a href="{% url 'service:submenu' %}">{% trans "Service" %} </a> / {% trans "Settings" %}{% endblock %}
 {% block help_url %}
-{{ request.HOME_SITE }}/help/{{ request.LANGUAGE_CODE }}/stickers/
+{{ request.HOME_SITE }}/help/{{ request.LANGUAGE_CODE }}/settings/
 {% endblock %}
 {% block content %}
 <div class="row">
@@ -35,7 +35,7 @@
                 <label class="required">{% trans "Set time zone" %}</label>
                 {{ form.time_zone }}
                 <label class="required marginTop">{% trans "Show time" %}</label>
-                {{ form.show_time }}
+                <div class="marginTop">{{ form.show_time }}</div>
             </form>
         </fieldset>
     </div>
