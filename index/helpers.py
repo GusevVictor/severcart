@@ -7,6 +7,7 @@ from .models import Numerator
 import logging
 logger = logging.getLogger('simp')
 
+
 def recursiveChildren(node, level=0):
     results = [{'id': node['id'], 'level': level, 'name': node['data']['name']}]
     if node.get('children', 0) and len(node.get('children')) > 0:
@@ -51,3 +52,10 @@ class LastNumber(object):
         self.m1.last_number = self.last_number
         self.m1.departament = self.departament
         self.m1.save()
+
+def str2int(v):
+    try:
+        v = int(v)
+    except:
+        v = 0
+    return v
