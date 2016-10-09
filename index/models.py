@@ -49,9 +49,12 @@ class FirmTonerRefill(models.Model):
     firm_contacts = models.TextField(_('Contacts'), null=True)
     firm_address = models.TextField(_('Address'), null=True)
     firm_comments = models.TextField(_('Comment'), null=True)
+    plus = models.IntegerField(null=True)
+    minus = models.IntegerField(null=True)
 
     def __str__(self):
         return self.firm_name
+
 
 STATUS = (
         (1, _('Full and in stock')),
@@ -76,6 +79,7 @@ class CartridgeItem(models.Model):
     filled_firm          = models.ForeignKey(FirmTonerRefill, null=True, on_delete=models.PROTECT,)
     comment              = models.TextField(_('Comment'), blank=True)
     delivery_doc         = models.IntegerField(db_index=True, null=True, default=0)
+    vote                 = models.BooleanField(default=False)  # используется для защиты от накрутки голосований качества заправки РМ
     node_order_by        = ['pk']
 
 class Numerator(models.Model):
