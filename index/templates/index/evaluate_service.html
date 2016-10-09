@@ -1,0 +1,33 @@
+{% extends "index/base.html" %}{% load i18n %}
+{% block title %}{% trans "Evaluate service" %}{% endblock %}
+{% block breadcrumbs %}<a href="/"><img src="{{ STATIC_URL }}img/home.png" /></a> / {% trans "Evaluate service" %}{% endblock %}
+{% block help_url %}
+{{ request.HOME_SITE }}/help/{{ request.LANGUAGE_CODE }}/evaluate_service/
+{% endblock %}
+{% block content %}
+{% if error %}
+<div class="row">
+    <div class="large-12 columns">
+        <h3>{{ msg }}</h3>
+    </div>
+</div>
+{% else %}
+<div class="row">
+    <div class="large-12 columns">
+        <h3>{% trans 'Please rate the quality of the contractor company' %}</h3>
+    </div>
+</div>
+<div class="row">
+    <div class="large-12 columns">
+        <p>{% trans 'Artist contractual obligations:' %} {{ firm }}</p>
+    </div>
+</div>
+<div class="row">
+    <div class="large-12 columns">
+        <a class="button alert big evaluate_service_bad" action="set_bad" cart_id="{{ cart_id }}" firm_id="{{firm_id}}">{% trans 'Bad' %}</a>
+        <a class="button success big evaluate_service_good" action="set_good" cart_id="{{ cart_id }}" firm_id="{{firm_id}}">{% trans 'Good' %}</a>
+        <a class="button big" href="{{ back }}">{% trans 'Cancel' %}</a>
+    </div>
+</div>
+{% endif %}
+{% endblock %}

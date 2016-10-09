@@ -627,6 +627,13 @@ a.button, input[type="submit"].button, button.button {
     font-size: 12px;
 }
 
+a.button.big {
+    width: 150px;
+    height: 150px;
+    line-height: 150px;
+    font-size: 26px;
+}
+
 a.button.block, input[type="submit"].button.block, button.button.block {   
     outline:0;
     padding: 0 10px;

@@ -49,8 +49,8 @@ class FirmTonerRefill(models.Model):
     firm_contacts = models.TextField(_('Contacts'), null=True)
     firm_address = models.TextField(_('Address'), null=True)
     firm_comments = models.TextField(_('Comment'), null=True)
-    plus = models.IntegerField(null=True)
-    minus = models.IntegerField(null=True)
+    #vote_plus = models.IntegerField(default=0)
+    #vote_minus = models.IntegerField(default=0)
 
     def __str__(self):
         return self.firm_name

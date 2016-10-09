@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-10-08 20:51+0500\n"
+"POT-Creation-Date: 2016-10-09 17:00+0500\n"
 "PO-Revision-Date: 2016-05-27 12:27+0500\n"
 "Last-Translator: \n"
 "Language-Team: severcart.org <sfcl@mail.ru>\n"
@@ -353,11 +353,11 @@ msgstr ""
 msgid "Send"
 msgstr ""
 
-#: .\conf\settings.py:63
+#: .\conf\settings.py:64
 msgid "Russian"
 msgstr ""
 
-#: .\conf\settings.py:64
+#: .\conf\settings.py:65
 msgid "English"
 msgstr ""
 
@@ -367,11 +367,11 @@ msgstr ""
 #: .\dhtml\templates\dhtml\logic.html:791
 #: .\dhtml\templates\dhtml\logic.html:876
 #: .\dhtml\templates\dhtml\logic.html:924
-#: .\dhtml\templates\dhtml\logic.html:1039
-#: .\dhtml\templates\dhtml\logic.html:1144
-#: .\dhtml\templates\dhtml\logic.html:1278
-#: .\dhtml\templates\dhtml\logic.html:1326
-#: .\dhtml\templates\dhtml\logic.html:1384
+#: .\dhtml\templates\dhtml\logic.html:1042
+#: .\dhtml\templates\dhtml\logic.html:1147
+#: .\dhtml\templates\dhtml\logic.html:1281
+#: .\dhtml\templates\dhtml\logic.html:1329
+#: .\dhtml\templates\dhtml\logic.html:1387
 msgid "<p>Server not available.</p>"
 msgstr ""
 
@@ -399,44 +399,44 @@ msgstr ""
 msgid "Are you sure you want to remove the counterparty?"
 msgstr ""
 
-#: .\dhtml\templates\dhtml\logic.html:1096
+#: .\dhtml\templates\dhtml\logic.html:1099
 msgid "Are you sure you want to delete a document?"
 msgstr ""
 
-#: .\dhtml\templates\dhtml\logic.html:1108
+#: .\dhtml\templates\dhtml\logic.html:1111
 msgid "Are you sure you want to delete the user?"
 msgstr ""
 
-#: .\dhtml\templates\dhtml\logic.html:1235
+#: .\dhtml\templates\dhtml\logic.html:1238
 msgid "Are you sure you want to delete?"
 msgstr ""
 
-#: .\dhtml\templates\dhtml\logic.html:1290
+#: .\dhtml\templates\dhtml\logic.html:1293
 msgid "Are you sure you want to delete city?"
 msgstr ""
 
-#: .\dhtml\templates\dhtml\logic.html:1396
+#: .\dhtml\templates\dhtml\logic.html:1399
 #: .\index\templates\index\base_menu.html:16
 msgid "Find by number"
 msgstr ""
 
-#: .\dhtml\templates\dhtml\logic.html:1665
+#: .\dhtml\templates\dhtml\logic.html:1668
 msgid "Are you sure you want to remove the storage room?"
 msgstr ""
 
-#: .\dhtml\templates\dhtml\logic.html:1726
+#: .\dhtml\templates\dhtml\logic.html:1729
 msgid "<p>Server error :(</p>"
 msgstr ""
 
-#: .\dhtml\templates\dhtml\logic.html:2117
+#: .\dhtml\templates\dhtml\logic.html:2120
 msgid "List move empty."
 msgstr ""
 
 #: .\docs\api\views.py:30 .\docs\api\views.py:78 .\docs\api\views.py:110
-#: .\docs\api\views.py:430 .\index\api\views.py:48 .\index\api\views.py:272
-#: .\index\api\views.py:344 .\index\api\views.py:374 .\index\api\views.py:539
-#: .\index\api\views.py:587 .\index\api\views.py:608 .\index\api\views.py:623
-#: .\index\api\views.py:764 .\reports\api\views.py:56
+#: .\docs\api\views.py:430 .\index\api\views.py:49 .\index\api\views.py:273
+#: .\index\api\views.py:345 .\index\api\views.py:375 .\index\api\views.py:540
+#: .\index\api\views.py:588 .\index\api\views.py:609 .\index\api\views.py:624
+#: .\index\api\views.py:765 .\reports\api\views.py:56
 #: .\storages\api\views.py:21 .\storages\api\views.py:59
 msgid "Only use POST requests!"
 msgstr ""
@@ -449,7 +449,7 @@ msgstr ""
 msgid "Name can not be removed, ie. other objects reference it."
 msgstr ""
 
-#: .\docs\api\views.py:54 .\docs\api\views.py:68 .\index\api\views.py:507
+#: .\docs\api\views.py:54 .\docs\api\views.py:68 .\index\api\views.py:508
 msgid "Name deleted successfully."
 msgstr ""
 
@@ -672,7 +672,7 @@ msgstr ""
 
 #: .\docs\forms\edit_name.py:10 .\docs\templates\docs\names_list.html.py:33
 #: .\index\models.py:20 .\index\models.py:29 .\index\models.py:51
-#: .\index\models.py:77 .\index\templates\index\empty.html.py:71
+#: .\index\models.py:80 .\index\templates\index\empty.html.py:71
 #: .\index\templates\index\use.html:50 .\search\templates\search\serp.html:17
 msgid "Comment"
 msgstr ""
@@ -814,6 +814,7 @@ msgid "Date"
 msgstr ""
 
 #: .\docs\templates\docs\delivery.html:64
+#: .\index\templates\index\evaluate_service.html:29
 msgid "Cancel"
 msgstr ""
 
@@ -1147,141 +1148,155 @@ msgstr ""
 msgid "Events"
 msgstr ""
 
-#: .\index\api\views.py:63
+#: .\index\api\views.py:64
 msgid "Firm not found"
 msgstr ""
 
-#: .\index\api\views.py:70
+#: .\index\api\views.py:71
 msgid "Firm deleted!"
 msgstr ""
 
-#: .\index\api\views.py:73
+#: .\index\api\views.py:74
 msgid "You can not delete, because have cartridges at a gas station."
 msgstr ""
 
-#: .\index\api\views.py:89 .\index\api\views.py:279
+#: .\index\api\views.py:90 .\index\api\views.py:280
 #: .\index\templates\index\ou_not_set.html:9 .\storages\views.py:43
 msgid "User not assosiate with organization unit!<br/>Error code: 101."
 msgstr ""
 
-#: .\index\api\views.py:119 .\index\api\views.py:309
+#: .\index\api\views.py:120 .\index\api\views.py:310
 msgid "Error in attrib \"data\" in input button add_item"
 msgstr ""
 
-#: .\index\api\views.py:145
+#: .\index\api\views.py:146
 msgid "An object with this number has already been registered."
 msgstr ""
 
-#: .\index\api\views.py:189
+#: .\index\api\views.py:190
 msgid "Cartridge successfully added."
 msgstr ""
 
-#: .\index\api\views.py:191
+#: .\index\api\views.py:192
 msgid "Cartridges successfully added."
 msgstr ""
 
-#: .\index\api\views.py:328
+#: .\index\api\views.py:329
 #, python-format
 msgid "Cartridge %(cart_number)s successfully added."
 msgstr ""
 
-#: .\index\api\views.py:364
+#: .\index\api\views.py:365
 msgid "Cartridges successfully moved."
 msgstr ""
 
-#: .\index\api\views.py:444
+#: .\index\api\views.py:445
 #, python-format
 msgid "Cartridges %(cart_nums)s successfully moved to firm."
 msgstr ""
 
-#: .\index\api\views.py:446
+#: .\index\api\views.py:447
 msgid "No transmission facilities"
 msgstr ""
 
-#: .\index\api\views.py:470
+#: .\index\api\views.py:471
 msgid "Session cleared"
 msgstr ""
 
-#: .\index\api\views.py:495
+#: .\index\api\views.py:496
 msgid "In demo remove nodes not allow."
 msgstr ""
 
-#: .\index\api\views.py:503
+#: .\index\api\views.py:504
 msgid ""
 "But it can not be removed because other objects reference it.<br/>Error "
 "code: 102"
 msgstr ""
 
-#: .\index\api\views.py:509
+#: .\index\api\views.py:510
 msgid "Names deleted successfully."
 msgstr ""
 
-#: .\index\api\views.py:531
+#: .\index\api\views.py:532
 msgid "Cartridjes deleted!"
 msgstr ""
 
-#: .\index\api\views.py:548
+#: .\index\api\views.py:549
 msgid "Error converting string numbers to int."
 msgstr ""
 
-#: .\index\api\views.py:559
+#: .\index\api\views.py:560
 msgid "This action type not implemented."
 msgstr ""
 
-#: .\index\api\views.py:578
+#: .\index\api\views.py:579
 msgid "Cartridges successfully transferred to basket."
 msgstr ""
 
-#: .\index\api\views.py:680
+#: .\index\api\views.py:681
 #, python-format
 msgid "Cartridges %(cart_list)s successfully transferred for use"
 msgstr ""
 
-#: .\index\api\views.py:803 .\index\api\views.py:877 .\index\api\views.py:1071
+#: .\index\api\views.py:804 .\index\api\views.py:878 .\index\api\views.py:1072
 msgid "Error: 101. Not set organization utint."
 msgstr ""
 
-#: .\index\api\views.py:820 .\index\api\views.py:893 .\index\api\views.py:1087
+#: .\index\api\views.py:821 .\index\api\views.py:894 .\index\api\views.py:1088
 #, python-format
 msgid "Consumables with the number %(cart_barcode)s was not found."
 msgstr ""
 
-#: .\index\api\views.py:826 .\index\api\views.py:1093
+#: .\index\api\views.py:827 .\index\api\views.py:1094
 msgid "The object is already in the lists on the move."
 msgstr ""
 
-#: .\index\api\views.py:843 .\index\api\views.py:1110
+#: .\index\api\views.py:844 .\index\api\views.py:1111
 #, python-format
 msgid ""
 "The object number %(cart_barcode)s is already present in the lists on the "
 "move."
 msgstr ""
 
-#: .\index\api\views.py:850 .\index\api\views.py:921 .\index\api\views.py:1117
+#: .\index\api\views.py:851 .\index\api\views.py:922 .\index\api\views.py:1118
 msgid "Consumable material is successfully prepared for transfer"
 msgstr ""
 
-#: .\index\api\views.py:859
+#: .\index\api\views.py:860
 #, python-format
 msgid ""
 "This consumable is in the state \"%(cart_status)s\". Are you sure you want "
 "to place in the lists transmitted?"
 msgstr ""
 
-#: .\index\api\views.py:945
+#: .\index\api\views.py:946
 msgid "The session key is not recognized."
 msgstr ""
 
-#: .\index\api\views.py:1048
+#: .\index\api\views.py:1049
 #, python-format
 msgid "Objects %(numbers)s moved successfully."
 msgstr ""
 
-#: .\index\api\views.py:1126
+#: .\index\api\views.py:1127
 #, python-format
 msgid ""
 "This consumable is in the state \"%(cart_status)s\". Return to the warehouse "
 "is impossible."
+msgstr ""
+
+#: .\index\api\views.py:1156 .\index\views.py:947
+#, python-format
+msgid ""
+"An object with number %(cart_num)s belong to a different organizational unit."
+msgstr ""
+
+#: .\index\api\views.py:1168
+msgid "Action not supported"
+msgstr ""
+
+#: .\index\api\views.py:1175
+msgid "Your score is accepted."
 msgstr ""
 
 #: .\index\forms\add_cartridge_name.py:18 .\index\forms\add_type.py:32
@@ -1357,7 +1372,7 @@ msgstr "Names cartridges"
 msgid "Firm object error."
 msgstr ""
 
-#: .\index\helpers.py:23
+#: .\index\helpers.py:24
 msgid "You are not authenticated."
 msgstr ""
 
@@ -1369,27 +1384,27 @@ msgstr ""
 msgid "Enter the name of the city"
 msgstr ""
 
-#: .\index\models.py:57
+#: .\index\models.py:60
 msgid "Full and in stock"
 msgstr ""
 
-#: .\index\models.py:58
+#: .\index\models.py:61
 msgid "In use"
 msgstr ""
 
-#: .\index\models.py:59
+#: .\index\models.py:62
 msgid "Empty and in stock"
 msgstr ""
 
-#: .\index\models.py:60 .\index\templates\index\base_menu.html.py:10
+#: .\index\models.py:63 .\index\templates\index\base_menu.html.py:10
 msgid "On restoration"
 msgstr ""
 
-#: .\index\models.py:61
+#: .\index\models.py:64
 msgid "Full and in basket"
 msgstr ""
 
-#: .\index\models.py:62
+#: .\index\models.py:65
 msgid "Empty and in basket"
 msgstr ""
 
@@ -1700,6 +1715,28 @@ msgstr ""
 msgid "in stock"
 msgstr ""
 
+#: .\index\templates\index\evaluate_service.html:2
+#: .\index\templates\index\evaluate_service.html:3
+#: .\index\templates\index\use.html:66
+msgid "Evaluate service"
+msgstr ""
+
+#: .\index\templates\index\evaluate_service.html:17
+msgid "Please rate the quality of the contractor company"
+msgstr ""
+
+#: .\index\templates\index\evaluate_service.html:22
+msgid "Artist contractual obligations:"
+msgstr ""
+
+#: .\index\templates\index\evaluate_service.html:27
+msgid "Bad"
+msgstr ""
+
+#: .\index\templates\index\evaluate_service.html:28
+msgid "Good"
+msgstr ""
+
 #: .\index\templates\index\events.html:15
 msgid "View all events"
 msgstr ""
@@ -1888,43 +1925,52 @@ msgstr ""
 msgid "Close"
 msgstr ""
 
-#: .\index\views.py:151
+#: .\index\views.py:152
 #, python-format
 msgid "%(cart_name)s already exists"
 msgstr ""
 
-#: .\index\views.py:155
+#: .\index\views.py:156
 #, python-format
 msgid "%(cart_name)s success added"
 msgstr ""
 
-#: .\index\views.py:339 .\index\views.py:351
+#: .\index\views.py:340 .\index\views.py:352
 #, python-format
 msgid "Organization unit %(org_name)s exist"
 msgstr ""
 
-#: .\index\views.py:344 .\index\views.py:356
+#: .\index\views.py:345 .\index\views.py:357
 #, python-format
 msgid "Organization unit %(org_name)s create successfuly."
 msgstr ""
 
-#: .\index\views.py:400
+#: .\index\views.py:401
 #, python-format
 msgid "%(cart_type)s success save"
 msgstr ""
 
-#: .\index\views.py:404
+#: .\index\views.py:405
 #, python-format
 msgid "New type %(cart_type)s success added"
 msgstr ""
 
-#: .\index\views.py:544
+#: .\index\views.py:545
 msgid "Select all"
 msgstr ""
 
-#: .\index\views.py:577
+#: .\index\views.py:578
 #, python-format
 msgid "Firm \"%(firm_name)s\" success added."
+msgstr ""
+
+#: .\index\views.py:927
+msgid "Rating is already installed."
+msgstr ""
+
+#: .\index\views.py:943
+#, python-format
+msgid "An object with number %(cart_num)s is not transmitted to the service."
 msgstr ""
 
 #: .\reports\api\views.py:63
