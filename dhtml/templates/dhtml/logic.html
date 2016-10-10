@@ -988,6 +988,9 @@ $( function(){
                     var doc_id =  mainSelect.find(":selected").attr('data');
                     window.location.href = '{% url "docs:delivery" %}' + '?show=' + doc_id;
                     break;
+                case 'evaluate_service':
+                    window.location.href = '{% url "index:evaluate_service" %}' + '?id=' + cart_id;
+                    break;
                 default:
 
             }
@@ -2322,5 +2325,41 @@ $( function(){
         });
 
     }
+
+    $('.evaluate_service_bad, .evaluate_service_good').click(function() {
+        // Ставим оценки обслуживающим организациям
+        var action = $(this).attr('action');
+        var firm_id = $(this).attr('firm_id');
+        var cart_id = $(this).attr('cart_id');
+        $.ajax({
+            method: 'POST',
+            url: '{% url "index:rate" %}',
+            data: {'action': action, 'firm_id': firm_id, 'cart_id': cart_id},
+            beforeSend: function( xhr, settings ){
+                $('.spinner').show();
+                csrftoken = getCookie('csrftoken');
+                if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
+                    xhr.setRequestHeader('X-CSRFToken', csrftoken);
+                }
+            },
+            dataType: 'json',
+            success: function( msg ) {
+                $('.spinner').hide();
+                if (msg.error == '0') {
+                    
+                }
+
+                if (msg.error == '1') {
+                    $('.success_msg').hide();
+                    $('.error_msg').show();
+                    $('.error_msg').html(msg.text);        
+                }
+                
+            },
+            error: function( msg ) {
+                console.log(msg);
+            },
+        });
+    });
 
 });

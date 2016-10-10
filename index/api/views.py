@@ -1,6 +1,7 @@
 # -*- coding:utf-8 -*-
 
 import json
+from django.shortcuts import get_object_or_404
 from django.db import transaction
 from django.db import models
 from django.utils import timezone
@@ -22,22 +23,22 @@ from index.models import ( City,
                            CartridgeItemName, 
                            FirmTonerRefill,
                            STATUS )
-from index.helpers import check_ajax_auth, LastNumber
+from index.helpers import check_ajax_auth, LastNumber, str2int
 from index.signals import ( sign_turf_cart, 
                             sign_add_full_to_stock, 
                             sign_tr_empty_cart_to_stock,
                             sign_tr_cart_to_basket, 
                             sign_add_empty_to_stock, 
                             sign_tr_cart_to_uses, 
-                            sign_tr_empty_cart_to_firm, ) 
+                            sign_tr_empty_cart_to_firm, )
 from index.forms.add_items import AddItems
 from index.forms.add_items_from_barcode import AddItemsFromBarCodeScanner
 from index.forms.tr_to_firm import TransfeToFirm
 from docs.models import SCDoc, RefillingCart
 
-
 import logging
 logger = logging.getLogger(__name__)
+
 
 @check_ajax_auth
 @is_admin
@@ -1127,3 +1128,51 @@ def add_object_to_basket_from_firm_to_stock(request):
         return JsonResponse(ansver)
     return JsonResponse(ansver)
 
+
+@require_POST
+@check_ajax_auth
+def rate(request):
+    """установка оценки обслуживающей организации, по конкретной единице картриджа.
+    """
+    ansver = dict()
+    action = request.POST.getlist('action')[0]
+    firm_id = request.POST.getlist('firm_id')[0]
+    cart_id = request.POST.getlist('cart_id')[0]
+    firm_id = str2int(firm_id)
+    cart_id = str2int(cart_id)
+
+    node = get_object_or_404(CartridgeItem, pk=cart_id)
+    firm = get_object_or_404(FirmTonerRefill, pk=firm_id)
+    # проверяем принадлежность перемещаемого РМ департаменту 
+    # пользователя.
+    firm.save()
+    return 
+    try:
+        root_ou   = request.user.departament
+        des       = root_ou.get_descendants()
+    except:
+        pass
+
+    if not(node.departament in des):
+        ansver['error'] = '1'
+        ansver['msg'] = _('An object with number %(cart_num)s belong to a different organizational unit.') % {'cart_num': node.cart_number}
+
+    if action == 'set_good':
+        rating = firm.vote_plus
+        rating += 1
+        firm.vote_plus = rating
+    elif action == 'set_bad':
+        rating = firm.vote_minus
+        rating -= 1
+        firm.vote_minus = rating
+    else:
+        ansver['error'] = '1'
+        ansver['msg'] = _('Action not supported')
+        return JsonResponse(ansver)
+
+    firm.save()
+    node.vote = True
+    node.save()
+    ansver['error'] = '0'
+    ansver['msg'] = _('Your score is accepted.')
+    return JsonResponse(ansver)

@@ -627,6 +627,13 @@ a.button, input[type="submit"].button, button.button {
     font-size: 12px;
 }
 
+a.button.big {
+    width: 150px;
+    height: 150px;
+    line-height: 150px;
+    font-size: 26px;
+}
+
 a.button.block, input[type="submit"].button.block, button.button.block {   
     outline:0;
     padding: 0 10px;
@@ -931,8 +938,12 @@ table.checkboxes th.first_checkbox {
     width:30px;
 }
 
-table.checkboxes th.cart_date {
+table.checkboxes th.cart_date.small {
     width:110px;
+}
+
+table.checkboxes th.cart_date.big {
+    width:140px;
 }
 
 table.checkboxes th.org_user {

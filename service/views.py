@@ -57,8 +57,12 @@ def general_settings(request):
             data_in_post = form.cleaned_data
             choice = data_in_post.get('choice','A4')
             print_qr_code = data_in_post.get('print_qr_code')
+            time_zone = data_in_post.get('time_zone')
+            show_time = data_in_post.get('show_time')
             conf.page_format = choice
             conf.print_bar_code = print_qr_code
+            conf.time_zone = time_zone
+            conf.show_time = show_time
             conf.commit()
             context['form'] = form
             messages.success(request, _('Settings success saved.'))
@@ -66,8 +70,11 @@ def general_settings(request):
             context['form'] = form
     else:
         print_qr_code = 1 if conf.print_bar_code else 2
+        show_time     = 1 if conf.show_time else 2
         form = StickFormat(initial={'choice': conf.page_format,
-                                    'print_qr_code': print_qr_code,
+                                    'print_qr_code': print_qr_code, # Внимание! Есть соблазнзаменить на self.print_qr_code
+                                    'time_zone': conf.time_zone,
+                                    'show_time': show_time,
                                     })
         context['form'] = form
     return render(request, 'service/general_settings.html', context)

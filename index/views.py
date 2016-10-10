@@ -16,7 +16,6 @@ from django.conf import settings
 from common.helpers import is_admin
 from common.cbv import CartridgesView
 from common.helpers import BreadcrumbsPath
-from .forms.add_cartridge_name import AddCartridgeName
 from .forms.add_items import AddItems
 from .forms.add_items_from_barcode import AddItemsFromBarCodeScanner
 from .forms.add_type import AddCartridgeType
@@ -31,6 +30,7 @@ from .models import OrganizationUnits
 from .models import City as CityM
 from .models import FirmTonerRefill
 from .models import CartridgeItemName
+from .helpers import str2int
 from events.models import Events
 from docs.models import SCDoc
 from storages.models import Storages
@@ -38,6 +38,7 @@ from .signals import sign_tr_filled_cart_to_stock
 
 import logging
 logger = logging.getLogger('simp')
+
 
 @login_required
 @never_cache
@@ -81,7 +82,7 @@ def dashboard(request):
     bld_date  = datetime.datetime(cur_date.year, 1, 1)
     use_year  = Events.objects.filter(departament=dept_id)
     use_year  = use_year.filter(event_type='TR')
-    use_year  = use_year.filter(date_time__gte=bld_date).count()    
+    use_year  = use_year.filter(date_time__gte=bld_date).count()
 
     context['use_day']   = use_day
     context['use_month'] = use_month
@@ -816,8 +817,9 @@ def from_firm_to_stock(request):
                 m1.filled_firm = None
                 m1.cart_status = 1
                 m1.cart_date_change = timezone.now()
+                m1.vote = False
                 m1.cart_number_refills = int(m1.cart_number_refills) + 1
-                m1.save(update_fields=['filled_firm', 'cart_status', 'cart_number_refills', 'cart_date_change'])
+                m1.save()
                 repair_actions = request.POST.getlist('cart_'+str(inx))
                 list_cplx.append((m1.id, str(m1.cart_itm_name), filled_firm, repair_actions, m1.cart_number))
             
@@ -838,10 +840,12 @@ def from_firm_to_stock(request):
                                                             'list_length': list_length, 
                                                             'back': back})
 
+
 def bad_browser(request):
     """Сообщение о необходимости обновить браузер.
     """
     return render(request, 'index/bad_browser.html')
+
 
 @login_required
 @never_cache
@@ -885,7 +889,7 @@ def favicon_ico(request):
     """
     import os
     icof = os.path.join(settings.BASE_DIR, 'static', 'img', 'favicon.ico')
-    
+
     if os.path.isfile(icof):
         with open(icof, 'rb') as fp:
             content = fp.read()
@@ -894,5 +898,52 @@ def favicon_ico(request):
 
     response = HttpResponse(content)
     response['Content-Type'] = 'image/x-icon'
-    return response    
+    return response
 
+
+@login_required
+@never_cache
+def evaluate_service(request):
+    """Оценить качество обслуживания контрагентом.
+    """
+    context = dict()
+    context['back'] = BreadcrumbsPath(request).before_page(request)
+    cart_id = request.GET.get('id', 0)
+    cart_id = str2int(cart_id)
+    try:
+        node = CartridgeItem.objects.get(pk=cart_id)
+    except CartridgeItem.DoesNotExist:
+        raise Http404
+    # проверяем принадлежность перемещаемого РМ департаменту
+    # пользователя.
+    try:
+        root_ou   = request.user.departament
+        des       = root_ou.get_descendants()
+    except:
+        pass
+
+    if  node.vote:
+        context['error'] = True
+        context['msg'] = _('Rating is already installed.')
+        
+    if node.departament in des:
+        obj_evs = Events.objects.filter(departament=request.user.departament.pk).filter(cart_number=node.cart_number)
+        obj_evs = obj_evs.filter(event_type='TF').order_by('-pk')
+        if obj_evs:
+            context['error'] = False
+            firm_name = obj_evs[0].event_firm
+            context['firm'] = firm_name
+            context['cart_id'] = node.pk
+            try:
+                context['firm_id'] = FirmTonerRefill.objects.get(firm_name=firm_name).pk
+            except:
+                context['firm_id'] = 0
+        else:
+            context['error'] = True
+            context['msg'] = _('An object with number %(cart_num)s is not transmitted to the service.') % {'cart_num': node.cart_number}
+
+    else:
+        context['error'] = True
+        context['msg'] = _('An object with number %(cart_num)s belong to a different organizational unit.') % {'cart_num': node.cart_number}
+
+    return render(request, 'index/evaluate_service.html', context)

@@ -21,6 +21,7 @@ from index.api.views import (   ajax_add_session_items,
                                 remove_session_item,
                                 move_objects_to_firm_with_barcode,
                                 add_object_to_basket_from_firm_to_stock,
+                                rate,
                             )
 from accounts.api.views import del_users
 
@@ -47,4 +48,5 @@ urlpatterns = [
     url('^remove_session_item/', remove_session_item, name='remove_session_item'),
     url('^move_objects_to_firm_with_barcode/', move_objects_to_firm_with_barcode, name='move_objects_to_firm_with_barcode'),
     url('^add_object_to_basket_from_firm_to_stock/', add_object_to_basket_from_firm_to_stock, name='add_object_to_basket_from_firm_to_stock'),
+    url('^rate/', rate, name='rate'),
 ]

@@ -23,6 +23,8 @@ class SevercartConfigs(object):
             self.print_bar_code = False
             self.print_name_obj = True
             self.print_name_ou  = True
+            self.time_zone      = 'Asia/Yekaterinburg'
+            self.show_time      = False
         else:
             # если таблица уже содержит данные, то инициализируем внутренние переменные
             self.smtp_server    = self.m1.smtp_server
@@ -36,6 +38,8 @@ class SevercartConfigs(object):
             self.print_bar_code = self.m1.print_bar_code
             self.print_name_obj = self.m1.print_name_obj
             self.print_name_ou  = self.m1.print_name_ou
+            self.time_zone      = self.m1.time_zone
+            self.show_time      = self.m1.show_time
 
     def commit(self):
         """Сохранение значений настроечных переменных в СУБД.
@@ -55,7 +59,9 @@ class SevercartConfigs(object):
                             page_format    = self.page_format,
                             print_bar_code = self.print_bar_code,
                             print_name_obj = self.print_name_obj,
-                            print_name_ou  = self.print_name_ou
+                            print_name_ou  = self.print_name_ou,
+                            time_zone      = self.m1.time_zone,
+                            show_time      = self.m1.show_time
                             )
             m1.save()
         else:
@@ -72,6 +78,8 @@ class SevercartConfigs(object):
             self.m1.print_bar_code = self.print_bar_code
             self.m1.print_name_obj = self.print_name_obj
             self.m1.print_name_ou  = self.print_name_ou
+            self.m1.time_zone      = self.time_zone
+            self.m1.show_time      = self.show_time
             self.m1.save()
 
 def send_email(reciver=None, title=None, text=None):
