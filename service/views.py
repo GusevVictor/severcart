@@ -45,7 +45,7 @@ def settings_mail(request):
 @never_cache
 @login_required
 @is_admin
-def stickers(request):
+def general_settings(request):
     """Вывод формы настройки отрисовки наклеек.
     """
     context = {}
@@ -70,4 +70,4 @@ def stickers(request):
                                     'print_qr_code': print_qr_code,
                                     })
         context['form'] = form
-    return render(request, 'service/stickers.html', context)
+    return render(request, 'service/general_settings.html', context)
