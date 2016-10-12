@@ -1284,3 +1284,11 @@ span.rating span.minus {
     color: #FF8000;
     font-weight: bold;
 }
+
+.spinner_star {
+    width:100%;
+    height: 150px;
+    background-color: #f3f3f3;
+    background: url(../img/big_spinner.gif) center center no-repeat;
+}
+

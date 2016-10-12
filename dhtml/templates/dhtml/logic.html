@@ -2336,7 +2336,8 @@ $( function(){
             url: '{% url "index:rate" %}',
             data: {'action': action, 'firm_id': firm_id, 'cart_id': cart_id},
             beforeSend: function( xhr, settings ){
-                $('.spinner').show();
+                $('.buttons_wrap').empty();
+                $('.buttons_wrap').addClass('spinner_star');
                 csrftoken = getCookie('csrftoken');
                 if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
                     xhr.setRequestHeader('X-CSRFToken', csrftoken);
@@ -2344,15 +2345,15 @@ $( function(){
             },
             dataType: 'json',
             success: function( msg ) {
-                $('.spinner').hide();
+                $('.buttons_wrap').removeClass('spinner_star');
                 if (msg.error == '0') {
-                    
+                    $('.buttons_wrap').html("<p class='success_msg' >" + msg.msg + '</p>');
+                    $('.success_msg').show();
                 }
 
                 if (msg.error == '1') {
-                    $('.success_msg').hide();
+                    $('.buttons_wrap').html("<p class='error_msg' >" + msg.msg + '</p>');
                     $('.error_msg').show();
-                    $('.error_msg').html(msg.text);        
                 }
                 
             },

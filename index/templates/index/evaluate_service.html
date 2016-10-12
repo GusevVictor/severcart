@@ -25,10 +25,15 @@
 </div>
 <div class="row">
     <div class="large-12 columns">
-        <a class="button alert big evaluate_service_bad" action="set_bad" cart_id="{{ cart_id }}" firm_id="{{firm_id}}">{% trans 'Bad' %}</a>
-        <a class="button success big evaluate_service_good" action="set_good" cart_id="{{ cart_id }}" firm_id="{{firm_id}}">{% trans 'Good' %}</a>
-        <a class="button big" href="{{ back }}">{% trans 'Cancel' %}</a>
+        <div class="buttons_wrap">
+            <a class="button alert big evaluate_service_bad" action="set_bad" cart_id="{{ cart_id }}" firm_id="{{firm_id}}">{% trans 'Bad' %}</a>
+            <a class="button success big evaluate_service_good" action="set_good" cart_id="{{ cart_id }}" firm_id="{{firm_id}}">{% trans 'Good' %}</a>
+            <a class="button big" href="{{ back }}">{% trans 'Cancel' %}</a> 
+        </div>
     </div>
+</div>
+<div class="row marginTop">
+    <div class="large-12 columns"><a class="button" href="{{ back }}">{% trans 'Back' %}</a></div>
 </div>
 {% endif %}
 {% endblock %}
