@@ -32,6 +32,7 @@
                     <th>{% trans "Contacts" %}</th>
                     <th>{% trans "Address" %}</th>
                     <th>{% trans "Comments" %}</th>
+                    <th class="rating">{% trans "Rating" %}</th>
                 </tr>
                 {% for itm in firms %}
                     <tr>
@@ -40,6 +41,7 @@
                         <td>{{ itm.firm_contacts }}</td>
                         <td>{{ itm.firm_city }}, {{ itm.firm_address }}</td>
                         <td>{{ itm.firm_comments }}</td>
+                        <td><span class="rating"><span class="plus">+</span> {{ itm.vote_plus }}</span> <span class="rating"><span class="minus">-</span> {{ itm.vote_minus }}</span></td>
                     </tr>
                 {% endfor %}
             </table>

@@ -1145,8 +1145,6 @@ def rate(request):
     firm = get_object_or_404(FirmTonerRefill, pk=firm_id)
     # проверяем принадлежность перемещаемого РМ департаменту 
     # пользователя.
-    firm.save()
-    return 
     try:
         root_ou   = request.user.departament
         des       = root_ou.get_descendants()
@@ -1163,7 +1161,7 @@ def rate(request):
         firm.vote_plus = rating
     elif action == 'set_bad':
         rating = firm.vote_minus
-        rating -= 1
+        rating += 1
         firm.vote_minus = rating
     else:
         ansver['error'] = '1'

@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-10-09 17:00+0500\n"
-"PO-Revision-Date: 2016-10-09 16:58+0500\n"
+"POT-Creation-Date: 2016-10-10 12:29+0500\n"
+"PO-Revision-Date: 2016-10-10 14:39+0500\n"
 "Last-Translator: \n"
 "Language-Team: severcart.org <sfcl@mail.ru>\n"
 "Language: ru\n"
@@ -814,7 +814,7 @@ msgid "Date"
 msgstr "Дата"
 
 #: .\docs\templates\docs\delivery.html:64
-#: .\index\templates\index\evaluate_service.html:29
+#: .\index\templates\index\evaluate_service.html:30
 msgid "Cancel"
 msgstr "Отменить"
 
@@ -1307,7 +1307,7 @@ msgstr ""
 "Расходный материал обладает статусом – \"%(cart_status)s\". Возврат на склад "
 "невозможен."
 
-#: .\index\api\views.py:1156 .\index\views.py:947
+#: .\index\api\views.py:1156 .\index\views.py:949
 #, python-format
 msgid ""
 "An object with number %(cart_num)s belong to a different organizational unit."
@@ -1433,11 +1433,11 @@ msgid "Empty and in basket"
 msgstr "Пустые и в корзине"
 
 #: .\index\templates\index\404.html:2 .\index\templates\index\404.html.py:3
-#: .\index\templates\index\404.html:10 .\index\templates\index\500.html.py:3
+#: .\index\templates\index\404.html:10 .\index\templates\index\500.html:3
 msgid "Error 404"
 msgstr "Ошибка 404! Страница не найдена."
 
-#: .\index\templates\index\500.html:2 .\index\templates\index\500.html.py:10
+#: .\index\templates\index\500.html:2 .\index\templates\index\500.html:10
 msgid "Error 500"
 msgstr "Ошибка на стороне сервера!"
 
@@ -1753,11 +1753,15 @@ msgstr "Оцените качество работы фирмы контраге
 msgid "Artist contractual obligations:"
 msgstr "Исполнитель обязательств по контракту: "
 
-#: .\index\templates\index\evaluate_service.html:27
+#: .\index\templates\index\evaluate_service.html:23
+msgid "Number consumables:"
+msgstr "Номер расходного материала:"
+
+#: .\index\templates\index\evaluate_service.html:28
 msgid "Bad"
 msgstr "Плохо"
 
-#: .\index\templates\index\evaluate_service.html:28
+#: .\index\templates\index\evaluate_service.html:29
 msgid "Good"
 msgstr "Хорошо"
 
@@ -1839,7 +1843,11 @@ msgstr "Добавить контрагента"
 msgid "Delete firm"
 msgstr "Удалить контрагента"
 
-#: .\index\templates\index\toner_refill.html:50
+#: .\index\templates\index\toner_refill.html:35
+msgid "Rating"
+msgstr "Рейтинг"
+
+#: .\index\templates\index\toner_refill.html:52
 msgid "Select city:"
 msgstr "Выбор города:"
 
@@ -1989,10 +1997,10 @@ msgid "Firm \"%(firm_name)s\" success added."
 msgstr "Контрагент «%(firm_name)s» успешно добавлен."
 
 #: .\index\views.py:927
-msgid "Rating is already installed."
-msgstr "Рейтинг уже установлен."
+msgid "Work has already estimated."
+msgstr "Работа уже оценена."
 
-#: .\index\views.py:943
+#: .\index\views.py:945
 #, python-format
 msgid "An object with number %(cart_num)s is not transmitted to the service."
 msgstr "Объект с номером %(cart_num)s ещё не передавался на обслуживание."

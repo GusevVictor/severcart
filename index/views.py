@@ -519,7 +519,7 @@ class Empty(CartridgesView):
 @login_required
 @never_cache
 def toner_refill(request):
-    """
+    """Список контрагентов, которым производим передачу РМ на заправку.
     """
     BreadcrumbsPath(request)
     city_id = request.GET.get('city', '')
@@ -924,7 +924,8 @@ def evaluate_service(request):
 
     if  node.vote:
         context['error'] = True
-        context['msg'] = _('Rating is already installed.')
+        context['msg'] = _('Work has already estimated.')
+        return render(request, 'index/evaluate_service.html', context)
         
     if node.departament in des:
         obj_evs = Events.objects.filter(departament=request.user.departament.pk).filter(cart_number=node.cart_number)
@@ -934,6 +935,7 @@ def evaluate_service(request):
             firm_name = obj_evs[0].event_firm
             context['firm'] = firm_name
             context['cart_id'] = node.pk
+            context['cart_number'] = node.cart_number
             try:
                 context['firm_id'] = FirmTonerRefill.objects.get(firm_name=firm_name).pk
             except:
