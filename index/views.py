@@ -8,6 +8,7 @@ from django.core.urlresolvers import reverse
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
+from django.db import transaction
 from django.db.models import Q
 from django.template.loader import render_to_string
 from django.utils.translation import ugettext_lazy as _
@@ -808,31 +809,32 @@ def from_firm_to_stock(request):
 
     if request.method == 'POST':
         list_cplx = []
-        for inx in tmp:
-            m1 = CartridgeItem.objects.get(pk=inx)
-            # проверяем принадлежность перемещаемого РМ департаменту 
-            # пользователя.
-            if m1.departament == request.user.departament:
-                filled_firm = str(m1.filled_firm)
-                m1.filled_firm = None
-                m1.cart_status = 1
-                m1.cart_date_change = timezone.now()
-                m1.vote = False
-                m1.cart_number_refills = int(m1.cart_number_refills) + 1
-                m1.save()
-                repair_actions = request.POST.getlist('cart_'+str(inx))
-                list_cplx.append((m1.id, str(m1.cart_itm_name), filled_firm, repair_actions, m1.cart_number))
-            
-            if list_cplx:
-                sign_tr_filled_cart_to_stock.send(sender=None, list_cplx=list_cplx, request=request)
+        with transaction.atomic():
+            for inx in tmp:
+                m1 = CartridgeItem.objects.get(pk=inx)
+                # проверяем принадлежность перемещаемого РМ департаменту 
+                # пользователя.
+                if m1.departament == request.user.departament:
+                    filled_firm = str(m1.filled_firm)
+                    m1.filled_firm = None
+                    m1.cart_status = 1
+                    m1.cart_date_change = timezone.now()
+                    m1.vote = False
+                    m1.cart_number_refills = int(m1.cart_number_refills) + 1
+                    m1.save()
+                    repair_actions = request.POST.getlist('cart_'+str(inx))
+                    list_cplx.append((m1.id, str(m1.cart_itm_name), filled_firm, repair_actions, m1.cart_number))
+                
+        if list_cplx:
+            sign_tr_filled_cart_to_stock.send(sender=None, list_cplx=list_cplx, request=request)
 
-            # очищаем сессионную переменную 'basket_to_transfer_stock'
-            try:
-                request.session.get('basket_to_transfer_stock', False)
-            except:
-                request.session['basket_to_transfer_stock'] = None
-            else:
-                request.session['basket_to_transfer_stock'] = None
+        # очищаем сессионную переменную 'basket_to_transfer_stock'
+        try:
+            request.session.get('basket_to_transfer_stock', False)
+        except:
+            request.session['basket_to_transfer_stock'] = None
+        else:
+            request.session['basket_to_transfer_stock'] = None
 
         return HttpResponseRedirect(reverse('index:at_work'))
     return render(request, 'index/from_firm_to_stock.html', {'checked_cartr': checked_cartr, 
