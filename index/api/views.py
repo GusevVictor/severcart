@@ -628,7 +628,6 @@ def move_to_use(request):
     moved = request.POST.getlist('moved[]')
     id_ou = data_in_post['id_ou']
     installed = request.POST.getlist('installed[]')
-    # производим фильтрацию полученных данных
     try:
         installed = [int(i) for i in installed]
         moved     = [int(i) for i in moved]
@@ -641,6 +640,11 @@ def move_to_use(request):
     get = lambda node_id: OrganizationUnits.objects.get(pk=node_id)
     list_cplx = list()
     show_numbers = list() # используется для информационных сообщений
+    try:
+        root_ou   = request.user.departament
+        des       = root_ou.get_descendants()
+    except:
+        pass
     for inx in moved:
         m1 = CartridgeItem.objects.get(pk=inx)
         # проверяем принадлежность перемещаемого РМ департаменту 
@@ -656,14 +660,14 @@ def move_to_use(request):
         if list_cplx:
             sign_tr_cart_to_uses.send(sender=None, list_cplx=list_cplx, request=request, org=str(get(id_ou)))
 
-    list_cplx = [] 
+    list_cplx = []
     if  installed:
         # если выбрано возврат РМ от пользователя обратно на склад
         for inx in installed:
             # проверяем принадлежность перемещаемого РМ департаменту 
             # пользователя.
-            if m1.departament == request.user.departament:
-                m1 = CartridgeItem.objects.get(pk=inx)
+            m1 = CartridgeItem.objects.get(pk=inx)
+            if m1.departament in des:
                 m1.cart_status = 3     # пустой объект на складе
                 tmp_dept = m1.departament
                 m1.departament = request.user.departament
@@ -671,8 +675,8 @@ def move_to_use(request):
                 m1.save()
                 list_cplx.append((m1.id, str(m1.cart_itm_name), str(tmp_dept), m1.cart_number))
 
-            if list_cplx:
-                sign_tr_empty_cart_to_stock.send(sender=None, list_cplx=list_cplx, request=request)
+        if list_cplx:
+            sign_tr_empty_cart_to_stock.send(sender=None, list_cplx=list_cplx, request=request)
    
     ansver['error'] = '0'
     ansver['url']   = reverse('index:stock')
@@ -681,6 +685,7 @@ def move_to_use(request):
     msg = _('Cartridges %(cart_list)s successfully transferred for use') % {'cart_list': show_numbers}
     messages.success(request, msg)
     return JsonResponse(ansver)
+
 
 @check_ajax_auth
 def view_events(request):

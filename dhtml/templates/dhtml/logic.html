@@ -1570,7 +1570,9 @@ $( function(){
         var id_ou = $('.select_ou').children(':selected').attr('value'); 
         var installed = [];
         $('.check_use_cartridge input:checked').each(function() {
-            installed.push( $(this).attr('value') );
+            if ($(this).attr('value')) {
+                installed.push( $(this).attr('value') );
+            }
         });
         if (!$('.move_to_use').hasClass('block')) {
             $.ajax({
@@ -1589,7 +1591,6 @@ $( function(){
                     if (msg.error == '0') {
                         window.location.href = msg.url;
                     }
-                    
                     
 
                 },
@@ -2364,3 +2365,24 @@ $( function(){
     });
 
 });
+
+$(document).on('click', '.check_uncheck_all', function() {
+    // используется во вью transfe_for_use, при динамической загрузке данных аяксом после того 
+    // DOM дерево будет полностью загружено.
+    var ckeck_box = false;
+    if(this.checked) {
+        ckeck_box = true;
+    } else {
+        ckeck_box = false;
+    }
+
+    $('input.check_moved_items').each(function() {
+        if (ckeck_box) {
+             $(this).prop('checked', true);            
+        } else {
+             $(this).prop('checked', false);
+        }
+    });
+    
+});
+
