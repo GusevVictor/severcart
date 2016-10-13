@@ -646,35 +646,37 @@ def move_to_use(request):
         des       = root_ou.get_descendants()
     except:
         pass
-    for inx in moved:
-        m1 = CartridgeItem.objects.get(pk=inx)
-        # проверяем принадлежность перемещаемого РМ департаменту 
-        # пользователя.
-        if m1.departament == request.user.departament:
-            m1.cart_status = 2 # объект находится в пользовании
-            m1.departament = get(id_ou)
-            m1.cart_date_change = timezone.now()
-            show_numbers.append(m1.cart_number)
-            m1.save()
-            list_cplx.append((m1.id, str(m1.cart_itm_name), m1.cart_number))
+    with transaction.atomic():
+        for inx in moved:
+            m1 = CartridgeItem.objects.get(pk=inx)
+            # проверяем принадлежность перемещаемого РМ департаменту 
+            # пользователя.
+            if m1.departament == request.user.departament:
+                m1.cart_status = 2 # объект находится в пользовании
+                m1.departament = get(id_ou)
+                m1.cart_date_change = timezone.now()
+                show_numbers.append(m1.cart_number)
+                m1.save()
+                list_cplx.append((m1.id, str(m1.cart_itm_name), m1.cart_number))
         
-        if list_cplx:
-            sign_tr_cart_to_uses.send(sender=None, list_cplx=list_cplx, request=request, org=str(get(id_ou)))
+    if list_cplx:
+        sign_tr_cart_to_uses.send(sender=None, list_cplx=list_cplx, request=request, org=str(get(id_ou)))
 
     list_cplx = []
     if  installed:
         # если выбрано возврат РМ от пользователя обратно на склад
-        for inx in installed:
-            # проверяем принадлежность перемещаемого РМ департаменту 
-            # пользователя.
-            m1 = CartridgeItem.objects.get(pk=inx)
-            if m1.departament in des:
-                m1.cart_status = 3     # пустой объект на складе
-                tmp_dept = m1.departament
-                m1.departament = request.user.departament
-                m1.cart_date_change = timezone.now()
-                m1.save()
-                list_cplx.append((m1.id, str(m1.cart_itm_name), str(tmp_dept), m1.cart_number))
+        with transaction.atomic():
+            for inx in installed:
+                # проверяем принадлежность перемещаемого РМ департаменту 
+                # пользователя.
+                m1 = CartridgeItem.objects.get(pk=inx)
+                if m1.departament in des:
+                    m1.cart_status = 3     # пустой объект на складе
+                    tmp_dept = m1.departament
+                    m1.departament = request.user.departament
+                    m1.cart_date_change = timezone.now()
+                    m1.save()
+                    list_cplx.append((m1.id, str(m1.cart_itm_name), str(tmp_dept), m1.cart_number))
 
         if list_cplx:
             sign_tr_empty_cart_to_stock.send(sender=None, list_cplx=list_cplx, request=request)
