@@ -347,20 +347,21 @@ def transfer_to_stock(request):
     checked_cartr = request.POST.getlist('selected[]')
     list_cplx = [] 
     ansver = dict()
-    for inx in checked_cartr:
-        m1 = CartridgeItem.objects.get(pk=inx)
-        # проверяем принадлежность перемещаемого РМ департаменту 
-        # пользователя.
-        if m1.departament in request.user.departament.get_descendants():
-            m1.cart_status = 3     # пустой объект на складе
-            tmp_dept = m1.departament
-            m1.departament = request.user.departament
-            m1.cart_date_change = timezone.now()
-            m1.save()
-            list_cplx.append((m1.id, str(m1.cart_itm_name), str(tmp_dept), m1.cart_number))
+    with transaction.atomic():
+        for inx in checked_cartr:
+            m1 = CartridgeItem.objects.get(pk=inx)
+            # проверяем принадлежность перемещаемого РМ департаменту 
+            # пользователя.
+            if m1.departament in request.user.departament.get_descendants():
+                m1.cart_status = 3     # пустой объект на складе
+                tmp_dept = m1.departament
+                m1.departament = request.user.departament
+                m1.cart_date_change = timezone.now()
+                m1.save()
+                list_cplx.append((m1.id, str(m1.cart_itm_name), str(tmp_dept), m1.cart_number))
 
-        if list_cplx:
-            sign_tr_empty_cart_to_stock.send(sender=None, list_cplx=list_cplx, request=request)
+    if list_cplx:
+        sign_tr_empty_cart_to_stock.send(sender=None, list_cplx=list_cplx, request=request)
     ansver['error'] = '0'
     ansver['text']   = _('Cartridges successfully moved.')
     return JsonResponse(ansver, safe=False)
