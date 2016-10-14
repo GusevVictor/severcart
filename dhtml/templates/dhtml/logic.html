@@ -347,7 +347,7 @@ $( function(){
         var cart_type   = $(this).attr('data'); 
         var cart_number = $('#id_manualNumber').val();
 
-        var tumbler = $('.cmn-toggle').is(':checked');
+        var tumbler = $('.cmn-toggle-1').is(':checked');
 
         if (tumbler && !cart_number) {
             $('.cart_number_error').show();
@@ -2155,9 +2155,9 @@ $( function(){
 
     });
 
-    $('.cmn-toggle').click( function() {
+    $('.cmn-toggle-1').click( function() {
         /* переключатель для ручного ввода номеров РМ */
-        if($('.cmn-toggle').is(':checked')) {
+        if($('.cmn-toggle-1').is(':checked')) {
             $('.wrapper-manual-number').show('slow');
             $('.wrapper-counter-items').hide('slow');
             $('#id_manualNumber').focus();
@@ -2171,6 +2171,31 @@ $( function(){
             $('.wrapper-counter-items').show('slow');
             $('#id_filter_ca').focus();
             $('#id_cartCount').val(0);
+        }
+        // очищаем и прячем диагностические сообщения
+        $('.success_msg').html('');
+        $('.error_msg').html('');
+        $('.success_msg').hide();
+        $('.error_msg').hide();
+
+    });
+
+    $('.cmn-toggle-2').click( function() {
+        /* переключатель для ручного ввода номеров РМ */
+        if($('.cmn-toggle-2').is(':checked')) {
+            $('.wrapper-manual-datetime').show('slow');
+            $('#id_date').focus();
+            $('#id_date').val(1);
+            $('#id_time').val(1);
+            // On
+
+        } else {
+            // Off
+            $('.wrapper-manual-datetime').hide('slow');
+            
+            $('#id_filter_ca').focus();
+            $('#id_date').val(0);
+            $('#id_time').val(0);
         }
         // очищаем и прячем диагностические сообщения
         $('.success_msg').html('');

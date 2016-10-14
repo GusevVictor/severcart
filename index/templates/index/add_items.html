@@ -45,6 +45,20 @@
                     </div>
                 </div>
                 
+                <div class="row">
+                    <div  class="marginTop wrapper-manual-datetime">
+                        <div class="large-6 medium-6 columns">
+                            <label for="id_date" class="required">{% trans "Date added" %}</label>
+                            {{ form.date }}
+                        </div>
+                        <div class="large-6 medium-6 columns">
+                            <label for="id_time" class="required">{% trans "Time added" %}</label>
+                            {{ form.time }}
+                            <!-- <input class="inline right" id="id_time" name="id_time" type="text"> -->
+                        </div>
+                    </div>
+                </div>
+
                 <label class="required marginTop" for="{{ form.storages.id_for_label }}">{% trans "Storage" %}</label>
                 <div class="input_row">
                     {{ form.storages }} <a class="dj_button add" href="{% url 'storages:add_s' %}"></a>
@@ -57,7 +71,7 @@
                 </div>
 
                 <div class="row">
-                    <div class="small-6 columns">
+                    <div class="small-4 columns">
                         <div class="wrapper-counter-items">
                             <label class='required marginTop' for="{{ form.cartCount.id_for_label }}">{% trans "Amount items" %}</label>
                             <div class="input_row">
@@ -66,16 +80,21 @@
                             <div class="form_error_text cart_count_error">{% trans "The field must be greater than zero" %}</div>
                         </div>
                     </div>
-                    <div class="small-6 columns">
+                    <div class="small-4 columns">
                         <label class='marginTop'>{% trans "Manual entry numbers" %}</label>
                         <div class="myswitch">
-                            <input id="cmn-toggle-1" class="cmn-toggle cmn-toggle-round" type="checkbox">
+                            <input id="cmn-toggle-1" class="cmn-toggle-1 cmn-toggle cmn-toggle-round" type="checkbox">
                             <label for="cmn-toggle-1"></label>
                         </div>
-
+                    </div>
+                    <div class="small-4 columns">
+                        <label class='marginTop'>{% trans "Manual date setting" %}</label>
+                        <div class="myswitch">
+                            <input id="cmn-toggle-2" class="cmn-toggle-2 cmn-toggle cmn-toggle-round" type="checkbox">
+                            <label for="cmn-toggle-2"></label>
+                        </div>
                     </div>
                 </div>
-                
                 
                 <div class="marginTop"></div>
                 <div class="marginTop">

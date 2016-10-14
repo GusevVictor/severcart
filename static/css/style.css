@@ -1260,6 +1260,10 @@ input.cmn-toggle-round:checked + label:after {
     display: none;
 }
 
+.wrapper-manual-datetime {
+    display: none;
+}
+
 .wrapper-counter-items {
     padding: 0;
     margin: 0;

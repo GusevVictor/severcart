@@ -25,6 +25,9 @@ class AddItems(forms.Form):
                                 )
 
 
+    date = forms.CharField(required=False, max_length=64)
+    time = forms.CharField(required=False, max_length=64)
+
     required_css_class = 'required'
 
     def clean_cartName(self):
