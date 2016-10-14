@@ -9,7 +9,7 @@ from storages.models import Storages
 
 
 TIME = (
-    ('', ''),
+    (22, '11:00'),
     (0, '00:00'),
     (1, '00:30'),
     (2, '01:00'),
@@ -32,7 +32,6 @@ TIME = (
     (19, '09:30'),
     (20, '10:00'),
     (21, '10:30'),
-    (22, '11:00'),
     (23, '11:30'),
     (24, '12:00'),
     (25, '12:30'),
@@ -142,7 +141,7 @@ class AddItems(forms.Form):
         for times in TIME:
             if times[0] == time_digit:
                 time = times[2].split(':')
-                time = {'hours': time[0], 'minutes': time[1], 'seconds': 0}
+                time = {'hours': int(time[0]), 'minutes': int(time[1]), 'seconds': 0}
                 break
 
         return time

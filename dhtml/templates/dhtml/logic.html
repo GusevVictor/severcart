@@ -347,12 +347,25 @@ $( function(){
         var cart_type   = $(this).attr('data'); 
         var cart_number = $('#id_manualNumber').val();
 
+        var set_date = $('#id_date').val();
+        var set_time = $('#id_time option:selected').val();
+
+        console.log('set_date=', set_date, 'set_time=', set_time);
+
         var tumbler = $('.cmn-toggle-1').is(':checked');
+
+        var tumbler_2 = $('.cmn-toggle-2').is(':checked');
 
         if (tumbler && !cart_number) {
             $('.cart_number_error').show();
         } else {
             $('.cart_number_error').hide();
+        }
+
+        if (tumbler_2 && !set_time){
+            $('.time_error').show();
+        } else {
+            $('.time_error').hide();
         }
 
         if (!cart_name) {
