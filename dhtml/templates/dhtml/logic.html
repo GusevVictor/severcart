@@ -2181,12 +2181,10 @@ $( function(){
     });
 
     $('.cmn-toggle-2').click( function() {
-        /* переключатель для ручного ввода номеров РМ */
+        /* переключатель для ручного ввода даты РМ */
         if($('.cmn-toggle-2').is(':checked')) {
             $('.wrapper-manual-datetime').show('slow');
             $('#id_date').focus();
-            $('#id_date').val(1);
-            $('#id_time').val(1);
             // On
 
         } else {
@@ -2194,7 +2192,15 @@ $( function(){
             $('.wrapper-manual-datetime').hide('slow');
             
             $('#id_filter_ca').focus();
-            $('#id_date').val(0);
+            var now = new Date();
+            var cmonth = now.getMonth() + 1;
+            if (cmonth < 10) {
+                var prepare_str = now.getDate() + '/0' + cmonth + '/' + now.getFullYear();
+            } else {
+                var prepare_str = now.getDate() + '/' + cmonth + '/' + now.getFullYear();
+            }
+            
+            $('#id_date').val(prepare_str);
             $('#id_time').val(0);
         }
         // очищаем и прячем диагностические сообщения

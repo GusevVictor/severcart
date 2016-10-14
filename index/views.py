@@ -171,10 +171,14 @@ def add_cartridge_item(request):
         return render(request, 'index/ou_not_set.html', dict())
 
     back = BreadcrumbsPath(request).before_page(request)
+    current_day = str(timezone.now().day) +'/' + str(timezone.now().month) +'/' + str(timezone.now().year)
     form_obj = AddItems()
+    
+    form_obj.fields['date'].initial = current_day
     # отфильтровываем и показываем только договора поставки
     form_obj.fields['doc'].queryset = SCDoc.objects.filter(departament=request.user.departament).filter(doc_type=1)
     form_obj.fields['storages'].queryset = Storages.objects.filter(departament=request.user.departament)
+    
     # выбор склада по умолчанию в выбранной организации
     default_sklad = Storages.objects.filter(departament=request.user.departament).filter(default=True)
     try:
