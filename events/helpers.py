@@ -1,7 +1,11 @@
 # -*- coding:utf-8 -*-
 
+from datetime import datetime, tzinfo
 from django.utils.translation import ugettext as _
-from datetime import timedelta
+import pytz
+from django.utils import timezone
+from service.helpers import SevercartConfigs
+
 
 def date_to_str(date_dict):
     """Преобразует словарь содержащий компоненты дат в строку.
@@ -23,12 +27,65 @@ def date_to_str(date_dict):
         return '/'.join([ month, day, year ])
 
 
+# HACK: datetime is an old-style class, create a new-style equivalent
+# so we can define additional attributes.
+class datetimeobject(datetime, object):
+    pass
+
+
+def do_timezone(value, arg):
+    """
+    Конвертрирует объект value класса datetime в локальное время, заданной временной зоны.
+    Converts a datetime to local time in a given time zone.
+
+
+    Второй аргумент является строкой формата 'Asia/Yekaterinburg'
+    """
+
+    arg = pytz.timezone(arg)
+    #if not isinstance(value, type(datetime)):
+    #    print('isinstance!')
+    #    return ''
+
+    # Obtain a timezone-aware datetime
+    try:
+        if timezone.is_naive(value):
+            default_timezone = timezone.get_default_timezone()
+            value = timezone.make_aware(value, default_timezone)
+    # Filters must never raise exceptions, and pytz' exceptions inherit
+    # Exception directly, not a specific subclass. So catch everything.
+    except Exception:
+        return ''
+
+    # Obtain a tzinfo instance
+    if isinstance(arg, tzinfo):
+        tz = arg
+    elif isinstance(arg, six.string_types) and pytz is not None:
+        try:
+            tz = pytz.timezone(arg)
+        except pytz.UnknownTimeZoneError:
+            return ''
+    else:
+        return ''
+
+    result = timezone.localtime(value, tz)
+
+    # HACK: the convert_to_local_time flag will prevent
+    #       automatic conversion of the value to local time.
+    result = datetimeobject(result.year, result.month, result.day,
+                            result.hour, result.minute, result.second,
+                            result.microsecond, result.tzinfo)
+    result.convert_to_local_time = False
+    return result
+
+
 def events_decoder(qso, time_zone_offset, simple=True):
     """Функция докодер симолических мнемоник в человекочитаемый формат. 
         Единственный обязательный аргумент на входе - список объектов QuerySet
     """
     frdly_es = []
-
+    conf = SevercartConfigs()
+    current_tz = pytz.timezone(conf.time_zone)
     for entry in qso:
         if entry.event_type == 'AD':
             entry_obj = {}
@@ -39,7 +96,8 @@ def events_decoder(qso, time_zone_offset, simple=True):
                 text_com = _('№ %(cart_number)s (%(cart_type)s) added user %(user_name)s.') % {'cart_number': entry.cart_number, 
                                                                                                 'cart_type': entry.cart_type, 
                                                                                                 'user_name': entry.event_user}
-            entry_obj['data_env'] = data_env + timedelta(hours=time_zone_offset)
+            #entry_obj['data_env'] = data_env + timedelta(hours=time_zone_offset)
+            entry_obj['data_env'] = do_timezone(data_env, conf.time_zone)
             entry_obj['text_com'] = text_com
             frdly_es.append(entry_obj)
 
@@ -52,7 +110,7 @@ def events_decoder(qso, time_zone_offset, simple=True):
                 text_com = _('Added empty cartridge № %(cart_number)s (%(cart_type)s) user %(user_name)s.') % {'cart_number': entry.cart_number, 
                                                                                                 'cart_type': entry.cart_type, 
                                                                                                 'user_name': entry.event_user}
-            entry_obj['data_env'] = data_env + timedelta(hours=time_zone_offset)
+            entry_obj['data_env'] = do_timezone(data_env, conf.time_zone)
             entry_obj['text_com'] = text_com
             frdly_es.append(entry_obj)
 
@@ -66,7 +124,7 @@ def events_decoder(qso, time_zone_offset, simple=True):
                                                                                     'cart_type': entry.cart_type, 
                                                                                     'event_org': entry.event_org,
                                                                                     'event_user': entry.event_user }
-            entry_obj['data_env'] = data_env + timedelta(hours=time_zone_offset)
+            entry_obj['data_env'] = do_timezone(data_env, conf.time_zone)
             entry_obj['text_com'] = text_com
             frdly_es.append(entry_obj)
 
@@ -82,7 +140,7 @@ def events_decoder(qso, time_zone_offset, simple=True):
                                                                             'cart_type': entry.cart_type, 
                                                                             'event_firm': entry.event_firm,
                                                                             'event_user': entry.event_user }
-            entry_obj['data_env'] = data_env + timedelta(hours=time_zone_offset)
+            entry_obj['data_env'] = do_timezone(data_env, conf.time_zone)
             entry_obj['text_com'] = text_com
             frdly_es.append(entry_obj)
 
@@ -109,7 +167,7 @@ def events_decoder(qso, time_zone_offset, simple=True):
                                                                         'event_user': entry.event_user }
             text_com += _('<br/>The following work: ')
             text_com += action_text 
-            entry_obj['data_env'] = data_env + timedelta(hours=time_zone_offset)
+            entry_obj['data_env'] = do_timezone(data_env, conf.time_zone)
             entry_obj['text_com'] = text_com
             frdly_es.append(entry_obj)
 
@@ -123,7 +181,7 @@ def events_decoder(qso, time_zone_offset, simple=True):
                                                                                 'cart_number': entry.cart_number, 
                                                                                 'cart_type': entry.cart_type, 
                                                                                 'event_user': entry.event_user, }
-            entry_obj['data_env'] = data_env + timedelta(hours=time_zone_offset)
+            entry_obj['data_env'] = do_timezone(data_env, conf.time_zone)
             entry_obj['text_com'] = text_com
             frdly_es.append(entry_obj)
 
@@ -137,7 +195,7 @@ def events_decoder(qso, time_zone_offset, simple=True):
                                                                     'cart_number': entry.cart_number, 
                                                                     'cart_type': entry.cart_type, 
                                                                     'event_user': entry.event_user, }
-            entry_obj['data_env'] = data_env + timedelta(hours=time_zone_offset)
+            entry_obj['data_env'] = do_timezone(data_env, conf.time_zone)
             entry_obj['text_com'] = text_com
             frdly_es.append(entry_obj)
 
@@ -153,7 +211,7 @@ def events_decoder(qso, time_zone_offset, simple=True):
                                                                         'cart_type': entry.cart_type, 
                                                                         'event_org': entry.event_org,
                                                                         'event_user': entry.event_user }
-            entry_obj['data_env'] = data_env + timedelta(hours=time_zone_offset)
+            entry_obj['data_env'] = do_timezone(data_env, conf.time_zone)
             entry_obj['text_com'] = text_com
             frdly_es.append(entry_obj)
 

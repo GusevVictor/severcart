@@ -1,6 +1,6 @@
 # -*- coding:utf-8 -*-
 
-from datetime import datetime
+from django.utils import timezone
 from django.dispatch import Signal
 from events.models import Events
 from django.db import transaction
@@ -22,7 +22,7 @@ def event_add_cart(**kwargs):
     with transaction.atomic():
         for elem in kwargs.get('list_cplx'):
             m1 = Events(departament = kwargs.get('request').user.departament.pk,
-                date_time   = datetime.utcnow(),
+                date_time   = timezone.now(),
                 cart_index  = elem[0],
                 cart_number = elem[1],
                 cart_type   = elem[2],
@@ -38,7 +38,7 @@ def event_add_empty_cart(**kwargs):
     with transaction.atomic():
         for elem in kwargs.get('list_cplx'):
             m1 = Events(departament = kwargs.get('request').user.departament.pk,
-                date_time   = datetime.utcnow(),
+                date_time   = timezone.now(),
                 cart_index  = elem[0],
                 cart_number = elem[1],
                 cart_type   = elem[2],
@@ -55,7 +55,7 @@ def event_transfe_cart_to_uses(**kwargs):
     with transaction.atomic():
         for elem in kwargs.get('list_cplx'):
             m1 = Events(departament = kwargs.get('request').user.departament.pk,
-                date_time   = datetime.utcnow(),
+                date_time   = timezone.now(),
                 cart_index = elem[0],
                 cart_type   = elem[1],
                 cart_number = elem[2],
@@ -72,7 +72,7 @@ def event_transfe_cart_to_basket(**kwargs):
     with transaction.atomic():
         for elem in kwargs.get('list_cplx'):
             m1 = Events(departament = kwargs.get('request').user.departament.pk,
-                date_time   = datetime.utcnow(),
+                date_time   = timezone.now(),
                 cart_index  = elem[0],
                 cart_type   = elem[1],
                 cart_number = elem[2],
@@ -89,7 +89,7 @@ def event_tr_empty_cart_to_stock(**kwargs):
     with transaction.atomic():
         for elem in kwargs.get('list_cplx'):
             m1 = Events(departament = kwargs.get('request').user.departament.pk,
-                date_time   = datetime.utcnow(),
+                date_time   = timezone.now(),
                 cart_index = elem[0],
                 cart_type   = elem[1],
                 event_type  = 'TS',
@@ -107,7 +107,7 @@ def event_turf_cart(**kwargs):
     with transaction.atomic():
         for elem in kwargs.get('list_cplx'):
             m1 = Events(departament = kwargs.get('request').user.departament.pk,
-                date_time   = datetime.utcnow(),
+                date_time   = timezone.now(),
                 cart_index  = elem[0],
                 cart_type   = elem[1],
                 cart_number = elem[2],
@@ -123,7 +123,7 @@ def event_tr_empty_cart_to_firm(**kwargs):
     with transaction.atomic():
         for elem in kwargs.get('list_cplx'):
             m1 = Events(departament = kwargs.get('request').user.departament.pk,
-                date_time   = datetime.utcnow(),
+                date_time   = timezone.now(),
                 cart_index  = elem[0],
                 cart_type   = elem[1],
                 cart_number = elem[2],
@@ -156,7 +156,7 @@ def event_tr_filled_cart_to_stock(**kwargs):
                 else:
                     compact_num += 0
             m1 = Events(departament = kwargs.get('request').user.departament.pk,
-                date_time   = datetime.utcnow(),
+                date_time   = timezone.now(),
                 cart_index = elem[0],
                 cart_type   = elem[1],
                 event_type  = 'RS',
