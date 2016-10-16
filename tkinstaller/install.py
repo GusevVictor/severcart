@@ -53,7 +53,7 @@ def prompt_exit():
 if __name__ == '__main__':
     # устанавливаем язык выводимых сообщений
     while True:
-        lang = input('Enter the language code [en|ru]:   ')
+        lang = input('Enter the language code [en|ru]: ')
         lang = lang.lower().strip()
         if lang == 'ru' or lang == 'en':
             break
@@ -178,7 +178,7 @@ if __name__ == '__main__':
         SECRETS['secret_key'] = secret_key
         with open(os.path.join(PROJ_DIR, 'conf', 'secrets.json'), 'w') as j:
             json.dump(SECRETS, j)
-        print(tr('Done', lang=lang))
+        print(tr('Done.', lang=lang))
         # производим запуск миграции схемы Severcart и Django        
         os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'conf.settings')
 
@@ -191,9 +191,10 @@ if __name__ == '__main__':
         print(tr('--------------The migration scheme---------------', lang=lang))
         print('-------------------------------------------------')
         try:
+            execute_from_command_line(['manage.py', 'makemigrations'])
             execute_from_command_line(['manage.py', 'migrate'])
-        except:
-            print(tr('During migration, an error occurred.', lang=lang))
+        except Exception as e:
+            print(str(e))
             prompt_exit()
         else:
             print(tr('The scheme was successfully migrated.', lang=lang))
@@ -236,4 +237,4 @@ if __name__ == '__main__':
         
         p = Process(target=send_request)
         p.start()
-        prompt_exit()
+        sys.exit(0)
