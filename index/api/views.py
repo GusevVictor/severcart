@@ -1,6 +1,7 @@
 # -*- coding:utf-8 -*-
 
-import json
+import json, pytz
+from datetime import datetime
 from django.shortcuts import get_object_or_404
 from django.db import transaction
 from django.db import models
@@ -35,6 +36,7 @@ from index.forms.add_items import AddItems
 from index.forms.add_items_from_barcode import AddItemsFromBarCodeScanner
 from index.forms.tr_to_firm import TransfeToFirm
 from docs.models import SCDoc, RefillingCart
+from service.helpers import SevercartConfigs
 
 import logging
 logger = logging.getLogger(__name__)
@@ -104,12 +106,21 @@ def ajax_add_session_items(request):
         cart_doc_id  = data_in_post.get('doc')
         cart_count   = int(data_in_post.get('cartCount'))
         # фича добавленна после обращения пользователя из Новосибирска
-        tumbler = request.POST.get('tumbler', 0)
-        try:
-            tumbler = int(tumbler)
-        except ValueError:
-            tumbler = 0
-
+        tumbler = request.POST.get('tumbler', 0) # отвечает за ручной ввод номера РМ
+        tumbler_2 = request.POST.get('tumbler_2', 0) # отвечает за ручноую установку даты добавления РМ на склад
+        tumbler = str2int(tumbler)
+        tumbler_2 = str2int(tumbler_2)
+        if tumbler_2:
+            conf = SevercartConfigs()
+            date_added = data_in_post.get('set_date')
+            time_added = data_in_post.get('time')
+            date_time_added =  datetime(
+                date_added['year'], date_added['month'], date_added['day'], 
+                hour=time_added['hours'], minute=time_added['minutes'],
+                tzinfo=pytz.timezone(conf.time_zone)
+            )
+        else:
+            date_time_added = timezone.now()
         # чтобы не плодить лишние сущности зделано одно вью для добавления разных картриджей
         if cart_type == 'full':
             cart_status = 1
@@ -162,8 +173,8 @@ def ajax_add_session_items(request):
                 m1 = CartridgeItem(sklad=storages,
                                    cart_number=str(cart_number),
                                    cart_itm_name=data_in_post.get('cartName'),
-                                   cart_date_added=timezone.now(),
-                                   cart_date_change=timezone.now(),
+                                   cart_date_added=date_time_added,
+                                   cart_date_change=date_time_added,
                                    cart_number_refills=0,
                                    departament=request.user.departament,
                                    cart_status=cart_status,

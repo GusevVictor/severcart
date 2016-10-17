@@ -347,10 +347,8 @@ $( function(){
         var cart_type   = $(this).attr('data'); 
         var cart_number = $('#id_manualNumber').val();
 
-        var set_date = $('#id_date').val();
+        var set_date = $('#id_set_date').val();
         var set_time = $('#id_time option:selected').val();
-
-        console.log('set_date=', set_date, 'set_time=', set_time);
 
         var tumbler = $('.cmn-toggle-1').is(':checked');
 
@@ -397,10 +395,26 @@ $( function(){
                 tumbler = 0;
             }
 
+            if (tumbler_2) {
+                tumbler_2 = 1;
+            } else {
+                tumbler_2 = 0;
+            }
+            var send_dict = {}; // странспортный словарь для передачи данных на сервер
+            send_dict['cartName'] = cart_name;
+            send_dict['doc'] = docum;
+            send_dict['cartCount'] = cont;
+            send_dict['cart_type'] = cart_type;
+            send_dict['storages'] = cart_sklad;
+            send_dict['cart_number'] = cart_number;
+            send_dict['tumbler'] = tumbler;
+            send_dict['tumbler_2'] = tumbler_2;
+            send_dict['set_time'] = set_time;
+            send_dict['set_date'] = set_date;
             $.ajax({
                 method: 'POST',
                 url: '{% url "index:ajax_add_session_items" %}',
-                data:  {'cartName': cart_name, 'doc': docum, 'cartCount': cont, 'cart_type': cart_type, 'storages': cart_sklad, 'cart_number': cart_number, 'tumbler': tumbler },
+                data: send_dict,
                 beforeSend: function( xhr, settings ){
                     $('.spinner').show();
                     csrftoken = getCookie('csrftoken');

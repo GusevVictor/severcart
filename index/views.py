@@ -174,7 +174,7 @@ def add_cartridge_item(request):
     current_day = str(timezone.now().day) +'/' + str(timezone.now().month) +'/' + str(timezone.now().year)
     form_obj = AddItems()
     
-    form_obj.fields['date'].initial = current_day
+    form_obj.fields['set_date'].initial = current_day
     # отфильтровываем и показываем только договора поставки
     form_obj.fields['doc'].queryset = SCDoc.objects.filter(departament=request.user.departament).filter(doc_type=1)
     form_obj.fields['storages'].queryset = Storages.objects.filter(departament=request.user.departament)

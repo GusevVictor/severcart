@@ -6,6 +6,7 @@ from django.utils.translation import ugettext_lazy as _
 from index.models import CartridgeItemName
 from docs.models  import SCDoc
 from storages.models import Storages
+from common.helpers import del_leding_zero
 
 
 TIME = (
@@ -76,7 +77,7 @@ class AddItems(forms.Form):
                                 )
 
 
-    date = forms.CharField(required=False, widget=forms.TextInput(attrs={'class':'datepicker', 'readonly':'readonly'}))
+    set_date = forms.CharField(required=False, widget=forms.TextInput(attrs={'class':'datepicker', 'readonly':'readonly'}))
     
     time = forms.ChoiceField(choices=TIME, required=False)
 
@@ -145,3 +146,22 @@ class AddItems(forms.Form):
                 break
 
         return time
+
+    def clean_set_date(self):
+        """Возвращает словарь из дни, месяцы, годы.
+           По-умолчанию возвращаем время с эпохи начала UNIX, если в входных данных ошибки.
+        """
+        if not self.cleaned_data.get('set_date', 0):
+            return {'day': 1, 'month': 1, 'year': 1970}
+
+        prepare_list = self.cleaned_data.get('set_date').split(r'/')
+        if len(prepare_list) == 3:
+            # если пользователь не смухлевал, то кол-во элементов = 3
+            date_value  = prepare_list[0]
+            date_value  = del_leding_zero(date_value)
+            month_value = prepare_list[1]
+            month_value = del_leding_zero(month_value)
+            year_value  = prepare_list[2]
+            return {'day': date_value, 'month': month_value, 'year': year_value}
+        else:
+            return {'day': 1, 'month': 1, 'year': 1970}
