@@ -4,6 +4,7 @@ from django import forms
 from django.core.exceptions import ValidationError
 from django.utils.translation import ugettext_lazy as _
 from index.models import CartridgeItemName
+from index.helpers import str2int
 from docs.models  import SCDoc
 from storages.models import Storages
 from common.helpers import del_leding_zero
@@ -141,7 +142,7 @@ class AddItems(forms.Form):
             return {'hours': 0, 'minutes': 0, 'seconds': 0}
         for times in TIME:
             if times[0] == time_digit:
-                time = times[2].split(':')
+                time = times[1].split(':')
                 time = {'hours': int(time[0]), 'minutes': int(time[1]), 'seconds': 0}
                 break
 
@@ -162,6 +163,7 @@ class AddItems(forms.Form):
             month_value = prepare_list[1]
             month_value = del_leding_zero(month_value)
             year_value  = prepare_list[2]
+            year_value  = str2int(year_value) 
             return {'day': date_value, 'month': month_value, 'year': year_value}
         else:
             return {'day': 1, 'month': 1, 'year': 1970}

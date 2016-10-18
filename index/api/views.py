@@ -17,7 +17,7 @@ from common.helpers import is_admin
 from django.views.decorators.http import require_POST
 from events.models import Events
 from index.forms.tr_to_firm import TransfeToFirmScanner
-from events.helpers import events_decoder
+from events.helpers import events_decoder, do_timezone
 from index.models import ( City, 
                            CartridgeItem, 
                            OrganizationUnits, 
@@ -114,11 +114,16 @@ def ajax_add_session_items(request):
             conf = SevercartConfigs()
             date_added = data_in_post.get('set_date')
             time_added = data_in_post.get('time')
-            date_time_added =  datetime(
-                date_added['year'], date_added['month'], date_added['day'], 
-                hour=time_added['hours'], minute=time_added['minutes'],
-                tzinfo=pytz.timezone(conf.time_zone)
-            )
+            set_date = datetime(year=date_added['year'], 
+                                month=date_added['month'], 
+                                day=date_added['day'], 
+                                hour=time_added['hours'], 
+                                minute=time_added['minutes'], 
+                                second=0)
+            # d = datetime.datetime.now()
+            tz = pytz.timezone(conf.time_zone)
+            set_date = set_date.replace(tzinfo=tz)
+            date_time_added = do_timezone(set_date, 'UTC')
         else:
             date_time_added = timezone.now()
         # чтобы не плодить лишние сущности зделано одно вью для добавления разных картриджей
