@@ -17,6 +17,8 @@ from index.models import CartridgeItemName, CartridgeType, CartridgeItem, City
 from index.helpers import check_ajax_auth
 from docs.models import RefillingCart, SCDoc
 from docs.helpers import group_names, localize_date
+from service.helpers import SevercartConfigs
+from events.helpers import do_timezone
 
 
 import logging
@@ -24,7 +26,7 @@ logger = logging.getLogger(__name__)
 
 @check_ajax_auth
 def del_cart_name(request):
-    """Удаляем имя расходного материала через аякс
+    """Удаляем имя расходного материала.
     """
     if request.method != 'POST':
         return HttpResponse('<h1>' + _('Only use POST requests!') + '</h1>')
@@ -288,6 +290,7 @@ def generate_csv(request):
     csv_file_name = str(int(time.time())) + '_' + str(request.user.pk) + '.csv'
     view = request.POST.get('view', '')
     gtype = request.POST.get('gtype', '')
+    conf = SevercartConfigs()
     if not os.path.exists(settings.STATIC_ROOT_CSV):
         os.makedirs(settings.STATIC_ROOT_CSV)
     # Прозводим ротацию каталога csv от старых файлов
@@ -315,10 +318,13 @@ def generate_csv(request):
                                 'date': _('Date add') + ' ' + _('on stock'), 
                                 'comment': _('comment')})
                 for cartridje in all_items:
+                    cart_date_change = cartridje.cart_date_change
+                    cart_date_change = do_timezone(cart_date_change, conf.time_zone)
+                    cart_date_change = cart_date_change.strftime('%d.%m.%Y %H:%M')
                     writer.writerow({'number': cartridje.cart_number, 
                                     'name': cartridje.cart_itm_name, 
                                     'refills': cartridje.cart_number_refills, 
-                                    'date': cartridje.cart_date_change, 
+                                    'date': cart_date_change, 
                                     'comment': cartridje.comment})
         else:
             pass
@@ -342,10 +348,13 @@ def generate_csv(request):
                                 'org': _('User'),
                                 'comment': _('comment')})
                 for cartridje in all_items:
+                    cart_date_change = cartridje.cart_date_change
+                    cart_date_change = do_timezone(cart_date_change, conf.time_zone)
+                    cart_date_change = cart_date_change.strftime('%d.%m.%Y %H:%M')
                     writer.writerow({'number': cartridje.cart_number, 
                                     'name': cartridje.cart_itm_name, 
                                     'refills': cartridje.cart_number_refills, 
-                                    'date': cartridje.cart_date_change,
+                                    'date': cart_date_change,
                                     'org': cartridje.departament,
                                     'comment': cartridje.comment})
         else:
@@ -364,10 +373,13 @@ def generate_csv(request):
                                 'date': _('Date return'), 
                                 'comment': _('comment')})
                 for cartridje in all_items:
+                    cart_date_change = cartridje.cart_date_change
+                    cart_date_change = do_timezone(cart_date_change, conf.time_zone)
+                    cart_date_change = cart_date_change.strftime('%d.%m.%Y %H:%M')
                     writer.writerow({'number': cartridje.cart_number, 
                                     'name': cartridje.cart_itm_name, 
                                     'refills': cartridje.cart_number_refills, 
-                                    'date': cartridje.cart_date_change,
+                                    'date': cart_date_change,
                                     'comment': cartridje.comment})
         else:
             pass
@@ -386,10 +398,13 @@ def generate_csv(request):
                                 'firm': _('Refueller'),
                                 'comment': _('comment')})
                 for cartridje in all_items:
+                    cart_date_change = cartridje.cart_date_change
+                    cart_date_change = do_timezone(cart_date_change, conf.time_zone)
+                    cart_date_change = cart_date_change.strftime('%d.%m.%Y %H:%M')
                     writer.writerow({'number': cartridje.cart_number, 
                                     'name': cartridje.cart_itm_name, 
                                     'refills': cartridje.cart_number_refills, 
-                                    'date': cartridje.cart_date_change,
+                                    'date': cart_date_change,
                                     'firm': cartridje.filled_firm,
                                     'comment': cartridje.comment})
         else:
@@ -408,10 +423,13 @@ def generate_csv(request):
                                 'date': _('Date return in basket'), 
                                 'comment': _('comment')})
                 for cartridje in all_items:
+                    cart_date_change = cartridje.cart_date_change
+                    cart_date_change = do_timezone(cart_date_change, conf.time_zone)
+                    cart_date_change = cart_date_change.strftime('%d.%m.%Y %H:%M')
                     writer.writerow({'number': cartridje.cart_number, 
                                     'name': cartridje.cart_itm_name, 
                                     'refills': cartridje.cart_number_refills, 
-                                    'date': cartridje.cart_date_change,
+                                    'date': cart_date_change,
                                     'comment': cartridje.comment})
         else:
             pass
