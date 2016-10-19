@@ -941,13 +941,26 @@ def evaluate_service(request):
         if obj_evs:
             context['error'] = False
             firm_name = obj_evs[0].event_firm
-            context['firm'] = firm_name
             context['cart_id'] = node.pk
             context['cart_number'] = node.cart_number
-            try:
-                context['firm_id'] = FirmTonerRefill.objects.get(firm_name=firm_name).pk
-            except:
-                context['firm_id'] = 0
+            tmp_list = firm_name.split(':')
+            context['firm'] = tmp_list[0]
+            if len(tmp_list) == 1:
+                # оставлена возможнасть поиска по имени для старых релизов программы
+                try:    
+                    context['firm_id'] = FirmTonerRefill.objects.get(firm_name=firm_name).pk
+                except:
+                    context['firm_id'] = -1
+
+            elif len(tmp_list) == 2:
+                firm_id = str2int(tmp_list[1])
+                try:    
+                    context['firm_id'] = FirmTonerRefill.objects.get(pk=firm_id).pk
+                except:
+                    context['firm_id'] = -1
+            else:
+                context['firm_id'] = -1
+                                
         else:
             context['error'] = True
             context['msg'] = _('An object with number %(cart_num)s is not transmitted to the service.') % {'cart_num': node.cart_number}
