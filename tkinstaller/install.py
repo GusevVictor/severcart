@@ -38,7 +38,7 @@ def install(package):
 
 
 def send_request():
-    conn = http.client.HTTPConnection('severcart.org')
+    conn = http.client.HTTPConnection('www.severcart.org')
     try:
         conn.request('GET', '/api/report/')
     except:
@@ -109,6 +109,7 @@ if __name__ == '__main__':
                 ['Noarch/python-docx-0.8.5.tar.gz', '--disable-pip-version-check'],
                 ['reportlab'],
                 ['django-debug-toolbar'],
+                ['pytz'],
             ]
             persent = 10
             for pack in packages_x64:
@@ -130,6 +131,7 @@ if __name__ == '__main__':
                 ['Noarch/python-docx-0.8.5.tar.gz', '--disable-pip-version-check'],
                 ['reportlab'],
                 ['django-debug-toolbar'],
+                ['pytz'],
             ]
             persent = 10
             for pack in packages_x86:
@@ -150,6 +152,7 @@ if __name__ == '__main__':
                 ['pillow==2.9.0'],
                 ['reportlab'],
                 ['django-debug-toolbar'],
+                ['pytz'],
             ]
             persent = 10
             for pack in packages_unix:
