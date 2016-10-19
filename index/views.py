@@ -21,7 +21,6 @@ from .forms.add_items import AddItems
 from .forms.add_items_from_barcode import AddItemsFromBarCodeScanner
 from .forms.add_type import AddCartridgeType
 from .forms.add_firm import FirmTonerRefillF
-from .forms.add_empty_items import AddEmptyItems
 from .forms.tr_to_firm import TransfeToFirm, TransfeToFirmScanner
 from .forms.tr_to_stock import MoveItemsToStockWithBarCodeScanner
 from .forms.comment import EditCommentForm
@@ -277,8 +276,11 @@ def add_empty_cartridge(request):
 
     context         = {}
     back            = BreadcrumbsPath(request).before_page(request)
+    current_day = str(timezone.now().day) +'/' + str(timezone.now().month) +'/' + str(timezone.now().year)
     context['back'] = back
-    form_obj = AddEmptyItems()
+    form_obj = AddItems()
+
+    form_obj.fields['set_date'].initial = current_day
     # отфильтровываем и показываем только договора поставки
     form_obj.fields['doc'].queryset = SCDoc.objects.filter(departament=request.user.departament).filter(doc_type=1)
     form_obj.fields['storages'].queryset = Storages.objects.filter(departament=request.user.departament)
