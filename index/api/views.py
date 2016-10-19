@@ -454,7 +454,7 @@ def transfer_to_firm(request):
             sign_tr_empty_cart_to_firm.send(sender=None, 
                                             list_cplx=list_cplx, 
                                             request=request, 
-                                            firm=str(firm)
+                                            firm=str(firm) + ':' + str(firm.pk) # сохраняем в логах событий имя и Id фирмы контрагента.
                                             )
         show_numbers = str(show_numbers)
         # Убираем лишние авпострофы из списка с номерами
