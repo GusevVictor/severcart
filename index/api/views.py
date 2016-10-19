@@ -122,12 +122,9 @@ def ajax_add_session_items(request):
                                 second=0, microsecond=0 )
                                 #, tzinfo=pytz.timezone(conf.time_zone))
             # d = datetime.datetime.now()
-            set_date = pytz.timezone(conf.time_zone).localize(set_date)
-            date_time_added = pytz.timezone().localize(set_date)
-            #date_time_added = do_timezone(set_date, 'UTC')
-            print('set_date=', set_date)
-            print('date_time_added=', date_time_added)
-            print('conf.time_zone=', conf.time_zone)
+            local = pytz.timezone(conf.time_zone)
+            local_dt = local.localize(set_date, is_dst=None)
+            date_time_added = local_dt.astimezone(pytz.utc)
         else:
             date_time_added = timezone.now()
         # чтобы не плодить лишние сущности зделано одно вью для добавления разных картриджей
