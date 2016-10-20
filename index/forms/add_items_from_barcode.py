@@ -5,10 +5,12 @@ from django.core.exceptions import ValidationError
 from django.utils.translation import ugettext_lazy as _
 from index.models import CartridgeItemName, CartridgeItem
 from docs.models  import SCDoc
-from storages.models import Storages
+from index.forms.base_add_form import BaseAddForm
 
 
-class AddItemsFromBarCodeScanner(forms.Form):
+class AddItemsFromBarCodeScanner(BaseAddForm):
+    """Форма добавления новых/бу РМ на склад с помощью сканера штрихкода
+    """
     cartNumber = forms.CharField(max_length=256, widget=forms.TextInput(attrs={'readonly': True, 'class': 'barcode'}), required=True)
 
     cartName = forms.ModelChoiceField(queryset=CartridgeItemName.objects.all(),
@@ -18,8 +20,6 @@ class AddItemsFromBarCodeScanner(forms.Form):
                                       )
     
     doc = forms.ModelChoiceField(queryset=SCDoc.objects.filter(), required=False)
-    storages = forms.ModelChoiceField(queryset=Storages.objects.filter(), label=_('Storage'))
-
 
     required_css_class = 'required'
 
@@ -33,8 +33,6 @@ class AddItemsFromBarCodeScanner(forms.Form):
             raise ValidationError(_('The object with number %(cart_number)s is already registered.') % {'cart_number': cart_number})
         else:
             return cart_number
-
-
 
     def clean_cartName(self):
         """Проверят на пустоту введенные данные.
@@ -52,10 +50,3 @@ class AddItemsFromBarCodeScanner(forms.Form):
         doc_id = self.cleaned_data.get('doc')
         return doc_id.pk
 
-    def clean_storages(self):
-        """
-        """
-        if not self.cleaned_data.get('storages', 0):
-            raise ValidationError(_('Required field.'))
-        
-        return self.cleaned_data.get('storages')
