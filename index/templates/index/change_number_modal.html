@@ -1,0 +1,82 @@
+{% load i18n %}
+<div id="changeModal" class="reveal-modal small" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog">
+  <h2 id="modalTitle">{% trans 'Change number' %}</h2>
+  <div class="change_name_ok"></div>
+  <div class="change_name_error"></div>
+  <div>
+    <form class="change_ou_name">{% csrf_token %}
+        <input type="hidden" class="cart_id" value="-1" name="cart_id" />
+        <input type="text" class="cart_number" value="Изменяемый текст"  name="cart_number"/>
+    </form>
+  </div>
+  <a class="close-reveal-modal" aria-label="Close">&#215;</a>
+  <div class="right">
+    <img class="spinner_cn" src="{{ STATIC_URL }}img/loader.gif" />
+    <a class="close_modal_win button" aria-label="Close">{% trans 'Close' %}</a>
+<a class="save_and_close button">{% trans 'Save and close' %}</a>
+  </div>
+</div>
+<script>
+    $(document).foundation();
+    var ouid = 0;
+    $('a.close_modal_win').on('click', function() {
+        $('#changeModal').foundation('reveal', 'close');
+    });
+    
+    $('a.show_modal').click( function() {
+        $('input.cart_number').focus();
+        var selected = [];
+        $('.checkboxes input:checked').each(function() {
+            if ($(this).attr('value')) {
+
+                selected.push( {'cart_id':$(this).attr('value'), 'cart_number': $(this).attr('cart_number')} );
+            }
+        });
+        if (selected.length === 1) {
+            cart_id = selected[0]['cart_id'];
+            cart_number = selected[0]['cart_number'];
+            $('input.cart_id').attr('value', cart_id);
+            $('input.cart_number').attr('value', cart_number);
+            $('#changeModal').foundation('reveal', 'open');
+        }
+        
+    });
+
+    $('.save_and_close').click( function() {
+       // изменение номер РМ через якс запрос
+       var cart_number = $('input.cart_number').val();
+        $.ajax({
+            method: 'POST',
+            url:  '{% url "index:change_cart_number" %}',
+            data:  {'cart_id': cart_id, 'cart_number': cart_number},
+            beforeSend: function( xhr, settings ){
+                csrftoken = getCookie('csrftoken');
+                $('.spinner_cn').show();
+                if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
+                    xhr.setRequestHeader('X-CSRFToken', csrftoken);
+                }
+            },
+            success: function( msg ) {
+                $('.spinner_cn').hide();
+                if (msg.error == '1') {
+                    $('.change_name_ok').hide();
+                    $('.change_name_error').show();
+                    $('.change_name_error').html(msg.mes);
+                }
+
+                if (msg.error == '0') {
+                    $('.change_name_error').hide();
+                    //$('.change_name_ok').show();
+                    //$('.change_name_ok').html(msg.mes);
+                    $('#changeModal').foundation('reveal', 'close');
+                    window.location.href = {% url 'index:stock' %};
+                }
+            },
+            error: function( msg ) {
+                $('.spinner_cn').hide();
+                сonsole.log(msg);
+            },
+        }); 
+    });
+
+</script>

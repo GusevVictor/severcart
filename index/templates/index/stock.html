@@ -3,7 +3,10 @@
 {% block breadcrumbs %}<a href="/"><img src="{{ STATIC_URL }}img/home.png" /></a> / {% trans "List of new or refilled cartridges" %}{% endblock %}
 {% block jqueryui%}<link rel="stylesheet" href="{{ STATIC_URL }}css/jquery.powertip-dark.min.css" />
 <script src="{{ STATIC_URL }}js/jquery.powertip.min.js"></script>
-<script src="{{ STATIC_URL }}js/activate.powertip.js?{{request.CACHEVERSION}}"></script>{% endblock %}
+<script src="{{ STATIC_URL }}js/activate.powertip.js?{{request.CACHEVERSION}}"></script>
+<script src="{{ STATIC_URL }}js/foundation/foundation.js"></script>
+<script src="{{ STATIC_URL }}js/foundation/foundation.reveal.js"></script>
+{% endblock %}
 {% block help_url %}
 {{ request.HOME_SITE }}/help/{{ request.LANGUAGE_CODE }}/stock/
 {% endblock %}
@@ -25,12 +28,20 @@
 {% endif %}
 <div class="row">
     <div class="large-7 columns">
-        <a class="add_items add_from_mouse button success" href="{% url 'index:add_items' %}">{% trans "Add with" %}</a>
-        <a class="add_items add_from_barcode_scanner button success" href="{% url 'index:add_cartridge_from_barcode_scanner' %}">{%  trans "Add with" %}</a>
-
-        <a class="tr_for_use button no_follow" href="#">{% trans "Transferred for use" %}</a>
-        <a class="tr_to_recycle_bin button alert no_follow" href="#" atype="5">{% trans "In basket" %}</a>
-        <img class="spinner" src="{{ STATIC_URL }}img/loader.gif" />
+        <table class="no-style">
+            <tbody><tr class="no-style">
+                <td><a class="add_items add_from_mouse button success" href="{% url 'index:add_items' %}">{% trans "Add with" %}</a></td>
+                <td><a class="tr_for_use button no_follow" href="#">{% trans "Transfer" %}</a></td>
+                <td><a class="show_modal button no_follow" href="#">{% trans "Change number" %}</a></td>
+            </tr>
+            <tr class="no-style">
+                <td><a class="add_items add_from_barcode_scanner button success" href="{% url 'index:add_cartridge_from_barcode_scanner' %}">{%  trans "Add with" %}</a></td>
+                <td><a class="tr_to_recycle_bin button alert no_follow" href="#" atype="5">{% trans "In basket" %}</a></td>
+                <td></td>
+            </tr><tr>
+            </tr></tbody>
+        </table>
+        <img class="spinner" src="/static/img/loader.gif">        
     </div>
     <div class="large-5 columns text-right">
         <a class="download_doc" href="#">{% trans 'Download' %}</a>
@@ -63,7 +74,7 @@
                 </tr>
                 {% for i in cartrjs %}
                     <tr>
-                        <td><input type="checkbox" class="checkbox" value="{{ i.id }}"></td>
+                        <td><input type="checkbox" class="checkbox" value="{{ i.id }}" cart_number="{{ i.cart_number }}" /></td>
                         <td class="cart_number_for_tip" data-powertip="{{ i.cart_number }}">{{ i.cart_number|truncatechars:request.TRLEN }}</td>
                         <td>{{ i.cart_itm_name }}</td>
                         <td>{{ i.cart_number_refills }}</td>
@@ -83,5 +94,6 @@
         </table>
     </div>
 </div>
+{% include "index/change_number_modal.html" %}
 {% found_pagination cartrjs size_perpage  %}
 {% endblock %}

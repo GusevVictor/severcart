@@ -1199,3 +1199,55 @@ def rate(request):
     ansver['error'] = '0'
     ansver['msg'] = _('Your score is accepted.')
     return JsonResponse(ansver)
+
+
+@require_POST
+@check_ajax_auth
+def change_cart_number(request):
+    """
+    """
+    ansver = dict()
+    try:
+        root_ou   = request.user.departament
+        des       = root_ou.get_descendants()
+    except:
+        ansver['error'] ='1'
+        ansver['mes'] = _('Error: 101. Not set organization utint.')
+        return JsonResponse(ansver)
+
+    cart_id = request.POST.get('cart_id', '')
+    cart_id = str2int(cart_id)
+    cart_number = request.POST.get('cart_number', '')
+    cart_number = cart_number.strip()
+
+    try:
+        m1 = CartridgeItem.objects.get(pk=cart_id)
+    except CartridgeItem.DoesNotExist:
+        ansver['error'] ='1'
+        ansver['mes'] = _('Not found.')
+        return JsonResponse(ansver)
+
+    if m1.departament in des:
+        ansver['error'] ='1'
+        ansver['mes'] = _('An object with number %(cart_num)s belong to a different organizational unit.') % {'cart_num': cart_number}
+        return JsonResponse(ansver)
+
+    departament = m1.departament
+    try:
+        m2 = CartridgeItem.objects.filter(Q(cart_number=cart_number) & (Q(departament__in=des) | Q(departament=request.user.departament)))
+    except CartridgeItem.DoesNotExist:
+        ansver['error'] ='1'
+        ansver['mes'] = _('Not found.')
+        return JsonResponse(ansver)
+
+    if m2.count():
+        ansver['error'] ='1'
+        ansver['mes'] = _('Number is already in use.')
+        return JsonResponse(ansver)
+    else:
+        m1.cart_number = cart_number
+        m1.save()
+
+    ansver['error'] = '0'
+
+    return JsonResponse(ansver)

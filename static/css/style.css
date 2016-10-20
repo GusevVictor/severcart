@@ -211,6 +211,7 @@ span.gi {
 .spinner_sett,
 .spinner_send,
 .spinner_ou,
+.spinner_cn,
 .spinner_force_move_to_transfer {
     margin-left: 10px;
     display: none;
@@ -801,6 +802,22 @@ ul.messages .error {
     border: 2px solid #ff0000;
     padding:10px;
 }
+
+.change_name_ok, .change_name_error {
+    display: none;
+    padding:10px;
+}
+
+.change_name_ok {
+    color: #00B700;
+    border: 2px solid #00B700;
+}
+
+.change_name_error {
+    color: #ff0000;
+    border: 2px solid #ff0000;
+}
+
 /* ---endmessages--- */
 
 .dashboard, .top_events {
