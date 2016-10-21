@@ -73,7 +73,7 @@
                     //$('.change_name_ok').show();
                     //$('.change_name_ok').html(msg.mes);
                     $('#changeModal').foundation('reveal', 'close');
-                    window.location.href = {% url 'index:stock' %};
+                    window.location.href = {{ request.path }};
                 }
             },
             error: function( msg ) {
