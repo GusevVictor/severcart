@@ -1235,7 +1235,7 @@ def change_cart_number(request):
         return JsonResponse(ansver)
 
     cart_index = m1.pk
-    if m1.departament in des:
+    if not((m1.departament in des) or (m1.departament == request.user.departament)):
         ansver['error'] ='1'
         ansver['mes'] = _('An object with number %(cart_num)s belong to a different organizational unit.') % {'cart_num': cart_number}
         return JsonResponse(ansver)
