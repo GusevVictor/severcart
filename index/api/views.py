@@ -428,7 +428,9 @@ def transfer_to_firm(request):
             act_number   = str(timezone.now().year) + '_1'
 
         # сохраняем в БД акт передачи РМ на заправку
-        act_doc = RefillingCart(number       = act_number,
+        act_doc = RefillingCart(
+                                doc_type     = 1,        # документ передачи на запраку
+                                number       = act_number,
                                 date_created = timezone.now(),
                                 firm         = firm,
                                 user         = str(request.user),

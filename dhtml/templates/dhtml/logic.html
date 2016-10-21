@@ -1188,6 +1188,20 @@ $( function(){
         }
     });
 
+    $('.all_regeneration input').click( function() {
+        // выбор колонки с заправками и очистками
+        var select_checkboxes = $('.regeneration');
+        if ( $('.all_regeneration input').prop('checked') ) {
+            select_checkboxes.each(function() {
+                $(this).prop('checked', true);
+            })
+        } else {
+            select_checkboxes.each(function() {
+                $(this).prop('checked', false);
+            })
+        }    
+    });
+
     $('.all_filled input').click( function() {
         // выбор колонки с заправками и очистками
         var select_checkboxes = $('.filled');

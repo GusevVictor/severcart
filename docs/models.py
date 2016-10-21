@@ -28,10 +28,16 @@ class SCDoc(models.Model):
     def __str__(self):
         return ('%s %s') % (self.number, self.title,)
 
+SEND_TYPE = (
+    (1, _('To firm')),
+    (2, _('From firm')),
+)
+
 class RefillingCart(models.Model):
-    """Списки передаваемых катриджей на заправку, с указанием документа основания
-       передачи и стоимости обслуживания.
+    """Списки передаваемых катриджей на заправку и возвращения обратно, с указанием документа основания
+       передачи и стоимости обслуживания. На них формируются акты возвращения и передачи.
     """
+    doc_type         = models.IntegerField(choices=SEND_TYPE, default=1)
     number           = models.CharField(db_index=True, max_length=256)
     date_created     = models.DateField(db_index=True, null=True) # дата передачи картриджей на заправку
     firm             = models.CharField(max_length=256)

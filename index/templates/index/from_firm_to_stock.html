@@ -28,21 +28,25 @@
         <tr>
         <th class="action_type">{% trans "Number" %}</th>
         <th class="action_type">{% trans "Name" %}</th>
-        <th class="all_filled"><input type="checkbox" name="filled" id="filled" class="header_checkbox" checked/><label for="filled">{% trans "Filling<br/> and cleaning" %}</label></th>
+        <th class="all_regeneration"><input type="checkbox" name="regeneration" id="regeneration" class="header_checkbox" checked/><label for="regeneration">{% trans "Regeneration" %}</label></th>
+        <th class="all_filled"><input type="checkbox" name="filled" id="filled" class="header_checkbox" /><label for="filled">{% trans "Filling<br/> and cleaning" %}</label></th>
         <th class="all_fotoreceptor"><input type="checkbox" name="fotoreceptor" id="fotoreceptor" /><label for="fotoreceptor">{% trans "Replacing <br/> fotovala" %}</label></th>
         <th class="all_rakel"><input type="checkbox" name="rakel" id="rakel" /><label for="rakel">{% trans "Replacement<br/>squeegee" %}</label></th>
         <th class="all_chip"><input type="checkbox" name="chip" id="chip" /><label for="chip">{% trans "Replacement<br/>chip" %}</label></th>
         <th class="all_magnit"><input type="checkbox" name="magnit" id="magnit" /><label for="magnit">{% trans "Replacing<br/>the magnetic roller" %}</label></th>
+        <th class="all_money">{% trans "Service cost" %}, <br/>{% trans "Currency" %}</label></th>
         </tr>
         {% for elem in list_cart %}
         <tr>
         <td>{{ elem.cart_number }}</td>
         <td>{{ elem.cart_itm_name }}</td>
-        <td><input type="checkbox" class="filled" name="cart_{{elem.pk}}" value="filled" checked/></td>
+        <td><input type="checkbox" class="regeneration" name="cart_{{elem.pk}}" value="regeneration" checked/></td>
+        <td><input type="checkbox" class="filled" name="cart_{{elem.pk}}" value="filled"/></td>
         <td><input type="checkbox" class="fotoreceptor" name="cart_{{elem.pk}}" value="fotoreceptor"/></td>
         <td><input type="checkbox" class="rakel" name="cart_{{elem.pk}}" value="rakel"/></td>
         <td><input type="checkbox" class="chip" name="cart_{{elem.pk}}" value="chip"/></td>
         <td><input type="checkbox" class="magnit" name="cart_{{elem.pk}}" value="magnit"/></td>
+        <td><input type="text" class="money" name="cart_{{elem.pk}}" value="0"/></td>
         </tr>{% endfor %}
         </table>
         <input type="submit" value="{% trans 'Return to stock' %}" class="button"/>

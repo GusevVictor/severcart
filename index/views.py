@@ -842,6 +842,39 @@ def from_firm_to_stock(request):
         else:
             request.session['basket_to_transfer_stock'] = None
 
+        # генерируем акт возвращения РМ
+        jsoning_list = []
+        for inx in numbers:
+            cart_number = CartridgeItem.objects.get(pk=inx).cart_number
+            cart_name   = CartridgeItem.objects.get(pk=inx).cart_itm_name
+            repair_actions = request.POST.getlist('cart_'+str(inx))
+            money_per_one = request.POST.getlist('cart_money'+str(inx))
+            jsoning_list.append([cart_number, str(cart_name), repair_actions, money_per_one])
+        jsoning_list = json.dumps(jsoning_list)
+        
+        
+        # генерируем номер акта передачи на основе даты и его порядкового номера
+        sender_acts = RefillingCart.objects.filter(departament=request.user.departament).count()
+        # генерируем новый номер
+        if sender_acts:
+            act_number   = sender_acts + 1
+            act_number   = str(timezone.now().year) + '_' + str(sender_acts)
+        else:
+            act_number   = str(timezone.now().year) + '_1'
+
+        # сохраняем в БД акт передачи РМ на заправку
+        act_doc = RefillingCart(
+                                doc_type     = 2,        # документ возвращения с заправки
+                                number       = act_number,
+                                date_created = timezone.now(),
+                                firm         = firm,
+                                user         = str(request.user),
+                                json_content = jsoning_list,
+                                money        = price,
+                                departament  = request.user.departament
+                               )
+        act_doc.save()        
+
         return HttpResponseRedirect(reverse('index:at_work'))
     return render(request, 'index/from_firm_to_stock.html', {'checked_cartr': checked_cartr, 
                                                             'list_cart': list_cart, 
