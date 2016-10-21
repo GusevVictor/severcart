@@ -18,12 +18,14 @@ class Events(models.Model):
         ('TS', _('Passing an empty consumables stock')),
         ('CU', _('Creating a new user')),
         ('DU', _('Removing a user')),
+        ('CN', _('Change number')),
     )
     # устанавливаем слабую связанность для объектов
     date_time   = models.DateTimeField()
     cart_index = models.IntegerField(db_index=True)  # номер назначает база данных
     #cart_number = models.IntegerField(db_index=True) # условный номер генерируемый при создании объекта, возможна смена
     cart_number = models.CharField(max_length=256, db_index=True, null=True)
+    cart_old_number = models.CharField(max_length=256, null=True)
     cart_type   = models.CharField(max_length=256, null=True)
     cart_action = models.IntegerField(null=True)
     # cart_action хранит данные о восстановительных действиях с объектом 5 значном числе.
