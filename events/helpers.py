@@ -214,5 +214,21 @@ def events_decoder(qso, time_zone_offset, simple=True):
             entry_obj['data_env'] = do_timezone(data_env, conf.time_zone)
             entry_obj['text_com'] = text_com
             frdly_es.append(entry_obj)
+        elif entry.event_type == 'CN':
+            entry_obj = {}
+            data_env = entry.date_time
+            if simple:
+                text_com = _('%(event_user)s produced has replaced the former number %(old_number)s new %(new_number)s.') % {'old_number': entry.cart_old_number,
+                                                                                           'new_number': entry.cart_number,
+                                                                                       'event_user': entry.event_user, 
+                                                                                       }
+            else:
+                text_com = _('%(event_user)s changed number of cartridge %(old_number)s new %(new_number)s.') % {'old_number': entry.cart_old_number,
+                                                                                           'new_number': entry.cart_number,
+                                                                                       'event_user': entry.event_user, 
+                                                                                       }
+            entry_obj['data_env'] = do_timezone(data_env, conf.time_zone)
+            entry_obj['text_com'] = text_com
+            frdly_es.append(entry_obj)
 
     return frdly_es

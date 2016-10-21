@@ -14,6 +14,7 @@ sign_tr_empty_cart_to_stock  = Signal(providing_args=['list_cplx', 'request'])
 sign_turf_cart               = Signal(providing_args=['list_cplx', 'request'])
 sign_tr_empty_cart_to_firm   = Signal(providing_args=['list_cplx', 'request','firm'])
 sign_tr_filled_cart_to_stock = Signal(providing_args=['list_cplx', 'request'])
+sign_change_number           = Signal(providing_args=['cart_id', 'old_number', 'new_number', 'request'])
 
 def event_add_cart(**kwargs):
     if len(kwargs.get('list_cplx', 0)) == 0:
@@ -167,6 +168,26 @@ def event_tr_filled_cart_to_stock(**kwargs):
             )
             m1.save()
 
+
+def event_change_number(**kwargs):
+    if kwargs.get('old_number', 0) and kwargs.get('new_number', 0) and kwargs.get('cart_id', 0):
+        raise ValueError('Error in handler event_change_number!')
+
+
+    with transaction.atomic():
+        m1 = Events(departament = kwargs.get('request').user.departament.pk,
+            date_time       = timezone.now(),
+            cart_index      = kwargs.get('cart_index'),
+            cart_number     = kwargs.get('new_number'),
+            cart_old_number = kwargs.get('old_number'),
+            event_type      = 'CN',
+            event_user      = str(kwargs.get('request').user),
+            event_org       = kwargs.get('org')
+        )
+        m1.save()
+
+    
+
 sign_add_full_to_stock.connect(event_add_cart)
 sign_add_empty_to_stock.connect(event_add_empty_cart)
 sign_tr_cart_to_uses.connect(event_transfe_cart_to_uses)
@@ -175,3 +196,4 @@ sign_tr_empty_cart_to_stock.connect(event_tr_empty_cart_to_stock)
 sign_turf_cart.connect(event_turf_cart)
 sign_tr_empty_cart_to_firm.connect(event_tr_empty_cart_to_firm)
 sign_tr_filled_cart_to_stock.connect(event_tr_filled_cart_to_stock)
+sign_change_number.connect(event_change_number)
