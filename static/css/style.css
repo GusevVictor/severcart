@@ -806,6 +806,7 @@ ul.messages .error {
 .change_name_ok, .change_name_error {
     display: none;
     padding:10px;
+    margin-bottom: 10px;
 }
 
 .change_name_ok {

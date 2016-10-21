@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-10-20 23:26+0500\n"
-"PO-Revision-Date: 2016-10-20 23:27+0500\n"
+"POT-Creation-Date: 2016-10-21 14:21+0500\n"
+"PO-Revision-Date: 2016-10-21 14:21+0500\n"
 "Last-Translator: \n"
 "Language-Team: severcart.org <sfcl@mail.ru>\n"
 "Language: ru\n"
@@ -436,10 +436,10 @@ msgid "List move empty."
 msgstr "Пустой список для перемещения."
 
 #: .\docs\api\views.py:32 .\docs\api\views.py:80 .\docs\api\views.py:112
-#: .\docs\api\views.py:448 .\index\api\views.py:51 .\index\api\views.py:290
-#: .\index\api\views.py:362 .\index\api\views.py:393 .\index\api\views.py:558
-#: .\index\api\views.py:606 .\index\api\views.py:627 .\index\api\views.py:642
-#: .\index\api\views.py:790 .\reports\api\views.py:56
+#: .\docs\api\views.py:448 .\index\api\views.py:53 .\index\api\views.py:292
+#: .\index\api\views.py:364 .\index\api\views.py:395 .\index\api\views.py:560
+#: .\index\api\views.py:608 .\index\api\views.py:629 .\index\api\views.py:644
+#: .\index\api\views.py:792 .\reports\api\views.py:56
 #: .\storages\api\views.py:21 .\storages\api\views.py:59
 msgid "Only use POST requests!"
 msgstr "Поддерживаются только POST запросы!"
@@ -452,7 +452,7 @@ msgstr "Объект с таким ID не найден."
 msgid "Name can not be removed, ie. other objects reference it."
 msgstr "Имя удалить невозможно, т. к. на него ссылаются другие объекты."
 
-#: .\docs\api\views.py:56 .\docs\api\views.py:70 .\index\api\views.py:526
+#: .\docs\api\views.py:56 .\docs\api\views.py:70 .\index\api\views.py:528
 msgid "Name deleted successfully."
 msgstr "Имя успешно удалено."
 
@@ -1067,6 +1067,23 @@ msgstr ""
 "№ %(cart_number)s (%(cart_type)s) возвращение на склад от «%(event_org)s» "
 "пользователем %(event_user)s."
 
+#: .\events\helpers.py:221
+#, python-format
+msgid ""
+"%(event_user)s produced has replaced the former number %(old_number)s new "
+"%(new_number)s."
+msgstr ""
+"%(event_user)s произвёл смену прежнего номера \"%(old_number)s\" на новый "
+"\"%(new_number)s\"."
+
+#: .\events\helpers.py:226
+#, python-format
+msgid ""
+"%(event_user)s changed number of cartridge %(old_number)s new %(new_number)s."
+msgstr ""
+"%(event_user)s произвёл смену прежнего номера картриджа \"%(old_number)s\" "
+"на новый \"%(new_number)s\"."
+
 #: .\events\models.py:11
 msgid "Adding a new consumables"
 msgstr "Добавление нового расходника"
@@ -1106,6 +1123,11 @@ msgstr "Создание нового пользователя"
 #: .\events\models.py:20
 msgid "Removing a user"
 msgstr "Удаление пользователя"
+
+#: .\events\models.py:21 .\index\templates\index\change_number_modal.html.py:3
+#: .\index\templates\index\stock.html:35
+msgid "Change number"
+msgstr "Сменить номер"
 
 #: .\events\templates\events\ajx_view_events_one_cartridge.html:4
 #: .\events\templates\events\show_all_events.html:5
@@ -1165,112 +1187,112 @@ msgstr "События объекта учёта"
 msgid "Events"
 msgstr "События"
 
-#: .\index\api\views.py:66
+#: .\index\api\views.py:68
 msgid "Firm not found"
 msgstr "Контрагент не найден"
 
-#: .\index\api\views.py:73
+#: .\index\api\views.py:75
 msgid "Firm deleted!"
 msgstr "Контрагент удалён!"
 
-#: .\index\api\views.py:76
+#: .\index\api\views.py:78
 msgid "You can not delete, because have cartridges at a gas station."
 msgstr "Вы не можете удалить, т. к. имеются картриджи на заправке."
 
-#: .\index\api\views.py:92 .\index\api\views.py:297
+#: .\index\api\views.py:94 .\index\api\views.py:299
 #: .\index\templates\index\ou_not_set.html:9 .\storages\views.py:43
 msgid "User not assosiate with organization unit!<br/>Error code: 101."
 msgstr ""
 "Пользователь не принадлежит ни одной из организаций!<br/> Код ошибки: 101"
 
-#: .\index\api\views.py:137 .\index\api\views.py:327
+#: .\index\api\views.py:139 .\index\api\views.py:329
 msgid "Error in attrib \"data\" in input button add_item"
 msgstr "Фшибка в атрибуте \"data\" формы ввода add_item"
 
-#: .\index\api\views.py:163
+#: .\index\api\views.py:165
 msgid "An object with this number has already been registered."
 msgstr "Объект с таким номером уже зарегистрирован."
 
-#: .\index\api\views.py:207
+#: .\index\api\views.py:209
 msgid "Cartridge successfully added."
 msgstr "Картридж успешно добавлен."
 
-#: .\index\api\views.py:209
+#: .\index\api\views.py:211
 msgid "Cartridges successfully added."
 msgstr "Картриджи успешно добавлены."
 
-#: .\index\api\views.py:346
+#: .\index\api\views.py:348
 #, python-format
 msgid "Cartridge %(cart_number)s successfully added."
 msgstr "Картридж %(cart_number)s успешно добавлен"
 
-#: .\index\api\views.py:383
+#: .\index\api\views.py:385
 msgid "Cartridges successfully moved."
 msgstr "Расходники успешно перемещены."
 
-#: .\index\api\views.py:463
+#: .\index\api\views.py:465
 #, python-format
 msgid "Cartridges %(cart_nums)s successfully moved to firm."
 msgstr "Картриджи %(cart_nums)s успешно переданы фирме."
 
-#: .\index\api\views.py:465
+#: .\index\api\views.py:467
 msgid "No transmission facilities"
 msgstr "Нет объектов для передачи"
 
-#: .\index\api\views.py:489
+#: .\index\api\views.py:491
 msgid "Session cleared"
 msgstr "Сессия очищена"
 
-#: .\index\api\views.py:514
+#: .\index\api\views.py:516
 msgid "In demo remove nodes not allow."
 msgstr "В режиме демонтсрации удалять ноды нельзя."
 
-#: .\index\api\views.py:522
+#: .\index\api\views.py:524
 msgid ""
 "But it can not be removed because other objects reference it.<br/>Error "
 "code: 102"
 msgstr "Удаление невозможно, т. к. на объект ссылаются.<br/>Код ошибки: 102."
 
-#: .\index\api\views.py:528
+#: .\index\api\views.py:530
 msgid "Names deleted successfully."
 msgstr "Организационные подразделения успешно удалены."
 
-#: .\index\api\views.py:550
+#: .\index\api\views.py:552
 msgid "Cartridjes deleted!"
 msgstr "Картриджи удалены!"
 
-#: .\index\api\views.py:567
+#: .\index\api\views.py:569
 msgid "Error converting string numbers to int."
 msgstr "Ошибка конвертации строки в интеджер."
 
-#: .\index\api\views.py:578
+#: .\index\api\views.py:580
 msgid "This action type not implemented."
 msgstr "Данный тип действия не реализован."
 
-#: .\index\api\views.py:597
+#: .\index\api\views.py:599
 msgid "Cartridges successfully transferred to basket."
 msgstr "Картридж(и) успешно перемещен(ы) в корзину."
 
-#: .\index\api\views.py:705
+#: .\index\api\views.py:707
 #, python-format
 msgid "Cartridges %(cart_list)s successfully transferred for use"
 msgstr "Картридж(и) %(cart_list)s успешно передан(ы) пользователю."
 
-#: .\index\api\views.py:829 .\index\api\views.py:903 .\index\api\views.py:1097
-#: .\index\api\views.py:1215
+#: .\index\api\views.py:831 .\index\api\views.py:905 .\index\api\views.py:1099
+#: .\index\api\views.py:1217
 msgid "Error: 101. Not set organization utint."
 msgstr "Ошибка 101. Не установлено организационное подразделение."
 
-#: .\index\api\views.py:846 .\index\api\views.py:919 .\index\api\views.py:1113
+#: .\index\api\views.py:848 .\index\api\views.py:921 .\index\api\views.py:1115
 #, python-format
 msgid "Consumables with the number %(cart_barcode)s was not found."
 msgstr "Расходник с номером %(cart_barcode)s не найден."
 
-#: .\index\api\views.py:852 .\index\api\views.py:1119
+#: .\index\api\views.py:854 .\index\api\views.py:1121
 msgid "The object is already in the lists on the move."
 msgstr "Объект уже находится в списках на перемещение."
 
-#: .\index\api\views.py:869 .\index\api\views.py:1136
+#: .\index\api\views.py:871 .\index\api\views.py:1138
 #, python-format
 msgid ""
 "The object number %(cart_barcode)s is already present in the lists on the "
@@ -1278,11 +1300,11 @@ msgid ""
 msgstr ""
 "Объект с номером %(cart_barcode)s уже присутствует в списках на перемещение."
 
-#: .\index\api\views.py:876 .\index\api\views.py:947 .\index\api\views.py:1143
+#: .\index\api\views.py:878 .\index\api\views.py:949 .\index\api\views.py:1145
 msgid "Consumable material is successfully prepared for transfer"
 msgstr "Расходник готов к передаче"
 
-#: .\index\api\views.py:885
+#: .\index\api\views.py:887
 #, python-format
 msgid ""
 "This consumable is in the state \"%(cart_status)s\". Are you sure you want "
@@ -1291,16 +1313,16 @@ msgstr ""
 "Расходник обладает статусом - \"%(cart_status)s\". Вы точно хотите добавить "
 "его в список перемещаемых?"
 
-#: .\index\api\views.py:971
+#: .\index\api\views.py:973
 msgid "The session key is not recognized."
 msgstr "Сессионнный ключ не опознан."
 
-#: .\index\api\views.py:1074
+#: .\index\api\views.py:1076
 #, python-format
 msgid "Objects %(numbers)s moved successfully."
 msgstr "Объекты с номерами %(numbers)s успешно перемещены."
 
-#: .\index\api\views.py:1152
+#: .\index\api\views.py:1154
 #, python-format
 msgid ""
 "This consumable is in the state \"%(cart_status)s\". Return to the warehouse "
@@ -1309,7 +1331,7 @@ msgstr ""
 "Расходный материал обладает статусом – \"%(cart_status)s\". Возврат на склад "
 "невозможен."
 
-#: .\index\api\views.py:1181 .\index\api\views.py:1232 .\index\views.py:970
+#: .\index\api\views.py:1183 .\index\api\views.py:1240 .\index\views.py:970
 #, python-format
 msgid ""
 "An object with number %(cart_num)s belong to a different organizational unit."
@@ -1317,19 +1339,23 @@ msgstr ""
 "Объект с номером %(cart_num)s принадлежит другому организационному "
 "подразделению."
 
-#: .\index\api\views.py:1193
+#: .\index\api\views.py:1195
 msgid "Action not supported"
 msgstr "Действие не поддерживается"
 
-#: .\index\api\views.py:1200
+#: .\index\api\views.py:1202
 msgid "Your score is accepted."
 msgstr "Ваша оценка принята."
 
-#: .\index\api\views.py:1227 .\index\api\views.py:1239
+#: .\index\api\views.py:1227
+msgid "The number must not be empty."
+msgstr "Номер не может быть пустым."
+
+#: .\index\api\views.py:1234 .\index\api\views.py:1248
 msgid "Not found."
 msgstr "Не найден."
 
-#: .\index\api\views.py:1244
+#: .\index\api\views.py:1253
 msgid "Number is already in use."
 msgstr "Номер уже используется."
 
@@ -1441,11 +1467,11 @@ msgid "Empty and in basket"
 msgstr "Пустые и в корзине"
 
 #: .\index\templates\index\404.html:2 .\index\templates\index\404.html.py:3
-#: .\index\templates\index\404.html:10 .\index\templates\index\500.html.py:3
+#: .\index\templates\index\404.html:10 .\index\templates\index\500.html:3
 msgid "Error 404"
 msgstr "Ошибка 404! Страница не найдена."
 
-#: .\index\templates\index\500.html:2 .\index\templates\index\500.html.py:10
+#: .\index\templates\index\500.html:2 .\index\templates\index\500.html:10
 msgid "Error 500"
 msgstr "Ошибка на стороне сервера!"
 
@@ -1670,11 +1696,6 @@ msgstr "Редактировать комментарий"
 #: .\index\templates\index\stock.html:87 .\index\templates\index\use.html:64
 msgid "Event viewer"
 msgstr "Просмотр событий"
-
-#: .\index\templates\index\change_number_modal.html:3
-#: .\index\templates\index\stock.html:35
-msgid "Change number"
-msgstr "Сменить номер"
 
 #: .\index\templates\index\change_number_modal.html:15
 #: .\index\templates\index\tree_list.html:89

@@ -31,7 +31,9 @@ from index.signals import ( sign_turf_cart,
                             sign_tr_cart_to_basket, 
                             sign_add_empty_to_stock, 
                             sign_tr_cart_to_uses, 
-                            sign_tr_empty_cart_to_firm, )
+                            sign_tr_empty_cart_to_firm,
+                            sign_change_number, 
+                            )
 from index.forms.add_items import AddItems
 from index.forms.add_items_from_barcode import AddItemsFromBarCodeScanner
 from index.forms.tr_to_firm import TransfeToFirm
@@ -1220,6 +1222,11 @@ def change_cart_number(request):
     cart_number = request.POST.get('cart_number', '')
     cart_number = cart_number.strip()
 
+    if not len(cart_number):
+        ansver['error'] ='1'
+        ansver['mes'] = _('The number must not be empty.')
+        return JsonResponse(ansver)
+
     try:
         m1 = CartridgeItem.objects.get(pk=cart_id)
     except CartridgeItem.DoesNotExist:
@@ -1227,6 +1234,7 @@ def change_cart_number(request):
         ansver['mes'] = _('Not found.')
         return JsonResponse(ansver)
 
+    cart_index = m1.pk
     if m1.departament in des:
         ansver['error'] ='1'
         ansver['mes'] = _('An object with number %(cart_num)s belong to a different organizational unit.') % {'cart_num': cart_number}
@@ -1245,9 +1253,11 @@ def change_cart_number(request):
         ansver['mes'] = _('Number is already in use.')
         return JsonResponse(ansver)
     else:
+        old_cart_number = m1.cart_number
         m1.cart_number = cart_number
         m1.save()
-
+    
+    sign_change_number.send(sender=None, cart_index=cart_index, old_number=old_cart_number, new_number=cart_number, request=request)
     ansver['error'] = '0'
 
     return JsonResponse(ansver)
