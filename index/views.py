@@ -32,7 +32,7 @@ from .models import FirmTonerRefill
 from .models import CartridgeItemName
 from .helpers import str2int
 from events.models import Events
-from docs.models import SCDoc
+from docs.models import SCDoc, RefillingCart
 from storages.models import Storages
 from .signals import sign_tr_filled_cart_to_stock
 
@@ -820,8 +820,9 @@ def from_firm_to_stock(request):
                 m1 = CartridgeItem.objects.get(pk=inx)
                 # проверяем принадлежность перемещаемого РМ департаменту 
                 # пользователя.
+                firm = str(m1.filled_firm)
                 if m1.departament == request.user.departament:
-                    filled_firm = str(m1.filled_firm)
+                    filled_firm = firm
                     m1.filled_firm = None
                     m1.cart_status = 1
                     m1.cart_date_change = timezone.now()
@@ -844,7 +845,7 @@ def from_firm_to_stock(request):
 
         # генерируем акт возвращения РМ
         jsoning_list = []
-        for inx in numbers:
+        for inx in tmp:
             cart_number = CartridgeItem.objects.get(pk=inx).cart_number
             cart_name   = CartridgeItem.objects.get(pk=inx).cart_itm_name
             repair_actions = request.POST.getlist('cart_'+str(inx))
@@ -870,10 +871,10 @@ def from_firm_to_stock(request):
                                 firm         = firm,
                                 user         = str(request.user),
                                 json_content = jsoning_list,
-                                money        = price,
+                                #money        = price,
                                 departament  = request.user.departament
                                )
-        act_doc.save()        
+        act_doc.save()
 
         return HttpResponseRedirect(reverse('index:at_work'))
     return render(request, 'index/from_firm_to_stock.html', {'checked_cartr': checked_cartr, 

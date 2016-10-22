@@ -3,6 +3,9 @@
 {% block title %}{% trans "Return cartridge to the stock" %}{% endblock %}
 {% block h3 %}{% trans "Return cartridge to the stock" %}{% endblock %}
 {% block breadcrumbs %}<a href="/"><img src="{{ STATIC_URL }}img/home.png" /></a> / <a href="{% url 'index:at_work' %}">{% trans "Cartridges on rebuilding" %}</a> / {% trans "Return cartridge to the stock" %}{% endblock %}
+{% block jqueryui%}
+
+{% endblock %}
 {% block help_url %}
 {{ request.HOME_SITE }}/help/{{ request.LANGUAGE_CODE }}/from_firm_to_stock/
 {% endblock %}
@@ -20,7 +23,7 @@
 </div>
 <div class="row">
     <div class="large-12 columns">
-        <form action="" method="POST">
+        <form action="" method="POST" class="firm_work">
         {% csrf_token %}
         <input name="checked_cartr" type="hidden" value="{{ checked_cartr }}" readonly/>
         <input name="list_length" type="hidden" value="{{ list_length }}" readonly/>
