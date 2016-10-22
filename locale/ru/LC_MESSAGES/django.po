@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-10-21 17:37+0500\n"
-"PO-Revision-Date: 2016-10-21 17:40+0500\n"
+"POT-Creation-Date: 2016-10-22 21:56+0500\n"
+"PO-Revision-Date: 2016-10-22 21:57+0500\n"
 "Last-Translator: \n"
 "Language-Team: severcart.org <sfcl@mail.ru>\n"
 "Language: ru\n"
@@ -89,7 +89,8 @@ msgid "Full name"
 msgstr "Фамилия, имя, отчество"
 
 #: .\accounts\forms\edit.py:18 .\accounts\forms\register.py:18
-#: .\docs\forms\edit_name.py:18 .\docs\forms\edit_name.py:25
+#: .\dhtml\templates\dhtml\validate_money.html:6 .\docs\forms\edit_name.py:18
+#: .\docs\forms\edit_name.py:25
 #: .\index\templates\index\add_cartridge_from_barcode_scanner.html:24
 #: .\index\templates\index\add_cartridge_from_barcode_scanner.html:40
 #: .\index\templates\index\add_empty_cartridge.html:33
@@ -159,6 +160,7 @@ msgstr "Форма смены пароля"
 #: .\docs\templates\docs\edit_name.html:3 .\docs\templates\docs\handbook.html:2
 #: .\docs\templates\docs\handbook.html:3
 #: .\docs\templates\docs\names_list.html:4
+#: .\docs\templates\docs\return_acts_list.html:5
 #: .\docs\templates\docs\types_list.html:4
 #: .\index\templates\index\add_firm.html:3
 #: .\index\templates\index\add_name.html:3
@@ -217,7 +219,7 @@ msgstr "Сменить пароль"
 #: .\index\templates\index\edit_cartridge_comment.html:15
 #: .\index\templates\index\edit_firm.html:21
 #: .\index\templates\index\evaluate_service.html:37
-#: .\index\templates\index\from_firm_to_stock.html:53
+#: .\index\templates\index\from_firm_to_stock.html:56
 #: .\index\templates\index\from_firm_to_stock_with_barcode.html:60
 #: .\index\templates\index\transfe_for_use.html:43
 #: .\reports\templates\reports\products.html:42
@@ -372,9 +374,9 @@ msgstr "Английский"
 #: .\dhtml\templates\dhtml\logic.html:951
 #: .\dhtml\templates\dhtml\logic.html:1069
 #: .\dhtml\templates\dhtml\logic.html:1174
-#: .\dhtml\templates\dhtml\logic.html:1308
-#: .\dhtml\templates\dhtml\logic.html:1356
-#: .\dhtml\templates\dhtml\logic.html:1414
+#: .\dhtml\templates\dhtml\logic.html:1322
+#: .\dhtml\templates\dhtml\logic.html:1370
+#: .\dhtml\templates\dhtml\logic.html:1428
 msgid "<p>Server not available.</p>"
 msgstr "<p>Сервер не доступен.</p>"
 
@@ -410,30 +412,34 @@ msgstr "Вы точно хоитие удалить документ?"
 msgid "Are you sure you want to delete the user?"
 msgstr "Вы точно хотите удалить пользователя?"
 
-#: .\dhtml\templates\dhtml\logic.html:1265
+#: .\dhtml\templates\dhtml\logic.html:1279
 msgid "Are you sure you want to delete?"
 msgstr "Вы точно хотите удалить?"
 
-#: .\dhtml\templates\dhtml\logic.html:1320
+#: .\dhtml\templates\dhtml\logic.html:1334
 msgid "Are you sure you want to delete city?"
 msgstr "Вы точно хотите удалить название города?"
 
-#: .\dhtml\templates\dhtml\logic.html:1426
+#: .\dhtml\templates\dhtml\logic.html:1440
 #: .\index\templates\index\base_menu.html:16
 msgid "Find by number"
 msgstr "Поиск по номеру"
 
-#: .\dhtml\templates\dhtml\logic.html:1696
+#: .\dhtml\templates\dhtml\logic.html:1710
 msgid "Are you sure you want to remove the storage room?"
 msgstr "Вы точно хотите удалить складское помещение?"
 
-#: .\dhtml\templates\dhtml\logic.html:1757
+#: .\dhtml\templates\dhtml\logic.html:1771
 msgid "<p>Server error :(</p>"
 msgstr "<p>Ошибка на стороне сервера :(</p>"
 
-#: .\dhtml\templates\dhtml\logic.html:2148
+#: .\dhtml\templates\dhtml\logic.html:2162
 msgid "List move empty."
 msgstr "Пустой список для перемещения."
+
+#: .\dhtml\templates\dhtml\validate_money.html:14
+msgid "Does not match the format"
+msgstr "Не соответствует формату"
 
 #: .\docs\api\views.py:32 .\docs\api\views.py:80 .\docs\api\views.py:112
 #: .\docs\api\views.py:448 .\index\api\views.py:53 .\index\api\views.py:292
@@ -528,7 +534,7 @@ msgstr "Документ «%(doc_number)s_%(user_id)s_0.docx» успешно с
 #: .\index\templates\index\basket.html:41
 #: .\index\templates\index\del_firm.html:9
 #: .\index\templates\index\empty.html:70
-#: .\index\templates\index\from_firm_to_stock.html:30
+#: .\index\templates\index\from_firm_to_stock.html:33
 #: .\index\templates\index\from_firm_to_stock_with_barcode.html:33
 #: .\index\templates\index\get_cart_ou.html:8
 #: .\index\templates\index\stock.html:68
@@ -558,7 +564,7 @@ msgstr "Количество"
 #: .\index\templates\index\add_items.html:32
 #: .\index\templates\index\at_work.html:41
 #: .\index\templates\index\basket.html:40 .\index\templates\index\empty.html:69
-#: .\index\templates\index\from_firm_to_stock.html:29
+#: .\index\templates\index\from_firm_to_stock.html:32
 #: .\index\templates\index\from_firm_to_stock_with_barcode.html:32
 #: .\index\templates\index\get_cart_ou.html:7
 #: .\index\templates\index\stock.html:67
@@ -704,11 +710,13 @@ msgid "Acts of transfer for restoration"
 msgstr "Акты передачи на заправку"
 
 #: .\docs\templates\docs\acts_list.html:24
+#: .\docs\templates\docs\return_acts_list.html:24
 msgid "Extension number"
 msgstr "Внутренний<br/>номер"
 
 #: .\docs\templates\docs\acts_list.html:25
 #: .\docs\templates\docs\delivery.html:101
+#: .\docs\templates\docs\return_acts_list.html:25
 msgid "Spent"
 msgstr "Потрачено"
 
@@ -716,6 +724,8 @@ msgstr "Потрачено"
 #: .\docs\templates\docs\delivery.html:33
 #: .\docs\templates\docs\delivery.html:100
 #: .\docs\templates\docs\delivery.html:101
+#: .\docs\templates\docs\return_acts_list.html:25
+#: .\index\templates\index\from_firm_to_stock.html:40
 #: .\index\templates\index\transfer_to_firm.html:43
 #: .\index\templates\index\transfer_to_firm_with_scanner.html:60
 #: .\reports\templates\reports\spent_money.html:58
@@ -723,6 +733,7 @@ msgid "Currency"
 msgstr "руб."
 
 #: .\docs\templates\docs\acts_list.html:26
+#: .\docs\templates\docs\return_acts_list.html:26
 msgid "Contract"
 msgstr "Контракты"
 
@@ -738,11 +749,14 @@ msgstr "Кто передал"
 msgid "Who gave"
 msgstr "Кому передал"
 
-#: .\docs\templates\docs\acts_list.html:30 .\index\templates\index\use.html:55
+#: .\docs\templates\docs\acts_list.html:30
+#: .\docs\templates\docs\return_acts_list.html:30
+#: .\index\templates\index\use.html:55
 msgid "Action"
 msgstr "Действие"
 
 #: .\docs\templates\docs\acts_list.html:30
+#: .\docs\templates\docs\return_acts_list.html:30
 #: .\index\templates\index\add_empty_cartridge.html:115
 #: .\index\templates\index\add_items.html:117
 #: .\index\templates\index\at_work.html:21
@@ -752,10 +766,12 @@ msgid "Download"
 msgstr "Скачать"
 
 #: .\docs\templates\docs\acts_list.html:43
+#: .\docs\templates\docs\return_acts_list.html:43
 msgid "Form a group with docx"
 msgstr "Сформировать docx с группировкой"
 
 #: .\docs\templates\docs\acts_list.html:44
+#: .\docs\templates\docs\return_acts_list.html:44
 msgid "Form a group without docx"
 msgstr "Сформировать docx без группировки"
 
@@ -765,7 +781,7 @@ msgid "Add city"
 msgstr "Добавить город"
 
 #: .\docs\templates\docs\add_city.html:3 .\docs\templates\docs\edit_city.html:3
-#: .\docs\templates\docs\handbook.html:23
+#: .\docs\templates\docs\handbook.html:24
 msgid "Cities"
 msgstr "Города"
 
@@ -893,23 +909,41 @@ msgstr "Контрагенты"
 msgid "Acts of transfer at the gas station"
 msgstr "Акты передачи на заправку"
 
-#: .\docs\templates\docs\handbook.html:19
+#: .\docs\templates\docs\handbook.html:17
+#: .\docs\templates\docs\return_acts_list.html:4
+#: .\docs\templates\docs\return_acts_list.html:5
+msgid "Acts return with refills"
+msgstr "Акты возврата с заправки"
+
+#: .\docs\templates\docs\handbook.html:20
 #: .\reports\templates\reports\amortizing.html:3
 #: .\reports\templates\reports\vertical_menu.html:2
 msgid "Reports"
 msgstr "Отчёты"
 
-#: .\docs\templates\docs\handbook.html:20
+#: .\docs\templates\docs\handbook.html:21
 msgid "List the names of consumables"
 msgstr "Список названий расходников"
 
-#: .\docs\templates\docs\handbook.html:21
+#: .\docs\templates\docs\handbook.html:22
 msgid "List of consumables types"
 msgstr "Список типов расходников"
 
-#: .\docs\templates\docs\handbook.html:22
+#: .\docs\templates\docs\handbook.html:23
 msgid "List of storages"
 msgstr "Складские помещения"
+
+#: .\docs\templates\docs\return_acts_list.html:27
+msgid "Return date"
+msgstr "Дата возврата"
+
+#: .\docs\templates\docs\return_acts_list.html:28
+msgid "Who returned"
+msgstr "Кто вернул"
+
+#: .\docs\templates\docs\return_acts_list.html:29
+msgid "Where returned"
+msgstr "Кто обслуживал"
 
 #: .\docs\templates\docs\types_list.html:31
 msgid "type"
@@ -930,12 +964,12 @@ msgstr "Новый «%(doc_num)s» успешно создан."
 msgid "Document %(doc_number)s deleted!"
 msgstr "Документ с номером %(doc_number)s удалён!"
 
-#: .\docs\views.py:234
+#: .\docs\views.py:251
 #, python-format
 msgid "City \"%(city)s\" success added."
 msgstr "Город \"%(city)s\" успешно добавлен."
 
-#: .\docs\views.py:260
+#: .\docs\views.py:277
 #, python-format
 msgid "City \"%(city)s\" success edited."
 msgstr "Город \"%(city)s\"  успешно изменён."
@@ -1340,7 +1374,7 @@ msgstr ""
 "Расходный материал обладает статусом – \"%(cart_status)s\". Возврат на склад "
 "невозможен."
 
-#: .\index\api\views.py:1185 .\index\api\views.py:1242 .\index\views.py:1003
+#: .\index\api\views.py:1185 .\index\api\views.py:1242 .\index\views.py:1004
 #, python-format
 msgid ""
 "An object with number %(cart_num)s belong to a different organizational unit."
@@ -1476,11 +1510,11 @@ msgid "Empty and in basket"
 msgstr "Пустые и в корзине"
 
 #: .\index\templates\index\404.html:2 .\index\templates\index\404.html.py:3
-#: .\index\templates\index\404.html:10 .\index\templates\index\500.html:3
+#: .\index\templates\index\404.html:10 .\index\templates\index\500.html.py:3
 msgid "Error 404"
 msgstr "Ошибка 404! Страница не найдена."
 
-#: .\index\templates\index\500.html:2 .\index\templates\index\500.html:10
+#: .\index\templates\index\500.html:2 .\index\templates\index\500.html.py:10
 msgid "Error 500"
 msgstr "Ошибка на стороне сервера!"
 
@@ -1845,35 +1879,35 @@ msgstr "Все"
 msgid "Return cartridge to the stock"
 msgstr "Возврат картриджей на склад"
 
-#: .\index\templates\index\from_firm_to_stock.html:31
+#: .\index\templates\index\from_firm_to_stock.html:34
 msgid "Regeneration"
 msgstr "Регенерация"
 
-#: .\index\templates\index\from_firm_to_stock.html:32
+#: .\index\templates\index\from_firm_to_stock.html:35
 msgid "Filling<br/> and cleaning"
 msgstr "Заправка<br/> и очистка"
 
-#: .\index\templates\index\from_firm_to_stock.html:33
+#: .\index\templates\index\from_firm_to_stock.html:36
 msgid "Replacing <br/> fotovala"
 msgstr "Замена<br/> фоторецептора"
 
-#: .\index\templates\index\from_firm_to_stock.html:34
+#: .\index\templates\index\from_firm_to_stock.html:37
 msgid "Replacement<br/>squeegee"
 msgstr "Замена<br/>ракеля"
 
-#: .\index\templates\index\from_firm_to_stock.html:35
+#: .\index\templates\index\from_firm_to_stock.html:38
 msgid "Replacement<br/>chip"
 msgstr "Замена<br/>чипа"
 
-#: .\index\templates\index\from_firm_to_stock.html:36
+#: .\index\templates\index\from_firm_to_stock.html:39
 msgid "Replacing<br/>the magnetic roller"
 msgstr "Замена<br/>магнитного вала"
 
-#: .\index\templates\index\from_firm_to_stock.html:37
+#: .\index\templates\index\from_firm_to_stock.html:40
 msgid "Service cost"
 msgstr "Стоимость обслуживания"
 
-#: .\index\templates\index\from_firm_to_stock.html:52
+#: .\index\templates\index\from_firm_to_stock.html:55
 msgid "Return to stock"
 msgstr "Вернуть на склад"
 
@@ -2066,11 +2100,11 @@ msgstr "Выбрать все"
 msgid "Firm \"%(firm_name)s\" success added."
 msgstr "Контрагент «%(firm_name)s» успешно добавлен."
 
-#: .\index\views.py:968
+#: .\index\views.py:969
 msgid "Work has already estimated."
 msgstr "Работа уже оценена."
 
-#: .\index\views.py:999
+#: .\index\views.py:1000
 #, python-format
 msgid "An object with number %(cart_num)s is not transmitted to the service."
 msgstr "Объект с номером %(cart_num)s ещё не передавался на обслуживание."

@@ -4,7 +4,7 @@
 {% block h3 %}{% trans "Return cartridge to the stock" %}{% endblock %}
 {% block breadcrumbs %}<a href="/"><img src="{{ STATIC_URL }}img/home.png" /></a> / <a href="{% url 'index:at_work' %}">{% trans "Cartridges on rebuilding" %}</a> / {% trans "Return cartridge to the stock" %}{% endblock %}
 {% block jqueryui%}
-
+<script src="/dhtml/validate_money.js?{{request.CACHEVERSION}}"></script>
 {% endblock %}
 {% block help_url %}
 {{ request.HOME_SITE }}/help/{{ request.LANGUAGE_CODE }}/from_firm_to_stock/
@@ -29,7 +29,7 @@
         <input name="list_length" type="hidden" value="{{ list_length }}" readonly/>
         <table class="actions_firm">
         <tr>
-        <th class="action_type">{% trans "Number" %}</th>
+        <th class="cart_number">{% trans "Number" %}</th>
         <th class="action_type">{% trans "Name" %}</th>
         <th class="all_regeneration"><input type="checkbox" name="regeneration" id="regeneration" class="header_checkbox" checked/><label for="regeneration">{% trans "Regeneration" %}</label></th>
         <th class="all_filled"><input type="checkbox" name="filled" id="filled" class="header_checkbox" /><label for="filled">{% trans "Filling<br/> and cleaning" %}</label></th>
@@ -49,10 +49,10 @@
         <td><input type="checkbox" class="rakel" name="cart_{{elem.pk}}" value="rakel"/></td>
         <td><input type="checkbox" class="chip" name="cart_{{elem.pk}}" value="chip"/></td>
         <td><input type="checkbox" class="magnit" name="cart_{{elem.pk}}" value="magnit"/></td>
-        <td><input type="text" class="money" name="cart_{{elem.pk}}" value="0"/></td>
+        <td class="money_wrapper"><input type="text" class="money" name="cart_{{elem.pk}}" value="0" autocomplete="off"/><div class="money_validate"><div class="err_arrow"></div><div class="err_content"></div></div></td>
         </tr>{% endfor %}
         </table>
-        <input type="submit" value="{% trans 'Return to stock' %}" class="button"/>
+        <input type="submit" value="{% trans 'Return to stock' %}" class="button return_to_stock"/>
         <a class="button" href="{{ back }}">{% trans "Back" %}</a>
         </form>
     </div>

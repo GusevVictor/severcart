@@ -932,7 +932,8 @@ table.checkboxes th.actions {
     width:140px;
 }
 
-table.checkboxes th.cart_number {
+table.checkboxes th.cart_number,
+table.actions_firm th.cart_number {
     width:86px;
 }
 
@@ -1314,3 +1315,40 @@ span.rating span.minus {
     background: url(../img/big_spinner.gif) center center no-repeat;
 }
 
+.money_wrapper {
+    position: relative;
+}
+
+.money_validate {
+    height: 34px;
+    width: 110px;
+    position: absolute;
+    top: 5px;
+    right: -110px;
+    margin: 0;
+    padding: 0;
+    display: none;
+}
+
+input.error_border {
+    border:2px solid red;
+}
+
+.money_validate .err_arrow {
+    display: inline-block;
+    width: 8px;
+    height: 34px;
+    background: url('../img/arrow.png') no-repeat;
+}
+
+.money_validate .err_content {
+    display: inline-block;
+    padding: 2px 0px 2px 4px;
+    line-height:14px;
+    background: red;
+    height: 34px;
+    width: 102px;
+    overflow: hidden;
+    color: white;
+    font-size: 12px;
+}
