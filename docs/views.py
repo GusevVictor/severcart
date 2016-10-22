@@ -219,6 +219,23 @@ class ViewSendActs(GridListView):
         self.context['docs'] = self.pagination(all_acts, page_size)
         return render(request, 'docs/acts_list.html', self.context)
 
+
+class ViewReturnActs(GridListView):
+    """Просмотр списка актов передачи на заправку
+    """
+    @method_decorator(login_required)
+    @method_decorator(never_cache)
+    def dispatch(self, *args, **kwargs):
+        return super(ViewReturnActs, self).dispatch(*args, **kwargs)
+
+    def get(self, request, **kwargs):
+        all_acts = RefillingCart.objects.filter(departament=request.user.departament).filter(doc_type=2).order_by('-pk')
+        page_size = self.items_per_page()
+        self.context['page_size'] = page_size
+        self.context['docs'] = self.pagination(all_acts, page_size)
+        return render(request, 'docs/return_acts_list.html', self.context) 
+
+
 @login_required
 @never_cache
 def add_city(request):

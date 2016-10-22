@@ -1,0 +1,53 @@
+{% extends "index/base.html" %}{% load staticfiles %}{% load i18n %}
+{% load pagination  %}
+{% load docsf %}
+{% block title %}{% trans "Acts return with refills" %}{% endblock %}
+{% block breadcrumbs %}<a href="/"><img src="{{ STATIC_URL }}img/home.png" /></a> / <a href="{% url 'docs:handbook' %}">{% trans "References" %}</a> / {% trans "Acts return with refills" %}{% endblock %}
+{% block submenu %}
+<div class="row">
+    <div class="large-6 columns">
+        <div class="success_msg"></div>
+        <div class="error_msg"></div>
+    </div>
+</div>
+{% endblock %}
+{% block help_url %}
+{{ request.HOME_SITE }}/help/{{ request.LANGUAGE_CODE }}/view_send_acts/
+{% endblock %}
+{% block content %}
+<div class="row marginTop">
+    <div class="large-12 columns">
+        <form>
+            <table class="checkboxes">
+                <tr>
+                    <th class="first_checkbox">&nbsp;&nbsp;&nbsp;</th>
+                    <th>{% trans "Extension number" %}</th>
+                    <th>{% trans "Spent" %}, {% trans "Currency" %}</th>
+                    <th>{% trans "Contract" %}</th>
+                    <th class="cart_name">{% trans "Return date" %}</th>
+                    <th class="fio">{% trans "Who returned" %}</th>
+                    <th class="who_give">{% trans "Where returned" %}</th>
+                    <th class="actions">{% trans "Action" %} <img class="spinner" src="{{ STATIC_URL }}img/loader.gif" />&nbsp;&nbsp;<a class="download_doc" href="#">{% trans 'Download' %}</a></th>
+                </tr>{% for elem in docs %}
+                <tr>
+                    <td><input type="radio" value={{ elem.pk }} name="name_id"></td>
+                    <td>{{ elem.number }}</td>
+                    <td>{{ elem.money| divide }}</td>
+                    <td>{% if elem.parent_doc %}<span class="info_ico" title="{{ elem.parent_doc }}"></span>{% endif %}</td>
+                    <td>{{ elem.date_created|date:"d.m.Y" }}</td>
+                    <td>{{ elem.user }}</td>
+                    <td>{{ elem.firm }}</td>
+                    <td>
+                        <select class="action docx_action" data="{{ elem.pk }}">
+                            <option selected></option>
+                            <option value="docx_with_group" data="{{ elem.pk }}">{% trans "Form a group with docx" %}</option>
+                            <option value="docx_without_group" data="{{ elem.pk }}">{% trans "Form a group without docx" %}</option>
+                        </select>
+                    </td>
+                </tr>{% endfor %}
+            </table>
+        </form>
+    </div>
+</div>
+{% found_pagination docs page_size %}
+{% endblock %}

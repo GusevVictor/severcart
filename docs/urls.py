@@ -4,7 +4,9 @@ from .views import (handbook,
                     edit_name, 
                     ViewSendActs, 
                     add_city,
-                    edit_city,)
+                    edit_city,
+                    ViewReturnActs,
+                    )
 from .cbv import NamesView, TypesView, CitiesView
 
 urlpatterns = [
@@ -18,5 +20,6 @@ urlpatterns = [
     url(r'^add_city/', add_city, name='add_city'),
     url(r'^edit_city/', edit_city, name='edit_city'),
     url(r'^view_send_acts/', ViewSendActs.as_view(), name='view_send_acts'),
+    url(r'^view_return_acts/', ViewReturnActs.as_view(), name='view_return_acts'),
     url(r'^api/', include('docs.api.urls')),
 ]
