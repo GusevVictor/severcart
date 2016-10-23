@@ -23,6 +23,7 @@ from .forms.add_type import AddCartridgeType
 from .forms.add_firm import FirmTonerRefillF
 from .forms.tr_to_firm import TransfeToFirm, TransfeToFirmScanner
 from .forms.tr_to_stock import MoveItemsToStockWithBarCodeScanner
+from .forms.add_cartridge_name import AddCartridgeName
 from .forms.comment import EditCommentForm
 from .models import CartridgeType
 from .models import CartridgeItem
