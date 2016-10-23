@@ -49,16 +49,12 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="large-7 medium-7 columns">
+                    <div class="large-12 columns">
                         <label class="required">{% trans "Which company" %}</label>
                         <div class="input_row">
                             {{ form.firm }} <a class="add" href="{% url 'index:add_firm' %}"></a>
                         </div>
                         <div class="form_error_text required_error_firm">{% trans "Required field" %}</div>
-                    </div>
-                    <div class="large-5 medium-5 columns">
-                        <label for="{{ form.price.id_for_label }}">{% trans 'Service price' %}, {% trans "Currency" %}</label>
-                        {{ form.price }}
                     </div>
                 </div>
                 <div class="marginTop">

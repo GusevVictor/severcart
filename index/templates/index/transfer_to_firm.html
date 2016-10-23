@@ -33,15 +33,11 @@
                 {% endfor %}
                 </table>
                 <div class="row">
-                    <div class="large-7 medium-7 columns">
+                    <div class="large-12 columns">
                         <label class="required">{% trans "Which company" %}</label>
                         <div class="input_row">
                           <a class="add float-right" href="{% url 'index:add_firm' %}"></a>{{ form.firm }} 
                         </div>
-                    </div>
-                    <div class="large-5 medium-5 columns">
-                        <label for="{{ form.price.id_for_label }}">{% trans 'Service price' %}, {% trans "Currency" %}</label>
-                        {{ form.price }}
                     </div>
                 </div>
                 <div class="marginTop">

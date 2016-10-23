@@ -1007,7 +1007,6 @@ def move_objects_to_firm_with_barcode(request):
         numbers      = data_in_post.get('numbers')
         firm         = data_in_post.get('firm')
         doc          = data_in_post.get('doc')
-        price        = data_in_post.get('price')
         try:
             firm = FirmTonerRefill.objects.get(pk=firm) 
         except FirmTonerRefill.DoesNotExist:
@@ -1044,7 +1043,6 @@ def move_objects_to_firm_with_barcode(request):
                                 firm         = firm,
                                 user         = str(request.user),
                                 json_content = jsoning_list,
-                                money        = price,
                                 parent_doc   = doc,
                                 departament  = request.user.departament
                                )

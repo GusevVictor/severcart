@@ -22,7 +22,6 @@
                 <tr>
                     <th class="first_checkbox">&nbsp;&nbsp;&nbsp;</th>
                     <th>{% trans "Extension number" %}</th>
-                    <th>{% trans "Spent" %}, {% trans "Currency" %}</th>
                     <th>{% trans "Contract" %}</th>
                     <th class="cart_name">{% trans "Date of transfer" %}</th>
                     <th class="fio">{% trans "Who passed" %}</th>
@@ -32,7 +31,6 @@
                 <tr>
                     <td><input type="radio" value={{ elem.pk }} name="name_id"></td>
                     <td>{{ elem.number }}</td>
-                    <td>{{ elem.money| divide }}</td>
                     <td>{% if elem.parent_doc %}<span class="info_ico" title="{{ elem.parent_doc }}"></span>{% endif %}</td>
                     <td>{{ elem.date_created|date:"d.m.Y" }}</td>
                     <td>{{ elem.user }}</td>

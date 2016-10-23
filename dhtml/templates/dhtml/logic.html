@@ -268,7 +268,7 @@ $( function(){
 
     $('.transfer_to_repair').click( function() {
         var transfer_to_firm = $('form.transfer_to_firm').serializeArray();
-        var arg_obj = { 'numbers': transfer_to_firm[1]['value'], 'firm': transfer_to_firm[2]['value'], 'price': transfer_to_firm[3]['value'], 'doc': transfer_to_firm[4]['value'] };
+        var arg_obj = { 'numbers': transfer_to_firm[1]['value'], 'firm': transfer_to_firm[2]['value'], 'doc': transfer_to_firm[3]['value'] };
         $.ajax({
             method: 'POST',
             url: '{% url "index:api_transfer_to_firm" %}',
@@ -2147,7 +2147,6 @@ $( function(){
         /* Отправка аякс запроса на перемещение РМ к контрагентам на обслуживание */
         var numbers = $('#id_numbers').val();
         var firm = $('#id_firm option:selected').val();
-        var price = $('#id_price').val();
         var doc = $('#id_doc option:selected').val();
 
         if (firm) {
@@ -2166,7 +2165,7 @@ $( function(){
             $.ajax({
                 method: 'POST',
                 url: '{% url "index:move_objects_to_firm_with_barcode" %}',
-                data: {'numbers': numbers, 'firm': firm, 'price': price, 'doc': doc},
+                data: {'numbers': numbers, 'firm': firm, 'doc': doc},
                 beforeSend: function( xhr, settings ){
                     $('.spinner').show();
                     csrftoken = getCookie('csrftoken');
