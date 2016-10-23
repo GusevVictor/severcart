@@ -1,10 +1,11 @@
+# -*- coding:utf-8 -*-
 
 from django.conf.urls import url
 from events.api.views import (
-								show_event_page, 
-								date_filter,
-								view_cart_events,
-							 )
+                                show_event_page, 
+                                date_filter,
+                                view_cart_events,
+                             )
 
 urlpatterns = [
     url('^show_event_page/', show_event_page, name='show_event_page'),
