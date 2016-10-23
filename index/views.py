@@ -251,7 +251,6 @@ def add_empty_cartridge_from_barcode_scanner(request):
         return render(request, 'index/ou_not_set.html', dict())
 
     back = BreadcrumbsPath(request).before_page(request)
-    from docs.models import SCDoc
     form = AddItemsFromBarCodeScanner()
     # отфильтровываем и показываем только договора поставки
     form.fields['doc'].queryset = SCDoc.objects.filter(departament=request.user.departament).filter(doc_type=1)
