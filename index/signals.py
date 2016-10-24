@@ -144,7 +144,9 @@ def event_tr_filled_cart_to_stock(**kwargs):
             actions = elem[3]
             compact_num = 0
             for act in actions:
-                if act == 'filled':
+                if act == 'regeneration':
+                    compact_num += 100000
+                elif act == 'filled':
                     compact_num += 10000
                 elif act == 'fotoreceptor':
                     compact_num += 1000
@@ -167,7 +169,6 @@ def event_tr_filled_cart_to_stock(**kwargs):
                 cart_number = elem[4],
             )
             m1.save()
-
 
 def event_change_number(**kwargs):
     if kwargs.get('old_number', 0) and kwargs.get('new_number', 0) and kwargs.get('cart_id', 0):

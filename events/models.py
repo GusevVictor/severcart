@@ -29,6 +29,7 @@ class Events(models.Model):
     cart_type   = models.CharField(max_length=256, null=True)
     cart_action = models.IntegerField(null=True)
     # cart_action хранит данные о восстановительных действиях с объектом 5 значном числе.
+    # 1 в 6 разряде - регенерация
     # 1 в 5 разряде - заправка и очитска
     # 1 в 4 разряде - замена фотовала
     # 1 в 3 разряде - замена ракеля

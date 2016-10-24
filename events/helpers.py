@@ -147,14 +147,29 @@ def events_decoder(qso, time_zone_offset, simple=True):
         elif entry.event_type == 'RS':
             entry_obj   = {}
             data_env    = entry.date_time
-            entry.cart_action = '00000' if entry.cart_action == 0 else entry.cart_action
-            action_num  = [ int(i) for i in str(entry.cart_action) ]
             action_text = ''
-            action_text += _('filling and cleaning, ') if action_num[0] == 1 else ''
-            action_text += _('Replacement fotoreceptor, ') if action_num[1] == 1 else ''
-            action_text += _('replacement of squeegee, ') if action_num[2] == 1 else ''
-            action_text += _('chip replacement, ') if action_num[3] == 1 else ''
-            action_text += _('replacing the magnetic roller, ') if action_num[4] == 1 else ''
+            if len(str(entry.cart_action)) == 5:
+                # поддержка старых релизов severcart
+                entry.cart_action = '00000' if entry.cart_action == 0 else entry.cart_action
+                action_num  = [ int(i) for i in str(entry.cart_action) ]
+                action_text += _('filling and cleaning, ') if action_num[0] == 1 else ''
+                action_text += _('Replacement fotoreceptor, ') if action_num[1] == 1 else ''
+                action_text += _('replacement of squeegee, ') if action_num[2] == 1 else ''
+                action_text += _('chip replacement, ') if action_num[3] == 1 else ''
+                action_text += _('replacing the magnetic roller, ') if action_num[4] == 1 else ''
+                
+            elif len(str(entry.cart_action)) == 6:
+                entry.cart_action = '000000' if entry.cart_action == 0 else entry.cart_action
+                action_num  = [ int(i) for i in str(entry.cart_action) ]
+                action_text += _('regeneration, ') if action_num[0] == 1 else ''
+                action_text += _('filling and cleaning, ') if action_num[1] == 1 else ''
+                action_text += _('Replacement fotoreceptor, ') if action_num[2] == 1 else ''
+                action_text += _('replacement of squeegee, ') if action_num[3] == 1 else ''
+                action_text += _('chip replacement, ') if action_num[4] == 1 else ''
+                action_text += _('replacing the magnetic roller, ') if action_num[5] == 1 else ''
+            else:
+                action_text = _('Not implement.')
+                
             if simple:
                 text_com = _('Return to the filling in the firm "%(event_firm)s" user %(event_user)s.') % {
                                                                         'event_firm': entry.event_firm,
