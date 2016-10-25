@@ -1031,11 +1031,12 @@ $( function(){
             var doc_id = mainSelect.attr('data');
             $('.download_doc').hide();
             var doc_action = mainSelect.children(':selected').attr('value');
+            var doc_type = mainSelect.attr('doc_type');
             if (doc_action) {
                 $.ajax({
                     method: 'POST',
                     url: '{% url "docs:generate_act" %}',
-                    data:  {'doc_id': doc_id, 'doc_action': doc_action },
+                    data:  {'doc_id': doc_id, 'doc_action': doc_action, 'doc_type': doc_type},
                     beforeSend: function( xhr, settings ){
                         $('.spinner').show();
                         csrftoken = getCookie('csrftoken');

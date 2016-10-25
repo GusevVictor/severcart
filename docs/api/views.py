@@ -124,6 +124,8 @@ def generate_act(request):
         
     doc_id = request.POST.get('doc_id', '')
     doc_action = request.POST.get('doc_action', '')
+
+
     pages_count = 0
     try:
         doc_id = int(doc_id)
@@ -136,6 +138,13 @@ def generate_act(request):
         resp_dict['error'] = '1'
         resp_dict['text']  = _('The object with the ID is not found.')
         return JsonResponse(resp_dict, safe=False)
+
+    if m1.doc_type == 1:
+        doc_type = 'send'
+    elif m1.doc_type == 2:
+        doc_type = 'return'
+    else:
+        doc_type = 'send'
 
     jsontext = m1.json_content
     jsontext = json.loads(jsontext)

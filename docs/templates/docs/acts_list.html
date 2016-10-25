@@ -36,7 +36,7 @@
                     <td>{{ elem.user }}</td>
                     <td>{{ elem.firm }}</td>
                     <td>
-                        <select class="action docx_action" data="{{ elem.pk }}">
+                        <select class="action docx_action" data="{{ elem.pk }}" doc_type="send">
                             <option selected></option>
                             <option value="docx_with_group" data="{{ elem.pk }}">{% trans "Form a group with docx" %}</option>
                             <option value="docx_without_group" data="{{ elem.pk }}">{% trans "Form a group without docx" %}</option>
