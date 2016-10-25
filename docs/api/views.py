@@ -14,7 +14,7 @@ from docx import Document
 from docx.shared import Inches, RGBColor, Pt
 from docx.enum.text import WD_ALIGN_PARAGRAPH
 from index.models import CartridgeItemName, CartridgeType, CartridgeItem, City
-from index.helpers import check_ajax_auth
+from index.helpers import check_ajax_auth, str2int
 from docs.models import RefillingCart, SCDoc
 from docs.helpers import group_names, localize_date
 from service.helpers import SevercartConfigs
@@ -120,17 +120,13 @@ def generate_act(request):
             document.add_paragraph("")
 
         page_number_string = _('Page %(num)s from %(total)s') % {'num': page_num, 'total': total_pages_count}
-        p = document.add_paragraph('severcart.org' + ' '*120 + page_number_string)
+        p = document.add_paragraph('www.severcart.org' + ' '*100 + page_number_string)
         
     doc_id = request.POST.get('doc_id', '')
     doc_action = request.POST.get('doc_action', '')
 
-
     pages_count = 0
-    try:
-        doc_id = int(doc_id)
-    except ValueError:
-        doc_id = 0
+    doc_id = str2int(doc_id)
 
     try:
         m1 = RefillingCart.objects.get(pk=doc_id)
@@ -138,13 +134,6 @@ def generate_act(request):
         resp_dict['error'] = '1'
         resp_dict['text']  = _('The object with the ID is not found.')
         return JsonResponse(resp_dict, safe=False)
-
-    if m1.doc_type == 1:
-        doc_type = 'send'
-    elif m1.doc_type == 2:
-        doc_type = 'return'
-    else:
-        doc_type = 'send'
 
     jsontext = m1.json_content
     jsontext = json.loads(jsontext)
@@ -545,3 +534,151 @@ def calculate_sum(request):
 
     ansver['result'] = result
     return JsonResponse(ansver)
+
+
+@check_ajax_auth
+def generate_return_act(request):
+    """Генерация нового docx акта возврата картриджей. Вью возвращает Url с свежезгенерированным файлом. 
+    """
+    resp_dict = dict()
+    if request.method != 'POST':
+        return HttpResponse('<h1>' + _('Only use POST requests!') + '</h1>')
+    # использование глобальных переменных не очень хороший приём
+    # но он позволяет упростить программный код
+    total_pages_count = 0
+
+    def add_footer(page_num=1):
+        # форматирование нижнего колонтитула копирайтом и количеством страниц
+        for i in range(4):
+            document.add_paragraph("")
+
+        page_number_string = _('Page %(num)s from %(total)s') % {'num': page_num, 'total': total_pages_count}
+        p = document.add_paragraph('www.severcart.org' + ' '*100 + page_number_string)
+        
+    doc_id = request.POST.get('doc_id', '')
+    doc_id = str2int(doc_id)
+
+    try:
+        m1 = RefillingCart.objects.get(pk=doc_id)
+    except RefillingCart.DoesNotExist:
+        resp_dict['error'] = '1'
+        resp_dict['text']  = _('The object with the ID is not found.')
+        return JsonResponse(resp_dict, safe=False)
+
+    jsontext = m1.json_content
+    jsontext = json.loads(jsontext)
+
+    pages_count = 0
+    co = len(jsontext) # количество передаваемых картриджей на заправку
+
+    if not os.path.exists(settings.STATIC_ROOT_DOCX):
+        os.makedirs(settings.STATIC_ROOT_DOCX)
+
+    # ротация файлов
+    files = filter(os.path.isfile, glob.glob(settings.STATIC_ROOT_DOCX + '\*.docx'))
+    files = list(files)
+    files.sort(key=lambda x: os.path.getmtime(x))
+    try:
+        if len(files) > settings.MAX_COUNT_DOCX_FILES:
+            os.remove(files[0])
+    except:
+        pass
+    # производим инициализацию некоторых переменных начальными значениями    
+    docx_file_name = m1.number + '_' + str(request.user.pk) +'_3.docx'
+    docx_full_file_name = os.path.join(settings.STATIC_ROOT_DOCX, docx_file_name)
+    # генерация печатной версии документа без группировки наименований
+    document = Document()
+    
+    # добавляем шапку для документа
+    doc_number = str(m1.number) + '/' + str(request.user.pk)
+    act_number_string = _('The act of receiving cartridges # %(doc_number)s from  %(date_created)s') % {'doc_number': doc_number, 'date_created': localize_date(m1.date_created)}
+    hh1 = document.add_heading(act_number_string, level=2)
+    
+    hh2 = document.add_heading(str(request.user.departament), level=2)
+    
+    document.add_paragraph("") # добавляем оступ сверху
+    document.add_paragraph("")
+
+    # рисуем таблицу на первой странице
+    table = document.add_table(rows=1, cols=4, style='Table Grid')
+    sum_money = 0
+    hdr_cells = table.rows[0].cells
+    hdr_cells[0].text = _('Number')
+    hdr_cells[1].text = _('Name')
+    hdr_cells[2].text = _('Ongoing work')
+    hdr_cells[3].text = '%s, %s' % (_('The price'), _('Currency'))
+    if (len(jsontext) <= settings.MAX_TABLE_ROWS_FIRST_PAGE):
+        for item in jsontext:
+            row_cells = table.add_row().cells
+            row_cells[0].text = str(item[0])
+            row_cells[1].text = str(item[1])
+            row_cells[2].text = item[2][:-1]
+            money = float(item[2][-1])
+            sum_money += money
+            row_cells[3].text = str(money)
+        total_pages_count = 1
+
+    if (len(jsontext) > settings.MAX_TABLE_ROWS_FIRST_PAGE):
+        first_part  = jsontext[0:settings.MAX_TABLE_ROWS_FIRST_PAGE-1]
+        second_part = jsontext[settings.MAX_TABLE_ROWS_FIRST_PAGE:]
+        
+        p = Paginator(second_part, settings.MAX_TABLE_ROWS)
+        total_pages_count = 1 + p.num_pages
+
+        for item in first_part:
+            row_cells = table.add_row().cells
+            row_cells[0].text = str(item[0])
+            row_cells[1].text = str(item[1])
+            row_cells[2].text = item[2][:-1]
+            money = float(item[2][-1])
+            row_cells[3].text = str(money)
+            sum_money += money
+        pages_count += 1    
+        add_footer(pages_count)
+        document.add_page_break()
+        # далее с каждой новой страницы рисуем новую таблицу с 
+        # продолжением печати данных
+        for pg in range(p.num_pages):
+            stranica = p.page(pg + 1)
+            # на каждой новой странице печатаем заново новый заголовок
+            table = document.add_table(rows=1, cols=4, style='Table Grid')
+            hdr_cells = table.rows[0].cells
+            hdr_cells[0].text = _('Number')
+            hdr_cells[1].text = _('Name')
+            hdr_cells[2].text = _('Ongoing work')
+            hdr_cells[3].text = '%s, %s' % (_('The price'), _('Currency'))
+            for item in stranica:
+                row_cells = table.add_row().cells
+                row_cells[0].text = str(item[0])
+                row_cells[1].text = str(item[1])
+                row_cells[2].text = item[2][:-1]
+                money = float(item[2][-1])
+                row_cells[3].text = str(money)
+                sum_money += money
+            # если страница последняя то разрыв страницы не добавляем
+            if  pg != (p.num_pages - 1):
+                pages_count += 1
+                document.add_page_break()
+                add_footer(pages_count)
+
+    sender_full_name = ""
+    recipient_full_name = request.user.fio
+    # добавляем место для подписей принимающих и передающих
+    document.add_paragraph("") # добавляем оступ сверху
+    document.add_paragraph(_('Just made: %(co)s pieces') % {'co': co})
+    document.add_paragraph(_('The total amount of: %(sum_money)s dollars') % {'sum_money': sum_money})
+    document.add_paragraph("")
+    document.add_paragraph("%s        %s           ______________" % (_('Resipient'), recipient_full_name,))
+    document.add_paragraph("")
+    document.add_paragraph("%s        %s           ______________" % (_('Sender'), sender_full_name,))
+
+    pages_count += 1
+    add_footer(pages_count)
+
+    document.save(docx_full_file_name)
+    
+    resp_dict['error'] = '0'
+    resp_dict['text']  = _('Document %(doc_number)s_%(user_id)s_3.docx generated') % { 'doc_number': m1.number, 'user_id': request.user.pk}
+    resp_dict['url'] = settings.STATIC_URL + 'docx/' + docx_file_name
+    
+    return JsonResponse(resp_dict)

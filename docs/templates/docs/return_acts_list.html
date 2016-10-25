@@ -27,7 +27,7 @@
                     <th class="cart_name">{% trans "Return date" %}</th>
                     <th class="fio">{% trans "Who returned" %}</th>
                     <th class="who_give">{% trans "Where returned" %}</th>
-                    <th class="actions">{% trans "Action" %} <img class="spinner" src="{{ STATIC_URL }}img/loader.gif" />&nbsp;&nbsp;<a class="download_doc" href="#">{% trans 'Download' %}</a></th>
+                    <th class="ret_actions">{% trans "Action" %}&nbsp;&nbsp;<a class="download_doc" href="#">{% trans 'Download' %}</a>&nbsp;&nbsp;<img class="spinner" src="{{ STATIC_URL }}img/loader.gif" /></th>
                 </tr>{% for elem in docs %}
                 <tr>
                     <td><input type="radio" value={{ elem.pk }} name="name_id"></td>
@@ -38,11 +38,7 @@
                     <td>{{ elem.user }}</td>
                     <td>{{ elem.firm }}</td>
                     <td>
-                        <select class="action docx_action" data="{{ elem.pk }}" doc_type="return">
-                            <option selected></option>
-                            <option value="docx_with_group" data="{{ elem.pk }}">{% trans "Form a group with docx" %}</option>
-                            <option value="docx_without_group" data="{{ elem.pk }}">{% trans "Form a group without docx" %}</option>
-                        </select>
+                        <a class="generate_docx_return button no_follow" href="" doc_id="{{ elem.pk }}">{% trans 'To generate a return act' %}</a>
                     </td>
                 </tr>{% endfor %}
             </table>

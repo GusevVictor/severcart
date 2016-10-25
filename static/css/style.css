@@ -932,6 +932,10 @@ table.checkboxes th.actions {
     width:140px;
 }
 
+table.checkboxes th.ret_actions {
+    width:190px;   
+}
+
 table.checkboxes th.cart_number,
 table.actions_firm th.cart_number {
     width:86px;
