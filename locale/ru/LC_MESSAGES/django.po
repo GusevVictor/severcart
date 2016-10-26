@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-10-25 22:49+0500\n"
-"PO-Revision-Date: 2016-10-25 22:49+0500\n"
+"POT-Creation-Date: 2016-10-26 09:21+0500\n"
+"PO-Revision-Date: 2016-10-26 09:27+0500\n"
 "Last-Translator: \n"
 "Language-Team: severcart.org <sfcl@mail.ru>\n"
 "Language: ru\n"
@@ -302,7 +302,7 @@ msgstr "Редактировать"
 msgid "Delete"
 msgstr "Удалить"
 
-#: .\accounts\templates\accounts\manage_users.html:30 .\docs\api\views.py:357
+#: .\accounts\templates\accounts\manage_users.html:30 .\docs\api\views.py:346
 #: .\index\templates\index\use.html.py:53
 #: .\search\templates\search\serp.html:14
 msgid "User"
@@ -443,7 +443,7 @@ msgid "Does not match the format"
 msgstr "Не соответствует формату"
 
 #: .\docs\api\views.py:32 .\docs\api\views.py:80 .\docs\api\views.py:112
-#: .\docs\api\views.py:457 .\docs\api\views.py:556 .\index\api\views.py:53
+#: .\docs\api\views.py:446 .\docs\api\views.py:545 .\index\api\views.py:53
 #: .\index\api\views.py:292 .\index\api\views.py:364 .\index\api\views.py:395
 #: .\index\api\views.py:562 .\index\api\views.py:610 .\index\api\views.py:631
 #: .\index\api\views.py:646 .\index\api\views.py:794 .\reports\api\views.py:56
@@ -451,8 +451,8 @@ msgstr "Не соответствует формату"
 msgid "Only use POST requests!"
 msgstr "Поддерживаются только POST запросы!"
 
-#: .\docs\api\views.py:48 .\docs\api\views.py:62 .\docs\api\views.py:139
-#: .\docs\api\views.py:576
+#: .\docs\api\views.py:48 .\docs\api\views.py:62 .\docs\api\views.py:135
+#: .\docs\api\views.py:587
 msgid "The object with the ID is not found."
 msgstr "Объект с таким ID не найден."
 
@@ -480,54 +480,54 @@ msgstr "Название города удалить нельзя, т. к. на 
 msgid "City deleted successfully."
 msgstr "Название города успешно удалено."
 
-#: .\docs\api\views.py:122 .\docs\api\views.py:566
+#: .\docs\api\views.py:122 .\docs\api\views.py:577
 #, python-format
 msgid "Page %(num)s from %(total)s"
 msgstr "Страница %(num)s из %(total)s"
 
-#: .\docs\api\views.py:174
+#: .\docs\api\views.py:163
 msgid "This action is not implemented."
 msgstr "Данное действие не реализовано."
 
-#: .\docs\api\views.py:182 .\docs\api\views.py:189
+#: .\docs\api\views.py:171 .\docs\api\views.py:178
 msgid "The name of the cartridge"
 msgstr "Название картриджа"
 
-#: .\docs\api\views.py:183
+#: .\docs\api\views.py:172
 msgid "Amount cartridges"
 msgstr "Количество картриджей"
 
-#: .\docs\api\views.py:188
+#: .\docs\api\views.py:177
 msgid "Cartridge number"
 msgstr "Номер катриджа"
 
-#: .\docs\api\views.py:196
+#: .\docs\api\views.py:185
 #, python-format
 msgid ""
 "The act of transferring cartridges # %(doc_number)s from  %(date_created)s"
 msgstr "Акт передачи картриджей № %(doc_number)s от %(date_created)s"
 
-#: .\docs\api\views.py:253
+#: .\docs\api\views.py:242
 #, python-format
 msgid "Total count - %(co)s"
 msgstr "Общее кол-во  %(co)s"
 
-#: .\docs\api\views.py:255
+#: .\docs\api\views.py:244 .\docs\api\views.py:695
 msgid "Sender"
 msgstr "Передал"
 
-#: .\docs\api\views.py:257
+#: .\docs\api\views.py:246 .\docs\api\views.py:693
 msgid "Resipient"
 msgstr "Принял"
 
-#: .\docs\api\views.py:265
+#: .\docs\api\views.py:254
 #, python-format
 msgid "Document %(doc_number)s_%(user_id)s_0.docx generated"
 msgstr "Документ «%(doc_number)s_%(user_id)s_0.docx» успешно сформирован."
 
-#: .\docs\api\views.py:292 .\docs\api\views.py:325 .\docs\api\views.py:354
-#: .\docs\api\views.py:380 .\docs\api\views.py:404 .\docs\api\views.py:430
-#: .\docs\api\views.py:619 .\docs\api\views.py:660 .\docs\forms\add_doc.py:11
+#: .\docs\api\views.py:281 .\docs\api\views.py:314 .\docs\api\views.py:343
+#: .\docs\api\views.py:369 .\docs\api\views.py:393 .\docs\api\views.py:419
+#: .\docs\api\views.py:629 .\docs\api\views.py:669 .\docs\forms\add_doc.py:11
 #: .\docs\forms\edit_name.py:6 .\docs\templates\docs\delivery.html.py:28
 #: .\docs\templates\docs\delivery.html:97
 #: .\docs\templates\docs\names_list.html:31 .\index\forms\add_firm.py:8
@@ -553,14 +553,14 @@ msgstr "Документ «%(doc_number)s_%(user_id)s_0.docx» успешно с
 msgid "Name"
 msgstr "Название"
 
-#: .\docs\api\views.py:292 .\index\templates\index\add_empty_cartridge.html:82
+#: .\docs\api\views.py:281 .\index\templates\index\add_empty_cartridge.html:82
 #: .\index\templates\index\add_items.html:83
 msgid "Amount items"
 msgstr "Количество"
 
-#: .\docs\api\views.py:324 .\docs\api\views.py:353 .\docs\api\views.py:379
-#: .\docs\api\views.py:403 .\docs\api\views.py:429 .\docs\api\views.py:618
-#: .\docs\api\views.py:659 .\docs\forms\add_doc.py:9
+#: .\docs\api\views.py:313 .\docs\api\views.py:342 .\docs\api\views.py:368
+#: .\docs\api\views.py:392 .\docs\api\views.py:418 .\docs\api\views.py:628
+#: .\docs\api\views.py:668 .\docs\forms\add_doc.py:9
 #: .\docs\templates\docs\delivery.html:23
 #: .\docs\templates\docs\delivery.html:95
 #: .\index\templates\index\add_empty_cartridge.html:31
@@ -582,64 +582,92 @@ msgstr "Количество"
 msgid "Number"
 msgstr "Номер"
 
-#: .\docs\api\views.py:326 .\docs\api\views.py:355 .\docs\api\views.py:381
-#: .\docs\api\views.py:405 .\docs\api\views.py:431
+#: .\docs\api\views.py:315 .\docs\api\views.py:344 .\docs\api\views.py:370
+#: .\docs\api\views.py:394 .\docs\api\views.py:420
 #: .\index\templates\index\at_work.html:43
 #: .\index\templates\index\basket.html:42 .\index\templates\index\empty.html:71
 #: .\index\templates\index\stock.html:69 .\index\templates\index\use.html:51
 msgid "Amount<br/>recovery"
 msgstr "Количество перезаправок"
 
-#: .\docs\api\views.py:327 .\index\templates\index\stock.html.py:70
+#: .\docs\api\views.py:316 .\index\templates\index\stock.html.py:70
 msgid "Date add"
 msgstr "Дата "
 
-#: .\docs\api\views.py:327 .\index\templates\index\stock.html.py:70
+#: .\docs\api\views.py:316 .\index\templates\index\stock.html.py:70
 msgid "on stock"
 msgstr "добавления на склад"
 
-#: .\docs\api\views.py:328 .\docs\api\views.py:358 .\docs\api\views.py:383
-#: .\docs\api\views.py:408 .\docs\api\views.py:433
+#: .\docs\api\views.py:317 .\docs\api\views.py:347 .\docs\api\views.py:372
+#: .\docs\api\views.py:397 .\docs\api\views.py:422
 #: .\docs\templates\docs\types_list.html:32 .\index\forms\comment.py:11
 #: .\index\templates\index\at_work.html:46
 #: .\index\templates\index\basket.html:44 .\index\templates\index\stock.html:72
 msgid "comment"
 msgstr "Комментарий"
 
-#: .\docs\api\views.py:356 .\index\templates\index\use.html.py:52
+#: .\docs\api\views.py:345 .\index\templates\index\use.html.py:52
 msgid "Date transfe"
 msgstr "Дата передачи"
 
-#: .\docs\api\views.py:382 .\index\templates\index\empty.html.py:72
+#: .\docs\api\views.py:371 .\index\templates\index\empty.html.py:72
 msgid "Date return"
 msgstr "Дата возврата"
 
-#: .\docs\api\views.py:406 .\index\templates\index\at_work.html.py:44
+#: .\docs\api\views.py:395 .\index\templates\index\at_work.html.py:44
 msgid "Date transfer on recovery"
 msgstr "Дата передачи<br/> на заправку"
 
-#: .\docs\api\views.py:407 .\index\templates\index\at_work.html.py:45
+#: .\docs\api\views.py:396 .\index\templates\index\at_work.html.py:45
 msgid "Refueller"
 msgstr "Заправщик"
 
-#: .\docs\api\views.py:432 .\index\templates\index\basket.html.py:43
+#: .\docs\api\views.py:421 .\index\templates\index\basket.html.py:43
 msgid "Date return in basket"
 msgstr "Дата помещения в корзину"
 
-#: .\docs\api\views.py:606
+#: .\docs\api\views.py:555 .\index\templates\index\from_firm_to_stock.html:34
+msgid "Regeneration"
+msgstr "Регенерация"
+
+#: .\docs\api\views.py:557
+msgid "Filling and cleaning"
+msgstr "Заправка и очистка"
+
+#: .\docs\api\views.py:559
+msgid "Replacing fotovala"
+msgstr "Замена фоторецептора"
+
+#: .\docs\api\views.py:561
+msgid "Replacement squeegee"
+msgstr "Замена ракеля"
+
+#: .\docs\api\views.py:563
+msgid "Replacement chip"
+msgstr "Замена чипа"
+
+#: .\docs\api\views.py:565
+msgid "Replacing the magnetic roller"
+msgstr "Замена магнитного барабана"
+
+#: .\docs\api\views.py:567
+msgid "Not implement"
+msgstr "Не реализовано"
+
+#: .\docs\api\views.py:616
 #, python-format
 msgid "The act of receiving cartridges # %(doc_number)s from  %(date_created)s"
 msgstr "Акт приёмки картриджей № %(doc_number)s от %(date_created)s"
 
-#: .\docs\api\views.py:620 .\docs\api\views.py:661
+#: .\docs\api\views.py:630 .\docs\api\views.py:670
 msgid "Ongoing work"
 msgstr "Проводимые работы"
 
-#: .\docs\api\views.py:621 .\docs\api\views.py:662
+#: .\docs\api\views.py:631 .\docs\api\views.py:671
 msgid "The price"
 msgstr "Стоимость"
 
-#: .\docs\api\views.py:621 .\docs\api\views.py:662
+#: .\docs\api\views.py:631 .\docs\api\views.py:671
 #: .\docs\templates\docs\delivery.html:33
 #: .\docs\templates\docs\delivery.html:100
 #: .\docs\templates\docs\delivery.html:101
@@ -649,17 +677,17 @@ msgstr "Стоимость"
 msgid "Currency"
 msgstr "руб."
 
-#: .\docs\api\views.py:679
+#: .\docs\api\views.py:690
 #, python-format
 msgid "Just made: %(co)s pieces"
 msgstr "Итого принято: %(co)s шт."
 
-#: .\docs\api\views.py:680
+#: .\docs\api\views.py:691
 #, python-format
 msgid "The total amount of: %(sum_money)s dollars"
 msgstr "На общую сумму: %(sum_money)s рублей"
 
-#: .\docs\api\views.py:692
+#: .\docs\api\views.py:703
 #, python-format
 msgid "Document %(doc_number)s_%(user_id)s_3.docx generated"
 msgstr "Документ «%(doc_number)s_%(user_id)s_3.docx» успешно сформирован."
@@ -1547,11 +1575,11 @@ msgid "Empty and in basket"
 msgstr "Пустые и в корзине"
 
 #: .\index\templates\index\404.html:2 .\index\templates\index\404.html.py:3
-#: .\index\templates\index\404.html:10 .\index\templates\index\500.html.py:3
+#: .\index\templates\index\404.html:10 .\index\templates\index\500.html:3
 msgid "Error 404"
 msgstr "Ошибка 404! Страница не найдена."
 
-#: .\index\templates\index\500.html:2 .\index\templates\index\500.html.py:10
+#: .\index\templates\index\500.html:2 .\index\templates\index\500.html:10
 msgid "Error 500"
 msgstr "Ошибка на стороне сервера!"
 
@@ -1915,10 +1943,6 @@ msgstr "Все"
 #: .\index\templates\index\from_firm_to_stock.html:5
 msgid "Return cartridge to the stock"
 msgstr "Возврат картриджей на склад"
-
-#: .\index\templates\index\from_firm_to_stock.html:34
-msgid "Regeneration"
-msgstr "Регенерация"
 
 #: .\index\templates\index\from_firm_to_stock.html:35
 msgid "Filling<br/> and cleaning"

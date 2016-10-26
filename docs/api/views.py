@@ -547,6 +547,29 @@ def generate_return_act(request):
     # но он позволяет упростить программный код
     total_pages_count = 0
 
+    def actions_decoder(actions_list):
+        """Преобразует список мнемонических действий в человекочитаемые строки.
+        """
+        result = str()
+        for elem in actions_list:
+            if elem == 'regeneration':
+                result += _('Regeneration')
+            elif elem == 'filled':
+                result += _('Filling and cleaning')
+            elif elem == 'fotoreceptor':
+                result += _('Replacing fotovala')
+            elif elem == 'rakel':
+                result += _('Replacement squeegee')
+            elif elem == 'chip':
+                result += _('Replacement chip')
+            elif elem == 'magnit':
+                result += _('Replacing the magnetic roller')
+            else:
+                result += _('Not implement')
+            result += ', '
+
+        return result
+
     def add_footer(page_num=1):
         # форматирование нижнего колонтитула копирайтом и количеством страниц
         for i in range(4):
@@ -612,7 +635,7 @@ def generate_return_act(request):
             row_cells = table.add_row().cells
             row_cells[0].text = str(item[0])
             row_cells[1].text = str(item[1])
-            row_cells[2].text = item[2][:-1]
+            row_cells[2].text = actions_decoder(item[2][:-1])
             money = float(item[2][-1])
             sum_money += money
             row_cells[3].text = str(money)
@@ -629,7 +652,7 @@ def generate_return_act(request):
             row_cells = table.add_row().cells
             row_cells[0].text = str(item[0])
             row_cells[1].text = str(item[1])
-            row_cells[2].text = item[2][:-1]
+            row_cells[2].text = actions_decoder(item[2][:-1])
             money = float(item[2][-1])
             row_cells[3].text = str(money)
             sum_money += money
@@ -651,7 +674,7 @@ def generate_return_act(request):
                 row_cells = table.add_row().cells
                 row_cells[0].text = str(item[0])
                 row_cells[1].text = str(item[1])
-                row_cells[2].text = item[2][:-1]
+                row_cells[2].text = actions_decoder(item[2][:-1])
                 money = float(item[2][-1])
                 row_cells[3].text = str(money)
                 sum_money += money
