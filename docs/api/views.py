@@ -13,6 +13,7 @@ from django.utils.translation import ugettext as _
 from docx import Document
 from docx.shared import Inches, RGBColor, Pt
 from docx.enum.text import WD_ALIGN_PARAGRAPH
+from docx.enum.style import WD_STYLE_TYPE
 from index.models import CartridgeItemName, CartridgeType, CartridgeItem, City
 from index.helpers import check_ajax_auth, str2int
 from docs.models import RefillingCart, SCDoc
@@ -570,14 +571,6 @@ def generate_return_act(request):
 
         return result
 
-    def add_footer(page_num=1):
-        # форматирование нижнего колонтитула копирайтом и количеством страниц
-        for i in range(4):
-            document.add_paragraph("")
-
-        page_number_string = _('Page %(num)s from %(total)s') % {'num': page_num, 'total': total_pages_count}
-        p = document.add_paragraph('www.severcart.org' + ' '*100 + page_number_string)
-        
     doc_id = request.POST.get('doc_id', '')
     doc_id = str2int(doc_id)
 
@@ -620,69 +613,34 @@ def generate_return_act(request):
     hh2 = document.add_heading(str(request.user.departament), level=2)
     
     document.add_paragraph("") # добавляем оступ сверху
-    document.add_paragraph("")
+    document.add_paragraph(_('Contractor:  %(firm)s') % {'firm': m1.firm})
 
     # рисуем таблицу на первой странице
     table = document.add_table(rows=1, cols=4, style='Table Grid')
+    obj_styles = document.styles
+    obj_charstyle = obj_styles.add_style('FontSize', WD_STYLE_TYPE.PARAGRAPH)
+    obj_font = obj_charstyle.font
+    obj_font.size = Pt(8)
+    #obj_font.name = 'Times New Roman'
     sum_money = 0
     hdr_cells = table.rows[0].cells
     hdr_cells[0].text = _('Number')
     hdr_cells[1].text = _('Name')
     hdr_cells[2].text = _('Ongoing work')
     hdr_cells[3].text = '%s, %s' % (_('The price'), _('Currency'))
-    if (len(jsontext) <= settings.MAX_TABLE_ROWS_FIRST_PAGE):
-        for item in jsontext:
-            row_cells = table.add_row().cells
-            row_cells[0].text = str(item[0])
-            row_cells[1].text = str(item[1])
-            row_cells[2].text = actions_decoder(item[2][:-1])
-            money = float(item[2][-1])
-            sum_money += money
-            row_cells[3].text = str(money)
-        total_pages_count = 1
-
-    if (len(jsontext) > settings.MAX_TABLE_ROWS_FIRST_PAGE):
-        first_part  = jsontext[0:settings.MAX_TABLE_ROWS_FIRST_PAGE-1]
-        second_part = jsontext[settings.MAX_TABLE_ROWS_FIRST_PAGE:]
+    
+    for item in jsontext:
+        row_cells = table.add_row().cells
+        row_cells[0].text = str(item[0])
+        row_cells[1].text = str(item[1])
         
-        p = Paginator(second_part, settings.MAX_TABLE_ROWS)
-        total_pages_count = 1 + p.num_pages
-
-        for item in first_part:
-            row_cells = table.add_row().cells
-            row_cells[0].text = str(item[0])
-            row_cells[1].text = str(item[1])
-            row_cells[2].text = actions_decoder(item[2][:-1])
-            money = float(item[2][-1])
-            row_cells[3].text = str(money)
-            sum_money += money
-        pages_count += 1    
-        add_footer(pages_count)
-        document.add_page_break()
-        # далее с каждой новой страницы рисуем новую таблицу с 
-        # продолжением печати данных
-        for pg in range(p.num_pages):
-            stranica = p.page(pg + 1)
-            # на каждой новой странице печатаем заново новый заголовок
-            table = document.add_table(rows=1, cols=4, style='Table Grid')
-            hdr_cells = table.rows[0].cells
-            hdr_cells[0].text = _('Number')
-            hdr_cells[1].text = _('Name')
-            hdr_cells[2].text = _('Ongoing work')
-            hdr_cells[3].text = '%s, %s' % (_('The price'), _('Currency'))
-            for item in stranica:
-                row_cells = table.add_row().cells
-                row_cells[0].text = str(item[0])
-                row_cells[1].text = str(item[1])
-                row_cells[2].text = actions_decoder(item[2][:-1])
-                money = float(item[2][-1])
-                row_cells[3].text = str(money)
-                sum_money += money
-            # если страница последняя то разрыв страницы не добавляем
-            if  pg != (p.num_pages - 1):
-                pages_count += 1
-                document.add_page_break()
-                add_footer(pages_count)
+        # https://github.com/python-openxml/python-docx/issues/141
+        paragraph = row_cells[2].paragraphs[0]
+        paragraph.text = actions_decoder(item[2][:-1])
+        paragraph.style = 'FontSize'
+        money = float(item[2][-1])
+        sum_money += money
+        row_cells[3].text = str(money)
 
     sender_full_name = ""
     recipient_full_name = request.user.fio
@@ -691,17 +649,15 @@ def generate_return_act(request):
     document.add_paragraph(_('Just made: %(co)s pieces') % {'co': co})
     document.add_paragraph(_('The total amount of: %(sum_money)s dollars') % {'sum_money': sum_money})
     document.add_paragraph("")
-    document.add_paragraph("%s        %s           ______________" % (_('Resipient'), recipient_full_name,))
+    document.add_paragraph("%s       _________________      %s" % (_('Resipient'), recipient_full_name,))
     document.add_paragraph("")
-    document.add_paragraph("%s        %s           ______________" % (_('Sender'), sender_full_name,))
-
-    pages_count += 1
-    add_footer(pages_count)
-
+    document.add_paragraph("%s       _________________      %s" % (_('Sender'), sender_full_name,))
+    document.add_paragraph("")
+    document.add_paragraph("")
+    document.add_paragraph('www.severcart.org' + ' '*120)
     document.save(docx_full_file_name)
     
     resp_dict['error'] = '0'
     resp_dict['text']  = _('Document %(doc_number)s_%(user_id)s_3.docx generated') % { 'doc_number': m1.number, 'user_id': request.user.pk}
     resp_dict['url'] = settings.STATIC_URL + 'docx/' + docx_file_name
-    
     return JsonResponse(resp_dict)
