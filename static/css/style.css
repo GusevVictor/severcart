@@ -1356,3 +1356,13 @@ input.error_border {
     color: white;
     font-size: 12px;
 }
+
+#id_scan_number{
+    margin: 5px;
+    width: 450px;
+}
+
+#id_scan_number:focus {
+     box-shadow: 0 0 5px #999999; 
+    /*box-shadow: 0px 0px 45px -5px #999999;*/
+}

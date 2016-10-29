@@ -1883,7 +1883,12 @@ $( function(){
     if ($('.transfe_to_firm_scanner').length) {
         /* Если мы передаём картриджи фирме на заправку с
         помошью сканера ШК */
+        // Фокус ввода всегда устанавливаем наполе ввода номера РМ
         $("#id_scan_number").focus();
+        $('#id_firm, #id_doc').change(function() {
+            $("#id_scan_number").focus();
+        });
+
         var pressed = false; 
         var chars = []; 
         $('#id_scan_number').keypress(function(e) {
@@ -2154,6 +2159,8 @@ $( function(){
         var numbers = $('#id_numbers').val();
         var firm = $('#id_firm option:selected').val();
         var doc = $('#id_doc option:selected').val();
+
+        $('#id_scan_number').focus();
 
         if (firm) {
             $('.required_error_firm').hide();
