@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-10-27 14:19+0500\n"
-"PO-Revision-Date: 2016-10-27 14:19+0500\n"
+"POT-Creation-Date: 2016-10-29 20:48+0500\n"
+"PO-Revision-Date: 2016-10-29 20:48+0500\n"
 "Last-Translator: \n"
 "Language-Team: severcart.org <sfcl@mail.ru>\n"
 "Language: ru\n"
@@ -99,7 +99,7 @@ msgstr "Фамилия, имя, отчество"
 #: .\index\templates\index\add_empty_cartridge_from_barcode_scanner.html:40
 #: .\index\templates\index\add_items.html:34
 #: .\index\templates\index\add_items.html:51
-#: .\index\templates\index\from_firm_to_stock_with_barcode.html:47
+#: .\index\templates\index\from_firm_to_stock_with_barcode.html:49
 #: .\index\templates\index\transfer_to_firm_with_scanner.html:57
 msgid "Required field"
 msgstr "Обязательное поле"
@@ -220,7 +220,7 @@ msgstr "Сменить пароль"
 #: .\index\templates\index\edit_firm.html:21
 #: .\index\templates\index\evaluate_service.html:37
 #: .\index\templates\index\from_firm_to_stock.html:56
-#: .\index\templates\index\from_firm_to_stock_with_barcode.html:60
+#: .\index\templates\index\from_firm_to_stock_with_barcode.html:62
 #: .\index\templates\index\transfe_for_use.html:43
 #: .\reports\templates\reports\products.html:42
 #: .\reports\templates\reports\spent_money.html:43
@@ -366,75 +366,75 @@ msgstr "Русский"
 msgid "English"
 msgstr "Английский"
 
-#: .\dhtml\templates\dhtml\logic.html:263
-#: .\dhtml\templates\dhtml\logic.html:310
-#: .\dhtml\templates\dhtml\logic.html:738
-#: .\dhtml\templates\dhtml\logic.html:818
-#: .\dhtml\templates\dhtml\logic.html:903
-#: .\dhtml\templates\dhtml\logic.html:951
-#: .\dhtml\templates\dhtml\logic.html:1070
-#: .\dhtml\templates\dhtml\logic.html:1175
-#: .\dhtml\templates\dhtml\logic.html:1323
-#: .\dhtml\templates\dhtml\logic.html:1371
-#: .\dhtml\templates\dhtml\logic.html:1429
-#: .\dhtml\templates\dhtml\logic.html:2479
+#: .\dhtml\templates\dhtml\logic.html:264
+#: .\dhtml\templates\dhtml\logic.html:311
+#: .\dhtml\templates\dhtml\logic.html:739
+#: .\dhtml\templates\dhtml\logic.html:819
+#: .\dhtml\templates\dhtml\logic.html:904
+#: .\dhtml\templates\dhtml\logic.html:952
+#: .\dhtml\templates\dhtml\logic.html:1071
+#: .\dhtml\templates\dhtml\logic.html:1176
+#: .\dhtml\templates\dhtml\logic.html:1324
+#: .\dhtml\templates\dhtml\logic.html:1372
+#: .\dhtml\templates\dhtml\logic.html:1430
+#: .\dhtml\templates\dhtml\logic.html:2498
 msgid "<p>Server not available.</p>"
 msgstr "<p>Сервер не доступен.</p>"
 
-#: .\dhtml\templates\dhtml\logic.html:447
-#: .\dhtml\templates\dhtml\logic.html:517
-#: .\dhtml\templates\dhtml\logic.html:586
-#: .\dhtml\templates\dhtml\logic.html:614
-#: .\dhtml\templates\dhtml\logic.html:642
+#: .\dhtml\templates\dhtml\logic.html:448
+#: .\dhtml\templates\dhtml\logic.html:518
+#: .\dhtml\templates\dhtml\logic.html:587
+#: .\dhtml\templates\dhtml\logic.html:615
+#: .\dhtml\templates\dhtml\logic.html:643
 msgid "Server error :("
 msgstr "Ошибка на стороне сервера :("
 
-#: .\dhtml\templates\dhtml\logic.html:698
+#: .\dhtml\templates\dhtml\logic.html:699
 msgid "Are you sure you want to put the selected items to the Trash?"
 msgstr "Вы точно хотите переместить выбранные элементы в корзину?"
 
-#: .\dhtml\templates\dhtml\logic.html:756
+#: .\dhtml\templates\dhtml\logic.html:757
 msgid "Are you sure you want to delete consumable (s)?"
 msgstr "Вы точно хотите удалить картридж(и)?"
 
-#: .\dhtml\templates\dhtml\logic.html:792
+#: .\dhtml\templates\dhtml\logic.html:793
 msgid "You sure you want to return the selected items back to the store?"
 msgstr "Вы точно хотите вернуть выбранные картриджи обратно на склад?"
 
-#: .\dhtml\templates\dhtml\logic.html:865
+#: .\dhtml\templates\dhtml\logic.html:866
 msgid "Are you sure you want to remove the counterparty?"
 msgstr "Вы точно хотите удалить контрагента?"
 
-#: .\dhtml\templates\dhtml\logic.html:1127
+#: .\dhtml\templates\dhtml\logic.html:1128
 msgid "Are you sure you want to delete a document?"
 msgstr "Вы точно хоитие удалить документ?"
 
-#: .\dhtml\templates\dhtml\logic.html:1139
+#: .\dhtml\templates\dhtml\logic.html:1140
 msgid "Are you sure you want to delete the user?"
 msgstr "Вы точно хотите удалить пользователя?"
 
-#: .\dhtml\templates\dhtml\logic.html:1280
+#: .\dhtml\templates\dhtml\logic.html:1281
 msgid "Are you sure you want to delete?"
 msgstr "Вы точно хотите удалить?"
 
-#: .\dhtml\templates\dhtml\logic.html:1335
+#: .\dhtml\templates\dhtml\logic.html:1336
 msgid "Are you sure you want to delete city?"
 msgstr "Вы точно хотите удалить название города?"
 
-#: .\dhtml\templates\dhtml\logic.html:1441
+#: .\dhtml\templates\dhtml\logic.html:1442
 #: .\index\templates\index\base_menu.html:16
 msgid "Find by number"
 msgstr "Поиск по номеру"
 
-#: .\dhtml\templates\dhtml\logic.html:1711
+#: .\dhtml\templates\dhtml\logic.html:1712
 msgid "Are you sure you want to remove the storage room?"
 msgstr "Вы точно хотите удалить складское помещение?"
 
-#: .\dhtml\templates\dhtml\logic.html:1772
+#: .\dhtml\templates\dhtml\logic.html:1773
 msgid "<p>Server error :(</p>"
 msgstr "<p>Ошибка на стороне сервера :(</p>"
 
-#: .\dhtml\templates\dhtml\logic.html:2162
+#: .\dhtml\templates\dhtml\logic.html:2167
 msgid "List move empty."
 msgstr "Пустой список для перемещения."
 
@@ -537,7 +537,7 @@ msgstr "Документ «%(doc_number)s_%(user_id)s_0.docx» успешно с
 #: .\index\templates\index\del_firm.html:9
 #: .\index\templates\index\empty.html:70
 #: .\index\templates\index\from_firm_to_stock.html:33
-#: .\index\templates\index\from_firm_to_stock_with_barcode.html:33
+#: .\index\templates\index\from_firm_to_stock_with_barcode.html:35
 #: .\index\templates\index\get_cart_ou.html:8
 #: .\index\templates\index\stock.html:68
 #: .\index\templates\index\toner_refill.html:31
@@ -567,7 +567,7 @@ msgstr "Количество"
 #: .\index\templates\index\at_work.html:41
 #: .\index\templates\index\basket.html:40 .\index\templates\index\empty.html:69
 #: .\index\templates\index\from_firm_to_stock.html:32
-#: .\index\templates\index\from_firm_to_stock_with_barcode.html:32
+#: .\index\templates\index\from_firm_to_stock_with_barcode.html:34
 #: .\index\templates\index\get_cart_ou.html:7
 #: .\index\templates\index\stock.html:67
 #: .\index\templates\index\transfe_for_use.html:16
@@ -1528,7 +1528,7 @@ msgstr "Отчество"
 #: .\index\templates\index\add_empty_cartridge_from_barcode_scanner.html:44
 #: .\index\templates\index\add_items.html:69
 #: .\index\templates\index\empty.html:73
-#: .\index\templates\index\from_firm_to_stock_with_barcode.html:51
+#: .\index\templates\index\from_firm_to_stock_with_barcode.html:53
 #: .\index\templates\index\stock.html:71
 msgid "Storage"
 msgstr "Склад"
@@ -1578,11 +1578,11 @@ msgid "Empty and in basket"
 msgstr "Пустые и в корзине"
 
 #: .\index\templates\index\404.html:2 .\index\templates\index\404.html.py:3
-#: .\index\templates\index\404.html:10 .\index\templates\index\500.html:3
+#: .\index\templates\index\404.html:10 .\index\templates\index\500.html.py:3
 msgid "Error 404"
 msgstr "Ошибка 404! Страница не найдена."
 
-#: .\index\templates\index\500.html:2 .\index\templates\index\500.html:10
+#: .\index\templates\index\500.html:2 .\index\templates\index\500.html.py:10
 msgid "Error 500"
 msgstr "Ошибка на стороне сервера!"
 
@@ -1602,7 +1602,7 @@ msgstr "Список новых или заправленных"
 
 #: .\index\templates\index\add_cartridge_from_barcode_scanner.html:22
 #: .\index\templates\index\add_empty_cartridge_from_barcode_scanner.html:22
-#: .\index\templates\index\from_firm_to_stock_with_barcode.html:44
+#: .\index\templates\index\from_firm_to_stock_with_barcode.html:46
 #: .\index\templates\index\transfer_to_firm_with_scanner.html:28
 msgid "Scanning number"
 msgstr "Отсканированный номер"
@@ -1627,7 +1627,7 @@ msgstr "Название катриджа"
 #: .\index\templates\index\add_empty_cartridge_from_barcode_scanner.html:48
 #: .\index\templates\index\add_items.html:64
 #: .\index\templates\index\add_items.html:73
-#: .\index\templates\index\from_firm_to_stock_with_barcode.html:55
+#: .\index\templates\index\from_firm_to_stock_with_barcode.html:57
 msgid "The field must be seleced"
 msgstr "Поле должно быть выбрано"
 
@@ -1979,15 +1979,15 @@ msgstr "Вернуть на склад"
 msgid "Return cartridge to the warehouse with a bar code scanner"
 msgstr "Возврат картриджа на склад с сканером штрих-кодов"
 
-#: .\index\templates\index\from_firm_to_stock_with_barcode.html:28
+#: .\index\templates\index\from_firm_to_stock_with_barcode.html:30
 msgid "That pass"
 msgstr "Кому передаём"
 
-#: .\index\templates\index\from_firm_to_stock_with_barcode.html:58
-msgid "Move (Enter)"
-msgstr "Переместить (Enter)"
+#: .\index\templates\index\from_firm_to_stock_with_barcode.html:60
+msgid "Move"
+msgstr "Передать"
 
-#: .\index\templates\index\from_firm_to_stock_with_barcode.html:61
+#: .\index\templates\index\from_firm_to_stock_with_barcode.html:63
 msgid "Debug"
 msgstr "Отладка"
 
@@ -2844,6 +2844,9 @@ msgstr "Склад «%(starage_name)s»  успешно изменён."
 #: .\storages\views.py:107
 msgid "Starage not edited."
 msgstr "Склад не изменён."
+
+#~ msgid "Move (Enter)"
+#~ msgstr "Переместить (Enter)"
 
 #~ msgid "Transferred for use"
 #~ msgstr "Передать в пользование"

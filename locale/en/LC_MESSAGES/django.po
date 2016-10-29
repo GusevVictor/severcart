@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-10-27 14:19+0500\n"
+"POT-Creation-Date: 2016-10-29 20:48+0500\n"
 "PO-Revision-Date: 2016-05-27 12:27+0500\n"
 "Last-Translator: \n"
 "Language-Team: severcart.org <sfcl@mail.ru>\n"
@@ -99,7 +99,7 @@ msgstr ""
 #: .\index\templates\index\add_empty_cartridge_from_barcode_scanner.html:40
 #: .\index\templates\index\add_items.html:34
 #: .\index\templates\index\add_items.html:51
-#: .\index\templates\index\from_firm_to_stock_with_barcode.html:47
+#: .\index\templates\index\from_firm_to_stock_with_barcode.html:49
 #: .\index\templates\index\transfer_to_firm_with_scanner.html:57
 msgid "Required field"
 msgstr ""
@@ -154,12 +154,11 @@ msgstr ""
 #: .\accounts\templates\accounts\edit_user.html:3
 #: .\accounts\templates\accounts\manage_users.html:4
 #: .\accounts\templates\accounts\register.html:3
-#: .\docs\templates\docs\acts_list.html:5
-#: .\docs\templates\docs\add_city.html:3 .\docs\templates\docs\cities.html:4
-#: .\docs\templates\docs\delivery.html:3
+#: .\docs\templates\docs\acts_list.html:5 .\docs\templates\docs\add_city.html:3
+#: .\docs\templates\docs\cities.html:4 .\docs\templates\docs\delivery.html:3
 #: .\docs\templates\docs\edit_city.html:3
-#: .\docs\templates\docs\edit_name.html:3
-#: .\docs\templates\docs\handbook.html:2 .\docs\templates\docs\handbook.html:3
+#: .\docs\templates\docs\edit_name.html:3 .\docs\templates\docs\handbook.html:2
+#: .\docs\templates\docs\handbook.html:3
 #: .\docs\templates\docs\names_list.html:4
 #: .\docs\templates\docs\return_acts_list.html:5
 #: .\docs\templates\docs\types_list.html:4
@@ -221,7 +220,7 @@ msgstr ""
 #: .\index\templates\index\edit_firm.html:21
 #: .\index\templates\index\evaluate_service.html:37
 #: .\index\templates\index\from_firm_to_stock.html:56
-#: .\index\templates\index\from_firm_to_stock_with_barcode.html:60
+#: .\index\templates\index\from_firm_to_stock_with_barcode.html:62
 #: .\index\templates\index\transfe_for_use.html:43
 #: .\reports\templates\reports\products.html:42
 #: .\reports\templates\reports\spent_money.html:43
@@ -365,75 +364,75 @@ msgstr ""
 msgid "English"
 msgstr ""
 
-#: .\dhtml\templates\dhtml\logic.html:263
-#: .\dhtml\templates\dhtml\logic.html:310
-#: .\dhtml\templates\dhtml\logic.html:738
-#: .\dhtml\templates\dhtml\logic.html:818
-#: .\dhtml\templates\dhtml\logic.html:903
-#: .\dhtml\templates\dhtml\logic.html:951
-#: .\dhtml\templates\dhtml\logic.html:1070
-#: .\dhtml\templates\dhtml\logic.html:1175
-#: .\dhtml\templates\dhtml\logic.html:1323
-#: .\dhtml\templates\dhtml\logic.html:1371
-#: .\dhtml\templates\dhtml\logic.html:1429
-#: .\dhtml\templates\dhtml\logic.html:2479
+#: .\dhtml\templates\dhtml\logic.html:264
+#: .\dhtml\templates\dhtml\logic.html:311
+#: .\dhtml\templates\dhtml\logic.html:739
+#: .\dhtml\templates\dhtml\logic.html:819
+#: .\dhtml\templates\dhtml\logic.html:904
+#: .\dhtml\templates\dhtml\logic.html:952
+#: .\dhtml\templates\dhtml\logic.html:1071
+#: .\dhtml\templates\dhtml\logic.html:1176
+#: .\dhtml\templates\dhtml\logic.html:1324
+#: .\dhtml\templates\dhtml\logic.html:1372
+#: .\dhtml\templates\dhtml\logic.html:1430
+#: .\dhtml\templates\dhtml\logic.html:2498
 msgid "<p>Server not available.</p>"
 msgstr ""
 
-#: .\dhtml\templates\dhtml\logic.html:447
-#: .\dhtml\templates\dhtml\logic.html:517
-#: .\dhtml\templates\dhtml\logic.html:586
-#: .\dhtml\templates\dhtml\logic.html:614
-#: .\dhtml\templates\dhtml\logic.html:642
+#: .\dhtml\templates\dhtml\logic.html:448
+#: .\dhtml\templates\dhtml\logic.html:518
+#: .\dhtml\templates\dhtml\logic.html:587
+#: .\dhtml\templates\dhtml\logic.html:615
+#: .\dhtml\templates\dhtml\logic.html:643
 msgid "Server error :("
 msgstr ""
 
-#: .\dhtml\templates\dhtml\logic.html:698
+#: .\dhtml\templates\dhtml\logic.html:699
 msgid "Are you sure you want to put the selected items to the Trash?"
 msgstr ""
 
-#: .\dhtml\templates\dhtml\logic.html:756
+#: .\dhtml\templates\dhtml\logic.html:757
 msgid "Are you sure you want to delete consumable (s)?"
 msgstr ""
 
-#: .\dhtml\templates\dhtml\logic.html:792
+#: .\dhtml\templates\dhtml\logic.html:793
 msgid "You sure you want to return the selected items back to the store?"
 msgstr ""
 
-#: .\dhtml\templates\dhtml\logic.html:865
+#: .\dhtml\templates\dhtml\logic.html:866
 msgid "Are you sure you want to remove the counterparty?"
 msgstr ""
 
-#: .\dhtml\templates\dhtml\logic.html:1127
+#: .\dhtml\templates\dhtml\logic.html:1128
 msgid "Are you sure you want to delete a document?"
 msgstr ""
 
-#: .\dhtml\templates\dhtml\logic.html:1139
+#: .\dhtml\templates\dhtml\logic.html:1140
 msgid "Are you sure you want to delete the user?"
 msgstr ""
 
-#: .\dhtml\templates\dhtml\logic.html:1280
+#: .\dhtml\templates\dhtml\logic.html:1281
 msgid "Are you sure you want to delete?"
 msgstr ""
 
-#: .\dhtml\templates\dhtml\logic.html:1335
+#: .\dhtml\templates\dhtml\logic.html:1336
 msgid "Are you sure you want to delete city?"
 msgstr ""
 
-#: .\dhtml\templates\dhtml\logic.html:1441
+#: .\dhtml\templates\dhtml\logic.html:1442
 #: .\index\templates\index\base_menu.html:16
 msgid "Find by number"
 msgstr ""
 
-#: .\dhtml\templates\dhtml\logic.html:1711
+#: .\dhtml\templates\dhtml\logic.html:1712
 msgid "Are you sure you want to remove the storage room?"
 msgstr ""
 
-#: .\dhtml\templates\dhtml\logic.html:1772
+#: .\dhtml\templates\dhtml\logic.html:1773
 msgid "<p>Server error :(</p>"
 msgstr ""
 
-#: .\dhtml\templates\dhtml\logic.html:2162
+#: .\dhtml\templates\dhtml\logic.html:2167
 msgid "List move empty."
 msgstr ""
 
@@ -536,7 +535,7 @@ msgstr ""
 #: .\index\templates\index\del_firm.html:9
 #: .\index\templates\index\empty.html:70
 #: .\index\templates\index\from_firm_to_stock.html:33
-#: .\index\templates\index\from_firm_to_stock_with_barcode.html:33
+#: .\index\templates\index\from_firm_to_stock_with_barcode.html:35
 #: .\index\templates\index\get_cart_ou.html:8
 #: .\index\templates\index\stock.html:68
 #: .\index\templates\index\toner_refill.html:31
@@ -564,10 +563,9 @@ msgstr ""
 #: .\index\templates\index\add_empty_cartridge.html:31
 #: .\index\templates\index\add_items.html:32
 #: .\index\templates\index\at_work.html:41
-#: .\index\templates\index\basket.html:40
-#: .\index\templates\index\empty.html:69
+#: .\index\templates\index\basket.html:40 .\index\templates\index\empty.html:69
 #: .\index\templates\index\from_firm_to_stock.html:32
-#: .\index\templates\index\from_firm_to_stock_with_barcode.html:32
+#: .\index\templates\index\from_firm_to_stock_with_barcode.html:34
 #: .\index\templates\index\get_cart_ou.html:7
 #: .\index\templates\index\stock.html:67
 #: .\index\templates\index\transfe_for_use.html:16
@@ -584,9 +582,8 @@ msgstr "ID"
 #: .\docs\api\views.py:316 .\docs\api\views.py:345 .\docs\api\views.py:371
 #: .\docs\api\views.py:395 .\docs\api\views.py:421
 #: .\index\templates\index\at_work.html:43
-#: .\index\templates\index\basket.html:42
-#: .\index\templates\index\empty.html:71 .\index\templates\index\stock.html:69
-#: .\index\templates\index\use.html:51
+#: .\index\templates\index\basket.html:42 .\index\templates\index\empty.html:71
+#: .\index\templates\index\stock.html:69 .\index\templates\index\use.html:51
 msgid "Amount<br/>recovery"
 msgstr ""
 
@@ -602,8 +599,7 @@ msgstr ""
 #: .\docs\api\views.py:398 .\docs\api\views.py:423
 #: .\docs\templates\docs\types_list.html:32 .\index\forms\comment.py:11
 #: .\index\templates\index\at_work.html:46
-#: .\index\templates\index\basket.html:44
-#: .\index\templates\index\stock.html:72
+#: .\index\templates\index\basket.html:44 .\index\templates\index\stock.html:72
 msgid "comment"
 msgstr "Comment"
 
@@ -732,9 +728,8 @@ msgstr ""
 #: .\index\templates\index\add_empty_cartridge.html:74
 #: .\index\templates\index\add_empty_cartridge_from_barcode_scanner.html:50
 #: .\index\templates\index\add_items.html:75
-#: .\index\templates\index\basket.html:59
-#: .\index\templates\index\empty.html:90 .\index\templates\index\stock.html:88
-#: .\index\templates\index\use.html:69
+#: .\index\templates\index\basket.html:59 .\index\templates\index\empty.html:90
+#: .\index\templates\index\stock.html:88 .\index\templates\index\use.html:69
 msgid "Delivery agreement"
 msgstr ""
 
@@ -819,9 +814,8 @@ msgstr ""
 #: .\index\templates\index\add_empty_cartridge.html:115
 #: .\index\templates\index\add_items.html:117
 #: .\index\templates\index\at_work.html:21
-#: .\index\templates\index\basket.html:20
-#: .\index\templates\index\empty.html:49 .\index\templates\index\stock.html:47
-#: .\index\templates\index\use.html:29
+#: .\index\templates\index\basket.html:20 .\index\templates\index\empty.html:49
+#: .\index\templates\index\stock.html:47 .\index\templates\index\use.html:29
 msgid "Download"
 msgstr ""
 
@@ -838,8 +832,7 @@ msgstr "Create a without group docx"
 msgid "Add city"
 msgstr ""
 
-#: .\docs\templates\docs\add_city.html:3
-#: .\docs\templates\docs\edit_city.html:3
+#: .\docs\templates\docs\add_city.html:3 .\docs\templates\docs\edit_city.html:3
 #: .\docs\templates\docs\handbook.html:24
 msgid "Cities"
 msgstr ""
@@ -864,8 +857,7 @@ msgstr ""
 msgid "delivery agreement"
 msgstr "Delivery agreement"
 
-#: .\docs\templates\docs\delivery.html:3
-#: .\docs\templates\docs\handbook.html:15
+#: .\docs\templates\docs\delivery.html:3 .\docs\templates\docs\handbook.html:15
 msgid "Agreement"
 msgstr ""
 
@@ -1512,7 +1504,7 @@ msgstr ""
 #: .\index\templates\index\add_empty_cartridge_from_barcode_scanner.html:44
 #: .\index\templates\index\add_items.html:69
 #: .\index\templates\index\empty.html:73
-#: .\index\templates\index\from_firm_to_stock_with_barcode.html:51
+#: .\index\templates\index\from_firm_to_stock_with_barcode.html:53
 #: .\index\templates\index\stock.html:71
 msgid "Storage"
 msgstr ""
@@ -1562,11 +1554,11 @@ msgid "Empty and in basket"
 msgstr ""
 
 #: .\index\templates\index\404.html:2 .\index\templates\index\404.html.py:3
-#: .\index\templates\index\404.html:10 .\index\templates\index\500.html:3
+#: .\index\templates\index\404.html:10 .\index\templates\index\500.html.py:3
 msgid "Error 404"
 msgstr ""
 
-#: .\index\templates\index\500.html:2 .\index\templates\index\500.html:10
+#: .\index\templates\index\500.html:2 .\index\templates\index\500.html.py:10
 msgid "Error 500"
 msgstr ""
 
@@ -1586,7 +1578,7 @@ msgstr ""
 
 #: .\index\templates\index\add_cartridge_from_barcode_scanner.html:22
 #: .\index\templates\index\add_empty_cartridge_from_barcode_scanner.html:22
-#: .\index\templates\index\from_firm_to_stock_with_barcode.html:44
+#: .\index\templates\index\from_firm_to_stock_with_barcode.html:46
 #: .\index\templates\index\transfer_to_firm_with_scanner.html:28
 #, fuzzy
 #| msgid "Extension number"
@@ -1613,7 +1605,7 @@ msgstr ""
 #: .\index\templates\index\add_empty_cartridge_from_barcode_scanner.html:48
 #: .\index\templates\index\add_items.html:64
 #: .\index\templates\index\add_items.html:73
-#: .\index\templates\index\from_firm_to_stock_with_barcode.html:55
+#: .\index\templates\index\from_firm_to_stock_with_barcode.html:57
 msgid "The field must be seleced"
 msgstr ""
 
@@ -1715,16 +1707,14 @@ msgid "Return to the stock"
 msgstr ""
 
 #: .\index\templates\index\at_work.html:24
-#: .\index\templates\index\basket.html:23
-#: .\index\templates\index\empty.html:52 .\index\templates\index\stock.html:50
-#: .\index\templates\index\use.html:32
+#: .\index\templates\index\basket.html:23 .\index\templates\index\empty.html:52
+#: .\index\templates\index\stock.html:50 .\index\templates\index\use.html:32
 msgid "Export to CSV with group"
 msgstr ""
 
 #: .\index\templates\index\at_work.html:25
-#: .\index\templates\index\basket.html:24
-#: .\index\templates\index\empty.html:53 .\index\templates\index\stock.html:51
-#: .\index\templates\index\use.html:33
+#: .\index\templates\index\basket.html:24 .\index\templates\index\empty.html:53
+#: .\index\templates\index\stock.html:51 .\index\templates\index\use.html:33
 msgid "Export to CSV without group"
 msgstr ""
 
@@ -1779,20 +1769,18 @@ msgstr ""
 msgid "Basket"
 msgstr ""
 
-#: .\index\templates\index\basket.html:45
-#: .\index\templates\index\empty.html:75 .\index\templates\index\stock.html:73
+#: .\index\templates\index\basket.html:45 .\index\templates\index\empty.html:75
+#: .\index\templates\index\stock.html:73
 msgid "Actions"
 msgstr ""
 
-#: .\index\templates\index\basket.html:57
-#: .\index\templates\index\empty.html:88 .\index\templates\index\stock.html:86
-#: .\index\templates\index\use.html:67
+#: .\index\templates\index\basket.html:57 .\index\templates\index\empty.html:88
+#: .\index\templates\index\stock.html:86 .\index\templates\index\use.html:67
 msgid "Edit a comment"
 msgstr ""
 
-#: .\index\templates\index\basket.html:58
-#: .\index\templates\index\empty.html:89 .\index\templates\index\stock.html:87
-#: .\index\templates\index\use.html:68
+#: .\index\templates\index\basket.html:58 .\index\templates\index\empty.html:89
+#: .\index\templates\index\stock.html:87 .\index\templates\index\use.html:68
 msgid "Event viewer"
 msgstr ""
 
@@ -1969,15 +1957,15 @@ msgstr ""
 msgid "Return cartridge to the warehouse with a bar code scanner"
 msgstr ""
 
-#: .\index\templates\index\from_firm_to_stock_with_barcode.html:28
+#: .\index\templates\index\from_firm_to_stock_with_barcode.html:30
 msgid "That pass"
 msgstr ""
 
-#: .\index\templates\index\from_firm_to_stock_with_barcode.html:58
-msgid "Move (Enter)"
+#: .\index\templates\index\from_firm_to_stock_with_barcode.html:60
+msgid "Move"
 msgstr ""
 
-#: .\index\templates\index\from_firm_to_stock_with_barcode.html:61
+#: .\index\templates\index\from_firm_to_stock_with_barcode.html:63
 msgid "Debug"
 msgstr ""
 

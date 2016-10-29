@@ -232,6 +232,7 @@ $( function(){
     $('.no_follow').click( function(event) {
         event.preventDefault();
         event.stopPropagation();
+        return false;
     });
 
     $('.export_to_csv').click( function() {
@@ -2022,21 +2023,25 @@ $( function(){
         */
         var selected = [];
         var numbers = $('#id_numbers').val();
-        var tmp_list = [];
-        // конвертируем строку вида "12, 34, 34, "
-        // в список чисел [12, 34, 34] 
-        numbers = numbers.split(',');
-        for(var i=0; i < numbers.length; i++) {
-            if (parseInt(numbers[i])) {
-                tmp_list.push(parseInt(numbers[i]));
-            }
+        if (numbers) {
+            var tmp_list = [];
+            // конвертируем строку вида "12, 34, 34, "
+            // в список чисел [12, 34, 34] 
+            numbers = numbers.split(',');
+            for(var i=0; i < numbers.length; i++) {
+                if (parseInt(numbers[i])) {
+                    tmp_list.push(parseInt(numbers[i]));
+                }
+            }    
+        } else {
+            numbers = [];
         }
-                
-        if ( numbers.length !== 0 ) {
+        
+        if ( numbers.length ) {
             var numbers = tmp_list.join('s');
             var loc = "{% url 'index:from_firm_to_stock' %}";
             window.location.href = loc + '?select=' + numbers;
-        }            
+        }
     });
 
     $('.force_move_to_transfer').click(function(){
@@ -2264,6 +2269,20 @@ $( function(){
         barcode = $('.barcode').val();
         // словарь для подготовки отправки данных через аякс
         // считываем инофрмацию с сканера ШК и отправляем сразу запрос на сервер
+        $(window).keydown(function(event){
+            // устанавливаем перехватчик нажатий клавиши Enter для сканеров штрих кодов которые 
+            // добавляют символ перевода строки самостоятельно
+            if(event.keyCode == 13) {
+                event.preventDefault();
+                return false;
+            }
+        });
+
+        // не теряем фокуса с строки ввода номера
+        $('.barcode').focusout( function() {
+            setTimeout(function (){ $('.barcode').focus() }, 500);
+        });
+        
         if (MYDEBUG) {
             $('.dbg_firm_to_stock').click( function () {
                 $.ajax({
