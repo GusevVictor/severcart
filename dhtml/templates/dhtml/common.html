@@ -1,0 +1,190 @@
+{% load i18n %}
+
+function getCookie(name) {
+    /* https://docs.djangoproject.com/en/1.8/ref/csrf/ */
+    var cookieValue = null;
+    if (document.cookie && document.cookie != '') {
+        var cookies = document.cookie.split(';');
+        for (var i = 0; i < cookies.length; i++) {
+            var cookie = jQuery.trim(cookies[i]);
+            // Does this cookie string begin with the name we want?
+            if (cookie.substring(0, name.length + 1) == (name + '=')) {
+                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                break;
+            }
+        }
+    }
+    return cookieValue;
+}
+
+function csrfSafeMethod(method) {
+    // these HTTP methods do not require CSRF protection
+    return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
+}
+
+
+var getUrlParameter = function getUrlParameter(sParam) {
+    // http://stackoverflow.com/questions/19491336/get-url-parameter-jquery
+    var sPageURL = decodeURIComponent(window.location.search.substring(1)),
+        sURLVariables = sPageURL.split('&'),
+        sParameterName,
+        i;
+
+    for (i = 0; i < sURLVariables.length; i++) {
+        sParameterName = sURLVariables[i].split('=');
+
+        if (sParameterName[0] === sParam) {
+            return sParameterName[1] === undefined ? true : sParameterName[1];
+        }
+    }
+};
+
+function pretty_del_table_row(jqrow, bg) {
+    bg = bg || 'red_bg';
+    return function(show_mes) {
+        var i = 0;
+        var counter = 0;
+        counter = setInterval(function(){ 
+            /* Р РµР°Р»РёР·СѓРј РјРёРіР°РЅРёРµ СЃС‚СЂРѕРєРё РІ РїСЂРѕС†РµСЃСЃРµ СѓРґР°Р»РµРЅРёСЏ. */
+            jqrow.toggleClass(bg);
+            
+            if (i >= 5) {
+                clearInterval(counter);
+                jqrow.remove();
+                show_mes();
+            }
+            i++;
+        }, 500);
+    }
+}
+
+$(document).on('click', '.check_uncheck_all', function() {
+    // используется во вью transfe_for_use, при динамической загрузке данных аяксом после того 
+    // DOM дерево будет полностью загружено.
+    var ckeck_box = false;
+    if(this.checked) {
+        ckeck_box = true;
+    } else {
+        ckeck_box = false;
+    }
+
+    $('input.check_moved_items').each(function() {
+        if (ckeck_box) {
+             $(this).prop('checked', true);            
+        } else {
+             $(this).prop('checked', false);
+        }
+    });
+    
+});
+
+    
+function add_elememts_in_sessions(cart_type='full') {
+    /*  Добавление едениц расходных материалов с сканер        штрихкода  */
+    var cart_number = $('#id_cartNumber').val();
+    var cart_name  = $('#id_cartName option:selected').val();
+    var cart_sklad = $('#id_storages option:selected').val(); 
+    var docum      = $('#id_doc option:selected').val();
+    var cart_type  = $('#id_cartNumber').attr('data');
+
+    var tumbler = $('.cmn-toggle-2').is(':checked');
+
+    if (tumbler) {
+        var set_date = $('#id_set_date').val();
+        var set_time = $('#id_time').val();
+        if (set_time) {
+            $('.time_error').hide();
+        } else {
+            $('.time_error').show();
+        }
+        if (set_date) {
+            $('.date_error').hide();
+        } else {
+            $('.date_error').show();
+        }
+
+        valid_date_time = false;
+        // если данные введены, то разрешаем отправку формы
+        if (set_date && set_time) {
+            valid_date_time = true;
+        }
+
+        var tumbler = '0';
+    } else {
+        var valid_date_time = true;
+        var tumbler = '1';
+    }
+
+    if (!cart_number) {
+        $('.cart_number_error').show();
+    } else {
+        $('.cart_number_error').hide();
+    }
+
+    if (!cart_name) {
+        $('.cart_name_error').show();
+    } else {
+        $('.cart_name_error').hide();
+    }
+
+    if (!cart_sklad) {
+        $('.cart_sklad_error').show();
+    } else {
+        $('.cart_sklad_error').hide();
+    }
+
+    console.log('tumbler=', tumbler);
+    if (cart_name && cart_sklad && cart_number && valid_date_time) {
+        send_dict = {}
+        send_dict['cartNumber'] = cart_number;
+        send_dict['cartName'] = cart_name;
+        send_dict['doc'] = docum;
+        send_dict['cart_type'] = cart_type;
+        send_dict['storages'] = cart_sklad;
+        send_dict['set_date'] = set_date;
+        send_dict['set_time'] = set_time;
+        send_dict['tumbler'] = tumbler;
+        $.ajax({
+            method: 'POST',
+            url: '{% url "index:ajax_add_session_items_from_barcode" %}',            
+            data: send_dict,
+            beforeSend: function( xhr, settings ){
+                $('.spinner').show();
+                csrftoken = getCookie('csrftoken');
+                if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
+                    xhr.setRequestHeader('X-CSRFToken', csrftoken);
+                }
+            },
+            success: function( msg ) {
+                // Прячем ссылку закачки pdf файлов
+                $('#id_cartNumber').val('');
+                $('.download_pdf').hide();
+                $( "#id_cartNumber" ).focus();
+                if (msg.error == '1') {
+                    $('.spinner').hide(); 
+                    $('.success_msg').hide();
+                    $('.error_msg').show();
+                    $('.error_msg').html(msg.mes);
+                }
+
+                if (msg.error == '0') {
+                    $('.spinner').hide();
+                    $('.error_msg').hide();
+                    $('.session_data').html(msg.html);
+                    $('.success_msg').show();
+                    $('.success_msg').html(msg.mes);
+                    setTimeout(function() { $('.success_msg').hide(); }, 12000);
+                }
+            },
+            error: function() {
+                $( "#id_cartNumber" ).focus();
+                $('.error_msg').show();
+                $('.error_msg').html('{% trans "Server error :(" %}');
+                $('.spinner').hide();
+                setTimeout(function() { $('.error_msg').hide(); }, 12000);
+            },
+        });            
+    }
+    return false;
+}
+

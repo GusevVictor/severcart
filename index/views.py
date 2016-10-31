@@ -224,9 +224,13 @@ def add_cartridge_from_barcode_scanner(request):
     """
     if not request.user.departament:
         return render(request, 'index/ou_not_set.html', dict())
-
+    context = dict()
+    context['debug'] = True
     back = BreadcrumbsPath(request).before_page(request)
+    current_day = str(timezone.now().day) +'/' + str(timezone.now().month) +'/' + str(timezone.now().year)
     form = AddItemsFromBarCodeScanner()
+    form.fields['set_date'].initial = current_day
+    
     # отфильтровываем и показываем только договора поставки
     form.fields['doc'].queryset = SCDoc.objects.filter(departament=request.user.departament).filter(doc_type=1)
     form.fields['storages'].queryset = Storages.objects.filter(departament=request.user.departament)
@@ -238,8 +242,9 @@ def add_cartridge_from_barcode_scanner(request):
     except IndexError:
         # если склад по-умолчанию не выбран, то пропускаем выбор склада
         pass
-    
-    return render(request, 'index/add_cartridge_from_barcode_scanner.html', {'form': form, 'back': back})
+    context['form'] = form
+    context['back'] = back  
+    return render(request, 'index/add_cartridge_from_barcode_scanner.html', context)
 
 
 @login_required

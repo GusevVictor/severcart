@@ -11,6 +11,7 @@
     <script src="{{ STATIC_URL }}js/detect.js?{{request.CACHEVERSION}}"></script>
     <script src="{{ STATIC_URL }}js/vendor/jquery.js"></script>
     {% block jqueryui %}{% endblock %}
+    <script src="/dhtml/common.js?{{request.CACHEVERSION}}"></script>
     <script src="/dhtml/logic.js?{{request.CACHEVERSION}}"></script>
     <title>{% block title %}{% endblock %}</title>
     <noscript>

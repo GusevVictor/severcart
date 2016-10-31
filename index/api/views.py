@@ -284,12 +284,11 @@ def ajax_add_session_items(request):
     return JsonResponse(tmp_dict, safe=False)
 
 
+@require_POST
 @check_ajax_auth
 def ajax_add_session_items_from_barcode(request):
-    """Добавляем картриджи на склад с помощью сканера штрих кодов.
+    """Добавляем картриджи в сессионную переменную с помощью сканера штрих кодов.
     """
-    if request.method != 'POST':
-        return HttpResponse('<h1>' + _('Only use POST requests!') + '</h1>')
     # если пришёл запрос то пополняем сессионную переменную
     # результаты отображаем на странице
     context = dict()
@@ -319,6 +318,8 @@ def ajax_add_session_items_from_barcode(request):
         cart_type    = request.POST.get('cart_type')
         cart_doc_id  = data_in_post.get('doc')
 
+        tumbler      = data_in_post.get('tumbler')
+        print('tumbler=', tumbler)
         # чтобы не плодить лишние сущности зделано одно вью для добавления разных картриджей
         if cart_type == 'full':
             cart_status = 1
@@ -331,6 +332,24 @@ def ajax_add_session_items_from_barcode(request):
 
         list_cplx = list()
         # Добавляем отсканированный картридж в БД
+        if request.session.get('basket_to_transfer_firm', False):
+            # если в сессионной переменной уже что-то есть
+            session_data = request.session.get('basket_to_transfer_firm')
+            # если в сессионной переменной данные уже есть то РМ в список не добавляем
+            try:
+                session_data.index(cartridge.pk)
+            except ValueError: 
+                session_data.append(cartridge.pk)
+                request.session['basket_to_transfer_firm'] = session_data
+            else:
+                ansver['error'] ='1'
+                ansver['mes'] = _('The object number %(cart_barcode)s is already present in the lists on the move.') % {'cart_barcode': cart_barcode}
+                return JsonResponse(ansver)                
+        else:
+            # если сессионная basket_to_transfer_firm пуста или её нет вообще
+            session_data = [ cartridge.pk ]
+            request.session['basket_to_transfer_firm'] = session_data        
+        """
         with transaction.atomic():
             m1 = CartridgeItem(sklad=storages,
                                cart_number=str(cart_number),
@@ -353,7 +372,7 @@ def ajax_add_session_items_from_barcode(request):
             sign_add_empty_to_stock.send(sender=None, list_cplx=list_cplx, request=request)
         else:
             pass
-
+        """
     return JsonResponse(context)    
 
 @check_ajax_auth

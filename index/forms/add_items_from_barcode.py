@@ -21,6 +21,8 @@ class AddItemsFromBarCodeScanner(BaseAddForm):
     
     doc = forms.ModelChoiceField(queryset=SCDoc.objects.filter(), required=False)
 
+    tumbler = forms.BooleanField(required=True)
+
     required_css_class = 'required'
 
     def clean_cartNumber(self):
@@ -50,3 +52,10 @@ class AddItemsFromBarCodeScanner(BaseAddForm):
         doc_id = self.cleaned_data.get('doc')
         return doc_id.pk
 
+    def clean_tumbler(self):
+        """
+        """
+        if self.cleaned_data.get('tumbler', 0):
+            return True
+        else:
+            return False

@@ -94,6 +94,11 @@ form input[type="password"] {
     overflow: hidden;
 }
 
+.marginTop55 {
+    margin-top:55px;
+    overflow: hidden;
+}
+
 .marginBot {
     margin-bottom: 15px;
 }
