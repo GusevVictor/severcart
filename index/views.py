@@ -242,6 +242,17 @@ def add_cartridge_from_barcode_scanner(request):
     except IndexError:
         # если склад по-умолчанию не выбран, то пропускаем выбор склада
         pass
+
+    # считываем данные для сессии
+    if request.session.get('add_cartridges_in_stock', False):
+        # если в сессионной переменной уже что-то есть
+        session_data = request.session.get('add_cartridges_in_stock')
+        
+    else:
+        # если сессионная basket_to_transfer_firm пуста или её нет вообще
+        session_data = list()
+
+    context['list_items'] = session_data
     context['form'] = form
     context['back'] = back  
     return render(request, 'index/add_cartridge_from_barcode_scanner.html', context)

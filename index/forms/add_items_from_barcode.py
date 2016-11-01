@@ -21,7 +21,7 @@ class AddItemsFromBarCodeScanner(BaseAddForm):
     
     doc = forms.ModelChoiceField(queryset=SCDoc.objects.filter(), required=False)
 
-    tumbler = forms.BooleanField(required=True)
+    tumbler = forms.CharField(required=True)
 
     required_css_class = 'required'
 
@@ -54,8 +54,11 @@ class AddItemsFromBarCodeScanner(BaseAddForm):
 
     def clean_tumbler(self):
         """
-        """
-        if self.cleaned_data.get('tumbler', 0):
+        """        
+        check = self.cleaned_data.get('tumbler', '0')
+        if check == '0':
+            return False
+        elif check == '1':
             return True
         else:
             return False

@@ -1,0 +1,14 @@
+{% load i18n %}{% load staticfiles %}
+{% if list_items %}
+<div class='marginTop'>
+    <a class="button success add_items_from_barcode no_follow" data="full" >{% trans "Add" %}</a>
+</div>
+{% endif %}
+<div class='marginTop'></div>
+{% for elem in list_items %}
+<div>
+    <p><input type='checkbox' name='cart_number' value='{{ forloop.counter0 }}'>&nbsp;&nbsp;&nbsp; 
+    {{ elem.cart_number }}&nbsp;&nbsp;&nbsp;{{ elem.cart_name }}&nbsp;&nbsp;&nbsp; {{ elem.date_time_added }}</p>
+</div>
+<hr/>
+{% endfor %}

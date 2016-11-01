@@ -80,6 +80,21 @@ def del_firm(request):
     return JsonResponse(resp_dict)
 
 
+def search_number(cart_number):
+    """Хелпер функция для поиска дублей номеров внутри представительства.
+       Обработчиком запроса не является.
+    """
+    cart_items = CartridgeItem.objects.filter(cart_number=cart_number)
+    try:
+        root_ou   = request.user.departament
+        des       = root_ou.get_descendants(include_self=True)
+    except:
+        cart_items = []
+    else:
+        cart_items = cart_items.filter(departament__in=des)
+    return cart_items
+
+
 @require_POST
 @check_ajax_auth
 def ajax_add_session_items(request):
@@ -138,19 +153,6 @@ def ajax_add_session_items(request):
             tmp_dict['error'] ='1'
             tmp_dict['mes']   = _('Error in attrib "data" in input button add_item')
             return JsonResponse(tmp_dict)
-
-        def search_number(cart_number):
-            """Функция для поиска дублей номеров внутри представительства.
-            """
-            cart_items = CartridgeItem.objects.filter(cart_number=cart_number)
-            try:
-                root_ou   = request.user.departament
-                des       = root_ou.get_descendants(include_self=True)
-            except:
-                cart_items = []
-            else:
-                cart_items = cart_items.filter(departament__in=des)
-            return cart_items
 
         list_cplx    = list()
         if tumbler:
@@ -319,7 +321,6 @@ def ajax_add_session_items_from_barcode(request):
         cart_doc_id  = data_in_post.get('doc')
 
         tumbler      = data_in_post.get('tumbler')
-        print('tumbler=', tumbler)
         # чтобы не плодить лишние сущности зделано одно вью для добавления разных картриджей
         if cart_type == 'full':
             cart_status = 1
@@ -330,25 +331,72 @@ def ajax_add_session_items_from_barcode(request):
             context['mes']   = _('Error in attrib "data" in input button add_item')
             return JsonResponse(context)
 
-        list_cplx = list()
+        conf = SevercartConfigs()
+        # проверяем на дубли имеющихся номеров
+        cart_items = search_number(cart_number)
+        if len(cart_items):
+            context['error'] = '1'
+            context['mes'] = _('An object with this number has already been registered.')
+            return JsonResponse(tmp_dict)
+
+        if tumbler:
+            date_added = data_in_post.get('set_date')
+            time_added = data_in_post.get('time')
+            set_date = datetime(year=date_added['year'], 
+                                month=date_added['month'], 
+                                day=date_added['day'], 
+                                hour=time_added['hours'], 
+                                minute=time_added['minutes'], 
+                                second=0, microsecond=0 )
+                                #, tzinfo=pytz.timezone(conf.time_zone))
+            # d = datetime.datetime.now()
+            local = pytz.timezone(conf.time_zone)
+            local_dt = local.localize(set_date, is_dst=None)
+            date_time_added = local_dt.astimezone(pytz.utc)
+        else:
+            date_time_added = timezone.now()
+
+        # собираем очект РМ на основе полученных данных
+        cart_obj = dict()
+        cart_obj['cart_number'] = cart_number
+        cart_obj['cart_name'] = cart_name
+        cart_obj['storages'] = storages
+        cart_obj['cart_doc_id'] = cart_doc_id
+        cart_obj['cart_type'] = cart_type
+        #local = pytz.timezone(conf.time_zone)
+        #date_time_added = local.localize(date_time_added, is_dst=None)
+        cart_obj['date_time_added'] = date_time_added
+
         # Добавляем отсканированный картридж в БД
-        if request.session.get('basket_to_transfer_firm', False):
+        if request.session.get('add_cartridges_in_stock', False):
             # если в сессионной переменной уже что-то есть
-            session_data = request.session.get('basket_to_transfer_firm')
-            # если в сессионной переменной данные уже есть то РМ в список не добавляем
-            try:
-                session_data.index(cartridge.pk)
-            except ValueError: 
-                session_data.append(cartridge.pk)
-                request.session['basket_to_transfer_firm'] = session_data
-            else:
-                ansver['error'] ='1'
-                ansver['mes'] = _('The object number %(cart_barcode)s is already present in the lists on the move.') % {'cart_barcode': cart_barcode}
-                return JsonResponse(ansver)                
+            session_data = request.session.get('add_cartridges_in_stock')
+            # проверяем добавляем элемент на дубль в сессионной казине
+            exist = False
+            for elem in session_data:
+                
+                if elem['cart_number'] in cart_number:
+                    exist = True
+                    break
+            if exist:
+                message = _('Cartridge %(cart_number)s  is already in the basket session.') % {'cart_number': cart_number}                
+                context['mes']  = message
+                context['error'] = '1'
+                return JsonResponse(context)
+
+            session_data.append(cart_obj)
+            
         else:
             # если сессионная basket_to_transfer_firm пуста или её нет вообще
-            session_data = [ cartridge.pk ]
-            request.session['basket_to_transfer_firm'] = session_data        
+            session_data = list()
+            session_data.append(cart_obj)
+        request.session['add_cartridges_in_stock'] = session_data
+
+        message = _('Cartridge %(cart_number)s successfully added in session basket.') % {'cart_number': cart_number}
+        html = render_to_string('index/add_items_barcode_ajax.html', context={'list_items': session_data})
+        context['html'] = html
+        context['mes']  = message
+        context['error'] = '0'
         """
         with transaction.atomic():
             m1 = CartridgeItem(sklad=storages,
@@ -373,7 +421,8 @@ def ajax_add_session_items_from_barcode(request):
         else:
             pass
         """
-    return JsonResponse(context)    
+    return JsonResponse(context)
+
 
 @check_ajax_auth
 def transfer_to_stock(request):

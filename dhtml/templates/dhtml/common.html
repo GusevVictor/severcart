@@ -109,10 +109,10 @@ function add_elememts_in_sessions(cart_type='full') {
             valid_date_time = true;
         }
 
-        var tumbler = '0';
+        var tumbler = '1';
     } else {
         var valid_date_time = true;
-        var tumbler = '1';
+        var tumbler = '0';
     }
 
     if (!cart_number) {
@@ -133,7 +133,6 @@ function add_elememts_in_sessions(cart_type='full') {
         $('.cart_sklad_error').hide();
     }
 
-    console.log('tumbler=', tumbler);
     if (cart_name && cart_sklad && cart_number && valid_date_time) {
         send_dict = {}
         send_dict['cartNumber'] = cart_number;
@@ -173,6 +172,7 @@ function add_elememts_in_sessions(cart_type='full') {
                     $('.session_data').html(msg.html);
                     $('.success_msg').show();
                     $('.success_msg').html(msg.mes);
+                    $('.add_cart_from_barcode').html(msg.html);
                     setTimeout(function() { $('.success_msg').hide(); }, 12000);
                 }
             },

@@ -74,9 +74,7 @@
                 
                 <div class="row">
                     <div class="large-4 columns">
-                        <div class='marginTop55'>
-                            <input type="submit" value='{% trans "Add" %}' class="button success add_items_from_barcode no_follow" data="full" />
-                        </div>
+                        
                     </div>
                     <div class="large-4 columns">
                         <div class='marginTop55'>
@@ -99,7 +97,21 @@
         </div>
         <div class="large-6 column">
             <!-- Прежнее место сессионных переменных -->
-            <div class="add_new_cart_from_barcode"></div>
+            <div class="add_cart_from_barcode">
+                {% if list_items %}
+                <div class='marginTop'>
+                    <a class="button success add_items_from_barcode no_follow" data="full" >{% trans "Add" %}</a>
+                </div>
+                {% endif %}
+                <div class='marginTop'></div>
+                {% for elem in list_items %}
+                <div>
+                    <p><input type='checkbox' name='cart_number' value='{{ forloop.counter0 }}'>&nbsp;&nbsp;&nbsp; 
+    {{ elem.cart_number }}&nbsp;&nbsp;&nbsp;{{ elem.cart_name }}&nbsp;&nbsp;&nbsp; {{ elem.date_time_added }}</p>
+                </div>
+                <hr/>
+                {% endfor %}
+            </div>
         </div>
     </div>
 {% endblock %}
