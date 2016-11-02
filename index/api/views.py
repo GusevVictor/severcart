@@ -353,8 +353,10 @@ def ajax_add_session_items_from_barcode(request):
             local = pytz.timezone(conf.time_zone)
             local_dt = local.localize(set_date, is_dst=None)
             date_time_added = local_dt.astimezone(pytz.utc)
+            date_time_added_show = set_date
         else:
             date_time_added = timezone.now()
+            date_time_added_show = do_timezone(date_time_added, conf.time_zone)
 
         # собираем очект РМ на основе полученных данных
         cart_obj = dict()
@@ -366,7 +368,7 @@ def ajax_add_session_items_from_barcode(request):
         #local = pytz.timezone(conf.time_zone)
         #date_time_added = local.localize(date_time_added, is_dst=None)
         cart_obj['date_time_added'] = date_time_added
-
+        cart_obj['date_time_added_show'] = date_time_added_show
         # Добавляем отсканированный картридж в БД
         if request.session.get('add_cartridges_full_in_stock', False):
             # если в сессионной переменной уже что-то есть
@@ -397,40 +399,45 @@ def ajax_add_session_items_from_barcode(request):
         context['html'] = html
         context['mes']  = message
         context['error'] = '0'
-        """
-        with transaction.atomic():
-            m1 = CartridgeItem(sklad=storages,
-                               cart_number=str(cart_number),
-                               cart_itm_name=data_in_post.get('cartName'),
-                               cart_date_added=timezone.now(),
-                               cart_date_change=timezone.now(),
-                               cart_number_refills=0,
-                               departament=request.user.departament,
-                               cart_status=cart_status,
-                               delivery_doc=cart_doc_id,
-                               )
-            m1.save()
-            list_cplx.append((m1.id, cart_number, cart_name))
-        
-        context['mes'] = _('Cartridge %(cart_number)s successfully added.') % {'cart_number': cart_number}
-        # запускаем сигнал добавления событий
-        if cart_status == 1:
-            sign_add_full_to_stock.send(sender=None, list_cplx=list_cplx, request=request)
-        elif cart_status == 3:
-            sign_add_empty_to_stock.send(sender=None, list_cplx=list_cplx, request=request)
-        else:
-            pass
-        """
     return JsonResponse(context)
 
 
+@require_POST
+@check_ajax_auth
+def add_items_from_session_basket(request):
+    """Добавление объектов на склад, в соответствии с содержанием сессионных переменных.
+       Требуется доробтка.
+    """
+    with transaction.atomic():
+        m1 = CartridgeItem(sklad=storages,
+                           cart_number=str(cart_number),
+                           cart_itm_name=data_in_post.get('cartName'),
+                           cart_date_added=timezone.now(),
+                           cart_date_change=timezone.now(),
+                           cart_number_refills=0,
+                           departament=request.user.departament,
+                           cart_status=cart_status,
+                           delivery_doc=cart_doc_id,
+                           )
+        m1.save()
+        list_cplx.append((m1.id, cart_number, cart_name))
+    
+    context['mes'] = _('Cartridge %(cart_number)s successfully added.') % {'cart_number': cart_number}
+    # запускаем сигнал добавления событий
+    if cart_status == 1:
+        sign_add_full_to_stock.send(sender=None, list_cplx=list_cplx, request=request)
+    elif cart_status == 3:
+        sign_add_empty_to_stock.send(sender=None, list_cplx=list_cplx, request=request)
+    else:
+        pass
+    return JsonResponse(ansver)
+
+
+@require_POST
 @check_ajax_auth
 def transfer_to_stock(request):
     """Возврат исчерпаного картриджа от пользователя обратно на склад.
     """
-    if request.method != 'POST':
-        return HttpResponse('<h1>' + _('Only use POST requests!') + '</h1>')    
-
     checked_cartr = request.POST.getlist('selected[]')
     list_cplx = [] 
     ansver = dict()
@@ -454,14 +461,12 @@ def transfer_to_stock(request):
     return JsonResponse(ansver, safe=False)
 
 
+@require_POST
 @check_ajax_auth
 def transfer_to_firm(request):
     """Передача картриджей на обслуживание.
     """
     ansver = dict()
-    if request.method != 'POST':
-        return HttpResponse('<h1>' + _('Only use POST requests!') + '</h1>')    
-
     form = TransfeToFirm(request.POST)
     if form.is_valid():
         data_in_post = form.cleaned_data
@@ -546,6 +551,7 @@ def transfer_to_firm(request):
     return JsonResponse(ansver)
 
 
+@require_POST
 @check_ajax_auth
 def clear_session(request):
     """Очищаем сессионные переменные
@@ -561,6 +567,7 @@ def clear_session(request):
     return HttpResponse(_('Session cleared'))
 
 
+@require_POST
 @check_ajax_auth
 def city_list(request):
     """Возвращает список городов полученных из базы в ввиде json.
@@ -573,6 +580,7 @@ def city_list(request):
     return JsonResponse(tmp_dict, safe=False)
 
 
+@require_POST
 @check_ajax_auth
 @is_admin
 def del_node(request):

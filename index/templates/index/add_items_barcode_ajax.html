@@ -3,7 +3,7 @@
 {% for elem in list_items %}
 <div class="p_checkboxes cart_item_{{ forloop.counter0 }}">
     <p><input type='checkbox' name='cart_number' value='{{ forloop.counter0 }}'>&nbsp;&nbsp;&nbsp; 
-    {{ elem.cart_number }}&nbsp;&nbsp;&nbsp;{{ elem.cart_name }}&nbsp;&nbsp;&nbsp; {{ elem.date_time_added }}</p>
+    {{ elem.cart_number }}&nbsp;&nbsp;&nbsp;{{ elem.cart_name }}&nbsp;&nbsp;&nbsp; {{ elem.date_time_added_show }}</p>
     <hr/>
 </div>
 {% endfor %}

@@ -141,7 +141,7 @@ function add_elememts_in_sessions(cart_type='full') {
         send_dict['cart_type'] = cart_type;
         send_dict['storages'] = cart_sklad;
         send_dict['set_date'] = set_date;
-        send_dict['set_time'] = set_time;
+        send_dict['time'] = set_time;
         send_dict['tumbler'] = tumbler;
         $.ajax({
             method: 'POST',
