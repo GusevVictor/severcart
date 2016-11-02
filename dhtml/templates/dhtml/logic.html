@@ -2454,5 +2454,31 @@ $( function(){
         
     });
 
+    $('.add_items_from_barcode ').click( function() {
+        // добавление пустых или новых на склад
+        var session_var = $(this).attr('session_var');
+        $.ajax({
+                method: 'POST',
+                url: '{% url "index:add_items_in_stock_from_session_basket" %}',
+                data:  {'session_var': session_var},
+                beforeSend: function( xhr, settings ){
+                    $('.session_spinner').show();
+                    csrftoken = getCookie('csrftoken');
+                    if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
+                        xhr.setRequestHeader('X-CSRFToken', csrftoken);
+                    }
+                },
+                success: function( msg ) {
+                    $('.session_spinner').hide();
+                    
+                    
+                },
+                error: function(msg) {
+                    $('.session_spinner').hide();
+                    console.log(msg);
+                },
+            });
+
+    });
 
 });

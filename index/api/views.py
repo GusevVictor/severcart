@@ -404,32 +404,66 @@ def ajax_add_session_items_from_barcode(request):
 
 @require_POST
 @check_ajax_auth
-def add_items_from_session_basket(request):
+def add_items_in_stock_from_session_basket(request):
     """Добавление объектов на склад, в соответствии с содержанием сессионных переменных.
        Требуется доробтка.
     """
-    with transaction.atomic():
-        m1 = CartridgeItem(sklad=storages,
-                           cart_number=str(cart_number),
-                           cart_itm_name=data_in_post.get('cartName'),
-                           cart_date_added=timezone.now(),
-                           cart_date_change=timezone.now(),
-                           cart_number_refills=0,
-                           departament=request.user.departament,
-                           cart_status=cart_status,
-                           delivery_doc=cart_doc_id,
-                           )
-        m1.save()
-        list_cplx.append((m1.id, cart_number, cart_name))
+    ansver = dict()
+    session_var = request.POST.get('session_var', '')
+    session_var = session_var.strip()
+    if session_var == 'add_cartridges_full_in_stock':
+        cart_status = 1
+    elif session_var == 'add_cartridges_empty_in_stock':
+        cart_status = 3
+    else:
+        ansver['error'] = '1'
+        ansver['text'] = _('Session varible not emplimented.')
+        return JsonResponse(ansver)
+
+    if request.session.get(session_var, False):
+        session_data = request.session.get(session_var)
+    else:
+        ansver['error'] = '1'
+        ansver['text'] = _('Cart is empty. Add nothing to the warehouse.')
+        return JsonResponse(ansver)
+
+    """
+    {'cart_number' : '1240', 'date_time_added': datetime.datetime(2016, 11, 1, 19, 0, tzinfo=<UTC>)
+    , 'cart_name': 'HP Q2612A', 'cart_doc_id': 2, 'cart_type': 'full', 
+    'date_time_added_show': datetime.datetime(2016, 11, 2, 0, 0), 
+    'storages': 1}
+    """
+
     
+    with transaction.atomic():
+        for cartridge in session_data:
+            
+            cart_name = CartridgeItemName.objects.get(cart_itm_name=cartridge['cart_name'])
+            print('cart_name.pk=', cart_name.pk)
+            """
+            m1 = CartridgeItem(sklad=storages,
+                               cart_number=cartridge['cart_number'],
+                               cart_itm_name=,
+                               cart_date_added=cartridge['date_time_added'],
+                               cart_date_change=cartridge['date_time_added'],
+                               cart_number_refills=0,
+                               departament=request.user.departament,
+                               cart_status=cart_status,
+                               delivery_doc=cartridge['cart_doc_id'],
+                               )
+            m1.save()
+            list_cplx.append((m1.id, cart_number, cart_name))
+            """
     context['mes'] = _('Cartridge %(cart_number)s successfully added.') % {'cart_number': cart_number}
     # запускаем сигнал добавления событий
+    """
     if cart_status == 1:
         sign_add_full_to_stock.send(sender=None, list_cplx=list_cplx, request=request)
     elif cart_status == 3:
         sign_add_empty_to_stock.send(sender=None, list_cplx=list_cplx, request=request)
     else:
         pass
+    """
     return JsonResponse(ansver)
 
 

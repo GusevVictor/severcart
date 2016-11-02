@@ -24,6 +24,7 @@ from index.api.views import (   ajax_add_session_items,
                                 rate,
                                 change_cart_number,
                                 clear_basket_session,
+                                add_items_in_stock_from_session_basket,
                             )
 from accounts.api.views import del_users
 
@@ -53,4 +54,5 @@ urlpatterns = [
     url('^rate/', rate, name='rate'),
     url('^change_cart_number/', change_cart_number, name='change_cart_number'),
     url('^clear_basket_session/', clear_basket_session, name='clear_basket_session'),
+    url('^add_items_in_stock_from_session_basket/', add_items_in_stock_from_session_basket, name='add_items_in_stock_from_session_basket'),
 ]

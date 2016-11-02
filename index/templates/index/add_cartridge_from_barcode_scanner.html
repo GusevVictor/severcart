@@ -97,7 +97,7 @@
         </div>
         <div class="large-6 column">
             <div class='marginTop wrapper_add_scanner_items' {% if list_items %}style="display:block"{% else %}style="display:none"{% endif %}>
-                <a class="button success add_items_from_barcode no_follow" data="{{action_type}}">{% trans "Add" %}</a>
+                <a class="button success add_items_from_barcode no_follow" session_var="{{session_var}}">{% trans "Add" %}</a>
                 <a class="button remove_item no_follow" data="{{action_type}}" session_var="{{session_var}}" select_all="0">{% trans "Remove item" %}</a>
                 <a class="button remove_all_items no_follow" data="{{action_type}}" session_var="{{session_var}}"  select_all="1">{% trans "Clear session" %}</a>&nbsp;&nbsp;
                 <img class="session_spinner" src="{{ STATIC_URL }}img/loader.gif" />
