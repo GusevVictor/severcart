@@ -1338,20 +1338,30 @@ def clear_basket_session(request):
        Поэлементное удаление элементов из сессионной корзины, или очистка её целиком.
     """
     ansver = dict()
+
     selected = request.POST.getlist('selected[]', '')
     session_var = request.POST.get('session_var', '')
+    select_all = request.POST.get('select_all', '')
     session_var = session_var.strip()
     empty_all = request.POST.get('empty_all', '')
     selected = [str2int(elem) for elem in selected]
+    
+
     if session_var == 'add_cartridges_full_in_stock':
-        session_data = request.session.get('add_cartridges_full_in_stock')
+        session_data = request.session.get(session_var)
     elif session_var == 'add_cartridges_empty_in_stock':
-        session_data = request.session.get('add_cartridges_empty_in_stock')
+        session_data = request.session.get(session_var)
     else:
         ansver['error'] = '1'
         ansver['text'] = _('Session varible not use.')
         return JsonResponse(ansver)
     
+    if select_all == '1':
+        request.session[session_var] = None
+        ansver['error'] = '0'
+        ansver['text'] = ''
+        return JsonResponse(ansver)
+
     tmp_session_data = list()
     inx = 0
     for elem in session_data:

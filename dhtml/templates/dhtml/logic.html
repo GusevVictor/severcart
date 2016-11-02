@@ -2403,21 +2403,22 @@ $( function(){
 
     });
 
-    $('.remove_item').click(function () {
+    $('.remove_item, .remove_all_items').click(function () {
         // удаление объекта в сессионной корзине
         var selected = [];
         var session_var = $(this).attr('session_var');
         var empty_all = '0';
+        var select_all = $(this).attr('select_all');
         $('.p_checkboxes input:checked').each(function() {
             if ($(this).attr('value')) {
                 selected.push( $(this).attr('value') );
             }
         });
-        if (selected.length) {
+        if ((selected.length && (select_all=='0')) || select_all=='1') {
             $.ajax({
                 method: 'POST',
                 url: '{% url "index:clear_basket_session" %}',
-                data:  {'selected[]': selected, 'session_var': session_var, 'empty_all': empty_all},
+                data:  {'selected[]': selected, 'session_var': session_var, 'empty_all': empty_all, 'select_all': select_all},
                 beforeSend: function( xhr, settings ){
                     $('.session_spinner').show();
                     csrftoken = getCookie('csrftoken');
@@ -2429,20 +2430,29 @@ $( function(){
                     $('.session_spinner').hide();
                     if (msg.error = '0') {
                         var class_name = '';
-                        for(var i=0; i < msg.text.length; i++) {
-                            class_name = '.cart_item_' + msg.text[i];
-                            $(class_name).remove(); 
+                        if (msg.text) {
+                            for(var i=0; i < msg.text.length; i++) {
+                                class_name = '.cart_item_' + msg.text[i];
+                                $(class_name).remove(); 
+                            }
+                        } else {
+                            $('.p_checkboxes').each(function() {
+                                $('.wrapper_add_scanner_items').hide();
+                                $(this).remove();
+                            });
                         }
-                        
                     }
                     
                 },
                 error: function(msg) {
+                    $('.session_spinner').hide();
                     console.log(msg);
                 },
             });
+
         }
         
     });
+
 
 });

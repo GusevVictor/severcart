@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-11-01 17:30+0500\n"
+"POT-Creation-Date: 2016-11-02 14:47+0500\n"
 "PO-Revision-Date: 2016-05-27 12:27+0500\n"
 "Last-Translator: \n"
 "Language-Team: severcart.org <sfcl@mail.ru>\n"
@@ -275,8 +275,8 @@ msgstr ""
 #: .\docs\templates\docs\add_city.html:27 .\docs\templates\docs\cities.html:17
 #: .\docs\templates\docs\names_list.html:17
 #: .\docs\templates\docs\types_list.html:17
-#: .\index\templates\index\add_cartridge_from_barcode_scanner.html:103
 #: .\index\templates\index\add_firm.html:47
+#: .\index\templates\index\add_items_barcode_ajax.html:4
 #: .\index\templates\index\add_name.html:41
 #: .\index\templates\index\add_type.html:32
 #: .\index\templates\index\tree_list.html:48
@@ -474,9 +474,9 @@ msgstr ""
 
 #: .\docs\api\views.py:33 .\docs\api\views.py:81 .\docs\api\views.py:113
 #: .\docs\api\views.py:447 .\docs\api\views.py:546 .\index\api\views.py:53
-#: .\index\api\views.py:431 .\index\api\views.py:462 .\index\api\views.py:629
-#: .\index\api\views.py:677 .\index\api\views.py:698 .\index\api\views.py:713
-#: .\index\api\views.py:861 .\reports\api\views.py:56
+#: .\index\api\views.py:432 .\index\api\views.py:463 .\index\api\views.py:630
+#: .\index\api\views.py:678 .\index\api\views.py:699 .\index\api\views.py:714
+#: .\index\api\views.py:862 .\reports\api\views.py:56
 #: .\storages\api\views.py:21 .\storages\api\views.py:59
 msgid "Only use POST requests!"
 msgstr ""
@@ -490,7 +490,7 @@ msgstr ""
 msgid "Name can not be removed, ie. other objects reference it."
 msgstr ""
 
-#: .\docs\api\views.py:57 .\docs\api\views.py:71 .\index\api\views.py:597
+#: .\docs\api\views.py:57 .\docs\api\views.py:71 .\index\api\views.py:598
 msgid "Name deleted successfully."
 msgstr ""
 
@@ -1355,141 +1355,145 @@ msgstr ""
 msgid "Cartridges successfully added."
 msgstr ""
 
-#: .\index\api\views.py:381
+#: .\index\api\views.py:382
 #, python-format
 msgid "Cartridge %(cart_number)s  is already in the basket session."
 msgstr ""
 
-#: .\index\api\views.py:394
+#: .\index\api\views.py:395
 #, python-format
 msgid "Cartridge %(cart_number)s successfully added in session basket."
 msgstr ""
 
-#: .\index\api\views.py:452
+#: .\index\api\views.py:453
 msgid "Cartridges successfully moved."
 msgstr ""
 
-#: .\index\api\views.py:534
+#: .\index\api\views.py:535
 #, python-format
 msgid "Cartridges %(cart_nums)s successfully moved to firm."
 msgstr ""
 
-#: .\index\api\views.py:536
+#: .\index\api\views.py:537
 msgid "No transmission facilities"
 msgstr ""
 
-#: .\index\api\views.py:560
+#: .\index\api\views.py:561
 msgid "Session cleared"
 msgstr ""
 
-#: .\index\api\views.py:585
+#: .\index\api\views.py:586
 msgid "In demo remove nodes not allow."
 msgstr ""
 
-#: .\index\api\views.py:593
+#: .\index\api\views.py:594
 msgid ""
 "But it can not be removed because other objects reference it.<br/>Error "
 "code: 102"
 msgstr ""
 
-#: .\index\api\views.py:599
+#: .\index\api\views.py:600
 msgid "Names deleted successfully."
 msgstr ""
 
-#: .\index\api\views.py:621
+#: .\index\api\views.py:622
 msgid "Cartridjes deleted!"
 msgstr ""
 
-#: .\index\api\views.py:638
+#: .\index\api\views.py:639
 msgid "Error converting string numbers to int."
 msgstr ""
 
-#: .\index\api\views.py:649
+#: .\index\api\views.py:650
 msgid "This action type not implemented."
 msgstr ""
 
-#: .\index\api\views.py:668
+#: .\index\api\views.py:669
 msgid "Cartridges successfully transferred to basket."
 msgstr ""
 
-#: .\index\api\views.py:776
+#: .\index\api\views.py:777
 #, python-format
 msgid "Cartridges %(cart_list)s successfully transferred for use"
 msgstr ""
 
-#: .\index\api\views.py:900 .\index\api\views.py:974 .\index\api\views.py:1166
-#: .\index\api\views.py:1284
+#: .\index\api\views.py:901 .\index\api\views.py:975 .\index\api\views.py:1167
+#: .\index\api\views.py:1285
 msgid "Error: 101. Not set organization utint."
 msgstr ""
 
-#: .\index\api\views.py:917 .\index\api\views.py:990 .\index\api\views.py:1182
+#: .\index\api\views.py:918 .\index\api\views.py:991 .\index\api\views.py:1183
 #, python-format
 msgid "Consumables with the number %(cart_barcode)s was not found."
 msgstr ""
 
-#: .\index\api\views.py:923 .\index\api\views.py:1188
+#: .\index\api\views.py:924 .\index\api\views.py:1189
 msgid "The object is already in the lists on the move."
 msgstr ""
 
-#: .\index\api\views.py:940 .\index\api\views.py:1205
+#: .\index\api\views.py:941 .\index\api\views.py:1206
 #, python-format
 msgid ""
 "The object number %(cart_barcode)s is already present in the lists on the "
 "move."
 msgstr ""
 
-#: .\index\api\views.py:947 .\index\api\views.py:1018
-#: .\index\api\views.py:1212
+#: .\index\api\views.py:948 .\index\api\views.py:1019
+#: .\index\api\views.py:1213
 msgid "Consumable material is successfully prepared for transfer"
 msgstr ""
 
-#: .\index\api\views.py:956
+#: .\index\api\views.py:957
 #, python-format
 msgid ""
 "This consumable is in the state \"%(cart_status)s\". Are you sure you want "
 "to place in the lists transmitted?"
 msgstr ""
 
-#: .\index\api\views.py:1042
+#: .\index\api\views.py:1043
 msgid "The session key is not recognized."
 msgstr ""
 
-#: .\index\api\views.py:1143
+#: .\index\api\views.py:1144
 #, python-format
 msgid "Objects %(numbers)s moved successfully."
 msgstr ""
 
-#: .\index\api\views.py:1221
+#: .\index\api\views.py:1222
 #, python-format
 msgid ""
 "This consumable is in the state \"%(cart_status)s\". Return to the warehouse "
 "is impossible."
 msgstr ""
 
-#: .\index\api\views.py:1250 .\index\api\views.py:1307 .\index\views.py:1020
+#: .\index\api\views.py:1251 .\index\api\views.py:1308 .\index\views.py:1022
 #, python-format
 msgid ""
 "An object with number %(cart_num)s belong to a different organizational unit."
 msgstr ""
 
-#: .\index\api\views.py:1262
+#: .\index\api\views.py:1263
 msgid "Action not supported"
 msgstr ""
 
-#: .\index\api\views.py:1269
+#: .\index\api\views.py:1270
 msgid "Your score is accepted."
 msgstr ""
 
-#: .\index\api\views.py:1294
+#: .\index\api\views.py:1295
 msgid "The number must not be empty."
 msgstr ""
 
-#: .\index\api\views.py:1301 .\index\api\views.py:1315
+#: .\index\api\views.py:1302 .\index\api\views.py:1316
 msgid "Not found."
 msgstr ""
 
-#: .\index\api\views.py:1320
+#: .\index\api\views.py:1321
 msgid "Number is already in use."
+msgstr ""
+
+#: .\index\api\views.py:1356
+msgid "Session varible not use."
 msgstr ""
 
 #: .\index\forms\add_cartridge_name.py:18 .\index\forms\add_type.py:32
@@ -1709,6 +1713,7 @@ msgstr ""
 
 #: .\index\templates\index\add_empty_cartridge.html:118
 #: .\index\templates\index\add_items.html:120
+#: .\index\templates\index\add_items_barcode_ajax.html:6
 msgid "Clear session"
 msgstr ""
 
@@ -1730,6 +1735,10 @@ msgstr ""
 #: .\index\templates\index\add_items.html:2
 #: .\index\templates\index\add_items.html:3
 msgid "Adding objects to the stock"
+msgstr ""
+
+#: .\index\templates\index\add_items_barcode_ajax.html:5
+msgid "Remove item"
 msgstr ""
 
 #: .\index\templates\index\add_name.html:2
@@ -2161,40 +2170,40 @@ msgstr ""
 msgid "%(cart_name)s success added"
 msgstr ""
 
-#: .\index\views.py:363 .\index\views.py:375
+#: .\index\views.py:365 .\index\views.py:377
 #, python-format
 msgid "Organization unit %(org_name)s exist"
 msgstr ""
 
-#: .\index\views.py:368 .\index\views.py:380
+#: .\index\views.py:370 .\index\views.py:382
 #, python-format
 msgid "Organization unit %(org_name)s create successfuly."
 msgstr ""
 
-#: .\index\views.py:424
+#: .\index\views.py:426
 #, python-format
 msgid "%(cart_type)s success save"
 msgstr ""
 
-#: .\index\views.py:428
+#: .\index\views.py:430
 #, python-format
 msgid "New type %(cart_type)s success added"
 msgstr ""
 
-#: .\index\views.py:568
+#: .\index\views.py:570
 msgid "Select all"
 msgstr ""
 
-#: .\index\views.py:601
+#: .\index\views.py:603
 #, python-format
 msgid "Firm \"%(firm_name)s\" success added."
 msgstr ""
 
-#: .\index\views.py:985
+#: .\index\views.py:987
 msgid "Work has already estimated."
 msgstr ""
 
-#: .\index\views.py:1016
+#: .\index\views.py:1018
 #, python-format
 msgid "An object with number %(cart_num)s is not transmitted to the service."
 msgstr ""
