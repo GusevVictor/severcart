@@ -2391,6 +2391,18 @@ $( function(){
     });
 
 
+    $('div.p_checkboxes').click(function(event) {
+    // улучшитель юзабилити таблиц, при клике по строке выбирается чекбокс    
+        if (event.target.type !== 'checkbox') {
+            $(':checkbox', this).trigger('click');
+        }
+
+        if (event.target.type !== 'radio') {
+            $(':radio', this).trigger('click');
+        }
+
+    });
+
     $('.remove_item').click(function () {
         // удаление объекта в сессионной корзине
         var selected = [];
