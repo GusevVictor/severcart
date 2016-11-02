@@ -368,9 +368,9 @@ def ajax_add_session_items_from_barcode(request):
         cart_obj['date_time_added'] = date_time_added
 
         # Добавляем отсканированный картридж в БД
-        if request.session.get('add_cartridges_in_stock', False):
+        if request.session.get('add_cartridges_full_in_stock', False):
             # если в сессионной переменной уже что-то есть
-            session_data = request.session.get('add_cartridges_in_stock')
+            session_data = request.session.get('add_cartridges_full_in_stock')
             # проверяем добавляем элемент на дубль в сессионной казине
             exist = False
             for elem in session_data:
@@ -390,7 +390,7 @@ def ajax_add_session_items_from_barcode(request):
             # если сессионная basket_to_transfer_firm пуста или её нет вообще
             session_data = list()
             session_data.append(cart_obj)
-        request.session['add_cartridges_in_stock'] = session_data
+        request.session['add_cartridges_full_in_stock'] = session_data
 
         message = _('Cartridge %(cart_number)s successfully added in session basket.') % {'cart_number': cart_number}
         html = render_to_string('index/add_items_barcode_ajax.html', context={'list_items': session_data})
@@ -1328,4 +1328,38 @@ def change_cart_number(request):
     sign_change_number.send(sender=None, cart_index=cart_index, old_number=old_cart_number, new_number=cart_number, request=request)
     ansver['error'] = '0'
 
+    return JsonResponse(ansver)
+
+
+@require_POST
+@check_ajax_auth
+def clear_basket_session(request):
+    """Очистка сессионной корзины (добавление РМ через сканер штрихкода).
+       Поэлементное удаление элементов из сессионной корзины, или очистка её целиком.
+    """
+    ansver = dict()
+    selected = request.POST.getlist('selected[]', '')
+    session_var = request.POST.get('session_var', '')
+    session_var = session_var.strip()
+    empty_all = request.POST.get('empty_all', '')
+    selected = [str2int(elem) for elem in selected]
+    if session_var == 'add_cartridges_full_in_stock':
+        session_data = request.session.get('add_cartridges_full_in_stock')
+    elif session_var == 'add_cartridges_empty_in_stock':
+        session_data = request.session.get('add_cartridges_empty_in_stock')
+    else:
+        ansver['error'] = '1'
+        ansver['text'] = _('Session varible not use.')
+        return JsonResponse(ansver)
+    
+    tmp_session_data = list()
+    inx = 0
+    for elem in session_data:
+        if not(inx in selected): 
+            tmp_session_data.append(elem)
+        inx += 1
+
+    request.session[session_var] = tmp_session_data
+    ansver['error'] = '0'
+    ansver['text'] = selected
     return JsonResponse(ansver)

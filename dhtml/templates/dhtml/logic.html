@@ -2390,4 +2390,47 @@ $( function(){
             
     });
 
+
+    $('.remove_item').click(function () {
+        // удаление объекта в сессионной корзине
+        var selected = [];
+        var session_var = $(this).attr('session_var');
+        var empty_all = '0';
+        $('.p_checkboxes input:checked').each(function() {
+            if ($(this).attr('value')) {
+                selected.push( $(this).attr('value') );
+            }
+        });
+        if (selected.length) {
+            $.ajax({
+                method: 'POST',
+                url: '{% url "index:clear_basket_session" %}',
+                data:  {'selected[]': selected, 'session_var': session_var, 'empty_all': empty_all},
+                beforeSend: function( xhr, settings ){
+                    $('.session_spinner').show();
+                    csrftoken = getCookie('csrftoken');
+                    if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
+                        xhr.setRequestHeader('X-CSRFToken', csrftoken);
+                    }
+                },
+                success: function( msg ) {
+                    $('.session_spinner').hide();
+                    if (msg.error = '0') {
+                        var class_name = '';
+                        for(var i=0; i < msg.text.length; i++) {
+                            class_name = '.cart_item_' + msg.text[i];
+                            $(class_name).remove(); 
+                        }
+                        
+                    }
+                    
+                },
+                error: function(msg) {
+                    console.log(msg);
+                },
+            });
+        }
+        
+    });
+
 });

@@ -244,9 +244,9 @@ def add_cartridge_from_barcode_scanner(request):
         pass
 
     # считываем данные для сессии
-    if request.session.get('add_cartridges_in_stock', False):
+    if request.session.get('add_cartridges_full_in_stock', False):
         # если в сессионной переменной уже что-то есть
-        session_data = request.session.get('add_cartridges_in_stock')
+        session_data = request.session.get('add_cartridges_full_in_stock')
         
     else:
         # если сессионная basket_to_transfer_firm пуста или её нет вообще
@@ -254,7 +254,9 @@ def add_cartridge_from_barcode_scanner(request):
 
     context['list_items'] = session_data
     context['form'] = form
-    context['back'] = back  
+    context['back'] = back
+    context['action_type'] = 'full'
+    context['session_var'] = 'add_cartridges_full_in_stock'
     return render(request, 'index/add_cartridge_from_barcode_scanner.html', context)
 
 

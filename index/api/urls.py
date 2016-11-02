@@ -23,6 +23,7 @@ from index.api.views import (   ajax_add_session_items,
                                 add_object_to_basket_from_firm_to_stock,
                                 rate,
                                 change_cart_number,
+                                clear_basket_session,
                             )
 from accounts.api.views import del_users
 
@@ -51,4 +52,5 @@ urlpatterns = [
     url('^add_object_to_basket_from_firm_to_stock/', add_object_to_basket_from_firm_to_stock, name='add_object_to_basket_from_firm_to_stock'),
     url('^rate/', rate, name='rate'),
     url('^change_cart_number/', change_cart_number, name='change_cart_number'),
+    url('^clear_basket_session/', clear_basket_session, name='clear_basket_session'),
 ]
