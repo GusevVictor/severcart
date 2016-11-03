@@ -83,6 +83,7 @@ function add_elememts_in_sessions(cart_type='full') {
     /*  Добавление едениц расходных материалов с сканер        штрихкода  */
     var cart_number = $('#id_cartNumber').val();
     var cart_name  = $('#id_cartName option:selected').val();
+    var cart_name_id = $('#id_cartName option:selected').attr('value');
     var cart_sklad = $('#id_storages option:selected').val(); 
     var docum      = $('#id_doc option:selected').val();
     var cart_type  = $('#id_cartNumber').attr('data');

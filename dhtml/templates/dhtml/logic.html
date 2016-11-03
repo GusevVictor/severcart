@@ -2454,7 +2454,7 @@ $( function(){
         
     });
 
-    $('.add_items_from_barcode ').click( function() {
+    $('.add_items_from_barcode').click( function() {
         // добавление пустых или новых на склад
         var session_var = $(this).attr('session_var');
         $.ajax({
@@ -2470,7 +2470,20 @@ $( function(){
                 },
                 success: function( msg ) {
                     $('.session_spinner').hide();
-                    
+                    if (msg.error == '0') {
+                        $('.success_msg').show();
+                        $('.success_msg').text(msg.text);
+                        $('.error_msg').hide();
+                        $('.p_checkboxes').each(function() {
+                            $('.wrapper_add_scanner_items').hide();
+                            $(this).remove();
+                        });
+                    }
+                    if (msg.error == '1') {
+                        $('.success_msg').hide();
+                        $('.error_msg').show();
+                        $('.error_msg').text(msg.text);
+                    }
                     
                 },
                 error: function(msg) {

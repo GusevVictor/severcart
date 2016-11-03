@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-11-02 14:47+0500\n"
+"POT-Creation-Date: 2016-11-03 23:07+0500\n"
 "PO-Revision-Date: 2016-05-27 12:27+0500\n"
 "Last-Translator: \n"
 "Language-Team: severcart.org <sfcl@mail.ru>\n"
@@ -155,12 +155,11 @@ msgstr ""
 #: .\accounts\templates\accounts\edit_user.html:3
 #: .\accounts\templates\accounts\manage_users.html:4
 #: .\accounts\templates\accounts\register.html:3
-#: .\docs\templates\docs\acts_list.html:5
-#: .\docs\templates\docs\add_city.html:3 .\docs\templates\docs\cities.html:4
-#: .\docs\templates\docs\delivery.html:3
+#: .\docs\templates\docs\acts_list.html:5 .\docs\templates\docs\add_city.html:3
+#: .\docs\templates\docs\cities.html:4 .\docs\templates\docs\delivery.html:3
 #: .\docs\templates\docs\edit_city.html:3
-#: .\docs\templates\docs\edit_name.html:3
-#: .\docs\templates\docs\handbook.html:2 .\docs\templates\docs\handbook.html:3
+#: .\docs\templates\docs\edit_name.html:3 .\docs\templates\docs\handbook.html:2
+#: .\docs\templates\docs\handbook.html:3
 #: .\docs\templates\docs\names_list.html:4
 #: .\docs\templates\docs\return_acts_list.html:5
 #: .\docs\templates\docs\types_list.html:4
@@ -275,8 +274,8 @@ msgstr ""
 #: .\docs\templates\docs\add_city.html:27 .\docs\templates\docs\cities.html:17
 #: .\docs\templates\docs\names_list.html:17
 #: .\docs\templates\docs\types_list.html:17
+#: .\index\templates\index\add_cartridge_from_barcode_scanner.html:100
 #: .\index\templates\index\add_firm.html:47
-#: .\index\templates\index\add_items_barcode_ajax.html:4
 #: .\index\templates\index\add_name.html:41
 #: .\index\templates\index\add_type.html:32
 #: .\index\templates\index\tree_list.html:48
@@ -399,7 +398,7 @@ msgstr ""
 #: .\dhtml\templates\dhtml\add_session_items.html:598
 #: .\dhtml\templates\dhtml\add_session_items.html:626
 #: .\dhtml\templates\dhtml\add_session_items.html:654
-#: .\dhtml\templates\dhtml\common.html:182
+#: .\dhtml\templates\dhtml\common.html:184
 #: .\dhtml\templates\dhtml\logic.html:390
 #: .\dhtml\templates\dhtml\logic.html:469
 #: .\dhtml\templates\dhtml\logic.html:497
@@ -474,9 +473,8 @@ msgstr ""
 
 #: .\docs\api\views.py:33 .\docs\api\views.py:81 .\docs\api\views.py:113
 #: .\docs\api\views.py:447 .\docs\api\views.py:546 .\index\api\views.py:53
-#: .\index\api\views.py:432 .\index\api\views.py:463 .\index\api\views.py:630
-#: .\index\api\views.py:678 .\index\api\views.py:699 .\index\api\views.py:714
-#: .\index\api\views.py:862 .\reports\api\views.py:56
+#: .\index\api\views.py:678 .\index\api\views.py:726 .\index\api\views.py:747
+#: .\index\api\views.py:762 .\index\api\views.py:910 .\reports\api\views.py:56
 #: .\storages\api\views.py:21 .\storages\api\views.py:59
 msgid "Only use POST requests!"
 msgstr ""
@@ -490,7 +488,7 @@ msgstr ""
 msgid "Name can not be removed, ie. other objects reference it."
 msgstr ""
 
-#: .\docs\api\views.py:57 .\docs\api\views.py:71 .\index\api\views.py:598
+#: .\docs\api\views.py:57 .\docs\api\views.py:71 .\index\api\views.py:646
 msgid "Name deleted successfully."
 msgstr ""
 
@@ -595,8 +593,7 @@ msgstr ""
 #: .\index\templates\index\add_empty_cartridge.html:31
 #: .\index\templates\index\add_items.html:32
 #: .\index\templates\index\at_work.html:41
-#: .\index\templates\index\basket.html:40
-#: .\index\templates\index\empty.html:69
+#: .\index\templates\index\basket.html:40 .\index\templates\index\empty.html:69
 #: .\index\templates\index\from_firm_to_stock.html:32
 #: .\index\templates\index\from_firm_to_stock_with_barcode.html:34
 #: .\index\templates\index\get_cart_ou.html:7
@@ -615,9 +612,8 @@ msgstr "ID"
 #: .\docs\api\views.py:316 .\docs\api\views.py:345 .\docs\api\views.py:371
 #: .\docs\api\views.py:395 .\docs\api\views.py:421
 #: .\index\templates\index\at_work.html:43
-#: .\index\templates\index\basket.html:42
-#: .\index\templates\index\empty.html:71 .\index\templates\index\stock.html:69
-#: .\index\templates\index\use.html:51
+#: .\index\templates\index\basket.html:42 .\index\templates\index\empty.html:71
+#: .\index\templates\index\stock.html:69 .\index\templates\index\use.html:51
 msgid "Amount<br/>recovery"
 msgstr ""
 
@@ -633,8 +629,7 @@ msgstr ""
 #: .\docs\api\views.py:398 .\docs\api\views.py:423
 #: .\docs\templates\docs\types_list.html:32 .\index\forms\comment.py:11
 #: .\index\templates\index\at_work.html:46
-#: .\index\templates\index\basket.html:44
-#: .\index\templates\index\stock.html:72
+#: .\index\templates\index\basket.html:44 .\index\templates\index\stock.html:72
 msgid "comment"
 msgstr "Comment"
 
@@ -763,9 +758,8 @@ msgstr ""
 #: .\index\templates\index\add_empty_cartridge.html:74
 #: .\index\templates\index\add_empty_cartridge_from_barcode_scanner.html:50
 #: .\index\templates\index\add_items.html:75
-#: .\index\templates\index\basket.html:59
-#: .\index\templates\index\empty.html:90 .\index\templates\index\stock.html:88
-#: .\index\templates\index\use.html:69
+#: .\index\templates\index\basket.html:59 .\index\templates\index\empty.html:90
+#: .\index\templates\index\stock.html:88 .\index\templates\index\use.html:69
 msgid "Delivery agreement"
 msgstr ""
 
@@ -850,9 +844,8 @@ msgstr ""
 #: .\index\templates\index\add_empty_cartridge.html:115
 #: .\index\templates\index\add_items.html:117
 #: .\index\templates\index\at_work.html:21
-#: .\index\templates\index\basket.html:20
-#: .\index\templates\index\empty.html:49 .\index\templates\index\stock.html:47
-#: .\index\templates\index\use.html:29
+#: .\index\templates\index\basket.html:20 .\index\templates\index\empty.html:49
+#: .\index\templates\index\stock.html:47 .\index\templates\index\use.html:29
 msgid "Download"
 msgstr ""
 
@@ -869,8 +862,7 @@ msgstr "Create a without group docx"
 msgid "Add city"
 msgstr ""
 
-#: .\docs\templates\docs\add_city.html:3
-#: .\docs\templates\docs\edit_city.html:3
+#: .\docs\templates\docs\add_city.html:3 .\docs\templates\docs\edit_city.html:3
 #: .\docs\templates\docs\handbook.html:24
 msgid "Cities"
 msgstr ""
@@ -895,8 +887,7 @@ msgstr ""
 msgid "delivery agreement"
 msgstr "Delivery agreement"
 
-#: .\docs\templates\docs\delivery.html:3
-#: .\docs\templates\docs\handbook.html:15
+#: .\docs\templates\docs\delivery.html:3 .\docs\templates\docs\handbook.html:15
 msgid "Agreement"
 msgstr ""
 
@@ -1339,11 +1330,11 @@ msgstr ""
 msgid "User not assosiate with organization unit!<br/>Error code: 101."
 msgstr ""
 
-#: .\index\api\views.py:154 .\index\api\views.py:331
+#: .\index\api\views.py:154 .\index\api\views.py:332
 msgid "Error in attrib \"data\" in input button add_item"
 msgstr ""
 
-#: .\index\api\views.py:167 .\index\api\views.py:339
+#: .\index\api\views.py:167 .\index\api\views.py:340
 msgid "An object with this number has already been registered."
 msgstr ""
 
@@ -1355,144 +1346,156 @@ msgstr ""
 msgid "Cartridges successfully added."
 msgstr ""
 
-#: .\index\api\views.py:382
+#: .\index\api\views.py:386
 #, python-format
 msgid "Cartridge %(cart_number)s  is already in the basket session."
 msgstr ""
 
-#: .\index\api\views.py:395
+#: .\index\api\views.py:399
 #, python-format
 msgid "Cartridge %(cart_number)s successfully added in session basket."
 msgstr ""
 
-#: .\index\api\views.py:453
+#: .\index\api\views.py:422
+msgid "Session varible not emplimented."
+msgstr ""
+
+#: .\index\api\views.py:429
+msgid "Cart is empty. Add nothing to the warehouse."
+msgstr ""
+
+#: .\index\api\views.py:459
+#, python-format
+msgid "Cartridges %(cart_numbers)s successfully added."
+msgstr ""
+
+#: .\index\api\views.py:500
 msgid "Cartridges successfully moved."
 msgstr ""
 
-#: .\index\api\views.py:535
+#: .\index\api\views.py:580
 #, python-format
 msgid "Cartridges %(cart_nums)s successfully moved to firm."
 msgstr ""
 
-#: .\index\api\views.py:537
+#: .\index\api\views.py:582
 msgid "No transmission facilities"
 msgstr ""
 
-#: .\index\api\views.py:561
+#: .\index\api\views.py:607
 msgid "Session cleared"
 msgstr ""
 
-#: .\index\api\views.py:586
+#: .\index\api\views.py:634
 msgid "In demo remove nodes not allow."
 msgstr ""
 
-#: .\index\api\views.py:594
+#: .\index\api\views.py:642
 msgid ""
 "But it can not be removed because other objects reference it.<br/>Error "
 "code: 102"
 msgstr ""
 
-#: .\index\api\views.py:600
+#: .\index\api\views.py:648
 msgid "Names deleted successfully."
 msgstr ""
 
-#: .\index\api\views.py:622
+#: .\index\api\views.py:670
 msgid "Cartridjes deleted!"
 msgstr ""
 
-#: .\index\api\views.py:639
+#: .\index\api\views.py:687
 msgid "Error converting string numbers to int."
 msgstr ""
 
-#: .\index\api\views.py:650
+#: .\index\api\views.py:698
 msgid "This action type not implemented."
 msgstr ""
 
-#: .\index\api\views.py:669
+#: .\index\api\views.py:717
 msgid "Cartridges successfully transferred to basket."
 msgstr ""
 
-#: .\index\api\views.py:777
+#: .\index\api\views.py:825
 #, python-format
 msgid "Cartridges %(cart_list)s successfully transferred for use"
 msgstr ""
 
-#: .\index\api\views.py:901 .\index\api\views.py:975 .\index\api\views.py:1167
-#: .\index\api\views.py:1285
+#: .\index\api\views.py:949 .\index\api\views.py:1023 .\index\api\views.py:1215
+#: .\index\api\views.py:1333
 msgid "Error: 101. Not set organization utint."
 msgstr ""
 
-#: .\index\api\views.py:918 .\index\api\views.py:991 .\index\api\views.py:1183
+#: .\index\api\views.py:966 .\index\api\views.py:1039 .\index\api\views.py:1231
 #, python-format
 msgid "Consumables with the number %(cart_barcode)s was not found."
 msgstr ""
 
-#: .\index\api\views.py:924 .\index\api\views.py:1189
+#: .\index\api\views.py:972 .\index\api\views.py:1237
 msgid "The object is already in the lists on the move."
 msgstr ""
 
-#: .\index\api\views.py:941 .\index\api\views.py:1206
+#: .\index\api\views.py:989 .\index\api\views.py:1254
 #, python-format
 msgid ""
 "The object number %(cart_barcode)s is already present in the lists on the "
 "move."
 msgstr ""
 
-#: .\index\api\views.py:948 .\index\api\views.py:1019
-#: .\index\api\views.py:1213
+#: .\index\api\views.py:996 .\index\api\views.py:1067 .\index\api\views.py:1261
 msgid "Consumable material is successfully prepared for transfer"
 msgstr ""
 
-#: .\index\api\views.py:957
+#: .\index\api\views.py:1005
 #, python-format
 msgid ""
 "This consumable is in the state \"%(cart_status)s\". Are you sure you want "
 "to place in the lists transmitted?"
 msgstr ""
 
-#: .\index\api\views.py:1043
+#: .\index\api\views.py:1091
 msgid "The session key is not recognized."
 msgstr ""
 
-#: .\index\api\views.py:1144
+#: .\index\api\views.py:1192
 #, python-format
 msgid "Objects %(numbers)s moved successfully."
 msgstr ""
 
-#: .\index\api\views.py:1222
+#: .\index\api\views.py:1270
 #, python-format
 msgid ""
 "This consumable is in the state \"%(cart_status)s\". Return to the warehouse "
 "is impossible."
 msgstr ""
 
-#: .\index\api\views.py:1251 .\index\api\views.py:1308 .\index\views.py:1022
+#: .\index\api\views.py:1299 .\index\api\views.py:1356 .\index\views.py:1022
 #, python-format
 msgid ""
 "An object with number %(cart_num)s belong to a different organizational unit."
 msgstr ""
 
-#: .\index\api\views.py:1263
+#: .\index\api\views.py:1311
 msgid "Action not supported"
 msgstr ""
 
-#: .\index\api\views.py:1270
+#: .\index\api\views.py:1318
 msgid "Your score is accepted."
 msgstr ""
 
-#: .\index\api\views.py:1295
+#: .\index\api\views.py:1343
 msgid "The number must not be empty."
 msgstr ""
 
-#: .\index\api\views.py:1302 .\index\api\views.py:1316
+#: .\index\api\views.py:1350 .\index\api\views.py:1364
 msgid "Not found."
 msgstr ""
 
-#: .\index\api\views.py:1321
+#: .\index\api\views.py:1369
 msgid "Number is already in use."
 msgstr ""
 
-#: .\index\api\views.py:1356
+#: .\index\api\views.py:1404
 msgid "Session varible not use."
 msgstr ""
 
@@ -1603,11 +1606,11 @@ msgid "Empty and in basket"
 msgstr ""
 
 #: .\index\templates\index\404.html:2 .\index\templates\index\404.html.py:3
-#: .\index\templates\index\404.html:10 .\index\templates\index\500.html:3
+#: .\index\templates\index\404.html:10 .\index\templates\index\500.html.py:3
 msgid "Error 404"
 msgstr ""
 
-#: .\index\templates\index\500.html:2 .\index\templates\index\500.html:10
+#: .\index\templates\index\500.html:2 .\index\templates\index\500.html.py:10
 msgid "Error 500"
 msgstr ""
 
@@ -1683,6 +1686,16 @@ msgstr ""
 msgid "Debug"
 msgstr ""
 
+#: .\index\templates\index\add_cartridge_from_barcode_scanner.html:101
+msgid "Remove item"
+msgstr ""
+
+#: .\index\templates\index\add_cartridge_from_barcode_scanner.html:102
+#: .\index\templates\index\add_empty_cartridge.html:118
+#: .\index\templates\index\add_items.html:120
+msgid "Clear session"
+msgstr ""
+
 #: .\index\templates\index\add_empty_cartridge.html:2
 #: .\index\templates\index\add_empty_cartridge.html:3
 msgid "Adding empty cartridges to the stock"
@@ -1711,12 +1724,6 @@ msgstr ""
 msgid "Generate PDF"
 msgstr ""
 
-#: .\index\templates\index\add_empty_cartridge.html:118
-#: .\index\templates\index\add_items.html:120
-#: .\index\templates\index\add_items_barcode_ajax.html:6
-msgid "Clear session"
-msgstr ""
-
 #: .\index\templates\index\add_empty_cartridge_from_barcode_scanner.html:2
 #: .\index\templates\index\add_empty_cartridge_from_barcode_scanner.html:3
 msgid "Adding empty objects to the stock with barcode scanner"
@@ -1735,10 +1742,6 @@ msgstr ""
 #: .\index\templates\index\add_items.html:2
 #: .\index\templates\index\add_items.html:3
 msgid "Adding objects to the stock"
-msgstr ""
-
-#: .\index\templates\index\add_items_barcode_ajax.html:5
-msgid "Remove item"
 msgstr ""
 
 #: .\index\templates\index\add_name.html:2
@@ -1769,16 +1772,14 @@ msgid "Return to the stock"
 msgstr ""
 
 #: .\index\templates\index\at_work.html:24
-#: .\index\templates\index\basket.html:23
-#: .\index\templates\index\empty.html:52 .\index\templates\index\stock.html:50
-#: .\index\templates\index\use.html:32
+#: .\index\templates\index\basket.html:23 .\index\templates\index\empty.html:52
+#: .\index\templates\index\stock.html:50 .\index\templates\index\use.html:32
 msgid "Export to CSV with group"
 msgstr ""
 
 #: .\index\templates\index\at_work.html:25
-#: .\index\templates\index\basket.html:24
-#: .\index\templates\index\empty.html:53 .\index\templates\index\stock.html:51
-#: .\index\templates\index\use.html:33
+#: .\index\templates\index\basket.html:24 .\index\templates\index\empty.html:53
+#: .\index\templates\index\stock.html:51 .\index\templates\index\use.html:33
 msgid "Export to CSV without group"
 msgstr ""
 
@@ -1833,20 +1834,18 @@ msgstr ""
 msgid "Basket"
 msgstr ""
 
-#: .\index\templates\index\basket.html:45
-#: .\index\templates\index\empty.html:75 .\index\templates\index\stock.html:73
+#: .\index\templates\index\basket.html:45 .\index\templates\index\empty.html:75
+#: .\index\templates\index\stock.html:73
 msgid "Actions"
 msgstr ""
 
-#: .\index\templates\index\basket.html:57
-#: .\index\templates\index\empty.html:88 .\index\templates\index\stock.html:86
-#: .\index\templates\index\use.html:67
+#: .\index\templates\index\basket.html:57 .\index\templates\index\empty.html:88
+#: .\index\templates\index\stock.html:86 .\index\templates\index\use.html:67
 msgid "Edit a comment"
 msgstr ""
 
-#: .\index\templates\index\basket.html:58
-#: .\index\templates\index\empty.html:89 .\index\templates\index\stock.html:87
-#: .\index\templates\index\use.html:68
+#: .\index\templates\index\basket.html:58 .\index\templates\index\empty.html:89
+#: .\index\templates\index\stock.html:87 .\index\templates\index\use.html:68
 msgid "Event viewer"
 msgstr ""
 

@@ -317,6 +317,7 @@ def ajax_add_session_items_from_barcode(request):
         storages     = data_in_post.get('storages')
         storages     = storages.pk
         cart_name    = str(cart_name)
+        cart_name_id = data_in_post.get('cartName').pk
         cart_type    = request.POST.get('cart_type')
         cart_doc_id  = data_in_post.get('doc')
 
@@ -362,6 +363,7 @@ def ajax_add_session_items_from_barcode(request):
         cart_obj = dict()
         cart_obj['cart_number'] = cart_number
         cart_obj['cart_name'] = cart_name
+        cart_obj['cart_name_id'] = cart_name_id
         cart_obj['storages'] = storages
         cart_obj['cart_doc_id'] = cart_doc_id
         cart_obj['cart_type'] = cart_type
@@ -434,16 +436,16 @@ def add_items_in_stock_from_session_basket(request):
     'storages': 1}
     """
 
-    
+    list_cplx = list()
+    number_list = list()
     with transaction.atomic():
         for cartridge in session_data:
             
-            cart_name = CartridgeItemName.objects.get(cart_itm_name=cartridge['cart_name'])
-            print('cart_name.pk=', cart_name.pk)
-            """
-            m1 = CartridgeItem(sklad=storages,
+            cart_name = CartridgeItemName.objects.get(pk=cartridge['cart_name_id'])
+
+            m1 = CartridgeItem(sklad=str2int(cartridge['storages']),
                                cart_number=cartridge['cart_number'],
-                               cart_itm_name=,
+                               cart_itm_name=cart_name,
                                cart_date_added=cartridge['date_time_added'],
                                cart_date_change=cartridge['date_time_added'],
                                cart_number_refills=0,
@@ -452,18 +454,22 @@ def add_items_in_stock_from_session_basket(request):
                                delivery_doc=cartridge['cart_doc_id'],
                                )
             m1.save()
-            list_cplx.append((m1.id, cart_number, cart_name))
-            """
-    context['mes'] = _('Cartridge %(cart_number)s successfully added.') % {'cart_number': cart_number}
+            number_list.append(cartridge['cart_number'])
+            list_cplx.append((m1.id, cartridge['cart_number'], cart_name))
+    ansver['text'] = _('Cartridges %(cart_numbers)s successfully added.') % {'cart_numbers': number_list}
+    ansver['error'] = '0'
+
+    # очищаем сессионную переменную
+    request.session[session_var] = None
+
     # запускаем сигнал добавления событий
-    """
     if cart_status == 1:
         sign_add_full_to_stock.send(sender=None, list_cplx=list_cplx, request=request)
     elif cart_status == 3:
         sign_add_empty_to_stock.send(sender=None, list_cplx=list_cplx, request=request)
     else:
         pass
-    """
+
     return JsonResponse(ansver)
 
 
