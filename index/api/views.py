@@ -388,12 +388,13 @@ def ajax_add_session_items_from_barcode(request):
                 context['error'] = '1'
                 return JsonResponse(context)
 
-            session_data.append(cart_obj)
-            
+            #session_data.append(cart_obj)
+            session_data.insert(0, cart_obj)
         else:
             # если сессионная basket_to_transfer_firm пуста или её нет вообще
             session_data = list()
-            session_data.append(cart_obj)
+            #session_data.append(cart_obj)
+            session_data.insert(0, cart_obj)
         request.session['add_cartridges_full_in_stock'] = session_data
 
         message = _('Cartridge %(cart_number)s successfully added in session basket.') % {'cart_number': cart_number}
