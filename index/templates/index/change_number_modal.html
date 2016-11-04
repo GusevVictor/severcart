@@ -21,6 +21,7 @@
     var ouid = 0;
     $('a.close_modal_win').on('click', function() {
         $('#changeModal').foundation('reveal', 'close');
+        $(window).unbind('keydown');
     });
     
     $('a.show_modal').click( function() {
@@ -37,11 +38,21 @@
         });
         if (selected.length === 1) {
             cart_id = selected[0]['cart_id'];
-            cart_number = selected[0]['cart_number'];
+            //cart_number = selected[0]['cart_number'];
             $('input.cart_id').attr('value', cart_id);
-            $('input.cart_number').val(cart_number);
+            //$('input.cart_number').val(cart_number);
+            $('input.cart_number').val('');
             $('#changeModal').foundation('reveal', 'open');
+            $(window).keydown(function(event){
+                // устанавливаем перехватчик нажатий клавиши Enter для сканеров штрих кодов которые 
+                // добавляют символ перевода строки самостоятельно
+                if(event.keyCode == 13) {
+                    event.preventDefault();
+                    return false;
+                }
+            });
             setTimeout(function() { $('#cart_number').focus() }, 500);
+
         }
         
     });
@@ -73,6 +84,7 @@
                     //$('.change_name_ok').show();
                     //$('.change_name_ok').html(msg.mes);
                     $('#changeModal').foundation('reveal', 'close');
+                    $(window).unbind('keydown');
                     window.location.href = {{ request.path }};
                 }
             },
