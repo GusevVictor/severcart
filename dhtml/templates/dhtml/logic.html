@@ -400,14 +400,22 @@ $( function(){
     // сканера штрихкодов.
     if (add_new_cart_from_barcode.length) {
         var DEBUG = true;
+        $(window).keydown(function(event){
+            // устанавливаем перехватчик нажатий клавиши Enter для сканеров штрих кодов которые 
+            // добавляют символ перевода строки самостоятельно
+            if(event.keyCode == 13) {
+                event.preventDefault();
+                return false;
+            }
+        });
         $('#id_cartNumber').focus();
         if (DEBUG) {    
             $('#id_cartNumber').removeAttr('readonly');
             $('.add_new_cart_from_barcode_with_button').click( function () {
-                add_elememts_in_sessions(cart_type='full');
+                add_elememts_in_sessions();
             });
         } else {
-// если отладк выключенна
+            // если отладка выключенна
             var pressed = false; 
             var chars = []; 
             $('#id_cartNumber').keypress(function(e) {
@@ -422,6 +430,7 @@ $( function(){
                             var barcode = chars.join("");
                             //console.log("Barcode Scanned: " + barcode);
                             $("#id_cartNumber").val(barcode);
+                            add_elememts_in_sessions();
                         }
                         chars = [];
                         pressed = false;
