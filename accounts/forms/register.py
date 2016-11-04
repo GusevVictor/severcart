@@ -23,7 +23,7 @@ class RegistrationForm(forms.ModelForm):
 
     is_admin = forms.BooleanField(required=False, label=_('Administrator?'))
 
-    class Meta:
+    class Meta(object):
         model = AnconUser
         fields = ['username', 'password1', 'password2', 'fio', 'email','departament', 'is_admin']
 

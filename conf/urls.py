@@ -1,8 +1,7 @@
 # -*- coding:utf-8 -*-
 
 from django.conf.urls import include, url
-from django.shortcuts import render_to_response
-from django.template import RequestContext
+from django.shortcuts import render
 from index.views import robots_txt, favicon_ico
 
 urlpatterns = [
@@ -19,15 +18,10 @@ urlpatterns = [
     url(r'^favicon\.ico', favicon_ico),
 ]
 
+
 def handler404(request):
-    response = render_to_response('index/404.html', {},
-                                  context_instance=RequestContext(request))
-    response.status_code = 404
-    return response
+    return render(request, 'index/404.html', status=404)
 
 
 def handler500(request):
-    response = render_to_response('index/500.html', {},
-                                  context_instance=RequestContext(request))
-    response.status_code = 500
-    return response
+    return render(request, 'index/500.html', status=500)

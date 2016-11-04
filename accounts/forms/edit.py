@@ -35,7 +35,7 @@ class EditUserForm(forms.Form):
 
     def save(self):
         user_id          = self.cleaned_data['user_id']
-        username         = self.cleaned_data['username']
+        #username         = self.cleaned_data['username']
         fio              = self.cleaned_data['fio']
         is_admin         = self.cleaned_data['is_admin']
         email            = self.cleaned_data['email']

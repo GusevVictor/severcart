@@ -80,7 +80,7 @@ def del_firm(request):
     return JsonResponse(resp_dict)
 
 
-def search_number(cart_number):
+def search_number(cart_number, request):
     """Хелпер функция для поиска дублей номеров внутри представительства.
        Обработчиком запроса не является.
     """
@@ -160,7 +160,7 @@ def ajax_add_session_items(request):
             cart_number = request.POST.get('cart_number')
             cart_number = cart_number.strip()
             # далее выполняем проверку на дубли, только внутри своего представительства
-            cart_items = search_number(cart_number)
+            cart_items = search_number(cart_number, request)
 
             if len(cart_items):
                 tmp_dict['error'] = '1'
@@ -174,7 +174,7 @@ def ajax_add_session_items(request):
 
             # перед тем как выполняется сохранение, производим поиск дубля
             # выполняем генерацию новых номеров пока не найдём свободный
-            while len(search_number(cart_number)):
+            while len(search_number(cart_number, request)):
                 cart_number += 1
 
         # Добавляем картриджи в БД
@@ -201,7 +201,7 @@ def ajax_add_session_items(request):
                     cart_number += 1
                     # перед тем как выполняется сохранение, производим поиск дубля
                     # выполняем генерацию новых номеров пока не найдём свободный
-                    while len(search_number(cart_number)):
+                    while len(search_number(cart_number, request)):
                         cart_number += 1
 
                     num_obj.last_number = str(cart_number)
@@ -324,10 +324,10 @@ def ajax_add_session_items_from_barcode(request):
         tumbler      = data_in_post.get('tumbler')
         # чтобы не плодить лишние сущности зделано одно вью для добавления разных картриджей
         if cart_type == 'full':
-            cart_status = 1
+            #cart_status = 1
             session_var = 'add_cartridges_full_in_stock'
         elif cart_type == 'empty':
-            cart_status = 3
+            #cart_status = 3
             session_var = 'add_cartridges_empty_in_stock'
         else:
             context['error'] ='1'
@@ -336,11 +336,11 @@ def ajax_add_session_items_from_barcode(request):
 
         conf = SevercartConfigs()
         # проверяем на дубли имеющихся номеров
-        cart_items = search_number(cart_number)
+        cart_items = search_number(cart_number, request)
         if len(cart_items):
             context['error'] = '1'
             context['mes'] = _('An object with this number has already been registered.')
-            return JsonResponse(tmp_dict)
+            return JsonResponse(context)
 
         if tumbler:
             date_added = data_in_post.get('set_date')
@@ -431,13 +431,6 @@ def add_items_in_stock_from_session_basket(request):
         ansver['error'] = '1'
         ansver['text'] = _('Cart is empty. Add nothing to the warehouse.')
         return JsonResponse(ansver)
-
-    """
-    {'cart_number' : '1240', 'date_time_added': datetime.datetime(2016, 11, 1, 19, 0, tzinfo=<UTC>)
-    , 'cart_name': 'HP Q2612A', 'cart_doc_id': 2, 'cart_type': 'full', 
-    'date_time_added_show': datetime.datetime(2016, 11, 2, 0, 0), 
-    'storages': 1}
-    """
 
     list_cplx = list()
     number_list = list()

@@ -3,7 +3,7 @@
 from datetime import datetime, tzinfo
 from django.utils.translation import ugettext as _
 import pytz
-from django.utils import timezone
+from django.utils import timezone, six
 from service.helpers import SevercartConfigs
 
 
