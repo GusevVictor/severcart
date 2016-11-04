@@ -325,8 +325,10 @@ def ajax_add_session_items_from_barcode(request):
         # чтобы не плодить лишние сущности зделано одно вью для добавления разных картриджей
         if cart_type == 'full':
             cart_status = 1
+            session_var = 'add_cartridges_full_in_stock'
         elif cart_type == 'empty':
             cart_status = 3
+            session_var = 'add_cartridges_empty_in_stock'
         else:
             context['error'] ='1'
             context['mes']   = _('Error in attrib "data" in input button add_item')
@@ -372,9 +374,9 @@ def ajax_add_session_items_from_barcode(request):
         cart_obj['date_time_added'] = date_time_added
         cart_obj['date_time_added_show'] = date_time_added_show
         # Добавляем отсканированный картридж в БД
-        if request.session.get('add_cartridges_full_in_stock', False):
+        if request.session.get(session_var, False):
             # если в сессионной переменной уже что-то есть
-            session_data = request.session.get('add_cartridges_full_in_stock')
+            session_data = request.session.get(session_var)
             # проверяем добавляем элемент на дубль в сессионной казине
             exist = False
             for elem in session_data:
@@ -395,7 +397,7 @@ def ajax_add_session_items_from_barcode(request):
             session_data = list()
             #session_data.append(cart_obj)
             session_data.insert(0, cart_obj)
-        request.session['add_cartridges_full_in_stock'] = session_data
+        request.session[session_var] = session_data
 
         message = _('Cartridge %(cart_number)s successfully added in session basket.') % {'cart_number': cart_number}
         html = render_to_string('index/add_items_barcode_ajax.html', context={'list_items': session_data})

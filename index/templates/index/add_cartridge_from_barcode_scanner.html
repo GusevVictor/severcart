@@ -24,7 +24,7 @@
             <form action="" method="post">
                 {% csrf_token %}
                 <label>{% trans 'Scanning number' %}</label>
-                <input class="barcode" id="id_cartNumber" maxlength="256" name="cartNumber" type="text" readonly="" data="full">
+                <input class="barcode" id="id_cartNumber" maxlength="256" name="cartNumber" type="text" readonly="" data="{{action_type}}">
                 <div class="form_error_text cart_number_error">{% trans "Required field" %}</div>
                 <div class="marginTop"></div>
                 <div class="row">
