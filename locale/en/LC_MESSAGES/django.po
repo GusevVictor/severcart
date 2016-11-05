@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-11-04 10:38+0500\n"
+"POT-Creation-Date: 2016-11-05 10:56+0500\n"
 "PO-Revision-Date: 2016-05-27 12:27+0500\n"
 "Last-Translator: \n"
 "Language-Team: severcart.org <sfcl@mail.ru>\n"
@@ -210,9 +210,9 @@ msgstr ""
 #: .\docs\templates\docs\edit_city.html:28
 #: .\docs\templates\docs\edit_name.html:19
 #: .\events\templates\events\view_cartridge_events.html:11
-#: .\index\templates\index\add_cartridge_from_barcode_scanner.html:81
+#: .\index\templates\index\add_cartridge_from_barcode_scanner.html:83
 #: .\index\templates\index\add_empty_cartridge.html:108
-#: .\index\templates\index\add_empty_cartridge_from_barcode_scanner.html:81
+#: .\index\templates\index\add_empty_cartridge_from_barcode_scanner.html:83
 #: .\index\templates\index\add_firm.html:48
 #: .\index\templates\index\add_items.html:110
 #: .\index\templates\index\add_name.html:42
@@ -275,8 +275,8 @@ msgstr ""
 #: .\docs\templates\docs\add_city.html:27 .\docs\templates\docs\cities.html:17
 #: .\docs\templates\docs\names_list.html:17
 #: .\docs\templates\docs\types_list.html:17
-#: .\index\templates\index\add_cartridge_from_barcode_scanner.html:100
-#: .\index\templates\index\add_empty_cartridge_from_barcode_scanner.html:100
+#: .\index\templates\index\add_cartridge_from_barcode_scanner.html:102
+#: .\index\templates\index\add_empty_cartridge_from_barcode_scanner.html:102
 #: .\index\templates\index\add_firm.html:47
 #: .\index\templates\index\add_name.html:41
 #: .\index\templates\index\add_type.html:32
@@ -382,16 +382,16 @@ msgstr ""
 #: .\dhtml\templates\dhtml\add_session_items.html:2516
 #: .\dhtml\templates\dhtml\logic.html:206
 #: .\dhtml\templates\dhtml\logic.html:253
-#: .\dhtml\templates\dhtml\logic.html:630
-#: .\dhtml\templates\dhtml\logic.html:710
-#: .\dhtml\templates\dhtml\logic.html:795
-#: .\dhtml\templates\dhtml\logic.html:843
-#: .\dhtml\templates\dhtml\logic.html:962
-#: .\dhtml\templates\dhtml\logic.html:1067
-#: .\dhtml\templates\dhtml\logic.html:1215
-#: .\dhtml\templates\dhtml\logic.html:1263
-#: .\dhtml\templates\dhtml\logic.html:1321
-#: .\dhtml\templates\dhtml\logic.html:2396
+#: .\dhtml\templates\dhtml\logic.html:633
+#: .\dhtml\templates\dhtml\logic.html:713
+#: .\dhtml\templates\dhtml\logic.html:798
+#: .\dhtml\templates\dhtml\logic.html:846
+#: .\dhtml\templates\dhtml\logic.html:965
+#: .\dhtml\templates\dhtml\logic.html:1070
+#: .\dhtml\templates\dhtml\logic.html:1218
+#: .\dhtml\templates\dhtml\logic.html:1266
+#: .\dhtml\templates\dhtml\logic.html:1324
+#: .\dhtml\templates\dhtml\logic.html:2399
 msgid "<p>Server not available.</p>"
 msgstr ""
 
@@ -402,70 +402,70 @@ msgstr ""
 #: .\dhtml\templates\dhtml\add_session_items.html:654
 #: .\dhtml\templates\dhtml\common.html:184
 #: .\dhtml\templates\dhtml\logic.html:390
-#: .\dhtml\templates\dhtml\logic.html:478
-#: .\dhtml\templates\dhtml\logic.html:506
-#: .\dhtml\templates\dhtml\logic.html:534
+#: .\dhtml\templates\dhtml\logic.html:481
+#: .\dhtml\templates\dhtml\logic.html:509
+#: .\dhtml\templates\dhtml\logic.html:537
 msgid "Server error :("
 msgstr ""
 
 #: .\dhtml\templates\dhtml\add_session_items.html:710
-#: .\dhtml\templates\dhtml\logic.html:590
+#: .\dhtml\templates\dhtml\logic.html:593
 msgid "Are you sure you want to put the selected items to the Trash?"
 msgstr ""
 
 #: .\dhtml\templates\dhtml\add_session_items.html:768
-#: .\dhtml\templates\dhtml\logic.html:648
+#: .\dhtml\templates\dhtml\logic.html:651
 msgid "Are you sure you want to delete consumable (s)?"
 msgstr ""
 
 #: .\dhtml\templates\dhtml\add_session_items.html:804
-#: .\dhtml\templates\dhtml\logic.html:684
+#: .\dhtml\templates\dhtml\logic.html:687
 msgid "You sure you want to return the selected items back to the store?"
 msgstr ""
 
 #: .\dhtml\templates\dhtml\add_session_items.html:877
-#: .\dhtml\templates\dhtml\logic.html:757
+#: .\dhtml\templates\dhtml\logic.html:760
 msgid "Are you sure you want to remove the counterparty?"
 msgstr ""
 
 #: .\dhtml\templates\dhtml\add_session_items.html:1139
-#: .\dhtml\templates\dhtml\logic.html:1019
+#: .\dhtml\templates\dhtml\logic.html:1022
 msgid "Are you sure you want to delete a document?"
 msgstr ""
 
 #: .\dhtml\templates\dhtml\add_session_items.html:1151
-#: .\dhtml\templates\dhtml\logic.html:1031
+#: .\dhtml\templates\dhtml\logic.html:1034
 msgid "Are you sure you want to delete the user?"
 msgstr ""
 
 #: .\dhtml\templates\dhtml\add_session_items.html:1292
-#: .\dhtml\templates\dhtml\logic.html:1172
+#: .\dhtml\templates\dhtml\logic.html:1175
 msgid "Are you sure you want to delete?"
 msgstr ""
 
 #: .\dhtml\templates\dhtml\add_session_items.html:1347
-#: .\dhtml\templates\dhtml\logic.html:1227
+#: .\dhtml\templates\dhtml\logic.html:1230
 msgid "Are you sure you want to delete city?"
 msgstr ""
 
 #: .\dhtml\templates\dhtml\add_session_items.html:1453
-#: .\dhtml\templates\dhtml\logic.html:1333
+#: .\dhtml\templates\dhtml\logic.html:1336
 #: .\index\templates\index\base_menu.html:16
 msgid "Find by number"
 msgstr ""
 
 #: .\dhtml\templates\dhtml\add_session_items.html:1723
-#: .\dhtml\templates\dhtml\logic.html:1603
+#: .\dhtml\templates\dhtml\logic.html:1606
 msgid "Are you sure you want to remove the storage room?"
 msgstr ""
 
 #: .\dhtml\templates\dhtml\add_session_items.html:1784
-#: .\dhtml\templates\dhtml\logic.html:1664
+#: .\dhtml\templates\dhtml\logic.html:1667
 msgid "<p>Server error :(</p>"
 msgstr ""
 
 #: .\dhtml\templates\dhtml\add_session_items.html:2185
-#: .\dhtml\templates\dhtml\logic.html:2065
+#: .\dhtml\templates\dhtml\logic.html:2068
 msgid "List move empty."
 msgstr ""
 
@@ -475,8 +475,8 @@ msgstr ""
 
 #: .\docs\api\views.py:33 .\docs\api\views.py:81 .\docs\api\views.py:113
 #: .\docs\api\views.py:447 .\docs\api\views.py:546 .\index\api\views.py:53
-#: .\index\api\views.py:681 .\index\api\views.py:729 .\index\api\views.py:750
-#: .\index\api\views.py:765 .\index\api\views.py:913 .\reports\api\views.py:56
+#: .\index\api\views.py:674 .\index\api\views.py:722 .\index\api\views.py:743
+#: .\index\api\views.py:758 .\index\api\views.py:906 .\reports\api\views.py:56
 #: .\storages\api\views.py:21 .\storages\api\views.py:59
 msgid "Only use POST requests!"
 msgstr ""
@@ -490,7 +490,7 @@ msgstr ""
 msgid "Name can not be removed, ie. other objects reference it."
 msgstr ""
 
-#: .\docs\api\views.py:57 .\docs\api\views.py:71 .\index\api\views.py:649
+#: .\docs\api\views.py:57 .\docs\api\views.py:71 .\index\api\views.py:642
 msgid "Name deleted successfully."
 msgstr ""
 
@@ -737,7 +737,7 @@ msgstr ""
 #: .\index\forms\add_items.py:24 .\index\forms\add_items.py:35
 #: .\index\forms\add_items.py:51 .\index\forms\add_items_from_barcode.py:17
 #: .\index\forms\add_items_from_barcode.py:43 .\index\forms\add_type.py:11
-#: .\index\forms\base_add_form.py:76 .\index\forms\tr_to_firm.py:14
+#: .\index\forms\base_add_form.py:77 .\index\forms\tr_to_firm.py:14
 #: .\index\forms\tr_to_firm.py:26 .\index\forms\tr_to_firm.py:76
 #: .\index\forms\tr_to_firm.py:91 .\index\forms\tr_to_firm.py:105
 #: .\index\forms\tr_to_firm.py:134 .\index\forms\tr_to_stock.py:26
@@ -1366,138 +1366,138 @@ msgstr ""
 msgid "Cart is empty. Add nothing to the warehouse."
 msgstr ""
 
-#: .\index\api\views.py:462
+#: .\index\api\views.py:455
 #, python-format
 msgid "Cartridges %(cart_numbers)s successfully added."
 msgstr ""
 
-#: .\index\api\views.py:503
+#: .\index\api\views.py:496
 msgid "Cartridges successfully moved."
 msgstr ""
 
-#: .\index\api\views.py:583
+#: .\index\api\views.py:576
 #, python-format
 msgid "Cartridges %(cart_nums)s successfully moved to firm."
 msgstr ""
 
-#: .\index\api\views.py:585
+#: .\index\api\views.py:578
 msgid "No transmission facilities"
 msgstr ""
 
-#: .\index\api\views.py:610
+#: .\index\api\views.py:603
 msgid "Session cleared"
 msgstr ""
 
-#: .\index\api\views.py:637
+#: .\index\api\views.py:630
 msgid "In demo remove nodes not allow."
 msgstr ""
 
-#: .\index\api\views.py:645
+#: .\index\api\views.py:638
 msgid ""
 "But it can not be removed because other objects reference it.<br/>Error "
 "code: 102"
 msgstr ""
 
-#: .\index\api\views.py:651
+#: .\index\api\views.py:644
 msgid "Names deleted successfully."
 msgstr ""
 
-#: .\index\api\views.py:673
+#: .\index\api\views.py:666
 msgid "Cartridjes deleted!"
 msgstr ""
 
-#: .\index\api\views.py:690
+#: .\index\api\views.py:683
 msgid "Error converting string numbers to int."
 msgstr ""
 
-#: .\index\api\views.py:701
+#: .\index\api\views.py:694
 msgid "This action type not implemented."
 msgstr ""
 
-#: .\index\api\views.py:720
+#: .\index\api\views.py:713
 msgid "Cartridges successfully transferred to basket."
 msgstr ""
 
-#: .\index\api\views.py:828
+#: .\index\api\views.py:821
 #, python-format
 msgid "Cartridges %(cart_list)s successfully transferred for use"
 msgstr ""
 
-#: .\index\api\views.py:952 .\index\api\views.py:1026 .\index\api\views.py:1218
-#: .\index\api\views.py:1336
+#: .\index\api\views.py:945 .\index\api\views.py:1019 .\index\api\views.py:1211
+#: .\index\api\views.py:1329
 msgid "Error: 101. Not set organization utint."
 msgstr ""
 
-#: .\index\api\views.py:969 .\index\api\views.py:1042 .\index\api\views.py:1234
+#: .\index\api\views.py:962 .\index\api\views.py:1035 .\index\api\views.py:1227
 #, python-format
 msgid "Consumables with the number %(cart_barcode)s was not found."
 msgstr ""
 
-#: .\index\api\views.py:975 .\index\api\views.py:1240
+#: .\index\api\views.py:968 .\index\api\views.py:1233
 msgid "The object is already in the lists on the move."
 msgstr ""
 
-#: .\index\api\views.py:992 .\index\api\views.py:1257
+#: .\index\api\views.py:985 .\index\api\views.py:1250
 #, python-format
 msgid ""
 "The object number %(cart_barcode)s is already present in the lists on the "
 "move."
 msgstr ""
 
-#: .\index\api\views.py:999 .\index\api\views.py:1070 .\index\api\views.py:1264
+#: .\index\api\views.py:992 .\index\api\views.py:1063 .\index\api\views.py:1257
 msgid "Consumable material is successfully prepared for transfer"
 msgstr ""
 
-#: .\index\api\views.py:1008
+#: .\index\api\views.py:1001
 #, python-format
 msgid ""
 "This consumable is in the state \"%(cart_status)s\". Are you sure you want "
 "to place in the lists transmitted?"
 msgstr ""
 
-#: .\index\api\views.py:1094
+#: .\index\api\views.py:1087
 msgid "The session key is not recognized."
 msgstr ""
 
-#: .\index\api\views.py:1195
+#: .\index\api\views.py:1188
 #, python-format
 msgid "Objects %(numbers)s moved successfully."
 msgstr ""
 
-#: .\index\api\views.py:1273
+#: .\index\api\views.py:1266
 #, python-format
 msgid ""
 "This consumable is in the state \"%(cart_status)s\". Return to the warehouse "
 "is impossible."
 msgstr ""
 
-#: .\index\api\views.py:1302 .\index\api\views.py:1359 .\index\views.py:1042
+#: .\index\api\views.py:1295 .\index\api\views.py:1352 .\index\views.py:1042
 #, python-format
 msgid ""
 "An object with number %(cart_num)s belong to a different organizational unit."
 msgstr ""
 
-#: .\index\api\views.py:1314
+#: .\index\api\views.py:1307
 msgid "Action not supported"
 msgstr ""
 
-#: .\index\api\views.py:1321
+#: .\index\api\views.py:1314
 msgid "Your score is accepted."
 msgstr ""
 
-#: .\index\api\views.py:1346
+#: .\index\api\views.py:1339
 msgid "The number must not be empty."
 msgstr ""
 
-#: .\index\api\views.py:1353 .\index\api\views.py:1367
+#: .\index\api\views.py:1346 .\index\api\views.py:1360
 msgid "Not found."
 msgstr ""
 
-#: .\index\api\views.py:1372
+#: .\index\api\views.py:1365
 msgid "Number is already in use."
 msgstr ""
 
-#: .\index\api\views.py:1407
+#: .\index\api\views.py:1400
 msgid "Session varible not use."
 msgstr ""
 
@@ -1552,7 +1552,7 @@ msgstr ""
 msgid "Middle name"
 msgstr ""
 
-#: .\index\forms\base_add_form.py:66
+#: .\index\forms\base_add_form.py:67
 #: .\index\templates\index\add_cartridge_from_barcode_scanner.html:63
 #: .\index\templates\index\add_empty_cartridge.html:68
 #: .\index\templates\index\add_empty_cartridge_from_barcode_scanner.html:63
@@ -1679,27 +1679,32 @@ msgstr ""
 msgid "The field must be seleced"
 msgstr ""
 
-#: .\index\templates\index\add_cartridge_from_barcode_scanner.html:86
+#: .\index\templates\index\add_cartridge_from_barcode_scanner.html:78
+#: .\index\templates\index\add_empty_cartridge_from_barcode_scanner.html:78
+msgid "Set focus"
+msgstr ""
+
+#: .\index\templates\index\add_cartridge_from_barcode_scanner.html:88
 #: .\index\templates\index\add_empty_cartridge.html:97
-#: .\index\templates\index\add_empty_cartridge_from_barcode_scanner.html:86
+#: .\index\templates\index\add_empty_cartridge_from_barcode_scanner.html:88
 #: .\index\templates\index\add_items.html:98
 msgid "Manual date setting"
 msgstr ""
 
-#: .\index\templates\index\add_cartridge_from_barcode_scanner.html:93
-#: .\index\templates\index\add_empty_cartridge_from_barcode_scanner.html:93
+#: .\index\templates\index\add_cartridge_from_barcode_scanner.html:95
+#: .\index\templates\index\add_empty_cartridge_from_barcode_scanner.html:95
 #: .\index\templates\index\from_firm_to_stock_with_barcode.html:63
 msgid "Debug"
 msgstr ""
 
-#: .\index\templates\index\add_cartridge_from_barcode_scanner.html:101
-#: .\index\templates\index\add_empty_cartridge_from_barcode_scanner.html:101
+#: .\index\templates\index\add_cartridge_from_barcode_scanner.html:103
+#: .\index\templates\index\add_empty_cartridge_from_barcode_scanner.html:103
 msgid "Remove item"
 msgstr ""
 
-#: .\index\templates\index\add_cartridge_from_barcode_scanner.html:102
+#: .\index\templates\index\add_cartridge_from_barcode_scanner.html:104
 #: .\index\templates\index\add_empty_cartridge.html:118
-#: .\index\templates\index\add_empty_cartridge_from_barcode_scanner.html:102
+#: .\index\templates\index\add_empty_cartridge_from_barcode_scanner.html:104
 #: .\index\templates\index\add_items.html:120
 msgid "Clear session"
 msgstr ""

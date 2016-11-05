@@ -399,7 +399,7 @@ $( function(){
     // Если происходит добавления новых картриджей с помощью 
     // сканера штрихкодов.
     if (add_new_cart_from_barcode.length) {
-        var DEBUG = true;
+        var DEBUG = false;
         $(window).keydown(function(event){
             // устанавливаем перехватчик нажатий клавиши Enter для сканеров штрих кодов которые 
             // добавляют символ перевода строки самостоятельно
@@ -409,6 +409,10 @@ $( function(){
             }
         });
         $('#id_cartNumber').focus();
+        $('.set_focus').click( function() {
+            $('#id_cartNumber').focus();
+        });
+
         if (DEBUG) {    
             $('#id_cartNumber').removeAttr('readonly');
             $('.add_new_cart_from_barcode_with_button').click( function () {
@@ -422,7 +426,6 @@ $( function(){
                 if (e.which >= 48 && e.which <= 57) {
                     chars.push(String.fromCharCode(e.which));
                 }
-                //console.log(e.which + ":" + chars.join("|"));
                 if (pressed == false) {
                     setTimeout(function(){
                         // check we have a long length e.g. it is a barcode
@@ -1778,6 +1781,13 @@ $( function(){
         $("#id_scan_number").focus();
         $('#id_firm, #id_doc').change(function() {
             $("#id_scan_number").focus();
+        });
+
+        $(window).keydown(function(event){
+            if(event.keyCode == 13) {
+                event.preventDefault();
+                return false;
+            }
         });
 
         var pressed = false; 

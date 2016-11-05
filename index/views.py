@@ -225,7 +225,7 @@ def add_cartridge_from_barcode_scanner(request):
     if not request.user.departament:
         return render(request, 'index/ou_not_set.html', dict())
     context = dict()
-    context['debug'] = True
+    context['debug'] = False
     back = BreadcrumbsPath(request).before_page(request)
     current_day = str(timezone.now().day) +'/' + str(timezone.now().month) +'/' + str(timezone.now().year)
     form = AddItemsFromBarCodeScanner()
@@ -268,7 +268,7 @@ def add_empty_cartridge_from_barcode_scanner(request):
     if not request.user.departament:
         return render(request, 'index/ou_not_set.html', dict())
     context = dict()
-    context['debug'] = True
+    context['debug'] = False
     back = BreadcrumbsPath(request).before_page(request)
     current_day = str(timezone.now().day) +'/' + str(timezone.now().month) +'/' + str(timezone.now().year)
     form = AddItemsFromBarCodeScanner()

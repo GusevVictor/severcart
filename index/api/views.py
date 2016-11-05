@@ -359,7 +359,9 @@ def ajax_add_session_items_from_barcode(request):
             date_time_added_show = set_date
         else:
             date_time_added = timezone.now()
-            date_time_added_show = do_timezone(date_time_added, conf.time_zone)
+            date_time_added_show = ''
+            #date_time_added_show = do_timezone(date_time_added, conf.time_zone)
+            #date_time_added_show = datetime.now(pytz.timezone(conf.time_zone))
 
         # собираем очект РМ на основе полученных данных
         cart_obj = dict()
