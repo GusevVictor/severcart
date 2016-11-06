@@ -176,6 +176,17 @@ function add_elememts_in_sessions() {
                     $('.add_cart_from_barcode').html(msg.html);
                     $('.wrapper_add_scanner_items').show();
                     setTimeout(function() { $('.success_msg').hide(); }, 12000);
+                    $('div.p_checkboxes').click(function(event) {
+                    // улучшитель юзабилити таблиц, при клике по строке выбирается чекбокс    
+                        if (event.target.type !== 'checkbox') {
+                            $(':checkbox', this).trigger('click');
+                        }
+
+                        if (event.target.type !== 'radio') {
+                            $(':radio', this).trigger('click');
+                        }
+
+                    });
                 }
             },
             error: function() {
