@@ -1151,6 +1151,12 @@ span.support_request {
     font-size: 14px;
 }
 
+span.donate_link {
+    display: inline-block;
+    margin-left: 12px;
+    font-size: 14px;   
+}
+
 a.add_from_keyboard{
     background: #7BCC9A url('../img/keyboard.png') no-repeat top right;
     padding-right: 33px;
