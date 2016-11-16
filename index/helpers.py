@@ -59,3 +59,11 @@ def str2int(v):
     except:
         v = 0
     return v
+
+def str2float(v):
+    v = v.replace(',','.')
+    try:
+        v = float(v)
+    except:
+        v = 0
+    return v
