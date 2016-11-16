@@ -84,54 +84,6 @@ $( function(){
         });
     }
 
-    // производим подсчёт количества потраченных денег по
-    // контракту на обслуживание
-    var contracts = $('table.contacts');
-    if (contracts.length) {
-        var service_contracts = [];
-        var doc_id = 0;
-        $('table.contacts td').each(function() {
-            if ($(this).attr('doc_type') == '2') {
-                doc_id = $(this).attr('doc_id');
-                service_contracts.push( doc_id );       
-            }
-        });
-
-        $.ajax({
-            method: 'POST',
-            url: '{% url "docs:calculate_sum" %}',
-            data:  { 'service_contracts': service_contracts },
-            beforeSend: function( xhr, settings ){
-                csrftoken = getCookie('csrftoken');
-                if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
-                    xhr.setRequestHeader('X-CSRFToken', csrftoken);
-                }
-            },
-            success: function( msg ) {
-                var delimiter = ',';
-                for (var item in msg.result) {
-                    var class_name = 'td.service_' + item;
-                    var money = msg.result[item];
-                    var dollars = parseInt(money) / 100;
-                    // убираем дробную часть у долларов
-                    dollars = parseInt(dollars);
-                    // извлекаем из денег центы
-                    var cents = money - (dollars*100);
-                    $(class_name).empty();
-                    if (cents) {
-                        $(class_name).text(dollars + delimiter + cents);
-                    } else {
-                        $(class_name).text(dollars);
-                    }
-                    
-                }
-            },
-            error: function( msg ) {
-                console.log( msg );
-            },
-        });
-
-    };
 
     $('.event_filter').click( function() {
         var filter_date = $('form.input_date').serializeArray();

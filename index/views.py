@@ -24,6 +24,7 @@ from .forms.add_firm import FirmTonerRefillF
 from .forms.tr_to_firm import TransfeToFirm, TransfeToFirmScanner
 from .forms.tr_to_stock import MoveItemsToStockWithBarCodeScanner
 from .forms.add_cartridge_name import AddCartridgeName
+from .forms.from_firm_to_stock import FromFirmToStock
 from .forms.comment import EditCommentForm
 from .models import CartridgeType
 from .models import CartridgeItem
@@ -31,7 +32,7 @@ from .models import OrganizationUnits
 from .models import City as CityM
 from .models import FirmTonerRefill
 from .models import CartridgeItemName
-from .helpers import str2int
+from .helpers import str2int, str2float
 from events.models import Events
 from docs.models import SCDoc, RefillingCart
 from storages.models import Storages
@@ -833,9 +834,13 @@ def transfer_to_firm_with_scanner(request):
 def from_firm_to_stock(request):
     """Возврашаем заправленные расходники обратно на базу.
     """
+    context = dict()
     back = BreadcrumbsPath(request).before_page(request)
     checked_cartr = request.GET.get('select', '')
     tmp = ''
+    form = FromFirmToStock()
+    form.fields['doc'].queryset = SCDoc.objects.filter(departament=request.user.departament).filter(doc_type=2)
+    context['form'] = form
     list_cart = []
     if checked_cartr:
         checked_cartr = checked_cartr.split('s')
@@ -850,8 +855,16 @@ def from_firm_to_stock(request):
     else:
         # если кто-то зашел на страницу не выбрав расходники
         return HttpResponseRedirect(reverse('index:at_work'))        
-
+    context['checked_cartr'] = checked_cartr
+    context['list_cart'] = list_cart
+    context['list_length'] = list_length
+    context['back'] = back
     if request.method == 'POST':
+        form = FromFirmToStock(request.POST)
+        if form.is_valid():
+            data_in_post = form.cleaned_data
+            doc = data_in_post.get('doc')
+
         list_cplx = []
         with transaction.atomic():
             for inx in tmp:
@@ -883,15 +896,26 @@ def from_firm_to_stock(request):
 
         # генерируем акт возвращения РМ
         jsoning_list = []
+        money_sum = 0
         for inx in tmp:
             cart_number = CartridgeItem.objects.get(pk=inx).cart_number
             cart_name   = CartridgeItem.objects.get(pk=inx).cart_itm_name
             repair_actions = request.POST.getlist('cart_'+str(inx))
-            money_per_one = request.POST.getlist('cart_money'+str(inx))
+            money_per_one = request.POST.getlist('cart_money_'+str(inx))
+            money_sum += str2float(money_per_one[0]) if money_per_one else 0
             jsoning_list.append([cart_number, str(cart_name), repair_actions, money_per_one])
         jsoning_list = json.dumps(jsoning_list)
         
-        
+
+        money_sum = int(money_sum * 100)
+        # устанавливаем потраченные деньги
+        if doc:
+            last_money = doc.spent
+            last_money = last_money if last_money else 0
+            last_money += money_sum
+            doc.spent = last_money
+            doc.save()
+
         # генерируем номер акта передачи на основе даты и его порядкового номера
         sender_acts = RefillingCart.objects.filter(departament=request.user.departament).count()
         # генерируем новый номер
@@ -915,10 +939,7 @@ def from_firm_to_stock(request):
         act_doc.save()
 
         return HttpResponseRedirect(reverse('index:at_work'))
-    return render(request, 'index/from_firm_to_stock.html', {'checked_cartr': checked_cartr, 
-                                                            'list_cart': list_cart, 
-                                                            'list_length': list_length, 
-                                                            'back': back})
+    return render(request, 'index/from_firm_to_stock.html', context)
 
 
 def bad_browser(request):

@@ -118,7 +118,7 @@
                                 {{ doc.money | divide }}
                             {% endif %}
                             {% if doc.doc_type == 2 %}
-                                <img src="{{ STATIC_URL }}img/loader.gif" />
+                                {{ doc.spent | divide }}
                             {% endif %}
                         </td>
                         <td title="{{ doc.short_cont }}">{{ doc.short_cont|truncatechars:30 }}</td>

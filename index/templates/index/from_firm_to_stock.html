@@ -27,7 +27,11 @@
         {% csrf_token %}
         <input name="checked_cartr" type="hidden" value="{{ checked_cartr }}" readonly/>
         <input name="list_length" type="hidden" value="{{ list_length }}" readonly/>
-        <table class="actions_firm">
+        <label class="marginTop" for="{{ form.doc.id_for_label }}">{% trans "Service agreement" %}</label>
+        <div class="input_row marginTop">
+            {{ form.doc }} <a class="dj_button add" href="{% url 'docs:delivery' %}"></a>
+        </div>
+        <table class="actions_firm marginTop">
         <tr>
         <th class="cart_number">{% trans "Number" %}</th>
         <th class="action_type">{% trans "Name" %}</th>
@@ -49,7 +53,7 @@
         <td><input type="checkbox" class="rakel" name="cart_{{elem.pk}}" value="rakel"/></td>
         <td><input type="checkbox" class="chip" name="cart_{{elem.pk}}" value="chip"/></td>
         <td><input type="checkbox" class="magnit" name="cart_{{elem.pk}}" value="magnit"/></td>
-        <td class="money_wrapper"><input type="text" class="money" name="cart_{{elem.pk}}" value="0" autocomplete="off"/><div class="money_validate"><div class="err_arrow"></div><div class="err_content"></div></div></td>
+        <td class="money_wrapper"><input type="text" class="money" name="cart_money_{{elem.pk}}" value="0" autocomplete="off"/><div class="money_validate"><div class="err_arrow"></div><div class="err_content"></div></div></td>
         </tr>{% endfor %}
         </table>
         <input type="submit" value="{% trans 'Return to stock' %}" class="button return_to_stock"/>
