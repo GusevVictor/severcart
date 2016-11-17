@@ -511,11 +511,11 @@ label {
     margin: 0px;
 }
 
-#id_doc, #id_storages {
+#id_doc, #id_storages, #id_firm {
     width:425px;
 }
 
-#id_firm {
+#id_firm1 {
    width:220px; 
 }
 
@@ -1096,10 +1096,11 @@ form.input_date input, div.calendar input {
     height: 32px;
     margin: 0;
     vertical-align: top;
+
 }
 
 div.calendar {
-    margin:0 30px 0 0;
+    margin:0;
     padding: 0;
     display: inline-block;
     vertical-align: top;
