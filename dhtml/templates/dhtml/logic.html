@@ -89,16 +89,17 @@ $( function(){
         var filter_date = $('form.input_date').serializeArray();
         var start_date  = filter_date[1].value;
         var end_date    = filter_date[2].value;
-        var time_zone_offset = new Date();
-        time_zone_offset = time_zone_offset.getTimezoneOffset() / 60
-        time_zone_offset = -1 * time_zone_offset; // меняем знак
+        //var time_zone_offset = new Date();
+        //time_zone_offset = time_zone_offset.getTimezoneOffset() / 60
+        //time_zone_offset = -1 * time_zone_offset; // меняем знак
         if (start_date || end_date) {
             $.ajax({
                 method: 'POST',
                 url: '{% url "events:date_filter" %}',
-                data:  {'start_date': start_date, 'end_date': end_date, 'time_zone_offset': time_zone_offset },
+                data:  {'start_date': start_date, 'end_date': end_date },
                 beforeSend: function( xhr, settings ){
                     $('.spinner').show();
+                    $('.show_all_events').html('');
                     $('.events_see_more').hide(); // прячем кнопку "Показать ещё"
                     csrftoken = getCookie('csrftoken');
                     if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
@@ -924,13 +925,13 @@ $( function(){
 
     $('.events_see_more').click( function() {
         var button_next = $(this);
-        var time_zone_offset = new Date();
-        time_zone_offset = time_zone_offset.getTimezoneOffset() / 60;
-        time_zone_offset = -1 * time_zone_offset; // меняем знак
+        //var time_zone_offset = new Date();
+        //time_zone_offset = time_zone_offset.getTimezoneOffset() / 60;
+        //time_zone_offset = -1 * time_zone_offset; // меняем знак
         $.ajax({
             method: 'POST',
             url: '{% url "events:show_event_page" %}',
-            data:  {'next_page': button_next.attr('next_page'), 'time_zone_offset': time_zone_offset},
+            data:  {'next_page': button_next.attr('next_page')},
             beforeSend: function( xhr, settings ){
                 $('.spinner').show();
                 csrftoken = getCookie('csrftoken');
