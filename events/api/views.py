@@ -205,20 +205,9 @@ def date_filter(request):
         elif end_date and not(start_date):
             list_events = list_events.filter(date_time__lte=end_date)
 
-            """
-            elif (start_date and end_date) :
-                #list_events = list_events.filter(date_time__year=end_date.year, 
-                #                           date_time__month=end_date.month, 
-                #                           date_time__day=end_date.day,
-                #                           date_time__hour=0,
-                #                           date_time__minute=0,
-                #                           date_time__second=0,
-                #                           )
-                list_events = list_events.filter(date_time__exact=start_date)
-            """
         elif start_date and end_date:
             # вторая дата не попадает в диапазон, поэтому приболяем к ней 1 день
-            end_date = end_date + datetime.timedelta(days=1)
+            #end_date = end_date + datetime.timedelta(days=1)
             list_events = list_events.filter(Q(date_time__lte=end_date) & Q(date_time__gte=start_date))
 
         #p = Paginator(list_events, MAX_EVENT_LIST)
