@@ -1,0 +1,18 @@
+{% load i18n %}{% load staticfiles %}
+{% if list_items %}
+<table class="marginTop">
+<tr>
+<th>{% trans 'Number' %}</th>
+<th>{% trans 'Status' %}</th>
+<th>{% trans 'Place' %}</th>
+</tr>
+{% for elem in list_items %}<tr>
+<td>{{ elem.cart_number }}</td>
+<td>{{ elem.cart_status }}</td>
+<td>{{ elem.departament }}</td>
+</tr>{% endfor %}
+</table>{% else %}
+<div class="marginTop">
+{% trans 'List objects empty' %}
+</div>
+{% endif %}

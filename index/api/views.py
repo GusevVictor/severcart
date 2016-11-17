@@ -1419,3 +1419,19 @@ def clear_basket_session(request):
     ansver['error'] = '0'
     ansver['text'] = selected
     return JsonResponse(ansver)
+
+
+@require_POST
+@is_admin
+@check_ajax_auth
+def linked_name_objects(request):
+    """Выбор всех объектов РМ для заданного имени.
+    """
+    ansver = dict()
+    name_id = request.POST.get('name_id', 0)
+    name_id = str2int(name_id)
+    name_obj = get_object_or_404(CartridgeItemName, pk=name_id)
+    list_items = CartridgeItem.objects.filter(cart_itm_name=name_obj)
+    ansver['error'] = 0
+    ansver['text'] = render_to_string('index/linked_name_objects.html', context={'list_items': list_items})
+    return JsonResponse(ansver)

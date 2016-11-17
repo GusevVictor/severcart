@@ -1383,3 +1383,12 @@ input.error_border {
      box-shadow: 0 0 5px #999999; 
     /*box-shadow: 0px 0px 45px -5px #999999;*/
 }
+
+.dotted_border {
+    border-bottom: 1px dashed #0275b8;
+    outline: none;
+}
+
+.dotted_border:focus {
+    outline: none;
+}

@@ -2466,4 +2466,42 @@ $( function(){
 
     });
 
+    $('.linked_name_objects').click( function() {
+        var name_id = $(this).attr('name_id');
+        var expand = $(this).attr('expand');
+        var wrapper_class = '.wrapper_' + name_id;
+        var spinner = '.item_spinner_' + name_id;
+        if (expand == '0') {
+            $(this).attr('expand', '1');
+            $.ajax({
+                method: 'POST',
+                url: "{% url 'index:linked_name_objects' %}",
+                data:  {'name_id': name_id},
+                beforeSend: function( xhr, settings ){
+                    $(spinner).show();
+                    csrftoken = getCookie('csrftoken');
+                    if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
+                        xhr.setRequestHeader('X-CSRFToken', csrftoken);
+                    }
+                },
+                success: function( msg ) {
+                    $(spinner).hide();
+                    if (msg.error == '0') {
+                        $(wrapper_class).html(msg.text);
+                    }
+                    
+                },
+                error: function(msg) {
+                    console.log(msg);
+                },
+            });
+        } else {
+            $(wrapper_class).html('');
+            $(this).attr('expand', '0');
+        }
+        
+        
+
+    })
+
 });
