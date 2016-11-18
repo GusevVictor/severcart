@@ -1,4 +1,4 @@
-{% load i18n %}{% load staticfiles %}
+{% load i18n %}{% load staticfiles %}{% load filters %}
 {% if list_items %}
 <table class="marginTop">
 <tr>
@@ -8,8 +8,8 @@
 </tr>
 {% for elem in list_items %}<tr>
 <td>{{ elem.cart_number }}</td>
-<td>{{ elem.cart_status }}</td>
-<td>{{ elem.departament }}</td>
+<td>{{ elem.cart_status | pretty_status }}</td>
+<td>{{ elem.departament | get_parrent }}</td>
 </tr>{% endfor %}
 </table>{% else %}
 <div class="marginTop">

@@ -218,6 +218,7 @@ span.gi {
 .spinner_ou,
 .spinner_cn,
 .session_spinner,
+.spinner_name,
 .spinner_force_move_to_transfer {
     margin-left: 10px;
     display: none;
