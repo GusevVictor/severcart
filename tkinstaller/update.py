@@ -86,20 +86,19 @@ if __name__ == '__main__':
 
     CPU_ARCH = platform.architecture()[0]
     print('-------------------------------------------------')
-    print(tr('-------Installation package dependencies---------', lang=lang))
+    print(tr('-------------Update packages---------', lang=lang))
     print('-------------------------------------------------')
     try:
         if CPU_ARCH == '64bit' and OS == 'win32':
             print(tr('Installation package dependencies for 64-bit Windows',lang=lang))
             packages_x64 = [
                 ['Django==1.9.4'],
-                ['Noarch/django-mptt-0.8.0.tar.gz'],
-                ['Win64/lxml-3.4.4-cp34-none-win_amd64.whl', '--no-cache-dir'],
-                ['Win64/Pillow-3.1.0-cp34-none-win_amd64.whl'],
-                ['Win64/psycopg2-2.6.1-cp34-none-win_amd64.whl'],
-                ['Noarch/python-docx-0.8.5.tar.gz', '--disable-pip-version-check'],
+                [ os.path.join(PROJ_DIR, 'tkinstaller', 'Noarch', 'django-mptt-0.8.0.tar.gz') ],
+                [ os.path.join(PROJ_DIR, 'tkinstaller', 'Win64', 'lxml-3.4.4-cp34-none-win_amd64.whl'), '--no-cache-dir'],
+                [ os.path.join(PROJ_DIR, 'tkinstaller', 'Win64', 'Pillow-3.1.0-cp34-none-win_amd64.whl')],
+                [ os.path.join(PROJ_DIR, 'tkinstaller', 'Win64', 'psycopg2-2.6.1-cp34-none-win_amd64.whl')],
+                [os.path.join(PROJ_DIR, 'tkinstaller', 'Noarch', 'python-docx-0.8.5.tar.gz'), '--disable-pip-version-check'],
                 ['reportlab'],
-                ['django-debug-toolbar'],
                 ['pytz'],
             ]
             persent = 10
@@ -115,13 +114,12 @@ if __name__ == '__main__':
             print(tr('Installation package dependencies for 32-bit Windows', lang=lang))
             packages_x86 = [
                 ['Django==1.9.4'],
-                ['Noarch/django-mptt-0.8.0.tar.gz'],
-                ['Win32/lxml-3.4.4-cp34-none-win32.whl', '--no-cache-dir'],
-                ['Win32/Pillow-3.1.0-cp34-none-win32.whl'],
-                ['Win32/psycopg2-2.6.1-cp34-none-win32.whl'],
-                ['Noarch/python-docx-0.8.5.tar.gz', '--disable-pip-version-check'],
+                [os.path.join(PROJ_DIR, 'tkinstaller', 'Noarch', 'django-mptt-0.8.0.tar.gz')],
+                [os.path.join(PROJ_DIR, 'tkinstaller', 'Win32', 'lxml-3.4.4-cp34-none-win32.whl'), '--no-cache-dir'],
+                [os.path.join(PROJ_DIR, 'tkinstaller', 'Win32', 'Pillow-3.1.0-cp34-none-win32.whl')],
+                [os.path.join(PROJ_DIR, 'tkinstaller', 'Win32', 'psycopg2-2.6.1-cp34-none-win32.whl')],
+                [os.path.join(PROJ_DIR, 'tkinstaller', 'Noarch', 'python-docx-0.8.5.tar.gz'), '--disable-pip-version-check'],
                 ['reportlab'],
-                ['django-debug-toolbar'],
                 ['pytz'],
             ]
             persent = 10
@@ -142,7 +140,6 @@ if __name__ == '__main__':
                 ['python-docx'],
                 ['pillow==2.9.0'],
                 ['reportlab'],
-                ['django-debug-toolbar'],
                 ['pytz'],
             ]
             persent = 10
