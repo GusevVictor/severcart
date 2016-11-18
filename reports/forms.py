@@ -124,7 +124,7 @@ class UseProducts(forms.Form):
             month_value = end_date[1]
             #month_value = del_leding_zero(month_value)
             year_value  = end_date[2]
-            lte_date    = '%s-%s-%s 00:00:00' % (year_value, month_value, date_value,)
+            lte_date    = '%s-%s-%s 23:59:59' % (year_value, month_value, date_value,)
         else:
             return False
         return lte_date
