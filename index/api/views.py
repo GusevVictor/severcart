@@ -19,7 +19,8 @@ from events.models import Events
 from index.forms.tr_to_firm import TransfeToFirmScanner
 from events.helpers import events_decoder, do_timezone
 from index.models import ( City, 
-                           CartridgeItem, 
+                           CartridgeItem,
+                           CartridgeType,
                            OrganizationUnits, 
                            CartridgeItemName, 
                            FirmTonerRefill,
@@ -1429,9 +1430,19 @@ def linked_name_objects(request):
     """
     ansver = dict()
     name_id = request.POST.get('name_id', 0)
+    action = request.POST.get('action', 0)
     name_id = str2int(name_id)
-    name_obj = get_object_or_404(CartridgeItemName, pk=name_id)
-    list_items = CartridgeItem.objects.filter(cart_itm_name=name_obj)
+    if action == 'name':
+        name_obj = get_object_or_404(CartridgeItemName, pk=name_id)
+        list_items = CartridgeItem.objects.filter(cart_itm_name=name_obj)
+        ansver['text'] = render_to_string('index/linked_name_objects.html', context={'list_items': list_items})
+    elif action == 'type':
+        name_obj = get_object_or_404(CartridgeType, pk=name_id)
+        list_items = CartridgeItemName.objects.filter(cart_itm_type=name_obj)
+        ansver['text'] = render_to_string('index/linked_types_objects.html', context={'list_items': list_items})
+    else:
+        ansver['error'] = 1
+        ansver['text'] = _('Action not found')
+        return JsonResponse(ansver)    
     ansver['error'] = 0
-    ansver['text'] = render_to_string('index/linked_name_objects.html', context={'list_items': list_items})
     return JsonResponse(ansver)

@@ -2466,8 +2466,9 @@ $( function(){
 
     });
 
-    $('.linked_name_objects').click( function() {
+    $('.linked_name_objects, .linked_types_objects').click( function() {
         var name_id = $(this).attr('name_id');
+        var action = $(this).attr('action');
         var expand = $(this).attr('expand');
         var wrapper_class = '.wrapper_' + name_id;
         var spinner = '.item_spinner_' + name_id;
@@ -2476,7 +2477,7 @@ $( function(){
             $.ajax({
                 method: 'POST',
                 url: "{% url 'index:linked_name_objects' %}",
-                data:  {'name_id': name_id},
+                data:  {'name_id': name_id, 'action': action},
                 beforeSend: function( xhr, settings ){
                     $(spinner).show();
                     csrftoken = getCookie('csrftoken');
@@ -2492,6 +2493,7 @@ $( function(){
                     
                 },
                 error: function(msg) {
+                    $(spinner).hide();
                     console.log(msg);
                 },
             });

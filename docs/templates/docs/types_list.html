@@ -30,12 +30,17 @@
                     <th class="first_checkbox">&nbsp;&nbsp;&nbsp;</th>
                     <th class="cart_type">{% trans "type" %}</th>
                     <th>{% trans "comment" %}</th>
+                    <th>{% trans "Action" %}</th>
                 </tr>
                 {% for elem in items %}
                 <tr>
                     <td><input type="radio" value={{ elem.pk }} name="name_id"></td>
                     <td>{{ elem.cart_type }}</td>
                     <td>{{ elem.comment }}</td>
+                    <td><a class="no_follow dotted_border linked_types_objects" href="" name_id="{{ elem.pk }}" expand="0" action="type">{% trans 'Object references' %}</a> 
+                    <img class="spinner_name item_spinner_{{ elem.pk }}" src="/static/img/loader.gif">
+                        <div class="wrapper_{{ elem.pk }}"></div>
+                    </td>
                 </tr>
                 {% endfor %}
             </table>

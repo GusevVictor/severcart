@@ -39,7 +39,7 @@
                     <td>{{ elem.cart_itm_name }}</td>
                     <td>{{ elem.cart_itm_type }}</td>
                     <td>{{ elem.comment }}</td>
-                    <td><a class="no_follow dotted_border linked_name_objects" href="" name_id="{{ elem.pk }}" expand="0" >Ссылки на объект</a> 
+                    <td><a class="no_follow dotted_border linked_name_objects" href="" name_id="{{ elem.pk }}" expand="0" action="name">{% trans 'Object references' %}</a> 
                     <img class="spinner_name item_spinner_{{ elem.pk }}" src="/static/img/loader.gif">
                         <div class="wrapper_{{ elem.pk }}"></div>
                     </td>

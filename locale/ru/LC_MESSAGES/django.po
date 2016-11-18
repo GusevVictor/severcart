@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-11-17 21:51+0500\n"
-"PO-Revision-Date: 2016-11-17 21:52+0500\n"
+"POT-Creation-Date: 2016-11-18 10:57+0500\n"
+"PO-Revision-Date: 2016-11-18 10:57+0500\n"
 "Last-Translator: \n"
 "Language-Team: severcart.org <sfcl@mail.ru>\n"
 "Language: ru\n"
@@ -841,7 +841,7 @@ msgstr "Кому передал"
 #: .\docs\templates\docs\acts_list.html:29
 #: .\docs\templates\docs\names_list.html:34
 #: .\docs\templates\docs\return_acts_list.html:30
-#: .\index\templates\index\use.html:55
+#: .\docs\templates\docs\types_list.html:33 .\index\templates\index\use.html:55
 msgid "Action"
 msgstr "Действие"
 
@@ -1024,6 +1024,11 @@ msgstr "Список типов расходников"
 #: .\docs\templates\docs\handbook.html:23
 msgid "List of storages"
 msgstr "Складские помещения"
+
+#: .\docs\templates\docs\names_list.html:42
+#: .\docs\templates\docs\types_list.html:40
+msgid "Object references"
+msgstr "Ссылки на объект"
 
 #: .\docs\templates\docs\return_acts_list.html:27
 msgid "Return date"
