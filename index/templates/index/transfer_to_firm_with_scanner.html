@@ -64,6 +64,7 @@
                     </div>
                 </div>
                 <div class="marginTop">
+                    <a class="button no_follow set_focus">{% trans 'Set focus' %}</a>
                     <input type="submit" value="{% trans 'Transfer to repair' %}" class="button move_objects_to_firm_with_barcode no_follow"/>
                     <a class="button back" href="{% url 'index:empty' %}">{% trans "Cansel" %}</a>
                     {% if mydebug %}<a class="button send_test_barcode">Debug</a>{% endif %}

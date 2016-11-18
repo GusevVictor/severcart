@@ -348,6 +348,12 @@ $( function(){
         }
     });
 
+
+    $('.set_focus').click( function() {
+        $('#id_cartNumber').focus();
+        $('#id_scan_number').focus();
+    });
+
     var add_new_cart_from_barcode = $('.add_cart_from_barcode');
     // Если происходит добавления новых картриджей с помощью 
     // сканера штрихкодов.
@@ -364,6 +370,7 @@ $( function(){
         $('#id_cartNumber').focus();
         $('.set_focus').click( function() {
             $('#id_cartNumber').focus();
+            $('#id_scan_number').focus();
         });
 
         if (DEBUG) {    
