@@ -636,9 +636,9 @@ def generate_return_act(request):
         
         # https://github.com/python-openxml/python-docx/issues/141
         paragraph = row_cells[2].paragraphs[0]
-        paragraph.text = actions_decoder(item[2][:-1])
+        paragraph.text = actions_decoder(item[2])
         paragraph.style = 'FontSize'
-        money = float(item[2][-1])
+        money = float(item[3][-1])
         sum_money += money
         row_cells[3].text = str(money)
 
