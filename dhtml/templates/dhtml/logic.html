@@ -2219,8 +2219,26 @@ $( function(){
                                     // если меньше константного значения, то оставляем поле как есть
                                     var cart_num = msg.cart_num;
                                 }
-                                $('.transfer_list tr:last').after('<tr class="remove' + msg.pk + '"><td><input type="checkbox" value="'+ msg.pk +'"/></td><td title="' + msg.cart_num + '">' + cart_num + '</td><td>' + msg.cart_name + '</td></tr>');
-                                
+                                $('.transfer_list tr:first').after('<tr class="remove' + msg.pk + '"><td><input type="checkbox" class="check_moved_items" checked="checked" value="'+ msg.pk +'"/></td><td title="' + msg.cart_num + '">' + cart_num + '</td><td>' + msg.cart_name + '</td></tr>');
+                                // заново подключаем обработчик событий кчекбоксу "выбрать всё"
+                                $('.check_uncheck_all').bind('click', function(event) {
+                                    // используется во вью transfe_for_use, при динамической загрузке данных аяксом после того 
+                                    // DOM дерево будет полностью загружено.
+                                    var ckeck_box = false;
+                                    if(this.checked) {
+                                        ckeck_box = true;
+                                    } else {
+                                        ckeck_box = false;
+                                    }
+
+                                    $('input.check_moved_items').each(function() {
+                                        if (ckeck_box) {
+                                             $(this).prop('checked', true);            
+                                        } else {
+                                             $(this).prop('checked', false);
+                                        }
+                                    });
+                                });
                             }                                
                             
                         },
@@ -2287,7 +2305,26 @@ $( function(){
                                         // если меньше константного значения, то оставляем поле как есть
                                         var cart_num = msg.cart_num;
                                     }
-                                    $('.transfer_list tr:last').after('<tr class="remove' + msg.pk + '"><td><input type="checkbox" value="'+ msg.pk +'"/></td><td title="' + msg.cart_num + '">' + cart_num + '</td><td>' + msg.cart_name + '</td></tr>');
+                                    $('.transfer_list tr:first').after('<tr class="remove' + msg.pk + '"><td><input type="checkbox" class="check_moved_items" checked="checked" value="'+ msg.pk +'"/></td><td title="' + msg.cart_num + '">' + cart_num + '</td><td>' + msg.cart_name + '</td></tr>');
+                                    // заново подключаем обработчик событий кчекбоксу "выбрать всё"
+                                    $('.check_uncheck_all').bind('click', function(event) {
+                                        // используется во вью transfe_for_use, при динамической загрузке данных аяксом после того 
+                                        // DOM дерево будет полностью загружено.
+                                        var ckeck_box = false;
+                                        if(this.checked) {
+                                            ckeck_box = true;
+                                        } else {
+                                            ckeck_box = false;
+                                        }
+
+                                        $('input.check_moved_items').each(function() {
+                                            if (ckeck_box) {
+                                                 $(this).prop('checked', true);            
+                                            } else {
+                                                 $(this).prop('checked', false);
+                                            }
+                                        });
+                                    });
                                     
                                 }                                
                                 

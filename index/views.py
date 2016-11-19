@@ -730,6 +730,7 @@ def from_firm_to_stock_with_barcode(request):
             show_list.append(cart_obj)
 
     form.fields['numbers'].initial = initial_numbers
+    show_list.reverse()
     context['show_list'] = show_list
     context['back'] = back
     context['form'] = form
