@@ -793,6 +793,7 @@ def transfer_to_firm_with_scanner(request):
        помощью сканера ШК
     """
     context = dict()
+    context['mydebug'] = False
     form = TransfeToFirmScanner()
     form.fields['doc'].queryset = SCDoc.objects.filter(departament=request.user.departament).filter(doc_type=2)
         
@@ -823,9 +824,10 @@ def transfer_to_firm_with_scanner(request):
     # инициализируем поле numbers значениями сессионной переменной, 
     # если пользователь произвёл перезагрузку страницы. 
     form.fields['numbers'].initial = str(session_data)[1:-1] 
-    context['sessions_objects'] = sessions_objects        
+    sessions_objects.reverse()
+    context['sessions_objects'] = sessions_objects
     context['form'] = form
-    context['mydebug'] = False
+    
     return render(request, 'index/transfer_to_firm_with_scanner.html', context)
 
 

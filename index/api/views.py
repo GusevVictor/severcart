@@ -1188,7 +1188,7 @@ def move_objects_to_firm_with_barcode(request):
 
         ansver['error'] = '0'
         ansver['url'] = reverse('index:empty')
-        msg = _('Objects %(numbers)s moved successfully.') % {'numbers': numbers}
+        msg = _('Objects %(numbers)s moved successfully.') % {'numbers': show_numbers}
         messages.success(request, msg)
         # очищаем сессионную переменную basket_to_transfer_firm
         request.session['basket_to_transfer_firm'] = []
