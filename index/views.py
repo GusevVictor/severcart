@@ -936,8 +936,9 @@ def from_firm_to_stock(request):
                                 firm         = firm,
                                 user         = str(request.user),
                                 json_content = jsoning_list,
-                                #money        = price,
-                                departament  = request.user.departament
+                                money        = money_sum,
+                                departament  = request.user.departament,
+                                parent_doc = doc
                                )
         act_doc.save()
 
