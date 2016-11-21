@@ -2,9 +2,12 @@ html, body {
     height: 100%;
 }
 
+body {
+    background: #f3f3f3;
+}
+
 body.all {
     height: 100%;
-    background: #fff;
 }
 
 body.linen-texture {
@@ -40,24 +43,7 @@ hr {
     padding: 0; 
 }
 
-div.main_content {
-    width: 1000px;
-    margin: 0 auto 0;
-    background: #f3f3f3;
-    min-height: 100%;
-    padding-bottom: 90px;
-}
-
-div.footer {
-    background: #f3f3f3;
-    max-width: 1000px;
-    height: 80px;
-    margin: -80px auto 0;
-
-}
-
 div.text_in_footer {
-    height: 100%;
     line-height: 80px;
     text-align: center;
     position: relative;
@@ -248,10 +234,6 @@ form.stickers_format ul {
     list-style-type: none;
 }
 
-div.main_content span.user_ou {
-    font-size:12px;
-}
-
 table.checkboxes tr.red_bg {
     background-color: #ff6464;
 }
@@ -271,11 +253,11 @@ div.submenu {
 
 /*  end global tables */
 
-.wrapper {
+/*.wrapper {
 	display: table-cell;
     vertical-align: middle;
 	margin: auto;
-}
+} /*
 
 .login_form {
     display: inline-block;
@@ -336,133 +318,44 @@ input.barcode:hover {
     background: url('../img/barcode.png') no-repeat right center;
 }
 
+
 /* Vertical menu */
-ul.vert-menu {
-    font-size: 0.875em;
-    padding:0;
-    float:left;
-    width:100%;
-    height:50px;
-    display:block;
-    margin:0;
-}
-
-ul.vert-menu li {
-    margin: 6px 0 0 0;
-    background: black;
-    display:block;
-    line-height: 50px;
-    list-style:none;
-}
-
-ul.vert-menu li.select {
-    border-left:6px solid #d0d0d0;
-    border-right:6px solid #d0d0d0;
-}
-
-ul.vert-menu li a {
-    background:none;
-    color:#fff;
-    text-decoration:none;
-    display:inline-block;
-    padding: 0 15px;
-    width: 100%;
-    outline: 0;
-}
-
-ul.vert-menu li a:hover {
-    background-color:#848484;
-}
-
-/* Horizontal menu */
 ul.menu {
     font-size: 0.875em;
-    padding:0;
-    float:left;
-    width:100%;
-    height:50px;
     display:block;
-    
     margin:0;
-}
-
-div.black-bg {
-    background-color:#000;
+    padding:0;
 }
 
 ul.menu li {
-    display:inline-block;
+    display:block;
     list-style:none;
-    float:left;
-    position:relative;
+    line-height:30px;
+    height: 30px;
+    padding: 0 0 0 12px;
 }
 
-ul.menu li a {
+ul.menu li a, ul.menu ul li a {
     background:none;
-    color:#fff;
     text-decoration:none;
     display:inline-block;
     padding: 0 12px;
     outline: 0;
+    color: black;
 }
 
 ul.menu li a:hover {
-    background-color:#848484;
+    color: gray;   
 }
 
 ul.menu ul {
-    display:none;
-    position:absolute;
-    left:-40px;
-    text-align:center;
-    list-style:none;
-    z-index: 100;
-}
-
-ul.menu li {
-    display:block;
-    line-height:50px;
-}
-
-
-ul.menu ul.hovered {
-    display:block;
+    display: block;
+    padding:0 0 0 25px;
 }
 
 ul.menu ul li{
-    background-color:#000;
-    height:50px;
-    width:100%;
-
-}
-
-ul.menu ul li a{
-    display:inline-block;
-    width:100%;
-    padding:0px;
-}
-
-ul.menu ul li a:hover{
-    background-color:#848484;
-}
-
-ul.menu .right {
-    float:right;
-}
-
-ul.menu > li.select > a:after {
-    content:' ';
-    display:block;
-    position:absolute;
-    left:0;
-    top:0;
-    right:0;
-    bottom:0; 
-    border-bottom:4px solid #f3f3f3;
-}
-
-ul.menu > li.select:hover:after {
-    background-color:#848484;   
+    line-height:30px;
+    height: 30px;
 }
 
 select.language_selector {
@@ -472,14 +365,10 @@ select.language_selector {
 }
 
 /*   --------end style menu-----------   */
-label.required {
-   background: url('../img/aster.png') left center no-repeat;
-   text-align: left;
-}
-
 div.wrapper label.required {
-    text-align: center;
+    text-align: left;
     background: none;  
+    background: url('../img/aster.png') left center no-repeat;
 }
 
 .input_row input[type="text"], .input_row select {
@@ -873,10 +762,8 @@ table.top_events td {
 
 /* --- bad browser --- */
 .header {
-    background-color:#ff0000;
-    color:#fff;
-    font-weight:bold;
-    padding:10px;
+    padding:0 40px 0 40px;
+    height: 50px;
 }
 
 .center_panel {
@@ -1139,7 +1026,7 @@ li.search form {
     vertical-align: middle; 
 }
 
-.search .search_button {
+div.wrapper .search_button {
     display: inline-block;
     width: 20px;
     height: 20px;
@@ -1147,6 +1034,10 @@ li.search form {
     background: url('../img/search.png') no-repeat;
     background-color: buttonface;
     vertical-align: middle;
+}
+
+div.wrapper .search_query {
+    display: inline-block;
 }
 /* End search service */
 
@@ -1392,4 +1283,56 @@ input.error_border {
 
 .dotted_border:focus {
     outline: none;
+}
+/* Улучшение дизайна */
+.wrapper {
+    /*width: 1200px; */
+    margin: 0 auto;
+    min-height: 100%;
+    height: auto !important;
+    height: 100%;
+}
+
+.middle {
+    width: 100%;
+    padding: 0 0 100px;
+    position: relative;
+}
+.middle:after {
+    display: table;
+    clear: both;
+    content: '';
+}
+.container {
+    width: 100%;
+    float: left;
+    overflow: hidden;
+}
+
+.content {
+    padding: 0 0 0 200px;
+}
+
+
+.left-sidebar {
+    float: left;
+    width: 200px;
+    margin-left: -100%;
+    position: relative;
+}
+
+
+.right-sidebar {
+    float: left;
+    width: 250px;
+    margin-left: -250px;
+    position: relative;
+    background: #FFACAA;
+}
+
+.footer {
+    width: 1200px;
+    margin: -80px auto 0;
+    height: 80px;
+    position: relative;
 }
