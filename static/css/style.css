@@ -53,10 +53,14 @@ form label {
     margin-bottom: 10px;
 }
 
+a, a:hover, a:focus {
+    outline: none;
+}
+
+
 div.wrapper form label,
-div.wrapper form input{
-    display:block;
-    margin:auto;
+div.wrapper form input {
+    display: inline-block;
 }
 
 
@@ -344,16 +348,22 @@ ul.menu li a, ul.menu ul li a {
     display:inline-block;
     padding: 0 12px;
     outline: 0;
-    color: black;
+    color: #0275b8;
 }
 
-ul.menu li a:hover {
-    color: gray;   
+ul.menu li span, ul.menu ul li span {
+    padding: 0  0 0 12px;
+}
+
+
+ul.menu li a:hover, ul.menu li a:focus {
+    color: #2795b6;
 }
 
 ul.menu ul {
     display: block;
-    padding:0 0 0 25px;
+    padding:0 0 0 24px;
+    margin: 0;
 }
 
 ul.menu ul li{
@@ -765,7 +775,7 @@ table.top_events td {
 
 /* --- bad browser --- */
 .header {
-    padding:0 40px 0 40px;
+    padding:0 24px 0 24px;
     height: 50px;
 }
 
@@ -1043,14 +1053,12 @@ div.wrapper .search_query {
 
 span.support_request {
     display: inline-block;
-    position: absolute;
-    right:12px;
     font-size: 14px;
+    float: right;
 }
 
 span.donate_link {
     display: inline-block;
-    margin-left: 12px;
     font-size: 14px;   
 }
 
@@ -1331,8 +1339,9 @@ input.error_border {
 }
 
 .footer {
-    width: 1200px;
+    /* width: 1200px; */
     margin: -80px auto 0;
     height: 80px;
     position: relative;
+    padding: 0 24px 0;
 }

@@ -8,7 +8,7 @@
     </div>    
     <ul class="menu">
         <li class="{% navactive request 'index:dashboard' %}"><a href="{% url 'index:dashboard' %}">{% trans "Main" %}</a></li>
-        <li><a class="no_follow">{% trans 'Consumables' %}</a></li>
+        <li><span>{% trans 'Consumables' %}</span></li>
         <ul>
             <li class="{% navactive request 'index:stock' %}"><a href="{% url 'index:stock' %}">{% trans "Filled" %}</a></li>
             <li class="{% navactive request 'index:use' %}"><a href="{% url 'index:use' %}">{% trans "Installed" %}</a></li>
