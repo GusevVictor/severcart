@@ -318,6 +318,9 @@ input.barcode:hover {
     background: url('../img/barcode.png') no-repeat right center;
 }
 
+.search_wrapper {
+    padding: 0 0 0 24px;
+}
 
 /* Vertical menu */
 ul.menu {
@@ -1015,16 +1018,6 @@ li.search form {
     overflow: hidden;
 }
 
-.search .search_query {
-    display: inline-block;
-    width: 100px;
-    height: 20px;
-    font-size: 12px;
-    border: 0px solid #000;
-    margin: 0;
-    padding: 0 0 0 2px;
-    vertical-align: middle; 
-}
 
 div.wrapper .search_button {
     display: inline-block;
@@ -1038,6 +1031,13 @@ div.wrapper .search_button {
 
 div.wrapper .search_query {
     display: inline-block;
+    width: 150px;
+    height: 20px;
+    font-size: 12px;
+    border: 0px solid #000;
+    margin: 0;
+    padding: 0 0 0 2px;
+    vertical-align: middle; 
 }
 /* End search service */
 

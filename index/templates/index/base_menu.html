@@ -1,6 +1,6 @@
 {% load filters %}{% load i18n %}
 <div class="marginTop">
-    <div>
+    <div class="search_wrapper">
         <form action="{% url 'find:search' %}" method="GET">
             <input class="search_query" type="text" name="query" onfocus="if(this.value == '{% trans "Find by number" %}') { this.value = ''; }" onfocusout="if(this.value == '') { this.value = '{% trans "Find by number" %}'; }" value="{% trans 'Find by number' %}" /><!--
            --><input type="submit" class="search_button" value="" />
