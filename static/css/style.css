@@ -261,7 +261,12 @@ div.submenu {
 	display: table-cell;
     vertical-align: middle;
 	margin: auto;
-} /*
+} */
+
+.wrapper {
+    width:1250px;
+    margin: auto;
+}
 
 .login_form {
     display: inline-block;
@@ -1340,6 +1345,8 @@ input.error_border {
 
 .footer {
     /* width: 1200px; */
+    width:1250px;
+    margin: auto;
     margin: -80px auto 0;
     height: 80px;
     position: relative;
