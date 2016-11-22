@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-11-21 22:36+0500\n"
+"POT-Creation-Date: 2016-11-22 16:36+0500\n"
 "PO-Revision-Date: 2016-05-27 12:27+0500\n"
 "Last-Translator: \n"
 "Language-Team: severcart.org <sfcl@mail.ru>\n"
@@ -167,7 +167,7 @@ msgstr ""
 #: .\index\templates\index\add_firm.html:3
 #: .\index\templates\index\add_name.html:3
 #: .\index\templates\index\add_type.html:3
-#: .\index\templates\index\base_menu.html:20
+#: .\index\templates\index\base_menu.html:21
 #: .\index\templates\index\edit_firm.html:3
 #: .\index\templates\index\toner_refill.html:3
 #: .\index\templates\index\tree_list.html:7
@@ -563,7 +563,7 @@ msgstr ""
 #: .\docs\templates\docs\names_list.html:31 .\index\forms\add_firm.py:8
 #: .\index\forms\add_user.py:10 .\index\models.py:47
 #: .\index\templates\index\at_work.html:42
-#: .\index\templates\index\basket.html:41
+#: .\index\templates\index\basket.html:41 .\index\templates\index\bufer.html:52
 #: .\index\templates\index\del_firm.html:9
 #: .\index\templates\index\empty.html:70
 #: .\index\templates\index\from_firm_to_stock.html:37
@@ -597,7 +597,8 @@ msgstr ""
 #: .\index\templates\index\add_empty_cartridge.html:31
 #: .\index\templates\index\add_items.html:32
 #: .\index\templates\index\at_work.html:41
-#: .\index\templates\index\basket.html:40 .\index\templates\index\empty.html:69
+#: .\index\templates\index\basket.html:40 .\index\templates\index\bufer.html:51
+#: .\index\templates\index\empty.html:69
 #: .\index\templates\index\from_firm_to_stock.html:36
 #: .\index\templates\index\from_firm_to_stock_with_barcode.html:34
 #: .\index\templates\index\get_cart_ou.html:7
@@ -617,8 +618,9 @@ msgstr "ID"
 #: .\docs\api\views.py:316 .\docs\api\views.py:345 .\docs\api\views.py:371
 #: .\docs\api\views.py:395 .\docs\api\views.py:421
 #: .\index\templates\index\at_work.html:43
-#: .\index\templates\index\basket.html:42 .\index\templates\index\empty.html:71
-#: .\index\templates\index\stock.html:69 .\index\templates\index\use.html:51
+#: .\index\templates\index\basket.html:42 .\index\templates\index\bufer.html:53
+#: .\index\templates\index\empty.html:71 .\index\templates\index\stock.html:69
+#: .\index\templates\index\use.html:51
 msgid "Amount<br/>recovery"
 msgstr ""
 
@@ -634,7 +636,8 @@ msgstr ""
 #: .\docs\api\views.py:398 .\docs\api\views.py:423
 #: .\docs\templates\docs\types_list.html:32 .\index\forms\comment.py:11
 #: .\index\templates\index\at_work.html:46
-#: .\index\templates\index\basket.html:44 .\index\templates\index\stock.html:72
+#: .\index\templates\index\basket.html:44 .\index\templates\index\bufer.html:55
+#: .\index\templates\index\stock.html:72
 msgid "comment"
 msgstr "Comment"
 
@@ -764,7 +767,7 @@ msgstr ""
 #: .\index\templates\index\add_empty_cartridge_from_barcode_scanner.html:69
 #: .\index\templates\index\add_items.html:75
 #: .\index\templates\index\basket.html:59 .\index\templates\index\empty.html:90
-#: .\index\templates\index\stock.html:88 .\index\templates\index\use.html:69
+#: .\index\templates\index\stock.html:89 .\index\templates\index\use.html:69
 msgid "Delivery agreement"
 msgstr ""
 
@@ -952,7 +955,7 @@ msgstr ""
 
 #: .\docs\templates\docs\delivery.html:111
 #: .\events\templates\events\show_events.html:3
-#: .\index\templates\index\base_menu.html:19
+#: .\index\templates\index\base_menu.html:20
 #: .\service\templates\service\general_settings.html:3
 #: .\service\templates\service\settings_mail.html:3
 #: .\service\templates\service\submenu.html:2
@@ -1570,7 +1573,7 @@ msgstr ""
 #: .\index\templates\index\add_empty_cartridge.html:68
 #: .\index\templates\index\add_empty_cartridge_from_barcode_scanner.html:63
 #: .\index\templates\index\add_items.html:69
-#: .\index\templates\index\empty.html:73
+#: .\index\templates\index\bufer.html:54 .\index\templates\index\empty.html:73
 #: .\index\templates\index\from_firm_to_stock_with_barcode.html:53
 #: .\index\templates\index\stock.html:71
 msgid "Storage"
@@ -1876,19 +1879,39 @@ msgstr ""
 msgid "Basket"
 msgstr ""
 
+#: .\index\templates\index\base_menu.html:18
+msgid "Bufer"
+msgstr ""
+
 #: .\index\templates\index\basket.html:45 .\index\templates\index\empty.html:75
 #: .\index\templates\index\stock.html:73
 msgid "Actions"
 msgstr ""
 
 #: .\index\templates\index\basket.html:57 .\index\templates\index\empty.html:88
-#: .\index\templates\index\stock.html:86 .\index\templates\index\use.html:67
+#: .\index\templates\index\stock.html:87 .\index\templates\index\use.html:67
 msgid "Edit a comment"
 msgstr ""
 
 #: .\index\templates\index\basket.html:58 .\index\templates\index\empty.html:89
-#: .\index\templates\index\stock.html:87 .\index\templates\index\use.html:68
+#: .\index\templates\index\stock.html:88 .\index\templates\index\use.html:68
 msgid "Event viewer"
+msgstr ""
+
+#: .\index\templates\index\bufer.html:2 .\index\templates\index\bufer.html:3
+msgid "List buffered cartridges"
+msgstr ""
+
+#: .\index\templates\index\bufer.html:31
+msgid "Print PDF"
+msgstr ""
+
+#: .\index\templates\index\bufer.html:32
+msgid "Delete item"
+msgstr ""
+
+#: .\index\templates\index\bufer.html:33
+msgid "Clear bufer"
 msgstr ""
 
 #: .\index\templates\index\change_number_modal.html:15
@@ -2102,6 +2125,10 @@ msgstr ""
 
 #: .\index\templates\index\stock.html:34
 msgid "Transfer"
+msgstr ""
+
+#: .\index\templates\index\stock.html:92
+msgid "Buffering"
 msgstr ""
 
 #: .\index\templates\index\toner_refill.html:16

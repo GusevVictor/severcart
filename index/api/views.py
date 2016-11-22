@@ -1446,3 +1446,45 @@ def linked_name_objects(request):
         return JsonResponse(ansver)    
     ansver['error'] = 0
     return JsonResponse(ansver)
+
+
+@require_POST
+@check_ajax_auth
+def push_to_bufer(request):
+    """
+    Изменить статус РМ с буферизирован или нет.
+    """
+    ansver = dict()
+    try:
+        root_ou   = request.user.departament
+        des       = root_ou.get_descendants()
+    except:
+        ansver['error'] ='1'
+        ansver['mes'] = _('Error: 101. Not set organization utint.')
+        return JsonResponse(ansver)
+
+    cart_id = request.POST.get('cart_id', '')
+    cart_id = str2int(cart_id)
+    
+    try:
+        m1 = CartridgeItem.objects.get(pk=cart_id)
+    except CartridgeItem.DoesNotExist:
+        ansver['error'] ='1'
+        ansver['mes'] = _('Not found.')
+        return JsonResponse(ansver)
+
+    cart_index = m1.pk
+    if not((m1.departament in des) or (m1.departament == request.user.departament)):
+        ansver['error'] ='1'
+        ansver['mes'] = _('An object with number %(cart_num)s belong to a different organizational unit.') % {'cart_num': cart_number}
+        return JsonResponse(ansver)
+
+    # переключаем статус с буферизован или нет
+    cart_status = m1.bufer
+    if cart_status:
+        m1.bufer = False
+    else:
+        m1.bufer = True
+    m1.save()
+    ansver['error'] = '0'
+    return JsonResponse(ansver)

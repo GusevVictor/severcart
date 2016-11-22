@@ -25,6 +25,7 @@ from index.views import ( dashboard,
                         from_firm_to_stock,
                         from_firm_to_stock_with_barcode,
                         evaluate_service,
+                        Bufer,
                         )
 
 urlpatterns = [
@@ -53,4 +54,5 @@ urlpatterns = [
     url(r'^from_firm_to_stock/', from_firm_to_stock, name='from_firm_to_stock'),
     url(r'^from_firm_to_stock_with_barcode/', from_firm_to_stock_with_barcode, name='from_firm_to_stock_with_barcode'),
     url(r'^evaluate_service/', evaluate_service, name='evaluate_service'),
+    url(r'^bufer/', Bufer.as_view(), name='bufer'),
 ]

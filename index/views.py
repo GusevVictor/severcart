@@ -1067,3 +1067,49 @@ def evaluate_service(request):
         context['msg'] = _('An object with number %(cart_num)s belong to a different organizational unit.') % {'cart_num': node.cart_number}
 
     return render(request, 'index/evaluate_service.html', context)
+
+
+class Bufer(CartridgesView):
+    """
+    """
+    @method_decorator(login_required)
+    @method_decorator(never_cache)
+    def dispatch(self, *args, **kwargs):
+        return super(Bufer, self).dispatch(*args, **kwargs)
+
+    def get(self, request, *args, **kwargs):
+        super(Bufer, self).get(*args, **kwargs)
+        self.context['view'] = 'bufer'
+        try:
+            root_ou   = self.request.user.departament
+            children  = root_ou.get_family()
+        except AttributeError:
+            children = None
+        self.all_items = self.all_items.filter(departament__in=children).filter(bufer=True)
+        # для минимизации количества обращений к базе данных воспользуемся 
+        # простиньким кэшом
+        simple_cache = dict()
+        i = 0 # итерируемая переменная для доступа по индексу
+        # Внимание! Поля sklad_title и sklad_address являются искуственно
+        # внедрёнными, в модели CartridgeItem их нет.
+        for item in self.all_items:
+            if simple_cache.get(item.sklad, 0):
+                self.all_items[i].sklad_title = simple_cache.get(item.sklad)['title']
+                self.all_items[i].sklad_address = simple_cache.get(item.sklad)['address']
+            else:
+                try:
+                    sklad = Storages.objects.get(pk=item.sklad)
+                except:
+                    simple_cache[item.sklad] = {'title': '', 'address': ''}
+                    self.all_items[i].sklad_title    = ''
+                    self.all_items[i].sklad_address  = ''
+                else:
+                    simple_cache[item.sklad] =  {'title': sklad.title, 'address': sklad.address}
+                    self.all_items[i].sklad_title    = sklad.title
+                    self.all_items[i].sklad_address  = sklad.address
+            i += 1
+
+        page_size = self.items_per_page()
+        self.context['size_perpage'] = page_size
+        self.context['cartrjs'] = self.pagination(self.all_items, page_size)
+        return render(request, 'index/bufer.html', self.context)
