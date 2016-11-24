@@ -5,6 +5,7 @@ import time
 import json
 from django.http import JsonResponse, HttpResponse, Http404
 from django.db.models.deletion import ProtectedError
+from django.views.decorators.http import require_POST
 from django.db.models import Q
 from django.conf import settings
 from django.utils import timezone
@@ -551,13 +552,12 @@ def calculate_sum(request):
     return JsonResponse(ansver)
 
 
+@require_POST
 @check_ajax_auth
 def generate_return_act(request):
     """Генерация нового docx акта возврата картриджей. Вью возвращает Url с свежезгенерированным файлом. 
     """
     resp_dict = dict()
-    if request.method != 'POST':
-        return HttpResponse('<h1>' + _('Only use POST requests!') + '</h1>')
     # использование глобальных переменных не очень хороший приём
     # но он позволяет упростить программный код
     total_pages_count = 0
@@ -675,3 +675,19 @@ def generate_return_act(request):
     resp_dict['text']  = _('Document %(doc_number)s_%(user_id)s_3.docx generated') % { 'doc_number': m1.number, 'user_id': request.user.pk}
     resp_dict['url'] = settings.STATIC_URL + 'docx/' + docx_file_name
     return JsonResponse(resp_dict)
+
+
+@require_POST
+@check_ajax_auth
+def clear_bufer(request):
+    ansver = dict()
+    try:
+        root_ou   = request.user.departament
+        children  = root_ou.get_family()
+    except AttributeError:
+        children = None
+    all_items = CartridgeItem.objects.filter(departament__in=children).filter(bufer=True)
+    for item in all_items:
+        item.bufer = False
+        item.save()
+    return JsonResponse(ansver)

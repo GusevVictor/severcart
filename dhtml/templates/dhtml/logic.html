@@ -181,7 +181,6 @@ $( function(){
                 if ( msg.success ) {
                     $('.error_msg').hide();
                     window.location.href = "{% url 'index:empty' %}";
-                    console.log('Редирект');
                 }
 
                 if ( msg.errors ) {
@@ -2610,5 +2609,28 @@ $( function(){
         });
     });
 
+    $('.clear_bufer').click( function() {
+        $.ajax({
+            method: 'POST',
+            url: '{% url "docs:clear_bufer" %}',
+            data:  {},
+            beforeSend: function( xhr, settings ){
+                $('.spinner_pdf').show();
+                csrftoken = getCookie('csrftoken');
+                if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
+                    xhr.setRequestHeader('X-CSRFToken', csrftoken);
+                }
+            },
+            success: function( msg ) {
+                $('.spinner_pdf').hide();
+                window.location.href = "{% url 'index:bufer' %}";
+            },
+            error: function() {
+                $('.ajax_messages').show();
+                $('.success_msg').html('{% trans "Server error :(" %}');
+                $('.spinner_pdf').hide();
+            },
+        });
+    })
 
 });
