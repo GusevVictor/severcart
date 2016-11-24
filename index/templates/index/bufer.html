@@ -28,10 +28,12 @@
 {% endif %}
 <div class="row">
     <div class="large-7 columns">
-        <a class="button no_follow" href="#">{% trans "Print PDF" %}</a>
+        <a class="button no_follow generate_pdf" href="#" data="bufer">{% trans "Print PDF" %}</a>
         <a class="button no_follow" href="#">{% trans "Delete item" %}</a>
-        <a class="button no_follow" href="#">{% trans "Clear bufer" %}</a>
+        <a class="button no_follow clear_bufer" href="#">{% trans "Clear bufer" %}</a>
         <img class="spinner" src="/static/img/loader.gif">
+        <a class="download_pdf" href="#">{% trans "Download" %}</a>
+        <img class="spinner_pdf" src="{{ STATIC_URL }}img/loader.gif" />
     </div>
     <div class="large-5 columns text-right">
         

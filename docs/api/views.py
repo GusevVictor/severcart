@@ -448,7 +448,7 @@ def generate_pdf(request):
     
     from common.helpers import Sticker
     from service.helpers import SevercartConfigs
-    resp_dict = {}
+    resp_dict = dict()
     pdf_file_name = str(int(time.time())) + '_' + str(request.user.pk) + '.pdf'
     cart_type = request.POST.get('cart_type', '')
     if not os.path.exists(settings.STATIC_ROOT_PDF):
@@ -462,11 +462,29 @@ def generate_pdf(request):
             os.remove(files[0])
     except:
         pass
+
     pdf_full_name = os.path.join(settings.STATIC_ROOT_PDF, pdf_file_name)
+    conf = SevercartConfigs()
+    pagesize = conf.page_format
+    print_bar_code = conf.print_bar_code
+    pdf_doc = Sticker(file_name=pdf_full_name, pagesize=pagesize, print_bar_code=print_bar_code)
+    
     if cart_type == 'full':
         session_data = request.session.get('cumulative_list')
     elif cart_type == 'empty':
         session_data = request.session.get('empty_cart_list')
+    elif cart_type == 'bufer':
+        try:
+            root_ou   = request.user.departament
+            children  = root_ou.get_family()
+        except AttributeError:
+            children = None
+        all_items = CartridgeItem.objects.filter(departament__in=children).filter(bufer=True)
+        for item in all_items:
+            pdf_doc.add(ou_number=request.user.departament.pk, cartridge_name=item.cart_itm_name, cartridge_number=item.cart_number)
+        pdf_doc.fin()
+        resp_dict['url'] = settings.STATIC_URL + 'pdf/' + pdf_file_name
+        return JsonResponse(resp_dict)        
     else:
         pass
 
@@ -482,10 +500,6 @@ def generate_pdf(request):
     for elem in list_names:
         simple_cache[elem.pk] = elem.cart_itm_name
 
-    conf = SevercartConfigs()
-    pagesize = conf.page_format
-    print_bar_code = conf.print_bar_code
-    pdf_doc = Sticker(file_name=pdf_full_name, pagesize=pagesize, print_bar_code=print_bar_code)
     # формируем текст для наклейки
     for elem in session_data:
         for stik in elem[2]:
