@@ -1361,3 +1361,8 @@ div.led.switch_off {
 div.led.switch_on {
     background: url(../img/led.png) 0 0 no-repeat;
 }
+
+.show_item_number {
+    color:#a3a3a3;
+    font-size: 12px;
+}

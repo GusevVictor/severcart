@@ -9,6 +9,7 @@
         <input type="text" id="cart_number" class="cart_number" value="Изменяемый текст"  name="cart_number"/>
     </form>
   </div>
+  <span class="show_item_number"></span>
   <a class="close-reveal-modal" aria-label="Close">&#215;</a>
   <div class="right">
     <img class="spinner_cn" src="{{ STATIC_URL }}img/loader.gif" />
@@ -38,6 +39,7 @@
         });
         if (selected.length === 1) {
             cart_id = selected[0]['cart_id'];
+            $('.show_item_number').html(selected[0]['cart_number']);
             //cart_number = selected[0]['cart_number'];
             $('input.cart_id').attr('value', cart_id);
             //$('input.cart_number').val(cart_number);
