@@ -2631,6 +2631,42 @@ $( function(){
                 $('.spinner_pdf').hide();
             },
         });
-    })
+    });
+
+    $('.remove_from_bufer').click( function() {
+        var selected = [];
+        $('.checkboxes input:checked').each(function() {
+            if ($(this).attr('value')) {
+                selected.push( $(this).attr('value') );
+            }
+        });
+
+        if ( selected.length !== 0 ) {
+            $('.spinner_pdf').show();
+            var tr = $('.checkboxes input:checked').parent().parent().not('.table_header');
+            var freezy_f = pretty_del_table_row(tr,'gray_bg');
+            $.ajax({
+                method: 'POST',
+                url: '{% url "docs:remove_from_bufer" %}',
+                data:  {'selected': selected},
+                beforeSend: function( xhr, settings ){
+                    csrftoken = getCookie('csrftoken');
+                    if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
+                        xhr.setRequestHeader('X-CSRFToken', csrftoken);
+                    }
+                },
+                success: function( msg ) {
+                    $('.spinner_pdf').hide();
+                    freezy_f(function() {});
+
+                },
+                error: function() {
+                    $('.spinner_pdf').hide();
+                },
+            });
+        }
+
+    });
+
 
 });

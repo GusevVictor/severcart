@@ -7,6 +7,7 @@ from .views import (del_cart_name,
                     calculate_sum,
                     generate_return_act,
                     clear_bufer,
+                    remove_from_bufer,
                     )
 
 urlpatterns = [
@@ -18,4 +19,5 @@ urlpatterns = [
     url(r'^calculate_sum/', calculate_sum, name='calculate_sum'),
     url(r'^generate_return_act/', generate_return_act, name='generate_return_act'),
     url(r'^clear_bufer/', clear_bufer, name='clear_bufer'),
+    url(r'^remove_from_bufer/', remove_from_bufer, name='remove_from_bufer'),
 ]

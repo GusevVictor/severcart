@@ -27,7 +27,6 @@
             <span class="user_ou" title="{{request.user.departament}}">{% if request.user.departament %}{{request.user.departament|truncatechars:100}}{% endif %}</span>&nbsp;&nbsp;<select class="language_selector" name="languge"><option {% if request.LANGUAGE_CODE == 'ru' %}selected{% endif %} value="ru">Русский</option><option {% if request.LANGUAGE_CODE == 'en' %}selected{% endif %} value="en">English</option></select>&nbsp;&nbsp;{{request.user.get_username}}&nbsp;&nbsp;<a href="{% url 'auth:logout' %}">{% trans "Exit" %}</a>
         </div>
     </header><!-- .header-->
-
     <div class="middle">
         <div class="container">
             <main class="content">
@@ -50,12 +49,9 @@
             {% include "index/base_menu.html" %}
         </aside><!-- .left-sidebar -->
     </div><!-- .middle-->
-
-</div>
-
-<footer class="footer">
+</div><!--
+--><footer class="footer">
     <div class="text_in_footer">{% if request.SHOW_COPYRIGHT %}<span class="left donate_link"><a href="http://www.severcart.org/donate/">{% trans 'Thanks' %}</a></span>{% endif %}{% trans "Version" %}: {{ request.VERSION }}{% if request.SHOW_COPYRIGHT %}&nbsp;&nbsp;&nbsp;&copy;&nbsp;&nbsp;&nbsp;<a href="{{ request.HOME_SITE }}">www.severcart.org</a>&nbsp;&nbsp;&nbsp;{{ request.YEAR }} <span class="right support_request"><a href="http://www.severcart.org/support/{{ request.LANGUAGE_CODE }}/">{% trans 'Request tech support' %}</a></span>{% endif %}</div>
-</footer>
-
-</body>
+</footer><!--
+--></body>
 </html>

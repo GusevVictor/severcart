@@ -263,11 +263,6 @@ div.submenu {
 	margin: auto;
 } */
 
-.wrapper {
-    width:1250px;
-    margin: auto;
-}
-
 .login_form {
     display: inline-block;
     width: 250px;
@@ -1299,16 +1294,14 @@ input.error_border {
 }
 /* Улучшение дизайна */
 .wrapper {
-    /*width: 1200px; */
+    width:1250px;
     margin: 0 auto;
     min-height: 100%;
-    height: auto !important;
-    height: 100%;
 }
 
 .middle {
     width: 100%;
-    padding: 0 0 70px;
+    padding: 0 0 70px 0;
     position: relative;
 }
 .middle:after {

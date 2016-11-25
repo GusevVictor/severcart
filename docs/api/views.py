@@ -691,3 +691,20 @@ def clear_bufer(request):
         item.bufer = False
         item.save()
     return JsonResponse(ansver)
+
+
+@require_POST
+@check_ajax_auth
+def remove_from_bufer(request):
+    ansver = dict()
+    ar = request.POST.getlist('selected[]')
+    ar = [str2int(i) for i in ar ]
+    list_cplx = []
+    for ind in ar:
+        node = CartridgeItem.objects.get(pk=ind)
+        # проверяем принадлежность перемещаемого РМ департаменту 
+        # пользователя.
+        if node.departament == request.user.departament:
+            node.bufer = False
+            node.save()
+    return JsonResponse(ansver)
