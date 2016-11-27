@@ -780,7 +780,7 @@ def transfer_to_firm(request):
         # если кто-то зашел на страницу не выбрав расходники
         return HttpResponseRedirect(reverse('index:empty'))
     form = TransfeToFirm(initial = {'numbers': checked_cartr})
-    form.fields['doc'].queryset = SCDoc.objects.filter(departament=request.user.departament).filter(doc_type=2)
+    form.fields['doc'].queryset = SCDoc.objects.filter(doc_type=-1) # инициализируем пустой список для его загрузки аяксом
     context['form'] = form
     context['checked_cartr'] = checked_cartr
     context['transfe_objs'] = transfe_objs

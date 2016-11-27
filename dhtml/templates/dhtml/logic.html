@@ -2665,7 +2665,42 @@ $( function(){
                 },
             });
         }
+    });
 
+
+    $('.load_doc_ajax').change( function() {
+        // динамически подгружаем договора поставки
+        var html_select = $(this);
+        var firm_id = html_select.children(':selected').attr('value');        
+        if (firm_id) {      
+            $('.spinner').show();
+            $.ajax({
+                method: 'POST',
+                url: '{% url "index:docs_firm_suggests" %}',
+                data: {'firm_id': firm_id},
+                beforeSend: function( xhr, settings ){
+                    csrftoken = getCookie('csrftoken');
+                    if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
+                        xhr.setRequestHeader('X-CSRFToken', csrftoken);
+                    }
+                },
+                success: function( msg ) {
+                    $('.spinner').hide();
+                    $('#id_doc').find('option').remove().end(); // очищаем весь  select 
+                    // с сервера приходит структура res = [ [12, 'Договор заправки'], [23, 'Договор обслуживания']  ]
+                    for (var i = 0; i < msg.res.length; i++) {
+                        // добавляем в селект новые опции
+                        $('#id_doc').append($('<option>', { value: msg.res[i][0], text : msg.res[i][1] }));
+                    }
+
+                },
+                error: function() {
+                    $('.spinner').hide();
+                    setTimeout(function() { $('.error_msg').html('{% trans "<p>Server not available.</p>" %}'); }, 12000);
+                },
+            });
+        }
+          
     });
 
 

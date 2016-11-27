@@ -1488,3 +1488,20 @@ def push_to_bufer(request):
     m1.save()
     ansver['error'] = '0'
     return JsonResponse(ansver)
+
+
+@require_POST
+@check_ajax_auth
+def docs_firm_suggests(request):
+    """Динамическое формирование списка договоров обслуживания для заданной фирмы.
+    """
+    ansver = dict()
+    firm_id = request.POST.get('firm_id', 0)
+    firm_id = str2int(firm_id)
+    firm = get_object_or_404(FirmTonerRefill, pk=firm_id)
+    m1 = SCDoc.objects.filter(firm=firm).filter(doc_type=2).filter(departament=request.user.departament)
+    res = list()
+    for item in m1:
+        res.append([item.pk, item.title])
+    ansver['res'] = res
+    return JsonResponse(ansver)
