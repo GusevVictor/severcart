@@ -143,11 +143,11 @@ if __name__ == '__main__':
             print(tr('Installation package dependencies for Linux', lang=lang))
             packages_unix = [
                 ['Django==1.9'], 
-                ['lxml==%s.%s.%s' % (sys.version_info.major, sys.version_info.minor, sys.version_info.micro)],
+                ['lxml'],
                 ['django-mptt'],
                 ['psycopg2'],
                 ['python-docx'],
-                ['pillow==2.9.0'],
+                ['pillow'],
                 ['reportlab'],
                 ['pytz'],
             ]
