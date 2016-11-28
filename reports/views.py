@@ -7,7 +7,7 @@ from django.utils import timezone
 from django.db import connection
 from django.views.decorators.cache import never_cache
 from common.helpers import BreadcrumbsPath
-from reports.forms import NoUse, Amortizing, UsersCartridges, UseProducts
+from reports.forms import NoUse, Amortizing, UsersCartridges, UseProducts, Firms
 from index.models import CartridgeItem
 
 
@@ -208,3 +208,14 @@ def spent_money(request):
     else:
         context['form'] = UseProducts(initial={'org': request.user.departament})
     return render(request, 'reports/spent_money.html', context)
+
+
+@login_required
+@never_cache
+def firm(request):
+    """Отчёт по заправщикам. Кто,сколько и за какие деньги заправил расходники.
+    """
+    context = dict()
+    form = Firms()
+    context['form'] = form
+    return render(request, 'reports/firm.html', context)
