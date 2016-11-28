@@ -1379,3 +1379,40 @@ div.led.switch_on {
     color:#a3a3a3;
     font-size: 12px;
 }
+
+/* Vertical menu */
+ul.vert-menu {
+    font-size: 0.875em;
+    padding:0;
+    float:left;
+    width:100%;
+    display:block;
+    margin:0;
+}
+
+ul.vert-menu li {
+    margin: 6px 0 0 0;
+    background: black;
+    display:block;
+    line-height: 50px;
+    list-style:none;
+}
+
+ul.vert-menu li.select {
+    border-left:6px solid #d0d0d0;
+    border-right:6px solid #d0d0d0;
+}
+
+ul.vert-menu li a {
+    background:none;
+    color:#fff;
+    text-decoration:none;
+    display:inline-block;
+    padding: 0 15px;
+    width: 100%;
+    outline: 0;
+}
+
+ul.vert-menu li a:hover {
+    background-color:#848484;
+}
