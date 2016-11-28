@@ -1,5 +1,6 @@
 # -*- coding:utf-8 -*-
 
+import os, glob
 from django.conf import settings
 from django.shortcuts import render
 from reportlab.graphics.barcode import qr
@@ -227,3 +228,32 @@ class Sticker(object):
         self.canv.showPage()
         self.canv.save()
 
+
+def rotator_files(file_type='docx'):
+    """Ротация старых файлов. 
+    """
+    if file_type == 'docx':
+        file_count = settings.MAX_COUNT_DOCX_FILES
+        directory = settings.STATIC_ROOT_DOCX
+    elif file_type == 'csv':
+        file_count = settings.MAX_COUNT_CSV_FILES
+        directory = settings.STATIC_ROOT_CSV
+    elif file_type == 'pdf':
+        file_count = settings.MAX_COUNT_PDF_FILES
+        directory = settings.STATIC_ROOT_PDF
+    else:
+        file_count = settings.MAX_COUNT_PDF_FILES
+        directory = settings.STATIC_ROOT_PDF
+
+    if not os.path.exists(directory):
+        os.makedirs(directory)
+
+    files = filter(os.path.isfile, glob.glob(directory + '\*.' + file_type))
+    files = list(files)
+    files.sort(key=lambda x: os.path.getmtime(x))
+    try:
+        if len(files) > file_count:
+            os.remove(files[0])
+    except:
+        pass
+    return None

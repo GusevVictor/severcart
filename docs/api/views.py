@@ -1,6 +1,6 @@
 # -*- coding:utf-8 -*-
 
-import os, io, glob, re
+import os, io, re
 import time
 import json
 from django.http import JsonResponse, HttpResponse, Http404
@@ -17,6 +17,7 @@ from docx.enum.text import WD_ALIGN_PARAGRAPH
 from docx.enum.style import WD_STYLE_TYPE
 from index.models import CartridgeItemName, CartridgeType, CartridgeItem, City
 from index.helpers import check_ajax_auth, str2int
+from common.helpers import rotator_files
 from docs.models import RefillingCart, SCDoc
 from docs.helpers import group_names, localize_date
 from service.helpers import SevercartConfigs
@@ -142,18 +143,7 @@ def generate_act(request):
 
     co = len(jsontext) # количество передаваемых картриджей на заправку
 
-    if not os.path.exists(settings.STATIC_ROOT_DOCX):
-        os.makedirs(settings.STATIC_ROOT_DOCX)
-
-    # ротация файлов
-    files = filter(os.path.isfile, glob.glob(settings.STATIC_ROOT_DOCX + '\*.docx'))
-    files = list(files)
-    files.sort(key=lambda x: os.path.getmtime(x))
-    try:
-        if len(files) > settings.MAX_COUNT_DOCX_FILES:
-            os.remove(files[0])
-    except:
-        pass
+    rotator_files(file_type='docx')
     # производим инициализацию некоторых переменных начальными значениями
     sender_full_name    = request.user.fio
     recipient_full_name = ' '*50
@@ -291,17 +281,9 @@ def generate_csv(request):
     view = request.POST.get('view', '')
     gtype = request.POST.get('gtype', '')
     conf = SevercartConfigs()
-    if not os.path.exists(settings.STATIC_ROOT_CSV):
-        os.makedirs(settings.STATIC_ROOT_CSV)
-    # Прозводим ротацию каталога csv от старых файлов
-    files = filter(os.path.isfile, glob.glob(settings.STATIC_ROOT_CSV + '\*.csv'))
-    files = list(files)
-    files.sort(key=lambda x: os.path.getmtime(x))
-    try:
-        if len(files) > settings.MAX_COUNT_CSV_FILES:
-            os.remove(files[0])
-    except:
-        pass
+
+    rotator_files(file_type='csv')
+
     csv_full_name = os.path.join(settings.STATIC_ROOT_CSV, csv_file_name)
     all_items = CartridgeItem.objects.all().order_by('pk')
     if view == 'stock':
@@ -452,17 +434,8 @@ def generate_pdf(request):
     resp_dict = dict()
     pdf_file_name = str(int(time.time())) + '_' + str(request.user.pk) + '.pdf'
     cart_type = request.POST.get('cart_type', '')
-    if not os.path.exists(settings.STATIC_ROOT_PDF):
-        os.makedirs(settings.STATIC_ROOT_PDF)
-    # Прозводим ротацию каталога pdf от старых файлов
-    files = filter(os.path.isfile, glob.glob(settings.STATIC_ROOT_PDF + '\*.pdf'))
-    files = list(files)
-    files.sort(key=lambda x: os.path.getmtime(x))
-    try:
-        if len(files) > settings.MAX_COUNT_PDF_FILES:
-            os.remove(files[0])
-    except:
-        pass
+    
+    rotator_files(file_type='pdf')
 
     pdf_full_name = os.path.join(settings.STATIC_ROOT_PDF, pdf_file_name)
     conf = SevercartConfigs()
