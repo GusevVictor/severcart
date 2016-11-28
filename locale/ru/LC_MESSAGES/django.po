@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-11-22 16:36+0500\n"
-"PO-Revision-Date: 2016-11-22 16:39+0500\n"
+"PO-Revision-Date: 2016-11-28 14:04+0500\n"
 "Last-Translator: \n"
 "Language-Team: severcart.org <sfcl@mail.ru>\n"
 "Language: ru\n"
@@ -893,11 +893,11 @@ msgstr "Город"
 
 #: .\docs\templates\docs\delivery.html:2
 msgid "delivery agreement"
-msgstr "Договора поставки"
+msgstr "Договоры поставки"
 
 #: .\docs\templates\docs\delivery.html:3 .\docs\templates\docs\handbook.html:15
 msgid "Agreement"
-msgstr "Договора"
+msgstr "Договоры"
 
 #: .\docs\templates\docs\delivery.html:13 .\events\helpers.py:24
 #: .\events\templates\events\show_events.html:9
