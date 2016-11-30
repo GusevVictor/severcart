@@ -1,8 +1,10 @@
 # -*- coding:utf-8 -*-
 
+import datetime
 from django import forms
 from django.utils.translation import ugettext_lazy as _
 from index.models import OrganizationUnits
+from index.helpers import str2int
 from django.core.exceptions import ValidationError
 
 
@@ -147,8 +149,14 @@ class Firms(forms.Form):
             # если пользователь не смухлевал, то кол-во элементов = 3
             date_value  = start_date[0]
             month_value = start_date[1]
-            year_value  = start_date[2]
-            gte_date    = '%s-%s-%s 00:00:00' % (year_value, month_value, date_value,)
+            year_value = start_date[2]
+            date_value = str2int(date_value)
+            month_value = str2int(month_value)
+            year_value = str2int(year_value)
+            gte_date = datetime.datetime(year=year_value, 
+                        month=month_value, 
+                        day=date_value, 
+                        )
         else:
             raise ValidationError(_('Error in start date.'))
         return gte_date
@@ -159,7 +167,6 @@ class Firms(forms.Form):
         # проверяем на корректность дату окончания просмотра списка
         end_date = self.cleaned_data.get('end_date', '').strip()
         end_date = end_date.split(r'/')
-        
         if  end_date and len(end_date) == 3:
             # если пользователь не смухлевал, то кол-во элементов = 3
             date_value  = end_date[0]
@@ -167,7 +174,15 @@ class Firms(forms.Form):
             month_value = end_date[1]
             #month_value = del_leding_zero(month_value)
             year_value  = end_date[2]
-            lte_date    = '%s-%s-%s 23:59:59' % (year_value, month_value, date_value,)
+            #lte_date    = '%s-%s-%s 23:59:59' % (year_value, month_value, date_value,)
+            date_value = str2int(date_value)
+            month_value = str2int(month_value)
+            year_value = str2int(year_value)
+            
+            lte_date = datetime.datetime(year=year_value, 
+                        month=month_value, 
+                        day=date_value, 
+                        )
         else:
             return False
         return lte_date

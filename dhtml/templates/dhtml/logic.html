@@ -2706,7 +2706,36 @@ $( function(){
     $('.report_firm').click(function(){
         var start_date = $('#id_start_date').val();
         var end_date = $('#id_end_date').val();
-        console.log(start_date, end_date);
+        $.ajax({
+            method: 'POST',
+            url: '{% url "reports:ajax_firm" %}',
+            data: {'start_date': start_date, 'end_date': end_date},
+            beforeSend: function( xhr, settings ){
+                $('.spinner').show();
+                csrftoken = getCookie('csrftoken');
+                if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
+                    xhr.setRequestHeader('X-CSRFToken', csrftoken);
+                }
+            },
+            success: function( msg ) {
+                $('.spinner').hide();
+                $('.error_msg').html();
+                $('.result').show().html();
+                console.log('msg.text=', msg.text);
+                if (msg.error == '0') {
+                    $('.result').html(msg.text);
+                }
+                if (msg.error == '1') {
+                    $('.error_msg').show();
+                    $('.error_msg').html(msg.text);
+                }
+
+            },
+            error: function() {
+                $('.spinner').hide();
+                
+            },
+        });
     });
 
 });

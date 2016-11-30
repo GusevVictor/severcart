@@ -1,6 +1,6 @@
 # -*- coding:utf-8 -*-
 
-import datetime
+import datetime, copy, json
 from django.http import JsonResponse, HttpResponse
 from django.template.loader import render_to_string
 from django.utils.translation import ugettext as _
@@ -8,6 +8,8 @@ from django.db.models import Q
 from index.helpers import check_ajax_auth
 from index.models import CartridgeItem, OrganizationUnits
 from events.models import Events
+from reports.forms import Firms
+from docs.models import RefillingCart
 
 
 @check_ajax_auth
@@ -101,4 +103,53 @@ def ajax_reports_users(request):
     result = sorted(result.items(), key=operator.itemgetter(1), reverse=True)
     context['text'] = render_to_string('reports/users_ajax.html', context={'result': result})
     context['error'] = '0'
+    return JsonResponse(context)
+
+@check_ajax_auth
+def ajax_firm(request):
+    """
+    """
+    context = dict()
+    form = Firms(request.POST)
+    context['error'] = '0'
+    if form.is_valid():
+        data_in_post = form.cleaned_data
+        start_date = data_in_post.get('start_date')
+        end_date = data_in_post.get('end_date')
+        common_select = RefillingCart.objects.filter(doc_type=2).filter(departament=request.user.departament)
+        if start_date and not(end_date):
+            common_select = common_select.filter(date_created__gte=start_date)
+        if not(start_date) and end_date: 
+            common_select = common_select.filter(date_created__lte=end_date)
+        if start_date and end_date:
+            common_select = common_select.filter(Q(date_created__gte=start_date) & Q(date_created__lte=end_date))
+
+        save_select = copy.copy(common_select)
+        firms = common_select.values('firm').distinct()
+        set_firms = set()
+        for f1 in firms:
+            set_firms.add(f1['firm'])
+        firms = None
+        set_firms = list(set_firms)
+        # убираем повторения
+        result = list()
+        for f1 in set_firms:
+            if f1 == 'None':
+                continue
+            m1 = save_select.filter(firm=f1)
+            print('firm_name=', f1)
+            for f2 in m1:
+                act_data = f2.json_content
+                act_data = json.loads(act_data)
+                # полностью переделать!
+                #result.append({'firm': f2.firm, 'count': len(act_data), 'money': f2.money})
+
+        #print('firms=',set_firms)
+        context['error'] = '0'
+        context['text'] = result
+
+    else:
+        context['text'] = form.errors.as_text()
+        context['error'] = '1'
+
     return JsonResponse(context)
