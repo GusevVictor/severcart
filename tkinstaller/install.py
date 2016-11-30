@@ -139,7 +139,7 @@ if __name__ == '__main__':
                 print(str(persent) + "%")
                 persent += 10
             print("100%")
-        elif 'linux' in OS:
+        else:
             print(tr('Installation package dependencies for Linux', lang=lang))
             packages_unix = [
                 ['Django==1.9'], 
@@ -159,9 +159,6 @@ if __name__ == '__main__':
                 print(str(persent) + "%")
                 persent += 10
             print("100%")
-        else:
-            print(tr('Support for this architecture is not implemented.', lang=lang))
-            prompt_exit()
     except Exception as e:
         print(str(e))
         print(tr('Further continuation of the installation is not possible!',lang=lang))
