@@ -2706,6 +2706,9 @@ $( function(){
     $('.report_firm').click(function(){
         var start_date = $('#id_start_date').val();
         var end_date = $('#id_end_date').val();
+        $('.result').html();
+        $('.error_msg').hide();
+        $('.download_result').hide();
         $.ajax({
             method: 'POST',
             url: '{% url "reports:ajax_firm" %}',
@@ -2721,9 +2724,10 @@ $( function(){
                 $('.spinner').hide();
                 $('.error_msg').html();
                 $('.result').show().html();
-                console.log('msg.text=', msg.text);
                 if (msg.error == '0') {
                     $('.result').html(msg.text);
+                    $('.download_result').show();
+                    $('.download_result').attr('href', msg.url);
                 }
                 if (msg.error == '1') {
                     $('.error_msg').show();

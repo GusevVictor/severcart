@@ -27,13 +27,12 @@ from events.helpers import do_timezone
 import logging
 logger = logging.getLogger(__name__)
 
+
+@require_POST
 @check_ajax_auth
 def del_cart_name(request):
     """Удаляем имя расходного материала.
     """
-    if request.method != 'POST':
-        return HttpResponse('<h1>' + _('Only use POST requests!') + '</h1>')
-    
     resp_dict = dict()
     cart_name_id = request.POST.get('cart_name_id', '')
     atype = request.POST.get('atype', '')
@@ -74,14 +73,12 @@ def del_cart_name(request):
     return JsonResponse(resp_dict, safe=False)
 
 
+@require_POST
 @check_ajax_auth
 def del_city(request):
     """Удаление записи о городе.
     """
     ansver = dict()
-    if request.method != 'POST':
-        return HttpResponse('<h1>' + _('Only use POST requests!') + '</h1>')
-    
     citi_id = request.POST.get('select', 0)
 
     try:
@@ -106,13 +103,12 @@ def del_city(request):
     return JsonResponse(ansver)
 
 
+@require_POST
 @check_ajax_auth
 def generate_act(request):
     """Генерация нового docx документа. Вью возвращает Url с свежезгенерированным файлом. 
     """
     resp_dict = dict()
-    if request.method != 'POST':
-        return HttpResponse('<h1>' + _('Only use POST requests!') + '</h1>')
     # использование глобальных переменных не очень хороший приём
     # но он позволяет упростить программный код
     total_pages_count = 0
@@ -250,6 +246,7 @@ def generate_act(request):
     return JsonResponse(resp_dict)
 
 
+@require_POST
 @check_ajax_auth
 def generate_csv(request):
     import csv
@@ -277,14 +274,11 @@ def generate_csv(request):
                 writer.writerow({'name': key, 'amount': value})
 
     resp_dict = {}
-    csv_file_name = str(int(time.time())) + '_' + str(request.user.pk) + '.csv'
     view = request.POST.get('view', '')
     gtype = request.POST.get('gtype', '')
     conf = SevercartConfigs()
 
-    rotator_files(file_type='csv')
-
-    csv_full_name = os.path.join(settings.STATIC_ROOT_CSV, csv_file_name)
+    csv_full_name, csv_file_name = rotator_files(request, file_type='csv')
     all_items = CartridgeItem.objects.all().order_by('pk')
     if view == 'stock':
         all_items = all_items.filter(cart_status=1).filter(departament=request.user.departament)
@@ -422,22 +416,16 @@ def generate_csv(request):
     return JsonResponse(resp_dict)
 
 
+@require_POST
 @check_ajax_auth
 def generate_pdf(request):
     """Генерация pdf файла с наклейками для печати.
-    """
-    if request.method != 'POST':
-        return HttpResponse('<h1>' + _('Only use POST requests!') + '</h1>')
-    
+    """ 
     from common.helpers import Sticker
     from service.helpers import SevercartConfigs
     resp_dict = dict()
-    pdf_file_name = str(int(time.time())) + '_' + str(request.user.pk) + '.pdf'
-    cart_type = request.POST.get('cart_type', '')
-    
-    rotator_files(file_type='pdf')
-
-    pdf_full_name = os.path.join(settings.STATIC_ROOT_PDF, pdf_file_name)
+    cart_type = request.POST.get('cart_type', '')    
+    pdf_full_name, pdf_file_name = rotator_files(request, file_type='pdf')
     conf = SevercartConfigs()
     pagesize = conf.page_format
     print_bar_code = conf.print_bar_code
@@ -494,35 +482,6 @@ def generate_pdf(request):
     pdf_doc.fin()
     resp_dict['url'] = settings.STATIC_URL + 'pdf/' + pdf_file_name
     return JsonResponse(resp_dict)
-
-@check_ajax_auth
-def calculate_sum(request):
-    """Подсчёт истраченных денег по заданному в списке контракту 
-       на обслуживание.
-    """
-    ansver = dict()
-    list_contracts =request.POST.getlist('service_contracts[]', [])
-    try:
-        list_contracts = [ int(i) for i in list_contracts ]
-    except:
-        list_contracts = []
-    #выполняем перебор всех актов передачи для заданного
-    #договра обслуживания 
-    result = dict()
-    for doc_id in list_contracts:
-        try:
-            doc = SCDoc.objects.get(pk=doc_id)
-        except SCDoc.DoesNotExist:
-            doc = None
-        list_acts = RefillingCart.objects.filter(parent_doc=doc)
-        sum = 0
-        for item in list_acts:
-            sum = sum + item.money
-
-        result[doc_id] = sum 
-
-    ansver['result'] = result
-    return JsonResponse(ansver)
 
 
 @require_POST

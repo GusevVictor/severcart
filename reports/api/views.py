@@ -1,17 +1,21 @@
 # -*- coding:utf-8 -*-
 
-import datetime, copy, json
+import datetime, copy, json, csv
 from django.http import JsonResponse, HttpResponse
+from django.conf import settings
 from django.template.loader import render_to_string
 from django.utils.translation import ugettext as _
 from django.db.models import Q
+from django.views.decorators.http import require_POST
 from index.helpers import check_ajax_auth
 from index.models import CartridgeItem, OrganizationUnits
+from common.helpers import rotator_files
 from events.models import Events
 from reports.forms import Firms
 from docs.models import RefillingCart
 
 
+@require_POST
 @check_ajax_auth
 def ajax_report(request):
     """
@@ -47,16 +51,13 @@ def ajax_report(request):
     return JsonResponse(result, safe=False)
 
 
+@require_POST
 @check_ajax_auth
 def ajax_reports_users(request):
     """
     """
     from common.helpers import del_leding_zero
     import operator
-    
-    if request.method != 'POST':
-        return HttpResponse('<h1>' + _('Only use POST requests!') + '</h1>')
-
     context = dict()
     prepare_list = request.POST.get('start_date', '')
     
@@ -105,6 +106,8 @@ def ajax_reports_users(request):
     context['error'] = '0'
     return JsonResponse(context)
 
+
+@require_POST
 @check_ajax_auth
 def ajax_firm(request):
     """
@@ -125,28 +128,54 @@ def ajax_firm(request):
             common_select = common_select.filter(Q(date_created__gte=start_date) & Q(date_created__lte=end_date))
 
         save_select = copy.copy(common_select)
-        firms = common_select.values('firm').distinct()
-        set_firms = set()
-        for f1 in firms:
-            set_firms.add(f1['firm'])
+        firms = common_select.values('firm').distinct().order_by('-pk')
+        # убираем повторения, множества не годятся потому что каждая генерация меняет порядок
+        unique_firms = list()
+        for i in firms:
+            if i['firm'] not in unique_firms:
+                unique_firms.append(i['firm'])
         firms = None
-        set_firms = list(set_firms)
-        # убираем повторения
-        result = list()
-        for f1 in set_firms:
+        result = dict()
+        # unique_firms = ['ГитХаб', 'Мегабит', 'Стиль']
+        for f1 in unique_firms:
             if f1 == 'None':
                 continue
             m1 = save_select.filter(firm=f1)
-            print('firm_name=', f1)
             for f2 in m1:
+                # m1 = [<RefillingCart: 2016_65>, <RefillingCart: 2016_64>]
                 act_data = f2.json_content
                 act_data = json.loads(act_data)
-                # полностью переделать!
-                #result.append({'firm': f2.firm, 'count': len(act_data), 'money': f2.money})
+                tmp_firm = result.get(f1, None)
+                cl = len(act_data)
+                last_count = cl if cl else 0
+                last_money = f2.money if f2.money else 0                
+                if tmp_firm:
+                    bufer_count = result[f1]['count'] if result[f1]['count'] else 0
+                    bufer_money = result[f1]['money'] if result[f1]['money'] else 0
+                    result[f2.firm] = {'count': last_count + bufer_count, 'money': last_money + bufer_money}
+                else:
+                    result[f1] = {'count': last_count, 'money': last_money}
 
-        #print('firms=',set_firms)
+        # генерируем CSV документ для последующей работы
+        csv_full_name, csv_file_name = rotator_files(request, file_type='csv')
+        encoding = 'cp1251'
+        with open(csv_full_name, 'w', newline='', encoding=encoding) as csvfile:
+            fieldnames = ['name', 'amount', 'money']
+            writer = csv.DictWriter(csvfile, fieldnames, delimiter=';')
+            writer.writerow({'name': '', 'amount': '', 'money': ''})
+            writer.writerow({'name': '', 'amount': '', 'money': ''})
+            writer.writerow({'name': '', 'amount': '', 'money': ''})
+            writer.writerow({'name': _('Start range'), 'amount': start_date, 'money': ''})
+            writer.writerow({'name': _('End range'), 'amount': end_date, 'money': ''})
+            writer.writerow({'name': '', 'amount': '', 'money': ''})
+            writer.writerow({'name': '', 'amount': '', 'money': ''})
+            writer.writerow({'name': _('Firm name'), 'amount': _('The number of serviced objects'), 'money': '%s, %s' % (_('The money paid'), _('Currency'))})
+            for key, value in result.items():
+                writer.writerow({'name': key, 'amount': value['count'], 'money': value['money']/100})
+
         context['error'] = '0'
-        context['text'] = result
+        context['url'] = settings.STATIC_URL + 'csv/' + csv_file_name
+        context['text'] = render_to_string('reports/worket_firms.html', context={'result': result})
 
     else:
         context['text'] = form.errors.as_text()
