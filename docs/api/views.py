@@ -1,6 +1,6 @@
 # -*- coding:utf-8 -*-
 
-import os, io, re
+import os, io, re, glob
 import time
 import json
 from django.http import JsonResponse, HttpResponse, Http404
@@ -139,7 +139,7 @@ def generate_act(request):
 
     co = len(jsontext) # количество передаваемых картриджей на заправку
 
-    rotator_files(file_type='docx')
+    file_full_name, docx_file_name = rotator_files(request, file_type='docx')
     # производим инициализацию некоторых переменных начальными значениями
     sender_full_name    = request.user.fio
     recipient_full_name = ' '*50
@@ -153,15 +153,11 @@ def generate_act(request):
     
 
     if doc_action == 'docx_with_group':
-        docx_file_name = m1.number + '_' + str(request.user.pk) +'_1.docx'
-        file_full_name = os.path.join(settings.STATIC_ROOT_DOCX, docx_file_name)
         jsontext = group_names(jsontext)
         header_cell_one = _('The name of the cartridge')
         header_cell_two = _('Amount cartridges')
         
     if doc_action == 'docx_without_group':
-        docx_file_name = m1.number + '_' + str(request.user.pk) +'_0.docx'
-        file_full_name = os.path.join(settings.STATIC_ROOT_DOCX, docx_file_name)
         header_cell_one = _('Cartridge number')
         header_cell_two = _('The name of the cartridge')
 
@@ -546,8 +542,7 @@ def generate_return_act(request):
     except:
         pass
     # производим инициализацию некоторых переменных начальными значениями    
-    docx_file_name = m1.number + '_' + str(request.user.pk) +'_3.docx'
-    docx_full_file_name = os.path.join(settings.STATIC_ROOT_DOCX, docx_file_name)
+    docx_full_file_name, docx_file_name = rotator_files(request, 'docx')
     # генерация печатной версии документа без группировки наименований
     document = Document()
     
