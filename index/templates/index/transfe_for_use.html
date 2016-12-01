@@ -19,7 +19,7 @@
                     </tr>
                 {% for elem in cartr_objs %}
                     <tr>
-                        <td title="{{ elem.cart_number }}">{{ elem.cart_number|truncatechars:request.TRLEN }}</td>
+                        <td title="{{ elem.cart_number }}">{{ elem.cart_number|truncatechars:16 }}</td>
                         <td>{{ elem.cart_itm_name }}</td>
                         <td>{{ elem.cart_number_refills }}</td>
                     </tr>
