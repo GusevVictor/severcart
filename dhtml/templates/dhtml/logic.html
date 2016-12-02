@@ -2742,4 +2742,42 @@ $( function(){
         });
     });
 
+    $('.departament_ajax').change(function() {
+        var dept_id = $(this).val();
+        $.ajax({
+            method: 'POST',
+            url: '{% url "auth:org_suggests" %}',
+            data: {'dept_id': dept_id},
+            beforeSend: function( xhr, settings ){
+                csrftoken = getCookie('csrftoken');
+                $('.spinner').show();
+                if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
+                    xhr.setRequestHeader('X-CSRFToken', csrftoken);
+                }
+            },
+            success: function( msg ) {
+                $('.spinner').hide();
+                $('.error_msg').hide();
+                $('.org_unit_ajax').find('option').remove().end(); // очищаем весь  select 
+                var nbsp = '';
+                for (var i = 0; i < msg.res.length; i++) {
+                    // добавляем в селект новые опции
+                    if (msg.res[i]['level'] != 1) {
+                        nbsp = '&nbsp;&nbsp;&nbsp;'.repeat(msg.res[i]['level']);
+                    } else {
+                        nbsp = '';
+                    }
+                    $('.org_unit_ajax').append($('<option>', { value: msg.res[i]['id'], html : nbsp + msg.res[i]['name'] }));
+                }
+
+            },
+            error: function() {
+                $('.spinner').hide();
+                $('.error_msg').show();
+                $('.error_msg').html('{% trans "<p>Server not available.</p>" %}');
+            },
+        });
+
+    }); 
+
 });

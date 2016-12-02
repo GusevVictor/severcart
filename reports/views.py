@@ -3,12 +3,13 @@
 from django.shortcuts import render
 import datetime
 from django.contrib.auth.decorators import login_required
+from django.views.generic import View
 from django.utils import timezone
 from django.db import connection
 from django.views.decorators.cache import never_cache
 from common.helpers import BreadcrumbsPath
 from reports.forms import NoUse, Amortizing, UsersCartridges, UseProducts, Firms
-from index.models import CartridgeItem
+from index.models import CartridgeItem, OrganizationUnits
 
 
 @login_required
@@ -53,6 +54,7 @@ def main_summary(request):
 
     return render(request, 'reports/main_summary.html', context)
 
+
 @login_required
 @never_cache
 def amortizing(request):
@@ -67,18 +69,18 @@ def amortizing(request):
 
     return render(request, 'reports/amortizing.html', context)
 
+
 @login_required
 @never_cache
 def users(request):
     """
     """
-    context = {}
-    context['back'] = BreadcrumbsPath(request).before_page(request)
-    if request.method == 'POST':
-        pass
-    else: 
-        context['form'] = UsersCartridges(initial={'org': request.user.departament})
+    context = dict()
+    form = UsersCartridges()
+    form.fields['unit'].queryset = OrganizationUnits.objects.filter(pk=0)
+    context['form'] = form
     return render(request, 'reports/users.html', context)
+
 
 @login_required
 @never_cache

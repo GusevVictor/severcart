@@ -28,13 +28,23 @@
                     {{ form.org.errors }}
                 </div>
                 <div class="marginTop">
+                    {{ form.unit.label_tag }}
+                    {{ form.unit }}
+                    {{ form.unit.errors }}
+                </div>
+                <div class="marginTop">
                     {{ form.start_date.label_tag }}
                     <div class="calendar">{{ form.start_date }}</div>
                     {{ form.start_date.errors }}
                 </div>
                 <div class="marginTop">
+                    {{ form.end_date.label_tag }}
+                    <div class="calendar">{{ form.end_date }}</div>
+                    {{ form.end_date.errors }}
+                </div>
+                <div class="marginTop">
                     <input class="button users_use_cartridges no_follow" value="{% trans 'Generate' %}" type="submit" />
-                    <a class="button" href="{{ back }}">{% trans "Back" %}</a>
+                    <a class="download_result" href="">{% trans "Download" %}</a>
                     <img class="spinner" src="{{ STATIC_URL }}img/loader.gif" />
                 </div>
                 </form>

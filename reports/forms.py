@@ -1,11 +1,12 @@
 # -*- coding:utf-8 -*-
 
-import datetime
+import datetime, pytz
 from django import forms
 from django.utils.translation import ugettext_lazy as _
 from index.models import OrganizationUnits
 from index.helpers import str2int
 from django.core.exceptions import ValidationError
+from service.helpers import SevercartConfigs
 
 
 class NoUse(forms.Form):
@@ -26,7 +27,8 @@ class NoUse(forms.Form):
     def clean_diap(self):
         """
         """
-        diap_post = self.cleaned_data.get('diap', '')
+        diap_post = self.cleaned_data.get('diap', ''
+            )
         if not diap_post:
             raise ValidationError(_('Required field.'))
         
@@ -65,11 +67,76 @@ class Amortizing(forms.Form):
         return self.cleaned_data.get('org', '')
 
 class UsersCartridges(forms.Form):
-    org = forms.ModelChoiceField(queryset=OrganizationUnits.objects.root_nodes(), required=True, label=_('Organization unit'))
+    org = forms.ModelChoiceField(queryset=OrganizationUnits.objects.root_nodes(), required=True, label=_('Departament'))
+
+    unit = forms.ModelChoiceField(queryset=OrganizationUnits.objects.all(), required=False, label=_('Organization unit'))
 
     start_date = forms.CharField(required=True, widget=forms.TextInput(attrs={'class':'datepicker', 'readonly':'readonly'}), label=_('Start date'))
 
+    end_date = forms.CharField(required=False, widget=forms.TextInput(attrs={'class':'datepicker', 'readonly':'readonly'}), label=_('End date'))
+
     required_css_class = 'required'
+
+    def clean_start_date(self):
+        """Проверят на пустоту введенные данные.
+        """
+        if not self.cleaned_data.get('start_date', ''):
+            raise ValidationError(_('Required field.'))
+
+        start_date = self.cleaned_data.get('start_date', '').strip()
+        start_date = start_date.split(r'/')
+        conf = SevercartConfigs()
+        if len(start_date) == 3:
+            # если пользователь не смухлевал, то кол-во элементов = 3
+            date_value  = start_date[0]
+            month_value = start_date[1]
+            year_value = start_date[2]
+            date_value = str2int(date_value)
+            month_value = str2int(month_value)
+            year_value = str2int(year_value)
+            gte_date = datetime.datetime(year=year_value, 
+                        month=month_value, 
+                        day=date_value, 
+                        hour=0,
+                        minute=0,
+                        microsecond=0,
+                        tzinfo=pytz.timezone(conf.time_zone)
+                        )
+        else:
+            raise ValidationError(_('Error in start date.'))
+        return gte_date
+
+    def clean_end_date(self):
+        """Проверят на пустоту введенные данные.
+        """
+        # проверяем на корректность дату окончания просмотра списка
+        end_date = self.cleaned_data.get('end_date', '').strip()
+        end_date = end_date.split(r'/')
+        conf = SevercartConfigs()
+        if  end_date and len(end_date) == 3:
+            # если пользователь не смухлевал, то кол-во элементов = 3
+            date_value  = end_date[0]
+            #date_value  = del_leding_zero(date_value)
+            month_value = end_date[1]
+            #month_value = del_leding_zero(month_value)
+            year_value  = end_date[2]
+            #lte_date    = '%s-%s-%s 23:59:59' % (year_value, month_value, date_value,)
+            date_value = str2int(date_value)
+            month_value = str2int(month_value)
+            year_value = str2int(year_value)
+            
+            lte_date = datetime.datetime(year=year_value, 
+                        month=month_value, 
+                        day=date_value, 
+                        hour=23,
+                        minute=59,
+                        microsecond=999,
+                        tzinfo=pytz.timezone(conf.time_zone)
+                        )
+        else:
+            return False
+        return lte_date
+
 
 class UseProducts(forms.Form):
     org = forms.ModelChoiceField(queryset=OrganizationUnits.objects.root_nodes(), label=_('Organization unit'))

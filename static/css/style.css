@@ -393,6 +393,7 @@ div.wrapper label.required {
     text-align: left;
     background: none;  
     background: url('../img/aster.png') left center no-repeat;
+    display: block;
 }
 
 .input_row input[type="text"], .input_row select {
