@@ -42,16 +42,15 @@
                     </div>
                 </div>
                 <div class="marginTop"></div>
-            {% cache 600 submenu %}
                 {% block submenu %}{% endblock %}
-            {% endcache %}
                 {% block content %}{% endblock %}
             </main><!-- .content -->
         </div><!-- .container-->
-
+        {% cache 600 submenu %}
         <aside class="left-sidebar">
             {% include "index/base_menu.html" %}
         </aside><!-- .left-sidebar -->
+        {% endcache %}
     </div><!-- .middle-->
 </div>
     {% cache 600 footer %}
