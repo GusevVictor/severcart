@@ -3,6 +3,7 @@
 from django.db.models import Q
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
+from django.views.decorators.cache import never_cache
 from django.views.generic.base import View
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from index.models import CartridgeItem
@@ -50,6 +51,7 @@ class CartridgesView(GridListView):
     """
     
     @method_decorator(login_required)
+    @method_decorator(never_cache)
     def dispatch(self, *args, **kwargs):
         self.request = args[0]
         BreadcrumbsPath(self.request)
