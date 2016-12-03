@@ -496,11 +496,6 @@ def transfe_for_use(request):
 class Use(CartridgesView):
     """Списки заправленных, новых картриджей на складе
     """
-    @method_decorator(login_required)
-    @method_decorator(never_cache)
-    def dispatch(self, *args, **kwargs):
-        return super(Use, self).dispatch(*args, **kwargs)
-
     def get(self, request, *args, **kwargs):
         super(Use, self).get(*args, **kwargs)
         self.context['view'] = 'use'
@@ -519,11 +514,6 @@ class Use(CartridgesView):
 class Empty(CartridgesView):
     """Списки заправленных, новых картриджей на складе
     """
-    @method_decorator(login_required)
-    @method_decorator(never_cache)
-    def dispatch(self, *args, **kwargs):
-        return super(Empty, self).dispatch(*args, **kwargs)
-
     def get(self, request, *args, **kwargs):
         super(Empty, self).get(*args, **kwargs)
         self.context['view'] = 'empty'
@@ -675,11 +665,6 @@ def edit_firm(request):
 class At_work(CartridgesView):
     """Список картриджей находящихся на заправке.
     """
-    @method_decorator(login_required)
-    @method_decorator(never_cache)
-    def dispatch(self, *args, **kwargs):
-        return super(At_work, self).dispatch(*args, **kwargs)
-
     def get(self, request, *args, **kwargs):
         super(At_work, self).get(*args, **kwargs)
         self.context['view'] = 'at_work'
@@ -736,11 +721,6 @@ def from_firm_to_stock_with_barcode(request):
 class Basket(CartridgesView):
     """Список картриджей на выброс.
     """
-    @method_decorator(login_required)
-    @method_decorator(never_cache)
-    def dispatch(self, *args, **kwargs):
-        return super(Basket, self).dispatch(*args, **kwargs)
-
     def get(self, request, *args, **kwargs):
         super(Basket, self).get(*args, **kwargs)
         self.context['view'] = 'basket'
@@ -1068,11 +1048,6 @@ def evaluate_service(request):
 class Bufer(CartridgesView):
     """
     """
-    @method_decorator(login_required)
-    @method_decorator(never_cache)
-    def dispatch(self, *args, **kwargs):
-        return super(Bufer, self).dispatch(*args, **kwargs)
-
     def get(self, request, *args, **kwargs):
         super(Bufer, self).get(*args, **kwargs)
         self.context['view'] = 'bufer'
