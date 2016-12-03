@@ -105,7 +105,7 @@ class Stock(CartridgesView):
         super(Stock, self).get(*args, **kwargs)
         self.context['view'] = 'stock'
         self.all_items = self.all_items.filter(cart_status=1).filter(departament=self.request.user.departament)
-        self.all_items = self.all_items.values('id', 'cart_number', 'cart_itm_name__cart_itm_name', 'cart_number_refills', 'cart_date_change', 'sklad', 'comment', 'bufer')
+        self.all_items = self.all_items.values('id', 'cart_number', 'cart_itm_name__cart_itm_name', 'cart_number_refills', 'cart_date_change', 'sklad', 'comment', 'bufer', 'delivery_doc')
         # для минимизации количества обращений к базе данных воспользуемся 
         # простиньким кэшом
         simple_cache = dict()

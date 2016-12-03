@@ -82,7 +82,7 @@
                         {% if request.SHOW_TIME %}<td>{{ i.cart_date_change | timezone:request.TZ | date:"d.m.Y  H:i"}}</td>{% else %}<td>{{ i.cart_date_change | date:"d.m.Y"}}</td>{% endif %}
                         <td><span data-powertip="{{ i.sklad_title }} {{ i.sklad_address }}" class="info_ico"></span></td>
                         <td><div class="comment_in_cell" title="{{ i.comment }}">{{ i.comment|truncatechars:34 }}</div></td>
-                        <td><select class="cartridge_action" data="{{ i.pk }}">
+                        <td><select class="cartridge_action" data="{{ i.id }}">
                             <option selected></option>
                             <option value="edit">{% trans "Edit a comment" %}</option>
                             <option value="view_events">{% trans "Event viewer" %}</option>
