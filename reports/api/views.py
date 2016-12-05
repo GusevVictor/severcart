@@ -11,7 +11,7 @@ from index.helpers import check_ajax_auth
 from index.models import CartridgeItem, OrganizationUnits
 from common.helpers import rotator_files
 from events.models import Events
-from reports.forms import Firms
+from reports.forms import Firms, UsersCartridges
 from docs.models import RefillingCart
 
 
@@ -59,51 +59,39 @@ def ajax_reports_users(request):
     from common.helpers import del_leding_zero
     import operator
     context = dict()
-    prepare_list = request.POST.get('start_date', '')
-    
-    if not prepare_list:
-        context['error'] = '1'
-        context['text']  = _('Start date required field.')
-        return JsonResponse(context)
-
-    prepare_list = prepare_list.split(r'/')
-    if len(prepare_list) == 3:
-        # если пользователь не смухлевал, то кол-во элементов = 3
-        date_value  = prepare_list[0]
-        date_value  = del_leding_zero(date_value)
-        month_value = prepare_list[1]
-        month_value = del_leding_zero(month_value)
-        year_value  = prepare_list[2]
-        gte_date    = datetime.datetime(int(year_value), int(month_value), int(date_value))
+    form = UsersCartridges(request.POST)
+    if form.is_valid():
+        data_in_post = form.cleaned_data
+        start_date = data_in_post.get('start_date')
+        end_date = data_in_post.get('end_date')
+        org = data_in_post.get('org')
+        unit = data_in_post.get('unit')
     else:
-        context['error'] = '1'
-        context['text']  = _('Error in date data.')
+        context['error'] = '3'
+        context['text']  = form.errors.as_json()
         return JsonResponse(context)
-    org = request.POST.get('org', '')
-    try:
-        org = int(org)
-    except ValueError:
-        org = 0
-    try:
-        root_ou  = OrganizationUnits.objects.get(pk=org)
-    except OrganizationUnits.DoesNotExist:
-        context['error'] = '1'
-        context['text']  = _('Organization unit not found.')
-        return JsonResponse(context)
-    
-    family = root_ou.get_descendants(include_self=False)
+       
+    if unit:
+        root_ou = unit
+        family = root_ou.get_descendants(include_self=True)
+
+    else:
+        root_ou = org
+        family = root_ou.get_descendants(include_self=False)
+
     result = dict()
     for child in family:
         m1  = Events.objects.all()
         m1  = m1.filter(event_org=child)
         m1  = m1.filter(event_type='TR')
-        m1  = m1.filter(date_time__gte=gte_date)
+        m1  = m1.filter(date_time__gte=start_date)
         m1  = m1.count()
         result[str(child)] = m1
 
     result = sorted(result.items(), key=operator.itemgetter(1), reverse=True)
     context['text'] = render_to_string('reports/users_ajax.html', context={'result': result})
     context['error'] = '0'
+
     return JsonResponse(context)
 
 

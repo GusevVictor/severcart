@@ -405,12 +405,16 @@ $( function(){
         
 
     $('.users_use_cartridges').click( function() {
-        var org        = $('#id_org option:selected').val();
+        var org = $('.select_root_org option:selected').val();
+        var unit = $('.select_org_unit option:selected').val();
+        if (unit == 0) { unit = ''; }
         var start_date = $('#id_start_date').val();
+        var end_date = $('#id_end_date').val();
+        $('.form_error_text').remove();
         $.ajax({
             method: 'POST',
             url: '{% url "reports:ajax_reports_users" %}',
-            data:  {'org': org, 'start_date': start_date},
+            data:  {'org': org, 'unit': unit, 'start_date': start_date, 'end_date': end_date},
             beforeSend: function( xhr, settings ){
                 $('.spinner').show();
                 csrftoken = getCookie('csrftoken');
@@ -431,6 +435,16 @@ $( function(){
                     $('.spinner').hide();
                     $('.error_msg').hide();
                     $('.users_result').html(msg.text);
+                }
+
+                if (msg.error == '3') {
+                    $('.success_msg').hide();
+                    $('.error_msg').hide();
+                    var kv = $.parseJSON(msg.text);
+                    for (var key in kv) {
+                        var selector = '#id_' + key;
+                        $(selector).parent().after('<div class="form_error_text" style="display:block">' + kv[key][0]['message'] + '</div>');
+                    }
                 }
             },
             error: function() {
@@ -2742,7 +2756,7 @@ $( function(){
         });
     });
 
-    $('.departament_ajax').change(function() {
+    $('.select_root_org').change(function() {
         var dept_id = $(this).val();
         $.ajax({
             method: 'POST',
@@ -2758,8 +2772,9 @@ $( function(){
             success: function( msg ) {
                 $('.spinner').hide();
                 $('.error_msg').hide();
-                $('.org_unit_ajax').find('option').remove().end(); // очищаем весь  select 
+                $('.select_org_unit').find('option').remove().end(); // очищаем весь  select 
                 var nbsp = '';
+                msg.res.unshift({'id': 0, 'level': 1, 'name': ''});
                 for (var i = 0; i < msg.res.length; i++) {
                     // добавляем в селект новые опции
                     if (msg.res[i]['level'] != 1) {
@@ -2767,7 +2782,7 @@ $( function(){
                     } else {
                         nbsp = '';
                     }
-                    $('.org_unit_ajax').append($('<option>', { value: msg.res[i]['id'], html : nbsp + msg.res[i]['name'] }));
+                    $('.select_org_unit').append($('<option>', { value: msg.res[i]['id'], html : nbsp + msg.res[i]['name'] }));
                 }
 
             },

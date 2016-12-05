@@ -67,9 +67,15 @@ class Amortizing(forms.Form):
         return self.cleaned_data.get('org', '')
 
 class UsersCartridges(forms.Form):
-    org = forms.ModelChoiceField(queryset=OrganizationUnits.objects.root_nodes(), required=True, label=_('Departament'))
+    org = forms.ModelChoiceField(queryset=OrganizationUnits.objects.root_nodes(), 
+                                required=True, 
+                                label=_('Departament'), 
+                                widget=forms.Select(attrs={'class':'select_root_org'}))
 
-    unit = forms.ModelChoiceField(queryset=OrganizationUnits.objects.all(), required=False, label=_('Organization unit'))
+    unit = forms.ModelChoiceField(queryset=OrganizationUnits.objects.all(), 
+                                 required=False, 
+                                 label=_('Organization unit'),
+                                 widget=forms.Select(attrs={'class':'select_org_unit'}))
 
     start_date = forms.CharField(required=True, widget=forms.TextInput(attrs={'class':'datepicker', 'readonly':'readonly'}), label=_('Start date'))
 

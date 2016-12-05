@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-12-01 12:52+0500\n"
+"POT-Creation-Date: 2016-12-05 20:13+0500\n"
 "PO-Revision-Date: 2016-05-27 12:27+0500\n"
 "Last-Translator: \n"
 "Language-Team: severcart.org <sfcl@mail.ru>\n"
@@ -20,41 +20,41 @@ msgstr ""
 "%100>=11 && n%100<=14)? 2 : 3);\n"
 "X-Generator: Poedit 1.8.7\n"
 
-#: .\accounts\api\views.py:23
+#: .\accounts\api\views.py:26
 msgid "Error in data processing"
 msgstr ""
 
-#: .\accounts\api\views.py:28
+#: .\accounts\api\views.py:31
 #, python-format
 msgid "User %(user_name)s can not be deleted"
 msgstr ""
 
-#: .\accounts\api\views.py:35
+#: .\accounts\api\views.py:38
 msgid "Object not found"
 msgstr ""
 
-#: .\accounts\api\views.py:40
+#: .\accounts\api\views.py:43
 msgid "In DEMO users not delete!"
 msgstr ""
 
-#: .\accounts\api\views.py:45
+#: .\accounts\api\views.py:48
 #, python-format
 msgid "User %(user_name)s was successfully deleted"
 msgstr ""
 
-#: .\accounts\api\views.py:65
+#: .\accounts\api\views.py:68
 msgid "Email was not found."
 msgstr ""
 
-#: .\accounts\api\views.py:69
+#: .\accounts\api\views.py:72
 msgid "Email should not be repeated for different users."
 msgstr ""
 
-#: .\accounts\api\views.py:72
+#: .\accounts\api\views.py:75
 msgid "Forgotten password recovery"
 msgstr ""
 
-#: .\accounts\api\views.py:90 .\service\api\views.py:30
+#: .\accounts\api\views.py:93 .\service\api\views.py:30
 msgid "Mail successfully sended!"
 msgstr ""
 
@@ -137,7 +137,7 @@ msgstr ""
 msgid "Email recipient"
 msgstr ""
 
-#: .\accounts\models.py:15 .\reports\forms.py:68 .\reports\forms.py:75
+#: .\accounts\models.py:15 .\reports\forms.py:77 .\reports\forms.py:148
 #: .\reports\templates\reports\amortizing.html:17
 #: .\reports\templates\reports\main_summary.html:18
 msgid "Organization unit"
@@ -227,7 +227,6 @@ msgstr ""
 #: .\index\templates\index\transfe_for_use.html:43
 #: .\reports\templates\reports\products.html:42
 #: .\reports\templates\reports\spent_money.html:43
-#: .\reports\templates\reports\users.html:37
 #: .\storages\templates\storages\edit_s.html:32
 msgid "Back"
 msgstr ""
@@ -307,7 +306,7 @@ msgstr ""
 msgid "Delete"
 msgstr ""
 
-#: .\accounts\templates\accounts\manage_users.html:30 .\docs\api\views.py:330
+#: .\accounts\templates\accounts\manage_users.html:30 .\docs\api\views.py:320
 #: .\index\templates\index\use.html.py:53
 #: .\search\templates\search\serp.html:14
 msgid "User"
@@ -394,6 +393,7 @@ msgstr ""
 #: .\dhtml\templates\dhtml\logic.html:1283
 #: .\dhtml\templates\dhtml\logic.html:2424
 #: .\dhtml\templates\dhtml\logic.html:2699
+#: .\dhtml\templates\dhtml\logic.html:2777
 msgid "<p>Server not available.</p>"
 msgstr ""
 
@@ -476,91 +476,83 @@ msgstr ""
 msgid "Does not match the format"
 msgstr ""
 
-#: .\docs\api\views.py:35 .\docs\api\views.py:83 .\docs\api\views.py:115
-#: .\docs\api\views.py:430 .\index\api\views.py:54 .\index\api\views.py:677
-#: .\index\api\views.py:725 .\index\api\views.py:746 .\index\api\views.py:761
-#: .\index\api\views.py:909 .\reports\api\views.py:58
-#: .\storages\api\views.py:21 .\storages\api\views.py:59
-msgid "Only use POST requests!"
-msgstr ""
-
-#: .\docs\api\views.py:51 .\docs\api\views.py:65 .\docs\api\views.py:138
-#: .\docs\api\views.py:568
+#: .\docs\api\views.py:50 .\docs\api\views.py:64 .\docs\api\views.py:134
+#: .\docs\api\views.py:523
 msgid "The object with the ID is not found."
 msgstr ""
 
-#: .\docs\api\views.py:56
+#: .\docs\api\views.py:55
 msgid "Name can not be removed, ie. other objects reference it."
 msgstr ""
 
-#: .\docs\api\views.py:59 .\docs\api\views.py:73 .\index\api\views.py:645
+#: .\docs\api\views.py:58 .\docs\api\views.py:72 .\index\api\views.py:645
 msgid "Name deleted successfully."
 msgstr ""
 
-#: .\docs\api\views.py:70
+#: .\docs\api\views.py:69
 msgid "Type can not be deleted, ie the other sites link to it."
 msgstr ""
 
-#: .\docs\api\views.py:95
+#: .\docs\api\views.py:92
 msgid "City object not found."
 msgstr ""
 
-#: .\docs\api\views.py:102
+#: .\docs\api\views.py:99
 msgid "City can not be deleted, ie the other firms link to it."
 msgstr ""
 
-#: .\docs\api\views.py:105
+#: .\docs\api\views.py:102
 msgid "City deleted successfully."
 msgstr ""
 
-#: .\docs\api\views.py:125
+#: .\docs\api\views.py:121
 #, python-format
 msgid "Page %(num)s from %(total)s"
 msgstr ""
 
-#: .\docs\api\views.py:155
+#: .\docs\api\views.py:151
 msgid "This action is not implemented."
 msgstr ""
 
-#: .\docs\api\views.py:163 .\docs\api\views.py:170
+#: .\docs\api\views.py:157 .\docs\api\views.py:162
 msgid "The name of the cartridge"
 msgstr ""
 
-#: .\docs\api\views.py:164
+#: .\docs\api\views.py:158
 msgid "Amount cartridges"
 msgstr ""
 
-#: .\docs\api\views.py:169
+#: .\docs\api\views.py:161
 msgid "Cartridge number"
 msgstr ""
 
-#: .\docs\api\views.py:177
+#: .\docs\api\views.py:169
 #, python-format
 msgid ""
 "The act of transferring cartridges # %(doc_number)s from  %(date_created)s"
 msgstr ""
 
-#: .\docs\api\views.py:234
+#: .\docs\api\views.py:226
 #, python-format
 msgid "Total count - %(co)s"
 msgstr ""
 
-#: .\docs\api\views.py:236 .\docs\api\views.py:641
+#: .\docs\api\views.py:228 .\docs\api\views.py:595
 msgid "Sender"
 msgstr ""
 
-#: .\docs\api\views.py:238 .\docs\api\views.py:639
+#: .\docs\api\views.py:230 .\docs\api\views.py:593
 msgid "Resipient"
 msgstr ""
 
-#: .\docs\api\views.py:246
+#: .\docs\api\views.py:238
 #, python-format
 msgid "Document %(doc_number)s_%(user_id)s_0.docx generated"
 msgstr ""
 
-#: .\docs\api\views.py:273 .\docs\api\views.py:298 .\docs\api\views.py:327
-#: .\docs\api\views.py:353 .\docs\api\views.py:377 .\docs\api\views.py:403
-#: .\docs\api\views.py:615 .\docs\forms\add_doc.py:11
+#: .\docs\api\views.py:266 .\docs\api\views.py:288 .\docs\api\views.py:317
+#: .\docs\api\views.py:343 .\docs\api\views.py:367 .\docs\api\views.py:393
+#: .\docs\api\views.py:569 .\docs\forms\add_doc.py:11
 #: .\docs\forms\edit_name.py:6 .\docs\templates\docs\delivery.html.py:28
 #: .\docs\templates\docs\delivery.html:98
 #: .\docs\templates\docs\names_list.html:31 .\index\forms\add_firm.py:8
@@ -587,14 +579,14 @@ msgstr ""
 msgid "Name"
 msgstr ""
 
-#: .\docs\api\views.py:273 .\index\templates\index\add_empty_cartridge.html:82
+#: .\docs\api\views.py:266 .\index\templates\index\add_empty_cartridge.html:82
 #: .\index\templates\index\add_items.html:83
 #: .\reports\templates\reports\users_ajax.html:5
 msgid "Amount items"
 msgstr ""
 
-#: .\docs\api\views.py:297 .\docs\api\views.py:326 .\docs\api\views.py:352
-#: .\docs\api\views.py:376 .\docs\api\views.py:402 .\docs\api\views.py:614
+#: .\docs\api\views.py:287 .\docs\api\views.py:316 .\docs\api\views.py:342
+#: .\docs\api\views.py:366 .\docs\api\views.py:392 .\docs\api\views.py:568
 #: .\docs\forms\add_doc.py:9 .\docs\templates\docs\delivery.html.py:23
 #: .\docs\templates\docs\delivery.html:96
 #: .\index\templates\index\add_empty_cartridge.html:31
@@ -618,8 +610,8 @@ msgstr ""
 msgid "Number"
 msgstr "ID"
 
-#: .\docs\api\views.py:299 .\docs\api\views.py:328 .\docs\api\views.py:354
-#: .\docs\api\views.py:378 .\docs\api\views.py:404
+#: .\docs\api\views.py:289 .\docs\api\views.py:318 .\docs\api\views.py:344
+#: .\docs\api\views.py:368 .\docs\api\views.py:394
 #: .\index\templates\index\at_work.html:43
 #: .\index\templates\index\basket.html:42 .\index\templates\index\bufer.html:55
 #: .\index\templates\index\empty.html:71 .\index\templates\index\stock.html:69
@@ -627,16 +619,16 @@ msgstr "ID"
 msgid "Amount<br/>recovery"
 msgstr ""
 
-#: .\docs\api\views.py:300 .\index\templates\index\stock.html.py:70
+#: .\docs\api\views.py:290 .\index\templates\index\stock.html.py:70
 msgid "Date add"
 msgstr ""
 
-#: .\docs\api\views.py:300 .\index\templates\index\stock.html.py:70
+#: .\docs\api\views.py:290 .\index\templates\index\stock.html.py:70
 msgid "on stock"
 msgstr ""
 
-#: .\docs\api\views.py:301 .\docs\api\views.py:331 .\docs\api\views.py:356
-#: .\docs\api\views.py:381 .\docs\api\views.py:406
+#: .\docs\api\views.py:291 .\docs\api\views.py:321 .\docs\api\views.py:346
+#: .\docs\api\views.py:371 .\docs\api\views.py:396
 #: .\docs\templates\docs\types_list.html:32 .\index\forms\comment.py:11
 #: .\index\templates\index\at_work.html:46
 #: .\index\templates\index\basket.html:44 .\index\templates\index\bufer.html:57
@@ -644,95 +636,95 @@ msgstr ""
 msgid "comment"
 msgstr "Comment"
 
-#: .\docs\api\views.py:329 .\index\templates\index\use.html.py:52
+#: .\docs\api\views.py:319 .\index\templates\index\use.html.py:52
 msgid "Date transfe"
 msgstr ""
 
-#: .\docs\api\views.py:355 .\index\templates\index\empty.html.py:72
+#: .\docs\api\views.py:345 .\index\templates\index\empty.html.py:72
 msgid "Date return"
 msgstr ""
 
-#: .\docs\api\views.py:379 .\index\templates\index\at_work.html.py:44
+#: .\docs\api\views.py:369 .\index\templates\index\at_work.html.py:44
 msgid "Date transfer on recovery"
 msgstr ""
 
-#: .\docs\api\views.py:380 .\index\templates\index\at_work.html.py:45
+#: .\docs\api\views.py:370 .\index\templates\index\at_work.html.py:45
 msgid "Refueller"
 msgstr ""
 
-#: .\docs\api\views.py:405 .\index\templates\index\basket.html.py:43
+#: .\docs\api\views.py:395 .\index\templates\index\basket.html.py:43
 msgid "Date return in basket"
 msgstr ""
 
-#: .\docs\api\views.py:544 .\index\templates\index\from_firm_to_stock.html:38
+#: .\docs\api\views.py:499 .\index\templates\index\from_firm_to_stock.html:38
 msgid "Regeneration"
 msgstr ""
 
-#: .\docs\api\views.py:546
+#: .\docs\api\views.py:501
 msgid "Filling and cleaning"
 msgstr ""
 
-#: .\docs\api\views.py:548
+#: .\docs\api\views.py:503
 msgid "Replacing fotovala"
 msgstr ""
 
-#: .\docs\api\views.py:550
+#: .\docs\api\views.py:505
 msgid "Replacement squeegee"
 msgstr ""
 
-#: .\docs\api\views.py:552
+#: .\docs\api\views.py:507
 msgid "Replacement chip"
 msgstr ""
 
-#: .\docs\api\views.py:554
+#: .\docs\api\views.py:509
 msgid "Replacing the magnetic roller"
 msgstr ""
 
-#: .\docs\api\views.py:556
+#: .\docs\api\views.py:511
 #, fuzzy
 #| msgid "comment"
 msgid "Not implement"
 msgstr "Comment"
 
-#: .\docs\api\views.py:597
+#: .\docs\api\views.py:551
 #, python-format
 msgid "The act of receiving cartridges # %(doc_number)s from  %(date_created)s"
 msgstr ""
 
-#: .\docs\api\views.py:603
+#: .\docs\api\views.py:557
 #, python-format
 msgid "Contractor:  %(firm)s"
 msgstr ""
 
-#: .\docs\api\views.py:616
+#: .\docs\api\views.py:570
 msgid "Ongoing work"
 msgstr ""
 
-#: .\docs\api\views.py:617
+#: .\docs\api\views.py:571
 msgid "The price"
 msgstr ""
 
-#: .\docs\api\views.py:617 .\docs\templates\docs\delivery.html.py:33
+#: .\docs\api\views.py:571 .\docs\templates\docs\delivery.html.py:33
 #: .\docs\templates\docs\delivery.html:101
 #: .\docs\templates\docs\delivery.html:102
 #: .\docs\templates\docs\return_acts_list.html:25
 #: .\index\templates\index\from_firm_to_stock.html:44
-#: .\reports\templates\reports\spent_money.html:58
+#: .\reports\api\views.py:172 .\reports\templates\reports\spent_money.html:58
 #: .\reports\templates\reports\worket_firms.html:6
 msgid "Currency"
 msgstr "dollar"
 
-#: .\docs\api\views.py:636
+#: .\docs\api\views.py:590
 #, python-format
 msgid "Just made: %(co)s pieces"
 msgstr ""
 
-#: .\docs\api\views.py:637
+#: .\docs\api\views.py:591
 #, python-format
 msgid "The total amount of: %(sum_money)s dollars"
 msgstr ""
 
-#: .\docs\api\views.py:648
+#: .\docs\api\views.py:602
 #, python-format
 msgid "Document %(doc_number)s_%(user_id)s_3.docx generated"
 msgstr ""
@@ -751,8 +743,9 @@ msgstr ""
 #: .\index\forms\tr_to_firm.py:27 .\index\forms\tr_to_firm.py:77
 #: .\index\forms\tr_to_firm.py:92 .\index\forms\tr_to_firm.py:106
 #: .\index\forms\tr_to_firm.py:135 .\index\forms\tr_to_stock.py:26
-#: .\reports\forms.py:22 .\reports\forms.py:31 .\reports\forms.py:64
-#: .\reports\forms.py:87 .\reports\forms.py:100 .\reports\forms.py:143
+#: .\reports\forms.py:23 .\reports\forms.py:33 .\reports\forms.py:66
+#: .\reports\forms.py:90 .\reports\forms.py:160 .\reports\forms.py:173
+#: .\reports\forms.py:216
 msgid "Required field."
 msgstr ""
 
@@ -861,6 +854,7 @@ msgstr ""
 #: .\index\templates\index\basket.html:20 .\index\templates\index\bufer.html:35
 #: .\index\templates\index\empty.html:49 .\index\templates\index\stock.html:47
 #: .\index\templates\index\use.html:29 .\reports\templates\reports\firm.html:35
+#: .\reports\templates\reports\users.html:53
 msgid "Download"
 msgstr ""
 
@@ -1332,6 +1326,12 @@ msgstr ""
 msgid "Events"
 msgstr ""
 
+#: .\index\api\views.py:54 .\index\api\views.py:677 .\index\api\views.py:725
+#: .\index\api\views.py:746 .\index\api\views.py:761 .\index\api\views.py:909
+#: .\storages\api\views.py:21 .\storages\api\views.py:59
+msgid "Only use POST requests!"
+msgstr ""
+
 #: .\index\api\views.py:69
 msgid "Firm not found"
 msgstr ""
@@ -1489,7 +1489,7 @@ msgid ""
 msgstr ""
 
 #: .\index\api\views.py:1298 .\index\api\views.py:1355
-#: .\index\api\views.py:1479 .\index\views.py:1067
+#: .\index\api\views.py:1479 .\index\views.py:1043
 #, python-format
 msgid ""
 "An object with number %(cart_num)s belong to a different organizational unit."
@@ -1554,7 +1554,7 @@ msgstr ""
 msgid "You have entered the wrong data."
 msgstr ""
 
-#: .\index\forms\add_items.py:48 .\reports\forms.py:55
+#: .\index\forms\add_items.py:48 .\reports\forms.py:57
 msgid "The value must be greater than zero."
 msgstr ""
 
@@ -1839,23 +1839,23 @@ msgid ""
 "browsers."
 msgstr ""
 
-#: .\index\templates\index\base.html:27
+#: .\index\templates\index\base.html:28
 msgid "Exit"
 msgstr ""
 
-#: .\index\templates\index\base.html:39
+#: .\index\templates\index\base.html:41
 msgid "Help"
 msgstr ""
 
-#: .\index\templates\index\base.html:54
+#: .\index\templates\index\base.html:58
 msgid "Thanks"
 msgstr ""
 
-#: .\index\templates\index\base.html:54
+#: .\index\templates\index\base.html:58
 msgid "Version"
 msgstr ""
 
-#: .\index\templates\index\base.html:54
+#: .\index\templates\index\base.html:58
 msgid "Request tech support"
 msgstr ""
 
@@ -2250,91 +2250,115 @@ msgstr ""
 msgid "Consumables in use"
 msgstr ""
 
-#: .\index\views.py:154
+#: .\index\views.py:150
 #, python-format
 msgid "%(cart_name)s already exists"
 msgstr ""
 
-#: .\index\views.py:158
+#: .\index\views.py:154
 #, python-format
 msgid "%(cart_name)s success added"
 msgstr ""
 
-#: .\index\views.py:386 .\index\views.py:398
+#: .\index\views.py:382 .\index\views.py:394
 #, python-format
 msgid "Organization unit %(org_name)s exist"
 msgstr ""
 
-#: .\index\views.py:391 .\index\views.py:403
+#: .\index\views.py:387 .\index\views.py:399
 #, python-format
 msgid "Organization unit %(org_name)s create successfuly."
 msgstr ""
 
-#: .\index\views.py:447
+#: .\index\views.py:443
 #, python-format
 msgid "%(cart_type)s success save"
 msgstr ""
 
-#: .\index\views.py:451
+#: .\index\views.py:447
 #, python-format
 msgid "New type %(cart_type)s success added"
 msgstr ""
 
-#: .\index\views.py:591
+#: .\index\views.py:577
 msgid "Select all"
 msgstr ""
 
-#: .\index\views.py:624
+#: .\index\views.py:610
 #, python-format
 msgid "Firm \"%(firm_name)s\" success added."
 msgstr ""
 
-#: .\index\views.py:1032
+#: .\index\views.py:1008
 msgid "Work has already estimated."
 msgstr ""
 
-#: .\index\views.py:1063
+#: .\index\views.py:1039
 #, python-format
 msgid "An object with number %(cart_num)s is not transmitted to the service."
 msgstr ""
 
-#: .\reports\api\views.py:65
+#: .\reports\api\views.py:66
 msgid "Start date required field."
 msgstr ""
 
-#: .\reports\api\views.py:79
+#: .\reports\api\views.py:80
 msgid "Error in date data."
 msgstr ""
 
-#: .\reports\api\views.py:90
+#: .\reports\api\views.py:91
 msgid "Organization unit not found."
 msgstr ""
 
-#: .\reports\forms.py:14
+#: .\reports\api\views.py:168 .\reports\templates\reports\firm.html.py:26
+msgid "Start range"
+msgstr ""
+
+#: .\reports\api\views.py:169 .\reports\templates\reports\firm.html.py:27
+msgid "End range"
+msgstr ""
+
+#: .\reports\api\views.py:172 .\reports\templates\reports\worket_firms.html:4
+msgid "Firm name"
+msgstr ""
+
+#: .\reports\api\views.py:172 .\reports\templates\reports\worket_firms.html:5
+msgid "The number of serviced objects"
+msgstr ""
+
+#: .\reports\api\views.py:172 .\reports\templates\reports\worket_firms.html:6
+msgid "The money paid"
+msgstr ""
+
+#: .\reports\forms.py:15
 msgid "All over the past year"
 msgstr ""
 
-#: .\reports\forms.py:35
+#: .\reports\forms.py:37
 msgid "Transferred to invalid values."
 msgstr ""
 
-#: .\reports\forms.py:53
+#: .\reports\forms.py:55
 msgid "You have entered incorrect data."
 msgstr ""
 
-#: .\reports\forms.py:57
+#: .\reports\forms.py:59
 msgid "Field cannot be empty."
 msgstr ""
 
-#: .\reports\forms.py:70 .\reports\forms.py:77 .\reports\forms.py:135
+#: .\reports\forms.py:72
+msgid "Departament"
+msgstr ""
+
+#: .\reports\forms.py:80 .\reports\forms.py:150 .\reports\forms.py:208
 msgid "Start date"
 msgstr ""
 
-#: .\reports\forms.py:79 .\reports\forms.py:137
+#: .\reports\forms.py:82 .\reports\forms.py:152 .\reports\forms.py:210
 msgid "End date"
 msgstr ""
 
-#: .\reports\forms.py:112 .\reports\forms.py:161
+#: .\reports\forms.py:112 .\reports\forms.py:185 .\reports\forms.py:234
 msgid "Error in start date."
 msgstr ""
 
@@ -2352,7 +2376,7 @@ msgstr ""
 #: .\reports\templates\reports\main_summary.html:31
 #: .\reports\templates\reports\products.html:41
 #: .\reports\templates\reports\spent_money.html:42
-#: .\reports\templates\reports\users.html:36
+#: .\reports\templates\reports\users.html:52
 msgid "Generate"
 msgstr ""
 
@@ -2367,14 +2391,6 @@ msgstr ""
 #: .\reports\templates\reports\firm.html:2
 #: .\reports\templates\reports\firm.html:3
 msgid "Report firms"
-msgstr ""
-
-#: .\reports\templates\reports\firm.html:26
-msgid "Start range"
-msgstr ""
-
-#: .\reports\templates\reports\firm.html:27
-msgid "End range"
 msgstr ""
 
 #: .\reports\templates\reports\main_summary.html:7
@@ -2442,18 +2458,6 @@ msgstr ""
 
 #: .\reports\templates\reports\vertical_menu.html:15
 msgid "The report by firm"
-msgstr ""
-
-#: .\reports\templates\reports\worket_firms.html:4
-msgid "Firm name"
-msgstr ""
-
-#: .\reports\templates\reports\worket_firms.html:5
-msgid "The number of serviced objects"
-msgstr ""
-
-#: .\reports\templates\reports\worket_firms.html:6
-msgid "The money paid"
 msgstr ""
 
 #: .\search\templates\search\error.html:2
