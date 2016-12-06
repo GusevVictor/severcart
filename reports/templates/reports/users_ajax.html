@@ -3,10 +3,12 @@
 <tr>
 <th>{% trans "UserName" %}</th>
 <th>{% trans "Amount items" %}</th>
+<th>{% trans "Details" %}</th>
 </tr>
-{% for cartej in result %}
+{% for key, value in result.items %}
 <tr>
-<td>{{ cartej.0 }}</td>
-<td>{{ cartej.1 }}</td>
+<td>{{ key }}</td>
+<td>{{ value.count }}</td>
+<td>{{ value.details }}</td>
 </tr>
 {% endfor %}</table>

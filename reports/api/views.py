@@ -12,6 +12,7 @@ from index.models import CartridgeItem, OrganizationUnits
 from common.helpers import rotator_files
 from events.models import Events
 from reports.forms import Firms, UsersCartridges
+from reports.helpers import pretty_list
 from docs.models import RefillingCart
 
 
@@ -80,15 +81,32 @@ def ajax_reports_users(request):
         family = root_ou.get_descendants(include_self=False)
 
     result = dict()
-    for child in family:
-        m1  = Events.objects.all()
-        m1  = m1.filter(event_org=child)
-        m1  = m1.filter(event_type='TR')
-        m1  = m1.filter(date_time__gte=start_date)
-        m1  = m1.count()
-        result[str(child)] = m1
+    
+    if start_date and not(end_date):
+        for child in family:
+            m1  = Events.objects.all()
+            m1  = m1.filter(event_org=child)
+            m1  = m1.filter(event_type='TR')
+            m1  = m1.filter(date_time__gte=start_date)
+            m2 = m1
+            m2 = m1.values('cart_type')
+            m1  = m1.count()
+            result[str(child)] = {'count': m1, 'details': pretty_list(m2)}
+    elif start_date and end_date:
+        for child in family:
+            m1  = Events.objects.all()
+            m1  = m1.filter(event_org=child)
+            m1  = m1.filter(event_type='TR')
+            m1  = m1.filter(date_time__gte=start_date)
+            m1  = m1.filter(date_time__lte=end_date)
+            m2 = m1
+            m2 = m1.values('cart_type')
+            m1  = m1.count()
+            result[str(child)] = {'count': m1, 'details': pretty_list(m2)}
+    else:
+        result = 'Error'
 
-    result = sorted(result.items(), key=operator.itemgetter(1), reverse=True)
+    #result = sorted(result.items(), key=operator.itemgetter(1), reverse=True)
     context['text'] = render_to_string('reports/users_ajax.html', context={'result': result})
     context['error'] = '0'
 
