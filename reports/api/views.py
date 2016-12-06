@@ -91,7 +91,7 @@ def ajax_reports_users(request):
             m2 = m1
             m2 = m1.values('cart_type')
             m1  = m1.count()
-            result[str(child)] = {'count': m1, 'details': pretty_list(m2)}
+            result[str(child)] = {'count': m1, 'details': pretty_list(list(m2))}
     elif start_date and end_date:
         for child in family:
             m1  = Events.objects.all()
@@ -102,7 +102,7 @@ def ajax_reports_users(request):
             m2 = m1
             m2 = m1.values('cart_type')
             m1  = m1.count()
-            result[str(child)] = {'count': m1, 'details': pretty_list(m2)}
+            result[str(child)] = {'count': m1, 'details': pretty_list(list(m2))}
     else:
         result = 'Error'
 
