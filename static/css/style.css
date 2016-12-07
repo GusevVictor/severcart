@@ -1421,3 +1421,7 @@ ul.vert-menu li a:hover {
 .download_result {
     display: none;
 }
+
+table.checkboxes td.details_list_cartrgs {
+    font-size: 10px;
+}

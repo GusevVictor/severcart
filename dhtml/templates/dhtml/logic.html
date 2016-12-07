@@ -417,6 +417,7 @@ $( function(){
             data:  {'org': org, 'unit': unit, 'start_date': start_date, 'end_date': end_date},
             beforeSend: function( xhr, settings ){
                 $('.spinner').show();
+                $('.download_result').hide();
                 csrftoken = getCookie('csrftoken');
                 if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
                     xhr.setRequestHeader('X-CSRFToken', csrftoken);
@@ -435,6 +436,8 @@ $( function(){
                     $('.spinner').hide();
                     $('.error_msg').hide();
                     $('.users_result').html(msg.text);
+                    $('.download_result').show();
+                    $('.download_result').attr('href', msg.url);
                 }
 
                 if (msg.error == '3') {

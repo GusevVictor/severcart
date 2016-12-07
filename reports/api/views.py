@@ -107,9 +107,26 @@ def ajax_reports_users(request):
         result = 'Error'
 
     #result = sorted(result.items(), key=operator.itemgetter(1), reverse=True)
-    context['text'] = render_to_string('reports/users_ajax.html', context={'result': result})
-    context['error'] = '0'
+    # сохраняем результаты работы скрипта в csv файле
+    csv_full_name, csv_file_name = rotator_files(request, file_type='csv')
+    encoding = 'cp1251'
+    with open(csv_full_name, 'w', newline='', encoding=encoding) as csvfile:
+        fieldnames = ['user', 'amount', 'details']
+        writer = csv.DictWriter(csvfile, fieldnames, delimiter=';')
+        writer.writerow({'user': '', 'amount': '', 'details': ''})
+        writer.writerow({'user': '', 'amount': '', 'details': ''})
+        writer.writerow({'user': '', 'amount': '', 'details': ''})
+        writer.writerow({'user': _('Start range'), 'amount': start_date, 'details': ''})
+        writer.writerow({'user': _('End range'), 'amount': end_date, 'details': ''})
+        writer.writerow({'user': '', 'amount': '', 'details': ''})
+        writer.writerow({'user': '', 'amount': '', 'details': ''})
+        writer.writerow({'user': _('User'), 'amount': _('Items count'), 'details': _('Details')})
+        for key, value in result.items():
+            writer.writerow({'user': key, 'amount': value['count'], 'details': value['details']})
 
+    context['text'] = render_to_string('reports/users_ajax.html', context={'result': result})
+    context['url'] = settings.STATIC_URL + 'csv/' + csv_file_name
+    context['error'] = '0'
     return JsonResponse(context)
 
 

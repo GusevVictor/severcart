@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-12-05 20:13+0500\n"
+"POT-Creation-Date: 2016-12-07 23:08+0500\n"
 "PO-Revision-Date: 2016-05-27 12:27+0500\n"
 "Last-Translator: \n"
 "Language-Team: severcart.org <sfcl@mail.ru>\n"
@@ -307,8 +307,8 @@ msgid "Delete"
 msgstr ""
 
 #: .\accounts\templates\accounts\manage_users.html:30 .\docs\api\views.py:320
-#: .\index\templates\index\use.html.py:53
-#: .\search\templates\search\serp.html:14
+#: .\index\templates\index\use.html.py:53 .\reports\api\views.py:123
+#: .\search\templates\search\serp.html.py:14
 msgid "User"
 msgstr ""
 
@@ -382,18 +382,18 @@ msgstr ""
 #: .\dhtml\templates\dhtml\add_session_items.html:2516
 #: .\dhtml\templates\dhtml\logic.html:159
 #: .\dhtml\templates\dhtml\logic.html:205
-#: .\dhtml\templates\dhtml\logic.html:592
-#: .\dhtml\templates\dhtml\logic.html:672
-#: .\dhtml\templates\dhtml\logic.html:757
-#: .\dhtml\templates\dhtml\logic.html:805
-#: .\dhtml\templates\dhtml\logic.html:924
-#: .\dhtml\templates\dhtml\logic.html:1029
-#: .\dhtml\templates\dhtml\logic.html:1177
-#: .\dhtml\templates\dhtml\logic.html:1225
-#: .\dhtml\templates\dhtml\logic.html:1283
-#: .\dhtml\templates\dhtml\logic.html:2424
-#: .\dhtml\templates\dhtml\logic.html:2699
-#: .\dhtml\templates\dhtml\logic.html:2777
+#: .\dhtml\templates\dhtml\logic.html:609
+#: .\dhtml\templates\dhtml\logic.html:689
+#: .\dhtml\templates\dhtml\logic.html:774
+#: .\dhtml\templates\dhtml\logic.html:822
+#: .\dhtml\templates\dhtml\logic.html:941
+#: .\dhtml\templates\dhtml\logic.html:1046
+#: .\dhtml\templates\dhtml\logic.html:1194
+#: .\dhtml\templates\dhtml\logic.html:1242
+#: .\dhtml\templates\dhtml\logic.html:1300
+#: .\dhtml\templates\dhtml\logic.html:2441
+#: .\dhtml\templates\dhtml\logic.html:2716
+#: .\dhtml\templates\dhtml\logic.html:2795
 msgid "<p>Server not available.</p>"
 msgstr ""
 
@@ -404,71 +404,71 @@ msgstr ""
 #: .\dhtml\templates\dhtml\add_session_items.html:654
 #: .\dhtml\templates\dhtml\common.html:194
 #: .\dhtml\templates\dhtml\logic.html:342
-#: .\dhtml\templates\dhtml\logic.html:440
-#: .\dhtml\templates\dhtml\logic.html:468
-#: .\dhtml\templates\dhtml\logic.html:496
-#: .\dhtml\templates\dhtml\logic.html:2630
+#: .\dhtml\templates\dhtml\logic.html:457
+#: .\dhtml\templates\dhtml\logic.html:485
+#: .\dhtml\templates\dhtml\logic.html:513
+#: .\dhtml\templates\dhtml\logic.html:2647
 msgid "Server error :("
 msgstr ""
 
 #: .\dhtml\templates\dhtml\add_session_items.html:710
-#: .\dhtml\templates\dhtml\logic.html:552
+#: .\dhtml\templates\dhtml\logic.html:569
 msgid "Are you sure you want to put the selected items to the Trash?"
 msgstr ""
 
 #: .\dhtml\templates\dhtml\add_session_items.html:768
-#: .\dhtml\templates\dhtml\logic.html:610
+#: .\dhtml\templates\dhtml\logic.html:627
 msgid "Are you sure you want to delete consumable (s)?"
 msgstr ""
 
 #: .\dhtml\templates\dhtml\add_session_items.html:804
-#: .\dhtml\templates\dhtml\logic.html:646
+#: .\dhtml\templates\dhtml\logic.html:663
 msgid "You sure you want to return the selected items back to the store?"
 msgstr ""
 
 #: .\dhtml\templates\dhtml\add_session_items.html:877
-#: .\dhtml\templates\dhtml\logic.html:719
+#: .\dhtml\templates\dhtml\logic.html:736
 msgid "Are you sure you want to remove the counterparty?"
 msgstr ""
 
 #: .\dhtml\templates\dhtml\add_session_items.html:1139
-#: .\dhtml\templates\dhtml\logic.html:981
+#: .\dhtml\templates\dhtml\logic.html:998
 msgid "Are you sure you want to delete a document?"
 msgstr ""
 
 #: .\dhtml\templates\dhtml\add_session_items.html:1151
-#: .\dhtml\templates\dhtml\logic.html:993
+#: .\dhtml\templates\dhtml\logic.html:1010
 msgid "Are you sure you want to delete the user?"
 msgstr ""
 
 #: .\dhtml\templates\dhtml\add_session_items.html:1292
-#: .\dhtml\templates\dhtml\logic.html:1134
+#: .\dhtml\templates\dhtml\logic.html:1151
 msgid "Are you sure you want to delete?"
 msgstr ""
 
 #: .\dhtml\templates\dhtml\add_session_items.html:1347
-#: .\dhtml\templates\dhtml\logic.html:1189
+#: .\dhtml\templates\dhtml\logic.html:1206
 msgid "Are you sure you want to delete city?"
 msgstr ""
 
 #: .\dhtml\templates\dhtml\add_session_items.html:1453
-#: .\dhtml\templates\dhtml\logic.html:1295
+#: .\dhtml\templates\dhtml\logic.html:1312
 #: .\index\templates\index\base_menu.html:5
 msgid "Find by number"
 msgstr ""
 
 #: .\dhtml\templates\dhtml\add_session_items.html:1723
-#: .\dhtml\templates\dhtml\logic.html:1565
+#: .\dhtml\templates\dhtml\logic.html:1582
 msgid "Are you sure you want to remove the storage room?"
 msgstr ""
 
 #: .\dhtml\templates\dhtml\add_session_items.html:1784
-#: .\dhtml\templates\dhtml\logic.html:1626
+#: .\dhtml\templates\dhtml\logic.html:1643
 msgid "<p>Server error :(</p>"
 msgstr ""
 
 #: .\dhtml\templates\dhtml\add_session_items.html:2185
-#: .\dhtml\templates\dhtml\logic.html:2056
+#: .\dhtml\templates\dhtml\logic.html:2073
 msgid "List move empty."
 msgstr ""
 
@@ -709,7 +709,7 @@ msgstr ""
 #: .\docs\templates\docs\delivery.html:102
 #: .\docs\templates\docs\return_acts_list.html:25
 #: .\index\templates\index\from_firm_to_stock.html:44
-#: .\reports\api\views.py:172 .\reports\templates\reports\spent_money.html:58
+#: .\reports\api\views.py:195 .\reports\templates\reports\spent_money.html:58
 #: .\reports\templates\reports\worket_firms.html:6
 msgid "Currency"
 msgstr "dollar"
@@ -2298,35 +2298,33 @@ msgstr ""
 msgid "An object with number %(cart_num)s is not transmitted to the service."
 msgstr ""
 
-#: .\reports\api\views.py:66
-msgid "Start date required field."
-msgstr ""
-
-#: .\reports\api\views.py:80
-msgid "Error in date data."
-msgstr ""
-
-#: .\reports\api\views.py:91
-msgid "Organization unit not found."
-msgstr ""
-
-#: .\reports\api\views.py:168 .\reports\templates\reports\firm.html.py:26
+#: .\reports\api\views.py:119 .\reports\api\views.py:191
+#: .\reports\templates\reports\firm.html:26
 msgid "Start range"
 msgstr ""
 
-#: .\reports\api\views.py:169 .\reports\templates\reports\firm.html.py:27
+#: .\reports\api\views.py:120 .\reports\api\views.py:192
+#: .\reports\templates\reports\firm.html:27
 msgid "End range"
 msgstr ""
 
-#: .\reports\api\views.py:172 .\reports\templates\reports\worket_firms.html:4
+#: .\reports\api\views.py:123
+msgid "Items count"
+msgstr ""
+
+#: .\reports\api\views.py:123 .\reports\templates\reports\users_ajax.html.py:6
+msgid "Details"
+msgstr ""
+
+#: .\reports\api\views.py:195 .\reports\templates\reports\worket_firms.html:4
 msgid "Firm name"
 msgstr ""
 
-#: .\reports\api\views.py:172 .\reports\templates\reports\worket_firms.html:5
+#: .\reports\api\views.py:195 .\reports\templates\reports\worket_firms.html:5
 msgid "The number of serviced objects"
 msgstr ""
 
-#: .\reports\api\views.py:172 .\reports\templates\reports\worket_firms.html:6
+#: .\reports\api\views.py:195 .\reports\templates\reports\worket_firms.html:6
 msgid "The money paid"
 msgstr ""
 
