@@ -7,6 +7,7 @@ from django.template.loader import render_to_string
 from django.utils.translation import ugettext as _
 from django.db.models import Q
 from django.views.decorators.http import require_POST
+from collections import OrderedDict
 from index.helpers import check_ajax_auth
 from index.models import CartridgeItem, OrganizationUnits
 from common.helpers import rotator_files
@@ -106,7 +107,7 @@ def ajax_reports_users(request):
     else:
         result = 'Error'
 
-    #result = sorted(result.items(), key=operator.itemgetter(1), reverse=True)
+    result = OrderedDict(sorted(result.items()))
     # сохраняем результаты работы скрипта в csv файле
     csv_full_name, csv_file_name = rotator_files(request, file_type='csv')
     encoding = 'cp1251'
