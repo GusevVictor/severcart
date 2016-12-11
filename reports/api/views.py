@@ -293,18 +293,18 @@ def ajax_reports_brands(request):
     csv_full_name, csv_file_name = rotator_files(request, file_type='csv')
     encoding = 'cp1251'
     with open(csv_full_name, 'w', newline='', encoding=encoding) as csvfile:
-        fieldnames = ['user', 'amount', 'details']
+        fieldnames = ['name', 'amount']
         writer = csv.DictWriter(csvfile, fieldnames, delimiter=';')
-        writer.writerow({'user': '', 'amount': '', 'details': ''})
-        writer.writerow({'user': '', 'amount': '', 'details': ''})
-        writer.writerow({'user': '', 'amount': '', 'details': ''})
-        writer.writerow({'user': _('Start range'), 'amount': start_date, 'details': ''})
-        writer.writerow({'user': _('End range'), 'amount': end_date, 'details': ''})
-        writer.writerow({'user': '', 'amount': '', 'details': ''})
-        writer.writerow({'user': '', 'amount': '', 'details': ''})
-        writer.writerow({'user': _('User'), 'amount': _('Items count'), 'details': _('Details')})
-        #for key, value in result.items():
-        #    writer.writerow({'user': key, 'amount': value['count'], 'details': value['details']})
+        writer.writerow({'name': '', 'amount': ''})
+        writer.writerow({'name': '', 'amount': ''})
+        writer.writerow({'name': '', 'amount': ''})
+        writer.writerow({'name': _('Start range'), 'amount': start_date})
+        writer.writerow({'name': _('End range'), 'amount': end_date})
+        writer.writerow({'name': '', 'amount': ''})
+        writer.writerow({'name': '', 'amount': ''})
+        writer.writerow({'name': _('Name'), 'amount': _('Items count')})
+        for item in result:
+            writer.writerow({'name': item[0], 'amount': item[1]})
 
     context['text'] = render_to_string('reports/brands_ajax.html', context={'result': result})
     context['url'] = settings.STATIC_URL + 'csv/' + csv_file_name
