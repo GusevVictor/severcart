@@ -145,26 +145,23 @@ class UsersCartridges(forms.Form):
 
 
 class UseProducts(forms.Form):
-    org = forms.ModelChoiceField(queryset=OrganizationUnits.objects.root_nodes(), label=_('Organization unit'))
+    """Потребление наименований расходных материалов
+    """
+    org = forms.ModelChoiceField(queryset=OrganizationUnits.objects.root_nodes(), 
+                                required=True, 
+                                label=_('Departament'), 
+                                widget=forms.Select(attrs={'class':'select_root_org'}))
 
-    start_date = forms.CharField(widget=forms.TextInput(attrs={'class':'datepicker', 'readonly':'readonly'}), label=_('Start date'))
+    unit = forms.ModelChoiceField(queryset=OrganizationUnits.objects.all(), 
+                                 required=False, 
+                                 label=_('Organization unit'),
+                                 widget=forms.Select(attrs={'class':'select_org_unit'}))
+
+    start_date = forms.CharField(required=True, widget=forms.TextInput(attrs={'class':'datepicker', 'readonly':'readonly'}), label=_('Start date'))
 
     end_date = forms.CharField(required=False, widget=forms.TextInput(attrs={'class':'datepicker', 'readonly':'readonly'}), label=_('End date'))
 
     required_css_class = 'required'
-
-    def clean_org(self):
-        """Проверят на пустоту введенные данные.
-        """
-        if not self.cleaned_data.get('org', ''):
-            raise ValidationError(_('Required field.'))
-        org = self.cleaned_data.get('org')
-        org = org.pk
-        try:
-            org = int(org)
-        except ValueError:
-            org = 0
-        return org
 
     def clean_start_date(self):
         """Проверят на пустоту введенные данные.
@@ -186,7 +183,7 @@ class UseProducts(forms.Form):
         return gte_date
 
     def clean_end_date(self):
-        """Проверят на пустоту введенные данные.
+        """#Проверят на пустоту введенные данные.
         """
         # проверяем на корректность дату окончания просмотра списка
         end_date = self.cleaned_data.get('end_date', '').strip()
@@ -203,6 +200,7 @@ class UseProducts(forms.Form):
         else:
             return False
         return lte_date
+
 
 class Firms(forms.Form):
     start_date = forms.CharField(widget=forms.TextInput(attrs={'class':'datepicker', 'readonly':'readonly'}), label=_('Start date'))

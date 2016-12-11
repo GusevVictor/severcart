@@ -1,0 +1,13 @@
+{% load i18n %}
+<table class="checkboxes">
+<tr>
+<th>{% trans "Name" %}</th>
+<th>{% trans "Amount items" %}</th>
+</tr>
+{% for item in result %}
+<tr>
+<td>{{ item.0 }}</td>
+<td>{{ item.1 }}</td>
+</tr>
+{% endfor %}
+</table>

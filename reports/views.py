@@ -88,66 +88,11 @@ def products(request):
     """Отчёт о используемых наименований РМ и их количестве за период.
     """
     context = dict()
-    if request.method == 'POST':
-        form = UseProducts(request.POST)
-        context['form'] = form
-        if form.is_valid():
-            data_in_post = form.cleaned_data
-            org          = data_in_post.get('org', '')
-            start_date   = data_in_post.get('start_date', '')
-            end_date     = data_in_post.get('end_date', '')
-            
-            #
-            if start_date and not(end_date):
-                # если определена дата начала анализа, дата окончания пропущена
-                SQL_QUERY = """SELECT 
-                                    cart_type, COUNT(cart_type) as cart_count 
-                                FROM 
-                                    events_events 
-                                WHERE
-                                    event_type = 'TR' AND departament = %s AND 
-                                    date_time >= '%s'
-                                GROUP BY 
-                                    cart_type
-                                ORDER BY cart_count DESC;
-                            """ % (org, start_date,)
-            if not(start_date) and end_date:               
-                # если проеделена крайняя дата просмотра, а дата начала 
-                # не определена
-                SQL_QUERY = """SELECT 
-                                    cart_type, 
-                                    COUNT(cart_type) as cart_count
-                                FROM 
-                                    events_events 
-                                WHERE
-                                    event_type = 'TR' AND departament = %s AND 
-                                date_time <= '%s'
-                                GROUP BY 
-                                    cart_type
-                                ORDER BY cart_count DESC;
-                            """ % (org, end_date,)
-
-            if start_date and end_date:
-                SQL_QUERY = """SELECT 
-                                    cart_type, COUNT(cart_type) as cart_count
-                                FROM 
-                                    events_events
-                                WHERE 
-                                    event_type = 'TR' AND departament = %s AND 
-                                    date_time >= '%s' AND date_time <= '%s'
-                                GROUP BY
-                                    cart_type
-                                ORDER BY cart_count DESC;
-                            """ % (org, start_date, end_date,)                
-            cursor = connection.cursor()
-            cursor.execute(SQL_QUERY)
-            context['all_items'] = cursor.fetchall()
-        else:
-            print('Form invalid')
-        
-    else:
-        context['form'] = UseProducts(initial={'org': request.user.departament})
+    form = UseProducts()
+    form.fields['unit'].queryset = OrganizationUnits.objects.filter(pk=0)
+    context['form'] = form
     return render(request, 'reports/products.html', context)
+
 
 @login_required
 @never_cache

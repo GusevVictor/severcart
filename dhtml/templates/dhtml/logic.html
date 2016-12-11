@@ -2800,4 +2800,60 @@ $( function(){
 
     }); 
 
+    $('.use_brands_cartridges').click( function() {
+        var org = $('.select_root_org option:selected').val();
+        var unit = $('.select_org_unit option:selected').val();
+        if (unit == 0) { unit = ''; }
+        var start_date = $('#id_start_date').val();
+        var end_date = $('#id_end_date').val();
+        $('.form_error_text').remove();
+        $.ajax({
+            method: 'POST',
+            url: '{% url "reports:ajax_reports_brands" %}',
+            data:  {'org': org, 'unit': unit, 'start_date': start_date, 'end_date': end_date},
+            beforeSend: function( xhr, settings ){
+                $('.spinner').show();
+                $('.download_result').hide();
+                csrftoken = getCookie('csrftoken');
+                if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
+                    xhr.setRequestHeader('X-CSRFToken', csrftoken);
+                }
+            },
+            success: function( msg ) {
+                $('.spinner').hide(); 
+                if (msg.error == '1') {
+                    $('.success_msg').hide();
+                    $('.error_msg').show();
+                    $('.error_msg').html(msg.text);
+                    $('.users_result').html();
+                }
+
+                if (msg.error == '0') {
+                    $('.spinner').hide();
+                    $('.error_msg').hide();
+                    $('.users_result').html(msg.text);
+                    $('.download_result').show();
+                    $('.download_result').attr('href', msg.url);
+                }
+
+                if (msg.error == '3') {
+                    $('.success_msg').hide();
+                    $('.error_msg').hide();
+                    var kv = $.parseJSON(msg.text);
+                    for (var key in kv) {
+                        var selector = '#id_' + key;
+                        $(selector).parent().after('<div class="form_error_text" style="display:block">' + kv[key][0]['message'] + '</div>');
+                    }
+                }
+            },
+            error: function() {
+                $('.spinner').hide(); 
+                $('.success_msg').hide();
+                $('.error_msg').show();
+                $('.error_msg').html('{% trans "Server error :(" %}');
+            },
+        });   
+
+    });
+
 });
