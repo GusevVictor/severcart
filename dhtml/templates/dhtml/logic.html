@@ -2761,6 +2761,8 @@ $( function(){
 
     $('.select_root_org').change(function() {
         var dept_id = $(this).val();
+        $('.select_org_unit').find('option').remove().end().append('<option value="0"> </option>').val('0'); // очищаем весь  select         
+        if (!(dept_id)) { return }
         $.ajax({
             method: 'POST',
             url: '{% url "auth:org_suggests" %}',
