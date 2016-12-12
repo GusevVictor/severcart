@@ -831,7 +831,7 @@ def transfer_to_firm_with_scanner(request):
 @login_required
 @never_cache
 def from_firm_to_stock(request):
-    """Возврашаем заправленные расходники обратно на базу.
+    """Возврашаем заправленные расходники обратно на с клад с помошью мыши.
     """
     back = BreadcrumbsPath(request).before_page(request)
     checked_cartr = request.GET.get('select', '')

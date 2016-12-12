@@ -52,6 +52,12 @@
         <td class="money_wrapper"><input type="text" class="money" name="cart_{{elem.pk}}" value="0" autocomplete="off"/><div class="money_validate"><div class="err_arrow"></div><div class="err_content"></div></div></td>
         </tr>{% endfor %}
         </table>
+        <div class="marginTop">
+            <label for="{{ form.doc.id_for_label }}">{% trans "Service agreement" %}</label>
+            <div class="input_row">
+                {{ form.doc }}&nbsp;&nbsp;<a class="add" href="{% url 'docs:delivery' %}"></a>
+            </div>
+        </div>
         <input type="submit" value="{% trans 'Return to stock' %}" class="button return_to_stock"/>
         <a class="button" href="{{ back }}">{% trans "Back" %}</a>
         </form>
