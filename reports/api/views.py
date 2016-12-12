@@ -233,9 +233,10 @@ def ajax_reports_brands(request):
     if unit:
         child = unit
         #family = root_ou.get_descendants(include_self=True)
-
     else:
         root_ou = org
+        root_ou = root_ou.pk
+        child = False
         #family = root_ou.get_descendants(include_self=False)
 
     result = list()
@@ -244,7 +245,8 @@ def ajax_reports_brands(request):
     start_date = start_date + time_offset
     if end_date:
         end_date = end_date + time_offset
-    if start_date and not(end_date):
+    
+    if child and start_date and not(end_date):
         # если определена дата начала анализа, дата окончания пропущена
         SQL_QUERY = """SELECT 
                             cart_type, COUNT(cart_type) as cart_count 
@@ -257,7 +259,7 @@ def ajax_reports_brands(request):
                             cart_type
                         ORDER BY cart_count DESC;
                     """ % (child, start_date,)
-    if not(start_date) and end_date:               
+    if child and not(start_date) and end_date:               
         # если проеделена крайняя дата просмотра, а дата начала 
         # не определена
         SQL_QUERY = """SELECT 
@@ -273,7 +275,7 @@ def ajax_reports_brands(request):
                         ORDER BY cart_count DESC;
                     """ % (child, end_date,)
 
-    if start_date and end_date:
+    if child and start_date and end_date:
         SQL_QUERY = """SELECT 
                             cart_type, COUNT(cart_type) as cart_count
                         FROM 
@@ -285,6 +287,51 @@ def ajax_reports_brands(request):
                             cart_type
                         ORDER BY cart_count DESC;
                     """ % (child, start_date, end_date,)
+    # ветка для SQL запросов если выбран депртамент, а орг. подразделение нет
+    if root_ou and start_date and not(end_date):
+        # если определена дата начала анализа, дата окончания пропущена
+        SQL_QUERY = """SELECT 
+                            cart_type, COUNT(cart_type) as cart_count 
+                        FROM 
+                            events_events 
+                        WHERE
+                            event_type = 'TR' AND departament = %s AND 
+                            date_time >= '%s'
+                        GROUP BY 
+                            cart_type
+                        ORDER BY cart_count DESC;
+                    """ % (root_ou, start_date,)
+    if root_ou and not(start_date) and end_date:               
+        # если проеделена крайняя дата просмотра, а дата начала 
+        # не определена
+        SQL_QUERY = """SELECT 
+                            cart_type, 
+                            COUNT(cart_type) as cart_count
+                        FROM 
+                            events_events 
+                        WHERE
+                            event_type = 'TR' AND departament = %s AND 
+                        date_time <= '%s'
+                        GROUP BY 
+                            cart_type
+                        ORDER BY cart_count DESC;
+                    """ % (root_ou, end_date,)
+
+    if root_ou and start_date and end_date:
+        SQL_QUERY = """SELECT 
+                            cart_type, COUNT(cart_type) as cart_count
+                        FROM 
+                            events_events
+                        WHERE 
+                            event_type = 'TR' AND departament = %s AND 
+                            date_time >= '%s' AND date_time <= '%s'
+                        GROUP BY
+                            cart_type
+                        ORDER BY cart_count DESC;
+                    """ % (root_ou, start_date, end_date,)
+
+
+    #####
     cursor = connection.cursor()
     cursor.execute(SQL_QUERY)
     data = cursor.fetchall()
