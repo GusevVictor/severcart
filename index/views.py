@@ -24,6 +24,7 @@ from .forms.add_firm import FirmTonerRefillF
 from .forms.tr_to_firm import TransfeToFirm, TransfeToFirmScanner
 from .forms.tr_to_stock import MoveItemsToStockWithBarCodeScanner
 from .forms.add_cartridge_name import AddCartridgeName
+from .forms.from_firm_to_stock import FromFirmToStock
 from .forms.comment import EditCommentForm
 from .models import CartridgeType
 from .models import CartridgeItem
@@ -31,7 +32,7 @@ from .models import OrganizationUnits
 from .models import City as CityM
 from .models import FirmTonerRefill
 from .models import CartridgeItemName
-from .helpers import str2int
+from .helpers import str2int, str2float
 from events.models import Events
 from docs.models import SCDoc, RefillingCart
 from storages.models import Storages
@@ -100,15 +101,11 @@ def dashboard(request):
 class Stock(CartridgesView):
     """Списки заправленных, новых картриджей на складе
     """
-    @method_decorator(login_required)
-    @method_decorator(never_cache)
-    def dispatch(self, *args, **kwargs):
-        return super(Stock, self).dispatch(*args, **kwargs)
-
     def get(self, request, *args, **kwargs):
         super(Stock, self).get(*args, **kwargs)
         self.context['view'] = 'stock'
         self.all_items = self.all_items.filter(cart_status=1).filter(departament=self.request.user.departament)
+        self.all_items = self.all_items.values('id', 'cart_number', 'cart_itm_name__cart_itm_name', 'cart_number_refills', 'cart_date_change', 'sklad', 'comment', 'bufer', 'delivery_doc')
         # для минимизации количества обращений к базе данных воспользуемся 
         # простиньким кэшом
         simple_cache = dict()
@@ -116,22 +113,22 @@ class Stock(CartridgesView):
         # Внимание! Поля sklad_title и sklad_address являются искуственно
         # внедрёнными, в модели CartridgeItem их нет.
         for item in self.all_items:
-            if simple_cache.get(item.sklad, 0):
-                self.all_items[i].sklad_title = simple_cache.get(item.sklad)['title']
-                self.all_items[i].sklad_address = simple_cache.get(item.sklad)['address']
+            if simple_cache.get(item['sklad'], 0):
+                self.all_items[i]['sklad_title'] = simple_cache.get(item['sklad'])['title']
+                self.all_items[i]['sklad_address'] = simple_cache.get(item['sklad'])['address']
             else:
                 try:
-                    sklad = Storages.objects.get(pk=item.sklad)
+                    sklad = Storages.objects.get(pk=item['sklad'])
                 except:
-                    simple_cache[item.sklad] = {'title': '', 'address': ''}
+                    simple_cache[item['sklad']] = {'title': '', 'address': ''}
                     self.all_items[i].sklad_title    = ''
                     self.all_items[i].sklad_address  = ''
                 else:
-                    simple_cache[item.sklad] =  {'title': sklad.title, 'address': sklad.address}
-                    self.all_items[i].sklad_title    = sklad.title
-                    self.all_items[i].sklad_address  = sklad.address
+                    simple_cache[item['sklad']] =  {'title': sklad.title, 'address': sklad.address}
+                    self.all_items[i]['sklad_title']    = sklad.title
+                    self.all_items[i]['sklad_address']  = sklad.address
             i += 1
-
+        
         page_size = self.items_per_page()
         self.context['size_perpage'] = page_size
         self.context['cartrjs'] = self.pagination(self.all_items, page_size)
@@ -499,11 +496,6 @@ def transfe_for_use(request):
 class Use(CartridgesView):
     """Списки заправленных, новых картриджей на складе
     """
-    @method_decorator(login_required)
-    @method_decorator(never_cache)
-    def dispatch(self, *args, **kwargs):
-        return super(Use, self).dispatch(*args, **kwargs)
-
     def get(self, request, *args, **kwargs):
         super(Use, self).get(*args, **kwargs)
         self.context['view'] = 'use'
@@ -522,11 +514,6 @@ class Use(CartridgesView):
 class Empty(CartridgesView):
     """Списки заправленных, новых картриджей на складе
     """
-    @method_decorator(login_required)
-    @method_decorator(never_cache)
-    def dispatch(self, *args, **kwargs):
-        return super(Empty, self).dispatch(*args, **kwargs)
-
     def get(self, request, *args, **kwargs):
         super(Empty, self).get(*args, **kwargs)
         self.context['view'] = 'empty'
@@ -678,11 +665,6 @@ def edit_firm(request):
 class At_work(CartridgesView):
     """Список картриджей находящихся на заправке.
     """
-    @method_decorator(login_required)
-    @method_decorator(never_cache)
-    def dispatch(self, *args, **kwargs):
-        return super(At_work, self).dispatch(*args, **kwargs)
-
     def get(self, request, *args, **kwargs):
         super(At_work, self).get(*args, **kwargs)
         self.context['view'] = 'at_work'
@@ -729,6 +711,7 @@ def from_firm_to_stock_with_barcode(request):
             show_list.append(cart_obj)
 
     form.fields['numbers'].initial = initial_numbers
+    show_list.reverse()
     context['show_list'] = show_list
     context['back'] = back
     context['form'] = form
@@ -738,11 +721,6 @@ def from_firm_to_stock_with_barcode(request):
 class Basket(CartridgesView):
     """Список картриджей на выброс.
     """
-    @method_decorator(login_required)
-    @method_decorator(never_cache)
-    def dispatch(self, *args, **kwargs):
-        return super(Basket, self).dispatch(*args, **kwargs)
-
     def get(self, request, *args, **kwargs):
         super(Basket, self).get(*args, **kwargs)
         self.context['view'] = 'basket'
@@ -778,7 +756,7 @@ def transfer_to_firm(request):
         # если кто-то зашел на страницу не выбрав расходники
         return HttpResponseRedirect(reverse('index:empty'))
     form = TransfeToFirm(initial = {'numbers': checked_cartr})
-    form.fields['doc'].queryset = SCDoc.objects.filter(departament=request.user.departament).filter(doc_type=2)
+    form.fields['doc'].queryset = SCDoc.objects.filter(doc_type=-1) # инициализируем пустой список для его загрузки аяксом
     context['form'] = form
     context['checked_cartr'] = checked_cartr
     context['transfe_objs'] = transfe_objs
@@ -792,6 +770,7 @@ def transfer_to_firm_with_scanner(request):
        помощью сканера ШК
     """
     context = dict()
+    context['mydebug'] = False
     form = TransfeToFirmScanner()
     form.fields['doc'].queryset = SCDoc.objects.filter(departament=request.user.departament).filter(doc_type=2)
         
@@ -822,9 +801,10 @@ def transfer_to_firm_with_scanner(request):
     # инициализируем поле numbers значениями сессионной переменной, 
     # если пользователь произвёл перезагрузку страницы. 
     form.fields['numbers'].initial = str(session_data)[1:-1] 
-    context['sessions_objects'] = sessions_objects        
+    sessions_objects.reverse()
+    context['sessions_objects'] = sessions_objects
     context['form'] = form
-    context['mydebug'] = False
+    
     return render(request, 'index/transfer_to_firm_with_scanner.html', context)
 
 
@@ -833,9 +813,13 @@ def transfer_to_firm_with_scanner(request):
 def from_firm_to_stock(request):
     """Возврашаем заправленные расходники обратно на с клад с помошью мыши.
     """
+    context = dict()
     back = BreadcrumbsPath(request).before_page(request)
     checked_cartr = request.GET.get('select', '')
     tmp = ''
+    form = FromFirmToStock()
+    form.fields['doc'].queryset = SCDoc.objects.filter(departament=request.user.departament).filter(doc_type=2)
+    context['form'] = form
     list_cart = []
     if checked_cartr:
         checked_cartr = checked_cartr.split('s')
@@ -850,8 +834,16 @@ def from_firm_to_stock(request):
     else:
         # если кто-то зашел на страницу не выбрав расходники
         return HttpResponseRedirect(reverse('index:at_work'))        
-
+    context['checked_cartr'] = checked_cartr
+    context['list_cart'] = list_cart
+    context['list_length'] = list_length
+    context['back'] = back
     if request.method == 'POST':
+        form = FromFirmToStock(request.POST)
+        if form.is_valid():
+            data_in_post = form.cleaned_data
+            doc = data_in_post.get('doc')
+
         list_cplx = []
         with transaction.atomic():
             for inx in tmp:
@@ -883,15 +875,26 @@ def from_firm_to_stock(request):
 
         # генерируем акт возвращения РМ
         jsoning_list = []
+        money_sum = 0
         for inx in tmp:
             cart_number = CartridgeItem.objects.get(pk=inx).cart_number
             cart_name   = CartridgeItem.objects.get(pk=inx).cart_itm_name
             repair_actions = request.POST.getlist('cart_'+str(inx))
-            money_per_one = request.POST.getlist('cart_money'+str(inx))
+            money_per_one = request.POST.getlist('cart_money_'+str(inx))
+            money_sum += str2float(money_per_one[0]) if money_per_one else 0
             jsoning_list.append([cart_number, str(cart_name), repair_actions, money_per_one])
         jsoning_list = json.dumps(jsoning_list)
         
-        
+
+        money_sum = int(money_sum * 100)
+        # устанавливаем потраченные деньги
+        if doc:
+            last_money = doc.spent
+            last_money = last_money if last_money else 0
+            last_money += money_sum
+            doc.spent = last_money
+            doc.save()
+
         # генерируем номер акта передачи на основе даты и его порядкового номера
         sender_acts = RefillingCart.objects.filter(departament=request.user.departament).count()
         # генерируем новый номер
@@ -909,16 +912,14 @@ def from_firm_to_stock(request):
                                 firm         = firm,
                                 user         = str(request.user),
                                 json_content = jsoning_list,
-                                #money        = price,
-                                departament  = request.user.departament
+                                money        = money_sum,
+                                departament  = request.user.departament,
+                                parent_doc = doc
                                )
         act_doc.save()
 
         return HttpResponseRedirect(reverse('index:at_work'))
-    return render(request, 'index/from_firm_to_stock.html', {'checked_cartr': checked_cartr, 
-                                                            'list_cart': list_cart, 
-                                                            'list_length': list_length, 
-                                                            'back': back})
+    return render(request, 'index/from_firm_to_stock.html', context)
 
 
 def bad_browser(request):
@@ -1042,3 +1043,44 @@ def evaluate_service(request):
         context['msg'] = _('An object with number %(cart_num)s belong to a different organizational unit.') % {'cart_num': node.cart_number}
 
     return render(request, 'index/evaluate_service.html', context)
+
+
+class Bufer(CartridgesView):
+    """
+    """
+    def get(self, request, *args, **kwargs):
+        super(Bufer, self).get(*args, **kwargs)
+        self.context['view'] = 'bufer'
+        try:
+            root_ou   = self.request.user.departament
+            children  = root_ou.get_family()
+        except AttributeError:
+            children = None
+        self.all_items = self.all_items.filter(departament__in=children).filter(bufer=True)
+        # для минимизации количества обращений к базе данных воспользуемся 
+        # простиньким кэшом
+        simple_cache = dict()
+        i = 0 # итерируемая переменная для доступа по индексу
+        # Внимание! Поля sklad_title и sklad_address являются искуственно
+        # внедрёнными, в модели CartridgeItem их нет.
+        for item in self.all_items:
+            if simple_cache.get(item.sklad, 0):
+                self.all_items[i].sklad_title = simple_cache.get(item.sklad)['title']
+                self.all_items[i].sklad_address = simple_cache.get(item.sklad)['address']
+            else:
+                try:
+                    sklad = Storages.objects.get(pk=item.sklad)
+                except:
+                    simple_cache[item.sklad] = {'title': '', 'address': ''}
+                    self.all_items[i].sklad_title    = ''
+                    self.all_items[i].sklad_address  = ''
+                else:
+                    simple_cache[item.sklad] =  {'title': sklad.title, 'address': sklad.address}
+                    self.all_items[i].sklad_title    = sklad.title
+                    self.all_items[i].sklad_address  = sklad.address
+            i += 1
+
+        page_size = self.items_per_page()
+        self.context['size_perpage'] = page_size
+        self.context['cartrjs'] = self.pagination(self.all_items, page_size)
+        return render(request, 'index/bufer.html', self.context)

@@ -1,24 +1,23 @@
 {% load filters %}{% load i18n %}
-<div class="vertical_menu marginTop">
-    <div class="row">
-        <div class="large-12 columns black-bg">
-            <ul class="menu">
-                <li class="{% navactive request 'index:dashboard' %}"><a href="{% url 'index:dashboard' %}">{% trans "Main" %}</a></li>
-                <li class="{% navactive request 'index:stock' %}"><a href="{% url 'index:stock' %}">{% trans "Filled" %}</a></li>
-                <li class="{% navactive request 'index:use' %}"><a href="{% url 'index:use' %}">{% trans "Installed" %}</a></li>
-                <li class="{% navactive request 'index:empty' %}"><a href="{% url 'index:empty' %}">{% trans "Empty" %}</a></li>
-                <li class="{% navactive request 'index:at_work' %}"><a href="{% url 'index:at_work' %}">{% trans "On restoration" %}</a></li>
-                <li class="{% navactive request 'index:basket' %}"><a href="{% url 'index:basket' %}">{% trans "Basket" %}</a></li>
-                <li class="{% navactive request 'service:submenu' %}"><a href="{% url 'service:submenu' %}">{% trans "Service" %}</a></li>
-                <li class="{% navactive request 'auth:manage_users' %} {% navactive request 'index:tree_list' %} {% navactive request 'index:toner_refill' %} {% navactive request 'docs:handbook' %}"><a href="{% url 'docs:handbook' %}">{% trans "References" %}</a></li>
-                <li class="search right">
-                    <form action="{% url 'find:search' %}" method="GET">
-                        <input class="search_query" type="text" name="query" onfocus="if(this.value == '{% trans "Find by number" %}') { this.value = ''; }" onfocusout="if(this.value == '') { this.value = '{% trans "Find by number" %}'; }" value="{% trans 'Find by number' %}" /><!--
-                       --><input type="submit" class="search_button" value="" />
-                    </form>
-                </li>
-
-            </ul>
-        </div>
-    </div>
+<div class="marginTop">
+    <div class="search_wrapper">
+        <form action="{% url 'find:search' %}" method="GET">
+            <input class="search_query" type="text" name="query" onfocus="if(this.value == '{% trans "Find by number" %}') { this.value = ''; }" onfocusout="if(this.value == '') { this.value = '{% trans "Find by number" %}'; }" value="{% trans 'Find by number' %}" /><!--
+           --><input type="submit" class="search_button" value="" />
+        </form>
+    </div>    
+    <ul class="menu">
+        <li class="{% navactive request 'index:dashboard' %}"><a href="{% url 'index:dashboard' %}">{% trans "Main" %}</a></li>
+        <li><span>{% trans 'Consumables' %}</span></li>
+        <ul>
+            <li class="{% navactive request 'index:stock' %}"><a href="{% url 'index:stock' %}">{% trans "Filled" %}</a></li>
+            <li class="{% navactive request 'index:use' %}"><a href="{% url 'index:use' %}">{% trans "Installed" %}</a></li>
+            <li class="{% navactive request 'index:empty' %}"><a href="{% url 'index:empty' %}">{% trans "Empty" %}</a></li>
+            <li class="{% navactive request 'index:at_work' %}"><a href="{% url 'index:at_work' %}">{% trans "On restoration" %}</a></li>
+            <li class="{% navactive request 'index:basket' %}"><a href="{% url 'index:basket' %}">{% trans "Basket" %}</a></li>
+            <li class="{% navactive request 'index:bufer' %}"><a href="{% url 'index:bufer' %}">{% trans "Bufer" %}</a></li>
+        </ul>
+        <li class="{% navactive request 'service:submenu' %}"><a href="{% url 'service:submenu' %}">{% trans "Service" %}</a></li>
+        <li class="{% navactive request 'auth:manage_users' %} {% navactive request 'index:tree_list' %} {% navactive request 'index:toner_refill' %} {% navactive request 'docs:handbook' %}"><a href="{% url 'docs:handbook' %}">{% trans "References" %}</a></li>
+    </ul>
 </div>

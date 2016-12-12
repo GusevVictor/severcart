@@ -1,0 +1,15 @@
+{% load i18n %}{% load docsf %}
+<table>
+<tr>
+<th>{% trans 'Firm name' %}</th>
+<th>{% trans 'The number of serviced objects' %}</th>
+<th>{% trans 'The money paid' %}, {% trans 'Currency' %}</th>
+</tr>
+{% for key, value in result.items %}
+<tr>
+<td>{{ key }}</td>
+<td>{{ value.count }}</td>
+<td>{{ value.money | divide }}</td>
+</tr>
+{% endfor %}
+</table>

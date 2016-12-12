@@ -73,6 +73,7 @@
                     <th>{% trans "Storage" %}</th>
                     <th>{% trans "Comment" %}</th>
                     <th class="actions">{% trans "Actions" %}</th>
+                    <th class="first_checkbox"></th>
                 </tr>
                 {% for i in cartrjs %}
                     <tr>
@@ -90,6 +91,7 @@
                             <option value="view_delivery" data="{{ i.delivery_doc }}">{% trans "Delivery agreement" %}</option>
                         </select>
                         </td>
+                        <td><div title="{% trans 'Buffering' %}" class="led switch_{% if i.bufer %}on{% else %}off{% endif %}" value="{{ i.id }}">&nbsp;</div></td>
                     </tr>
                 {% endfor %}
             </form>

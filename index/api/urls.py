@@ -25,6 +25,9 @@ from index.api.views import (   ajax_add_session_items,
                                 change_cart_number,
                                 clear_basket_session,
                                 add_items_in_stock_from_session_basket,
+                                linked_name_objects,
+                                push_to_bufer,
+                                docs_firm_suggests,
                             )
 from accounts.api.views import del_users
 
@@ -55,4 +58,7 @@ urlpatterns = [
     url('^change_cart_number/', change_cart_number, name='change_cart_number'),
     url('^clear_basket_session/', clear_basket_session, name='clear_basket_session'),
     url('^add_items_in_stock_from_session_basket/', add_items_in_stock_from_session_basket, name='add_items_in_stock_from_session_basket'),
+    url('^linked_name_objects/', linked_name_objects, name='linked_name_objects'),
+    url('^push_to_bufer/', push_to_bufer, name='push_to_bufer'),
+    url('^docs_firm_suggests/', docs_firm_suggests, name='docs_firm_suggests'),
 ]

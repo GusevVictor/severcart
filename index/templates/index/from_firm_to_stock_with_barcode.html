@@ -30,13 +30,13 @@
                     <label class="required">{% trans 'That pass' %}</label>
                     <table class="width100 transfer_list" >
                     <tr>
-                        <td>&nbsp;</td>
+                        <td><input class="check_uncheck_all" type="checkbox" name="check_uncheck_all" checked="checked"></td>
                         <th class="width100px">{% trans 'Number' %}</th>
                         <th>{% trans 'Name' %}</th>
                     </tr>
                     {% for item in show_list %}
                     <tr class="remove{{ item.pk }}">
-                        <td><input name="pk" type="checkbox" value="{{ item.pk }}" /></td>
+                        <td><input class="check_moved_items" checked="checked" name="pk" type="checkbox" value="{{ item.pk }}" /></td>
                         <td class="width100px">{{ item.cart_number }}</td>
                         <td>{{ item.cart_name }}</td>
                     </tr>
@@ -57,6 +57,7 @@
                 <div class="form_error_text cart_sklad_error">{% trans "The field must be seleced" %}</div>
                 -->
                 <div class="marginTop">
+                    <a class="button no_follow set_focus">{% trans 'Set focus' %}</a>
                     <a class="button success move_from_firm_to_stock no_follow">{% trans "Move" %}</a>
                     &nbsp;&nbsp;&nbsp;
                     <a href="{{ back }}" class="button"/>{% trans "Back" %}</a>&nbsp;&nbsp;&nbsp;

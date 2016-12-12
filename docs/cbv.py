@@ -42,7 +42,6 @@ class TypesView(GridListView):
 class CitiesView(GridListView):
     """Отображение списка городов.
     """
-    @method_decorator(login_required)
     def dispatch(self, *args, **kwargs):
         return super(CitiesView, self).dispatch(*args, **kwargs)
 

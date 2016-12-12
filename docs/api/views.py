@@ -1,10 +1,11 @@
 # -*- coding:utf-8 -*-
 
-import os, io, glob, re
+import os, io, re, glob
 import time
 import json
 from django.http import JsonResponse, HttpResponse, Http404
 from django.db.models.deletion import ProtectedError
+from django.views.decorators.http import require_POST
 from django.db.models import Q
 from django.conf import settings
 from django.utils import timezone
@@ -16,6 +17,7 @@ from docx.enum.text import WD_ALIGN_PARAGRAPH
 from docx.enum.style import WD_STYLE_TYPE
 from index.models import CartridgeItemName, CartridgeType, CartridgeItem, City
 from index.helpers import check_ajax_auth, str2int
+from common.helpers import rotator_files
 from docs.models import RefillingCart, SCDoc
 from docs.helpers import group_names, localize_date
 from service.helpers import SevercartConfigs
@@ -25,13 +27,12 @@ from events.helpers import do_timezone
 import logging
 logger = logging.getLogger(__name__)
 
+
+@require_POST
 @check_ajax_auth
 def del_cart_name(request):
     """Удаляем имя расходного материала.
     """
-    if request.method != 'POST':
-        return HttpResponse('<h1>' + _('Only use POST requests!') + '</h1>')
-    
     resp_dict = dict()
     cart_name_id = request.POST.get('cart_name_id', '')
     atype = request.POST.get('atype', '')
@@ -72,14 +73,12 @@ def del_cart_name(request):
     return JsonResponse(resp_dict, safe=False)
 
 
+@require_POST
 @check_ajax_auth
 def del_city(request):
     """Удаление записи о городе.
     """
     ansver = dict()
-    if request.method != 'POST':
-        return HttpResponse('<h1>' + _('Only use POST requests!') + '</h1>')
-    
     citi_id = request.POST.get('select', 0)
 
     try:
@@ -104,13 +103,12 @@ def del_city(request):
     return JsonResponse(ansver)
 
 
+@require_POST
 @check_ajax_auth
 def generate_act(request):
     """Генерация нового docx документа. Вью возвращает Url с свежезгенерированным файлом. 
     """
     resp_dict = dict()
-    if request.method != 'POST':
-        return HttpResponse('<h1>' + _('Only use POST requests!') + '</h1>')
     # использование глобальных переменных не очень хороший приём
     # но он позволяет упростить программный код
     total_pages_count = 0
@@ -141,18 +139,7 @@ def generate_act(request):
 
     co = len(jsontext) # количество передаваемых картриджей на заправку
 
-    if not os.path.exists(settings.STATIC_ROOT_DOCX):
-        os.makedirs(settings.STATIC_ROOT_DOCX)
-
-    # ротация файлов
-    files = filter(os.path.isfile, glob.glob(settings.STATIC_ROOT_DOCX + '\*.docx'))
-    files = list(files)
-    files.sort(key=lambda x: os.path.getmtime(x))
-    try:
-        if len(files) > settings.MAX_COUNT_DOCX_FILES:
-            os.remove(files[0])
-    except:
-        pass
+    file_full_name, docx_file_name = rotator_files(request, file_type='docx')
     # производим инициализацию некоторых переменных начальными значениями
     sender_full_name    = request.user.fio
     recipient_full_name = ' '*50
@@ -166,15 +153,11 @@ def generate_act(request):
     
 
     if doc_action == 'docx_with_group':
-        docx_file_name = m1.number + '_' + str(request.user.pk) +'_1.docx'
-        file_full_name = os.path.join(settings.STATIC_ROOT_DOCX, docx_file_name)
         jsontext = group_names(jsontext)
         header_cell_one = _('The name of the cartridge')
         header_cell_two = _('Amount cartridges')
         
     if doc_action == 'docx_without_group':
-        docx_file_name = m1.number + '_' + str(request.user.pk) +'_0.docx'
-        file_full_name = os.path.join(settings.STATIC_ROOT_DOCX, docx_file_name)
         header_cell_one = _('Cartridge number')
         header_cell_two = _('The name of the cartridge')
 
@@ -259,6 +242,7 @@ def generate_act(request):
     return JsonResponse(resp_dict)
 
 
+@require_POST
 @check_ajax_auth
 def generate_csv(request):
     import csv
@@ -286,22 +270,11 @@ def generate_csv(request):
                 writer.writerow({'name': key, 'amount': value})
 
     resp_dict = {}
-    csv_file_name = str(int(time.time())) + '_' + str(request.user.pk) + '.csv'
     view = request.POST.get('view', '')
     gtype = request.POST.get('gtype', '')
     conf = SevercartConfigs()
-    if not os.path.exists(settings.STATIC_ROOT_CSV):
-        os.makedirs(settings.STATIC_ROOT_CSV)
-    # Прозводим ротацию каталога csv от старых файлов
-    files = filter(os.path.isfile, glob.glob(settings.STATIC_ROOT_CSV + '\*.csv'))
-    files = list(files)
-    files.sort(key=lambda x: os.path.getmtime(x))
-    try:
-        if len(files) > settings.MAX_COUNT_CSV_FILES:
-            os.remove(files[0])
-    except:
-        pass
-    csv_full_name = os.path.join(settings.STATIC_ROOT_CSV, csv_file_name)
+
+    csv_full_name, csv_file_name = rotator_files(request, file_type='csv')
     all_items = CartridgeItem.objects.all().order_by('pk')
     if view == 'stock':
         all_items = all_items.filter(cart_status=1).filter(departament=request.user.departament)
@@ -439,34 +412,37 @@ def generate_csv(request):
     return JsonResponse(resp_dict)
 
 
+@require_POST
 @check_ajax_auth
 def generate_pdf(request):
     """Генерация pdf файла с наклейками для печати.
-    """
-    if request.method != 'POST':
-        return HttpResponse('<h1>' + _('Only use POST requests!') + '</h1>')
-    
+    """ 
     from common.helpers import Sticker
     from service.helpers import SevercartConfigs
-    resp_dict = {}
-    pdf_file_name = str(int(time.time())) + '_' + str(request.user.pk) + '.pdf'
-    cart_type = request.POST.get('cart_type', '')
-    if not os.path.exists(settings.STATIC_ROOT_PDF):
-        os.makedirs(settings.STATIC_ROOT_PDF)
-    # Прозводим ротацию каталога pdf от старых файлов
-    files = filter(os.path.isfile, glob.glob(settings.STATIC_ROOT_PDF + '\*.pdf'))
-    files = list(files)
-    files.sort(key=lambda x: os.path.getmtime(x))
-    try:
-        if len(files) > settings.MAX_COUNT_PDF_FILES:
-            os.remove(files[0])
-    except:
-        pass
-    pdf_full_name = os.path.join(settings.STATIC_ROOT_PDF, pdf_file_name)
+    resp_dict = dict()
+    cart_type = request.POST.get('cart_type', '')    
+    pdf_full_name, pdf_file_name = rotator_files(request, file_type='pdf')
+    conf = SevercartConfigs()
+    pagesize = conf.page_format
+    print_bar_code = conf.print_bar_code
+    pdf_doc = Sticker(file_name=pdf_full_name, pagesize=pagesize, print_bar_code=print_bar_code)
+    
     if cart_type == 'full':
         session_data = request.session.get('cumulative_list')
     elif cart_type == 'empty':
         session_data = request.session.get('empty_cart_list')
+    elif cart_type == 'bufer':
+        try:
+            root_ou   = request.user.departament
+            children  = root_ou.get_family()
+        except AttributeError:
+            children = None
+        all_items = CartridgeItem.objects.filter(departament__in=children).filter(bufer=True)
+        for item in all_items:
+            pdf_doc.add(ou_number=request.user.departament.pk, cartridge_name=item.cart_itm_name, cartridge_number=item.cart_number)
+        pdf_doc.fin()
+        resp_dict['url'] = settings.STATIC_URL + 'pdf/' + pdf_file_name
+        return JsonResponse(resp_dict)        
     else:
         pass
 
@@ -482,10 +458,6 @@ def generate_pdf(request):
     for elem in list_names:
         simple_cache[elem.pk] = elem.cart_itm_name
 
-    conf = SevercartConfigs()
-    pagesize = conf.page_format
-    print_bar_code = conf.print_bar_code
-    pdf_doc = Sticker(file_name=pdf_full_name, pagesize=pagesize, print_bar_code=print_bar_code)
     # формируем текст для наклейки
     for elem in session_data:
         for stik in elem[2]:
@@ -507,43 +479,13 @@ def generate_pdf(request):
     resp_dict['url'] = settings.STATIC_URL + 'pdf/' + pdf_file_name
     return JsonResponse(resp_dict)
 
-@check_ajax_auth
-def calculate_sum(request):
-    """Подсчёт истраченных денег по заданному в списке контракту 
-       на обслуживание.
-    """
-    ansver = dict()
-    list_contracts =request.POST.getlist('service_contracts[]', [])
-    try:
-        list_contracts = [ int(i) for i in list_contracts ]
-    except:
-        list_contracts = []
-    #выполняем перебор всех актов передачи для заданного
-    #договра обслуживания 
-    result = dict()
-    for doc_id in list_contracts:
-        try:
-            doc = SCDoc.objects.get(pk=doc_id)
-        except SCDoc.DoesNotExist:
-            doc = None
-        list_acts = RefillingCart.objects.filter(parent_doc=doc)
-        sum = 0
-        for item in list_acts:
-            sum = sum + item.money
 
-        result[doc_id] = sum 
-
-    ansver['result'] = result
-    return JsonResponse(ansver)
-
-
+@require_POST
 @check_ajax_auth
 def generate_return_act(request):
     """Генерация нового docx акта возврата картриджей. Вью возвращает Url с свежезгенерированным файлом. 
     """
     resp_dict = dict()
-    if request.method != 'POST':
-        return HttpResponse('<h1>' + _('Only use POST requests!') + '</h1>')
     # использование глобальных переменных не очень хороший приём
     # но он позволяет упростить программный код
     total_pages_count = 0
@@ -600,8 +542,7 @@ def generate_return_act(request):
     except:
         pass
     # производим инициализацию некоторых переменных начальными значениями    
-    docx_file_name = m1.number + '_' + str(request.user.pk) +'_3.docx'
-    docx_full_file_name = os.path.join(settings.STATIC_ROOT_DOCX, docx_file_name)
+    docx_full_file_name, docx_file_name = rotator_files(request, 'docx')
     # генерация печатной версии документа без группировки наименований
     document = Document()
     
@@ -636,9 +577,9 @@ def generate_return_act(request):
         
         # https://github.com/python-openxml/python-docx/issues/141
         paragraph = row_cells[2].paragraphs[0]
-        paragraph.text = actions_decoder(item[2][:-1])
+        paragraph.text = actions_decoder(item[2])
         paragraph.style = 'FontSize'
-        money = float(item[2][-1])
+        money = float(item[3][-1])
         sum_money += money
         row_cells[3].text = str(money)
 
@@ -661,3 +602,36 @@ def generate_return_act(request):
     resp_dict['text']  = _('Document %(doc_number)s_%(user_id)s_3.docx generated') % { 'doc_number': m1.number, 'user_id': request.user.pk}
     resp_dict['url'] = settings.STATIC_URL + 'docx/' + docx_file_name
     return JsonResponse(resp_dict)
+
+
+@require_POST
+@check_ajax_auth
+def clear_bufer(request):
+    ansver = dict()
+    try:
+        root_ou   = request.user.departament
+        children  = root_ou.get_family()
+    except AttributeError:
+        children = None
+    all_items = CartridgeItem.objects.filter(departament__in=children).filter(bufer=True)
+    for item in all_items:
+        item.bufer = False
+        item.save()
+    return JsonResponse(ansver)
+
+
+@require_POST
+@check_ajax_auth
+def remove_from_bufer(request):
+    ansver = dict()
+    ar = request.POST.getlist('selected[]')
+    ar = [str2int(i) for i in ar ]
+    list_cplx = []
+    for ind in ar:
+        node = CartridgeItem.objects.get(pk=ind)
+        # проверяем принадлежность перемещаемого РМ департаменту 
+        # пользователя.
+        if node.departament == request.user.departament:
+            node.bufer = False
+            node.save()
+    return JsonResponse(ansver)

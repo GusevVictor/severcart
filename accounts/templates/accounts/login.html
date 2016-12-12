@@ -1,25 +1,29 @@
 {% extends "accounts/base.html" %}{% load staticfiles %}{% load i18n %}
 {% block title %}{% trans "Login page" %}{% endblock %}
 {% block content %}
-    {% if error %}
-        <p class="errornote">{% trans "Please enter a valid username or password!" %}</p>
-    {% endif %}
-    {% if demo %}
-        <div class="demo_access"><p>{% trans 'Parametrs access to site' %}</p><p>{% trans 'Login' %}: admin</p><p>{% trans 'Password' %}: admin</p></div>
-    {% endif %}
-    <div class="login_form">
-        <form action="{{ app_path }}" method="post" id="login-form">{% csrf_token %}
-            <p><label for="{{ form.username.id_for_label }}">{% trans "Login" %}</label>
-            {{ form.username }}</p>
-            <p><label for="{{ form.password.id_for_label }}">{% trans "Password" %}</label>
-            {{ form.password }}</p>
-            <input type="hidden" name="next" value="{{ next }}"/>
-            <br/>
-            <input class="button login" type="submit" value="{% trans 'Enter' %}"/>{% if demo == False %}
-            <a class="forgot_password" href="{% url 'auth:send_email' %}">{% trans 'Forgot your password?' %}</a>{% endif %}
-        </form>
-        <script>
-            document.getElementById('id_username').focus()
-        </script>
+    <div class="virtual-table">
+    <div class="wrapper-login">
+        {% if error %}
+            <p class="errornote">{% trans "Please enter a valid username or password!" %}</p>
+        {% endif %}
+        {% if demo %}
+            <div class="demo_access"><p>{% trans 'Parametrs access to site' %}</p><p>{% trans 'Login' %}: admin</p><p>{% trans 'Password' %}: admin</p></div>
+        {% endif %}
+        <div class="login_form">
+            <form action="{{ app_path }}" method="post" id="login-form">{% csrf_token %}
+                <p><label for="{{ form.username.id_for_label }}">{% trans "Login" %}</label>
+                {{ form.username }}</p>
+                <p><label for="{{ form.password.id_for_label }}">{% trans "Password" %}</label>
+                {{ form.password }}</p>
+                <input type="hidden" name="next" value="{{ next }}"/>
+                <br/>
+                <input class="button login" type="submit" value="{% trans 'Enter' %}"/>{% if demo == False %}
+                <a class="forgot_password" href="{% url 'auth:send_email' %}">{% trans 'Forgot your password?' %}</a>{% endif %}
+            </form>
+            <script>
+                document.getElementById('id_username').focus()
+            </script>
+        </div>
+    </div>
     </div>
 {% endblock %}

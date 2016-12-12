@@ -14,6 +14,7 @@ class TransfeToFirm(forms.Form):
                                     error_messages={'required': _('Required field.')},
                                     empty_label='',
                                     required=True,
+                                    widget=forms.Select(attrs={'class':'load_doc_ajax'})
                                   )
 
     doc = forms.ModelChoiceField(queryset=SCDoc.objects.filter(), required=False)

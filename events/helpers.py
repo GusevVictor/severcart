@@ -79,7 +79,7 @@ def do_timezone(value, arg):
     return result
 
 
-def events_decoder(qso, time_zone_offset, simple=True):
+def events_decoder(qso, time_zone_offset=0, simple=True):
     """Функция докодер симолических мнемоник в человекочитаемый формат. 
         Единственный обязательный аргумент на входе - список объектов QuerySet
     """

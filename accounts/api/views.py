@@ -4,11 +4,14 @@ from django.conf import settings
 from django.utils.translation import ugettext as _
 from django.http import HttpResponse, JsonResponse
 from django.utils.crypto import get_random_string
+from django.shortcuts import get_object_or_404
 from accounts.models import AnconUser
-from index.helpers import check_ajax_auth
+from index.helpers import check_ajax_auth, str2int
 from accounts.forms.send_email import SendMail
 from service.helpers import send_email
 from common.helpers import is_admin
+from index.models import OrganizationUnits
+
 
 @check_ajax_auth
 @is_admin
@@ -93,3 +96,20 @@ def send_repair_email(request):
         resp_dict['errors'] = form.errors.as_text()
 
     return JsonResponse(resp_dict)
+
+
+@check_ajax_auth
+@is_admin
+def org_suggests(request):
+    """
+    """
+    ansver = dict()
+    res = list()
+    dept_id = str2int(request.POST.get('dept_id', 0))
+    root_ou = get_object_or_404(OrganizationUnits, pk=dept_id)
+    children  = root_ou.get_family()
+    children  = children[1:] # исключаем последний элемент
+    for node in children:
+        res.append({'id': node.pk, 'level': node.level, 'name': node.name})
+    ansver['res'] = res
+    return JsonResponse(ansver)

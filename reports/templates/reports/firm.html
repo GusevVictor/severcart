@@ -1,0 +1,50 @@
+{% extends "index/base.html" %}{% load staticfiles %}{% load filters %}{% load i18n %}
+{% block title %}{% trans "Report firms" %}{% endblock %}
+{% block breadcrumbs %}<a href="/"><img src="{{ STATIC_URL }}img/home.png" /></a> / <a href="{% url 'docs:handbook' %}">{% trans "References" %}</a> / {% trans "Report firms" %}{% endblock %}
+{% load docsf %}
+{% block jqueryui%}
+<link rel="stylesheet" href="{{ STATIC_URL }}css/jquery-ui.css?1" />
+<script src="{{ STATIC_URL }}js/jquery-ui.js?1"></script>
+<script src="{{ STATIC_URL }}js/datepicker.js?1"></script>
+<script src="{{ STATIC_URL }}js/datepicker-{% trans 'lang' %}.js?1"></script>
+{% endblock %}
+{% block help_url %}
+{{ request.HOME_SITE }}/help/{{ request.LANGUAGE_CODE }}/reports_firm/
+{% endblock %}
+{% block content %}
+<div class="row">
+    <div class="large-6 columns">
+        <div class="success_msg"></div>
+        <div class="error_msg"></div>
+    </div>
+</div>
+<div class="row">
+    <div class="large-8 columns">
+        <form method="POST">{% csrf_token %}
+            <div class="row">
+                <div class="large-8 columns">
+                    <div class="start_date calendar">{% trans 'Start range' %} {{ form.start_date }}</div>
+                    <div class="end_date calendar">{% trans 'End range' %} {{ form.end_date }}</div>
+                </div>
+            </div>
+        </form>
+        <div class="row">
+            <div class="large-8 columns">
+                <div class="marginTop">
+                    <a class="button no_follow report_firm">{% trans 'Generate' %}</a>
+                    <a class="download_result" href="">{% trans 'Download' %}</a>
+                    <img class="spinner" src="/static/img/loader.gif" />
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="large-8 columns">
+                <div class="result marginTop55"></div>
+            </div>
+        </div>
+    </div>
+    <div class="large-4 columns">
+        {% include "reports/vertical_menu.html" %}
+    </div>
+</div>
+{% endblock %}

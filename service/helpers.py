@@ -60,8 +60,8 @@ class SevercartConfigs(object):
                             print_bar_code = self.print_bar_code,
                             print_name_obj = self.print_name_obj,
                             print_name_ou  = self.print_name_ou,
-                            time_zone      = self.m1.time_zone,
-                            show_time      = self.m1.show_time
+                            time_zone      = self.time_zone,
+                            show_time      = self.show_time
                             )
             m1.save()
         else:

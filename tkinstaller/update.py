@@ -37,15 +37,6 @@ def install(package):
     sys.stdout.write(output.decode('utf-8'))
 
 
-def send_request():
-    conn = http.client.HTTPConnection('www.severcart.org')
-    try:
-        conn.request('GET', '/api/report/')
-    except:
-        pass
-    finally:
-        conn.close()
-
 def prompt_exit():
     input(tr('Press any key to exit ...', lang=lang))
     sys.exit(1)
@@ -95,7 +86,7 @@ if __name__ == '__main__':
 
     CPU_ARCH = platform.architecture()[0]
     print('-------------------------------------------------')
-    print(tr('-------Installation package dependencies---------', lang=lang))
+    print(tr('-------------Update packages---------', lang=lang))
     print('-------------------------------------------------')
     try:
         if CPU_ARCH == '64bit' and OS == 'win32':
@@ -106,7 +97,7 @@ if __name__ == '__main__':
                 [ os.path.join(PROJ_DIR, 'tkinstaller', 'Win64', 'lxml-3.4.4-cp34-none-win_amd64.whl'), '--no-cache-dir'],
                 [ os.path.join(PROJ_DIR, 'tkinstaller', 'Win64', 'Pillow-3.1.0-cp34-none-win_amd64.whl')],
                 [ os.path.join(PROJ_DIR, 'tkinstaller', 'Win64', 'psycopg2-2.6.1-cp34-none-win_amd64.whl')],
-                [ os.path.join(PROJ_DIR, 'tkinstaller', 'Noarch', 'python-docx-0.8.5.tar.gz'), '--disable-pip-version-check'],
+                [os.path.join(PROJ_DIR, 'tkinstaller', 'Noarch', 'python-docx-0.8.5.tar.gz'), '--disable-pip-version-check'],
                 ['reportlab'],
                 ['pytz'],
             ]
@@ -139,15 +130,15 @@ if __name__ == '__main__':
                 print(str(persent) + "%")
                 persent += 10
             print("100%")
-        else:
+        elif 'linux' in OS:
             print(tr('Installation package dependencies for Linux', lang=lang))
             packages_unix = [
                 ['Django==1.9'], 
-                ['lxml'],
+                ['lxml==%s.%s.%s' % (sys.version_info.major, sys.version_info.minor, sys.version_info.micro)],
                 ['django-mptt'],
                 ['psycopg2'],
                 ['python-docx'],
-                ['pillow'],
+                ['pillow==2.9.0'],
                 ['reportlab'],
                 ['pytz'],
             ]
@@ -159,23 +150,14 @@ if __name__ == '__main__':
                 print(str(persent) + "%")
                 persent += 10
             print("100%")
+        else:
+            print(tr('Support for this architecture is not implemented.', lang=lang))
+            prompt_exit()
     except Exception as e:
         print(str(e))
         print(tr('Further continuation of the installation is not possible!',lang=lang))
         prompt_exit()
     else:
-        print('-------------------------------------------------')
-        print(tr('--Generation of signature key session variable---', lang=lang))
-        print('-------------------------------------------------')
-        from django.utils.crypto import get_random_string
-        import json
-        chars = 'abcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*(-_=+)'
-        secret_key = get_random_string(50, chars)
-        SECRETS = dict()
-        SECRETS['secret_key'] = secret_key
-        with open(os.path.join(PROJ_DIR, 'conf', 'secrets.json'), 'w') as j:
-            json.dump(SECRETS, j)
-        print(tr('Done', lang=lang))
         # производим запуск миграции схемы Severcart и Django        
         os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'conf.settings')
 
@@ -192,48 +174,11 @@ if __name__ == '__main__':
             execute_from_command_line(['manage.py', 'migrate'])
         except Exception as e:
             print(str(e))
-            print(tr('During migration, an error occurred.', lang=lang))
             prompt_exit()
         else:
             print(tr('The scheme was successfully migrated.', lang=lang))
         
-        # создаём суперпользователя admin
-        from accounts.models import AnconUser
         print('-------------------------------------------------')
-        print(tr('-----------------Creating a user-----------------', lang=lang))
+        print(tr('------------Update successful--------------', lang=lang))
         print('-------------------------------------------------')
-        flag = True
-        while flag:
-            u = input(tr('Enter your username: ', lang=lang))
-            u = u.strip()
-            user = AnconUser(username=u, is_admin = True)
-            m1 = AnconUser.objects.filter(username=u)
-            if m1:
-                print(tr('This user name already exists. Re-enter. ', lang=lang))
-            else:
-                flag = False
-
-        flag = True
-        while flag:
-            p1 = input(tr('Enter password:   ', lang=lang))
-            p2 = input(tr('Confirm password: ', lang=lang))
-
-            if p1 == p2:
-                user.set_password(p1)
-                user.save()
-                print(tr('The user was created successfully.', lang=lang))
-                flag = False
-            else:
-                print(tr('Passwords do not match. Re-enter. ', lang=lang))
-                # возвращаемся к началу цикла
-        
-                flag = True
-
-        print('-------------------------------------------------')
-        print(tr('------------Installation successful--------------', lang=lang))
-        print('-------------------------------------------------')
-        
-        p = Process(target=send_request)
-        p.start()
         sys.exit(0)
-

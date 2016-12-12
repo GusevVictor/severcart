@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-11-06 20:44+0500\n"
+"POT-Creation-Date: 2016-12-07 23:08+0500\n"
 "PO-Revision-Date: 2016-05-27 12:27+0500\n"
 "Last-Translator: \n"
 "Language-Team: severcart.org <sfcl@mail.ru>\n"
@@ -20,41 +20,41 @@ msgstr ""
 "%100>=11 && n%100<=14)? 2 : 3);\n"
 "X-Generator: Poedit 1.8.7\n"
 
-#: .\accounts\api\views.py:23
+#: .\accounts\api\views.py:26
 msgid "Error in data processing"
 msgstr ""
 
-#: .\accounts\api\views.py:28
+#: .\accounts\api\views.py:31
 #, python-format
 msgid "User %(user_name)s can not be deleted"
 msgstr ""
 
-#: .\accounts\api\views.py:35
+#: .\accounts\api\views.py:38
 msgid "Object not found"
 msgstr ""
 
-#: .\accounts\api\views.py:40
+#: .\accounts\api\views.py:43
 msgid "In DEMO users not delete!"
 msgstr ""
 
-#: .\accounts\api\views.py:45
+#: .\accounts\api\views.py:48
 #, python-format
 msgid "User %(user_name)s was successfully deleted"
 msgstr ""
 
-#: .\accounts\api\views.py:65
+#: .\accounts\api\views.py:68
 msgid "Email was not found."
 msgstr ""
 
-#: .\accounts\api\views.py:69
+#: .\accounts\api\views.py:72
 msgid "Email should not be repeated for different users."
 msgstr ""
 
-#: .\accounts\api\views.py:72
+#: .\accounts\api\views.py:75
 msgid "Forgotten password recovery"
 msgstr ""
 
-#: .\accounts\api\views.py:90 .\service\api\views.py:30
+#: .\accounts\api\views.py:93 .\service\api\views.py:30
 msgid "Mail successfully sended!"
 msgstr ""
 
@@ -63,8 +63,8 @@ msgid "User name"
 msgstr ""
 
 #: .\accounts\forms\authenticate.py:10 .\accounts\forms\chpswd.py:9
-#: .\accounts\forms\register.py:12 .\accounts\templates\accounts\login.html:8
-#: .\accounts\templates\accounts\login.html:14 .\index\forms\add_user.py:13
+#: .\accounts\forms\register.py:12 .\accounts\templates\accounts\login.html:10
+#: .\accounts\templates\accounts\login.html:16 .\index\forms\add_user.py:13
 msgid "Password"
 msgstr ""
 
@@ -77,8 +77,8 @@ msgid "Passwords do not match. Please enter them again"
 msgstr ""
 
 #: .\accounts\forms\edit.py:12 .\accounts\forms\register.py:11
-#: .\accounts\models.py:14 .\accounts\templates\accounts\login.html.py:8
-#: .\accounts\templates\accounts\login.html:12
+#: .\accounts\models.py:14 .\accounts\templates\accounts\login.html.py:10
+#: .\accounts\templates\accounts\login.html:14
 #: .\accounts\templates\accounts\manage_users.html:31
 #: .\index\forms\add_user.py:12
 msgid "Login"
@@ -137,7 +137,7 @@ msgstr ""
 msgid "Email recipient"
 msgstr ""
 
-#: .\accounts\models.py:15 .\reports\forms.py:66 .\reports\forms.py:73
+#: .\accounts\models.py:15 .\reports\forms.py:77 .\reports\forms.py:148
 #: .\reports\templates\reports\amortizing.html:17
 #: .\reports\templates\reports\main_summary.html:18
 msgid "Organization unit"
@@ -167,11 +167,12 @@ msgstr ""
 #: .\index\templates\index\add_firm.html:3
 #: .\index\templates\index\add_name.html:3
 #: .\index\templates\index\add_type.html:3
-#: .\index\templates\index\base_menu.html:13
+#: .\index\templates\index\base_menu.html:21
 #: .\index\templates\index\edit_firm.html:3
 #: .\index\templates\index\toner_refill.html:3
 #: .\index\templates\index\tree_list.html:7
 #: .\reports\templates\reports\amortizing.html:3
+#: .\reports\templates\reports\firm.html:3
 #: .\reports\templates\reports\main_summary.html:8
 #: .\reports\templates\reports\products.html:3
 #: .\reports\templates\reports\spent_money.html:3
@@ -205,8 +206,8 @@ msgstr ""
 #: .\accounts\templates\accounts\register.html:20
 #: .\accounts\templates\accounts\send_email.html:12
 #: .\docs\templates\docs\add_city.html:28
-#: .\docs\templates\docs\delivery.html:70
-#: .\docs\templates\docs\delivery.html:89
+#: .\docs\templates\docs\delivery.html:71
+#: .\docs\templates\docs\delivery.html:90
 #: .\docs\templates\docs\edit_city.html:28
 #: .\docs\templates\docs\edit_name.html:19
 #: .\events\templates\events\view_cartridge_events.html:11
@@ -221,12 +222,11 @@ msgstr ""
 #: .\index\templates\index\edit_cartridge_comment.html:15
 #: .\index\templates\index\edit_firm.html:21
 #: .\index\templates\index\evaluate_service.html:37
-#: .\index\templates\index\from_firm_to_stock.html:56
-#: .\index\templates\index\from_firm_to_stock_with_barcode.html:62
+#: .\index\templates\index\from_firm_to_stock.html:60
+#: .\index\templates\index\from_firm_to_stock_with_barcode.html:63
 #: .\index\templates\index\transfe_for_use.html:43
 #: .\reports\templates\reports\products.html:42
 #: .\reports\templates\reports\spent_money.html:43
-#: .\reports\templates\reports\users.html:37
 #: .\storages\templates\storages\edit_s.html:32
 msgid "Back"
 msgstr ""
@@ -255,19 +255,19 @@ msgstr ""
 msgid "Login page"
 msgstr ""
 
-#: .\accounts\templates\accounts\login.html:5
+#: .\accounts\templates\accounts\login.html:7
 msgid "Please enter a valid username or password!"
 msgstr ""
 
-#: .\accounts\templates\accounts\login.html:8
+#: .\accounts\templates\accounts\login.html:10
 msgid "Parametrs access to site"
 msgstr ""
 
-#: .\accounts\templates\accounts\login.html:18
+#: .\accounts\templates\accounts\login.html:20
 msgid "Enter"
 msgstr ""
 
-#: .\accounts\templates\accounts\login.html:19
+#: .\accounts\templates\accounts\login.html:21
 msgid "Forgot your password?"
 msgstr ""
 
@@ -287,7 +287,7 @@ msgid "Add"
 msgstr ""
 
 #: .\accounts\templates\accounts\manage_users.html:18
-#: .\docs\templates\docs\cities.html:18 .\docs\templates\docs\delivery.html:67
+#: .\docs\templates\docs\cities.html:18 .\docs\templates\docs\delivery.html:68
 #: .\docs\templates\docs\names_list.html:18
 #: .\docs\templates\docs\types_list.html:18
 #: .\index\templates\index\toner_refill.html:17
@@ -297,7 +297,7 @@ msgid "Edit"
 msgstr ""
 
 #: .\accounts\templates\accounts\manage_users.html:19
-#: .\docs\templates\docs\cities.html:19 .\docs\templates\docs\delivery.html:68
+#: .\docs\templates\docs\cities.html:19 .\docs\templates\docs\delivery.html:69
 #: .\docs\templates\docs\names_list.html:19
 #: .\docs\templates\docs\types_list.html:19
 #: .\index\templates\index\basket.html:16
@@ -306,9 +306,9 @@ msgstr ""
 msgid "Delete"
 msgstr ""
 
-#: .\accounts\templates\accounts\manage_users.html:30 .\docs\api\views.py:347
-#: .\index\templates\index\use.html.py:53
-#: .\search\templates\search\serp.html:14
+#: .\accounts\templates\accounts\manage_users.html:30 .\docs\api\views.py:320
+#: .\index\templates\index\use.html.py:53 .\reports\api\views.py:123
+#: .\search\templates\search\serp.html.py:14
 msgid "User"
 msgstr ""
 
@@ -321,13 +321,13 @@ msgid "Admin?"
 msgstr ""
 
 #: .\accounts\templates\accounts\manage_users.html:56
-#: .\index\templates\index\transfer_to_firm_with_scanner.html:82
+#: .\index\templates\index\transfer_to_firm_with_scanner.html:83
 #: .\service\forms\stickers.py:11
 msgid "Yes"
 msgstr ""
 
 #: .\accounts\templates\accounts\manage_users.html:58
-#: .\index\templates\index\transfer_to_firm_with_scanner.html:83
+#: .\index\templates\index\transfer_to_firm_with_scanner.html:84
 #: .\service\forms\stickers.py:11
 msgid "No"
 msgstr ""
@@ -380,18 +380,20 @@ msgstr ""
 #: .\dhtml\templates\dhtml\add_session_items.html:1383
 #: .\dhtml\templates\dhtml\add_session_items.html:1441
 #: .\dhtml\templates\dhtml\add_session_items.html:2516
-#: .\dhtml\templates\dhtml\logic.html:206
-#: .\dhtml\templates\dhtml\logic.html:253
-#: .\dhtml\templates\dhtml\logic.html:633
-#: .\dhtml\templates\dhtml\logic.html:713
-#: .\dhtml\templates\dhtml\logic.html:798
-#: .\dhtml\templates\dhtml\logic.html:846
-#: .\dhtml\templates\dhtml\logic.html:965
-#: .\dhtml\templates\dhtml\logic.html:1070
-#: .\dhtml\templates\dhtml\logic.html:1218
-#: .\dhtml\templates\dhtml\logic.html:1266
-#: .\dhtml\templates\dhtml\logic.html:1324
-#: .\dhtml\templates\dhtml\logic.html:2406
+#: .\dhtml\templates\dhtml\logic.html:159
+#: .\dhtml\templates\dhtml\logic.html:205
+#: .\dhtml\templates\dhtml\logic.html:609
+#: .\dhtml\templates\dhtml\logic.html:689
+#: .\dhtml\templates\dhtml\logic.html:774
+#: .\dhtml\templates\dhtml\logic.html:822
+#: .\dhtml\templates\dhtml\logic.html:941
+#: .\dhtml\templates\dhtml\logic.html:1046
+#: .\dhtml\templates\dhtml\logic.html:1194
+#: .\dhtml\templates\dhtml\logic.html:1242
+#: .\dhtml\templates\dhtml\logic.html:1300
+#: .\dhtml\templates\dhtml\logic.html:2441
+#: .\dhtml\templates\dhtml\logic.html:2716
+#: .\dhtml\templates\dhtml\logic.html:2795
 msgid "<p>Server not available.</p>"
 msgstr ""
 
@@ -400,72 +402,73 @@ msgstr ""
 #: .\dhtml\templates\dhtml\add_session_items.html:598
 #: .\dhtml\templates\dhtml\add_session_items.html:626
 #: .\dhtml\templates\dhtml\add_session_items.html:654
-#: .\dhtml\templates\dhtml\common.html:195
-#: .\dhtml\templates\dhtml\logic.html:390
-#: .\dhtml\templates\dhtml\logic.html:481
-#: .\dhtml\templates\dhtml\logic.html:509
-#: .\dhtml\templates\dhtml\logic.html:537
+#: .\dhtml\templates\dhtml\common.html:194
+#: .\dhtml\templates\dhtml\logic.html:342
+#: .\dhtml\templates\dhtml\logic.html:457
+#: .\dhtml\templates\dhtml\logic.html:485
+#: .\dhtml\templates\dhtml\logic.html:513
+#: .\dhtml\templates\dhtml\logic.html:2647
 msgid "Server error :("
 msgstr ""
 
 #: .\dhtml\templates\dhtml\add_session_items.html:710
-#: .\dhtml\templates\dhtml\logic.html:593
+#: .\dhtml\templates\dhtml\logic.html:569
 msgid "Are you sure you want to put the selected items to the Trash?"
 msgstr ""
 
 #: .\dhtml\templates\dhtml\add_session_items.html:768
-#: .\dhtml\templates\dhtml\logic.html:651
+#: .\dhtml\templates\dhtml\logic.html:627
 msgid "Are you sure you want to delete consumable (s)?"
 msgstr ""
 
 #: .\dhtml\templates\dhtml\add_session_items.html:804
-#: .\dhtml\templates\dhtml\logic.html:687
+#: .\dhtml\templates\dhtml\logic.html:663
 msgid "You sure you want to return the selected items back to the store?"
 msgstr ""
 
 #: .\dhtml\templates\dhtml\add_session_items.html:877
-#: .\dhtml\templates\dhtml\logic.html:760
+#: .\dhtml\templates\dhtml\logic.html:736
 msgid "Are you sure you want to remove the counterparty?"
 msgstr ""
 
 #: .\dhtml\templates\dhtml\add_session_items.html:1139
-#: .\dhtml\templates\dhtml\logic.html:1022
+#: .\dhtml\templates\dhtml\logic.html:998
 msgid "Are you sure you want to delete a document?"
 msgstr ""
 
 #: .\dhtml\templates\dhtml\add_session_items.html:1151
-#: .\dhtml\templates\dhtml\logic.html:1034
+#: .\dhtml\templates\dhtml\logic.html:1010
 msgid "Are you sure you want to delete the user?"
 msgstr ""
 
 #: .\dhtml\templates\dhtml\add_session_items.html:1292
-#: .\dhtml\templates\dhtml\logic.html:1175
+#: .\dhtml\templates\dhtml\logic.html:1151
 msgid "Are you sure you want to delete?"
 msgstr ""
 
 #: .\dhtml\templates\dhtml\add_session_items.html:1347
-#: .\dhtml\templates\dhtml\logic.html:1230
+#: .\dhtml\templates\dhtml\logic.html:1206
 msgid "Are you sure you want to delete city?"
 msgstr ""
 
 #: .\dhtml\templates\dhtml\add_session_items.html:1453
-#: .\dhtml\templates\dhtml\logic.html:1336
-#: .\index\templates\index\base_menu.html:16
+#: .\dhtml\templates\dhtml\logic.html:1312
+#: .\index\templates\index\base_menu.html:5
 msgid "Find by number"
 msgstr ""
 
 #: .\dhtml\templates\dhtml\add_session_items.html:1723
-#: .\dhtml\templates\dhtml\logic.html:1606
+#: .\dhtml\templates\dhtml\logic.html:1582
 msgid "Are you sure you want to remove the storage room?"
 msgstr ""
 
 #: .\dhtml\templates\dhtml\add_session_items.html:1784
-#: .\dhtml\templates\dhtml\logic.html:1667
+#: .\dhtml\templates\dhtml\logic.html:1643
 msgid "<p>Server error :(</p>"
 msgstr ""
 
 #: .\dhtml\templates\dhtml\add_session_items.html:2185
-#: .\dhtml\templates\dhtml\logic.html:2075
+#: .\dhtml\templates\dhtml\logic.html:2073
 msgid "List move empty."
 msgstr ""
 
@@ -473,102 +476,95 @@ msgstr ""
 msgid "Does not match the format"
 msgstr ""
 
-#: .\docs\api\views.py:33 .\docs\api\views.py:81 .\docs\api\views.py:113
-#: .\docs\api\views.py:447 .\docs\api\views.py:546 .\index\api\views.py:53
-#: .\index\api\views.py:676 .\index\api\views.py:724 .\index\api\views.py:745
-#: .\index\api\views.py:760 .\index\api\views.py:908 .\reports\api\views.py:56
-#: .\storages\api\views.py:21 .\storages\api\views.py:59
-msgid "Only use POST requests!"
-msgstr ""
-
-#: .\docs\api\views.py:49 .\docs\api\views.py:63 .\docs\api\views.py:136
-#: .\docs\api\views.py:581
+#: .\docs\api\views.py:50 .\docs\api\views.py:64 .\docs\api\views.py:134
+#: .\docs\api\views.py:523
 msgid "The object with the ID is not found."
 msgstr ""
 
-#: .\docs\api\views.py:54
+#: .\docs\api\views.py:55
 msgid "Name can not be removed, ie. other objects reference it."
 msgstr ""
 
-#: .\docs\api\views.py:57 .\docs\api\views.py:71 .\index\api\views.py:644
+#: .\docs\api\views.py:58 .\docs\api\views.py:72 .\index\api\views.py:645
 msgid "Name deleted successfully."
 msgstr ""
 
-#: .\docs\api\views.py:68
+#: .\docs\api\views.py:69
 msgid "Type can not be deleted, ie the other sites link to it."
 msgstr ""
 
-#: .\docs\api\views.py:93
+#: .\docs\api\views.py:92
 msgid "City object not found."
 msgstr ""
 
-#: .\docs\api\views.py:100
+#: .\docs\api\views.py:99
 msgid "City can not be deleted, ie the other firms link to it."
 msgstr ""
 
-#: .\docs\api\views.py:103
+#: .\docs\api\views.py:102
 msgid "City deleted successfully."
 msgstr ""
 
-#: .\docs\api\views.py:123
+#: .\docs\api\views.py:121
 #, python-format
 msgid "Page %(num)s from %(total)s"
 msgstr ""
 
-#: .\docs\api\views.py:164
+#: .\docs\api\views.py:151
 msgid "This action is not implemented."
 msgstr ""
 
-#: .\docs\api\views.py:172 .\docs\api\views.py:179
+#: .\docs\api\views.py:157 .\docs\api\views.py:162
 msgid "The name of the cartridge"
 msgstr ""
 
-#: .\docs\api\views.py:173
+#: .\docs\api\views.py:158
 msgid "Amount cartridges"
 msgstr ""
 
-#: .\docs\api\views.py:178
+#: .\docs\api\views.py:161
 msgid "Cartridge number"
 msgstr ""
 
-#: .\docs\api\views.py:186
+#: .\docs\api\views.py:169
 #, python-format
 msgid ""
 "The act of transferring cartridges # %(doc_number)s from  %(date_created)s"
 msgstr ""
 
-#: .\docs\api\views.py:243
+#: .\docs\api\views.py:226
 #, python-format
 msgid "Total count - %(co)s"
 msgstr ""
 
-#: .\docs\api\views.py:245 .\docs\api\views.py:654
+#: .\docs\api\views.py:228 .\docs\api\views.py:595
 msgid "Sender"
 msgstr ""
 
-#: .\docs\api\views.py:247 .\docs\api\views.py:652
+#: .\docs\api\views.py:230 .\docs\api\views.py:593
 msgid "Resipient"
 msgstr ""
 
-#: .\docs\api\views.py:255
+#: .\docs\api\views.py:238
 #, python-format
 msgid "Document %(doc_number)s_%(user_id)s_0.docx generated"
 msgstr ""
 
-#: .\docs\api\views.py:282 .\docs\api\views.py:315 .\docs\api\views.py:344
-#: .\docs\api\views.py:370 .\docs\api\views.py:394 .\docs\api\views.py:420
-#: .\docs\api\views.py:628 .\docs\forms\add_doc.py:11
+#: .\docs\api\views.py:266 .\docs\api\views.py:288 .\docs\api\views.py:317
+#: .\docs\api\views.py:343 .\docs\api\views.py:367 .\docs\api\views.py:393
+#: .\docs\api\views.py:569 .\docs\forms\add_doc.py:11
 #: .\docs\forms\edit_name.py:6 .\docs\templates\docs\delivery.html.py:28
-#: .\docs\templates\docs\delivery.html:97
+#: .\docs\templates\docs\delivery.html:98
 #: .\docs\templates\docs\names_list.html:31 .\index\forms\add_firm.py:8
 #: .\index\forms\add_user.py:10 .\index\models.py:47
 #: .\index\templates\index\at_work.html:42
-#: .\index\templates\index\basket.html:41
+#: .\index\templates\index\basket.html:41 .\index\templates\index\bufer.html:54
 #: .\index\templates\index\del_firm.html:9
 #: .\index\templates\index\empty.html:70
-#: .\index\templates\index\from_firm_to_stock.html:33
+#: .\index\templates\index\from_firm_to_stock.html:37
 #: .\index\templates\index\from_firm_to_stock_with_barcode.html:35
 #: .\index\templates\index\get_cart_ou.html:8
+#: .\index\templates\index\linked_types_objects.html:5
 #: .\index\templates\index\stock.html:68
 #: .\index\templates\index\toner_refill.html:31
 #: .\index\templates\index\transfe_for_use.html:17
@@ -583,23 +579,25 @@ msgstr ""
 msgid "Name"
 msgstr ""
 
-#: .\docs\api\views.py:282 .\index\templates\index\add_empty_cartridge.html:82
+#: .\docs\api\views.py:266 .\index\templates\index\add_empty_cartridge.html:82
 #: .\index\templates\index\add_items.html:83
 #: .\reports\templates\reports\users_ajax.html:5
 msgid "Amount items"
 msgstr ""
 
-#: .\docs\api\views.py:314 .\docs\api\views.py:343 .\docs\api\views.py:369
-#: .\docs\api\views.py:393 .\docs\api\views.py:419 .\docs\api\views.py:627
+#: .\docs\api\views.py:287 .\docs\api\views.py:316 .\docs\api\views.py:342
+#: .\docs\api\views.py:366 .\docs\api\views.py:392 .\docs\api\views.py:568
 #: .\docs\forms\add_doc.py:9 .\docs\templates\docs\delivery.html.py:23
-#: .\docs\templates\docs\delivery.html:95
+#: .\docs\templates\docs\delivery.html:96
 #: .\index\templates\index\add_empty_cartridge.html:31
 #: .\index\templates\index\add_items.html:32
 #: .\index\templates\index\at_work.html:41
-#: .\index\templates\index\basket.html:40 .\index\templates\index\empty.html:69
-#: .\index\templates\index\from_firm_to_stock.html:32
+#: .\index\templates\index\basket.html:40 .\index\templates\index\bufer.html:53
+#: .\index\templates\index\empty.html:69
+#: .\index\templates\index\from_firm_to_stock.html:36
 #: .\index\templates\index\from_firm_to_stock_with_barcode.html:34
 #: .\index\templates\index\get_cart_ou.html:7
+#: .\index\templates\index\linked_name_objects.html:5
 #: .\index\templates\index\stock.html:67
 #: .\index\templates\index\transfe_for_use.html:16
 #: .\index\templates\index\transfer_to_firm.html:25
@@ -612,118 +610,121 @@ msgstr ""
 msgid "Number"
 msgstr "ID"
 
-#: .\docs\api\views.py:316 .\docs\api\views.py:345 .\docs\api\views.py:371
-#: .\docs\api\views.py:395 .\docs\api\views.py:421
+#: .\docs\api\views.py:289 .\docs\api\views.py:318 .\docs\api\views.py:344
+#: .\docs\api\views.py:368 .\docs\api\views.py:394
 #: .\index\templates\index\at_work.html:43
-#: .\index\templates\index\basket.html:42 .\index\templates\index\empty.html:71
-#: .\index\templates\index\stock.html:69 .\index\templates\index\use.html:51
+#: .\index\templates\index\basket.html:42 .\index\templates\index\bufer.html:55
+#: .\index\templates\index\empty.html:71 .\index\templates\index\stock.html:69
+#: .\index\templates\index\use.html:51
 msgid "Amount<br/>recovery"
 msgstr ""
 
-#: .\docs\api\views.py:317 .\index\templates\index\stock.html.py:70
+#: .\docs\api\views.py:290 .\index\templates\index\stock.html.py:70
 msgid "Date add"
 msgstr ""
 
-#: .\docs\api\views.py:317 .\index\templates\index\stock.html.py:70
+#: .\docs\api\views.py:290 .\index\templates\index\stock.html.py:70
 msgid "on stock"
 msgstr ""
 
-#: .\docs\api\views.py:318 .\docs\api\views.py:348 .\docs\api\views.py:373
-#: .\docs\api\views.py:398 .\docs\api\views.py:423
+#: .\docs\api\views.py:291 .\docs\api\views.py:321 .\docs\api\views.py:346
+#: .\docs\api\views.py:371 .\docs\api\views.py:396
 #: .\docs\templates\docs\types_list.html:32 .\index\forms\comment.py:11
 #: .\index\templates\index\at_work.html:46
-#: .\index\templates\index\basket.html:44 .\index\templates\index\stock.html:72
+#: .\index\templates\index\basket.html:44 .\index\templates\index\bufer.html:57
+#: .\index\templates\index\stock.html:72
 msgid "comment"
 msgstr "Comment"
 
-#: .\docs\api\views.py:346 .\index\templates\index\use.html.py:52
+#: .\docs\api\views.py:319 .\index\templates\index\use.html.py:52
 msgid "Date transfe"
 msgstr ""
 
-#: .\docs\api\views.py:372 .\index\templates\index\empty.html.py:72
+#: .\docs\api\views.py:345 .\index\templates\index\empty.html.py:72
 msgid "Date return"
 msgstr ""
 
-#: .\docs\api\views.py:396 .\index\templates\index\at_work.html.py:44
+#: .\docs\api\views.py:369 .\index\templates\index\at_work.html.py:44
 msgid "Date transfer on recovery"
 msgstr ""
 
-#: .\docs\api\views.py:397 .\index\templates\index\at_work.html.py:45
+#: .\docs\api\views.py:370 .\index\templates\index\at_work.html.py:45
 msgid "Refueller"
 msgstr ""
 
-#: .\docs\api\views.py:422 .\index\templates\index\basket.html.py:43
+#: .\docs\api\views.py:395 .\index\templates\index\basket.html.py:43
 msgid "Date return in basket"
 msgstr ""
 
-#: .\docs\api\views.py:557 .\index\templates\index\from_firm_to_stock.html:34
+#: .\docs\api\views.py:499 .\index\templates\index\from_firm_to_stock.html:38
 msgid "Regeneration"
 msgstr ""
 
-#: .\docs\api\views.py:559
+#: .\docs\api\views.py:501
 msgid "Filling and cleaning"
 msgstr ""
 
-#: .\docs\api\views.py:561
+#: .\docs\api\views.py:503
 msgid "Replacing fotovala"
 msgstr ""
 
-#: .\docs\api\views.py:563
+#: .\docs\api\views.py:505
 msgid "Replacement squeegee"
 msgstr ""
 
-#: .\docs\api\views.py:565
+#: .\docs\api\views.py:507
 msgid "Replacement chip"
 msgstr ""
 
-#: .\docs\api\views.py:567
+#: .\docs\api\views.py:509
 msgid "Replacing the magnetic roller"
 msgstr ""
 
-#: .\docs\api\views.py:569
+#: .\docs\api\views.py:511
 #, fuzzy
 #| msgid "comment"
 msgid "Not implement"
 msgstr "Comment"
 
-#: .\docs\api\views.py:610
+#: .\docs\api\views.py:551
 #, python-format
 msgid "The act of receiving cartridges # %(doc_number)s from  %(date_created)s"
 msgstr ""
 
-#: .\docs\api\views.py:616
+#: .\docs\api\views.py:557
 #, python-format
 msgid "Contractor:  %(firm)s"
 msgstr ""
 
-#: .\docs\api\views.py:629
+#: .\docs\api\views.py:570
 msgid "Ongoing work"
 msgstr ""
 
-#: .\docs\api\views.py:630
+#: .\docs\api\views.py:571
 msgid "The price"
 msgstr ""
 
-#: .\docs\api\views.py:630 .\docs\templates\docs\delivery.html.py:33
-#: .\docs\templates\docs\delivery.html:100
+#: .\docs\api\views.py:571 .\docs\templates\docs\delivery.html.py:33
 #: .\docs\templates\docs\delivery.html:101
+#: .\docs\templates\docs\delivery.html:102
 #: .\docs\templates\docs\return_acts_list.html:25
-#: .\index\templates\index\from_firm_to_stock.html:40
-#: .\reports\templates\reports\spent_money.html:58
+#: .\index\templates\index\from_firm_to_stock.html:44
+#: .\reports\api\views.py:195 .\reports\templates\reports\spent_money.html:58
+#: .\reports\templates\reports\worket_firms.html:6
 msgid "Currency"
 msgstr "dollar"
 
-#: .\docs\api\views.py:649
+#: .\docs\api\views.py:590
 #, python-format
 msgid "Just made: %(co)s pieces"
 msgstr ""
 
-#: .\docs\api\views.py:650
+#: .\docs\api\views.py:591
 #, python-format
 msgid "The total amount of: %(sum_money)s dollars"
 msgstr ""
 
-#: .\docs\api\views.py:661
+#: .\docs\api\views.py:602
 #, python-format
 msgid "Document %(doc_number)s_%(user_id)s_3.docx generated"
 msgstr ""
@@ -739,11 +740,12 @@ msgstr ""
 #: .\index\forms\add_items.py:51 .\index\forms\add_items_from_barcode.py:17
 #: .\index\forms\add_items_from_barcode.py:43 .\index\forms\add_type.py:11
 #: .\index\forms\base_add_form.py:77 .\index\forms\tr_to_firm.py:14
-#: .\index\forms\tr_to_firm.py:26 .\index\forms\tr_to_firm.py:76
-#: .\index\forms\tr_to_firm.py:91 .\index\forms\tr_to_firm.py:105
-#: .\index\forms\tr_to_firm.py:134 .\index\forms\tr_to_stock.py:26
-#: .\reports\forms.py:20 .\reports\forms.py:29 .\reports\forms.py:62
-#: .\reports\forms.py:85 .\reports\forms.py:98
+#: .\index\forms\tr_to_firm.py:27 .\index\forms\tr_to_firm.py:77
+#: .\index\forms\tr_to_firm.py:92 .\index\forms\tr_to_firm.py:106
+#: .\index\forms\tr_to_firm.py:135 .\index\forms\tr_to_stock.py:26
+#: .\reports\forms.py:23 .\reports\forms.py:33 .\reports\forms.py:66
+#: .\reports\forms.py:90 .\reports\forms.py:160 .\reports\forms.py:173
+#: .\reports\forms.py:216
 msgid "Required field."
 msgstr ""
 
@@ -752,7 +754,7 @@ msgid "Firm supplier"
 msgstr ""
 
 #: .\docs\forms\add_doc.py:19 .\docs\templates\docs\delivery.html.py:46
-#: .\docs\templates\docs\delivery.html:102
+#: .\docs\templates\docs\delivery.html:103
 msgid "Summary"
 msgstr ""
 
@@ -761,12 +763,13 @@ msgstr ""
 #: .\index\templates\index\add_empty_cartridge.html:74
 #: .\index\templates\index\add_empty_cartridge_from_barcode_scanner.html:69
 #: .\index\templates\index\add_items.html:75
-#: .\index\templates\index\basket.html:59 .\index\templates\index\empty.html:90
-#: .\index\templates\index\stock.html:88 .\index\templates\index\use.html:69
+#: .\index\templates\index\basket.html:59 .\index\templates\index\empty.html:91
+#: .\index\templates\index\stock.html:89 .\index\templates\index\use.html:69
 msgid "Delivery agreement"
 msgstr ""
 
 #: .\docs\forms\add_doc.py:28 .\docs\models.py:12
+#: .\index\templates\index\from_firm_to_stock.html:30
 #: .\index\templates\index\transfer_to_firm.html:44
 #: .\index\templates\index\transfer_to_firm_with_scanner.html:61
 msgid "Service agreement"
@@ -837,8 +840,9 @@ msgid "Who gave"
 msgstr ""
 
 #: .\docs\templates\docs\acts_list.html:29
+#: .\docs\templates\docs\names_list.html:34
 #: .\docs\templates\docs\return_acts_list.html:30
-#: .\index\templates\index\use.html:55
+#: .\docs\templates\docs\types_list.html:33 .\index\templates\index\use.html:55
 msgid "Action"
 msgstr ""
 
@@ -847,8 +851,10 @@ msgstr ""
 #: .\index\templates\index\add_empty_cartridge.html:115
 #: .\index\templates\index\add_items.html:117
 #: .\index\templates\index\at_work.html:21
-#: .\index\templates\index\basket.html:20 .\index\templates\index\empty.html:49
-#: .\index\templates\index\stock.html:47 .\index\templates\index\use.html:29
+#: .\index\templates\index\basket.html:20 .\index\templates\index\bufer.html:35
+#: .\index\templates\index\empty.html:49 .\index\templates\index\stock.html:47
+#: .\index\templates\index\use.html:29 .\reports\templates\reports\firm.html:35
+#: .\reports\templates\reports\users.html:53
 msgid "Download"
 msgstr ""
 
@@ -899,7 +905,7 @@ msgstr ""
 #: .\index\templates\index\add_empty_cartridge.html:14
 #: .\index\templates\index\add_items.html:15
 #: .\index\templates\index\bad_browser.html:2
-#: .\index\templates\index\base.html:2
+#: .\index\templates\index\base.html:2 .\reports\templates\reports\firm.html:9
 #: .\reports\templates\reports\products.html:8
 #: .\reports\templates\reports\spent_money.html:9
 #: .\reports\templates\reports\users.html:8
@@ -911,44 +917,44 @@ msgid "Money"
 msgstr "Money"
 
 #: .\docs\templates\docs\delivery.html:38
-#: .\docs\templates\docs\delivery.html:96
+#: .\docs\templates\docs\delivery.html:97
 msgid "Doc type"
 msgstr ""
 
 #: .\docs\templates\docs\delivery.html:51
-#: .\docs\templates\docs\delivery.html:99
+#: .\docs\templates\docs\delivery.html:100
 msgid "Firm"
 msgstr ""
 
-#: .\docs\templates\docs\delivery.html:56
+#: .\docs\templates\docs\delivery.html:57
 msgid "Date"
 msgstr ""
 
-#: .\docs\templates\docs\delivery.html:64
+#: .\docs\templates\docs\delivery.html:65
 #: .\index\templates\index\evaluate_service.html:31
 msgid "Cancel"
 msgstr ""
 
-#: .\docs\templates\docs\delivery.html:98
+#: .\docs\templates\docs\delivery.html:99
 msgid "Document date"
 msgstr ""
 
-#: .\docs\templates\docs\delivery.html:100
+#: .\docs\templates\docs\delivery.html:101
 msgid "Amount"
 msgstr ""
 
-#: .\docs\templates\docs\delivery.html:101
+#: .\docs\templates\docs\delivery.html:102
 #: .\docs\templates\docs\return_acts_list.html:25
 msgid "Spent"
 msgstr ""
 
-#: .\docs\templates\docs\delivery.html:109
+#: .\docs\templates\docs\delivery.html:110
 msgid "Delivery"
 msgstr ""
 
-#: .\docs\templates\docs\delivery.html:110
+#: .\docs\templates\docs\delivery.html:111
 #: .\events\templates\events\show_events.html:3
-#: .\index\templates\index\base_menu.html:12
+#: .\index\templates\index\base_menu.html:20
 #: .\service\templates\service\general_settings.html:3
 #: .\service\templates\service\settings_mail.html:3
 #: .\service\templates\service\submenu.html:2
@@ -973,7 +979,7 @@ msgid "References names cartidges"
 msgstr ""
 
 #: .\docs\templates\docs\edit_name.html:18
-#: .\index\templates\index\change_number_modal.html:16
+#: .\index\templates\index\change_number_modal.html:17
 #: .\index\templates\index\edit_cartridge_comment.html:14
 #: .\index\templates\index\edit_firm.html:20
 #: .\index\templates\index\tree_list.html:90
@@ -1024,6 +1030,11 @@ msgstr "List of cartridges types"
 msgid "List of storages"
 msgstr ""
 
+#: .\docs\templates\docs\names_list.html:42
+#: .\docs\templates\docs\types_list.html:40
+msgid "Object references"
+msgstr ""
+
 #: .\docs\templates\docs\return_acts_list.html:27
 msgid "Return date"
 msgstr ""
@@ -1069,7 +1080,7 @@ msgstr ""
 msgid "City \"%(city)s\" success edited."
 msgstr ""
 
-#: .\events\api\views.py:256
+#: .\events\api\views.py:273
 msgid "Not found"
 msgstr ""
 
@@ -1315,190 +1326,202 @@ msgstr ""
 msgid "Events"
 msgstr ""
 
-#: .\index\api\views.py:68
+#: .\index\api\views.py:54 .\index\api\views.py:677 .\index\api\views.py:725
+#: .\index\api\views.py:746 .\index\api\views.py:761 .\index\api\views.py:909
+#: .\storages\api\views.py:21 .\storages\api\views.py:59
+msgid "Only use POST requests!"
+msgstr ""
+
+#: .\index\api\views.py:69
 msgid "Firm not found"
 msgstr ""
 
-#: .\index\api\views.py:75
+#: .\index\api\views.py:76
 msgid "Firm deleted!"
 msgstr ""
 
-#: .\index\api\views.py:78
+#: .\index\api\views.py:79
 msgid "You can not delete, because have cartridges at a gas station."
 msgstr ""
 
-#: .\index\api\views.py:109 .\index\api\views.py:300
+#: .\index\api\views.py:110 .\index\api\views.py:301
 #: .\index\templates\index\ou_not_set.html:9 .\storages\views.py:43
 msgid "User not assosiate with organization unit!<br/>Error code: 101."
 msgstr ""
 
-#: .\index\api\views.py:154 .\index\api\views.py:334
+#: .\index\api\views.py:155 .\index\api\views.py:335
 msgid "Error in attrib \"data\" in input button add_item"
 msgstr ""
 
-#: .\index\api\views.py:167 .\index\api\views.py:342
+#: .\index\api\views.py:168 .\index\api\views.py:343
 msgid "An object with this number has already been registered."
 msgstr ""
 
-#: .\index\api\views.py:211
+#: .\index\api\views.py:212
 msgid "Cartridge successfully added."
 msgstr ""
 
-#: .\index\api\views.py:213
+#: .\index\api\views.py:214
 msgid "Cartridges successfully added."
 msgstr ""
 
-#: .\index\api\views.py:390
+#: .\index\api\views.py:391
 #, python-format
 msgid "Cartridge %(cart_number)s  is already in the basket session."
 msgstr ""
 
-#: .\index\api\views.py:404
+#: .\index\api\views.py:405
 #, python-format
 msgid "Cartridge %(cart_number)s successfully added in session basket."
 msgstr ""
 
-#: .\index\api\views.py:427
+#: .\index\api\views.py:428
 msgid "Session varible not emplimented."
 msgstr ""
 
-#: .\index\api\views.py:434
+#: .\index\api\views.py:435
 msgid "Cart is empty. Add nothing to the warehouse."
 msgstr ""
 
-#: .\index\api\views.py:457
+#: .\index\api\views.py:458
 #, python-format
 msgid "Cartridges %(cart_numbers)s successfully added."
 msgstr ""
 
-#: .\index\api\views.py:498
+#: .\index\api\views.py:499
 msgid "Cartridges successfully moved."
 msgstr ""
 
-#: .\index\api\views.py:578
+#: .\index\api\views.py:579
 #, python-format
 msgid "Cartridges %(cart_nums)s successfully moved to firm."
 msgstr ""
 
-#: .\index\api\views.py:580
+#: .\index\api\views.py:581
 msgid "No transmission facilities"
 msgstr ""
 
-#: .\index\api\views.py:605
+#: .\index\api\views.py:606
 msgid "Session cleared"
 msgstr ""
 
-#: .\index\api\views.py:632
+#: .\index\api\views.py:633
 msgid "In demo remove nodes not allow."
 msgstr ""
 
-#: .\index\api\views.py:640
+#: .\index\api\views.py:641
 msgid ""
 "But it can not be removed because other objects reference it.<br/>Error "
 "code: 102"
 msgstr ""
 
-#: .\index\api\views.py:646
+#: .\index\api\views.py:647
 msgid "Names deleted successfully."
 msgstr ""
 
-#: .\index\api\views.py:668
+#: .\index\api\views.py:669
 msgid "Cartridjes deleted!"
 msgstr ""
 
-#: .\index\api\views.py:685
+#: .\index\api\views.py:686
 msgid "Error converting string numbers to int."
 msgstr ""
 
-#: .\index\api\views.py:696
+#: .\index\api\views.py:697
 msgid "This action type not implemented."
 msgstr ""
 
-#: .\index\api\views.py:715
+#: .\index\api\views.py:716
 msgid "Cartridges successfully transferred to basket."
 msgstr ""
 
-#: .\index\api\views.py:823
+#: .\index\api\views.py:824
 #, python-format
 msgid "Cartridges %(cart_list)s successfully transferred for use"
 msgstr ""
 
-#: .\index\api\views.py:947 .\index\api\views.py:1021 .\index\api\views.py:1213
-#: .\index\api\views.py:1331
+#: .\index\api\views.py:948 .\index\api\views.py:1022 .\index\api\views.py:1214
+#: .\index\api\views.py:1332 .\index\api\views.py:1463
 msgid "Error: 101. Not set organization utint."
 msgstr ""
 
-#: .\index\api\views.py:964 .\index\api\views.py:1037 .\index\api\views.py:1229
+#: .\index\api\views.py:965 .\index\api\views.py:1038 .\index\api\views.py:1230
 #, python-format
 msgid "Consumables with the number %(cart_barcode)s was not found."
 msgstr ""
 
-#: .\index\api\views.py:970 .\index\api\views.py:1235
+#: .\index\api\views.py:971 .\index\api\views.py:1236
 msgid "The object is already in the lists on the move."
 msgstr ""
 
-#: .\index\api\views.py:987 .\index\api\views.py:1252
+#: .\index\api\views.py:988 .\index\api\views.py:1253
 #, python-format
 msgid ""
 "The object number %(cart_barcode)s is already present in the lists on the "
 "move."
 msgstr ""
 
-#: .\index\api\views.py:994 .\index\api\views.py:1065 .\index\api\views.py:1259
+#: .\index\api\views.py:995 .\index\api\views.py:1066 .\index\api\views.py:1260
 msgid "Consumable material is successfully prepared for transfer"
 msgstr ""
 
-#: .\index\api\views.py:1003
+#: .\index\api\views.py:1004
 #, python-format
 msgid ""
 "This consumable is in the state \"%(cart_status)s\". Are you sure you want "
 "to place in the lists transmitted?"
 msgstr ""
 
-#: .\index\api\views.py:1089
+#: .\index\api\views.py:1090
 msgid "The session key is not recognized."
 msgstr ""
 
-#: .\index\api\views.py:1190
+#: .\index\api\views.py:1191
 #, python-format
 msgid "Objects %(numbers)s moved successfully."
 msgstr ""
 
-#: .\index\api\views.py:1268
+#: .\index\api\views.py:1269
 #, python-format
 msgid ""
 "This consumable is in the state \"%(cart_status)s\". Return to the warehouse "
 "is impossible."
 msgstr ""
 
-#: .\index\api\views.py:1297 .\index\api\views.py:1354 .\index\views.py:1042
+#: .\index\api\views.py:1298 .\index\api\views.py:1355
+#: .\index\api\views.py:1479 .\index\views.py:1043
 #, python-format
 msgid ""
 "An object with number %(cart_num)s belong to a different organizational unit."
 msgstr ""
 
-#: .\index\api\views.py:1309
+#: .\index\api\views.py:1310
 msgid "Action not supported"
 msgstr ""
 
-#: .\index\api\views.py:1316
+#: .\index\api\views.py:1317
 msgid "Your score is accepted."
 msgstr ""
 
-#: .\index\api\views.py:1341
+#: .\index\api\views.py:1342
 msgid "The number must not be empty."
 msgstr ""
 
-#: .\index\api\views.py:1348 .\index\api\views.py:1362
+#: .\index\api\views.py:1349 .\index\api\views.py:1363
+#: .\index\api\views.py:1473
 msgid "Not found."
 msgstr ""
 
-#: .\index\api\views.py:1367
+#: .\index\api\views.py:1368
 msgid "Number is already in use."
 msgstr ""
 
-#: .\index\api\views.py:1402
+#: .\index\api\views.py:1403
 msgid "Session varible not use."
+msgstr ""
+
+#: .\index\api\views.py:1445
+msgid "Action not found"
 msgstr ""
 
 #: .\index\forms\add_cartridge_name.py:18 .\index\forms\add_type.py:32
@@ -1531,7 +1554,7 @@ msgstr ""
 msgid "You have entered the wrong data."
 msgstr ""
 
-#: .\index\forms\add_items.py:48 .\reports\forms.py:53
+#: .\index\forms\add_items.py:48 .\reports\forms.py:57
 msgid "The value must be greater than zero."
 msgstr ""
 
@@ -1557,7 +1580,7 @@ msgstr ""
 #: .\index\templates\index\add_empty_cartridge.html:68
 #: .\index\templates\index\add_empty_cartridge_from_barcode_scanner.html:63
 #: .\index\templates\index\add_items.html:69
-#: .\index\templates\index\empty.html:73
+#: .\index\templates\index\bufer.html:56 .\index\templates\index\empty.html:73
 #: .\index\templates\index\from_firm_to_stock_with_barcode.html:53
 #: .\index\templates\index\stock.html:71
 msgid "Storage"
@@ -1567,7 +1590,7 @@ msgstr ""
 msgid "name consumables"
 msgstr "Names cartridges"
 
-#: .\index\forms\tr_to_firm.py:140
+#: .\index\forms\tr_to_firm.py:141
 msgid "Firm object error."
 msgstr ""
 
@@ -1595,7 +1618,7 @@ msgstr ""
 msgid "Empty and in stock"
 msgstr ""
 
-#: .\index\models.py:63 .\index\templates\index\base_menu.html.py:10
+#: .\index\models.py:63 .\index\templates\index\base_menu.html.py:16
 msgid "On restoration"
 msgstr ""
 
@@ -1632,7 +1655,7 @@ msgstr ""
 #: .\index\templates\index\add_cartridge_from_barcode_scanner.html:26
 #: .\index\templates\index\add_empty_cartridge_from_barcode_scanner.html:26
 #: .\index\templates\index\from_firm_to_stock_with_barcode.html:46
-#: .\index\templates\index\transfer_to_firm_with_scanner.html:28
+#: .\index\templates\index\transfer_to_firm_with_scanner.html:25
 #, fuzzy
 #| msgid "Extension number"
 msgid "Scanning number"
@@ -1681,6 +1704,8 @@ msgstr ""
 
 #: .\index\templates\index\add_cartridge_from_barcode_scanner.html:78
 #: .\index\templates\index\add_empty_cartridge_from_barcode_scanner.html:78
+#: .\index\templates\index\from_firm_to_stock_with_barcode.html:60
+#: .\index\templates\index\transfer_to_firm_with_scanner.html:67
 msgid "Set focus"
 msgstr ""
 
@@ -1693,7 +1718,7 @@ msgstr ""
 
 #: .\index\templates\index\add_cartridge_from_barcode_scanner.html:95
 #: .\index\templates\index\add_empty_cartridge_from_barcode_scanner.html:95
-#: .\index\templates\index\from_firm_to_stock_with_barcode.html:63
+#: .\index\templates\index\from_firm_to_stock_with_barcode.html:64
 msgid "Debug"
 msgstr ""
 
@@ -1715,6 +1740,7 @@ msgid "Adding empty cartridges to the stock"
 msgstr ""
 
 #: .\index\templates\index\add_empty_cartridge.html:3
+#: .\index\templates\index\transfer_to_firm.html:5
 msgid "Empty cartridges"
 msgstr ""
 
@@ -1813,45 +1839,55 @@ msgid ""
 "browsers."
 msgstr ""
 
-#: .\index\templates\index\base.html:27
+#: .\index\templates\index\base.html:28
 msgid "Exit"
 msgstr ""
 
-#: .\index\templates\index\base.html:38
+#: .\index\templates\index\base.html:41
 msgid "Help"
 msgstr ""
 
-#: .\index\templates\index\base.html:47
+#: .\index\templates\index\base.html:58
 msgid "Thanks"
 msgstr ""
 
-#: .\index\templates\index\base.html:48
+#: .\index\templates\index\base.html:58
 msgid "Version"
 msgstr ""
 
-#: .\index\templates\index\base.html:48
+#: .\index\templates\index\base.html:58
 msgid "Request tech support"
 msgstr ""
 
-#: .\index\templates\index\base_menu.html:6
+#: .\index\templates\index\base_menu.html:10
 msgid "Main"
 msgstr ""
 
-#: .\index\templates\index\base_menu.html:7
+#: .\index\templates\index\base_menu.html:11
+#, fuzzy
+#| msgid "name consumables"
+msgid "Consumables"
+msgstr "Names cartridges"
+
+#: .\index\templates\index\base_menu.html:13
 msgid "Filled"
 msgstr ""
 
-#: .\index\templates\index\base_menu.html:8
+#: .\index\templates\index\base_menu.html:14
 msgid "Installed"
 msgstr ""
 
-#: .\index\templates\index\base_menu.html:9
+#: .\index\templates\index\base_menu.html:15
 msgid "Empty"
 msgstr ""
 
-#: .\index\templates\index\base_menu.html:11
+#: .\index\templates\index\base_menu.html:17
 #: .\index\templates\index\basket.html:4 .\index\templates\index\basket.html:5
 msgid "Basket"
+msgstr ""
+
+#: .\index\templates\index\base_menu.html:18
+msgid "Bufer"
 msgstr ""
 
 #: .\index\templates\index\basket.html:45 .\index\templates\index\empty.html:75
@@ -1859,17 +1895,33 @@ msgstr ""
 msgid "Actions"
 msgstr ""
 
-#: .\index\templates\index\basket.html:57 .\index\templates\index\empty.html:88
-#: .\index\templates\index\stock.html:86 .\index\templates\index\use.html:67
+#: .\index\templates\index\basket.html:57 .\index\templates\index\empty.html:89
+#: .\index\templates\index\stock.html:87 .\index\templates\index\use.html:67
 msgid "Edit a comment"
 msgstr ""
 
-#: .\index\templates\index\basket.html:58 .\index\templates\index\empty.html:89
-#: .\index\templates\index\stock.html:87 .\index\templates\index\use.html:68
+#: .\index\templates\index\basket.html:58 .\index\templates\index\empty.html:90
+#: .\index\templates\index\stock.html:88 .\index\templates\index\use.html:68
 msgid "Event viewer"
 msgstr ""
 
-#: .\index\templates\index\change_number_modal.html:15
+#: .\index\templates\index\bufer.html:2 .\index\templates\index\bufer.html:3
+msgid "List buffered cartridges"
+msgstr ""
+
+#: .\index\templates\index\bufer.html:31
+msgid "Print PDF"
+msgstr ""
+
+#: .\index\templates\index\bufer.html:32
+msgid "Delete item"
+msgstr ""
+
+#: .\index\templates\index\bufer.html:33
+msgid "Clear bufer"
+msgstr ""
+
+#: .\index\templates\index\change_number_modal.html:16
 #: .\index\templates\index\tree_list.html:89
 msgid "Close"
 msgstr ""
@@ -1968,6 +2020,10 @@ msgstr ""
 msgid "in stock"
 msgstr ""
 
+#: .\index\templates\index\empty.html:94 .\index\templates\index\stock.html:92
+msgid "Buffering"
+msgstr ""
+
 #: .\index\templates\index\evaluate_service.html:2
 #: .\index\templates\index\evaluate_service.html:3
 #: .\index\templates\index\use.html:70
@@ -2010,31 +2066,31 @@ msgstr ""
 msgid "Return cartridge to the stock"
 msgstr ""
 
-#: .\index\templates\index\from_firm_to_stock.html:35
+#: .\index\templates\index\from_firm_to_stock.html:39
 msgid "Filling<br/> and cleaning"
 msgstr ""
 
-#: .\index\templates\index\from_firm_to_stock.html:36
+#: .\index\templates\index\from_firm_to_stock.html:40
 msgid "Replacing <br/> fotovala"
 msgstr ""
 
-#: .\index\templates\index\from_firm_to_stock.html:37
+#: .\index\templates\index\from_firm_to_stock.html:41
 msgid "Replacement<br/>squeegee"
 msgstr ""
 
-#: .\index\templates\index\from_firm_to_stock.html:38
+#: .\index\templates\index\from_firm_to_stock.html:42
 msgid "Replacement<br/>chip"
 msgstr ""
 
-#: .\index\templates\index\from_firm_to_stock.html:39
+#: .\index\templates\index\from_firm_to_stock.html:43
 msgid "Replacing<br/>the magnetic roller"
 msgstr ""
 
-#: .\index\templates\index\from_firm_to_stock.html:40
+#: .\index\templates\index\from_firm_to_stock.html:44
 msgid "Service cost"
 msgstr ""
 
-#: .\index\templates\index\from_firm_to_stock.html:55
+#: .\index\templates\index\from_firm_to_stock.html:59
 msgid "Return to stock"
 msgstr ""
 
@@ -2046,7 +2102,7 @@ msgstr ""
 msgid "That pass"
 msgstr ""
 
-#: .\index\templates\index\from_firm_to_stock_with_barcode.html:60
+#: .\index\templates\index\from_firm_to_stock_with_barcode.html:61
 msgid "Move"
 msgstr ""
 
@@ -2056,6 +2112,22 @@ msgstr ""
 
 #: .\index\templates\index\get_cart_ou.html:9
 msgid "Take?"
+msgstr ""
+
+#: .\index\templates\index\linked_name_objects.html:6
+#: .\reports\templates\reports\amortizing_ajax.html:8
+#: .\reports\templates\reports\main_summary.html:49
+#: .\search\templates\search\serp.html:15
+msgid "Status"
+msgstr ""
+
+#: .\index\templates\index\linked_name_objects.html:7
+msgid "Place"
+msgstr ""
+
+#: .\index\templates\index\linked_name_objects.html:16
+#: .\index\templates\index\linked_types_objects.html:12
+msgid "List objects empty"
 msgstr ""
 
 #: .\index\templates\index\ou_not_set.html:4
@@ -2122,23 +2194,18 @@ msgstr ""
 msgid "Transfer cartridges refills"
 msgstr ""
 
-#: .\index\templates\index\transfer_to_firm.html:5
-#: .\index\templates\index\use.html:3 .\index\templates\index\use.html.py:4
-msgid "Consumables in use"
-msgstr ""
-
 #: .\index\templates\index\transfer_to_firm.html:37
 #: .\index\templates\index\transfer_to_firm_with_scanner.html:53
 msgid "Which company"
 msgstr ""
 
 #: .\index\templates\index\transfer_to_firm.html:51
-#: .\index\templates\index\transfer_to_firm_with_scanner.html:68
+#: .\index\templates\index\transfer_to_firm_with_scanner.html:69
 msgid "Cansel"
 msgstr ""
 
-#: .\index\templates\index\transfer_to_firm.html:53
-#: .\index\templates\index\transfer_to_firm_with_scanner.html:67
+#: .\index\templates\index\transfer_to_firm.html:52
+#: .\index\templates\index\transfer_to_firm_with_scanner.html:68
 msgid "Transfer to repair"
 msgstr ""
 
@@ -2146,11 +2213,11 @@ msgstr ""
 msgid "Transfer cartridges refills with barcode scanner"
 msgstr ""
 
-#: .\index\templates\index\transfer_to_firm_with_scanner.html:25
+#: .\index\templates\index\transfer_to_firm_with_scanner.html:32
 msgid "Remove"
 msgstr ""
 
-#: .\index\templates\index\transfer_to_firm_with_scanner.html:77
+#: .\index\templates\index\transfer_to_firm_with_scanner.html:78
 msgid "Need confirmation"
 msgstr ""
 
@@ -2179,91 +2246,117 @@ msgstr ""
 msgid "The name change"
 msgstr ""
 
-#: .\index\views.py:153
+#: .\index\templates\index\use.html:3 .\index\templates\index\use.html.py:4
+msgid "Consumables in use"
+msgstr ""
+
+#: .\index\views.py:150
 #, python-format
 msgid "%(cart_name)s already exists"
 msgstr ""
 
-#: .\index\views.py:157
+#: .\index\views.py:154
 #, python-format
 msgid "%(cart_name)s success added"
 msgstr ""
 
-#: .\index\views.py:385 .\index\views.py:397
+#: .\index\views.py:382 .\index\views.py:394
 #, python-format
 msgid "Organization unit %(org_name)s exist"
 msgstr ""
 
-#: .\index\views.py:390 .\index\views.py:402
+#: .\index\views.py:387 .\index\views.py:399
 #, python-format
 msgid "Organization unit %(org_name)s create successfuly."
 msgstr ""
 
-#: .\index\views.py:446
+#: .\index\views.py:443
 #, python-format
 msgid "%(cart_type)s success save"
 msgstr ""
 
-#: .\index\views.py:450
+#: .\index\views.py:447
 #, python-format
 msgid "New type %(cart_type)s success added"
 msgstr ""
 
-#: .\index\views.py:590
+#: .\index\views.py:577
 msgid "Select all"
 msgstr ""
 
-#: .\index\views.py:623
+#: .\index\views.py:610
 #, python-format
 msgid "Firm \"%(firm_name)s\" success added."
 msgstr ""
 
-#: .\index\views.py:1007
+#: .\index\views.py:1008
 msgid "Work has already estimated."
 msgstr ""
 
-#: .\index\views.py:1038
+#: .\index\views.py:1039
 #, python-format
 msgid "An object with number %(cart_num)s is not transmitted to the service."
 msgstr ""
 
-#: .\reports\api\views.py:63
-msgid "Start date required field."
+#: .\reports\api\views.py:119 .\reports\api\views.py:191
+#: .\reports\templates\reports\firm.html:26
+msgid "Start range"
 msgstr ""
 
-#: .\reports\api\views.py:77
-msgid "Error in date data."
+#: .\reports\api\views.py:120 .\reports\api\views.py:192
+#: .\reports\templates\reports\firm.html:27
+msgid "End range"
 msgstr ""
 
-#: .\reports\api\views.py:88
-msgid "Organization unit not found."
+#: .\reports\api\views.py:123
+msgid "Items count"
 msgstr ""
 
-#: .\reports\forms.py:12
+#: .\reports\api\views.py:123 .\reports\templates\reports\users_ajax.html.py:6
+msgid "Details"
+msgstr ""
+
+#: .\reports\api\views.py:195 .\reports\templates\reports\worket_firms.html:4
+msgid "Firm name"
+msgstr ""
+
+#: .\reports\api\views.py:195 .\reports\templates\reports\worket_firms.html:5
+msgid "The number of serviced objects"
+msgstr ""
+
+#: .\reports\api\views.py:195 .\reports\templates\reports\worket_firms.html:6
+msgid "The money paid"
+msgstr ""
+
+#: .\reports\forms.py:15
 msgid "All over the past year"
 msgstr ""
 
-#: .\reports\forms.py:33
+#: .\reports\forms.py:37
 msgid "Transferred to invalid values."
 msgstr ""
 
-#: .\reports\forms.py:51
+#: .\reports\forms.py:55
 msgid "You have entered incorrect data."
 msgstr ""
 
-#: .\reports\forms.py:55
+#: .\reports\forms.py:59
 msgid "Field cannot be empty."
 msgstr ""
 
-#: .\reports\forms.py:68 .\reports\forms.py:75
+#: .\reports\forms.py:72
+msgid "Departament"
+msgstr ""
+
+#: .\reports\forms.py:80 .\reports\forms.py:150 .\reports\forms.py:208
 msgid "Start date"
 msgstr ""
 
-#: .\reports\forms.py:77
+#: .\reports\forms.py:82 .\reports\forms.py:152 .\reports\forms.py:210
 msgid "End date"
 msgstr ""
 
-#: .\reports\forms.py:110
+#: .\reports\forms.py:112 .\reports\forms.py:185 .\reports\forms.py:234
 msgid "Error in start date."
 msgstr ""
 
@@ -2277,10 +2370,11 @@ msgid "The number of reloads (more or equal)"
 msgstr ""
 
 #: .\reports\templates\reports\amortizing.html:25
+#: .\reports\templates\reports\firm.html:34
 #: .\reports\templates\reports\main_summary.html:31
 #: .\reports\templates\reports\products.html:41
 #: .\reports\templates\reports\spent_money.html:42
-#: .\reports\templates\reports\users.html:36
+#: .\reports\templates\reports\users.html:52
 msgid "Generate"
 msgstr ""
 
@@ -2292,10 +2386,9 @@ msgstr ""
 msgid "Number<br/>reloads"
 msgstr ""
 
-#: .\reports\templates\reports\amortizing_ajax.html:8
-#: .\reports\templates\reports\main_summary.html:49
-#: .\search\templates\search\serp.html:15
-msgid "Status"
+#: .\reports\templates\reports\firm.html:2
+#: .\reports\templates\reports\firm.html:3
+msgid "Report firms"
 msgstr ""
 
 #: .\reports\templates\reports\main_summary.html:7
@@ -2334,7 +2427,6 @@ msgid "Count"
 msgstr ""
 
 #: .\reports\templates\reports\spent_money.html:3
-#: .\reports\templates\reports\vertical_menu.html:15
 msgid "The report by spent money month"
 msgstr ""
 
@@ -2360,6 +2452,10 @@ msgstr ""
 
 #: .\reports\templates\reports\vertical_menu.html:14
 msgid "The report by products"
+msgstr ""
+
+#: .\reports\templates\reports\vertical_menu.html:15
+msgid "The report by firm"
 msgstr ""
 
 #: .\search\templates\search\error.html:2

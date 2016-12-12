@@ -19,7 +19,8 @@ from events.models import Events
 from index.forms.tr_to_firm import TransfeToFirmScanner
 from events.helpers import events_decoder, do_timezone
 from index.models import ( City, 
-                           CartridgeItem, 
+                           CartridgeItem,
+                           CartridgeType,
                            OrganizationUnits, 
                            CartridgeItemName, 
                            FirmTonerRefill,
@@ -1187,7 +1188,7 @@ def move_objects_to_firm_with_barcode(request):
 
         ansver['error'] = '0'
         ansver['url'] = reverse('index:empty')
-        msg = _('Objects %(numbers)s moved successfully.') % {'numbers': numbers}
+        msg = _('Objects %(numbers)s moved successfully.') % {'numbers': show_numbers}
         messages.success(request, msg)
         # очищаем сессионную переменную basket_to_transfer_firm
         request.session['basket_to_transfer_firm'] = []
@@ -1418,4 +1419,89 @@ def clear_basket_session(request):
     request.session[session_var] = tmp_session_data
     ansver['error'] = '0'
     ansver['text'] = selected
+    return JsonResponse(ansver)
+
+
+@require_POST
+@is_admin
+@check_ajax_auth
+def linked_name_objects(request):
+    """Выбор всех объектов РМ для заданного имени.
+    """
+    ansver = dict()
+    name_id = request.POST.get('name_id', 0)
+    action = request.POST.get('action', 0)
+    name_id = str2int(name_id)
+    if action == 'name':
+        name_obj = get_object_or_404(CartridgeItemName, pk=name_id)
+        list_items = CartridgeItem.objects.filter(cart_itm_name=name_obj)
+        ansver['text'] = render_to_string('index/linked_name_objects.html', context={'list_items': list_items})
+    elif action == 'type':
+        name_obj = get_object_or_404(CartridgeType, pk=name_id)
+        list_items = CartridgeItemName.objects.filter(cart_itm_type=name_obj)
+        ansver['text'] = render_to_string('index/linked_types_objects.html', context={'list_items': list_items})
+    else:
+        ansver['error'] = 1
+        ansver['text'] = _('Action not found')
+        return JsonResponse(ansver)    
+    ansver['error'] = 0
+    return JsonResponse(ansver)
+
+
+@require_POST
+@check_ajax_auth
+def push_to_bufer(request):
+    """
+    Изменить статус РМ с буферизирован или нет.
+    """
+    ansver = dict()
+    try:
+        root_ou   = request.user.departament
+        des       = root_ou.get_descendants()
+    except:
+        ansver['error'] ='1'
+        ansver['mes'] = _('Error: 101. Not set organization utint.')
+        return JsonResponse(ansver)
+
+    cart_id = request.POST.get('cart_id', '')
+    cart_id = str2int(cart_id)
+    
+    try:
+        m1 = CartridgeItem.objects.get(pk=cart_id)
+    except CartridgeItem.DoesNotExist:
+        ansver['error'] ='1'
+        ansver['mes'] = _('Not found.')
+        return JsonResponse(ansver)
+
+    cart_index = m1.pk
+    if not((m1.departament in des) or (m1.departament == request.user.departament)):
+        ansver['error'] ='1'
+        ansver['mes'] = _('An object with number %(cart_num)s belong to a different organizational unit.') % {'cart_num': cart_number}
+        return JsonResponse(ansver)
+
+    # переключаем статус с буферизован или нет
+    cart_status = m1.bufer
+    if cart_status:
+        m1.bufer = False
+    else:
+        m1.bufer = True
+    m1.save()
+    ansver['error'] = '0'
+    return JsonResponse(ansver)
+
+
+@require_POST
+@check_ajax_auth
+def docs_firm_suggests(request):
+    """Динамическое формирование списка договоров обслуживания для заданной фирмы.
+    """
+    ansver = dict()
+    firm_id = request.POST.get('firm_id', 0)
+    firm_id = str2int(firm_id)
+    firm = get_object_or_404(FirmTonerRefill, pk=firm_id)
+    m1 = SCDoc.objects.filter(firm=firm).filter(doc_type=2).filter(departament=request.user.departament)
+    res = list()
+    for item in m1:
+        res.append([item.pk, item.title])
+    ansver['res'] = res
     return JsonResponse(ansver)

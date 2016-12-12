@@ -1,6 +1,6 @@
 {% extends "index/base.html" %}{% load i18n %}{% load pagination  %}{% load tz %}
-{% block title %}{% trans "List of new or refilled cartridges" %}{% endblock %}
-{% block breadcrumbs %}<a href="/"><img src="{{ STATIC_URL }}img/home.png" /></a> / {% trans "List of new or refilled cartridges" %}{% endblock %}
+{% block title %}{% trans "List buffered cartridges" %}{% endblock %}
+{% block breadcrumbs %}<a href="/"><img src="{{ STATIC_URL }}img/home.png" /></a> / {% trans "List buffered cartridges" %}{% endblock %}
 {% block jqueryui%}<link rel="stylesheet" href="{{ STATIC_URL }}css/jquery.powertip-dark.min.css" />
 <script src="{{ STATIC_URL }}js/jquery.powertip.min.js"></script>
 <script src="{{ STATIC_URL }}js/activate.powertip.js?{{request.CACHEVERSION}}"></script>
@@ -8,7 +8,7 @@
 <script src="{{ STATIC_URL }}js/foundation/foundation.reveal.js"></script>
 {% endblock %}
 {% block help_url %}
-{{ request.HOME_SITE }}/help/{{ request.LANGUAGE_CODE }}/stock/
+{{ request.HOME_SITE }}/help/{{ request.LANGUAGE_CODE }}/bufer/
 {% endblock %}
 {% block submenu %}
 <div class="row">
@@ -28,29 +28,15 @@
 {% endif %}
 <div class="row">
     <div class="large-7 columns">
-        <table class="no-style">
-            <tbody><tr class="no-style">
-                <td><a class="add_items add_from_mouse button success" href="{% url 'index:add_items' %}">{% trans "Add with" %}</a></td>
-                <td><a class="tr_for_use button no_follow" href="#">{% trans "Transfer" %}</a></td>
-                <td><a class="show_modal button no_follow" href="#">{% trans "Change number" %}</a></td>
-            </tr>
-            <tr class="no-style">
-                <td><a class="add_items add_from_barcode_scanner button success" href="{% url 'index:add_cartridge_from_barcode_scanner' %}">{%  trans "Add with" %}</a></td>
-                <td><a class="tr_to_recycle_bin button alert no_follow" href="#" atype="5">{% trans "In basket" %}</a></td>
-                <td></td>
-            </tr><tr>
-            </tr></tbody>
-        </table>
-        <img class="spinner" src="/static/img/loader.gif">        
+        <a class="button no_follow generate_pdf" href="#" data="bufer">{% trans "Print PDF" %}</a>
+        <a class="button no_follow remove_from_bufer" href="#">{% trans "Delete item" %}</a>
+        <a class="button no_follow clear_bufer" href="#">{% trans "Clear bufer" %}</a>
+        <img class="spinner" src="/static/img/loader.gif">
+        <a class="download_pdf" href="#">{% trans "Download" %}</a>
+        <img class="spinner_pdf" src="{{ STATIC_URL }}img/loader.gif" />
     </div>
     <div class="large-5 columns text-right">
-        <a class="download_doc" href="#">{% trans 'Download' %}</a>
-        <img class="export_spinner" src="{{ STATIC_URL }}img/loader.gif" />
-        <select class="export_type">
-            <option value="exp_with_group" selected>{% trans "Export to CSV with group" %}</option>
-            <option value="exp_without_group">{% trans "Export to CSV without group" %}</option>
-        </select>
-        <a class="export_to_csv button no_follow" href="#" view="{{ view }}"></a>
+        
     </div>
 </div>
 <div class="row">
@@ -67,29 +53,17 @@
                     <th class="cart_number {% if select_number %}active_cell{% endif %}"><a href="?action=number">{% trans "Number" %} {{number_triangle}}</a><br/><input class="search_number" name="search_number" value="{{search_number}}"  /></th>
                     <th class="cart_name{% if select_type %} active_cell{% endif %}"><a href="?action=name">{% trans "Name" %} {{type_triangle}}</a></th>
                     <th class="cart_count{% if select_count %} active_cell{% endif %}"><a href="?action=recovery">{% trans "Amount<br/>recovery" %}{{count_triangle}}</a></th>
-                    <th class="cart_date{% if select_change_date %} active_cell{% endif %} {% if request.SHOW_TIME %}big{% else %}small{% endif %}"><a href="?action=change_date">{% trans "Date add" %} {{datec_triangle}}<br/>{% trans "on stock" %}</a></th>
                     <th>{% trans "Storage" %}</th>
                     <th>{% trans "comment" %}</th>
-                    <th class="actions">{% trans "Actions" %}</th>
-                    <th class="first_checkbox"></th>
                 </tr>
                 {% for i in cartrjs %}
                     <tr>
                         <td><input type="checkbox" class="checkbox" value="{{ i.id }}" cart_number="{{ i.cart_number }}" /></td>
                         <td class="cart_number_for_tip" data-powertip="{{ i.cart_number }}">{{ i.cart_number|truncatechars:request.TRLEN }}</td>
-                        <td>{{ i.cart_itm_name__cart_itm_name }}</td>
+                        <td>{{ i.cart_itm_name }}</td>
                         <td>{{ i.cart_number_refills }}</td>
-                        {% if request.SHOW_TIME %}<td>{{ i.cart_date_change | timezone:request.TZ | date:"d.m.Y  H:i"}}</td>{% else %}<td>{{ i.cart_date_change | date:"d.m.Y"}}</td>{% endif %}
                         <td><span data-powertip="{{ i.sklad_title }} {{ i.sklad_address }}" class="info_ico"></span></td>
                         <td><div class="comment_in_cell" title="{{ i.comment }}">{{ i.comment|truncatechars:34 }}</div></td>
-                        <td><select class="cartridge_action" data="{{ i.id }}">
-                            <option selected></option>
-                            <option value="edit">{% trans "Edit a comment" %}</option>
-                            <option value="view_events">{% trans "Event viewer" %}</option>
-                            <option value="view_delivery" data="{{ i.delivery_doc }}">{% trans "Delivery agreement" %}</option>
-                        </select>
-                        </td>
-                        <td><div title="{% trans 'Buffering' %}" class="led switch_{% if i.bufer %}on{% else %}off{% endif %}" value="{{ i.id }}">&nbsp;</div></td>
                     </tr>
                 {% endfor %}
             </form>

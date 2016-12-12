@@ -80,6 +80,7 @@ class CartridgeItem(models.Model):
     comment              = models.TextField(_('Comment'), blank=True)
     delivery_doc         = models.IntegerField(db_index=True, null=True, default=0)
     vote                 = models.BooleanField(default=False)  # используется для защиты от накрутки голосований качества заправки РМ
+    bufer                = models.BooleanField(default=False)  # буферзация используется для печати наклеек
     node_order_by        = ['pk']
 
 class Numerator(models.Model):

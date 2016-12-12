@@ -84,69 +84,22 @@ $( function(){
         });
     }
 
-    // производим подсчёт количества потраченных денег по
-    // контракту на обслуживание
-    var contracts = $('table.contacts');
-    if (contracts.length) {
-        var service_contracts = [];
-        var doc_id = 0;
-        $('table.contacts td').each(function() {
-            if ($(this).attr('doc_type') == '2') {
-                doc_id = $(this).attr('doc_id');
-                service_contracts.push( doc_id );       
-            }
-        });
-
-        $.ajax({
-            method: 'POST',
-            url: '{% url "docs:calculate_sum" %}',
-            data:  { 'service_contracts': service_contracts },
-            beforeSend: function( xhr, settings ){
-                csrftoken = getCookie('csrftoken');
-                if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
-                    xhr.setRequestHeader('X-CSRFToken', csrftoken);
-                }
-            },
-            success: function( msg ) {
-                var delimiter = ',';
-                for (var item in msg.result) {
-                    var class_name = 'td.service_' + item;
-                    var money = msg.result[item];
-                    var dollars = parseInt(money) / 100;
-                    // убираем дробную часть у долларов
-                    dollars = parseInt(dollars);
-                    // извлекаем из денег центы
-                    var cents = money - (dollars*100);
-                    $(class_name).empty();
-                    if (cents) {
-                        $(class_name).text(dollars + delimiter + cents);
-                    } else {
-                        $(class_name).text(dollars);
-                    }
-                    
-                }
-            },
-            error: function( msg ) {
-                console.log( msg );
-            },
-        });
-
-    };
 
     $('.event_filter').click( function() {
         var filter_date = $('form.input_date').serializeArray();
         var start_date  = filter_date[1].value;
         var end_date    = filter_date[2].value;
-        var time_zone_offset = new Date();
-        time_zone_offset = time_zone_offset.getTimezoneOffset() / 60
-        time_zone_offset = -1 * time_zone_offset; // меняем знак
+        //var time_zone_offset = new Date();
+        //time_zone_offset = time_zone_offset.getTimezoneOffset() / 60
+        //time_zone_offset = -1 * time_zone_offset; // меняем знак
         if (start_date || end_date) {
             $.ajax({
                 method: 'POST',
                 url: '{% url "events:date_filter" %}',
-                data:  {'start_date': start_date, 'end_date': end_date, 'time_zone_offset': time_zone_offset },
+                data:  {'start_date': start_date, 'end_date': end_date },
                 beforeSend: function( xhr, settings ){
                     $('.spinner').show();
+                    $('.show_all_events').html('');
                     $('.events_see_more').hide(); // прячем кнопку "Показать ещё"
                     csrftoken = getCookie('csrftoken');
                     if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
@@ -228,7 +181,6 @@ $( function(){
                 if ( msg.success ) {
                     $('.error_msg').hide();
                     window.location.href = "{% url 'index:empty' %}";
-                    console.log('Редирект');
                 }
 
                 if ( msg.errors ) {
@@ -395,6 +347,12 @@ $( function(){
         }
     });
 
+
+    $('.set_focus').click( function() {
+        $('#id_cartNumber').focus();
+        $('#id_scan_number').focus();
+    });
+
     var add_new_cart_from_barcode = $('.add_cart_from_barcode');
     // Если происходит добавления новых картриджей с помощью 
     // сканера штрихкодов.
@@ -411,6 +369,7 @@ $( function(){
         $('#id_cartNumber').focus();
         $('.set_focus').click( function() {
             $('#id_cartNumber').focus();
+            $('#id_scan_number').focus();
         });
 
         if (DEBUG) {    
@@ -446,14 +405,19 @@ $( function(){
         
 
     $('.users_use_cartridges').click( function() {
-        var org        = $('#id_org option:selected').val();
+        var org = $('.select_root_org option:selected').val();
+        var unit = $('.select_org_unit option:selected').val();
+        if (unit == 0) { unit = ''; }
         var start_date = $('#id_start_date').val();
+        var end_date = $('#id_end_date').val();
+        $('.form_error_text').remove();
         $.ajax({
             method: 'POST',
             url: '{% url "reports:ajax_reports_users" %}',
-            data:  {'org': org, 'start_date': start_date},
+            data:  {'org': org, 'unit': unit, 'start_date': start_date, 'end_date': end_date},
             beforeSend: function( xhr, settings ){
                 $('.spinner').show();
+                $('.download_result').hide();
                 csrftoken = getCookie('csrftoken');
                 if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
                     xhr.setRequestHeader('X-CSRFToken', csrftoken);
@@ -472,6 +436,18 @@ $( function(){
                     $('.spinner').hide();
                     $('.error_msg').hide();
                     $('.users_result').html(msg.text);
+                    $('.download_result').show();
+                    $('.download_result').attr('href', msg.url);
+                }
+
+                if (msg.error == '3') {
+                    $('.success_msg').hide();
+                    $('.error_msg').hide();
+                    var kv = $.parseJSON(msg.text);
+                    for (var key in kv) {
+                        var selector = '#id_' + key;
+                        $(selector).parent().after('<div class="form_error_text" style="display:block">' + kv[key][0]['message'] + '</div>');
+                    }
                 }
             },
             error: function() {
@@ -972,13 +948,13 @@ $( function(){
 
     $('.events_see_more').click( function() {
         var button_next = $(this);
-        var time_zone_offset = new Date();
-        time_zone_offset = time_zone_offset.getTimezoneOffset() / 60;
-        time_zone_offset = -1 * time_zone_offset; // меняем знак
+        //var time_zone_offset = new Date();
+        //time_zone_offset = time_zone_offset.getTimezoneOffset() / 60;
+        //time_zone_offset = -1 * time_zone_offset; // меняем знак
         $.ajax({
             method: 'POST',
             url: '{% url "events:show_event_page" %}',
-            data:  {'next_page': button_next.attr('next_page'), 'time_zone_offset': time_zone_offset},
+            data:  {'next_page': button_next.attr('next_page')},
             beforeSend: function( xhr, settings ){
                 $('.spinner').show();
                 csrftoken = getCookie('csrftoken');
@@ -1816,6 +1792,8 @@ $( function(){
                             },
                             success: function( msg ) {
                                 $('.spinner').hide();
+                                $('.error_msg').hide();
+                                $('.success_msg').hide();
                                 if ( msg.error == '1' ) {
                                     $('.error_msg').show();
                                     $('.success_msg').hide();
@@ -1846,7 +1824,27 @@ $( function(){
                                         // если меньше константного значения, то оставляем поле как есть
                                         var cart_num = msg.cart_num;
                                     }
-                                    $('.transfer_list tr:last').after('<tr class="remove' + msg.pk + '"><td><input type="checkbox" value="'+ msg.pk +'"/></td><td title="' + msg.cart_num + '">' + cart_num + '</td><td>' + msg.cart_name + '</td></tr>');
+                                    $('.transfer_list tr:first').after('<tr class="remove' + msg.pk + '"><td><input class="check_moved_items" type="checkbox" checked="checked" value="'+ msg.pk +'"/></td><td title="' + msg.cart_num + '">' + cart_num + '</td><td>' + msg.cart_name + '</td></tr>');
+                                    // заново подключаем обработчик событий кчекбоксу "выбрать всё"
+                                    $('.check_uncheck_all').bind('click', function(event) {
+                                        // используется во вью transfe_for_use, при динамической загрузке данных аяксом после того 
+                                        // DOM дерево будет полностью загружено.
+                                        var ckeck_box = false;
+                                        if(this.checked) {
+                                            ckeck_box = true;
+                                        } else {
+                                            ckeck_box = false;
+                                        }
+
+                                        $('input.check_moved_items').each(function() {
+                                            if (ckeck_box) {
+                                                 $(this).prop('checked', true);            
+                                            } else {
+                                                 $(this).prop('checked', false);
+                                            }
+                                        });
+                                        
+                                    });
                                     
                                 }
                             },
@@ -2237,8 +2235,26 @@ $( function(){
                                     // если меньше константного значения, то оставляем поле как есть
                                     var cart_num = msg.cart_num;
                                 }
-                                $('.transfer_list tr:last').after('<tr class="remove' + msg.pk + '"><td><input type="checkbox" value="'+ msg.pk +'"/></td><td title="' + msg.cart_num + '">' + cart_num + '</td><td>' + msg.cart_name + '</td></tr>');
-                                
+                                $('.transfer_list tr:first').after('<tr class="remove' + msg.pk + '"><td><input type="checkbox" class="check_moved_items" checked="checked" value="'+ msg.pk +'"/></td><td title="' + msg.cart_num + '">' + cart_num + '</td><td>' + msg.cart_name + '</td></tr>');
+                                // заново подключаем обработчик событий кчекбоксу "выбрать всё"
+                                $('.check_uncheck_all').bind('click', function(event) {
+                                    // используется во вью transfe_for_use, при динамической загрузке данных аяксом после того 
+                                    // DOM дерево будет полностью загружено.
+                                    var ckeck_box = false;
+                                    if(this.checked) {
+                                        ckeck_box = true;
+                                    } else {
+                                        ckeck_box = false;
+                                    }
+
+                                    $('input.check_moved_items').each(function() {
+                                        if (ckeck_box) {
+                                             $(this).prop('checked', true);            
+                                        } else {
+                                             $(this).prop('checked', false);
+                                        }
+                                    });
+                                });
                             }                                
                             
                         },
@@ -2305,7 +2321,26 @@ $( function(){
                                         // если меньше константного значения, то оставляем поле как есть
                                         var cart_num = msg.cart_num;
                                     }
-                                    $('.transfer_list tr:last').after('<tr class="remove' + msg.pk + '"><td><input type="checkbox" value="'+ msg.pk +'"/></td><td title="' + msg.cart_num + '">' + cart_num + '</td><td>' + msg.cart_name + '</td></tr>');
+                                    $('.transfer_list tr:first').after('<tr class="remove' + msg.pk + '"><td><input type="checkbox" class="check_moved_items" checked="checked" value="'+ msg.pk +'"/></td><td title="' + msg.cart_num + '">' + cart_num + '</td><td>' + msg.cart_name + '</td></tr>');
+                                    // заново подключаем обработчик событий кчекбоксу "выбрать всё"
+                                    $('.check_uncheck_all').bind('click', function(event) {
+                                        // используется во вью transfe_for_use, при динамической загрузке данных аяксом после того 
+                                        // DOM дерево будет полностью загружено.
+                                        var ckeck_box = false;
+                                        if(this.checked) {
+                                            ckeck_box = true;
+                                        } else {
+                                            ckeck_box = false;
+                                        }
+
+                                        $('input.check_moved_items').each(function() {
+                                            if (ckeck_box) {
+                                                 $(this).prop('checked', true);            
+                                            } else {
+                                                 $(this).prop('checked', false);
+                                            }
+                                        });
+                                    });
                                     
                                 }                                
                                 
@@ -2510,6 +2545,314 @@ $( function(){
                     console.log(msg);
                 },
             });
+
+    });
+
+    $('.linked_name_objects, .linked_types_objects').click( function() {
+        var name_id = $(this).attr('name_id');
+        var action = $(this).attr('action');
+        var expand = $(this).attr('expand');
+        var wrapper_class = '.wrapper_' + name_id;
+        var spinner = '.item_spinner_' + name_id;
+        if (expand == '0') {
+            $(this).attr('expand', '1');
+            $.ajax({
+                method: 'POST',
+                url: "{% url 'index:linked_name_objects' %}",
+                data:  {'name_id': name_id, 'action': action},
+                beforeSend: function( xhr, settings ){
+                    $(spinner).show();
+                    csrftoken = getCookie('csrftoken');
+                    if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
+                        xhr.setRequestHeader('X-CSRFToken', csrftoken);
+                    }
+                },
+                success: function( msg ) {
+                    $(spinner).hide();
+                    if (msg.error == '0') {
+                        $(wrapper_class).html(msg.text);
+                    }
+                    
+                },
+                error: function(msg) {
+                    $(spinner).hide();
+                    console.log(msg);
+                },
+            });
+        } else {
+            $(wrapper_class).html('');
+            $(this).attr('expand', '0');
+        }
+        
+        
+
+    })
+
+
+    $('div.led').each(function(e) {
+        $(this).on('click' , function(event) {
+            // добавляем объект в буфер
+            var elem = $( event.target );
+            var cart_id = elem.attr('value');
+            $.ajax({
+                method: 'POST',
+                url: "{% url 'index:push_to_bufer' %}",
+                data:  {'cart_id': cart_id},
+                beforeSend: function( xhr, settings ){
+                    csrftoken = getCookie('csrftoken');
+                    if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
+                        xhr.setRequestHeader('X-CSRFToken', csrftoken);
+                    }
+                },
+                success: function( msg ) {
+                    var sc = elem.attr('class');
+                    //$(this).toggleClass('change_me newClass');
+                    sc = sc.split(' ');
+                    sc = sc[1];
+                    var old_class = sc;
+                    if (sc == 'switch_off') {
+                        sc = 'switch_on';
+                    } else {
+                        sc = 'switch_off';
+                    }
+                    elem.addClass(sc).removeClass(old_class);
+
+                },
+                error: function(msg) {
+
+                    console.log(msg);
+                },
+            });
+        });
+    });
+
+    $('.clear_bufer').click( function() {
+        $.ajax({
+            method: 'POST',
+            url: '{% url "docs:clear_bufer" %}',
+            data:  {},
+            beforeSend: function( xhr, settings ){
+                $('.spinner_pdf').show();
+                csrftoken = getCookie('csrftoken');
+                if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
+                    xhr.setRequestHeader('X-CSRFToken', csrftoken);
+                }
+            },
+            success: function( msg ) {
+                $('.spinner_pdf').hide();
+                window.location.href = "{% url 'index:bufer' %}";
+            },
+            error: function() {
+                $('.ajax_messages').show();
+                $('.success_msg').html('{% trans "Server error :(" %}');
+                $('.spinner_pdf').hide();
+            },
+        });
+    });
+
+    $('.remove_from_bufer').click( function() {
+        var selected = [];
+        $('.checkboxes input:checked').each(function() {
+            if ($(this).attr('value')) {
+                selected.push( $(this).attr('value') );
+            }
+        });
+
+        if ( selected.length !== 0 ) {
+            $('.spinner_pdf').show();
+            var tr = $('.checkboxes input:checked').parent().parent().not('.table_header');
+            var freezy_f = pretty_del_table_row(tr,'gray_bg');
+            $.ajax({
+                method: 'POST',
+                url: '{% url "docs:remove_from_bufer" %}',
+                data:  {'selected': selected},
+                beforeSend: function( xhr, settings ){
+                    csrftoken = getCookie('csrftoken');
+                    if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
+                        xhr.setRequestHeader('X-CSRFToken', csrftoken);
+                    }
+                },
+                success: function( msg ) {
+                    $('.spinner_pdf').hide();
+                    freezy_f(function() {});
+
+                },
+                error: function() {
+                    $('.spinner_pdf').hide();
+                },
+            });
+        }
+    });
+
+
+    $('.load_doc_ajax').change( function() {
+        // динамически подгружаем договора поставки
+        var html_select = $(this);
+        var firm_id = html_select.children(':selected').attr('value');        
+        if (firm_id) {      
+            $('.spinner').show();
+            $.ajax({
+                method: 'POST',
+                url: '{% url "index:docs_firm_suggests" %}',
+                data: {'firm_id': firm_id},
+                beforeSend: function( xhr, settings ){
+                    csrftoken = getCookie('csrftoken');
+                    if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
+                        xhr.setRequestHeader('X-CSRFToken', csrftoken);
+                    }
+                },
+                success: function( msg ) {
+                    $('.spinner').hide();
+                    $('#id_doc').find('option').remove().end(); // очищаем весь  select 
+                    // с сервера приходит структура res = [ [12, 'Договор заправки'], [23, 'Договор обслуживания']  ]
+                    for (var i = 0; i < msg.res.length; i++) {
+                        // добавляем в селект новые опции
+                        $('#id_doc').append($('<option>', { value: msg.res[i][0], text : msg.res[i][1] }));
+                    }
+
+                },
+                error: function() {
+                    $('.spinner').hide();
+                    setTimeout(function() { $('.error_msg').html('{% trans "<p>Server not available.</p>" %}'); }, 12000);
+                },
+            });
+        }
+          
+    });
+
+    $('.report_firm').click(function(){
+        var start_date = $('#id_start_date').val();
+        var end_date = $('#id_end_date').val();
+        $('.result').html();
+        $('.error_msg').hide();
+        $('.download_result').hide();
+        $.ajax({
+            method: 'POST',
+            url: '{% url "reports:ajax_firm" %}',
+            data: {'start_date': start_date, 'end_date': end_date},
+            beforeSend: function( xhr, settings ){
+                $('.spinner').show();
+                csrftoken = getCookie('csrftoken');
+                if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
+                    xhr.setRequestHeader('X-CSRFToken', csrftoken);
+                }
+            },
+            success: function( msg ) {
+                $('.spinner').hide();
+                $('.error_msg').html();
+                $('.result').show().html();
+                if (msg.error == '0') {
+                    $('.result').html(msg.text);
+                    $('.download_result').show();
+                    $('.download_result').attr('href', msg.url);
+                }
+                if (msg.error == '1') {
+                    $('.error_msg').show();
+                    $('.error_msg').html(msg.text);
+                }
+
+            },
+            error: function() {
+                $('.spinner').hide();
+                
+            },
+        });
+    });
+
+    $('.select_root_org').change(function() {
+        var dept_id = $(this).val();
+        $('.select_org_unit').find('option').remove().end().append('<option value="0"> </option>').val('0'); // очищаем весь  select         
+        if (!(dept_id)) { return }
+        $.ajax({
+            method: 'POST',
+            url: '{% url "auth:org_suggests" %}',
+            data: {'dept_id': dept_id},
+            beforeSend: function( xhr, settings ){
+                csrftoken = getCookie('csrftoken');
+                $('.spinner').show();
+                if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
+                    xhr.setRequestHeader('X-CSRFToken', csrftoken);
+                }
+            },
+            success: function( msg ) {
+                $('.spinner').hide();
+                $('.error_msg').hide();
+                $('.select_org_unit').find('option').remove().end(); // очищаем весь  select 
+                var nbsp = '';
+                msg.res.unshift({'id': 0, 'level': 1, 'name': ''});
+                for (var i = 0; i < msg.res.length; i++) {
+                    // добавляем в селект новые опции
+                    if (msg.res[i]['level'] != 1) {
+                        nbsp = '&nbsp;&nbsp;&nbsp;'.repeat(msg.res[i]['level']);
+                    } else {
+                        nbsp = '';
+                    }
+                    $('.select_org_unit').append($('<option>', { value: msg.res[i]['id'], html : nbsp + msg.res[i]['name'] }));
+                }
+
+            },
+            error: function() {
+                $('.spinner').hide();
+                $('.error_msg').show();
+                $('.error_msg').html('{% trans "<p>Server not available.</p>" %}');
+            },
+        });
+
+    }); 
+
+    $('.use_brands_cartridges').click( function() {
+        var org = $('.select_root_org option:selected').val();
+        var unit = $('.select_org_unit option:selected').val();
+        if (unit == 0) { unit = ''; }
+        var start_date = $('#id_start_date').val();
+        var end_date = $('#id_end_date').val();
+        $('.form_error_text').remove();
+        $.ajax({
+            method: 'POST',
+            url: '{% url "reports:ajax_reports_brands" %}',
+            data:  {'org': org, 'unit': unit, 'start_date': start_date, 'end_date': end_date},
+            beforeSend: function( xhr, settings ){
+                $('.spinner').show();
+                $('.download_result').hide();
+                csrftoken = getCookie('csrftoken');
+                if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
+                    xhr.setRequestHeader('X-CSRFToken', csrftoken);
+                }
+            },
+            success: function( msg ) {
+                $('.spinner').hide(); 
+                if (msg.error == '1') {
+                    $('.success_msg').hide();
+                    $('.error_msg').show();
+                    $('.error_msg').html(msg.text);
+                    $('.users_result').html();
+                }
+
+                if (msg.error == '0') {
+                    $('.spinner').hide();
+                    $('.error_msg').hide();
+                    $('.users_result').html(msg.text);
+                    $('.download_result').show();
+                    $('.download_result').attr('href', msg.url);
+                }
+
+                if (msg.error == '3') {
+                    $('.success_msg').hide();
+                    $('.error_msg').hide();
+                    var kv = $.parseJSON(msg.text);
+                    for (var key in kv) {
+                        var selector = '#id_' + key;
+                        $(selector).parent().after('<div class="form_error_text" style="display:block">' + kv[key][0]['message'] + '</div>');
+                    }
+                }
+            },
+            error: function() {
+                $('.spinner').hide(); 
+                $('.success_msg').hide();
+                $('.error_msg').show();
+                $('.error_msg').html('{% trans "Server error :(" %}');
+            },
+        });   
 
     });
 
