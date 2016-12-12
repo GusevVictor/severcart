@@ -232,6 +232,7 @@ def ajax_reports_brands(request):
        
     if unit:
         child = unit
+        root_ou = False
         #family = root_ou.get_descendants(include_self=True)
     else:
         root_ou = org
