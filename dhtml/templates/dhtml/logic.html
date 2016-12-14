@@ -1619,7 +1619,7 @@ $( function(){
         // генерация отчёта
         var org = $('select#id_org option:selected').val();
         var cont = $('.pm_counter').val();
-
+        $('.download_result').hide();
         if ( org && cont ) {
             $.ajax({
                 method: 'POST',
@@ -1635,6 +1635,8 @@ $( function(){
                 success: function( msg ) {
                     $('.spinner').hide();
                     // таймаут на 3 секунды
+                    $('.download_result').show();
+                    $('.download_result').attr('href', msg.url);
                     setTimeout(function() {}, 3000); 
                     $('div.ajax-content').html(msg.html);
                     //window.location.href = '/basket/';
@@ -1642,6 +1644,7 @@ $( function(){
                 error: function() {
                     $('div.ajax-content').html('{% trans "<p>Server error :(</p>" %}');
                     $('.spinner').hide();
+                    $('.download_result').hide();
                 },
             });    
         }

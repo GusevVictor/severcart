@@ -7,9 +7,11 @@ from django.template.loader import render_to_string
 from django.utils.translation import ugettext as _
 from django.db.models import Q
 from django.db import connection
+from django.utils import formats
 from django.views.decorators.http import require_POST
 from collections import OrderedDict
-from index.helpers import check_ajax_auth
+from index.helpers import check_ajax_auth, str2int
+from index.templatetags.filters import pretty_status
 from index.models import CartridgeItem, OrganizationUnits
 from common.helpers import rotator_files
 from events.models import Events
@@ -22,17 +24,14 @@ from service.helpers import SevercartConfigs
 @require_POST
 @check_ajax_auth
 def ajax_report(request):
-    """
+    """Отчёт по амортизации РМ (количество перезаправок)
     """
     result = {}
     action_type = request.POST.getlist('type')[0]
     if action_type == 'amortizing':
         org  = request.POST.getlist('org')[0]
         cont = request.POST.getlist('cont')[0]
-        try:
-            org = int(org)
-        except ValueError:
-            org = 0
+        org = str2int(org)
         try:
             cont = int(cont)
         except ValueError:
@@ -52,6 +51,23 @@ def ajax_report(request):
             list_cart = list_cart.filter(cart_number_refills__gte=cont).order_by('-cart_number_refills')
             html = render_to_string('reports/amortizing_ajax.html', context={'list_cart': list_cart})
             result['html'] = html
+
+            # формируем выгрузку CSV файл
+            csv_full_name, csv_file_name = rotator_files(request, file_type='csv')
+            encoding = 'cp1251'
+            with open(csv_full_name, 'w', newline='', encoding=encoding) as csvfile:
+                fieldnames = ['number', 'name', 'date', 'amount', 'status']
+                writer = csv.DictWriter(csvfile, fieldnames, delimiter=';')
+                writer.writerow({'number': '', 'name': '', 'date': '', 'amount': '', 'status': ''})
+                writer.writerow({'number': '', 'name': '', 'date': '', 'amount': '', 'status': ''})
+                writer.writerow({'number': '', 'name': '', 'date': '', 'amount': '', 'status': ''})
+                writer.writerow({'number': '', 'name': '', 'date': '', 'amount': '', 'status': ''})
+                writer.writerow({'number': '', 'name': '', 'date': '', 'amount': '', 'status': ''})
+                writer.writerow({'number': _('Number'), 'name': _('Name'), 'date': _('Date of last cases'), 'amount': _('Number refills'), 'status': _('Status')})
+                for item in list_cart:
+                    writer.writerow({'number': item.cart_number, 'name': item.cart_itm_name, 'date': formats.date_format(item.cart_date_change, 'd.m.Y'), 'amount': item.cart_number_refills, 'status': pretty_status(item.cart_status)})
+
+            result['url'] = settings.STATIC_URL + 'csv/' + csv_file_name
     return JsonResponse(result, safe=False)
 
 
@@ -84,7 +100,6 @@ def ajax_reports_users(request):
         family = root_ou.get_descendants(include_self=False)
 
     result = dict()
-    print('start_date=', start_date)
     if start_date and not(end_date):
         for child in family:
             m1  = Events.objects.all()
