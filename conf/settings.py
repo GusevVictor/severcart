@@ -197,6 +197,8 @@ MAX_TABLE_ROWS = 40
 
 HISTORY_LENGTH = 5
 
+SHOW_HELP = False
+
 HOME_SITE = 'http://www.severcart.org'
 
 # длина символов в номере РМ, после которых будет производиться 
