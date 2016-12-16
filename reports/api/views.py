@@ -405,23 +405,26 @@ def ajax_report_stale(request):
             result = old_cart.filter(cart_date_change__lte=last_year).order_by('cart_date_change')
         else:
             pass
-
-    #else:
-        # показываем форму, если произошли ошибки
-#    context['form'] = form
-        csv_full_name, csv_file_name = rotator_files(request, file_type='csv')
-        encoding = 'cp1251'
-        with open(csv_full_name, 'w', newline='', encoding=encoding) as csvfile:
-            fieldnames = ['number', 'name', 'date', 'amount', 'status']
-            writer = csv.DictWriter(csvfile, fieldnames, delimiter=';')
-            writer.writerow({'number': '', 'name': '', 'date': '', 'amount': '', 'status': ''})
-            writer.writerow({'number': '', 'name': '', 'date': '', 'amount': '', 'status': ''})
-            writer.writerow({'number': '', 'name': '', 'date': '', 'amount': '', 'status': ''})
-            writer.writerow({'number': '', 'name': '', 'date': '', 'amount': '', 'status': ''})
-            writer.writerow({'number': '', 'name': '', 'date': '', 'amount': '', 'status': ''})
-            writer.writerow({'number': _('Number'), 'name': _('Name'), 'date': _('Date of last cases'), 'amount': _('Number refills'), 'status': _('Status')})
-            for item in result:
-                writer.writerow({'number': item.cart_number, 'name': item.cart_itm_name, 'date': formats.date_format(item.cart_date_change, 'd.m.Y'), 'amount': item.cart_number_refills, 'status': pretty_status(item.cart_status)})
+    else:
+        context['error'] = '3'
+        context['text']  = form.errors.as_json()
+        return JsonResponse(context)
+    
+    # показываем форму, если произошли ошибки
+    #    context['form'] = form
+    csv_full_name, csv_file_name = rotator_files(request, file_type='csv')
+    encoding = 'cp1251'
+    with open(csv_full_name, 'w', newline='', encoding=encoding) as csvfile:
+        fieldnames = ['number', 'name', 'date', 'amount', 'status']
+        writer = csv.DictWriter(csvfile, fieldnames, delimiter=';')
+        writer.writerow({'number': '', 'name': '', 'date': '', 'amount': '', 'status': ''})
+        writer.writerow({'number': '', 'name': '', 'date': '', 'amount': '', 'status': ''})
+        writer.writerow({'number': '', 'name': '', 'date': '', 'amount': '', 'status': ''})
+        writer.writerow({'number': '', 'name': '', 'date': '', 'amount': '', 'status': ''})
+        writer.writerow({'number': '', 'name': '', 'date': '', 'amount': '', 'status': ''})
+        writer.writerow({'number': _('Number'), 'name': _('Name'), 'date': _('Date of last cases'), 'amount': _('Number refills'), 'status': _('Status')})
+        for item in result:
+            writer.writerow({'number': item.cart_number, 'name': item.cart_itm_name, 'date': formats.date_format(item.cart_date_change, 'd.m.Y'), 'amount': item.cart_number_refills, 'status': pretty_status(item.cart_status)})
 
 
     context['text'] = render_to_string('reports/report_stale_ajax.html', context={'result': result})

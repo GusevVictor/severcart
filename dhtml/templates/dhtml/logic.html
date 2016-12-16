@@ -2863,7 +2863,7 @@ $( function(){
         // отчёт  по амортизации
         var org = $('#id_org option:selected').val();
         var diap = $('#id_diap option:selected').val();
-        
+        $('.form_error_text').remove();
         $.ajax({
             method: 'POST',
             url: '{% url "reports:ajax_report_stale" %}',
