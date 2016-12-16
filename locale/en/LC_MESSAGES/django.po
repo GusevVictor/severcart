@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-12-14 16:56+0500\n"
+"POT-Creation-Date: 2016-12-16 09:25+0500\n"
 "PO-Revision-Date: 2016-05-27 12:27+0500\n"
 "Last-Translator: \n"
 "Language-Team: severcart.org <sfcl@mail.ru>\n"
@@ -573,7 +573,7 @@ msgstr ""
 #: .\index\templates\index\transfer_to_firm.html:26
 #: .\index\templates\index\transfer_to_firm_with_scanner.html:39
 #: .\index\templates\index\tree_list.html:64
-#: .\index\templates\index\use.html:50 .\reports\api\views.py:64
+#: .\index\templates\index\use.html:50 .\reports\api\views.py:66
 #: .\reports\api\views.py:368
 #: .\reports\templates\reports\amortizing_ajax.html:5
 #: .\reports\templates\reports\brands_ajax.html:4
@@ -607,7 +607,7 @@ msgstr ""
 #: .\index\templates\index\transfer_to_firm.html:25
 #: .\index\templates\index\transfer_to_firm_with_scanner.html:38
 #: .\index\templates\index\tree_list.html:65
-#: .\index\templates\index\use.html:49 .\reports\api\views.py:64
+#: .\index\templates\index\use.html:49 .\reports\api\views.py:66
 #: .\reports\templates\reports\amortizing_ajax.html:4
 #: .\reports\templates\reports\main_summary.html:45
 #: .\search\templates\search\serp.html:12
@@ -1502,7 +1502,7 @@ msgid ""
 msgstr ""
 
 #: .\index\api\views.py:1298 .\index\api\views.py:1355
-#: .\index\api\views.py:1479 .\index\views.py:1043
+#: .\index\api\views.py:1479 .\index\views.py:1047
 #, python-format
 msgid ""
 "An object with number %(cart_num)s belong to a different organizational unit."
@@ -2132,7 +2132,7 @@ msgid "Take?"
 msgstr ""
 
 #: .\index\templates\index\linked_name_objects.html:6
-#: .\reports\api\views.py:64
+#: .\reports\api\views.py:66
 #: .\reports\templates\reports\amortizing_ajax.html:8
 #: .\reports\templates\reports\main_summary.html:49
 #: .\search\templates\search\serp.html:15
@@ -2278,49 +2278,53 @@ msgstr ""
 msgid "%(cart_name)s success added"
 msgstr ""
 
-#: .\index\views.py:382 .\index\views.py:394
-#, python-format
-msgid "Organization unit %(org_name)s exist"
+#: .\index\views.py:380
+msgid "Organization unit not be empty"
 msgstr ""
 
 #: .\index\views.py:387 .\index\views.py:399
 #, python-format
-msgid "Organization unit %(org_name)s create successfuly."
+msgid "Organization unit %(org_name)s exist"
 msgstr ""
 
-#: .\index\views.py:443
+#: .\index\views.py:392 .\index\views.py:404
 #, python-format
-msgid "%(cart_type)s success save"
+msgid "Organization unit %(org_name)s create successfuly."
 msgstr ""
 
 #: .\index\views.py:447
 #, python-format
+msgid "%(cart_type)s success save"
+msgstr ""
+
+#: .\index\views.py:451
+#, python-format
 msgid "New type %(cart_type)s success added"
 msgstr ""
 
-#: .\index\views.py:577
+#: .\index\views.py:581
 msgid "Select all"
 msgstr ""
 
-#: .\index\views.py:610
+#: .\index\views.py:614
 #, python-format
 msgid "Firm \"%(firm_name)s\" success added."
 msgstr ""
 
-#: .\index\views.py:1008
+#: .\index\views.py:1012
 msgid "Work has already estimated."
 msgstr ""
 
-#: .\index\views.py:1039
+#: .\index\views.py:1043
 #, python-format
 msgid "An object with number %(cart_num)s is not transmitted to the service."
 msgstr ""
 
-#: .\reports\api\views.py:64
+#: .\reports\api\views.py:66
 msgid "Date of last cases"
 msgstr ""
 
-#: .\reports\api\views.py:64
+#: .\reports\api\views.py:66
 #, fuzzy
 #| msgid "Number"
 msgid "Number refills"

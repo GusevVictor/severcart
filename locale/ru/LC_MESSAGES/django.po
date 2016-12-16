@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-12-14 16:56+0500\n"
-"PO-Revision-Date: 2016-12-14 16:57+0500\n"
+"POT-Creation-Date: 2016-12-16 09:25+0500\n"
+"PO-Revision-Date: 2016-12-16 09:26+0500\n"
 "Last-Translator: \n"
 "Language-Team: severcart.org <sfcl@mail.ru>\n"
 "Language: ru\n"
@@ -573,7 +573,7 @@ msgstr "Документ «%(doc_number)s_%(user_id)s_0.docx» успешно с
 #: .\index\templates\index\transfer_to_firm.html:26
 #: .\index\templates\index\transfer_to_firm_with_scanner.html:39
 #: .\index\templates\index\tree_list.html:64
-#: .\index\templates\index\use.html:50 .\reports\api\views.py:64
+#: .\index\templates\index\use.html:50 .\reports\api\views.py:66
 #: .\reports\api\views.py:368
 #: .\reports\templates\reports\amortizing_ajax.html:5
 #: .\reports\templates\reports\brands_ajax.html:4
@@ -607,7 +607,7 @@ msgstr "Количество"
 #: .\index\templates\index\transfer_to_firm.html:25
 #: .\index\templates\index\transfer_to_firm_with_scanner.html:38
 #: .\index\templates\index\tree_list.html:65
-#: .\index\templates\index\use.html:49 .\reports\api\views.py:64
+#: .\index\templates\index\use.html:49 .\reports\api\views.py:66
 #: .\reports\templates\reports\amortizing_ajax.html:4
 #: .\reports\templates\reports\main_summary.html:45
 #: .\search\templates\search\serp.html:12
@@ -1515,7 +1515,7 @@ msgstr ""
 "невозможен."
 
 #: .\index\api\views.py:1298 .\index\api\views.py:1355
-#: .\index\api\views.py:1479 .\index\views.py:1043
+#: .\index\api\views.py:1479 .\index\views.py:1047
 #, python-format
 msgid ""
 "An object with number %(cart_num)s belong to a different organizational unit."
@@ -2138,7 +2138,7 @@ msgstr "Сейчас установленны"
 msgid "Take?"
 msgstr "Забрать?"
 
-#: .\index\templates\index\linked_name_objects.html:6 .\reports\api\views.py:64
+#: .\index\templates\index\linked_name_objects.html:6 .\reports\api\views.py:66
 #: .\reports\templates\reports\amortizing_ajax.html:8
 #: .\reports\templates\reports\main_summary.html:49
 #: .\search\templates\search\serp.html:15
@@ -2284,49 +2284,53 @@ msgstr "«%(cart_name)s» уже существует."
 msgid "%(cart_name)s success added"
 msgstr "«%(cart_name)s» успешно добавлен."
 
-#: .\index\views.py:382 .\index\views.py:394
+#: .\index\views.py:380
+msgid "Organization unit not be empty"
+msgstr "Организационное подразделение не должно быть пустым."
+
+#: .\index\views.py:387 .\index\views.py:399
 #, python-format
 msgid "Organization unit %(org_name)s exist"
 msgstr "Организационное подразделение «%(org_name)s» уже существует."
 
-#: .\index\views.py:387 .\index\views.py:399
+#: .\index\views.py:392 .\index\views.py:404
 #, python-format
 msgid "Organization unit %(org_name)s create successfuly."
 msgstr "Организационное подразделение «%(org_name)s» успешно создано."
 
-#: .\index\views.py:443
+#: .\index\views.py:447
 #, python-format
 msgid "%(cart_type)s success save"
 msgstr "«%(cart_type)s» успешно сохранён."
 
-#: .\index\views.py:447
+#: .\index\views.py:451
 #, python-format
 msgid "New type %(cart_type)s success added"
 msgstr "Новый тип «%(cart_type)s» успешно добавлен."
 
-#: .\index\views.py:577
+#: .\index\views.py:581
 msgid "Select all"
 msgstr "Выбрать все"
 
-#: .\index\views.py:610
+#: .\index\views.py:614
 #, python-format
 msgid "Firm \"%(firm_name)s\" success added."
 msgstr "Контрагент «%(firm_name)s» успешно добавлен."
 
-#: .\index\views.py:1008
+#: .\index\views.py:1012
 msgid "Work has already estimated."
 msgstr "Работа уже оценена."
 
-#: .\index\views.py:1039
+#: .\index\views.py:1043
 #, python-format
 msgid "An object with number %(cart_num)s is not transmitted to the service."
 msgstr "Объект с номером %(cart_num)s ещё не передавался на обслуживание."
 
-#: .\reports\api\views.py:64
+#: .\reports\api\views.py:66
 msgid "Date of last cases"
 msgstr "Дата последнего обращения"
 
-#: .\reports\api\views.py:64
+#: .\reports\api\views.py:66
 msgid "Number refills"
 msgstr "Количество перезаправок"
 
@@ -3036,9 +3040,6 @@ msgstr "Склад не изменён."
 
 #~ msgid "Error in date data."
 #~ msgstr "Ошибка в представлении даты."
-
-#~ msgid "Organization unit not found."
-#~ msgstr "Организационное подразделение не найдено."
 
 #~ msgid "Move (Enter)"
 #~ msgstr "Переместить (Enter)"
