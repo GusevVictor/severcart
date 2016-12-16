@@ -4,6 +4,7 @@ import datetime, copy, json, csv, pytz
 from django.http import JsonResponse, HttpResponse
 from django.conf import settings
 from django.template.loader import render_to_string
+from django.utils import timezone
 from django.utils.translation import ugettext as _
 from django.db.models import Q
 from django.db import connection
@@ -15,7 +16,7 @@ from index.templatetags.filters import pretty_status
 from index.models import CartridgeItem, OrganizationUnits
 from common.helpers import rotator_files
 from events.models import Events
-from reports.forms import Firms, UsersCartridges, UseProducts
+from reports.forms import Firms, UsersCartridges, UseProducts, NoUse
 from reports.helpers import pretty_list
 from docs.models import RefillingCart
 from service.helpers import SevercartConfigs
@@ -370,6 +371,60 @@ def ajax_reports_brands(request):
             writer.writerow({'name': item[0], 'amount': item[1]})
 
     context['text'] = render_to_string('reports/brands_ajax.html', context={'result': result})
+    context['url'] = settings.STATIC_URL + 'csv/' + csv_file_name
+    context['error'] = '0'
+    return JsonResponse(context)
+
+
+@require_POST
+@check_ajax_auth
+def ajax_report_stale(request):
+    """Отчёт по залежавшимся РМ.
+    """
+    context = dict()
+    form = NoUse(request.POST)
+    if form.is_valid():
+        data_in_post = form.cleaned_data
+        org  = data_in_post.get('org', '')
+        diap = data_in_post.get('diap', '')
+        if (diap == 10) or (diap == 20):
+            old_cart = CartridgeItem.objects.filter(departament=org)
+            result = old_cart.order_by('cart_date_change')[:diap]
+        elif diap == 0:
+            conf = SevercartConfigs()
+            cur_date = timezone.now()
+            old_cart = CartridgeItem.objects.filter(departament=org)
+            last_year = datetime.datetime(year=cur_date.year - 1, 
+                                month=cur_date.month, 
+                                day=cur_date.day, 
+                                hour=0, 
+                                minute=0, 
+                                second=0, microsecond=0,
+                                tzinfo=pytz.timezone(conf.time_zone))
+
+            result = old_cart.filter(cart_date_change__lte=last_year).order_by('cart_date_change')
+        else:
+            pass
+
+    #else:
+        # показываем форму, если произошли ошибки
+#    context['form'] = form
+        csv_full_name, csv_file_name = rotator_files(request, file_type='csv')
+        encoding = 'cp1251'
+        with open(csv_full_name, 'w', newline='', encoding=encoding) as csvfile:
+            fieldnames = ['number', 'name', 'date', 'amount', 'status']
+            writer = csv.DictWriter(csvfile, fieldnames, delimiter=';')
+            writer.writerow({'number': '', 'name': '', 'date': '', 'amount': '', 'status': ''})
+            writer.writerow({'number': '', 'name': '', 'date': '', 'amount': '', 'status': ''})
+            writer.writerow({'number': '', 'name': '', 'date': '', 'amount': '', 'status': ''})
+            writer.writerow({'number': '', 'name': '', 'date': '', 'amount': '', 'status': ''})
+            writer.writerow({'number': '', 'name': '', 'date': '', 'amount': '', 'status': ''})
+            writer.writerow({'number': _('Number'), 'name': _('Name'), 'date': _('Date of last cases'), 'amount': _('Number refills'), 'status': _('Status')})
+            for item in result:
+                writer.writerow({'number': item.cart_number, 'name': item.cart_itm_name, 'date': formats.date_format(item.cart_date_change, 'd.m.Y'), 'amount': item.cart_number_refills, 'status': pretty_status(item.cart_status)})
+
+
+    context['text'] = render_to_string('reports/report_stale_ajax.html', context={'result': result})
     context['url'] = settings.STATIC_URL + 'csv/' + csv_file_name
     context['error'] = '0'
     return JsonResponse(context)
