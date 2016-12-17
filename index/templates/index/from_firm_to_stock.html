@@ -2,7 +2,7 @@
 {% load filters %}
 {% block title %}{% trans "Return cartridge to the stock" %}{% endblock %}
 {% block h3 %}{% trans "Return cartridge to the stock" %}{% endblock %}
-{% block breadcrumbs %}<a href="/"><img src="{{ STATIC_URL }}img/home.png" /></a> / <a href="{% url 'index:at_work' %}">{% trans "Cartridges on rebuilding" %}</a> / {% trans "Return cartridge to the stock" %}{% endblock %}
+{% block breadcrumbs %}<a href="/"><img src="{{ STATIC_URL }}img/home.png" /></a> / <a href="{% url 'index:worked_firms' %}">{% trans "Cartridges on rebuilding" %}</a> / {% trans "Return cartridge to the stock" %}{% endblock %}
 {% block jqueryui%}
 <script src="/dhtml/validate_money.js?{{request.CACHEVERSION}}"></script>
 {% endblock %}

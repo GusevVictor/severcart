@@ -1,7 +1,7 @@
 # -*- coding:utf-8 -*-
 
 import json
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponseRedirect, HttpResponse, Http404
 from django.utils import timezone
 from django.core.urlresolvers import reverse
@@ -669,13 +669,15 @@ def edit_firm(request):
 class At_work(CartridgesView):
     """Список картриджей находящихся на заправке.
     """
-    def get(self, request, *args, **kwargs):
-        super(At_work, self).get(*args, **kwargs)
+    def get(self, request, pk):
+        super(At_work, self).get()
         self.context['view'] = 'at_work'
-        self.all_items = self.all_items.filter(Q(cart_status=4) & Q(departament=self.request.user.departament))
+        firm = get_object_or_404(FirmTonerRefill, pk=pk)
+        self.all_items = self.all_items.filter(Q(cart_status=4) & Q(departament=self.request.user.departament) & Q(filled_firm=firm))
         page_size = self.items_per_page()
         self.context['size_perpage'] = page_size
         self.context['cartrjs'] = self.pagination(self.all_items, page_size)
+        self.context['firm'] = firm
         return render(request, 'index/at_work.html', self.context)
 
 
@@ -837,7 +839,7 @@ def from_firm_to_stock(request):
         checked_cartr = checked_cartr[1:-1]
     else:
         # если кто-то зашел на страницу не выбрав расходники
-        return HttpResponseRedirect(reverse('index:at_work'))        
+        return HttpResponseRedirect(reverse('index:worked_firms'))        
     context['checked_cartr'] = checked_cartr
     context['list_cart'] = list_cart
     context['list_length'] = list_length
@@ -922,7 +924,7 @@ def from_firm_to_stock(request):
                                )
         act_doc.save()
 
-        return HttpResponseRedirect(reverse('index:at_work'))
+        return HttpResponseRedirect(reverse('index:worked_firms'))
     return render(request, 'index/from_firm_to_stock.html', context)
 
 
@@ -1088,3 +1090,18 @@ class Bufer(CartridgesView):
         self.context['size_perpage'] = page_size
         self.context['cartrjs'] = self.pagination(self.all_items, page_size)
         return render(request, 'index/bufer.html', self.context)
+
+
+@login_required
+@never_cache
+def worked_firms(request):
+    """Перечень фирм на обслуживании которых есть объекты.
+    """
+    from django.db.models import Count
+    context = dict()
+    result = CartridgeItem.objects \
+    .values('filled_firm__firm_name', 'filled_firm__pk') \
+    .filter(Q(cart_status=4) & Q(departament=request.user.departament)) \
+    .annotate(count=Count('filled_firm'))
+    context['result'] = result
+    return render(request, 'index/worked_firms.html', context)

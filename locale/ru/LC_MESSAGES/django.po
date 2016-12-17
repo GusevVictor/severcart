@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-12-16 09:25+0500\n"
-"PO-Revision-Date: 2016-12-16 09:26+0500\n"
+"POT-Creation-Date: 2016-12-17 15:22+0500\n"
+"PO-Revision-Date: 2016-12-17 15:23+0500\n"
 "Last-Translator: \n"
 "Language-Team: severcart.org <sfcl@mail.ru>\n"
 "Language: ru\n"
@@ -306,7 +306,7 @@ msgid "Delete"
 msgstr "Удалить"
 
 #: .\accounts\templates\accounts\manage_users.html:30 .\docs\api\views.py:320
-#: .\index\templates\index\use.html.py:53 .\reports\api\views.py:141
+#: .\index\templates\index\use.html.py:53 .\reports\api\views.py:142
 #: .\search\templates\search\serp.html.py:14
 msgid "User"
 msgstr "Пользователь"
@@ -410,6 +410,7 @@ msgstr "<p>Сервер не доступен.</p>"
 #: .\dhtml\templates\dhtml\logic.html:513
 #: .\dhtml\templates\dhtml\logic.html:2650
 #: .\dhtml\templates\dhtml\logic.html:2856
+#: .\dhtml\templates\dhtml\logic.html:2910
 msgid "Server error :("
 msgstr "Ошибка на стороне сервера :("
 
@@ -573,11 +574,11 @@ msgstr "Документ «%(doc_number)s_%(user_id)s_0.docx» успешно с
 #: .\index\templates\index\transfer_to_firm.html:26
 #: .\index\templates\index\transfer_to_firm_with_scanner.html:39
 #: .\index\templates\index\tree_list.html:64
-#: .\index\templates\index\use.html:50 .\reports\api\views.py:66
-#: .\reports\api\views.py:368
+#: .\index\templates\index\use.html:50 .\reports\api\views.py:67
+#: .\reports\api\views.py:368 .\reports\api\views.py:424
 #: .\reports\templates\reports\amortizing_ajax.html:5
 #: .\reports\templates\reports\brands_ajax.html:4
-#: .\reports\templates\reports\main_summary.html:46
+#: .\reports\templates\reports\report_stale_ajax.html:6
 #: .\search\templates\search\serp.html:13
 msgid "Name"
 msgstr "Название"
@@ -607,9 +608,10 @@ msgstr "Количество"
 #: .\index\templates\index\transfer_to_firm.html:25
 #: .\index\templates\index\transfer_to_firm_with_scanner.html:38
 #: .\index\templates\index\tree_list.html:65
-#: .\index\templates\index\use.html:49 .\reports\api\views.py:66
+#: .\index\templates\index\use.html:49 .\reports\api\views.py:67
+#: .\reports\api\views.py:424
 #: .\reports\templates\reports\amortizing_ajax.html:4
-#: .\reports\templates\reports\main_summary.html:45
+#: .\reports\templates\reports\report_stale_ajax.html:5
 #: .\search\templates\search\serp.html:12
 msgid "Number"
 msgstr "Номер"
@@ -711,7 +713,7 @@ msgstr "Стоимость"
 #: .\docs\templates\docs\delivery.html:102
 #: .\docs\templates\docs\return_acts_list.html:25
 #: .\index\templates\index\from_firm_to_stock.html:44
-#: .\reports\api\views.py:213 .\reports\templates\reports\spent_money.html:58
+#: .\reports\api\views.py:214 .\reports\templates\reports\spent_money.html:58
 #: .\reports\templates\reports\worket_firms.html:6
 msgid "Currency"
 msgstr "руб."
@@ -857,6 +859,7 @@ msgstr "Действие"
 #: .\index\templates\index\use.html:29
 #: .\reports\templates\reports\amortizing.html:26
 #: .\reports\templates\reports\firm.html:35
+#: .\reports\templates\reports\main_summary.html:32
 #: .\reports\templates\reports\products.html:53
 #: .\reports\templates\reports\users.html:53
 msgid "Download"
@@ -1515,7 +1518,7 @@ msgstr ""
 "невозможен."
 
 #: .\index\api\views.py:1298 .\index\api\views.py:1355
-#: .\index\api\views.py:1479 .\index\views.py:1047
+#: .\index\api\views.py:1479 .\index\views.py:1048
 #, python-format
 msgid ""
 "An object with number %(cart_num)s belong to a different organizational unit."
@@ -1659,11 +1662,11 @@ msgid "Empty and in basket"
 msgstr "Пустые и в корзине"
 
 #: .\index\templates\index\404.html:2 .\index\templates\index\404.html.py:3
-#: .\index\templates\index\404.html:10 .\index\templates\index\500.html:3
+#: .\index\templates\index\404.html:10 .\index\templates\index\500.html.py:3
 msgid "Error 404"
 msgstr "Ошибка 404! Страница не найдена."
 
-#: .\index\templates\index\500.html:2 .\index\templates\index\500.html:10
+#: .\index\templates\index\500.html:2 .\index\templates\index\500.html.py:10
 msgid "Error 500"
 msgstr "Ошибка на стороне сервера!"
 
@@ -1830,6 +1833,8 @@ msgstr "Добавление нового типа"
 #: .\index\templates\index\at_work.html:4
 #: .\index\templates\index\from_firm_to_stock.html:5
 #: .\index\templates\index\from_firm_to_stock_with_barcode.html:3
+#: .\index\templates\index\worked_firms.html:2
+#: .\index\templates\index\worked_firms.html:3
 msgid "Cartridges on rebuilding"
 msgstr "Картриджи на заправке"
 
@@ -2138,9 +2143,10 @@ msgstr "Сейчас установленны"
 msgid "Take?"
 msgstr "Забрать?"
 
-#: .\index\templates\index\linked_name_objects.html:6 .\reports\api\views.py:66
+#: .\index\templates\index\linked_name_objects.html:6 .\reports\api\views.py:67
+#: .\reports\api\views.py:424
 #: .\reports\templates\reports\amortizing_ajax.html:8
-#: .\reports\templates\reports\main_summary.html:49
+#: .\reports\templates\reports\report_stale_ajax.html:9
 #: .\search\templates\search\serp.html:15
 msgid "Status"
 msgstr "Статус"
@@ -2274,6 +2280,15 @@ msgstr "Изменение имени"
 msgid "Consumables in use"
 msgstr "Расходники в пользовании"
 
+#: .\index\templates\index\worked_firms.html:12 .\reports\api\views.py:214
+#: .\reports\templates\reports\worket_firms.html:4
+msgid "Firm name"
+msgstr "Контрагент"
+
+#: .\index\templates\index\worked_firms.html:13
+msgid "The number of service objects"
+msgstr "Количество обслужеваемых объектов"
+
 #: .\index\views.py:150
 #, python-format
 msgid "%(cart_name)s already exists"
@@ -2317,50 +2332,46 @@ msgstr "Выбрать все"
 msgid "Firm \"%(firm_name)s\" success added."
 msgstr "Контрагент «%(firm_name)s» успешно добавлен."
 
-#: .\index\views.py:1012
+#: .\index\views.py:1013
 msgid "Work has already estimated."
 msgstr "Работа уже оценена."
 
-#: .\index\views.py:1043
+#: .\index\views.py:1044
 #, python-format
 msgid "An object with number %(cart_num)s is not transmitted to the service."
 msgstr "Объект с номером %(cart_num)s ещё не передавался на обслуживание."
 
-#: .\reports\api\views.py:66
+#: .\reports\api\views.py:67 .\reports\api\views.py:424
 msgid "Date of last cases"
 msgstr "Дата последнего обращения"
 
-#: .\reports\api\views.py:66
+#: .\reports\api\views.py:67 .\reports\api\views.py:424
 msgid "Number refills"
 msgstr "Количество перезаправок"
 
-#: .\reports\api\views.py:137 .\reports\api\views.py:209
+#: .\reports\api\views.py:138 .\reports\api\views.py:210
 #: .\reports\api\views.py:364 .\reports\templates\reports\firm.html.py:26
 msgid "Start range"
 msgstr "Начало"
 
-#: .\reports\api\views.py:138 .\reports\api\views.py:210
+#: .\reports\api\views.py:139 .\reports\api\views.py:211
 #: .\reports\api\views.py:365 .\reports\templates\reports\firm.html.py:27
 msgid "End range"
 msgstr "Завершение"
 
-#: .\reports\api\views.py:141 .\reports\api\views.py:368
+#: .\reports\api\views.py:142 .\reports\api\views.py:368
 msgid "Items count"
 msgstr "Количество"
 
-#: .\reports\api\views.py:141 .\reports\templates\reports\users_ajax.html.py:6
+#: .\reports\api\views.py:142 .\reports\templates\reports\users_ajax.html.py:6
 msgid "Details"
 msgstr "Подробности"
 
-#: .\reports\api\views.py:213 .\reports\templates\reports\worket_firms.html:4
-msgid "Firm name"
-msgstr "Контрагент"
-
-#: .\reports\api\views.py:213 .\reports\templates\reports\worket_firms.html:5
+#: .\reports\api\views.py:214 .\reports\templates\reports\worket_firms.html:5
 msgid "The number of serviced objects"
 msgstr "Количество обслуженных объектов"
 
-#: .\reports\api\views.py:213 .\reports\templates\reports\worket_firms.html:6
+#: .\reports\api\views.py:214 .\reports\templates\reports\worket_firms.html:6
 msgid "The money paid"
 msgstr "Потрачено денег"
 
@@ -2444,19 +2455,19 @@ msgstr ""
 "Список из 10 или 20 картриджей, обращения к которым было самым позним.<br/> "
 "Либо последнее обращение было в прошлом году."
 
-#: .\reports\templates\reports\main_summary.html:47
-msgid "Date changes"
-msgstr "Дата изменения"
-
-#: .\reports\templates\reports\main_summary.html:48
-msgid "Number<br/> reloads"
-msgstr "Количество<br/> перезаправок"
-
 #: .\reports\templates\reports\products.html:2
 #: .\reports\templates\reports\products.html:3
 #: .\reports\templates\reports\vertical_menu.html:14
 msgid "The report by products"
 msgstr "Используемые наименования"
+
+#: .\reports\templates\reports\report_stale_ajax.html:7
+msgid "Date changes"
+msgstr "Дата изменения"
+
+#: .\reports\templates\reports\report_stale_ajax.html:8
+msgid "Number<br/> reloads"
+msgstr "Количество<br/> перезаправок"
 
 #: .\reports\templates\reports\spent_money.html:2
 #: .\reports\templates\reports\users.html:2

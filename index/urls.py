@@ -26,6 +26,7 @@ from index.views import ( dashboard,
                         from_firm_to_stock_with_barcode,
                         evaluate_service,
                         Bufer,
+                        worked_firms,
                         )
 
 urlpatterns = [
@@ -42,7 +43,7 @@ urlpatterns = [
     url(r'^transfe_for_use/', transfe_for_use, name='transfe_for_use'),
     url(r'^transfer_to_firm/', transfer_to_firm, name='transfer_to_firm'),
     url(r'^transfer_to_firm_with_scanner/', transfer_to_firm_with_scanner, name='transfer_to_firm_with_scanner'),
-    url(r'^at_work/', At_work.as_view(), name='at_work'),
+    url(r'^at_work/(?P<pk>\d+)/$', At_work.as_view(), name='at_work'),
     url(r'^use/', Use.as_view(), name='use'),
     url(r'^empty/', Empty.as_view(), name='empty'),
     url(r'^toner_refill/', toner_refill, name='toner_refill'),
@@ -55,4 +56,5 @@ urlpatterns = [
     url(r'^from_firm_to_stock_with_barcode/', from_firm_to_stock_with_barcode, name='from_firm_to_stock_with_barcode'),
     url(r'^evaluate_service/', evaluate_service, name='evaluate_service'),
     url(r'^bufer/', Bufer.as_view(), name='bufer'),
+    url(r'^worked_firms/', worked_firms, name='worked_firms'),
 ]

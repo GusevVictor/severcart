@@ -1,7 +1,7 @@
 {% extends "index/base.html" %}{% load i18n %}{% load tz %}
 {% load pagination  %}
 {% block title %}{% trans "Cartridges on rebuilding" %}{% endblock %}
-{% block breadcrumbs %}<a href="/"><img src="{{ STATIC_URL }}img/home.png" /></a> / {% trans "Cartridges on rebuilding" %}{% endblock %}
+{% block breadcrumbs %}<a href="/"><img src="{{ STATIC_URL }}img/home.png" /></a> / <a href="{% url 'index:worked_firms' %}">{% trans "Cartridges on rebuilding" %}</a> / {{ firm }}{% endblock %}
 {% block help_url %}
 {{ request.HOME_SITE }}/help/{{ request.LANGUAGE_CODE }}/at_work/
 {% endblock %}
@@ -42,8 +42,8 @@
                     <th class="cart_name{% if select_type %} active_cell{% endif %}"><a href="?action=name">{% trans "Name" %} {{type_triangle}}</a></th>
                     <th class="cart_count{% if select_count %} active_cell{% endif %}"><a href="?action=recovery">{% trans "Amount<br/>recovery" %} {{count_triangle}}</a></th>
                     <th class="cart_date{% if select_date %} active_cell{% endif %} {% if request.SHOW_TIME %}big{% else %}small{% endif %}"><a href="?action=change_date">{% trans "Date transfer on recovery" %} {{datec_triangle}}</a></th>
-                    <th class="firm_filled">{% trans "Refueller" %}</th>
                     <th>{% trans "comment" %}</th>
+                    <th class="actions">{% trans "Actions" %}</th>
                 </tr>
                 {% for i in cartrjs %}
                     <tr>
@@ -52,8 +52,14 @@
                         <td>{{ i.cart_itm_name }}</td>
                         <td>{{ i.cart_number_refills }}</td>
                         {% if request.SHOW_TIME %}<td>{{ i.cart_date_change | timezone:request.TZ | date:"d.m.Y  H:i"}}</td>{% else %}<td>{{ i.cart_date_change | date:"d.m.Y"}}</td>{% endif %}
-                        <td>{{ i.filled_firm }}</td>
                         <td><div class="comment_in_cell" title="{{ i.comment }}">{{ i.comment|truncatechars:55 }}</div></td>
+                        <td><select class="cartridge_action" data="{{ i.id }}">
+                            <option selected></option>
+                            <option value="edit">{% trans "Edit a comment" %}</option>
+                            <option value="view_events">{% trans "Event viewer" %}</option>
+                            <option value="view_delivery" data="{{ i.delivery_doc }}">{% trans "Delivery agreement" %}</option>
+                        </select>
+                        </td>
                     </tr>
                 {% endfor %}
             </table>

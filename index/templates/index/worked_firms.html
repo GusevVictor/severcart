@@ -1,0 +1,24 @@
+{% extends "index/base.html" %}{% load i18n %}{% load tz %}
+{% block title %}{% trans "Cartridges on rebuilding" %}{% endblock %}
+{% block breadcrumbs %}<a href="/"><img src="{{ STATIC_URL }}img/home.png" /></a> / {% trans "Cartridges on rebuilding" %}{% endblock %}
+{% block help_url %}
+{{ request.HOME_SITE }}/help/{{ request.LANGUAGE_CODE }}/worked_firms/
+{% endblock %}
+{% block content %}
+<div class="row">
+    <div class="large-6">
+        <table class="checkboxes">
+        <tr>
+        <th>{%  trans 'Firm name' %}</th>
+        <th>{%  trans 'The number of service objects' %}</th>
+        </tr>
+        {% for item in result %}
+        <tr>
+        <td><a href="{% url 'index:at_work' item.filled_firm__pk %}" >{{item.filled_firm__firm_name}}</a></td>
+        <td>{{item.count}}</td>
+        </tr>
+        {% endfor %}
+        </table>
+    </div>
+</div>
+{% endblock %}

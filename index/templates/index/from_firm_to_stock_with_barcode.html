@@ -1,6 +1,6 @@
 {% extends "index/base.html" %}{% load staticfiles %}{% load i18n %}
 {% block title %}{% trans "Adding objects to the stock with barcode scanner" %}{% endblock %}
-{% block breadcrumbs %}<a href="/"><img src="{{ STATIC_URL }}img/home.png" /></a> / <a href="{% url 'index:at_work' %}">{% trans "Cartridges on rebuilding" %}</a> / {% trans "Return cartridge to the warehouse with a bar code scanner" %}{% endblock %}
+{% block breadcrumbs %}<a href="/"><img src="{{ STATIC_URL }}img/home.png" /></a> / <a href="{% url 'index:worked_firms' %}">{% trans "Cartridges on rebuilding" %}</a> / {% trans "Return cartridge to the warehouse with a bar code scanner" %}{% endblock %}
 {% block jqueryui %}
 <!--
 <script src="{{ STATIC_URL }}js/jquery.hotkeys.js"></script>
