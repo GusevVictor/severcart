@@ -267,7 +267,7 @@ def ajax_reports_brands(request):
                             events_events 
                         WHERE
                             event_type = 'TR' AND event_org = '%s' AND 
-                        date_time <= '%s'
+                            date_time <= '%s'
                         GROUP BY 
                             cart_type
                         ORDER BY cart_count DESC;
@@ -287,8 +287,7 @@ def ajax_reports_brands(request):
                     """ % (child, start_date, end_date,)
     cursor = connection.cursor()
     cursor.execute(SQL_QUERY)
-    data = cursor.fetchall()
-    result = data
+    result = cursor.fetchall()
     # сохраняем результаты работы скрипта в csv файле
     csv_full_name, csv_file_name = rotator_files(request, file_type='csv')
     encoding = 'cp1251'
