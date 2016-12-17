@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-12-07 23:08+0500\n"
-"PO-Revision-Date: 2016-12-07 23:09+0500\n"
+"POT-Creation-Date: 2016-12-16 09:25+0500\n"
+"PO-Revision-Date: 2016-12-16 09:26+0500\n"
 "Last-Translator: \n"
 "Language-Team: severcart.org <sfcl@mail.ru>\n"
 "Language: ru\n"
@@ -137,7 +137,7 @@ msgstr "Пользователь с таким именем уже сущест�
 msgid "Email recipient"
 msgstr "Почта получателя"
 
-#: .\accounts\models.py:15 .\reports\forms.py:77 .\reports\forms.py:148
+#: .\accounts\models.py:15 .\reports\forms.py:77 .\reports\forms.py:157
 #: .\reports\templates\reports\amortizing.html:17
 #: .\reports\templates\reports\main_summary.html:18
 msgid "Organization unit"
@@ -225,7 +225,6 @@ msgstr "Сменить пароль"
 #: .\index\templates\index\from_firm_to_stock.html:60
 #: .\index\templates\index\from_firm_to_stock_with_barcode.html:63
 #: .\index\templates\index\transfe_for_use.html:43
-#: .\reports\templates\reports\products.html:42
 #: .\reports\templates\reports\spent_money.html:43
 #: .\storages\templates\storages\edit_s.html:32
 msgid "Back"
@@ -307,7 +306,7 @@ msgid "Delete"
 msgstr "Удалить"
 
 #: .\accounts\templates\accounts\manage_users.html:30 .\docs\api\views.py:320
-#: .\index\templates\index\use.html.py:53 .\reports\api\views.py:123
+#: .\index\templates\index\use.html.py:53 .\reports\api\views.py:141
 #: .\search\templates\search\serp.html.py:14
 msgid "User"
 msgstr "Пользователь"
@@ -393,9 +392,9 @@ msgstr "Английский"
 #: .\dhtml\templates\dhtml\logic.html:1194
 #: .\dhtml\templates\dhtml\logic.html:1242
 #: .\dhtml\templates\dhtml\logic.html:1300
-#: .\dhtml\templates\dhtml\logic.html:2441
-#: .\dhtml\templates\dhtml\logic.html:2716
-#: .\dhtml\templates\dhtml\logic.html:2795
+#: .\dhtml\templates\dhtml\logic.html:2444
+#: .\dhtml\templates\dhtml\logic.html:2719
+#: .\dhtml\templates\dhtml\logic.html:2800
 msgid "<p>Server not available.</p>"
 msgstr "<p>Сервер не доступен.</p>"
 
@@ -409,7 +408,8 @@ msgstr "<p>Сервер не доступен.</p>"
 #: .\dhtml\templates\dhtml\logic.html:457
 #: .\dhtml\templates\dhtml\logic.html:485
 #: .\dhtml\templates\dhtml\logic.html:513
-#: .\dhtml\templates\dhtml\logic.html:2647
+#: .\dhtml\templates\dhtml\logic.html:2650
+#: .\dhtml\templates\dhtml\logic.html:2856
 msgid "Server error :("
 msgstr "Ошибка на стороне сервера :("
 
@@ -465,12 +465,12 @@ msgid "Are you sure you want to remove the storage room?"
 msgstr "Вы точно хотите удалить складское помещение?"
 
 #: .\dhtml\templates\dhtml\add_session_items.html:1784
-#: .\dhtml\templates\dhtml\logic.html:1643
+#: .\dhtml\templates\dhtml\logic.html:1645
 msgid "<p>Server error :(</p>"
 msgstr "<p>Ошибка на стороне сервера :(</p>"
 
 #: .\dhtml\templates\dhtml\add_session_items.html:2185
-#: .\dhtml\templates\dhtml\logic.html:2073
+#: .\dhtml\templates\dhtml\logic.html:2076
 msgid "List move empty."
 msgstr "Пустой список для перемещения."
 
@@ -573,16 +573,18 @@ msgstr "Документ «%(doc_number)s_%(user_id)s_0.docx» успешно с
 #: .\index\templates\index\transfer_to_firm.html:26
 #: .\index\templates\index\transfer_to_firm_with_scanner.html:39
 #: .\index\templates\index\tree_list.html:64
-#: .\index\templates\index\use.html:50
+#: .\index\templates\index\use.html:50 .\reports\api\views.py:66
+#: .\reports\api\views.py:368
 #: .\reports\templates\reports\amortizing_ajax.html:5
+#: .\reports\templates\reports\brands_ajax.html:4
 #: .\reports\templates\reports\main_summary.html:46
-#: .\reports\templates\reports\products.html:57
 #: .\search\templates\search\serp.html:13
 msgid "Name"
 msgstr "Название"
 
 #: .\docs\api\views.py:266 .\index\templates\index\add_empty_cartridge.html:82
 #: .\index\templates\index\add_items.html:83
+#: .\reports\templates\reports\brands_ajax.html:5
 #: .\reports\templates\reports\users_ajax.html:5
 msgid "Amount items"
 msgstr "Количество"
@@ -605,7 +607,7 @@ msgstr "Количество"
 #: .\index\templates\index\transfer_to_firm.html:25
 #: .\index\templates\index\transfer_to_firm_with_scanner.html:38
 #: .\index\templates\index\tree_list.html:65
-#: .\index\templates\index\use.html:49
+#: .\index\templates\index\use.html:49 .\reports\api\views.py:66
 #: .\reports\templates\reports\amortizing_ajax.html:4
 #: .\reports\templates\reports\main_summary.html:45
 #: .\search\templates\search\serp.html:12
@@ -709,7 +711,7 @@ msgstr "Стоимость"
 #: .\docs\templates\docs\delivery.html:102
 #: .\docs\templates\docs\return_acts_list.html:25
 #: .\index\templates\index\from_firm_to_stock.html:44
-#: .\reports\api\views.py:195 .\reports\templates\reports\spent_money.html:58
+#: .\reports\api\views.py:213 .\reports\templates\reports\spent_money.html:58
 #: .\reports\templates\reports\worket_firms.html:6
 msgid "Currency"
 msgstr "руб."
@@ -744,8 +746,7 @@ msgstr "Город с таким названием уже существует!
 #: .\index\forms\tr_to_firm.py:92 .\index\forms\tr_to_firm.py:106
 #: .\index\forms\tr_to_firm.py:135 .\index\forms\tr_to_stock.py:26
 #: .\reports\forms.py:23 .\reports\forms.py:33 .\reports\forms.py:66
-#: .\reports\forms.py:90 .\reports\forms.py:160 .\reports\forms.py:173
-#: .\reports\forms.py:216
+#: .\reports\forms.py:90 .\reports\forms.py:170 .\reports\forms.py:214
 msgid "Required field."
 msgstr "Поле обязательно для заполнения."
 
@@ -853,7 +854,10 @@ msgstr "Действие"
 #: .\index\templates\index\at_work.html:21
 #: .\index\templates\index\basket.html:20 .\index\templates\index\bufer.html:35
 #: .\index\templates\index\empty.html:49 .\index\templates\index\stock.html:47
-#: .\index\templates\index\use.html:29 .\reports\templates\reports\firm.html:35
+#: .\index\templates\index\use.html:29
+#: .\reports\templates\reports\amortizing.html:26
+#: .\reports\templates\reports\firm.html:35
+#: .\reports\templates\reports\products.html:53
 #: .\reports\templates\reports\users.html:53
 msgid "Download"
 msgstr "Скачать"
@@ -1511,7 +1515,7 @@ msgstr ""
 "невозможен."
 
 #: .\index\api\views.py:1298 .\index\api\views.py:1355
-#: .\index\api\views.py:1479 .\index\views.py:1043
+#: .\index\api\views.py:1479 .\index\views.py:1047
 #, python-format
 msgid ""
 "An object with number %(cart_num)s belong to a different organizational unit."
@@ -1655,11 +1659,11 @@ msgid "Empty and in basket"
 msgstr "Пустые и в корзине"
 
 #: .\index\templates\index\404.html:2 .\index\templates\index\404.html.py:3
-#: .\index\templates\index\404.html:10 .\index\templates\index\500.html.py:3
+#: .\index\templates\index\404.html:10 .\index\templates\index\500.html:3
 msgid "Error 404"
 msgstr "Ошибка 404! Страница не найдена."
 
-#: .\index\templates\index\500.html:2 .\index\templates\index\500.html.py:10
+#: .\index\templates\index\500.html:2 .\index\templates\index\500.html:10
 msgid "Error 500"
 msgstr "Ошибка на стороне сервера!"
 
@@ -1996,6 +2000,10 @@ msgstr "С начала месяца"
 msgid "Since the beginning of the year"
 msgstr "С начала года"
 
+#: .\index\templates\index\dashboard.html:66
+msgid "View all events"
+msgstr "Просмотр всех событий"
+
 #: .\index\templates\index\del_firm.html:2
 msgid "Removal company"
 msgstr "Удаление фирмы"
@@ -2072,10 +2080,6 @@ msgstr "Плохо"
 msgid "Good"
 msgstr "Хорошо"
 
-#: .\index\templates\index\events.html:15
-msgid "View all events"
-msgstr "Просмотр всех событий"
-
 #: .\index\templates\index\found_pagination.html:31
 msgid "All"
 msgstr "Все"
@@ -2134,7 +2138,7 @@ msgstr "Сейчас установленны"
 msgid "Take?"
 msgstr "Забрать?"
 
-#: .\index\templates\index\linked_name_objects.html:6
+#: .\index\templates\index\linked_name_objects.html:6 .\reports\api\views.py:66
 #: .\reports\templates\reports\amortizing_ajax.html:8
 #: .\reports\templates\reports\main_summary.html:49
 #: .\search\templates\search\serp.html:15
@@ -2280,71 +2284,83 @@ msgstr "«%(cart_name)s» уже существует."
 msgid "%(cart_name)s success added"
 msgstr "«%(cart_name)s» успешно добавлен."
 
-#: .\index\views.py:382 .\index\views.py:394
+#: .\index\views.py:380
+msgid "Organization unit not be empty"
+msgstr "Организационное подразделение не должно быть пустым."
+
+#: .\index\views.py:387 .\index\views.py:399
 #, python-format
 msgid "Organization unit %(org_name)s exist"
 msgstr "Организационное подразделение «%(org_name)s» уже существует."
 
-#: .\index\views.py:387 .\index\views.py:399
+#: .\index\views.py:392 .\index\views.py:404
 #, python-format
 msgid "Organization unit %(org_name)s create successfuly."
 msgstr "Организационное подразделение «%(org_name)s» успешно создано."
 
-#: .\index\views.py:443
+#: .\index\views.py:447
 #, python-format
 msgid "%(cart_type)s success save"
 msgstr "«%(cart_type)s» успешно сохранён."
 
-#: .\index\views.py:447
+#: .\index\views.py:451
 #, python-format
 msgid "New type %(cart_type)s success added"
 msgstr "Новый тип «%(cart_type)s» успешно добавлен."
 
-#: .\index\views.py:577
+#: .\index\views.py:581
 msgid "Select all"
 msgstr "Выбрать все"
 
-#: .\index\views.py:610
+#: .\index\views.py:614
 #, python-format
 msgid "Firm \"%(firm_name)s\" success added."
 msgstr "Контрагент «%(firm_name)s» успешно добавлен."
 
-#: .\index\views.py:1008
+#: .\index\views.py:1012
 msgid "Work has already estimated."
 msgstr "Работа уже оценена."
 
-#: .\index\views.py:1039
+#: .\index\views.py:1043
 #, python-format
 msgid "An object with number %(cart_num)s is not transmitted to the service."
 msgstr "Объект с номером %(cart_num)s ещё не передавался на обслуживание."
 
-#: .\reports\api\views.py:119 .\reports\api\views.py:191
-#: .\reports\templates\reports\firm.html:26
+#: .\reports\api\views.py:66
+msgid "Date of last cases"
+msgstr "Дата последнего обращения"
+
+#: .\reports\api\views.py:66
+msgid "Number refills"
+msgstr "Количество перезаправок"
+
+#: .\reports\api\views.py:137 .\reports\api\views.py:209
+#: .\reports\api\views.py:364 .\reports\templates\reports\firm.html.py:26
 msgid "Start range"
 msgstr "Начало"
 
-#: .\reports\api\views.py:120 .\reports\api\views.py:192
-#: .\reports\templates\reports\firm.html:27
+#: .\reports\api\views.py:138 .\reports\api\views.py:210
+#: .\reports\api\views.py:365 .\reports\templates\reports\firm.html.py:27
 msgid "End range"
 msgstr "Завершение"
 
-#: .\reports\api\views.py:123
+#: .\reports\api\views.py:141 .\reports\api\views.py:368
 msgid "Items count"
 msgstr "Количество"
 
-#: .\reports\api\views.py:123 .\reports\templates\reports\users_ajax.html.py:6
+#: .\reports\api\views.py:141 .\reports\templates\reports\users_ajax.html.py:6
 msgid "Details"
 msgstr "Подробности"
 
-#: .\reports\api\views.py:195 .\reports\templates\reports\worket_firms.html:4
+#: .\reports\api\views.py:213 .\reports\templates\reports\worket_firms.html:4
 msgid "Firm name"
 msgstr "Контрагент"
 
-#: .\reports\api\views.py:195 .\reports\templates\reports\worket_firms.html:5
+#: .\reports\api\views.py:213 .\reports\templates\reports\worket_firms.html:5
 msgid "The number of serviced objects"
 msgstr "Количество обслуженных объектов"
 
-#: .\reports\api\views.py:195 .\reports\templates\reports\worket_firms.html:6
+#: .\reports\api\views.py:213 .\reports\templates\reports\worket_firms.html:6
 msgid "The money paid"
 msgstr "Потрачено денег"
 
@@ -2364,19 +2380,19 @@ msgstr "Вы ввели некорректные данные."
 msgid "Field cannot be empty."
 msgstr "Поле не может быть пустым."
 
-#: .\reports\forms.py:72
+#: .\reports\forms.py:72 .\reports\forms.py:152
 msgid "Departament"
 msgstr "Организация"
 
-#: .\reports\forms.py:80 .\reports\forms.py:150 .\reports\forms.py:208
+#: .\reports\forms.py:80 .\reports\forms.py:160 .\reports\forms.py:206
 msgid "Start date"
 msgstr "Дата начала"
 
-#: .\reports\forms.py:82 .\reports\forms.py:152 .\reports\forms.py:210
+#: .\reports\forms.py:82 .\reports\forms.py:162 .\reports\forms.py:208
 msgid "End date"
 msgstr "Дата завершения"
 
-#: .\reports\forms.py:112 .\reports\forms.py:185 .\reports\forms.py:234
+#: .\reports\forms.py:112 .\reports\forms.py:182 .\reports\forms.py:232
 msgid "Error in start date."
 msgstr "Ошибка в дате начала."
 
@@ -2392,7 +2408,7 @@ msgstr "Количество перезаправок (более или рав�
 #: .\reports\templates\reports\amortizing.html:25
 #: .\reports\templates\reports\firm.html:34
 #: .\reports\templates\reports\main_summary.html:31
-#: .\reports\templates\reports\products.html:41
+#: .\reports\templates\reports\products.html:52
 #: .\reports\templates\reports\spent_money.html:42
 #: .\reports\templates\reports\users.html:52
 msgid "Generate"
@@ -2438,15 +2454,15 @@ msgstr "Количество<br/> перезаправок"
 
 #: .\reports\templates\reports\products.html:2
 #: .\reports\templates\reports\products.html:3
+#: .\reports\templates\reports\vertical_menu.html:14
+msgid "The report by products"
+msgstr "Используемые наименования"
+
 #: .\reports\templates\reports\spent_money.html:2
 #: .\reports\templates\reports\users.html:2
 #: .\reports\templates\reports\users.html:3
 msgid "Consumption of consumables"
 msgstr "Потребление пользователями расходных материалов"
-
-#: .\reports\templates\reports\products.html:58
-msgid "Count"
-msgstr "Количество"
 
 #: .\reports\templates\reports\spent_money.html:3
 msgid "The report by spent money month"
@@ -2471,10 +2487,6 @@ msgstr "Амортизация"
 #: .\reports\templates\reports\vertical_menu.html:11
 msgid "The report by users"
 msgstr "Пользователи"
-
-#: .\reports\templates\reports\vertical_menu.html:14
-msgid "The report by products"
-msgstr "Используемые наименования"
 
 #: .\reports\templates\reports\vertical_menu.html:15
 msgid "The report by firm"
@@ -3020,14 +3032,14 @@ msgstr "Склад «%(starage_name)s»  успешно изменён."
 msgid "Starage not edited."
 msgstr "Склад не изменён."
 
+#~ msgid "Count"
+#~ msgstr "Количество"
+
 #~ msgid "Start date required field."
 #~ msgstr "Дата начала - обязательное поле."
 
 #~ msgid "Error in date data."
 #~ msgstr "Ошибка в представлении даты."
-
-#~ msgid "Organization unit not found."
-#~ msgstr "Организационное подразделение не найдено."
 
 #~ msgid "Move (Enter)"
 #~ msgstr "Переместить (Enter)"

@@ -367,20 +367,25 @@ def tree_list(request):
     """Работаем с структурой организации
     """
     context = dict()
+    context['bulk'] = OrganizationUnits.objects.all()
+    
     if request.method == 'POST':
         uid = request.POST.get('departament', '')  # старшее огр. подразделение 
         org_name = request.POST.get('name', '') 
         org_name = org_name.strip()
-        try:
-            uid = int(uid)
-        except ValueError:
-            uid = 0
+
+        uid = str2int(uid)
+
+        if not(org_name):
+            context['error1'] = _('Organization unit not be empty')
+            return render(request, 'index/tree_list.html', context)
+
         # проверям, есть ли такая корневая нода уже в базе
         if uid == 0: # добавление корневой ноды
             for node in OrganizationUnits.objects.root_nodes():
                 if node.name == org_name:
                     context['error1'] = _('Organization unit %(org_name)s exist') % {'org_name': org_name}
-                    break        
+                    break
             else:
                 # если ноды нет, добавляем
                 OrganizationUnits.objects.create(name=org_name, parent=None)
@@ -400,7 +405,6 @@ def tree_list(request):
     else:
         pass
                     
-    context['bulk'] = OrganizationUnits.objects.all()
     return render(request, 'index/tree_list.html', context)
 
 
@@ -811,7 +815,7 @@ def transfer_to_firm_with_scanner(request):
 @login_required
 @never_cache
 def from_firm_to_stock(request):
-    """Возврашаем заправленные расходники обратно на базу.
+    """Возврашаем заправленные расходники обратно на с клад с помошью мыши.
     """
     context = dict()
     back = BreadcrumbsPath(request).before_page(request)

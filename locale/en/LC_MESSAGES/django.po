@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-12-07 23:08+0500\n"
+"POT-Creation-Date: 2016-12-16 09:25+0500\n"
 "PO-Revision-Date: 2016-05-27 12:27+0500\n"
 "Last-Translator: \n"
 "Language-Team: severcart.org <sfcl@mail.ru>\n"
@@ -137,7 +137,7 @@ msgstr ""
 msgid "Email recipient"
 msgstr ""
 
-#: .\accounts\models.py:15 .\reports\forms.py:77 .\reports\forms.py:148
+#: .\accounts\models.py:15 .\reports\forms.py:77 .\reports\forms.py:157
 #: .\reports\templates\reports\amortizing.html:17
 #: .\reports\templates\reports\main_summary.html:18
 msgid "Organization unit"
@@ -156,11 +156,12 @@ msgstr ""
 #: .\accounts\templates\accounts\edit_user.html:3
 #: .\accounts\templates\accounts\manage_users.html:4
 #: .\accounts\templates\accounts\register.html:3
-#: .\docs\templates\docs\acts_list.html:5 .\docs\templates\docs\add_city.html:3
-#: .\docs\templates\docs\cities.html:4 .\docs\templates\docs\delivery.html:3
+#: .\docs\templates\docs\acts_list.html:5
+#: .\docs\templates\docs\add_city.html:3 .\docs\templates\docs\cities.html:4
+#: .\docs\templates\docs\delivery.html:3
 #: .\docs\templates\docs\edit_city.html:3
-#: .\docs\templates\docs\edit_name.html:3 .\docs\templates\docs\handbook.html:2
-#: .\docs\templates\docs\handbook.html:3
+#: .\docs\templates\docs\edit_name.html:3
+#: .\docs\templates\docs\handbook.html:2 .\docs\templates\docs\handbook.html:3
 #: .\docs\templates\docs\names_list.html:4
 #: .\docs\templates\docs\return_acts_list.html:5
 #: .\docs\templates\docs\types_list.html:4
@@ -225,7 +226,6 @@ msgstr ""
 #: .\index\templates\index\from_firm_to_stock.html:60
 #: .\index\templates\index\from_firm_to_stock_with_barcode.html:63
 #: .\index\templates\index\transfe_for_use.html:43
-#: .\reports\templates\reports\products.html:42
 #: .\reports\templates\reports\spent_money.html:43
 #: .\storages\templates\storages\edit_s.html:32
 msgid "Back"
@@ -307,7 +307,7 @@ msgid "Delete"
 msgstr ""
 
 #: .\accounts\templates\accounts\manage_users.html:30 .\docs\api\views.py:320
-#: .\index\templates\index\use.html.py:53 .\reports\api\views.py:123
+#: .\index\templates\index\use.html.py:53 .\reports\api\views.py:141
 #: .\search\templates\search\serp.html.py:14
 msgid "User"
 msgstr ""
@@ -391,9 +391,9 @@ msgstr ""
 #: .\dhtml\templates\dhtml\logic.html:1194
 #: .\dhtml\templates\dhtml\logic.html:1242
 #: .\dhtml\templates\dhtml\logic.html:1300
-#: .\dhtml\templates\dhtml\logic.html:2441
-#: .\dhtml\templates\dhtml\logic.html:2716
-#: .\dhtml\templates\dhtml\logic.html:2795
+#: .\dhtml\templates\dhtml\logic.html:2444
+#: .\dhtml\templates\dhtml\logic.html:2719
+#: .\dhtml\templates\dhtml\logic.html:2800
 msgid "<p>Server not available.</p>"
 msgstr ""
 
@@ -407,7 +407,8 @@ msgstr ""
 #: .\dhtml\templates\dhtml\logic.html:457
 #: .\dhtml\templates\dhtml\logic.html:485
 #: .\dhtml\templates\dhtml\logic.html:513
-#: .\dhtml\templates\dhtml\logic.html:2647
+#: .\dhtml\templates\dhtml\logic.html:2650
+#: .\dhtml\templates\dhtml\logic.html:2856
 msgid "Server error :("
 msgstr ""
 
@@ -463,12 +464,12 @@ msgid "Are you sure you want to remove the storage room?"
 msgstr ""
 
 #: .\dhtml\templates\dhtml\add_session_items.html:1784
-#: .\dhtml\templates\dhtml\logic.html:1643
+#: .\dhtml\templates\dhtml\logic.html:1645
 msgid "<p>Server error :(</p>"
 msgstr ""
 
 #: .\dhtml\templates\dhtml\add_session_items.html:2185
-#: .\dhtml\templates\dhtml\logic.html:2073
+#: .\dhtml\templates\dhtml\logic.html:2076
 msgid "List move empty."
 msgstr ""
 
@@ -558,7 +559,8 @@ msgstr ""
 #: .\docs\templates\docs\names_list.html:31 .\index\forms\add_firm.py:8
 #: .\index\forms\add_user.py:10 .\index\models.py:47
 #: .\index\templates\index\at_work.html:42
-#: .\index\templates\index\basket.html:41 .\index\templates\index\bufer.html:54
+#: .\index\templates\index\basket.html:41
+#: .\index\templates\index\bufer.html:54
 #: .\index\templates\index\del_firm.html:9
 #: .\index\templates\index\empty.html:70
 #: .\index\templates\index\from_firm_to_stock.html:37
@@ -571,16 +573,18 @@ msgstr ""
 #: .\index\templates\index\transfer_to_firm.html:26
 #: .\index\templates\index\transfer_to_firm_with_scanner.html:39
 #: .\index\templates\index\tree_list.html:64
-#: .\index\templates\index\use.html:50
+#: .\index\templates\index\use.html:50 .\reports\api\views.py:66
+#: .\reports\api\views.py:368
 #: .\reports\templates\reports\amortizing_ajax.html:5
+#: .\reports\templates\reports\brands_ajax.html:4
 #: .\reports\templates\reports\main_summary.html:46
-#: .\reports\templates\reports\products.html:57
 #: .\search\templates\search\serp.html:13
 msgid "Name"
 msgstr ""
 
 #: .\docs\api\views.py:266 .\index\templates\index\add_empty_cartridge.html:82
 #: .\index\templates\index\add_items.html:83
+#: .\reports\templates\reports\brands_ajax.html:5
 #: .\reports\templates\reports\users_ajax.html:5
 msgid "Amount items"
 msgstr ""
@@ -592,8 +596,8 @@ msgstr ""
 #: .\index\templates\index\add_empty_cartridge.html:31
 #: .\index\templates\index\add_items.html:32
 #: .\index\templates\index\at_work.html:41
-#: .\index\templates\index\basket.html:40 .\index\templates\index\bufer.html:53
-#: .\index\templates\index\empty.html:69
+#: .\index\templates\index\basket.html:40
+#: .\index\templates\index\bufer.html:53 .\index\templates\index\empty.html:69
 #: .\index\templates\index\from_firm_to_stock.html:36
 #: .\index\templates\index\from_firm_to_stock_with_barcode.html:34
 #: .\index\templates\index\get_cart_ou.html:7
@@ -603,7 +607,7 @@ msgstr ""
 #: .\index\templates\index\transfer_to_firm.html:25
 #: .\index\templates\index\transfer_to_firm_with_scanner.html:38
 #: .\index\templates\index\tree_list.html:65
-#: .\index\templates\index\use.html:49
+#: .\index\templates\index\use.html:49 .\reports\api\views.py:66
 #: .\reports\templates\reports\amortizing_ajax.html:4
 #: .\reports\templates\reports\main_summary.html:45
 #: .\search\templates\search\serp.html:12
@@ -613,9 +617,9 @@ msgstr "ID"
 #: .\docs\api\views.py:289 .\docs\api\views.py:318 .\docs\api\views.py:344
 #: .\docs\api\views.py:368 .\docs\api\views.py:394
 #: .\index\templates\index\at_work.html:43
-#: .\index\templates\index\basket.html:42 .\index\templates\index\bufer.html:55
-#: .\index\templates\index\empty.html:71 .\index\templates\index\stock.html:69
-#: .\index\templates\index\use.html:51
+#: .\index\templates\index\basket.html:42
+#: .\index\templates\index\bufer.html:55 .\index\templates\index\empty.html:71
+#: .\index\templates\index\stock.html:69 .\index\templates\index\use.html:51
 msgid "Amount<br/>recovery"
 msgstr ""
 
@@ -631,8 +635,8 @@ msgstr ""
 #: .\docs\api\views.py:371 .\docs\api\views.py:396
 #: .\docs\templates\docs\types_list.html:32 .\index\forms\comment.py:11
 #: .\index\templates\index\at_work.html:46
-#: .\index\templates\index\basket.html:44 .\index\templates\index\bufer.html:57
-#: .\index\templates\index\stock.html:72
+#: .\index\templates\index\basket.html:44
+#: .\index\templates\index\bufer.html:57 .\index\templates\index\stock.html:72
 msgid "comment"
 msgstr "Comment"
 
@@ -709,7 +713,7 @@ msgstr ""
 #: .\docs\templates\docs\delivery.html:102
 #: .\docs\templates\docs\return_acts_list.html:25
 #: .\index\templates\index\from_firm_to_stock.html:44
-#: .\reports\api\views.py:195 .\reports\templates\reports\spent_money.html:58
+#: .\reports\api\views.py:213 .\reports\templates\reports\spent_money.html:58
 #: .\reports\templates\reports\worket_firms.html:6
 msgid "Currency"
 msgstr "dollar"
@@ -744,8 +748,7 @@ msgstr ""
 #: .\index\forms\tr_to_firm.py:92 .\index\forms\tr_to_firm.py:106
 #: .\index\forms\tr_to_firm.py:135 .\index\forms\tr_to_stock.py:26
 #: .\reports\forms.py:23 .\reports\forms.py:33 .\reports\forms.py:66
-#: .\reports\forms.py:90 .\reports\forms.py:160 .\reports\forms.py:173
-#: .\reports\forms.py:216
+#: .\reports\forms.py:90 .\reports\forms.py:170 .\reports\forms.py:214
 msgid "Required field."
 msgstr ""
 
@@ -763,8 +766,9 @@ msgstr ""
 #: .\index\templates\index\add_empty_cartridge.html:74
 #: .\index\templates\index\add_empty_cartridge_from_barcode_scanner.html:69
 #: .\index\templates\index\add_items.html:75
-#: .\index\templates\index\basket.html:59 .\index\templates\index\empty.html:91
-#: .\index\templates\index\stock.html:89 .\index\templates\index\use.html:69
+#: .\index\templates\index\basket.html:59
+#: .\index\templates\index\empty.html:91 .\index\templates\index\stock.html:89
+#: .\index\templates\index\use.html:69
 msgid "Delivery agreement"
 msgstr ""
 
@@ -842,7 +846,8 @@ msgstr ""
 #: .\docs\templates\docs\acts_list.html:29
 #: .\docs\templates\docs\names_list.html:34
 #: .\docs\templates\docs\return_acts_list.html:30
-#: .\docs\templates\docs\types_list.html:33 .\index\templates\index\use.html:55
+#: .\docs\templates\docs\types_list.html:33
+#: .\index\templates\index\use.html:55
 msgid "Action"
 msgstr ""
 
@@ -851,9 +856,12 @@ msgstr ""
 #: .\index\templates\index\add_empty_cartridge.html:115
 #: .\index\templates\index\add_items.html:117
 #: .\index\templates\index\at_work.html:21
-#: .\index\templates\index\basket.html:20 .\index\templates\index\bufer.html:35
-#: .\index\templates\index\empty.html:49 .\index\templates\index\stock.html:47
-#: .\index\templates\index\use.html:29 .\reports\templates\reports\firm.html:35
+#: .\index\templates\index\basket.html:20
+#: .\index\templates\index\bufer.html:35 .\index\templates\index\empty.html:49
+#: .\index\templates\index\stock.html:47 .\index\templates\index\use.html:29
+#: .\reports\templates\reports\amortizing.html:26
+#: .\reports\templates\reports\firm.html:35
+#: .\reports\templates\reports\products.html:53
 #: .\reports\templates\reports\users.html:53
 msgid "Download"
 msgstr ""
@@ -871,7 +879,8 @@ msgstr "Create a without group docx"
 msgid "Add city"
 msgstr ""
 
-#: .\docs\templates\docs\add_city.html:3 .\docs\templates\docs\edit_city.html:3
+#: .\docs\templates\docs\add_city.html:3
+#: .\docs\templates\docs\edit_city.html:3
 #: .\docs\templates\docs\handbook.html:24
 msgid "Cities"
 msgstr ""
@@ -896,7 +905,8 @@ msgstr ""
 msgid "delivery agreement"
 msgstr "Delivery agreement"
 
-#: .\docs\templates\docs\delivery.html:3 .\docs\templates\docs\handbook.html:15
+#: .\docs\templates\docs\delivery.html:3
+#: .\docs\templates\docs\handbook.html:15
 msgid "Agreement"
 msgstr ""
 
@@ -1440,12 +1450,14 @@ msgstr ""
 msgid "Cartridges %(cart_list)s successfully transferred for use"
 msgstr ""
 
-#: .\index\api\views.py:948 .\index\api\views.py:1022 .\index\api\views.py:1214
-#: .\index\api\views.py:1332 .\index\api\views.py:1463
+#: .\index\api\views.py:948 .\index\api\views.py:1022
+#: .\index\api\views.py:1214 .\index\api\views.py:1332
+#: .\index\api\views.py:1463
 msgid "Error: 101. Not set organization utint."
 msgstr ""
 
-#: .\index\api\views.py:965 .\index\api\views.py:1038 .\index\api\views.py:1230
+#: .\index\api\views.py:965 .\index\api\views.py:1038
+#: .\index\api\views.py:1230
 #, python-format
 msgid "Consumables with the number %(cart_barcode)s was not found."
 msgstr ""
@@ -1461,7 +1473,8 @@ msgid ""
 "move."
 msgstr ""
 
-#: .\index\api\views.py:995 .\index\api\views.py:1066 .\index\api\views.py:1260
+#: .\index\api\views.py:995 .\index\api\views.py:1066
+#: .\index\api\views.py:1260
 msgid "Consumable material is successfully prepared for transfer"
 msgstr ""
 
@@ -1489,7 +1502,7 @@ msgid ""
 msgstr ""
 
 #: .\index\api\views.py:1298 .\index\api\views.py:1355
-#: .\index\api\views.py:1479 .\index\views.py:1043
+#: .\index\api\views.py:1479 .\index\views.py:1047
 #, python-format
 msgid ""
 "An object with number %(cart_num)s belong to a different organizational unit."
@@ -1631,11 +1644,11 @@ msgid "Empty and in basket"
 msgstr ""
 
 #: .\index\templates\index\404.html:2 .\index\templates\index\404.html.py:3
-#: .\index\templates\index\404.html:10 .\index\templates\index\500.html.py:3
+#: .\index\templates\index\404.html:10 .\index\templates\index\500.html:3
 msgid "Error 404"
 msgstr ""
 
-#: .\index\templates\index\500.html:2 .\index\templates\index\500.html.py:10
+#: .\index\templates\index\500.html:2 .\index\templates\index\500.html:10
 msgid "Error 500"
 msgstr ""
 
@@ -1814,14 +1827,16 @@ msgid "Return to the stock"
 msgstr ""
 
 #: .\index\templates\index\at_work.html:24
-#: .\index\templates\index\basket.html:23 .\index\templates\index\empty.html:52
-#: .\index\templates\index\stock.html:50 .\index\templates\index\use.html:32
+#: .\index\templates\index\basket.html:23
+#: .\index\templates\index\empty.html:52 .\index\templates\index\stock.html:50
+#: .\index\templates\index\use.html:32
 msgid "Export to CSV with group"
 msgstr ""
 
 #: .\index\templates\index\at_work.html:25
-#: .\index\templates\index\basket.html:24 .\index\templates\index\empty.html:53
-#: .\index\templates\index\stock.html:51 .\index\templates\index\use.html:33
+#: .\index\templates\index\basket.html:24
+#: .\index\templates\index\empty.html:53 .\index\templates\index\stock.html:51
+#: .\index\templates\index\use.html:33
 msgid "Export to CSV without group"
 msgstr ""
 
@@ -1890,18 +1905,20 @@ msgstr ""
 msgid "Bufer"
 msgstr ""
 
-#: .\index\templates\index\basket.html:45 .\index\templates\index\empty.html:75
-#: .\index\templates\index\stock.html:73
+#: .\index\templates\index\basket.html:45
+#: .\index\templates\index\empty.html:75 .\index\templates\index\stock.html:73
 msgid "Actions"
 msgstr ""
 
-#: .\index\templates\index\basket.html:57 .\index\templates\index\empty.html:89
-#: .\index\templates\index\stock.html:87 .\index\templates\index\use.html:67
+#: .\index\templates\index\basket.html:57
+#: .\index\templates\index\empty.html:89 .\index\templates\index\stock.html:87
+#: .\index\templates\index\use.html:67
 msgid "Edit a comment"
 msgstr ""
 
-#: .\index\templates\index\basket.html:58 .\index\templates\index\empty.html:90
-#: .\index\templates\index\stock.html:88 .\index\templates\index\use.html:68
+#: .\index\templates\index\basket.html:58
+#: .\index\templates\index\empty.html:90 .\index\templates\index\stock.html:88
+#: .\index\templates\index\use.html:68
 msgid "Event viewer"
 msgstr ""
 
@@ -1972,6 +1989,10 @@ msgstr ""
 
 #: .\index\templates\index\dashboard.html:59
 msgid "Since the beginning of the year"
+msgstr ""
+
+#: .\index\templates\index\dashboard.html:66
+msgid "View all events"
 msgstr ""
 
 #: .\index\templates\index\del_firm.html:2
@@ -2052,10 +2073,6 @@ msgstr ""
 msgid "Good"
 msgstr ""
 
-#: .\index\templates\index\events.html:15
-msgid "View all events"
-msgstr ""
-
 #: .\index\templates\index\found_pagination.html:31
 msgid "All"
 msgstr ""
@@ -2115,6 +2132,7 @@ msgid "Take?"
 msgstr ""
 
 #: .\index\templates\index\linked_name_objects.html:6
+#: .\reports\api\views.py:66
 #: .\reports\templates\reports\amortizing_ajax.html:8
 #: .\reports\templates\reports\main_summary.html:49
 #: .\search\templates\search\serp.html:15
@@ -2260,71 +2278,85 @@ msgstr ""
 msgid "%(cart_name)s success added"
 msgstr ""
 
-#: .\index\views.py:382 .\index\views.py:394
-#, python-format
-msgid "Organization unit %(org_name)s exist"
+#: .\index\views.py:380
+msgid "Organization unit not be empty"
 msgstr ""
 
 #: .\index\views.py:387 .\index\views.py:399
 #, python-format
-msgid "Organization unit %(org_name)s create successfuly."
+msgid "Organization unit %(org_name)s exist"
 msgstr ""
 
-#: .\index\views.py:443
+#: .\index\views.py:392 .\index\views.py:404
 #, python-format
-msgid "%(cart_type)s success save"
+msgid "Organization unit %(org_name)s create successfuly."
 msgstr ""
 
 #: .\index\views.py:447
 #, python-format
+msgid "%(cart_type)s success save"
+msgstr ""
+
+#: .\index\views.py:451
+#, python-format
 msgid "New type %(cart_type)s success added"
 msgstr ""
 
-#: .\index\views.py:577
+#: .\index\views.py:581
 msgid "Select all"
 msgstr ""
 
-#: .\index\views.py:610
+#: .\index\views.py:614
 #, python-format
 msgid "Firm \"%(firm_name)s\" success added."
 msgstr ""
 
-#: .\index\views.py:1008
+#: .\index\views.py:1012
 msgid "Work has already estimated."
 msgstr ""
 
-#: .\index\views.py:1039
+#: .\index\views.py:1043
 #, python-format
 msgid "An object with number %(cart_num)s is not transmitted to the service."
 msgstr ""
 
-#: .\reports\api\views.py:119 .\reports\api\views.py:191
-#: .\reports\templates\reports\firm.html:26
+#: .\reports\api\views.py:66
+msgid "Date of last cases"
+msgstr ""
+
+#: .\reports\api\views.py:66
+#, fuzzy
+#| msgid "Number"
+msgid "Number refills"
+msgstr "ID"
+
+#: .\reports\api\views.py:137 .\reports\api\views.py:209
+#: .\reports\api\views.py:364 .\reports\templates\reports\firm.html.py:26
 msgid "Start range"
 msgstr ""
 
-#: .\reports\api\views.py:120 .\reports\api\views.py:192
-#: .\reports\templates\reports\firm.html:27
+#: .\reports\api\views.py:138 .\reports\api\views.py:210
+#: .\reports\api\views.py:365 .\reports\templates\reports\firm.html.py:27
 msgid "End range"
 msgstr ""
 
-#: .\reports\api\views.py:123
+#: .\reports\api\views.py:141 .\reports\api\views.py:368
 msgid "Items count"
 msgstr ""
 
-#: .\reports\api\views.py:123 .\reports\templates\reports\users_ajax.html.py:6
+#: .\reports\api\views.py:141 .\reports\templates\reports\users_ajax.html.py:6
 msgid "Details"
 msgstr ""
 
-#: .\reports\api\views.py:195 .\reports\templates\reports\worket_firms.html:4
+#: .\reports\api\views.py:213 .\reports\templates\reports\worket_firms.html:4
 msgid "Firm name"
 msgstr ""
 
-#: .\reports\api\views.py:195 .\reports\templates\reports\worket_firms.html:5
+#: .\reports\api\views.py:213 .\reports\templates\reports\worket_firms.html:5
 msgid "The number of serviced objects"
 msgstr ""
 
-#: .\reports\api\views.py:195 .\reports\templates\reports\worket_firms.html:6
+#: .\reports\api\views.py:213 .\reports\templates\reports\worket_firms.html:6
 msgid "The money paid"
 msgstr ""
 
@@ -2344,19 +2376,19 @@ msgstr ""
 msgid "Field cannot be empty."
 msgstr ""
 
-#: .\reports\forms.py:72
+#: .\reports\forms.py:72 .\reports\forms.py:152
 msgid "Departament"
 msgstr ""
 
-#: .\reports\forms.py:80 .\reports\forms.py:150 .\reports\forms.py:208
+#: .\reports\forms.py:80 .\reports\forms.py:160 .\reports\forms.py:206
 msgid "Start date"
 msgstr ""
 
-#: .\reports\forms.py:82 .\reports\forms.py:152 .\reports\forms.py:210
+#: .\reports\forms.py:82 .\reports\forms.py:162 .\reports\forms.py:208
 msgid "End date"
 msgstr ""
 
-#: .\reports\forms.py:112 .\reports\forms.py:185 .\reports\forms.py:234
+#: .\reports\forms.py:112 .\reports\forms.py:182 .\reports\forms.py:232
 msgid "Error in start date."
 msgstr ""
 
@@ -2372,7 +2404,7 @@ msgstr ""
 #: .\reports\templates\reports\amortizing.html:25
 #: .\reports\templates\reports\firm.html:34
 #: .\reports\templates\reports\main_summary.html:31
-#: .\reports\templates\reports\products.html:41
+#: .\reports\templates\reports\products.html:52
 #: .\reports\templates\reports\spent_money.html:42
 #: .\reports\templates\reports\users.html:52
 msgid "Generate"
@@ -2416,15 +2448,15 @@ msgstr ""
 
 #: .\reports\templates\reports\products.html:2
 #: .\reports\templates\reports\products.html:3
+#: .\reports\templates\reports\vertical_menu.html:14
+msgid "The report by products"
+msgstr ""
+
 #: .\reports\templates\reports\spent_money.html:2
 #: .\reports\templates\reports\users.html:2
 #: .\reports\templates\reports\users.html:3
 msgid "Consumption of consumables"
 msgstr "Consumption of cartridges"
-
-#: .\reports\templates\reports\products.html:58
-msgid "Count"
-msgstr ""
 
 #: .\reports\templates\reports\spent_money.html:3
 msgid "The report by spent money month"
@@ -2448,10 +2480,6 @@ msgstr ""
 
 #: .\reports\templates\reports\vertical_menu.html:11
 msgid "The report by users"
-msgstr ""
-
-#: .\reports\templates\reports\vertical_menu.html:14
-msgid "The report by products"
 msgstr ""
 
 #: .\reports\templates\reports\vertical_menu.html:15

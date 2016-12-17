@@ -33,3 +33,4 @@ class InsertVarToRequest(object):
         conf = SevercartConfigs()
         request.TZ = conf.time_zone
         request.SHOW_TIME = conf.show_time
+        request.SHOW_HELP = settings.SHOW_HELP

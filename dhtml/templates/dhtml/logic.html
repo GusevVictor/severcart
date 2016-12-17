@@ -1619,7 +1619,7 @@ $( function(){
         // генерация отчёта
         var org = $('select#id_org option:selected').val();
         var cont = $('.pm_counter').val();
-
+        $('.download_result').hide();
         if ( org && cont ) {
             $.ajax({
                 method: 'POST',
@@ -1635,6 +1635,8 @@ $( function(){
                 success: function( msg ) {
                     $('.spinner').hide();
                     // таймаут на 3 секунды
+                    $('.download_result').show();
+                    $('.download_result').attr('href', msg.url);
                     setTimeout(function() {}, 3000); 
                     $('div.ajax-content').html(msg.html);
                     //window.location.href = '/basket/';
@@ -1642,6 +1644,7 @@ $( function(){
                 error: function() {
                     $('div.ajax-content').html('{% trans "<p>Server error :(</p>" %}');
                     $('.spinner').hide();
+                    $('.download_result').hide();
                 },
             });    
         }
@@ -2852,8 +2855,61 @@ $( function(){
                 $('.error_msg').show();
                 $('.error_msg').html('{% trans "Server error :(" %}');
             },
-        });   
+        });
 
+    });
+
+    $('.report_stale').click( function() {
+        // отчёт  по амортизации
+        var org = $('#id_org option:selected').val();
+        var diap = $('#id_diap option:selected').val();
+        $('.form_error_text').remove();
+        $.ajax({
+            method: 'POST',
+            url: '{% url "reports:ajax_report_stale" %}',
+            data:  {'org': org, 'diap': diap},
+            beforeSend: function( xhr, settings ){
+                $('.spinner').show();
+                $('.download_result').hide();
+                csrftoken = getCookie('csrftoken');
+                if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
+                    xhr.setRequestHeader('X-CSRFToken', csrftoken);
+                }
+            },
+            success: function( msg ) {
+                $('.spinner').hide(); 
+                if (msg.error == '1') {
+                    $('.success_msg').hide();
+                    $('.error_msg').show();
+                    $('.error_msg').html(msg.text);
+                    $('.result').html();
+                }
+
+                if (msg.error == '0') {
+                    $('.spinner').hide();
+                    $('.error_msg').hide();
+                    $('.result').html(msg.text);
+                    $('.download_result').show();
+                    $('.download_result').attr('href', msg.url);
+                }
+
+                if (msg.error == '3') {
+                    $('.success_msg').hide();
+                    $('.error_msg').hide();
+                    var kv = $.parseJSON(msg.text);
+                    for (var key in kv) {
+                        var selector = '#id_' + key;
+                        $(selector).parent().after('<div class="form_error_text" style="display:block">' + kv[key][0]['message'] + '</div>');
+                    }
+                }
+            },
+            error: function() {
+                $('.spinner').hide(); 
+                $('.success_msg').hide();
+                $('.error_msg').show();
+                $('.error_msg').html('{% trans "Server error :(" %}');
+            },
+        });
     });
 
 });
