@@ -7,7 +7,7 @@ from django.views.decorators.cache import never_cache
 from django.utils.translation import ugettext_lazy as _
 from common.cbv import GridListView
 from common.helpers import is_admin
-from storages.models import Storages
+from index.models import Storages
 from storages.forms import AddStorage
 
 class ViewStorages(GridListView):

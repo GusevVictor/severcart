@@ -118,7 +118,6 @@ def ajax_add_session_items(request):
         cart_name_id = data_in_post.get('cartName').pk
         cart_name    = data_in_post.get('cartName').cart_itm_name
         storages     = data_in_post.get('storages')
-        storages     = storages.pk
         cart_name    = str(cart_name)
         cart_type    = request.POST.get('cart_type')
         cart_doc_id  = data_in_post.get('doc')
@@ -181,7 +180,7 @@ def ajax_add_session_items(request):
         # Добавляем картриджи в БД
         with transaction.atomic():
             for i in range(cart_count):
-                m1 = CartridgeItem(sklad=storages,
+                m1 = CartridgeItem(stor=storages,
                                    cart_number=str(cart_number),
                                    cart_itm_name=data_in_post.get('cartName'),
                                    cart_date_added=date_time_added,
@@ -316,7 +315,6 @@ def ajax_add_session_items_from_barcode(request):
         cart_number  = data_in_post.get('cartNumber')
         cart_name    = data_in_post.get('cartName').cart_itm_name
         storages     = data_in_post.get('storages')
-        storages     = storages.pk
         cart_name    = str(cart_name)
         cart_name_id = data_in_post.get('cartName').pk
         cart_type    = request.POST.get('cart_type')
@@ -442,16 +440,17 @@ def add_items_in_stock_from_session_basket(request):
             
             cart_name = CartridgeItemName.objects.get(pk=cartridge['cart_name_id'])
 
-            m1 = CartridgeItem(sklad=str2int(cartridge['storages']),
-                               cart_number=cartridge['cart_number'],
-                               cart_itm_name=cart_name,
-                               cart_date_added=cartridge['date_time_added'],
-                               cart_date_change=cartridge['date_time_added'],
-                               cart_number_refills=0,
-                               departament=request.user.departament,
-                               cart_status=cart_status,
-                               delivery_doc=cartridge['cart_doc_id'],
-                               )
+            m1 = CartridgeItem(
+                                stor=cartridge['storages'],
+                                cart_number=cartridge['cart_number'],
+                                cart_itm_name=cart_name,
+                                cart_date_added=cartridge['date_time_added'],
+                                cart_date_change=cartridge['date_time_added'],
+                                cart_number_refills=0,
+                                departament=request.user.departament,
+                                cart_status=cart_status,
+                                delivery_doc=cartridge['cart_doc_id']
+                            )
             m1.save()
             number_list.append(cartridge['cart_number'])
             list_cplx.append((m1.id, cartridge['cart_number'], cart_name))

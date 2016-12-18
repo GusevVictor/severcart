@@ -4,6 +4,7 @@ from django.db import models
 from mptt.models import MPTTModel, TreeForeignKey
 from django.utils.translation import ugettext_lazy as _
 
+
 class OrganizationUnits(MPTTModel):
     name = models.CharField(max_length=254)
     parent = TreeForeignKey('self', null=True, blank=True, related_name='children', db_index=True)
@@ -13,6 +14,17 @@ class OrganizationUnits(MPTTModel):
 
     def __str__(self):
         return self.name
+
+
+class Storages(models.Model):
+    title       = models.CharField(max_length=256)
+    description = models.TextField(null=True)
+    departament = models.ForeignKey(OrganizationUnits, on_delete=models.PROTECT)
+    address     = models.CharField(max_length=512)
+    default     = models.BooleanField(default=False)
+
+    def __str__(self):
+        return self.title
 
 
 class CartridgeType(models.Model):
@@ -67,7 +79,6 @@ STATUS = (
 
 
 class CartridgeItem(models.Model):
-    sklad                = models.IntegerField(db_index=True)
     cart_number          = models.CharField(max_length=256, db_index=True, null=True)
     cart_number_prefix   = models.CharField(max_length=256, null=True)
     cart_itm_name        = models.ForeignKey(CartridgeItemName, on_delete=models.PROTECT)
@@ -81,7 +92,9 @@ class CartridgeItem(models.Model):
     delivery_doc         = models.IntegerField(db_index=True, null=True, default=0)
     vote                 = models.BooleanField(default=False)  # используется для защиты от накрутки голосований качества заправки РМ
     bufer                = models.BooleanField(default=False)  # буферзация используется для печати наклеек
+    stor                 = models.ForeignKey(Storages, db_index=True, null=True)
     node_order_by        = ['pk']
+
 
 class Numerator(models.Model):
     departament = models.ForeignKey(OrganizationUnits, default=1)

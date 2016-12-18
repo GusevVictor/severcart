@@ -3,7 +3,7 @@
 from django.http import JsonResponse, HttpResponse
 from django.utils.translation import ugettext as _
 from django.db.models import Q
-from storages.models import Storages
+from index.models import Storages
 from index.models import CartridgeItem
 from index.helpers import check_ajax_auth
 from common.helpers import is_admin

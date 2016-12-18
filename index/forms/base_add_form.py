@@ -3,7 +3,7 @@ from django import forms
 from django.core.exceptions import ValidationError
 from django.utils.translation import ugettext_lazy as _
 from common.helpers import del_leding_zero
-from storages.models import Storages
+from index.models import Storages
 from index.helpers import str2int
 
 TIME = (
