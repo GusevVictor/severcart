@@ -55,14 +55,14 @@
                     <th class="actions">{% trans "Action" %}</th>
                 </tr>{% for i in cartrjs %}
                     <tr>
-                        <td><input type="checkbox" class="checkbox" value="{{ i.pk }}" cart_number="{{ i.cart_number }}"></td>
+                        <td><input type="checkbox" class="checkbox" value="{{ i.id }}" cart_number="{{ i.cart_number }}"></td>
                         <td class="cart_number_for_tip" data-powertip="{{ i.cart_number }}">{{ i.cart_number|truncatechars:request.TRLEN }}</td>
-                        <td>{{ i.cart_itm_name }}</td>
+                        <td>{{ i.cart_itm_name__cart_itm_name }}</td>
                         <td>{{ i.cart_number_refills }}</td>
                         {% if request.SHOW_TIME %}<td>{{ i.cart_date_change | timezone:request.TZ | date:"d.m.Y  H:i"}}</td>{% else %}<td>{{ i.cart_date_change | date:"d.m.Y"}}</td>{% endif %}
-                        <td>{{ i.departament }}</td>
+                        <td>{{ i.departament__name }}</td>
                         <td><div class="comment_in_cell" title="{{ i.comment }}">{{ i.comment|truncatechars:22 }}</div></td>
-                        <td><select class="cartridge_action" data="{{ i.pk }}">
+                        <td><select class="cartridge_action" data="{{ i.id }}">
                             <option selected></option>
                             <option value="edit">{% trans "Edit a comment" %}</option>
                             <option value="view_events">{% trans "Event viewer" %}</option>

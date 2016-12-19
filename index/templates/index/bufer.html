@@ -60,9 +60,9 @@
                     <tr>
                         <td><input type="checkbox" class="checkbox" value="{{ i.id }}" cart_number="{{ i.cart_number }}" /></td>
                         <td class="cart_number_for_tip" data-powertip="{{ i.cart_number }}">{{ i.cart_number|truncatechars:request.TRLEN }}</td>
-                        <td>{{ i.cart_itm_name }}</td>
+                        <td>{{ i.cart_itm_name__cart_itm_name }}</td>
                         <td>{{ i.cart_number_refills }}</td>
-                        <td><span data-powertip="{{ i.sklad_title }} {{ i.sklad_address }}" class="info_ico"></span></td>
+                        <td><span data-powertip="{% if i.stor__title %}{{ i.stor__title }} {{ i.stor__address }}{% endif %}" class="info_ico"></span></td>
                         <td><div class="comment_in_cell" title="{{ i.comment }}">{{ i.comment|truncatechars:34 }}</div></td>
                     </tr>
                 {% endfor %}

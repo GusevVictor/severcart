@@ -105,7 +105,9 @@ class Stock(CartridgesView):
         super(Stock, self).get(*args, **kwargs)
         self.context['view'] = 'stock'
         self.all_items = self.all_items.filter(cart_status=1).filter(departament=self.request.user.departament)
-        self.all_items = self.all_items.values('id', 'cart_number', 'cart_itm_name__cart_itm_name', 'cart_number_refills', 'cart_date_change','comment', 'bufer', 'delivery_doc')
+        self.all_items = self.all_items.values('id', 'cart_number', 'cart_itm_name__cart_itm_name', \
+            'cart_number_refills', 'cart_date_change','comment', \
+            'bufer', 'delivery_doc', 'stor__title', 'stor__address')
         page_size = self.items_per_page()
         self.context['size_perpage'] = page_size
         self.context['cartrjs'] = self.pagination(self.all_items, page_size)
@@ -485,7 +487,10 @@ class Use(CartridgesView):
             children  = root_ou.get_family()
         except AttributeError:
             children = ''
-        self.all_items = self.all_items.filter(departament__in=children).filter(cart_status=2)
+        self.all_items = self.all_items.filter(departament__in=children).filter(cart_status=2) \
+            .values('id', 'cart_number', 'cart_itm_name__cart_itm_name', \
+            'cart_number_refills', 'cart_date_change','comment', \
+            'delivery_doc', 'departament__name')
         page_size = self.items_per_page()
         self.context['size_perpage'] = page_size
         self.context['cartrjs'] = self.pagination(self.all_items, page_size)
@@ -499,7 +504,10 @@ class Empty(CartridgesView):
         super(Empty, self).get(*args, **kwargs)
         self.context['view'] = 'empty'
         root_ou = self.request.user.departament
-        self.all_items = self.all_items.filter( Q(departament=root_ou) & Q(cart_status=3) )
+        self.all_items = self.all_items.filter( Q(departament=root_ou) & Q(cart_status=3) ) \
+            .values('id', 'cart_number', 'cart_itm_name__cart_itm_name', \
+            'cart_number_refills', 'cart_date_change','comment', \
+            'bufer', 'delivery_doc', 'stor__title', 'stor__address')
         page_size = self.items_per_page()
         self.context['size_perpage'] = page_size
         self.context['cartrjs'] = self.pagination(self.all_items, page_size)
@@ -627,7 +635,10 @@ class At_work(CartridgesView):
         super(At_work, self).get()
         self.context['view'] = 'at_work'
         firm = get_object_or_404(FirmTonerRefill, pk=pk)
-        self.all_items = self.all_items.filter(Q(cart_status=4) & Q(departament=self.request.user.departament) & Q(filled_firm=firm))
+        self.all_items = self.all_items.filter(Q(cart_status=4) & Q(departament=self.request.user.departament) & Q(filled_firm=firm)) \
+            .values('id', 'cart_number', 'cart_itm_name__cart_itm_name', \
+            'cart_number_refills', 'cart_date_change','comment', \
+            'bufer', 'delivery_doc')
         page_size = self.items_per_page()
         self.context['size_perpage'] = page_size
         self.context['cartrjs'] = self.pagination(self.all_items, page_size)
@@ -684,7 +695,10 @@ class Basket(CartridgesView):
     def get(self, request, *args, **kwargs):
         super(Basket, self).get(*args, **kwargs)
         self.context['view'] = 'basket'
-        self.all_items = self.all_items.filter( (Q(cart_status=5) | Q(cart_status=6)) & Q(departament=self.request.user.departament) )
+        self.all_items = self.all_items.filter( (Q(cart_status=5) | Q(cart_status=6)) & Q(departament=self.request.user.departament) ) \
+            .values('id', 'cart_number', 'cart_itm_name__cart_itm_name', \
+            'cart_number_refills', 'cart_date_change','comment', \
+            'bufer', 'delivery_doc')
         page_size = self.items_per_page()
         self.context['size_perpage'] = page_size
         self.context['cartrjs'] = self.pagination(self.all_items, page_size)
@@ -1016,30 +1030,10 @@ class Bufer(CartridgesView):
             children  = root_ou.get_family()
         except AttributeError:
             children = None
-        self.all_items = self.all_items.filter(departament__in=children).filter(bufer=True)
-        # для минимизации количества обращений к базе данных воспользуемся 
-        # простиньким кэшом
-        simple_cache = dict()
-        i = 0 # итерируемая переменная для доступа по индексу
-        # Внимание! Поля sklad_title и sklad_address являются искуственно
-        # внедрёнными, в модели CartridgeItem их нет.
-        for item in self.all_items:
-            if simple_cache.get(item.sklad, 0):
-                self.all_items[i].sklad_title = simple_cache.get(item.sklad)['title']
-                self.all_items[i].sklad_address = simple_cache.get(item.sklad)['address']
-            else:
-                try:
-                    sklad = Storages.objects.get(pk=item.sklad)
-                except:
-                    simple_cache[item.sklad] = {'title': '', 'address': ''}
-                    self.all_items[i].sklad_title    = ''
-                    self.all_items[i].sklad_address  = ''
-                else:
-                    simple_cache[item.sklad] =  {'title': sklad.title, 'address': sklad.address}
-                    self.all_items[i].sklad_title    = sklad.title
-                    self.all_items[i].sklad_address  = sklad.address
-            i += 1
-
+        self.all_items = self.all_items.filter(departament__in=children).filter(bufer=True) \
+            .values('id', 'cart_number', 'cart_itm_name__cart_itm_name', \
+            'cart_number_refills', 'cart_date_change','comment', \
+            'stor__title', 'stor__address')
         page_size = self.items_per_page()
         self.context['size_perpage'] = page_size
         self.context['cartrjs'] = self.pagination(self.all_items, page_size)

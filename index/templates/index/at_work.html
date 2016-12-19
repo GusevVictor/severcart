@@ -47,9 +47,9 @@
                 </tr>
                 {% for i in cartrjs %}
                     <tr>
-                        <td><input type="checkbox" class="checkbox" value="{{ i.pk }}" cart_number="{{ i.cart_number }}"></td>
+                        <td><input type="checkbox" class="checkbox" value="{{ i.id }}" cart_number="{{ i.cart_number }}"></td>
                         <td class="cart_number_for_tip" data-powertip="{{ i.cart_number }}">{{ i.cart_number|truncatechars:request.TRLEN }}</td>
-                        <td>{{ i.cart_itm_name }}</td>
+                        <td>{{ i.cart_itm_name__cart_itm_name }}</td>
                         <td>{{ i.cart_number_refills }}</td>
                         {% if request.SHOW_TIME %}<td>{{ i.cart_date_change | timezone:request.TZ | date:"d.m.Y  H:i"}}</td>{% else %}<td>{{ i.cart_date_change | date:"d.m.Y"}}</td>{% endif %}
                         <td><div class="comment_in_cell" title="{{ i.comment }}">{{ i.comment|truncatechars:55 }}</div></td>
