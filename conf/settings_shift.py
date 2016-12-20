@@ -25,6 +25,9 @@ ALLOWED_HOSTS = [
     #'www.example.com', # Second DNS alias (set up in the app)
 ]
 
+# очищаем кэш при перезагрузке сервера
+from django.core.cache import cache
+cache.clear()
 
 DEBUG = False
 DEMO  = True
