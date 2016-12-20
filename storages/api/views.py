@@ -78,7 +78,7 @@ def del_s(request):
     if u_dept_id == s_dept_id:
         # выполняем дополнительную проверку. Количество картриджей на складе 
         # должно быть равно нулю, иначе ошибка
-        cart_count_in_stor = CartridgeItem.objects.filter(departament=u_dept_id).filter(sklad=m1.pk).count()
+        cart_count_in_stor = CartridgeItem.objects.filter(departament=u_dept_id).filter(stor=m1.pk).count()
         if cart_count_in_stor == 0:
             m1.delete()
             ansver['error'] = 0
