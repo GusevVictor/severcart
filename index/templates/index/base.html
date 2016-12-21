@@ -12,7 +12,7 @@
     <script src="{{ STATIC_URL }}js/vendor/jquery.js"></script>
     {% block jqueryui %}{% endblock %}
     <script src="/dhtml/common.js?{{request.CACHEVERSION}}"></script>
-    <script src="/dhtml/logic.js?{{request.CACHEVERSION}}"></script>
+    <script src="/dhtml/logic.js?{{request.CACHEVERSION}}{{request.LANGUAGE_CODE}}"></script>
     <title>{% block title %}{% endblock %}</title>
     <noscript>
         <meta http-equiv="refresh" content="3; url={% url 'index:bad_browser' %}"/>
