@@ -6,7 +6,7 @@
         <div class="error_msg_send_email" style="display:none"></div>
         <div class="success_msg_send_email" style="display:none"></div>
         <p>{% trans 'Please enter your email address. On it will send the message to change the password.' %}</p>
-        <form method="POST" action="">{% csrf_token %}
+        <form class="send-email" method="POST" action="">{% csrf_token %}
             {{ form.email.label_tag }}&nbsp;&nbsp;&nbsp;{{ form.email }}&nbsp;&nbsp;&nbsp;
             <div class="marginTop">
                 <a href="{% url 'auth:login' %}" class="button left">{% trans 'Back' %}</a>

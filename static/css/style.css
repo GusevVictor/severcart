@@ -283,11 +283,6 @@ div.submenu {
     border-radius: 5px;
 }
 
-.login_form label{
-    display: block;
-    padding: 0;
-}
-
 .login_form input{
     margin-top:5px;
     border-radius: 3px;
@@ -1436,4 +1431,15 @@ table.checkboxes td.details_list_cartrgs {
 h4 a {
     font-size: 14px;
     font-weight: normal;
+}
+
+
+
+div.login_form label.login-label, div.login_form label.password-label {
+    display: block;
+    padding: 0;
+}
+
+div.cont form.send-email label {
+    display: inline-block;
 }
