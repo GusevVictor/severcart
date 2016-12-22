@@ -16,7 +16,7 @@ def search(request):
     context = {}
     cnum = cnum.strip()
     
-    cart_items = CartridgeItem.objects.filter(cart_number=cnum)
+    cart_items = CartridgeItem.objects.filter(cart_number__icontains=cnum)
     if not cart_items:
         context['cart_items'] = []
         return render(request, 'search/serp.html', context)
@@ -45,7 +45,7 @@ def search(request):
         elif elem.cart_status == 3:
             link = reverse('index:empty')
         elif elem.cart_status == 4:
-            link = reverse('index:toner_refill')
+            link = reverse('index:at_work', args=[elem.filled_firm.pk])
         elif elem.cart_status == 5:
             link = reverse('index:basket')
         else:

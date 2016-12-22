@@ -149,7 +149,7 @@ class CartridgesView(GridListView):
         self.all_items = self.all_items.order_by(self.request.session['sort'])
         if not(search_number is None or search_number == ''):
             search_number = str(search_number).strip()
-            self.all_items = self.all_items.filter(Q(cart_number=search_number))
+            self.all_items = self.all_items.filter(Q(cart_number__icontains=search_number))
             self.context['search_number'] = search_number
     
     def get(self):
