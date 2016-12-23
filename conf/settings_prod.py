@@ -46,9 +46,12 @@ MIDDLEWARE_CLASSES = (
 
 ROOT_URLCONF = 'conf.urls'
 
-# очищаем кэш при перезагрузке сервера
-from django.core.cache import cache
-cache.clear()
+try:
+    # очищаем кэш при перезагрузке сервера
+    from django.core.cache import cache
+    cache.clear()
+except:
+    pass
 
 SESSION_ENGINE = 'django.contrib.sessions.backends.cache'
 
