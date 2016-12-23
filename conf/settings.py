@@ -15,7 +15,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.append(os.path.join(BASE_DIR, 'conf'))
 
 # автоматический переключатель продакшена и девелопмента
-from dev import *
+from settings_dev import *
 
 ALLOWED_HOSTS = ['*']
 
