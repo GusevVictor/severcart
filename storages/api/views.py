@@ -31,6 +31,7 @@ def set_default(request):
     except Storages.DoesNotExist:
         ansver['error'] = 1
         ansver['text'] = _('Storage does not exist.')
+        return JsonResponse(ansver)
 
     # Производим дополнительную проверку. Департамент пользователя
     # должен быть равен департаменту склада.
