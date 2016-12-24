@@ -746,7 +746,7 @@ def transfer_to_firm_with_scanner(request):
     context = dict()
     context['mydebug'] = False
     form = TransfeToFirmScanner()
-    form.fields['doc'].queryset = SCDoc.objects.filter(departament=request.user.departament).filter(doc_type=2)
+    form.fields['doc'].queryset = SCDoc.objects.filter(departament=request.user.departament).filter(doc_type=-1)
         
     if request.session.get('basket_to_transfer_firm', False):
         # если в сессионной переменной уже что-то есть
