@@ -55,6 +55,7 @@ class CartridgesView(GridListView):
     def dispatch(self, *args, **kwargs):
         self.request = args[0]
         BreadcrumbsPath(self.request)
+        self.all_items = CartridgeItem.objects.all()
         return super(CartridgesView, self).dispatch(*args, **kwargs)
 
     def sort_columns(self):
@@ -145,15 +146,25 @@ class CartridgesView(GridListView):
         """Работаем с поисковой формой по номеру картриджа
         """
         search_number  = self.request.GET.get('search_number')
-        self.all_items = CartridgeItem.objects.all()
         self.all_items = self.all_items.order_by(self.request.session['sort'])
         if not(search_number is None or search_number == ''):
             search_number = str(search_number).strip()
             self.all_items = self.all_items.filter(Q(cart_number__icontains=search_number))
             self.context['search_number'] = search_number
+
+    def search_name(self):
+        """Работаем с поисковой формой по имени картриджа
+        """
+        search_name  = self.request.GET.get('search_name')
+        self.all_items = self.all_items.order_by(self.request.session['sort'])
+        if not(search_name is None or search_name == ''):
+            search_name = str(search_name).strip()
+            self.all_items = self.all_items.filter(Q(cart_itm_name__cart_itm_name__icontains=search_name))
+            self.context['search_name'] = search_name
     
     def get(self):
         """Избавляем себя от дублирований.
         """
         self.sort_columns()
         self.search_num()
+        self.search_name()
