@@ -746,7 +746,7 @@ def transfer_to_firm_with_scanner(request):
     context = dict()
     context['mydebug'] = False
     form = TransfeToFirmScanner()
-    form.fields['doc'].queryset = SCDoc.objects.filter(departament=request.user.departament).filter(doc_type=2)
+    form.fields['doc'].queryset = SCDoc.objects.filter(departament=request.user.departament).filter(doc_type=-1)
         
     if request.session.get('basket_to_transfer_firm', False):
         # если в сессионной переменной уже что-то есть
@@ -791,9 +791,6 @@ def from_firm_to_stock(request):
     back = BreadcrumbsPath(request).before_page(request)
     checked_cartr = request.GET.get('select', '')
     tmp = ''
-    form = FromFirmToStock()
-    form.fields['doc'].queryset = SCDoc.objects.filter(departament=request.user.departament).filter(doc_type=2)
-    context['form'] = form
     list_cart = []
     if checked_cartr:
         checked_cartr = checked_cartr.split('s')
@@ -812,6 +809,12 @@ def from_firm_to_stock(request):
     context['list_cart'] = list_cart
     context['list_length'] = list_length
     context['back'] = back
+    # конструируем фильтр документов контрагентов
+    tmp_cartridge = list_cart[0] # для примера получаем первый элемент в списке, из него извлекаем контрагента
+    firm = tmp_cartridge.filled_firm
+    form = FromFirmToStock()
+    form.fields['doc'].queryset = SCDoc.objects.filter(departament=request.user.departament).filter(doc_type=2).filter(firm=firm)
+    context['form'] = form
     if request.method == 'POST':
         form = FromFirmToStock(request.POST)
         if form.is_valid():

@@ -163,8 +163,10 @@ $( function(){
     });
 
     $('.transfer_to_repair').click( function() {
-        var transfer_to_firm = $('form.transfer_to_firm').serializeArray();
-        var arg_obj = { 'numbers': transfer_to_firm[1]['value'], 'firm': transfer_to_firm[2]['value'], 'doc': transfer_to_firm[3]['value'] };
+        var numbers = $('#id_numbers').attr('value');
+        var firm = $('#id_firm option:selected').val();
+        var doc = $('#id_doc option:selected').val();
+        var arg_obj = { 'numbers': numbers, 'firm': firm, 'doc': doc };
         $.ajax({
             method: 'POST',
             url: '{% url "index:api_transfer_to_firm" %}',

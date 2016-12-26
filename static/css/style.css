@@ -910,7 +910,7 @@ table.checkboxes th.firm_filled {
     white-space: nowrap;
 }
 
-input.search_number {
+input.search_number, input.search_name {
     display: inline important!;   
     padding: 0;
     width: 70px;
