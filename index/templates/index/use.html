@@ -43,11 +43,11 @@
 <div class="row">
     <div class="large-12 columns">
         <table class="checkboxes">
-            <form>
+            <form method="GET" action="">
                 <tr class="table_header">
                     <th class="first_checkbox"><input type="checkbox" class="check_all"></th>
                     <th class="cart_number {% if select_number %}active_cell{% endif %}"><a href="?action=number">{% trans "Number" %} {{number_triangle}}</a><br/><input class="search_number" name="search_number" value="{{search_number}}"  /></th>
-                    <th class="cart_name{% if select_type %} active_cell{% endif %}"><a href="?action=name">{% trans "Name" %} {{type_triangle}}</a></th>
+                    <th class="cart_name{% if select_type %} active_cell{% endif %}"><a href="?action=name">{% trans "Name" %} {{type_triangle}}</a><br/><input class="search_name" name="search_name" value="{{search_name}}"  /></th>
                     <th class="cart_count{% if select_count %} active_cell{% endif %}"><a href="?action=recovery">{% trans "Amount<br/>recovery" %} {{count_triangle}}</a></th>
                     <th class="cart_date{% if select_date %} active_cell{% endif %} {% if request.SHOW_TIME %}big{% else %}small{% endif %}"><a href="?action=change_date">{% trans "Date transfe" %} {{datec_triangle}}</a></th>
                     <th class="org_user">{% trans "User" %}</th>
@@ -72,6 +72,7 @@
                         </td>
                     </tr>
                 {% endfor %}
+                <input type="submit" style="position: absolute; left: -9999px"/>
             </form>
         </table>
     </div>
