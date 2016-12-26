@@ -20,7 +20,6 @@
 </head>
 <body>
 <div class="wrapper">
-    {% cache 600 topmenu request.user.username request.LANGUAGE_CODE %}
     <header class="header">
         <div class="marginTop">
             <div class="left logo">{% if request.SHOW_COPYRIGHT %}<a href="/"><img src="{{ STATIC_URL }}img/logo.png?2d" /></a>{% endif %}</div>
@@ -28,7 +27,6 @@
             <span class="user_ou" title="{{request.user.departament}}">{% if request.user.departament %}{{request.user.departament|truncatechars:100}}{% endif %}</span>&nbsp;&nbsp;<select class="language_selector" name="languge"><option {% if request.LANGUAGE_CODE == 'ru' %}selected{% endif %} value="ru">Русский</option><option {% if request.LANGUAGE_CODE == 'en' %}selected{% endif %} value="en">English</option></select>&nbsp;&nbsp;{{request.user.get_username}}&nbsp;&nbsp;<a href="{% url 'auth:logout' %}">{% trans "Exit" %}</a>
         </div>
     </header><!-- .header-->
-    {% endcache %}
     <div class="middle">
         <div class="container">
             <main class="content">
