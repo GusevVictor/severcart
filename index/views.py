@@ -104,14 +104,13 @@ class Stock(CartridgesView):
     def get(self, request, *args, **kwargs):
         super(Stock, self).get(*args, **kwargs)
         self.context['view'] = 'stock'
-        if request.user.departament:
-            self.all_items = self.all_items.filter(cart_status=1).filter(departament=request.user.departament)
-            self.all_items = self.all_items.values('id', 'cart_number', 'cart_itm_name__cart_itm_name', \
-                'cart_number_refills', 'cart_date_change','comment', \
-                'bufer', 'delivery_doc', 'stor__title', 'stor__address')
-            page_size = self.items_per_page()
-            self.context['size_perpage'] = page_size
-            self.context['cartrjs'] = self.pagination(self.all_items, page_size)
+        self.all_items = self.all_items.filter(cart_status=1).filter(departament=self.request.user.departament)
+        self.all_items = self.all_items.values('id', 'cart_number', 'cart_itm_name__cart_itm_name', \
+            'cart_number_refills', 'cart_date_change','comment', \
+            'bufer', 'delivery_doc', 'stor__title', 'stor__address')
+        page_size = self.items_per_page()
+        self.context['size_perpage'] = page_size
+        self.context['cartrjs'] = self.pagination(self.all_items, page_size)
         return render(request, 'index/stock.html', self.context)
 
 
@@ -483,20 +482,18 @@ class Use(CartridgesView):
     def get(self, request, *args, **kwargs):
         super(Use, self).get(*args, **kwargs)
         self.context['view'] = 'use'
-
-        if request.user.departament:
-            try:
-                root_ou   = self.request.user.departament
-                children  = root_ou.get_family()
-            except AttributeError:
-                children = ''
-            self.all_items = self.all_items.filter(departament__in=children).filter(cart_status=2) \
-                .values('id', 'cart_number', 'cart_itm_name__cart_itm_name', \
-                'cart_number_refills', 'cart_date_change','comment', \
-                'delivery_doc', 'departament__name')
-            page_size = self.items_per_page()
-            self.context['size_perpage'] = page_size
-            self.context['cartrjs'] = self.pagination(self.all_items, page_size)
+        try:
+            root_ou   = self.request.user.departament
+            children  = root_ou.get_family()
+        except AttributeError:
+            children = ''
+        self.all_items = self.all_items.filter(departament__in=children).filter(cart_status=2) \
+            .values('id', 'cart_number', 'cart_itm_name__cart_itm_name', \
+            'cart_number_refills', 'cart_date_change','comment', \
+            'delivery_doc', 'departament__name')
+        page_size = self.items_per_page()
+        self.context['size_perpage'] = page_size
+        self.context['cartrjs'] = self.pagination(self.all_items, page_size)
         return render(request, 'index/use.html', self.context)
 
 
@@ -506,15 +503,14 @@ class Empty(CartridgesView):
     def get(self, request, *args, **kwargs):
         super(Empty, self).get(*args, **kwargs)
         self.context['view'] = 'empty'
-        if request.user.departament:
-            root_ou = self.request.user.departament
-            self.all_items = self.all_items.filter( Q(departament=root_ou) & Q(cart_status=3) ) \
-                .values('id', 'cart_number', 'cart_itm_name__cart_itm_name', \
-                'cart_number_refills', 'cart_date_change','comment', \
-                'bufer', 'delivery_doc', 'stor__title', 'stor__address')
-            page_size = self.items_per_page()
-            self.context['size_perpage'] = page_size
-            self.context['cartrjs'] = self.pagination(self.all_items, page_size)
+        root_ou = self.request.user.departament
+        self.all_items = self.all_items.filter( Q(departament=root_ou) & Q(cart_status=3) ) \
+            .values('id', 'cart_number', 'cart_itm_name__cart_itm_name', \
+            'cart_number_refills', 'cart_date_change','comment', \
+            'bufer', 'delivery_doc', 'stor__title', 'stor__address')
+        page_size = self.items_per_page()
+        self.context['size_perpage'] = page_size
+        self.context['cartrjs'] = self.pagination(self.all_items, page_size)
         return render(request, 'index/empty.html', self.context)
 
 
@@ -639,15 +635,14 @@ class At_work(CartridgesView):
         super(At_work, self).get()
         self.context['view'] = 'at_work'
         firm = get_object_or_404(FirmTonerRefill, pk=pk)
-        if request.user.departament:
-            self.all_items = self.all_items.filter(Q(cart_status=4) & Q(departament=self.request.user.departament) & Q(filled_firm=firm)) \
-                .values('id', 'cart_number', 'cart_itm_name__cart_itm_name', \
-                'cart_number_refills', 'cart_date_change','comment', \
-                'bufer', 'delivery_doc')
-            page_size = self.items_per_page()
-            self.context['size_perpage'] = page_size
-            self.context['cartrjs'] = self.pagination(self.all_items, page_size)
-            self.context['firm'] = firm
+        self.all_items = self.all_items.filter(Q(cart_status=4) & Q(departament=self.request.user.departament) & Q(filled_firm=firm)) \
+            .values('id', 'cart_number', 'cart_itm_name__cart_itm_name', \
+            'cart_number_refills', 'cart_date_change','comment', \
+            'bufer', 'delivery_doc')
+        page_size = self.items_per_page()
+        self.context['size_perpage'] = page_size
+        self.context['cartrjs'] = self.pagination(self.all_items, page_size)
+        self.context['firm'] = firm
         return render(request, 'index/at_work.html', self.context)
 
 
@@ -700,14 +695,13 @@ class Basket(CartridgesView):
     def get(self, request, *args, **kwargs):
         super(Basket, self).get(*args, **kwargs)
         self.context['view'] = 'basket'
-        if request.user.departament:
-            self.all_items = self.all_items.filter( (Q(cart_status=5) | Q(cart_status=6)) & Q(departament=self.request.user.departament) ) \
-                .values('id', 'cart_number', 'cart_itm_name__cart_itm_name', \
-                'cart_number_refills', 'cart_date_change','comment', \
-                'bufer', 'delivery_doc')
-            page_size = self.items_per_page()
-            self.context['size_perpage'] = page_size
-            self.context['cartrjs'] = self.pagination(self.all_items, page_size)
+        self.all_items = self.all_items.filter( (Q(cart_status=5) | Q(cart_status=6)) & Q(departament=self.request.user.departament) ) \
+            .values('id', 'cart_number', 'cart_itm_name__cart_itm_name', \
+            'cart_number_refills', 'cart_date_change','comment', \
+            'bufer', 'delivery_doc')
+        page_size = self.items_per_page()
+        self.context['size_perpage'] = page_size
+        self.context['cartrjs'] = self.pagination(self.all_items, page_size)
         return render(request, 'index/basket.html', self.context)
 
 
@@ -1034,19 +1028,18 @@ class Bufer(CartridgesView):
     def get(self, request, *args, **kwargs):
         super(Bufer, self).get(*args, **kwargs)
         self.context['view'] = 'bufer'
-        if request.user.departament:
-            try:
-                root_ou   = request.user.departament
-                children  = root_ou.get_family()
-            except AttributeError:
-                children = None
-            self.all_items = self.all_items.filter(departament__in=children).filter(bufer=True) \
-                .values('id', 'cart_number', 'cart_itm_name__cart_itm_name', \
-                'cart_number_refills', 'cart_date_change','comment', \
-                'stor__title', 'stor__address')
-            page_size = self.items_per_page()
-            self.context['size_perpage'] = page_size
-            self.context['cartrjs'] = self.pagination(self.all_items, page_size)
+        try:
+            root_ou   = self.request.user.departament
+            children  = root_ou.get_family()
+        except AttributeError:
+            children = None
+        self.all_items = self.all_items.filter(departament__in=children).filter(bufer=True) \
+            .values('id', 'cart_number', 'cart_itm_name__cart_itm_name', \
+            'cart_number_refills', 'cart_date_change','comment', \
+            'stor__title', 'stor__address')
+        page_size = self.items_per_page()
+        self.context['size_perpage'] = page_size
+        self.context['cartrjs'] = self.pagination(self.all_items, page_size)
         return render(request, 'index/bufer.html', self.context)
 
 
