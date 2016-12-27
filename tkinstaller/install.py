@@ -101,7 +101,7 @@ if __name__ == '__main__':
         if CPU_ARCH == '64bit' and OS == 'win32':
             print(tr('Installation package dependencies for 64-bit Windows',lang=lang))
             packages_x64 = [
-                ['Django==1.9.4'],
+                ['Django==1.9.12'],
                 [ os.path.join(PROJ_DIR, 'tkinstaller', 'Noarch', 'django-mptt-0.8.0.tar.gz') ],
                 [ os.path.join(PROJ_DIR, 'tkinstaller', 'Win64', 'lxml-3.4.4-cp34-none-win_amd64.whl'), '--no-cache-dir'],
                 [ os.path.join(PROJ_DIR, 'tkinstaller', 'Win64', 'Pillow-3.1.0-cp34-none-win_amd64.whl')],
@@ -122,7 +122,7 @@ if __name__ == '__main__':
         elif CPU_ARCH == '32bit' and OS == 'win32':
             print(tr('Installation package dependencies for 32-bit Windows', lang=lang))
             packages_x86 = [
-                ['Django==1.9.4'],
+                ['Django==1.9.12'],
                 [os.path.join(PROJ_DIR, 'tkinstaller', 'Noarch', 'django-mptt-0.8.0.tar.gz')],
                 [os.path.join(PROJ_DIR, 'tkinstaller', 'Win32', 'lxml-3.4.4-cp34-none-win32.whl'), '--no-cache-dir'],
                 [os.path.join(PROJ_DIR, 'tkinstaller', 'Win32', 'Pillow-3.1.0-cp34-none-win32.whl')],
@@ -142,7 +142,7 @@ if __name__ == '__main__':
         else:
             print(tr('Installation package dependencies for Linux', lang=lang))
             packages_unix = [
-                ['Django==1.9'], 
+                ['Django==1.9.12'], 
                 ['lxml'],
                 ['django-mptt'],
                 ['psycopg2'],
